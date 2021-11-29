@@ -1,14 +1,6 @@
-<!--
- * @Author: your name
- * @Date: 2020-12-17 10:22:02
- * @LastEditTime: 2021-11-16 11:08:10
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\Leave\Leave.vue
--->
 <script lang="ts" setup>
-import { leave } from '@/api/index'
 import { reactive, onMounted } from 'vue'
+import { leave } from '@/api/index'
 
 const state: any = reactive({
   result: []

@@ -5,6 +5,7 @@ import SDescribe from '@/components/describe/sDescribe.vue'
 import SCategory from '@/components/sidebarModule/category/sCategory.vue'
 import { resData, method } from '../../data/sidebar'
 import STime from '@/components/sidebarModule/stime/sTime.vue'
+
 method.GetApi()
 </script>
 <template>

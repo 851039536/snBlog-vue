@@ -1,12 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-09-15 08:34:50
- * @LastEditTime: 2021-10-13 15:05:12
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\Book\components\BookFilm.vue
--->
-
 <script lang="ts" setup></script>
 
 <template>

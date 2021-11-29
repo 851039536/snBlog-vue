@@ -1,15 +1,6 @@
-/*
- * @Author: your name
- * @Date: 2021-09-15 10:39:08
- * @LastEditTime: 2021-11-11 15:14:41
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\index\data.ts
- */
-
+import { reactive } from 'vue'
 import { article, labels, sort, usertalk } from '@/api/index'
 import { winUrl } from '@/hooks/routers'
-import { reactive } from 'vue'
 
 interface Res {
   labelsData: any
@@ -52,9 +43,11 @@ export class method {
       resData.articleData1 = res.data
     })
   }
+
   static async skip(id: number) {
-    winUrl('/VmdHtml?id=' + id)
+    winUrl(`/VmdHtml?id=${id}`)
   }
+
   static async GetApi() {
     resData.labelsData = await (await labels.GetAllAsync(true)).data
     resData.sortData = await (await sort.GetAllAsync(true)).data

@@ -1,16 +1,7 @@
-<!--
- * @Author: your name
- * @Date: 2021-07-09 10:55:56
- * @LastEditTime: 2021-11-16 11:09:33
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\ListContent\ListContent.vue
--->
-
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue'
-import { listContent } from '@/api'
 import { message } from 'ant-design-vue'
+import { listContent } from '@/api'
 
 const state: any = reactive({
   listTitle: [],
@@ -20,16 +11,14 @@ const info = async () => {
   message.info('功能进行中...')
 }
 const testall = async () => {
-  {
-    listContent.Cnblogs().then((res) => {
-      let str = res.data
-      for (let index = 0; index < str.length; index++) {
-        const element = str[index].split('-')
-        state.listTitle[index] = element[0]
-        state.listHref[index] = element[1]
-      }
-    })
-  }
+  listContent.Cnblogs().then((res) => {
+    const str = res.data
+    for (let index = 0; index < str.length; index++) {
+      const element = str[index].split('-')
+      state.listTitle[index] = element[0]
+      state.listHref[index] = element[1]
+    }
+  })
 }
 onMounted(async () => {
   await testall()

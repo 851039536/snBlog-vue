@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { state, method } from '../../data/column'
 import BlogsContent from '@vi/Blogs/components/BlogsContent.vue'
+import { state, method } from '../../data/column'
 
 method.GetCount()
 method.GetFy()
