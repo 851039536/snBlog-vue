@@ -27,7 +27,19 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/blogs/index.vue')
+    component: () => import('@/views/Blogs/index.vue'),
+    children: [
+      {
+        path: 'BlogsColumn',
+        name: 'BlogsColumn',
+        component: () => import('@/views/Blogs/components/BlogsColumn.vue')
+      },
+      {
+        path: 'BlogsContent',
+        name: 'BlogsContent',
+        component: () => import('@/views/Blogs/components/BlogsContent.vue')
+      }
+    ]
   },
   {
     path: '/index',
@@ -58,14 +70,14 @@ const routes = [
     },
     component: () => import('@/views/index/components/sidebar/IndexSidebar.vue')
   },
-  {
-    path: '/BlogSidebar',
-    name: 'BlogSidebar',
-    meta: {
-      keepAlive: true
-    },
-    component: () => import('@/components/raside/rAside.vue')
-  },
+  // {
+  //   path: '/LSidebar',
+  //   name: 'LSidebar',
+  //   meta: {
+  //     keepAlive: true
+  //   },
+  //   component: () => import('@/components/sidebar/LSidebar.vue')
+  // },
   {
     path: '/TimeLine',
     name: 'TimeLine',

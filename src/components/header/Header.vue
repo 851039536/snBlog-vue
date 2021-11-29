@@ -1,7 +1,10 @@
 <script lang="ts" setup>
+import { onMounted } from 'vue'
 import { resData, method } from './data/header'
 
-method.GetType()
+onMounted(async () => {
+  await method.GetType()
+})
 </script>
 <template>
   <nav class="headers">

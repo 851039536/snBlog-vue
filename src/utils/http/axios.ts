@@ -42,7 +42,7 @@ axios.interceptors.request.use(
     }
     // 若是有做鉴权token , 就给头部带上token
     if (storage.get(store.state.Roles)) {
-      req.headers.Authorization = storage.get(store.state.Roles) as string
+      req.headers.Authorization = encodeURIComponent(storage.get(store.state.Roles)) as string
     }
     return req
   },
@@ -67,6 +67,8 @@ axios.interceptors.response.use(
     return Promise.reject(res)
   },
   (error: any) => {
+    console.log('%c [ error ]', 'font-size:13px; background:pink; color:#bf2c9f;', error)
+
     if (error.response.status) {
       switch (error.response.status) {
         case 400:

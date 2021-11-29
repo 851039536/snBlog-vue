@@ -7,8 +7,8 @@
  * @FilePath: \blogs-s\src\views\One\OneSidebar.vue
 -->
 <script setup lang="ts">
-import { one } from '@/api/index'
 import { reactive, onMounted } from 'vue'
+import { one } from '@/api/index'
 import SStatistics from '@/components/sidebarModule/sstatistics/sStatistics.vue'
 import OneCategory from './components/OneCategory.vue'
 import OneSidetype from './components/OneSidetype.vue'

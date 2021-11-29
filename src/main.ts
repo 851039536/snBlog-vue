@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 // eslint-disable-next-line import/order
-import { setupAntd } from '@/components/antd/antd-ui'
+// import { setupAntd } from '@/components/antd/antd-ui'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import './index.css'
-
+import 'animate.css'
 import lazyPlugin from 'vue3-lazy'
 
 // v-md
@@ -29,8 +29,6 @@ import App from './App.vue'
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css'
 //  end v-md
 
-import IndexSidebar from './views/index/components/sidebar/IndexSidebar.vue'
-import BlogSidebar from './components/raside/rAside.vue'
 import router from './router/index'
 import store from './store/index'
 
@@ -52,8 +50,6 @@ VMdPreview.use(createCopyCodePlugin())
 
 // use
 const app = createApp(App)
-app.component('IndexSidebar', IndexSidebar)
-app.component('BlogSidebar', BlogSidebar)
 
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/blog/${name}`, import.meta.url).href
@@ -67,5 +63,5 @@ app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.use(store)
 app.use(router)
-setupAntd(app)
+// setupAntd(app)
 app.mount('#app')

@@ -1,27 +1,31 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig } from 'vite'
-// eslint-disable-next-line import/no-extraneous-dependencies
 import vue from '@vitejs/plugin-vue'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import styleImport from 'vite-plugin-style-import'
-// 如果编辑器提示 path 模块找不到，则可以安装一下 @types/node -> npm i @types/node -D
 import { resolve } from 'path'
+import Components from 'unplugin-vue-components/vite'
 
-// https://vitejs.dev/config/
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+
 export default defineConfig({
   plugins: [
     vue(),
-    styleImport({
-      libs: [
-        {
-          libraryName: 'ant-design-vue',
-          esModule: true,
-          resolveStyle: (name) => {
-            return `ant-design-vue/es/${name}/style/index`
-          }
-        }
-      ]
+    Components({
+      dts: true, // ts支持
+      dirs: ['src/components', 'src/views'], // 自定义路径按需导入
+      resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
+      // directoryAsNamespace: true
     })
+
+    // styleImport({
+    //   libs: [
+    //     {
+    //       libraryName: 'ant-design-vue',
+    //       esModule: true,
+    //       resolveStyle: (name) => {
+    //         return `ant-design-vue/es/${name}/style/index`
+    //       }
+    //     }
+    //   ]
+    // })
   ],
   resolve: {
     extensions: ['.vue', '.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.node', '.scss'],

@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 import { article } from '@/api/index'
 
 import axios from '@/utils/http/axios'
+import { throttle } from '@/utils/common/dethrottle'
 
 interface FyData {
   resultData: any
@@ -16,7 +17,20 @@ export const fyData: FyData = reactive({
   pagesize: 8,
   count: 0
 })
-
+interface State {
+  resultData: any
+  labelName: string
+  sortName: string
+  time: any
+  spinning: boolean
+}
+export const state: State = reactive({
+  resultData: [],
+  labelName: '',
+  sortName: '',
+  time: '',
+  spinning: true
+})
 export class method {
   static async GetFy() {
     await article.GetFyAsync(1, '转载', fyData.page, fyData.pagesize, 'id', true, true).then((res: any) => {
@@ -33,4 +47,16 @@ export class method {
   static async GetApi() {
     axios.all([await method.ConutSort(), await method.GetFy()])
   }
+
+  static async UpRead(res: any) {
+    if (res !== null) {
+      res.read += 1
+      await article.UpdatePortionAsync(res, 'Read')
+    }
+  }
+
+  static UpGive = throttle(() => {
+    state.resultData.give += 1
+    article.UpdatePortionAsync(state.resultData, 'Give')
+  }, 1000)
 }

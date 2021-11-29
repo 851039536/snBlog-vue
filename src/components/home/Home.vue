@@ -12,7 +12,7 @@ import { Routers } from '@/hooks/routers'
         <div class="centeredPrompt__item centeredPromptLabel">满天星辰</div>
         <div class="centeredPrompt__item centeredPromptDetails">一位热爱生活、xxxxxx开发者。</div>
         <div class="centeredPrompt__item button">
-          <button class="btn btn-link" @click="Routers('/Blogs')">Go</button>
+          <button class="btn btn-link" @click="Routers('/Blogs/BlogsColumn')">Go</button>
         </div>
         <div class="centeredPrompt__item button">
           <p>

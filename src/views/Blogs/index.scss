@@ -9,9 +9,7 @@
 
   .blogs_main {
     @apply shadow-sm rounded-sm overflow-auto;
-    .blogs-page {
-      @apply w-full py-5 bg-white shadow rounded;
-    }
+
   }
 }
 
