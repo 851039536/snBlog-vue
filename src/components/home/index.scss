@@ -1,0 +1,66 @@
+@import '@/design/methodCss.scss';
+@import '@/design/uitl';
+
+/* blogHome
+---------------------------------------------------------------- */
+#blogHome {
+  @apply fixed z-20;
+
+  @include w-h;
+
+  @apply bg-white;
+
+  .home_main {
+    @apply absolute m-auto top-0 left-0 bottom-0 right-0;
+
+    @include w-h(90%, 70%);
+
+    @apply shadow-2xl rounded-3xl;
+
+    .home_name {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      height: 50%;
+      margin: auto;
+      overflow: auto;
+
+      .home_name_name {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 70%;
+        margin: auto;
+        //  height: 80%;
+        overflow: auto;
+
+        div {
+          //  background: rgb(196, 116, 116);
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 60%;
+          margin: auto;
+          // height: 65%;
+          overflow: auto;
+
+          button {
+            @apply m-2 p-1 bg-gray-200 rounded;
+          }
+        }
+      }
+    }
+  }
+}
+
+@screen xp {
+  #blogHome .home_main .home_name {
+    width: 100%;
+  }
+}

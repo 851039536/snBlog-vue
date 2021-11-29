@@ -1,0 +1,307 @@
+$w: 50%;
+$ml: 25%;
+
+// 渐变色文字
+@mixin gradient-text() {
+  color: transparent;
+  background-image: linear-gradient(90deg, red, blue);
+  background-clip: text;
+}
+
+// 下划线
+@mixin underline {
+  border-bottom: 1px dashed #f1f1f1;
+}
+
+// 页面初始化
+@mixin initialize($w, $h, $mt, $mb, $ml, $mr, $bg) {
+  @if $w !=null {
+    width: $w;
+  }
+
+  @if $h !=null {
+    height: $h;
+  }
+
+  @if $mt !=null {
+    margin-top: $mt;
+  }
+
+  @if $mb !=null {
+    margin-bottom: $mb;
+  }
+
+  @if $ml !=null {
+    margin-left: $ml;
+  }
+
+  @if $mr !=null {
+    margin-right: $mr;
+  }
+
+  @if $bg !=null {
+    background-color: $bg;
+  }
+}
+
+// 宽高
+@mixin w-h($w: 100%, $h: 100%) {
+  width: $w;
+  height: $h;
+}
+
+// 背景图片
+@mixin bg-img($imgUrl) {
+  // background: no-repeat center/100% url($imgUrl);
+}
+
+/**
+ * @description: 图片模糊
+/ **/
+@mixin img-dim {
+  transform: scale(1.1);
+  -webkit-filter: blur(1px);
+  -ms-filter: blur(1px);
+  -moz-filter: blur(1px);
+  filter: blur(1px);
+}
+
+/**
+ * @description: 显示省略号
+ */
+@mixin line-one {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 2行数
+@mixin line-number {
+  /* 有些示例里需要定义该属性，实际可省略 */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-line-clamp: 2;
+
+  /* 规定超过两行的部分截断 */
+  -webkit-box-orient: vertical;
+}
+
+/**
+ * @description: m-居中
+ */
+@mixin m-center {
+  margin: 0 auto;
+}
+
+@mixin line-numbers($num) {
+  /* 有些示例里需要定义该属性，实际可省略 */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-line-clamp: $num;
+
+  /* 规定超过两行的部分截断 */
+  -webkit-box-orient: vertical;
+}
+
+/**
+ * @description: 滚动条
+ */
+@mixin scroll {
+  // 整个滚动条.
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  //滚动条轨道.
+  ::-webkit-scrollbar-track {
+    width: 6px;
+    background: rgba(#101f1c, 0.1);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+  }
+  //滚动条上的滚动滑块.
+  ::-webkit-scrollbar-thumb {
+    min-height: 28px;
+    background-color: rgba(#101f1c, 0.5);
+    background-clip: padding-box;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(#101f1c, 1);
+  }
+}
+
+/*上 下 左 右边 偏移*/
+@mixin excursion($t, $b, $l, $r) {
+  @if $t !=null {
+    top: $t;
+  }
+  @if $b !=null {
+    bottom: $b;
+  }
+  @if $l !=null {
+    left: $l;
+  }
+  @if $r !=null {
+    right: $r;
+  }
+}
+
+@mixin blogs {
+  @apply p-3;
+  @apply antialiased rounded-sm bg-white;
+
+  h1 {
+    @apply text-2xl p-1 font-semibold text-gray-700 bg-white;
+  }
+
+  h2 {
+    @apply text-xl p-1 font-semibold text-gray-700 bg-white;
+  }
+
+  h3 {
+    @apply text-lg p-1 font-semibold bg-white;
+  }
+
+  h4 {
+    @apply text-base p-1 font-semibold bg-white;
+  }
+
+  h5 {
+    @apply text-sm p-1 font-semibold bg-white;
+  }
+
+  pre {
+    width: 100%;
+
+    @apply text-sm px-1 py-2 bg-gray-100 leading-6;
+  }
+
+  code {
+    @apply text-gray-700 px-1;
+
+    .hljs-keyword {
+      color: #6161b3;
+    }
+
+    //方法
+    .hljs-title {
+      color: #a31515;
+    }
+
+    .hljs-string {
+      @apply text-red-700;
+    }
+
+    // 注释
+    .hljs-comment {
+      @apply text-gray-400;
+    }
+
+    .hljs-params {
+      color: #00f;
+    }
+  }
+
+  blockquote {
+    p {
+      @apply bg-gray-50 mt-1 rounded-sm text-base text-current shadow-sm pl-2;
+    }
+  }
+
+  p {
+    @apply p-1 bg-white text-gray-800 leading-relaxed;
+
+    code {
+      @apply bg-gray-50 px-1 text-red-800;
+    }
+
+    .hljs {
+      @apply bg-gray-50 rounded-sm;
+    }
+  }
+
+  ul {
+    @apply p-1;
+
+    li {
+      @apply p-1;
+
+      code {
+        color: #2008fa;
+      }
+
+      @apply text-xs bg-white text-gray-500;
+    }
+  }
+
+  // table {
+  //   // background: gray;
+  // }
+
+  th {
+    border: solid #f1f1f1 1px;
+
+    @apply p-1 text-sm;
+  }
+
+  td {
+    border: solid #f1f1f1 1px;
+
+    @apply p-1 text-sm;
+  }
+
+  a {
+    @apply p-1 text-red-800;
+  }
+
+  /* 对 markdown 样式的补充 */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1em;
+
+    /* margin-bottom: 1em; */
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  p > code:not([class]) {
+    padding: 2px 4px;
+    color: #c7254e;
+    font-size: 90%;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+  }
+
+  p img {
+    display: flex;
+
+    /* 图片居中 */
+    margin: 0 auto;
+  }
+
+  #content .desc h1,
+  #content .desc h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  #content .desc a {
+    color: #009a61;
+  }
+}

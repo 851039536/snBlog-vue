@@ -1,0 +1,81 @@
+@import '@/design/methodCss';
+@import '@/design/uitl';
+
+.book {
+  @apply fixed;
+
+  @include w-h(100%, 100%);
+
+  .book_main {
+    @include initialize($w, 89%, 4.5%, null, $ml, null, #ffffff);
+
+    @apply shadow-sm rounded-sm overflow-auto;
+
+    .book_bar {
+      @include underline;
+
+      @apply mb-2;
+
+      p {
+        @apply px-1 py-2 m-2;
+        @apply text-base font-medium;
+      }
+    }
+
+    .book_film {
+      width: 99%;
+
+      @apply py-2 m-auto shadow rounded-sm;
+
+      span {
+        @apply px-3 text-base;
+      }
+    }
+
+    .book_film_text {
+      @apply m-1 mt-2 p-1 shadow-xl rounded-sm;
+
+      @include w-h(95%, 370px);
+
+      .book_img {
+        @include w-h(100%, 220px);
+
+        img {
+          @include w-h(100%, 100%);
+
+          @apply rounded-sm;
+        }
+      }
+
+      .book_film_title {
+        background-color: wheat;
+
+        @apply text-lg text-center p-1;
+      }
+
+      .book_film_type {
+        @apply p-1 px-3 text-sm text-gray-400;
+
+        div {
+          @apply m-1;
+        }
+      }
+    }
+  }
+}
+
+@screen xp {
+  .book .book_text {
+    width: 100%;
+
+    @apply ml-2;
+  }
+
+  .book .book_text .book_film_text .book_img {
+    height: 380px;
+  }
+
+  .book .book_text .book_film_text {
+    height: 540px;
+  }
+}

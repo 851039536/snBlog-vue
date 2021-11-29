@@ -1,0 +1,45 @@
+@import '@/design/methodCss';
+@import '@/design/uitl';
+
+.ListContent {
+  @include initialize(94%, null, 4.5%, null, 3%, null, #f9f9f9);
+
+  @apply shadow rounded-md;
+
+  .ListContent_title {
+    @include underline;
+
+    margin-bottom: 6px;
+
+    p {
+      @apply px-1 py-2 m-2 text-lg font-medium;
+    }
+  }
+
+  .ListContent_div {
+    @apply m-3;
+    @apply rounded shadow;
+
+    .ListContent_text {
+      @apply p-2 text-sm bg-white rounded;
+
+      .ListContent_t_title {
+        @apply bg-gray-100 flex justify-between rounded;
+
+        div {
+          @apply p-1;
+        }
+      }
+
+      .ListContent_t_content {
+        @apply p-1;
+
+        a {
+          span {
+            @apply bg-gray-200 px-1 rounded;
+          }
+        }
+      }
+    }
+  }
+}
