@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { article, labels, sort, usertalk } from '@/api/index'
+import { article, labels, sort, userTalk } from '@/api/index'
 import { winUrl } from '@/hooks/routers'
 
 interface Res {
@@ -52,7 +52,7 @@ export class method {
     resData.labelsData = await (await labels.GetAllAsync(true)).data
     resData.sortData = await (await sort.GetAllAsync(true)).data
     resData.articleStr = await (await article.GetFyAsync(0, 'null', 1, 1, 'id', true, true)).data[0].timeCreate
-    resData.userTalk = await (await usertalk.GetUserTalkFirst()).data
+    resData.userTalk = await (await userTalk.GetUserTalkFirst()).data
     resData.articleCount = await (await article.GetCountAsync(0, 'null', true)).data
     resData.articleCount = String(resData.articleCount)
     resData.textCount = await (await article.GetSumAsync(0, 1, 'null', true)).data

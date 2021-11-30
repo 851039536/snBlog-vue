@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-12-08 09:43:09
- * @LastEditTime: 2021-11-02 08:06:14
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\tailwind.config.js
- */
 module.exports = {
   purge: {
     enabled: true,

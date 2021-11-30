@@ -1,14 +1,6 @@
-<!--
- * @Author: your name
- * @Date: 2020-12-28 09:49:17
- * @LastEditTime: 2021-11-15 15:29:41
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\SnVideo\VideoSidebar.vue
--->
 <script lang="ts" setup>
-import { video } from '@/api'
 import { reactive } from 'vue'
+import { video } from '@/api'
 
 interface State {
   count: number
@@ -46,9 +38,6 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .video_sidebar {
   @apply fixed ml-3;
 

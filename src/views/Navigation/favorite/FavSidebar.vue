@@ -69,9 +69,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 #FavSidebar {
   position: fixed;
 

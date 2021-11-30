@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import { labels, article, sort, TOKEN } from '@/api'
 import { formState, state } from './data'
 import { Routers, go, reloads } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 import { tool } from '@/utils/common/tool'
 import { storage } from '@/utils/storage/storage'
 
@@ -28,8 +28,8 @@ async function GetApi() {
 onMounted(async () => {
   await TOKEN()
   await GetApi()
-  navname.name = '文章展示'
-  navname.name2 = '新增文章'
+  navName.name = '文章展示'
+  navName.name2 = '新增文章'
 })
 </script>
 

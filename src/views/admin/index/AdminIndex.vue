@@ -5,7 +5,7 @@ import { message } from 'ant-design-vue'
 import { Routers } from '@/hooks/routers'
 import { storage } from '@/utils/storage/storage'
 import store from '@/store'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 
 async function zx() {
   storage.remove(store.state.Roles)
@@ -110,8 +110,8 @@ provide('reload', reload)
 
         <a-layout style="padding: 0 24px 24px">
           <a-breadcrumb style="margin: 16px 0">
-            <a-breadcrumb-item>{{ navname.name }}</a-breadcrumb-item>
-            <a-breadcrumb-item>{{ navname.name2 }}</a-breadcrumb-item>
+            <a-breadcrumb-item>{{ navName.name }}</a-breadcrumb-item>
+            <a-breadcrumb-item>{{ navName.name2 }}</a-breadcrumb-item>
           </a-breadcrumb>
           <a-layout-content
             :style="{

@@ -1,15 +1,7 @@
-<!--
- * @Author: your name
- * @Date: 2021-10-12 16:13:39
- * @LastEditTime: 2021-11-16 14:38:34
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\tag\components\TagHead.vue
--->
 <script lang="ts" setup>
 import { IntLabels } from '@/api/data/interData'
 import { article } from '@/api'
-import { state } from '../data'
+import { state } from '../data/data'
 
 defineProps({
   resultData: {
@@ -33,8 +25,6 @@ async function GetTag(name: string) {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
 //头部
 .tag_head {
   @apply flex flex-wrap mt-1;

@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-09-28 17:28:24
- * @LastEditTime: 2021-11-24 10:59:15
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\One\index.ts
- */
-
 import { message } from 'ant-design-vue'
 import { reactive } from 'vue'
 import { one } from '@/api/index'
@@ -36,9 +27,8 @@ class method {
     state.modal2Visible = modal2Visible
     await one.GetByIdAsync(id, true).then((res: any) => {
       state.text = res.data
-      if (res.data == null) {
-      } else {
-        res.data.oneRead++
+      if (res.data !== null) {
+        res.data.oneRead += 1
         one.UpdatePortionAsync(state.text, 'read')
       }
     })
@@ -62,6 +52,7 @@ class method {
       state.resultData = res.data
     })
     await one.GetFyAsync(0, '0', 1, 1, 'id', true, true).then((res: any) => {
+      // eslint-disable-next-line prefer-destructuring
       state.dataOne = res.data[0]
     })
   }
@@ -69,9 +60,8 @@ class method {
   static async give(id: any) {
     message.info('已点赞')
     await one.GetByIdAsync(id, true).then((res: any) => {
-      if (res.data == null) {
-      } else {
-        res.data.oneGive++
+      if (res.data !== null) {
+        res.data.oneGive += 1
         one.UpdatePortionAsync(res.data, 'give')
       }
     })

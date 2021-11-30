@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterId } from '@/hooks/routers'
 import { IntVideo } from '@/api/data/interData'
-import { state } from '../data'
-import { method } from '../index'
+import { state } from '../data/data'
+import { method } from '../data/index'
 
 defineProps({
   resultData: {
@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="svideo_main animate__animated animate__fadeIn">
+  <div class="svideo_main">
     <div class="svideo_main_content">
       <div class="svideo-2-1" v-for="res in resultData" :key="res['id']">
         <div class="svideo-2-1-1">
@@ -29,7 +29,6 @@ defineProps({
       </div>
     </div>
     <div class="svideo_Paging">
-      <!-- 分页  @change="method.currentchange"  :total="state.count" :pageSize="state.pagesize" -->
       <a-pagination
         size="small"
         @change="method.currentchange"
@@ -43,9 +42,6 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .svideo_main {
   @include initialize($w, 99%, 4.5%, null, $ml, null, #fcfcfc);
 

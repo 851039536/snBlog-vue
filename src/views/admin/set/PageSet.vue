@@ -1,18 +1,10 @@
-<!--
- * @Author: your name
- * @Date: 2021-10-18 17:30:43
- * @LastEditTime: 2021-11-02 09:58:00
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\admin\article\ArticleTable.vue
--->
 <script lang="ts" setup>
 import { inject, onMounted } from 'vue'
 import { message } from 'ant-design-vue'
 import { columns, state, stateArray, stateStr } from './data'
 import { article, TOKEN, labels, interfaces } from '@/api'
 import { Routers, RouterId } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 
 async function GetAllAsync() {
   await interfaces.GetAllAsync(false).then((result: any) => {
@@ -59,8 +51,8 @@ onMounted(async () => {
   await labels.GetAllAsync(false).then((res) => {
     stateArray.labelResult = res.data
   })
-  navname.name = '设置'
-  navname.name2 = '参数列表'
+  navName.name = '设置'
+  navName.name2 = '参数列表'
 })
 </script>
 <template>

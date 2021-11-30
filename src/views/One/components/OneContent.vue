@@ -1,19 +1,10 @@
-<!--
- * @Author: your name
- * @Date: 2021-09-29 10:55:14
- * @LastEditTime: 2021-11-15 14:58:54
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\One\components\OneContent.vue
--->
-
 <script lang="ts" setup>
 import { one } from '../data'
 import { method } from '../index'
 
 defineProps({
   resultData: {
-    type: Array as () => Array<one>, // (string也可以是其他你自定义的接口)
+    type: Array as () => Array<one>,
     required: true,
     default: () => []
   }
@@ -37,9 +28,6 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .onecontent {
   @apply flex flex-wrap;
 

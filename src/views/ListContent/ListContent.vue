@@ -13,9 +13,11 @@ const info = async () => {
 const testall = async () => {
   listContent.Cnblogs().then((res) => {
     const str = res.data
-    for (let index = 0; index < str.length; index++) {
+    for (let index = 0; index < str.length; index += 1) {
       const element = str[index].split('-')
+      // eslint-disable-next-line prefer-destructuring
       state.listTitle[index] = element[0]
+      // eslint-disable-next-line prefer-destructuring
       state.listHref[index] = element[1]
     }
   })

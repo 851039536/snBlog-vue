@@ -46,9 +46,6 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss.scss';
-@import '@/design/uitl';
-
 .statistics {
   width: 97%;
 

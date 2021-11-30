@@ -1,6 +1,5 @@
 <template>
   <div id="softwarecontent">
-    <Sidebarsn></Sidebarsn>
     <fav-sidebar></fav-sidebar>
     <div class="software_main animate__animated animate__fadeIn">
       <!-- ---------------------------------- -->

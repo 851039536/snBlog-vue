@@ -32,9 +32,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss.scss';
-@import '@/design/uitl';
-
 .headers {
   @apply flex fixed z-10 p-1;
   @include excursion(0, null, 3%, null);

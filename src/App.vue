@@ -25,7 +25,5 @@ store.state.Roles = storage.get('rolres')
 </template>
 
 <style lang="scss">
-@import './design/methodCss.scss';
-
 @include scroll; //滚动条美化
 </style>

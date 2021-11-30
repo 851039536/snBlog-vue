@@ -1,31 +1,29 @@
 <script lang="ts" setup>
-import { fyData, method } from '@vi/Blogs/data/index'
-import { onMounted } from 'vue'
+import { state, method } from '../data/column'
 import { RouterId } from '@/hooks/routers'
 import { tool } from '@/utils/common/tool'
 
-async function currentchange(val: number) {
-  fyData.page = val
-  await method.GetFy()
-  await tool.BackTop()
-}
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
-onMounted(async () => {
-  await method.GetApi()
-})
+async function currentchange(val: number) {
+  state.page = val
+  await method.GetFy()
+  await tool.BackTop()
+}
+method.GetCount()
+method.GetFy()
 </script>
 
 <template>
-  <div class="blogs-content" v-for="res in fyData.resultData" :key="res.id">
+  <div class="blogs-content" v-for="res in state.resultData" :key="res.id">
     <div class="blogs-content_div">
       <div class="blogs-content_img">
         <img v-lazy="getImageUrl(res.img)" />
       </div>
       <div class="blogs-content__frame">
         <p class="blogs-content__frame-1">
-          <a @click="RouterId('/Blogs/BlogsContent', res.id)">{{ res.title }}</a>
+          <a @click="RouterId('/index/content', res.id)">{{ res.title }}</a>
         </p>
         <p class="blogs-content__frame-2">{{ res.sketch }}</p>
         <p class="blogs-content__frame-3">
@@ -41,8 +39,8 @@ onMounted(async () => {
     <a-pagination
       size="small"
       @change="currentchange"
-      :total="fyData.count"
-      :pageSize="fyData.pagesize"
+      :total="state.count"
+      :pageSize="state.pagesize"
       show-quick-jumper
     ></a-pagination>
   </div>

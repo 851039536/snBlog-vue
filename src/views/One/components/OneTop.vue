@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-09-28 17:50:44
- * @LastEditTime: 2021-11-15 15:01:51
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\One\components\OneTop.vue
--->
 <script setup lang="ts">
 defineProps({
   title: {
@@ -37,9 +29,6 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .One-top {
   @include w-h(100%, 55%);
 

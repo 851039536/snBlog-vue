@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-09-29 14:00:23
- * @LastEditTime: 2021-11-15 15:09:08
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\One\data.ts
- */
 interface one {
   id: number
   title: string

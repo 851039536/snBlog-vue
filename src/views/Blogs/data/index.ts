@@ -1,7 +1,6 @@
 import { reactive } from 'vue'
 import { article } from '@/api/index'
 
-import axios from '@/utils/http/axios'
 import { throttle } from '@/utils/common/dethrottle'
 
 interface FyData {
@@ -38,14 +37,15 @@ export class method {
     })
   }
 
-  static async ConutSort() {
+  static async GetCount() {
     await article.GetCountAsync(1, '转载', true).then((result: any) => {
       fyData.count = result.data
     })
   }
 
   static async GetApi() {
-    axios.all([await method.ConutSort(), await method.GetFy()])
+    await method.GetCount()
+    await method.GetFy()
   }
 
   static async UpRead(res: any) {

@@ -3,7 +3,6 @@ import { onMounted } from 'vue'
 import { state } from './data'
 import { method } from './index'
 import { winUrl } from '@/hooks/routers'
-import FavSidebar from './FavSidebar.vue'
 
 onMounted(async () => {
   await method.GetApi('文档')
@@ -13,8 +12,8 @@ onMounted(async () => {
 <template>
   <div id="favorite">
     <!-- 加载组件 -->
-    <blog-sidebar></blog-sidebar>
-    <FavSidebar></FavSidebar>
+    <l-sidebar></l-sidebar>
+    <fav-sidebar></fav-sidebar>
     <a-back-top />
     <!-- end 加载组件 -->
     <div id="favorite_main" class="animate__animated animate__fadeIn">

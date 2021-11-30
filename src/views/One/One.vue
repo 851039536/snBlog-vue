@@ -1,16 +1,5 @@
-<!--
- * @Author: your name
- * @Date: 2020-12-17 18:04:43
- * @LastEditTime: 2021-11-15 15:06:37
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\one\one.vue
--->
 <script setup lang="ts">
-import OneSidebar from './OneSidebar.vue'
 import { method, state } from './index'
-import OneTop from './components/OneTop.vue'
-import OneContent from './components/OneContent.vue'
 
 method.Count()
 method.getOne()
@@ -18,9 +7,9 @@ method.getOne()
 
 <template>
   <div class="one">
-    <blog-sidebar></blog-sidebar>
+    <l-sidebar></l-sidebar>
     <OneSidebar></OneSidebar>
-    <div class="one-div animate__animated animate__fadeIn">
+    <div class="one-div">
       <!-- 头部 -->
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
       <!-- end 头部 -->
@@ -31,9 +20,7 @@ method.getOne()
         <div class="one-recommend-r">更多推荐!</div>
       </div>
       <!-- end 推荐列表 -->
-
       <OneContent :resultData="state.resultData"></OneContent>
-
       <!-- 分页 -->
       <div class="one_div_paging">
         <a-pagination

@@ -3,8 +3,7 @@ import { reactive, defineAsyncComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { article } from '@/api/index'
 import { tool } from '@/utils/common/tool'
-import SAspin from '@/components/aspin/sAspin.vue'
-import { state, method } from '../../data/content'
+import { state, method } from '../data/content'
 
 const VmdContent = defineAsyncComponent(() => import('@/components/editor/VmdContent.vue'))
 const route = useRoute()
@@ -17,6 +16,7 @@ const roId: any = reactive({
 const GetApi = async () => {
   await article.GetByIdAsync(roId.id, true).then((res: any) => {
     state.time = tool.MomentTime(res.data[0].timeCreate)
+    // eslint-disable-next-line prefer-destructuring
     state.resultData = res.data[0]
     state.labelName = res.data[0].label.name
     state.sortName = res.data[0].sort.name
@@ -29,14 +29,9 @@ tool.BackTop()
 </script>
 
 <template>
-  <!-- 通用组件 -->
-
-  <SAspin></SAspin>
-  <!-- end 通用组件 -->
-
-  <div class="indextext">
+  <div class="blogsContent">
     <!--标题-->
-    <div class="indexText_title">
+    <div class="blogsContent_title">
       <a-page-header :title="state.resultData.title" @back="() => router.back()" />
     </div>
     <!-- end 标题 -->
@@ -46,26 +41,20 @@ tool.BackTop()
     <!-- end 内容 -->
 
     <!--底部信息-->
-    <div class="indextest_copyright">
-      <div class="indextest_copyright_title">
+    <div class="blogs_copyright">
+      <div class="blogs_copyright_title">
         <!-- <div>版权属于：少年</div> -->
         <div class="text">本文链接：原创文章转载请注明</div>
       </div>
-      <div class="indextest_comment">
+      <div class="blogs_comment">
         <div class>
           <a @click="method.UpGive">
-            <svg class="inline-block icon" aria-hidden="true">
-              <use
-                xlink:href="#icon-qinggan
-"
-              />
-            </svg>
             {{ state.resultData.give }}
           </a>
         </div>
         <div>{{ state.resultData.read }} ℃</div>
-        <div class="indextest_comment_text">{{ state.sortName }}</div>
-        <div class="indextest_comment_text">
+        <div class="blogs_comment_text">{{ state.sortName }}</div>
+        <div class="blogs_comment_text">
           {{ state.labelName }}
         </div>
         <div class>{{ state.time }}</div>
@@ -79,15 +68,10 @@ tool.BackTop()
 @import '@/design/methodCss';
 @import '@/design/uitl';
 
-.indextext {
-  @include initialize(50%, 92%, 4.5%, null, 25%, null, #ffffff);
-  @apply bg-red-100;
+.blogsContent {
   /* 底部信息 */
-  .indextest_copyright {
-    @apply shadow rounded;
-    @apply cursor-pointer bg-white text-black;
-
-    .indextest_copyright_title {
+  .blogs_copyright {
+    .blogs_copyright_title {
       @apply p-1;
 
       div {
@@ -97,10 +81,10 @@ tool.BackTop()
       }
     }
 
-    .indextest_comment {
+    .blogs_comment {
       @apply flex;
 
-      .indextest_comment_text {
+      .blogs_comment_text {
         @apply bg-blue-200 shadow rounded-sm;
       }
 
@@ -115,10 +99,8 @@ tool.BackTop()
   }
 
   /* 返回上一页 */
-  .indexText_title {
+  .blogsContent_title {
     position: relative;
-
-    @include initialize(null, 40px, 6.5%, null, null, null, #ffffff);
 
     @apply shadow rounded cursor-pointer;
 
@@ -131,21 +113,17 @@ tool.BackTop()
     }
 
     .ant-page-header {
-      @apply shadow-sm rounded-sm;
+      @apply shadow-sm;
     }
 
     .ant-page-header-back {
       @apply mt-0;
     }
   }
-
-  //  .blog {
-  //    @include blogs;
-  //  }
 }
 
 @screen xp {
-  .indextext {
+  .blogsContent {
     width: 100%;
 
     @apply ml-0;

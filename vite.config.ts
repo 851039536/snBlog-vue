@@ -2,30 +2,28 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import Components from 'unplugin-vue-components/vite'
-
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import eslintPlugin from 'vite-plugin-eslint'
+import checker from 'vite-plugin-checker'
+import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   plugins: [
     vue(),
+    eslintPlugin(),
+    checker({
+      typescript: true,
+      eslint: {
+        files: ['./src'],
+        extensions: ['.ts']
+      }
+    }),
+    VitePWA(),
     Components({
       dts: true, // ts支持
       dirs: ['src/components', 'src/views'], // 自定义路径按需导入
       resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
-      // directoryAsNamespace: true
     })
-
-    // styleImport({
-    //   libs: [
-    //     {
-    //       libraryName: 'ant-design-vue',
-    //       esModule: true,
-    //       resolveStyle: (name) => {
-    //         return `ant-design-vue/es/${name}/style/index`
-    //       }
-    //     }
-    //   ]
-    // })
   ],
   resolve: {
     extensions: ['.vue', '.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.node', '.scss'],
@@ -61,6 +59,11 @@ export default defineConfig({
           'border-radius-base': '2px'
         },
         javascriptEnabled: true
+      },
+      scss: {
+        // 避免出现: build时的 @charset 必须在第一行的警告
+        charset: false,
+        additionalData: '@import "./src/design/methodCss.scss";'
       }
     }
   }

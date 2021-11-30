@@ -1,8 +1,8 @@
 import { reactive } from 'vue'
 
-const navname = reactive({
+const navName = reactive({
   name: '',
   name2: ''
 })
 
-export { navname }
+export { navName }

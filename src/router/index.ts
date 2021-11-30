@@ -27,7 +27,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Blogs/index.vue'),
+    component: () => import('@/views/Blogs/BlogsIndex.vue'),
     children: [
       {
         path: 'BlogsColumn',
@@ -53,12 +53,12 @@ const routes = [
       {
         path: 'content',
         name: 'content',
-        component: () => import('@/views/index/components/content/IndexContent.vue')
+        component: () => import('@/views/index/components/IndexContent.vue')
       },
       {
         path: 'column',
         name: 'column',
-        component: () => import('@/views/index/components/column/IndexColumn.vue')
+        component: () => import('@/views/index/components/IndexColumn.vue')
       }
     ]
   },
@@ -68,16 +68,9 @@ const routes = [
     meta: {
       keepAlive: true
     },
-    component: () => import('@/views/index/components/sidebar/IndexSidebar.vue')
+    component: () => import('@/views/index/components/IndexSidebar.vue')
   },
-  // {
-  //   path: '/LSidebar',
-  //   name: 'LSidebar',
-  //   meta: {
-  //     keepAlive: true
-  //   },
-  //   component: () => import('@/components/sidebar/LSidebar.vue')
-  // },
+
   {
     path: '/TimeLine',
     name: 'TimeLine',
@@ -100,7 +93,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/photo/Photo.vue')
+    component: () => import('@/views/Photo/PhotoIndex.vue')
   },
   {
     path: '/Navigation',
@@ -140,7 +133,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/svideo/VideoPlay.vue')
+    component: () => import('@/views/svideo/components/VideoPlay.vue')
   },
   {
     path: '/Leave',
@@ -164,15 +157,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/book/Book.vue')
-  },
-  {
-    path: '/test',
-    name: 'test',
-    meta: {
-      keepAlive: false
-    },
-    component: () => import('@/views/test/test.vue')
+    component: () => import('@/views/Book/BookIndex.vue')
   },
   {
     path: '/ListContent',
@@ -217,7 +202,7 @@ const routes = [
   {
     path: '/Admin-index',
     name: 'Admin-index',
-    component: () => import('@/views/admin/index/index.vue'),
+    component: () => import('@/views/admin/index/AdminIndex.vue'),
     children: [
       // 添加子路由
       {

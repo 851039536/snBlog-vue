@@ -17,5 +17,4 @@ class method {
     state.text = await (await navigation.GetFyAsync(1, name, state.page, state.pagesize, 'id', true, true)).data
   }
 }
-// eslint-disable-next-line import/prefer-default-export
 export { method }

@@ -1,18 +1,10 @@
-<!--
- * @Author: your name
- * @Date: 2021-10-18 17:30:43
- * @LastEditTime: 2021-11-19 14:27:28
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\admin\article\ArticleTable.vue
--->
 <script lang="ts" setup>
 import { inject, onMounted } from 'vue'
 import { message } from 'ant-design-vue'
 import { columns, state } from './data'
 import { article, TOKEN, labels } from '@/api'
 import { Routers, RouterId } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 
 const reload: any = inject('reload')
@@ -65,8 +57,8 @@ onMounted(async () => {
   await TOKEN()
   state.dataResult = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
   state.labelResult = await labels.GetAllAsync(false)
-  navname.name = '文章展示'
-  navname.name2 = '文章列表'
+  navName.name = '文章展示'
+  navName.name2 = '文章列表'
 })
 </script>
 <template>

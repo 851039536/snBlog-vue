@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import { columns, state } from './data'
 import { navigation, TOKEN } from '@/api'
 import { Routers, RouterId } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 import { tool } from '@/utils/common/tool'
 
 async function GetFy() {
@@ -70,8 +70,8 @@ onMounted(async () => {
   await navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
     state.navTypeData = res.data
   })
-  navname.name = '内容分享'
-  navname.name2 = '导航列表'
+  navName.name = '内容分享'
+  navName.name2 = '导航列表'
 })
 </script>
 <template>

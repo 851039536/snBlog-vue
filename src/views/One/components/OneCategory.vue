@@ -1,17 +1,9 @@
-<!--
- * @Author: your name
- * @Date: 2021-09-29 13:56:12
- * @LastEditTime: 2021-11-15 15:08:19
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\One\components\OneCategory.vue
--->
 <script setup lang="ts">
 import { oneType } from '../data'
 
 defineProps({
   result: {
-    type: Array as () => Array<oneType>, // (string也可以是其他你自定义的接口)
+    type: Array as () => Array<oneType>,
     default: () => []
   }
 })

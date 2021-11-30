@@ -29,9 +29,6 @@ method.GetType()
 </template>
 
 <style lang="scss">
-@import '@/design/methodCss.scss';
-@import '@/design/uitl';
-
 #raside {
   @apply fixed shadow rounded-md;
   @include w-h(20%, 100%);

@@ -10,7 +10,7 @@ import request from '@/utils/http/axios'
 import { article } from './http/article'
 import { labels } from './http/labels'
 import { sort } from './http/sort'
-import { usertalk } from './http/usertalk'
+import { userTalk } from './http/usertalk'
 import { setBlog } from './http/setBlog'
 import { leave } from './http/leave'
 import { navigation } from './http/navigation'
@@ -32,4 +32,4 @@ async function TOKEN() {
   })
 }
 
-export { article, labels, sort, usertalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces }
+export { article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces }

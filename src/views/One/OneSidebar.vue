@@ -1,17 +1,6 @@
-<!--
- * @Author: One侧边栏
- * @Date: 2020-12-21 16:14:58
- * @LastEditTime: 2021-11-24 08:26:44
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\One\OneSidebar.vue
--->
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
 import { one } from '@/api/index'
-import SStatistics from '@/components/sidebarModule/sstatistics/sStatistics.vue'
-import OneCategory from './components/OneCategory.vue'
-import OneSidetype from './components/OneSidetype.vue'
 
 interface State {
   resultOneType: any
@@ -82,12 +71,12 @@ onMounted(async () => {
       <!-- end 内容分类 -->
 
       <!-- 站点统计 -->
-      <SStatistics
+      <StationText
         :ArticleCount="state.Count"
         :TextCount="state.textNum"
         :ReadCount="state.readCount"
         :Articledata="state.timeCreate"
-      ></SStatistics>
+      ></StationText>
       <!-- end 站点统计 -->
     </div>
 
@@ -110,9 +99,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .one-sidebar {
   @apply fixed ml-3;
 
@@ -144,14 +130,6 @@ onMounted(async () => {
       }
     }
   }
-}
-
-.icon {
-  width: 1em;
-  height: 1em;
-  overflow: hidden;
-  vertical-align: -0.1em;
-  fill: currentColor;
 }
 
 @screen xp {

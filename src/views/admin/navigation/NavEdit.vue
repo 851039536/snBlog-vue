@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router'
 import { navigation, TOKEN } from '@/api'
 import { formState, stateArray } from './data'
 import { Routers, go, winUrl } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 
 const route = useRoute()
 const Rid = reactive({
@@ -35,8 +35,8 @@ async function GetAll() {
 onMounted(async () => {
   await GetAll()
   await TOKEN()
-  navname.name = '内容分享'
-  navname.name2 = '编辑内容'
+  navName.name = '内容分享'
+  navName.name2 = '编辑内容'
 })
 </script>
 

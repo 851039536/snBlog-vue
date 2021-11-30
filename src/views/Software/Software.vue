@@ -1,7 +1,5 @@
 <template>
   <div id="software">
-    <Sidebarsn></Sidebarsn>
-    <BlogSidebar></BlogSidebar>
     <fav-sidebar></fav-sidebar>
     <div class="software_main animate__animated animate__fadeIn">
       <!-- ---------------------------------- -->

@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-10-19 16:42:48
- * @LastEditTime: 2021-11-18 16:31:58
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\admin\article\ArticleForm.vue
--->
 <script lang="ts" setup>
 import { onMounted, reactive } from 'vue'
 import { message } from 'ant-design-vue'
@@ -13,7 +5,7 @@ import { useRoute } from 'vue-router'
 import { labels, article, sort, TOKEN } from '@/api'
 import { formState, state } from './data'
 import { Routers, go } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 
 const route = useRoute()
 const Rid: any = reactive({
@@ -48,8 +40,8 @@ async function GetApi() {
 onMounted(async () => {
   await GetApi()
   await TOKEN()
-  navname.name = '文章展示'
-  navname.name2 = '文章编辑'
+  navName.name = '文章展示'
+  navName.name2 = '文章编辑'
 })
 </script>
 

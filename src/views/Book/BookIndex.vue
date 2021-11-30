@@ -1,7 +1,4 @@
-<script lang="ts" setup>
-import BookBar from './components/BookBar.vue'
-import BookFilm from './components/BookFilm.vue'
-</script>
+<script lang="ts" setup></script>
 <template>
   <div class="book">
     <blog-sidebar></blog-sidebar>

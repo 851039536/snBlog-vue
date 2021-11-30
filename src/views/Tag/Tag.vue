@@ -1,18 +1,8 @@
-<!--
- * @Author: your name
- * @Date: 2020-12-10 11:40:02
- * @LastEditTime: 2021-11-16 15:36:09
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\tag\Tag.vue
--->
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { article, labels } from '@/api'
-import { state } from './data'
-import TagHead from './components/TagHead.vue'
-import TagContent from './components/TagContent.vue'
+import { state } from './data/data'
 
 const route = useRoute()
 
@@ -63,7 +53,18 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
-@import './index.scss';
+.tag {
+  @apply fixed w-full h-full;
+
+  .tag-main {
+    @apply absolute shadow;
+
+    top: 9%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+  }
+}
 
 .tag_search {
   @include initialize(94%, 92%, null, null, 3%, null, #ffffff);

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
+import { message } from 'ant-design-vue'
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
-import useCurrentInstance from '@/utils/common/useCurrentInstance'
 
 const store = useStore()
 const state = reactive({
@@ -12,11 +12,10 @@ const state = reactive({
   pwd: '',
   result: []
 })
-const { proxy }: any = useCurrentInstance()
 async function login() {
   user.Login(state.name, state.pwd).then((res) => {
     if (res.data === '用户或密码错误' || res.data === '用户密码不能为空') {
-      proxy.$mes.error(res.data)
+      message.error(res.data)
       return
     }
 
@@ -31,13 +30,13 @@ async function login() {
     storage.set('user', state.result[3]) // 村用户名
     storage.set(store.state.Roles, `Bearer ${state.result[1]}`) // token
 
-    proxy.$mes.success('成功!')
+    message.success('成功!')
     Routers('/Admin-index/ArticleTable')
   })
 }
 onMounted(async () => {
   if (storage.get(store.state.Roles)) {
-    await proxy.$mes.loading('已登录,跳转中')
+    message.loading('已登录,跳转中')
     await Routers('/Admin-index/ArticleTable')
   }
 })

@@ -1,11 +1,3 @@
-<!--
- * @Author: 时间线
- * @Date: 2020-12-10 10:40:17
- * @LastEditTime: 2021-10-13 14:38:20
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\TimeLine\TimeLine.vue
--->
 <script lang="ts" setup>
 import { reactive, onMounted } from 'vue'
 import { article } from '@/api'

@@ -1,6 +1,4 @@
 import { createApp } from 'vue'
-// eslint-disable-next-line import/order
-// import { setupAntd } from '@/components/antd/antd-ui'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import './index.css'
@@ -63,5 +61,4 @@ app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.use(store)
 app.use(router)
-// setupAntd(app)
 app.mount('#app')

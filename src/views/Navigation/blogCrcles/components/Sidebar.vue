@@ -31,41 +31,31 @@
   </div>
 </template>
 
-<script lang="ts">
-import { reactive, onMounted, defineComponent } from 'vue'
+<script lang="ts" setup>
+import { reactive, onMounted } from 'vue'
 import { navigation } from '@/api/index'
 
-export default defineComponent({
-  name: 'sidebar',
-  components: {},
-  setup() {
-    interface State {
-      resultData: any
-      resultCount: string
-    }
-    const state: State = reactive({
-      resultData: [],
-      resultCount: ''
-    })
-    const GetAll = async () => {
-      await navigation.GetFyAsync(1, '博客圈', 1, 10, 'id', true, true).then((res: any) => {
-        state.resultData = res.data
-      })
-      await navigation.GetCountAsync(1, '博客圈', true).then((res: any) => {
-        state.resultCount = res.data
-      })
-    }
-    onMounted(async () => {
-      await GetAll()
-    })
-    return { state }
-  }
+interface State {
+  resultData: any
+  resultCount: string
+}
+const state: State = reactive({
+  resultData: [],
+  resultCount: ''
+})
+const GetAll = async () => {
+  await navigation.GetFyAsync(1, '博客圈', 1, 10, 'id', true, true).then((res: any) => {
+    state.resultData = res.data
+  })
+  await navigation.GetCountAsync(1, '博客圈', true).then((res: any) => {
+    state.resultCount = res.data
+  })
+}
+onMounted(async () => {
+  await GetAll()
 })
 </script>
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 #sidebar {
   position: fixed;
 

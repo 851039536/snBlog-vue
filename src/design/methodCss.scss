@@ -1,6 +1,17 @@
 $w: 50%;
 $ml: 25%;
 
+$back_sidebar: #fffffe;
+$back_headers: #fffffe;
+
+// 侧边栏偏移值
+$sidebar_r_t: 60px;
+$sidebar_r_b: 3%;
+$sidebar_r_l: 3%;
+$sidebar_r_r: 3%;
+//内容高度
+$Text_height: 9%;
+
 // 渐变色文字
 @mixin gradient-text() {
   color: transparent;

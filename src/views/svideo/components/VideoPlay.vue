@@ -1,15 +1,7 @@
-<!--
- * @Author: your name
- * @Date: 2020-12-17 08:49:57
- * @LastEditTime: 2021-11-15 15:40:39
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\SnVideo\videoplay.vue
--->
 <script lang="ts" setup>
-import { video } from '@/api'
 import { reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { video } from '@/api'
 
 const route = useRoute()
 
@@ -31,17 +23,15 @@ const id = reactive({
 const getvideo = async () => {
   await video.GetByIdAsync(id.id, true).then((res: any) => {
     state.videourl = res.data.url
-    console.log('%c [  res ]', 'font-size:13px; background:pink; color:#bf2c9f;', res)
     state.type = res.data.type.name
   })
   await video.GetTypeAsync(1, state.type, true).then((res: any) => {
     state.newvideo = res.data
-    console.log('%c [ res.data ]', 'font-size:13px; background:pink; color:#bf2c9f;', res.data)
   })
 }
 
-const videos = async (id: number) => {
-  await video.GetByIdAsync(id, true).then((res: any) => {
+const videos = async (vid: number) => {
+  await video.GetByIdAsync(vid, true).then((res: any) => {
     state.videourl = res.data.vUrl
   })
 }
@@ -88,9 +78,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .videoplay {
   @apply fixed w-full h-full;
 

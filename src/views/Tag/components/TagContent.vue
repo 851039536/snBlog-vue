@@ -1,14 +1,6 @@
-<!--
- * @Author: your name
- * @Date: 2021-10-12 16:35:14
- * @LastEditTime: 2021-11-16 15:24:35
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\tag\components\TagContent.vue
--->
 <script lang="ts" setup>
 import { article } from '@/api'
-import { state } from '../data'
+import { state } from '../data/data'
 
 async function GetApi(id: number) {
   state.blog = await (await article.GetByIdAsync(id, true)).data[0].text
@@ -32,5 +24,42 @@ async function GetApi(id: number) {
 </template>
 
 <style lang="scss" scoped>
-@import '../index.scss';
+.tag_content {
+  @apply flex flex-nowrap;
+  @apply mt-1;
+
+  @include initialize(94%, 71%, null, null, 3%, null, #ffffff);
+
+  // 侧边框
+  .text-sidebar {
+    @include w-h(25%, null);
+
+    @apply overflow-auto shadow;
+
+    .text-sidebar-forms {
+      @apply p-1 m-1 bg-gray-100 cursor-pointer shadow;
+
+      .forms-1 {
+        @apply bg-gray-300 text-base p-1;
+      }
+
+      .forms-2 {
+        @apply p-2;
+      }
+    }
+  }
+
+  // 内容
+  .text-blog {
+    @include w-h(75%, null);
+
+    @apply px-1 bg-white shadow rounded-sm overflow-auto;
+
+    .blog {
+      @include blogs;
+
+      @apply mt-1;
+    }
+  }
+}
 </style>

@@ -1,11 +1,3 @@
-<!--
- * @Author: 导航站
- * @Date: 2020-12-14 14:35:41
- * @LastEditTime: 2021-11-16 15:38:41
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\Navigation\Navigation.vue
--->
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { navigation } from '@/api/index'

@@ -39,9 +39,6 @@ method.GetTypeOrder()
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .circles {
   position: fixed;
 

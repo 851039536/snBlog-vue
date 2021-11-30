@@ -1,12 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-10-15 14:57:28
- * @LastEditTime: 2021-10-15 15:50:30
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\svideo\data.ts
- */
-
 import { reactive } from 'vue'
 
 interface State {

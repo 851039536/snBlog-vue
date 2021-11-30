@@ -7,7 +7,8 @@ class tool {
   /**
    * 回到顶部
    */
-  static async BackTop() {
+  static BackTop() {
+    // eslint-disable-next-line func-names
     const timer = setInterval(function () {
       const osTop = document.documentElement.scrollTop || document.body.scrollTop
       const isPeed = Math.floor(-osTop / 5)
@@ -45,7 +46,7 @@ class tool {
    * @param counts 循环次数
    * @returns
    */
-  static async Random(minNum: number, maxNum: number, counts: number): Promise<number> {
+  static Random(minNum: number, maxNum: number, counts: number) {
     let i = 0
     let count
     do {

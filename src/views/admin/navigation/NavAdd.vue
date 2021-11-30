@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import { navigation, TOKEN } from '@/api'
 import { formState, stateArray } from './data'
 import { Routers, go, reloads } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 
 const res: any = reactive({
@@ -19,16 +19,16 @@ const onSubmit = async () => {
   })
 }
 async function GetAll() {
-  navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
-    stateArray.navResult = res.data
+  await navigation.GetSnNavigationTypeSAllAsync(false).then((ress) => {
+    stateArray.navResult = ress.data
   })
 }
 
 onMounted(async () => {
   await GetAll()
   await TOKEN()
-  navname.name = '内容分享'
-  navname.name2 = '新增内容'
+  navName.name = '内容分享'
+  navName.name2 = '新增内容'
 })
 </script>
 

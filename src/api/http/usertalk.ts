@@ -1,6 +1,6 @@
 import request from '@/utils/http/axios'
 
-export class usertalk {
+export class userTalk {
   static async GetUserTalkFirst() {
     return request({
       url: '/api/SnUserTalk/GetUserTalkFirst?UserId=4&isdesc=true',

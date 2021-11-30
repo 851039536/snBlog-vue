@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import { video } from '@/api'
-import VideoSidebar from './VideoSidebar.vue'
-import SvideoContent from './components/SvideoContent.vue'
-import { state } from './data'
-import { method } from './index'
+import { state } from './data/data'
+import { method } from './data/index'
 
 video.GetCountAsync(0, '0', true).then((res: any) => {
   state.count = res.data
@@ -13,16 +11,13 @@ method.currentchange(1)
 
 <template>
   <div id="svideo">
-    <blog-sidebar></blog-sidebar>
+    <l-sidebar></l-sidebar>
     <video-sidebar></video-sidebar>
-    <SvideoContent :resultData="state.resultData"></SvideoContent>
+    <!-- <svideo-content :resultData="state.resultData"></svideo-content> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 #svideo {
   @apply fixed w-full;
 

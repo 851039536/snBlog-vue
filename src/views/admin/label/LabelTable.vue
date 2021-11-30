@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import { columns, state } from './data'
 import { article, TOKEN, labels } from '@/api'
 import { Routers, RouterId } from '@/hooks/routers'
-import { navname } from '../utils/data'
+import { navName } from '../utils/data'
 import { tool } from '@/utils/common/tool'
 
 const reload: any = inject('reload')
@@ -57,8 +57,8 @@ onMounted(async () => {
   state.dataResult = await article.GetFyAsync(0, 'null', 1, 1000, 'id', true, false)
   await tool.MomentTimeList(state.dataResult)
   state.labelResult = await labels.GetAllAsync(false)
-  navname.name = '标签'
-  navname.name2 = '标签列表'
+  navName.name = '标签'
+  navName.name2 = '标签列表'
 })
 </script>
 <template>
