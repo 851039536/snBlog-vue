@@ -134,14 +134,14 @@ GetApi()
   }
 }
 
-@screen xp {
-  .video-play-2 {
-    @apply hidden;
-  }
+// @screen xp {
+//   .video-play-2 {
+//     @apply hidden;
+//   }
 
-  .video-play .video-play_main .video-play-1 {
-    width: 100%;
-    height: 90%;
-  }
-}
+//   .video-play .video-play_main .video-play-1 {
+//     width: 100%;
+//     height: 90%;
+//   }
+// }
 </style>

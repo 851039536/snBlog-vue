@@ -27,13 +27,13 @@ notification.open({
   }
 }
 
-@screen xp {
-  #blogs {
-    .blogs_main {
-      @apply m-0 mt-14;
+// @screen xp {
+//   #blogs {
+//     .blogs_main {
+//       @apply m-0 mt-14;
 
-      width: 100%;
-    }
-  }
-}
+//       width: 100%;
+//     }
+//   }
+// }
 </style>

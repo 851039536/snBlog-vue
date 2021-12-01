@@ -132,9 +132,9 @@ onMounted(async () => {
   }
 }
 
-@screen xp {
-  .one-Sidebar {
-    display: none;
-  }
-}
+// @screen xp {
+//   .one-Sidebar {
+//     display: none;
+//   }
+// }
 </style>

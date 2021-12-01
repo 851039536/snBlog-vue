@@ -119,11 +119,11 @@ tool.BackTop()
   }
 }
 
-@screen xp {
-  .blogsContent {
-    width: 100%;
+// @screen xp {
+//   .blogsContent {
+//     width: 100%;
 
-    @apply ml-0;
-  }
-}
+//     @apply ml-0;
+//   }
+// }
 </style>

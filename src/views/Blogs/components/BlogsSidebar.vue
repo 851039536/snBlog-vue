@@ -122,9 +122,9 @@ GetApi()
   fill: currentColor;
 }
 
-@screen xp {
-  #blogssidebar {
-    display: none;
-  }
-}
+// @screen xp {
+//   #blogssidebar {
+//     display: none;
+//   }
+//}
 </style>

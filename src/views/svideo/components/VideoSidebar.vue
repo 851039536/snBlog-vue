@@ -95,9 +95,9 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
   }
 }
 
-@screen xp {
-  .video_sidebar {
-    @apply hidden;
-  }
-}
+// @screen xp {
+//   .video_sidebar {
+//     @apply hidden;
+//   }
+// }
 </style>

@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .headers {
-  @apply flex fixed z-10 p-1;
+  @apply flex fixed  p-1;
   @include excursion(0, null, 3%, null);
   @include w-h(94%, 53px);
   @apply shadow-sm rounded-sm bg-white;
@@ -68,18 +68,6 @@ onMounted(async () => {
       a {
         @apply m-1 text-gray-800;
       }
-    }
-  }
-}
-
-@screen xp {
-  .headers {
-    width: 100%;
-
-    @include excursion(0, null, 0, null);
-
-    .headers-1 {
-      @apply hidden;
     }
   }
 }

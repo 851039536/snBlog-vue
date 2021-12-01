@@ -25,20 +25,20 @@ method.currentchange(1)
   height: 92%;
 }
 
-@screen xp {
-  #svideo {
-    .svideo_main {
-      width: 100%;
+// @screen xp {
+//   #svideo {
+//     .svideo_main {
+//       width: 100%;
 
-      @apply m-0;
+//       @apply m-0;
 
-      .svideo_main_content {
-        .svideo-2-1 {
-          width: 97%;
-          height: 65%;
-        }
-      }
-    }
-  }
-}
+//       .svideo_main_content {
+//         .svideo-2-1 {
+//           width: 97%;
+//           height: 65%;
+//         }
+//       }
+//     }
+//   }
+// }
 </style>

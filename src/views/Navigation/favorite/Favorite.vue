@@ -244,9 +244,9 @@ onMounted(async () => {
   }
 }
 
-@screen xp {
-  #FavSidebar {
-    display: none;
-  }
-}
+// @screen xp {
+//   #FavSidebar {
+//     display: none;
+//   }
+// }
 </style>

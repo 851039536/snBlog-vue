@@ -134,9 +134,9 @@ method.GetApi()
   fill: currentColor;
 }
 
-@screen xp {
-  #index-sidebar {
-    display: none;
-  }
-}
+// @screen xp {
+//   #index-sidebar {
+//     display: none;
+//   }
+// }
 </style>

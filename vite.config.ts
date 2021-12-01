@@ -5,6 +5,7 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import eslintPlugin from 'vite-plugin-eslint'
 import { VitePWA } from 'vite-plugin-pwa'
+import WindiCSS from 'vite-plugin-windicss'
 
 export default defineConfig({
   plugins: [
@@ -15,6 +16,7 @@ export default defineConfig({
       dirs: ['src/components', 'src/views'], // 自定义路径按需导入
       resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
     }),
+    WindiCSS(),
     eslintPlugin()
   ],
   resolve: {
