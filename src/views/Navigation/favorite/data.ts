@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-interface State {
+interface ResData {
   text: any
   type: any
   page: number
@@ -9,7 +9,7 @@ interface State {
   name: string
   current: number
 }
-const state: State = reactive({
+export const resData: ResData = reactive({
   text: [],
   type: [],
   page: 1,
@@ -18,5 +18,3 @@ const state: State = reactive({
   name: '',
   current: 1
 })
-
-export { state }

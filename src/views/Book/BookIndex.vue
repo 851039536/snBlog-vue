@@ -1,7 +1,8 @@
 <script lang="ts" setup></script>
 <template>
   <div class="book">
-    <blog-sidebar></blog-sidebar>
+    <l-sidebar></l-sidebar>
+    <s-header></s-header>
     <index-sidebar></index-sidebar>
     <div class="book_main">
       <BookBar></BookBar>

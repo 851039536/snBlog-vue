@@ -3,7 +3,7 @@ import { reactive, defineAsyncComponent } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { article } from '@/api/index'
 import { tool } from '@/utils/common/tool'
-import { state, method } from '../data/index'
+import { state, method } from '../data/content'
 
 const VmdContent = defineAsyncComponent(() => import('@/components/editor/VmdContent.vue'))
 const route = useRoute()
@@ -65,9 +65,6 @@ tool.BackTop()
 </template>
 
 <style lang="scss">
-// @import '@/design/methodCss';
-// @import '@/design/uitl';
-
 .blogsContent {
   /* 底部信息 */
   .blogs_copyright {

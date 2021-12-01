@@ -7,6 +7,7 @@ method.getOne()
 
 <template>
   <div class="one">
+    <s-header></s-header>
     <l-sidebar></l-sidebar>
     <OneSidebar></OneSidebar>
     <div class="one-div">

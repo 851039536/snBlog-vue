@@ -10,7 +10,7 @@ const state: any = reactive({
 const info = async () => {
   message.info('功能进行中...')
 }
-const testall = async () => {
+const GetApi = async () => {
   listContent.Cnblogs().then((res) => {
     const str = res.data
     for (let index = 0; index < str.length; index += 1) {
@@ -23,12 +23,13 @@ const testall = async () => {
   })
 }
 onMounted(async () => {
-  await testall()
+  await GetApi()
   await info()
 })
 </script>
 <template>
   <div>
+    <s-header></s-header>
     <div class="ListContent animate__animated animate__fadeIn">
       <div class="ListContent_title">
         <p>最新内容 / 总计 10</p>

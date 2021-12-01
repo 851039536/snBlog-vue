@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
-import BlogHome from '@/components/home/Home.vue'
+import BlogHome from '@/components/home/SHome.vue'
 import { clearPending } from '@/utils/http/pending'
 
 const routes = [
@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/BlogHome',
     name: 'BlogHome',
-    component: () => import('@/components/home/Home.vue')
+    component: () => import('@/components/home/SHome.vue')
   },
   {
     path: '/sAbout',
@@ -125,7 +125,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/svideo/Svideo.vue')
+    component: () => import('@/views/Svideo/Svideo.vue')
   },
   {
     path: '/VideoPlay',
@@ -133,7 +133,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/svideo/components/VideoPlay.vue')
+    component: () => import('@/views/Svideo/components/VideoPlay.vue')
   },
   {
     path: '/Leave',
@@ -173,7 +173,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Software/Software.vue')
+    component: () => import('@/views/Software/SSoftware.vue')
   },
   {
     path: '/SoftwareContent',
@@ -255,11 +255,10 @@ const router = createRouter({
   routes
 })
 // 页面切换之前取消上一个路由中未完成的请求
-router.beforeEach((to, from, next) => {
-  console.log('%c [ from ]', 'font-size:13px; background:pink; color:#bf2c9f;', from)
+router.beforeEach((_to, _from, next) => {
+  console.log('%c [ _to ]-259', 'font-size:13px; background:pink; color:#bf2c9f;', _to)
   NProgress.start()
-  if (to.path !== '/Login') {
-    console.log(to.path, '[ router=>clearPending ]')
+  if (_to.name !== 'Login') {
     clearPending()
   }
   next()

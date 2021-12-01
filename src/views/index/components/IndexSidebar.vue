@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import SCategory from '@/components/sidebarModule/category/sCategory.vue'
+import SCategory from '@/components/sidebarModule/category/SCategory.vue'
 import { resData, method } from '../data/sidebar'
 
 method.GetApi()
 </script>
 <template>
-  <div id="indexsidebar">
+  <div id="index-sidebar">
     <div class="index_s_main">
       <s-time></s-time>
       <s-ico></s-ico>
@@ -14,7 +14,7 @@ method.GetApi()
       <div class="index_s_input">
         <a-select
           show-search
-          v-model:value="resData.sntitle"
+          v-model:value="resData.title"
           placeholder="input search text"
           style="width: 200px"
           :show-arrow="false"
@@ -55,9 +55,9 @@ method.GetApi()
 @import '@/design/methodCss';
 @import '@/design/uitl';
 
-/* indexsidebar
+/* index-sidebar
 ---------------------------------------------------------------- */
-#indexsidebar {
+#index-sidebar {
   @apply fixed ml-3 overflow-auto;
 
   @include excursion($Text_height, null, null, $sidebar_r_r);
@@ -122,7 +122,7 @@ method.GetApi()
   }
 }
 
-#indexsidebar::-webkit-scrollbar {
+#index-sidebar::-webkit-scrollbar {
   display: none;
 }
 
@@ -135,7 +135,7 @@ method.GetApi()
 }
 
 @screen xp {
-  #indexsidebar {
+  #index-sidebar {
     display: none;
   }
 }

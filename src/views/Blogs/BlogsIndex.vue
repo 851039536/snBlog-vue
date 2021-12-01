@@ -1,6 +1,7 @@
 <template>
   <l-sidebar></l-sidebar>
   <blogs-sidebar></blogs-sidebar>
+  <s-header></s-header>
   <a-back-top />
   <s-aspin></s-aspin>
   <div id="blogs">

@@ -9,7 +9,7 @@ function getImageUrl(name: string) {
 async function currentchange(val: number) {
   state.page = val
   await method.GetFy()
-  await tool.BackTop()
+  tool.BackTop()
 }
 method.GetCount()
 method.GetFy()

@@ -29,6 +29,7 @@ onMounted(async () => {
 })
 </script>
 <template>
+  <s-header></s-header>
   <div class="animate__animated" :class="[state.tag, state.fadeIn]">
     <div class="tag-main">
       <div class="tag_search">

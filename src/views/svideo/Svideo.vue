@@ -11,9 +11,10 @@ method.currentchange(1)
 
 <template>
   <div id="svideo">
+    <s-header></s-header>
     <l-sidebar></l-sidebar>
     <video-sidebar></video-sidebar>
-    <!-- <svideo-content :resultData="state.resultData"></svideo-content> -->
+    <video-content :resultData="state.resultData"></video-content>
   </div>
 </template>
 

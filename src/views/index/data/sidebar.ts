@@ -15,7 +15,7 @@ interface Res {
   textCount: string
   readCount: string
   articleStr: string
-  sntitle: string
+  title: string
 }
 export const resData: Res = reactive({
   labelsData: [],
@@ -30,7 +30,7 @@ export const resData: Res = reactive({
   textCount: '0',
   readCount: '0',
   articleStr: '',
-  sntitle: ''
+  title: ''
 })
 
 export class method {

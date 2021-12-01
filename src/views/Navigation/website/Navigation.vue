@@ -14,6 +14,7 @@ onMounted(async () => {
 </script>
 <template>
   <div>
+    <s-header></s-header>
     <blog-sidebar></blog-sidebar>
     <IndexSidebar></IndexSidebar>
     <a-back-top />

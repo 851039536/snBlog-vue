@@ -9,7 +9,6 @@ onMounted(async () => {
 <template>
   <nav class="headers">
     <div class="headers-1">
-      <!--  -->
       <div class="header_main">
         <div class="header-title">
           <span class="text-2xl font-medium tracking-tight">少年</span>
@@ -20,7 +19,6 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <!--  -->
       <div class="header_text_1">
         <div class="header-text-r-1">
           <a @click="method.skip(13)" v-once>博客园</a>

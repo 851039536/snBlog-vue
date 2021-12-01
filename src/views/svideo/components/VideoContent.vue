@@ -16,7 +16,7 @@ defineProps({
 <template>
   <div class="svideo_main">
     <div class="svideo_main_content">
-      <div class="svideo-2-1" v-for="res in resultData" :key="res['id']">
+      <div class="svideo-2-1" v-for="res in resultData" :key="res.id">
         <div class="svideo-2-1-1">
           <img src="@/assets/img/hy.jpg" />
         </div>
@@ -81,6 +81,9 @@ defineProps({
         @apply p-1;
       }
     }
+  }
+  .svideo_main_content::-webkit-scrollbar {
+    display: none;
   }
 
   .svideo_Paging {

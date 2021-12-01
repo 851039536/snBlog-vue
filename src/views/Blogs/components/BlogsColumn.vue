@@ -1,20 +1,18 @@
 <script lang="ts" setup>
-import { fyData, method } from '@vi/Blogs/data/index'
-import { onMounted } from 'vue'
+import { fyData, method } from '../data/column'
 import { RouterId } from '@/hooks/routers'
 import { tool } from '@/utils/common/tool'
 
 async function currentchange(val: number) {
   fyData.page = val
   await method.GetFy()
-  await tool.BackTop()
+  tool.BackTop()
 }
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
-onMounted(async () => {
-  await method.GetApi()
-})
+method.GetCount()
+method.GetFy()
 </script>
 
 <template>

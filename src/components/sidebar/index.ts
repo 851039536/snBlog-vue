@@ -1,11 +1,3 @@
-/*
- * @Author: header类及data
- * @Date: 2021-09-17 12:09:00
- * @LastEditTime: 2021-11-09 17:03:08
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\components\header\index.ts
- */
 import { reactive } from 'vue'
 import { interfaces } from '@/api/http/interfaces'
 import { Routers } from '@/hooks/routers'

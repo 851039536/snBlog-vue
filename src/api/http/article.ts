@@ -9,7 +9,7 @@ class article {
    * @param {string} type
    * @param {boolean} cache
    */
-  static async GetCountAsync(identity: number, type: string, cache: boolean) {
+  static GetCountAsync(identity: number, type: string, cache: boolean) {
     return request({
       url: `/api/SnArticle/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
       method: 'get'

@@ -1,57 +1,55 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
+import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { video } from '@/api'
 
 const route = useRoute()
 
-interface State {
-  videourl: string
-  type: string
-  newvideo: any
+interface ResData {
+  URL: string
+  typeName: string
+  resultData: any
 }
-const state: State = reactive({
-  videourl: '',
-  type: '',
-  newvideo: []
+const resData: ResData = reactive({
+  URL: '',
+  typeName: 'LOL',
+  resultData: []
 })
 
 const id = reactive({
   id: route.query.id
 })
 
-const getvideo = async () => {
-  await video.GetByIdAsync(id.id, true).then((res: any) => {
-    state.videourl = res.data.url
-    state.type = res.data.type.name
+const GetApi = async () => {
+  await video.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
+    resData.resultData = res.data
   })
-  await video.GetTypeAsync(1, state.type, true).then((res: any) => {
-    state.newvideo = res.data
+  await video.GetByIdAsync(id.id, true).then((res: any) => {
+    resData.URL = res.data.url
   })
 }
 
 const videos = async (vid: number) => {
   await video.GetByIdAsync(vid, true).then((res: any) => {
-    state.videourl = res.data.vUrl
+    resData.URL = res.data.url
   })
 }
-onMounted(async () => {
-  await getvideo()
-})
+GetApi()
 </script>
 
 <template>
-  <div class="videoplay">
-    <div class="videoplay_main animate__animated animate__fadeIn">
-      <div class="col-gap-4 videoplay-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-        <div class="videoplay-2-1" v-for="res in state.newvideo" :key="res.id">
-          <div class="videoplay-2-1-1">
+  <s-header></s-header>
+  <div class="video-play">
+    <div class="video-play_main animate__animated animate__fadeIn">
+      <div class="col-gap-4 video-play-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        <div class="video-play-2-1" v-for="res in resData.resultData" :key="res.id">
+          <div class="video-play-2-1-1">
             <img src="@/assets/img/sp.png" />
           </div>
-          <div class="videoplay-2-1-2">
+          <div class="video-play-2-1-2">
             <a @click="videos(res.id)">{{ res.title }}</a>
           </div>
-          <div class="videoplay-2-1-3">
+          <div class="video-play-2-1-3">
             {{
               res.timeModified
                 .toLocaleString()
@@ -62,10 +60,10 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="videoplay-1">
+      <div class="video-play-1">
         <iframe
           id="if"
-          :src="state.videourl"
+          :src="resData.URL"
           scrolling="no"
           border="0"
           frameborder="no"
@@ -78,17 +76,17 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.videoplay {
+.video-play {
   @apply fixed w-full h-full;
 
-  .videoplay_main {
+  .video-play_main {
     @apply flex;
 
     @include initialize(93%, 91%, 3.5%, null, 3.5%, null, #ffffff);
 
     @apply shadow-sm rounded-sm;
 
-    .videoplay-1 {
+    .video-play-1 {
       @include w-h(80%, 100%);
 
       @apply p-1 m-2;
@@ -100,17 +98,17 @@ onMounted(async () => {
       }
     }
 
-    .videoplay-2 {
+    .video-play-2 {
       width: 19%;
 
       @apply overflow-auto cursor-pointer;
 
-      .videoplay-2-1 {
+      .video-play-2-1 {
         @include w-h(90%, 170px);
 
         @apply m-2 shadow rounded-sm;
 
-        .videoplay-2-1-1 {
+        .video-play-2-1-1 {
           height: 65%;
 
           img {
@@ -118,7 +116,7 @@ onMounted(async () => {
           }
         }
 
-        .videoplay-2-1-2 {
+        .video-play-2-1-2 {
           height: 18%;
 
           @include line-one;
@@ -126,7 +124,7 @@ onMounted(async () => {
           @apply p-1 text-sm;
         }
 
-        .videoplay-2-1-3 {
+        .video-play-2-1-3 {
           height: 17%;
 
           @apply p-1;
@@ -137,11 +135,11 @@ onMounted(async () => {
 }
 
 @screen xp {
-  .videoplay-2 {
+  .video-play-2 {
     @apply hidden;
   }
 
-  .videoplay .videoplay_main .videoplay-1 {
+  .video-play .video-play_main .video-play-1 {
     width: 100%;
     height: 90%;
   }

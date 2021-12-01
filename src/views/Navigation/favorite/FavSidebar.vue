@@ -1,23 +1,18 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
+import { reactive } from 'vue'
 import { navigation } from '@/api/index'
 import { method } from './index'
 
 interface State {
-  resultData: any
   resultData2: any
   resultCount: number
 }
 const state: State = reactive({
-  resultData: [],
   resultData2: [],
   resultCount: 0
 })
 
 const GetAll = async () => {
-  await navigation.GetFyAsync(0, 'null', 1, 10, 'id', true, true).then((res: any) => {
-    state.resultData = res.data
-  })
   await navigation.GetCountAsync(0, 'null', true).then((res: any) => {
     state.resultCount = res.data
   })
@@ -27,9 +22,11 @@ const GetAll = async () => {
   })
 }
 
-onMounted(async () => {
-  await GetAll()
-})
+async function clkApi(name: string) {
+  await method.GetApi(name)
+}
+
+GetAll()
 </script>
 
 <template>
@@ -46,7 +43,7 @@ onMounted(async () => {
           <div
             class="flex-1 px-1 m-1 text-base text-center transition duration-500 ease-in-out transform hover: hover:scale-110 hover:text-red-600"
           >
-            <a @click="method.GetApi(result.title)">{{ result.title }}</a>
+            <a @click="clkApi(result.title)">{{ result.title }}</a>
           </div>
         </div>
       </div>

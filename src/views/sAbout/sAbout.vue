@@ -54,6 +54,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <s-header></s-header>
   <div class="about_main" :class="[state.activeClass, state.fadeIn]">
     <div class="about_content">
       <!-- 背景图+介绍 -->

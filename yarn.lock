@@ -40,7 +40,7 @@
     "jsonpointer" "^5.0.0"
     "leven" "^3.1.0"
 
-"@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.0":
+"@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.16.0":
   "integrity" "sha1-DfyAMJvuyEEeZecGRhxAiwu5tDE="
   "resolved" "https://registry.npmmirror.com/@babel/code-frame/download/@babel/code-frame-7.16.0.tgz?cache=0&sync_timestamp=1635560657003&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fcode-frame%2Fdownload%2F%40babel%2Fcode-frame-7.16.0.tgz"
   "version" "7.16.0"
@@ -1696,13 +1696,6 @@
   "resolved" "https://registry.npm.taobao.org/ansi-colors/download/ansi-colors-4.1.1.tgz"
   "version" "4.1.1"
 
-"ansi-escapes@^4.3.0":
-  "integrity" "sha1-ayKR0dt9mLZSHV8e+kLQ86n+tl4="
-  "resolved" "https://registry.npm.taobao.org/ansi-escapes/download/ansi-escapes-4.3.2.tgz?cache=0&sync_timestamp=1618723498592&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fansi-escapes%2Fdownload%2Fansi-escapes-4.3.2.tgz"
-  "version" "4.3.2"
-  dependencies:
-    "type-fest" "^0.21.3"
-
 "ansi-regex@^5.0.1":
   "integrity" "sha1-CCyyyJyf6GWaMRpTvWpNxTAdswQ="
   "resolved" "https://registry.nlark.com/ansi-regex/download/ansi-regex-5.0.1.tgz?cache=0&sync_timestamp=1631634988487&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fansi-regex%2Fdownload%2Fansi-regex-5.0.1.tgz"
@@ -2085,7 +2078,7 @@
     "escape-string-regexp" "^1.0.5"
     "supports-color" "^5.3.0"
 
-"chalk@^4.0.0", "chalk@^4.1.1", "chalk@^4.1.2":
+"chalk@^4.0.0", "chalk@^4.1.2":
   "integrity" "sha1-qsTit3NKdAhnrrFr8CqtVWoeegE="
   "resolved" "https://registry.nlark.com/chalk/download/chalk-4.1.2.tgz?cache=0&sync_timestamp=1627646655305&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fchalk%2Fdownload%2Fchalk-4.1.2.tgz"
   "version" "4.1.2"
@@ -2100,7 +2093,7 @@
   dependencies:
     "is-regex" "^1.0.3"
 
-"chokidar@^3.5.1", "chokidar@^3.5.2", "chokidar@>=3.0.0 <4.0.0":
+"chokidar@^3.5.2", "chokidar@>=3.0.0 <4.0.0":
   "integrity" "sha1-26OXb8rbAW9m/TZQIdkWANAcHnU="
   "resolved" "https://registry.npmmirror.com/chokidar/download/chokidar-3.5.2.tgz"
   "version" "3.5.2"
@@ -4681,11 +4674,6 @@
   "resolved" "https://registry.nlark.com/lodash.merge/download/lodash.merge-4.6.2.tgz"
   "version" "4.6.2"
 
-"lodash.pick@^4.4.0":
-  "integrity" "sha1-UvBWEP/53tQiYRRB7R/BI6AwAbM="
-  "resolved" "https://registry.npm.taobao.org/lodash.pick/download/lodash.pick-4.4.0.tgz"
-  "version" "4.4.0"
-
 "lodash.sortby@^4.7.0":
   "integrity" "sha1-7dFMgk4sycHgsKG0K7UhBRakJDg="
   "resolved" "https://registry.npm.taobao.org/lodash.sortby/download/lodash.sortby-4.7.0.tgz"
@@ -5015,13 +5003,6 @@
   "resolved" "https://registry.npm.taobao.org/normalize.css/download/normalize.css-8.0.1.tgz"
   "version" "8.0.1"
 
-"npm-run-path@^4.0.1":
-  "integrity" "sha1-t+zR5e1T2o43pV4cImnguX7XSOo="
-  "resolved" "https://registry.npmmirror.com/npm-run-path/download/npm-run-path-4.0.1.tgz?cache=0&sync_timestamp=1633420549182&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fnpm-run-path%2Fdownload%2Fnpm-run-path-4.0.1.tgz"
-  "version" "4.0.1"
-  dependencies:
-    "path-key" "^3.0.0"
-
 "nprogress@^0.2.0":
   "integrity" "sha1-y480xTIT2JVyP8urkH6UIq28r7E="
   "resolved" "https://registry.nlark.com/nprogress/download/nprogress-0.2.0.tgz"
@@ -5183,7 +5164,7 @@
   "resolved" "https://registry.npm.taobao.org/path-is-absolute/download/path-is-absolute-1.0.1.tgz"
   "version" "1.0.1"
 
-"path-key@^3.0.0", "path-key@^3.1.0":
+"path-key@^3.1.0":
   "integrity" "sha1-WB9q3mWMu6ZaDTOA3ndTKVBU83U="
   "resolved" "https://registry.npm.taobao.org/path-key/download/path-key-3.1.1.tgz?cache=0&sync_timestamp=1617971695678&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpath-key%2Fdownload%2Fpath-key-3.1.1.tgz"
   "version" "3.1.1"
@@ -5755,7 +5736,7 @@
   "resolved" "https://registry.npm.taobao.org/semver/download/semver-6.3.0.tgz"
   "version" "6.3.0"
 
-"semver@^7.0.0", "semver@^7.2.1", "semver@^7.3.4", "semver@^7.3.5":
+"semver@^7.0.0", "semver@^7.2.1", "semver@^7.3.5":
   "integrity" "sha1-C2Ich5NI2JmOSw5L6Us/EuYBjvc="
   "resolved" "https://registry.npm.taobao.org/semver/download/semver-7.3.5.tgz"
   "version" "7.3.5"
@@ -6185,11 +6166,6 @@
   "resolved" "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz"
   "version" "0.2.0"
 
-"tiny-invariant@^1.1.0":
-  "integrity" "sha1-oRQfhrZyqRSMcul4oZpzublKFak="
-  "resolved" "https://registry.npmmirror.com/tiny-invariant/download/tiny-invariant-1.2.0.tgz?cache=0&sync_timestamp=1635822367356&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftiny-invariant%2Fdownload%2Ftiny-invariant-1.2.0.tgz"
-  "version" "1.2.0"
-
 "tmp@^0.2.1":
   "integrity" "sha1-hFf8MDfc9HGcJRNnoa9lAO4czxQ="
   "resolved" "https://registry.npm.taobao.org/tmp/download/tmp-0.2.1.tgz"
@@ -6299,11 +6275,6 @@
   "integrity" "sha1-G/IH9LKPkVg2ZstfvTJ4hzAc1fQ="
   "resolved" "https://registry.npmmirror.com/type-fest/download/type-fest-0.20.2.tgz?cache=0&sync_timestamp=1637149949006&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftype-fest%2Fdownload%2Ftype-fest-0.20.2.tgz"
   "version" "0.20.2"
-
-"type-fest@^0.21.3":
-  "integrity" "sha1-0mCiSwGYQ24TP6JqUkptZfo7Ljc="
-  "resolved" "https://registry.npmmirror.com/type-fest/download/type-fest-0.21.3.tgz"
-  "version" "0.21.3"
 
 "typescript@*", "typescript@^4.4.3", "typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta":
   "integrity" "sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw=="
@@ -6457,27 +6428,6 @@
     "@vant/popperjs" "^1.1.0"
     "@vant/use" "^1.3.4"
 
-"vite-plugin-checker@^0.3.4":
-  "integrity" "sha1-Y4mDmPfq02sfjC9zx1Wrwi2E9es="
-  "resolved" "https://registry.nlark.com/vite-plugin-checker/download/vite-plugin-checker-0.3.4.tgz"
-  "version" "0.3.4"
-  dependencies:
-    "@babel/code-frame" "^7.12.13"
-    "ansi-escapes" "^4.3.0"
-    "chalk" "^4.1.1"
-    "chokidar" "^3.5.1"
-    "commander" "^8.0.0"
-    "fast-glob" "^3.2.7"
-    "lodash.debounce" "^4.0.8"
-    "lodash.pick" "^4.4.0"
-    "npm-run-path" "^4.0.1"
-    "strip-ansi" "^6.0.0"
-    "tiny-invariant" "^1.1.0"
-    "vscode-languageclient" "^7.0.0"
-    "vscode-languageserver" "^7.0.0"
-    "vscode-languageserver-textdocument" "^1.0.1"
-    "vscode-uri" "^3.0.2"
-
 "vite-plugin-eslint@^1.3.0":
   "integrity" "sha1-y8PxVCyl6Q1ZLM+2tJV+m2P5mg4="
   "resolved" "https://registry.nlark.com/vite-plugin-eslint/download/vite-plugin-eslint-1.3.0.tgz"
@@ -6558,28 +6508,6 @@
   "resolved" "https://registry.npmmirror.com/vscode-jsonrpc/download/vscode-jsonrpc-8.0.0-next.4.tgz"
   "version" "8.0.0-next.4"
 
-"vscode-jsonrpc@6.0.0":
-  "integrity" "sha1-EIvbCbRABwUXa5V87KngiA6bbU4="
-  "resolved" "https://registry.npmmirror.com/vscode-jsonrpc/download/vscode-jsonrpc-6.0.0.tgz"
-  "version" "6.0.0"
-
-"vscode-languageclient@^7.0.0":
-  "integrity" "sha1-tQXCLCH/z5bhZ3mXV/ygemutD7I="
-  "resolved" "https://registry.npmmirror.com/vscode-languageclient/download/vscode-languageclient-7.0.0.tgz"
-  "version" "7.0.0"
-  dependencies:
-    "minimatch" "^3.0.4"
-    "semver" "^7.3.4"
-    "vscode-languageserver-protocol" "3.16.0"
-
-"vscode-languageserver-protocol@3.16.0":
-  "integrity" "sha1-NBNbYakJHblyGIoH0zdAajzb6CE="
-  "resolved" "https://registry.npmmirror.com/vscode-languageserver-protocol/download/vscode-languageserver-protocol-3.16.0.tgz"
-  "version" "3.16.0"
-  dependencies:
-    "vscode-jsonrpc" "6.0.0"
-    "vscode-languageserver-types" "3.16.0"
-
 "vscode-languageserver-protocol@3.17.0-next.11":
   "integrity" "sha512-9FqHT7XvM6tWFsnLvRfuQA7Zh7wZZYAwA9dK85lYthA8M1aXpXEP9drXVvO/Fe03MUeJpKVf2e4/NvDaFUnttg=="
   "resolved" "https://registry.npmmirror.com/vscode-languageserver-protocol/download/vscode-languageserver-protocol-3.17.0-next.11.tgz"
@@ -6593,7 +6521,7 @@
   "resolved" "https://registry.npmmirror.com/vscode-languageserver-textdocument/download/vscode-languageserver-textdocument-1.0.3.tgz"
   "version" "1.0.3"
 
-"vscode-languageserver-types@^3.15.1", "vscode-languageserver-types@^3.16.0", "vscode-languageserver-types@3.16.0":
+"vscode-languageserver-types@^3.15.1", "vscode-languageserver-types@^3.16.0":
   "integrity" "sha1-7POT/BIexpdLLaPvsxVWRMUU4kc="
   "resolved" "https://registry.npmmirror.com/vscode-languageserver-types/download/vscode-languageserver-types-3.16.0.tgz"
   "version" "3.16.0"
@@ -6602,13 +6530,6 @@
   "integrity" "sha512-Zcfaw8BznhlJWB09LDR0dscXyxn9+liREqJnPF4pigeUCHwKxYapYqizwuCpMHQ/oLYiAvKwU+f28hPleYu7pA=="
   "resolved" "https://registry.npmmirror.com/vscode-languageserver-types/download/vscode-languageserver-types-3.17.0-next.5.tgz"
   "version" "3.17.0-next.5"
-
-"vscode-languageserver@^7.0.0":
-  "integrity" "sha1-SbBoyHz8ypOjVpadIPXZvdUBxrA="
-  "resolved" "https://registry.npmmirror.com/vscode-languageserver/download/vscode-languageserver-7.0.0.tgz"
-  "version" "7.0.0"
-  dependencies:
-    "vscode-languageserver-protocol" "3.16.0"
 
 "vscode-languageserver@^8.0.0-next.2":
   "integrity" "sha512-3E2W0eWtGKb6QAJqspOnD0thrBRRo8IGUMV5jpDNMcMKvmtkcxMwsBh0VxdvuWaZ51PiNyR4L+B+GUvkYsyFEg=="

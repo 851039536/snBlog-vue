@@ -9,8 +9,8 @@
         <div class="sidebar_itme_1">最近添加</div>
         <div class="sidebar_itme_2" v-for="result in state.resultData" :key="result.navId">
           <div class="itme_1">
-            {{ result.navTitle }}
-            <span>{{ result.navType }}</span>
+            {{ result.title }}
+            <span>{{ result.type.name }}</span>
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const state: State = reactive({
   timeCreate: ''
 })
 
-const getall = async () => {
+const GetApi = async () => {
   await one.GetOneTypeAllAsync().then((res: any) => {
     state.resultOneType = res.data
   })
@@ -47,7 +47,7 @@ const getall = async () => {
 }
 
 onMounted(async () => {
-  await getall()
+  await GetApi()
 })
 </script>
 

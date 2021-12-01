@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue'
 import { article, userTalk } from '@/api/index'
 import { resolve, winUrl } from '@/hooks/routers'
 import { blogsSiList } from '../data/sidebar'
@@ -24,9 +23,7 @@ const GetApi = async () => {
   blogsSiList.readCount = String(blogsSiList.readCount)
 }
 
-onMounted(async () => {
-  await GetApi()
-})
+GetApi()
 </script>
 
 <template>

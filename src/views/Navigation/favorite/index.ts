@@ -1,20 +1,22 @@
 import { navigation } from '@/api'
-import { state } from './data'
+import { resData } from './data'
 
 class method {
   static async currentchange(val: number) {
-    state.current = val
-    await navigation.GetFyAsync(1, state.name, val, state.pagesize, 'id', true, true).then((res: any) => {
-      state.text = res.data
+    resData.current = val
+    await navigation.GetFyAsync(1, resData.name, val, resData.pagesize, 'id', true, true).then((res: any) => {
+      resData.text = res.data
     })
   }
 
   static async GetApi(name: string) {
-    state.current = 1
-    state.name = name
-    state.count = await (await navigation.GetCountAsync(1, state.name, true)).data
-    state.type = await (await navigation.GetSnNavigationTypeSAllAsync(true)).data
-    state.text = await (await navigation.GetFyAsync(1, name, state.page, state.pagesize, 'id', true, true)).data
+    resData.current = 1
+    resData.name = name
+    resData.count = await (await navigation.GetCountAsync(1, resData.name, true)).data
+    resData.type = await (await navigation.GetSnNavigationTypeSAllAsync(true)).data
+    await navigation.GetFyAsync(1, name, resData.page, resData.pagesize, 'id', true, true).then((res) => {
+      resData.text = res.data
+    })
   }
 }
 export { method }

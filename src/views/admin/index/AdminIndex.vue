@@ -2,19 +2,21 @@
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue'
 import { nextTick, provide, reactive } from 'vue'
 import { message } from 'ant-design-vue'
+import { useStore } from 'vuex'
 import { Routers } from '@/hooks/routers'
 import { storage } from '@/utils/storage/storage'
-import store from '@/store'
 import { navName } from '../utils/data'
 
-async function zx() {
-  storage.remove(store.state.Roles)
-  if (!storage.get(store.state.Roles)) {
-    message.info('注销成功')
+const store = useStore()
+function zx() {
+  storage.remove('token')
+  if (storage.get('token') === 'token') {
+    // message.info('注销成功')
+
+    console.log('%c [ 注销成功 ]', 'font-size:13px; background:pink; color:#bf2c9f;')
     Routers('/Login')
   }
 }
-
 const handleClick = (e: any) => {
   message.info(e.key)
   switch (e.key) {
@@ -56,7 +58,7 @@ provide('reload', reload)
         <ul class="menu">
           <li><a href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
 
-          <li><a href="#careers" @click="Routers('/')">主页</a></li>
+          <li><a href="#careers" @click="Routers('/Blogs/BlogsColumn')">主页</a></li>
           <li><a href="#about" @click="zx()">注销</a></li>
           <li>
             <a href="#contact"

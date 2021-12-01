@@ -1,11 +1,3 @@
-/*
- * @Author: Axios封装
- * @Date: 2020-12-08 10:39:03
- * @LastEditTime: 2021-11-23 17:23:08
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\api\index.ts
- */
 import axios from 'axios'
 import qs from 'qs'
 import { message } from 'ant-design-vue'
@@ -18,11 +10,9 @@ import { removePending, addPending } from './pending'
 
 interface Res {
   urls: any
-  roles: any
 }
 const obj: Res = reactive({
-  urls: import.meta.env.VITE_API_DOMAIN,
-  roles: storage.get(store.state.Roles)
+  urls: import.meta.env.VITE_API_DOMAIN
 })
 axios.defaults.baseURL = obj.urls
 axios.defaults.timeout = 5000
@@ -34,15 +24,15 @@ axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 // 请求拦截器
 axios.interceptors.request.use(
   function request(req: any) {
-    removePending(req) // 在请求开始前，对之前的请求做检查取消操作
+    // removePending(req) // 在请求开始前，对之前的请求做检查取消操作
     addPending(req) // 将当前请求添加到 pending 中
     if (req.method === 'post' || req.method === 'put' || req.method === 'delete') {
       // qs序列化
       req.data = qs.parse(req.data)
     }
     // 若是有做鉴权token , 就给头部带上token
-    if (storage.get(store.state.Roles)) {
-      req.headers.Authorization = encodeURIComponent(storage.get(store.state.Roles)) as string
+    if (storage.get('token')) {
+      req.headers.Authorization = storage.get('token') as string
     }
     return req
   },
@@ -74,22 +64,14 @@ axios.interceptors.response.use(
         case 400:
           message.error(`发出的请求有错误，服务器没有进行新建或修改数据的操作==>${error.response.status}`)
           break
-
-        // 401: 未登录
-        // 未登录则跳转登录页面，并携带当前页面的路径
-        // 在登录成功后返回当前页面，这一步需要在登录页操作。
         case 401: // 重定向
-          message.error(`token:登录失效==>${error.response.status}:${store.state.Roles}`)
-          storage.remove(store.state.Roles)
-          storage.get(store.state.Roles)
+          message.error(`token:登录失效==>${error.response.status}:${'token'}`)
+          storage.remove('token')
           router.replace({
             path: '/Login'
           })
           break
-        // 403 token过期
-        // 登录过期对用户进行提示
-        // 清除本地token和清空vuex中token对象
-        // 跳转登录页面
+
         case 403:
           message.error(`用户得到授权，但是访问是被禁止的==>${error.response.status}`)
           break

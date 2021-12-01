@@ -22,7 +22,7 @@ export class video {
    * @param cache 缓存
    * @returns
    */
-  static async GetTypeAsync(identity: number, type: string, cache: boolean) {
+  static GetTypeAsync(identity: number, type: string, cache: boolean) {
     return request({
       url: `/api/SnVideo/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
       method: 'get'

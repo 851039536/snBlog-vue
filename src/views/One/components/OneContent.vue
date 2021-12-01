@@ -12,15 +12,15 @@ defineProps({
 </script>
 
 <template>
-  <div class="onecontent">
-    <div class="onecontent-div" v-for="res in resultData" :key="res.id">
-      <div class="onecontent-div-frame">
-        <p class="onecontent_div_frame_title">
+  <div class="one-content">
+    <div class="one-content-div" v-for="res in resultData" :key="res.id">
+      <div class="one-content-div-frame">
+        <p class="one-content_div_frame_title">
           <a @click="method.setModal1Visible(true, res.id)">
             {{ res.title }}
           </a>
         </p>
-        <p class="onecontent-div-frame-text">{{ res.text }}</p>
+        <p class="one-content-div-frame-text">{{ res.text }}</p>
         <div></div>
       </div>
     </div>
@@ -28,20 +28,20 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.onecontent {
+.one-content {
   @apply flex flex-wrap;
 
-  .onecontent-div {
+  .one-content-div {
     width: 31%;
     height: 150px;
 
     @apply mt-1 m-auto;
     @apply relative shadow rounded-sm cursor-pointer;
 
-    .onecontent-div-frame {
+    .one-content-div-frame {
       @apply w-full h-full;
 
-      .onecontent_div_frame_title {
+      .one-content_div_frame_title {
         height: 23%;
 
         @apply m-1 px-1 text-base font-semibold bg-gray-100;
@@ -49,7 +49,7 @@ defineProps({
         @include line-one;
       }
 
-      .onecontent-div-frame-text {
+      .one-content-div-frame-text {
         @apply px-2 m-1 p-1 text-sm font-thin;
 
         height: 55%;

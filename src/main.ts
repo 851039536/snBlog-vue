@@ -4,6 +4,9 @@ import 'nprogress/nprogress.css'
 import './index.css'
 import 'animate.css'
 import lazyPlugin from 'vue3-lazy'
+// import 'ant-design-vue/dist/antd.less'
+import 'ant-design-vue/es/message/style/css'
+import 'ant-design-vue/es/notification/style/css'
 
 // v-md
 import VueMarkdownEditor from '@kangc/v-md-editor'
@@ -45,7 +48,6 @@ VMdPreview.use(githubTheme, {
 })
 VMdPreview.use(createLineNumbertPlugin())
 VMdPreview.use(createCopyCodePlugin())
-
 // use
 const app = createApp(App)
 
@@ -56,7 +58,6 @@ app.use(lazyPlugin, {
   loading: getImageUrl('2.jpg'),
   error: getImageUrl('1.jpg')
 })
-
 app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.use(store)

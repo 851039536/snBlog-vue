@@ -1,18 +1,10 @@
-<!--
- * @Author: 分类
- * @Date: 2021-09-15 10:01:43
- * @LastEditTime: 2021-11-11 15:19:34
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\index\components\Category.vue
--->
 <script lang="ts" setup>
-import { IntSort } from '@/api/data/interData'
+import { IntSort } from '../../../api/data/interData'
 import { RouterId } from '@/hooks/routers'
 
 defineProps({
   resultData: {
-    type: Array as () => Array<IntSort>, // (string也可以是其他你自定义的接口)
+    type: Array as () => Array<IntSort>,
     required: true,
     default: () => []
   },
@@ -34,10 +26,6 @@ const TagSkip = async (id: any) => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
-/* 分类内容框 */
 .category {
   width: 97%;
 

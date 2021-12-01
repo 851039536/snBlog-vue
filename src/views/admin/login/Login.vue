@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue'
 import { useStore } from 'vuex'
-import { message } from 'ant-design-vue'
+import { message } from 'ant-design-vue/es/components'
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
@@ -15,28 +15,25 @@ const state = reactive({
 async function login() {
   user.Login(state.name, state.pwd).then((res) => {
     if (res.data === '用户或密码错误' || res.data === '用户密码不能为空') {
-      message.error(res.data)
       return
     }
-
     state.result = res.data.split(',')
     storage.remove('rolres')
     storage.remove('userId')
     storage.remove('user')
+    storage.remove('token')
 
-    storage.set('rolres', state.result[0]) // 存角色名
+    storage.set('rolres', state.result[0]) // 角色名
+    storage.set('userId', state.result[2]) // 用户主键
+    storage.set('user', state.result[3]) // 用户名
+    storage.set('token', `Bearer ${state.result[1]}`) // token
     store.state.Roles = storage.get('rolres')
-    storage.set('userId', state.result[2]) // 用于全局用户主键
-    storage.set('user', state.result[3]) // 村用户名
-    storage.set(store.state.Roles, `Bearer ${state.result[1]}`) // token
-
     message.success('成功!')
     Routers('/Admin-index/ArticleTable')
   })
 }
 onMounted(async () => {
-  if (storage.get(store.state.Roles)) {
-    message.loading('已登录,跳转中')
+  if (storage.get('token') !== 'token') {
     await Routers('/Admin-index/ArticleTable')
   }
 })

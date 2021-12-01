@@ -10,6 +10,7 @@ notification.open({
   <a-back-top />
   <l-sidebar></l-sidebar>
   <index-sidebar></index-sidebar>
+  <s-header></s-header>
   <div id="blogs">
     <div class="blogs_main">
       <router-view></router-view>

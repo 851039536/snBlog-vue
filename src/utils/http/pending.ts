@@ -14,7 +14,7 @@ export const addPending = (res: any) => {
       if (!pending.has(url)) {
         // 如果 pending 中不存在当前请求，则添加进去
         pending.set(url, cancel)
-        // console.log('[ 添加请求 ]=>', url)
+        console.log('[ 添加请求 ]=>', url)
       }
     })
 }
@@ -37,10 +37,8 @@ export const removePending = (config: any) => {
  */
 export const clearPending = () => {
   for (const [url, cancel] of pending) {
-    if (url !== 'get&/api/SnInterface/GetTypeAsync?identity=0&users=kai&type=header&cache=true&&') {
-      cancel(url)
-      console.log('[ 清空请求 ]=>', url)
-    }
+    cancel(url)
+    console.log('[ 清空请求 ]=>', url)
   }
   pending.clear()
 }

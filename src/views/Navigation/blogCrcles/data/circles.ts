@@ -21,7 +21,7 @@ class method {
     await navigation.GetFyAsync(1, '博客圈', resData.page, resData.pagesize, 'id', true, true).then((res: any) => {
       resData.resultData = res.data
     })
-    await navigation.GetCountAsync(0, '博客圈', true).then((res: any) => {
+    await navigation.GetCountAsync(1, '博客圈', true).then((res: any) => {
       resData.count = res.data
     })
   }

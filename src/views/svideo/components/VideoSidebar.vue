@@ -1,16 +1,11 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import { video } from '@/api'
 
-interface State {
-  count: number
-}
+const state = ref(0)
 
-const state: State = reactive({
-  count: 0
-})
 video.GetCountAsync(0, '0', true).then((res: any) => {
-  state.count = res.data
+  state.value = res.data
 })
 </script>
 
@@ -29,7 +24,7 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
         <div class="sn-list8-2">
           <div class="flex sn-list8-2-1">
             <div class="sn-list8-2-1-1">视频数量</div>
-            <div class="sn-list8-2-1-2">{{ state.count }}篇</div>
+            <div class="sn-list8-2-1-2">{{ state }}篇</div>
           </div>
         </div>
       </div>
