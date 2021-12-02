@@ -15,12 +15,12 @@ const roId: any = reactive({
 
 const GetApi = async () => {
   await article.GetByIdAsync(roId.id, true).then((res: any) => {
-    state.time = tool.MomentTime(res.data[0].timeCreate)
-    // eslint-disable-next-line prefer-destructuring
-    state.resultData = res.data[0]
-    state.labelName = res.data[0].label.name
-    state.sortName = res.data[0].sort.name
-    method.UpRead(state.resultData)
+    const result = res.data[0]
+    method.UpRead(result)
+    state.resultData = result
+    state.time = tool.MomentTime(result.timeCreate)
+    state.labelName = result.label.name
+    state.sortName = result.sort.name
     state.spinning = false
   })
 }

@@ -8,8 +8,6 @@ method.GetApi()
   <div id="index-sidebar">
     <div class="index_s_main">
       <s-time></s-time>
-      <s-ico></s-ico>
-
       <!-- 搜索 -->
       <div class="index_s_input">
         <a-select
@@ -52,11 +50,6 @@ method.GetApi()
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
-/* index-sidebar
----------------------------------------------------------------- */
 #index-sidebar {
   @apply fixed ml-3 overflow-auto;
 

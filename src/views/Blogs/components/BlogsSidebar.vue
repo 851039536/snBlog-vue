@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { article, userTalk } from '@/api/index'
 import { resolve, winUrl } from '@/hooks/routers'
-import { blogsSiList } from '../data/sidebar'
+import { resData } from '../data/sidebar'
 
 const SearchTitle = async (name: string) => {
-  blogsSiList.searchData = await article.GetContainsAsync(1, '转载', name, true)
+  resData.searchData = await article.GetContainsAsync(1, '转载', name, true)
 }
 const skip = async (id: any) => {
   const { href } = await resolve('/VmdHtml', id)
@@ -12,30 +12,29 @@ const skip = async (id: any) => {
 }
 const GetApi = async () => {
   await article.GetFyAsync(0, 'null', 1, 1, 'data', true, true).then((res: { data: { timeCreate: string }[] }) => {
-    blogsSiList.articledata = res.data[0].timeCreate
+    resData.articledata = res.data[0].timeCreate
   })
-  blogsSiList.talk = await (await userTalk.GetUserTalkFirst()).data
-  blogsSiList.ArticleCount = await (await article.GetCountAsync(1, '转载', true)).data
-  blogsSiList.ArticleCount = String(blogsSiList.ArticleCount)
-  blogsSiList.textCount = await (await article.GetSumAsync(1, 1, '转载', true)).data
-  blogsSiList.textCount = String(blogsSiList.textCount)
-  blogsSiList.readCount = await (await article.GetSumAsync(1, 2, '转载', true)).data
-  blogsSiList.readCount = String(blogsSiList.readCount)
+  resData.talk = await (await userTalk.GetUserTalkFirst()).data
+  resData.ArticleCount = await (await article.GetCountAsync(1, '转载', true)).data
+  resData.ArticleCount = String(resData.ArticleCount)
+  resData.textCount = await (await article.GetSumAsync(1, 1, '转载', true)).data
+  resData.textCount = String(resData.textCount)
+  resData.readCount = await (await article.GetSumAsync(1, 2, '转载', true)).data
+  resData.readCount = String(resData.readCount)
 }
 
 GetApi()
 </script>
 
 <template>
-  <div id="blogssidebar">
-    <div class="blogssidebar_main">
-      <s-ico></s-ico>
+  <div id="blogs-sidebar">
+    <div class="blogs-sidebar_main">
       <!-- 内容搜索 -->
-      <div class="blogssidebar_input">
+      <div class="blogs-sidebar_input">
         <div>
           <a-select
             show-search
-            v-model:value="blogsSiList.sntitle"
+            v-model:value="resData.title"
             placeholder="input search text"
             style="width: 200px"
             :show-arrow="false"
@@ -44,13 +43,13 @@ GetApi()
             @select="skip"
           >
             >
-            <a-select-option v-for="res in blogsSiList.searchData.data" :key="res.id">{{ res.title }}</a-select-option>
+            <a-select-option v-for="res in resData.searchData.data" :key="res.id">{{ res.title }}</a-select-option>
           </a-select>
         </div>
       </div>
       <!-- end 内容搜索 -->
 
-      <s-describe :userTalk="blogsSiList.talk"></s-describe>
+      <s-describe :userTalk="resData.talk"></s-describe>
 
       <!-- 站点统计 -->
       <station-text
@@ -59,10 +58,10 @@ GetApi()
         title2="总字符数"
         title3="热度"
         title4="最近更新"
-        :res1="blogsSiList.ArticleCount"
-        :res2="blogsSiList.textCount"
-        :res3="blogsSiList.readCount"
-        :res4="blogsSiList.articledata.substring(0, 10)"
+        :res1="resData.ArticleCount"
+        :res2="resData.textCount"
+        :res3="resData.readCount"
+        :res4="resData.articledata.substring(0, 10)"
       ></station-text>
       <!-- end 站点统计 -->
     </div>
@@ -70,17 +69,17 @@ GetApi()
 </template>
 
 <style lang="scss" scoped>
-#blogssidebar {
+#blogs-sidebar {
   @apply fixed bg-gray-100 shadow;
 
   @include excursion($Text_height, null, null, $sidebar_r_r);
   @include w-h(20.4%, 93%);
   @apply ml-3 overflow-auto;
 
-  .blogssidebar_main {
+  .blogs-sidebar_main {
     @include w-h;
 
-    .blogssidebar_count {
+    .blogs-sidebar_count {
       @apply p-1 mb-2 m-auto shadow rounded;
 
       width: 97%;
@@ -88,7 +87,7 @@ GetApi()
       @apply bg-white cursor-pointer;
     }
 
-    .blogssidebar_input {
+    .blogs-sidebar_input {
       @apply flex p-2 mt-1 mb-2 shadow rounded m-auto;
 
       width: 97%;
@@ -110,7 +109,7 @@ GetApi()
   }
 }
 // 隐藏滚动条
-#blogssidebar::-webkit-scrollbar {
+#blogs-sidebar::-webkit-scrollbar {
   display: none;
 }
 
@@ -123,7 +122,7 @@ GetApi()
 }
 
 // @screen xp {
-//   #blogssidebar {
+//   #blogs-sidebar {
 //     display: none;
 //   }
 //}

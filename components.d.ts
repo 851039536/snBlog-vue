@@ -73,7 +73,7 @@ declare module 'vue' {
     Photo: typeof import('./src/views/Photo/Photo.vue')['default']
     PhotoIndex: typeof import('./src/views/Photo/PhotoIndex.vue')['default']
     SAbout: typeof import('./src/views/sAbout/sAbout.vue')['default']
-    SAspin: typeof import('./src/components/aspin/sAspin.vue')['default']
+    SAspin: typeof import('./src/components/aspin/SAspin.vue')['default']
     SBootom: typeof import('./src/components/bootom/SBootom.vue')['default']
     SCategory: typeof import('./src/components/sidebarModule/category/SCategory.vue')['default']
     SCirclesSidebar: typeof import('./src/views/Navigation/blogCrcles/components/SCirclesSidebar.vue')['default']

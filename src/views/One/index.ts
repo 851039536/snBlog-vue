@@ -52,8 +52,8 @@ class method {
       state.resultData = res.data
     })
     await one.GetFyAsync(0, '0', 1, 1, 'id', true, true).then((res: any) => {
-      // eslint-disable-next-line prefer-destructuring
-      state.dataOne = res.data[0]
+      const { title, text } = res.data[0]
+      state.dataOne = { title, text }
     })
   }
 

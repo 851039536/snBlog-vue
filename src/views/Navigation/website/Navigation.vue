@@ -48,9 +48,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .n-nav {
   @include initialize($w, null, 4.5%, null, $ml, null, #ffffff);
 

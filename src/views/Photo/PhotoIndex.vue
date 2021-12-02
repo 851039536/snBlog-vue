@@ -69,19 +69,12 @@
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .photo {
   @include initialize(94%, null, 4.5%, null, 3%, null, #ffffff);
-
   @apply shadow rounded-md;
-
   .photo_title {
     @include underline;
-
     margin-bottom: 6px;
-
     p {
       @apply px-1 py-2 m-2 text-lg font-medium;
     }

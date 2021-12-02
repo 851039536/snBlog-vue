@@ -4,12 +4,8 @@ import { reactive, onMounted, ref, getCurrentInstance } from 'vue'
 import { article } from '@/api/index'
 
 const route = useRoute()
-interface State {
-  blog: any
-  id: any
-  titles: any
-}
-const state: State = reactive({
+
+const state: any = reactive({
   blog: [],
   id: route.query.id,
   titles: []
@@ -17,8 +13,8 @@ const state: State = reactive({
 
 const GetAll = async () => {
   await article.GetByIdAsync(state.id, true).then((res: any) => {
-    // eslint-disable-next-line prefer-destructuring
-    state.blog = res.data[0]
+    const { title, text } = res.data[0]
+    state.blog = { title, text }
   })
 }
 
@@ -37,7 +33,6 @@ function handleAnchorClick(anchor: any) {
 }
 
 onMounted(async () => {
-  console.log('[ proxy ]', proxy.$refs.preview.$el)
   await GetAll()
   const anchors = proxy.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6')
   const titles = Array.from(anchors).filter((title: any) => !!title.innerText.trim())
@@ -69,9 +64,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/design/methodCss';
-@import '@/design/uitl';
-
 .vmd {
   width: 77%;
   @apply bg-white  mt-12;
@@ -79,7 +71,6 @@ onMounted(async () => {
 }
 .anchor {
   width: 16%;
-  // height: 100%;
   z-index: 10;
   @apply fixed  bg-gray-100 rounded;
   top: 7%;

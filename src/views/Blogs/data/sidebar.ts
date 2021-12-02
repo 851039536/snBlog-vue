@@ -1,6 +1,6 @@
 import { reactive } from 'vue'
 
-interface BlogsSiList {
+interface ResData {
   article: any
   searchData: any
   talk: string
@@ -11,10 +11,10 @@ interface BlogsSiList {
   textCount: string
   readCount: string
   articledata: string
-  sntitle: string
+  title: string
 }
 
-export const blogsSiList: BlogsSiList = reactive({
+export const resData: ResData = reactive({
   article: [],
   searchData: [],
   talk: '',
@@ -25,5 +25,5 @@ export const blogsSiList: BlogsSiList = reactive({
   textCount: '0',
   readCount: '0',
   articledata: '',
-  sntitle: ''
+  title: ''
 })
