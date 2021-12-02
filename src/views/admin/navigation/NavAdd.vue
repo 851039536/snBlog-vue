@@ -1,35 +1,9 @@
 <script lang="ts" setup>
-import { onMounted, reactive } from 'vue'
-import { message } from 'ant-design-vue'
-import { navigation, TOKEN } from '@/api'
-import { formState, stateArray } from './data'
-import { Routers, go, reloads } from '@/hooks/routers'
-import { navName } from '../utils/data'
-import { storage } from '@/utils/storage/storage'
+import { formState, stateArray } from './data/data'
+import { go, reloads } from '@/hooks/routers'
+import { GetApi, onSubmit } from './data/navAdd'
 
-const res: any = reactive({
-  id: storage.get('userId')
-})
-
-const onSubmit = async () => {
-  formState.userId = res.id
-  await navigation.AddAsync(formState).then(() => {
-    message.info('添加成功')
-    Routers('/Admin-index/NavTable')
-  })
-}
-async function GetAll() {
-  await navigation.GetSnNavigationTypeSAllAsync(false).then((ress) => {
-    stateArray.navResult = ress.data
-  })
-}
-
-onMounted(async () => {
-  await GetAll()
-  await TOKEN()
-  navName.name = '内容分享'
-  navName.name2 = '新增内容'
-})
+GetApi()
 </script>
 
 <template>

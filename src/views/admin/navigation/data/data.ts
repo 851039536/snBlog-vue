@@ -1,13 +1,13 @@
 import { reactive } from 'vue'
 import { IntNav } from '@/api/data/interData'
 
-interface State {
-  dataResult: any
+interface ResData {
+  resultData: any
   navTypeData: any
   navStr: string
 }
-const state: State = reactive({
-  dataResult: [],
+const resData: ResData = reactive({
+  resultData: [],
   navTypeData: [],
   navStr: 'ALL'
 })
@@ -83,4 +83,10 @@ const formState: IntNav = reactive({
 const stateArray: any = reactive({
   navResult: []
 })
-export { columns, state, formState, stateArray }
+
+// export async function formNull {
+//   for (let key in formState) {
+//     formState[key] = ''
+//   }
+// }
+export { columns, resData, formState, stateArray }

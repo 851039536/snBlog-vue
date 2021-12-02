@@ -220,7 +220,7 @@ const routes = [
       {
         path: 'NavTable',
         name: 'NavTable',
-        component: () => import('@/views/admin/navigation/NavTable.vue')
+        component: () => import('@/views/admin/navigation/SNavTable.vue')
       },
       {
         path: 'NavEdit',

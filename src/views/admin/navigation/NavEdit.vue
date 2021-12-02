@@ -3,7 +3,7 @@ import { onMounted, reactive } from 'vue'
 import { message } from 'ant-design-vue'
 import { useRoute } from 'vue-router'
 import { navigation, TOKEN } from '@/api'
-import { formState, stateArray } from './data'
+import { formState, stateArray } from './data/data'
 import { Routers, go, winUrl } from '@/hooks/routers'
 import { navName } from '../utils/data'
 
