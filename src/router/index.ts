@@ -17,9 +17,9 @@ const routes = [
     component: () => import('@/components/home/SHome.vue')
   },
   {
-    path: '/sAbout',
-    name: 'sAbout',
-    component: () => import('@/views/sAbout/sAbout.vue')
+    path: '/SAbout',
+    name: 'SAbout',
+    component: () => import('@/views/About/SAbout.vue')
   },
   {
     path: '/Blogs',
@@ -82,10 +82,7 @@ const routes = [
   {
     path: '/Tag',
     name: 'Tag',
-    meta: {
-      keepAlive: false
-    },
-    component: () => import('@/views/tag/Tag.vue')
+    component: () => import('@/views/Tag/TagIndex.vue')
   },
   {
     path: '/Photo',

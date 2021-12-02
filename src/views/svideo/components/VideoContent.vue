@@ -5,7 +5,7 @@ import { state } from '../data/data'
 import { method } from '../data/index'
 
 defineProps({
-  resultData: {
+  arrayVideo: {
     type: Array as () => Array<IntVideo>,
     required: true,
     default: () => []
@@ -16,7 +16,7 @@ defineProps({
 <template>
   <div class="svideo_main">
     <div class="svideo_main_content">
-      <div class="svideo-2-1" v-for="res in resultData" :key="res.id">
+      <div class="svideo-2-1" v-for="res in arrayVideo" :key="res.id">
         <div class="svideo-2-1-1">
           <img src="@/assets/img/hy.jpg" />
         </div>
@@ -24,7 +24,7 @@ defineProps({
           <a @click="RouterId('/VideoPlay', res.id)">{{ res.title }}</a>
         </div>
         <div class="svideo-2-1-3">
-          {{ res.timeCreate }}
+          {{ res.timeCreate.substring(0, 10) }}
         </div>
       </div>
     </div>
@@ -55,30 +55,22 @@ defineProps({
     @apply overflow-auto absolute top-2;
 
     .svideo-2-1 {
-      @include w-h(31%, 50%);
-
-      @apply shadow m-auto mt-4;
-
+      @include w-h(32%, 50%);
+      @apply shadow m-auto mt-2;
       .svideo-2-1-1 {
         height: 65%;
-
         img {
           @include w-h(100%, 100%);
         }
       }
-
       .svideo-2-1-2 {
-        height: 18%;
-
-        @apply text-sm p-1;
-
-        @include line-one;
+        height: 21%;
+        @apply text-base mt-1 p-1 bg-gray-50;
+        @include line-numbers(2);
       }
 
       .svideo-2-1-3 {
-        height: 17%;
-
-        @apply p-1;
+        @apply p-1  text-base;
       }
     }
   }
@@ -88,9 +80,7 @@ defineProps({
 
   .svideo_Paging {
     @include w-h(100%, 20%);
-
     @apply absolute;
-
     top: 95%;
     left: 1%;
   }

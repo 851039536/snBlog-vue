@@ -9,11 +9,9 @@ store.state.Roles = storage.get('rolres')
 <template>
   <div id="app">
     <router-view v-slot="{ Component }">
-      <!-- 需要缓存的视图组件 -->
       <keep-alive>
         <component :is="Component" v-if="$route.meta.keepAlive" />
       </keep-alive>
-      <!-- 不需要缓存的视图组件 -->
       <component :is="Component" v-if="!$route.meta.keepAlive" />
     </router-view>
     <s-bootom></s-bootom>
@@ -21,5 +19,5 @@ store.state.Roles = storage.get('rolres')
 </template>
 
 <style lang="scss">
-@include scroll; //滚动条美化
+@include scroll;
 </style>

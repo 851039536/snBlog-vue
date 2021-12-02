@@ -14,14 +14,13 @@ method.currentchange(1)
     <s-header></s-header>
     <l-sidebar></l-sidebar>
     <video-sidebar></video-sidebar>
-    <video-content :resultData="state.resultData"></video-content>
+    <video-content :arrayVideo="state.resultData"></video-content>
   </div>
 </template>
 
 <style lang="scss" scoped>
 #svideo {
   @apply fixed w-full;
-
   height: 92%;
 }
 

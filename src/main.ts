@@ -1,11 +1,9 @@
 import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
-// import './index.css'
 import 'virtual:windi.css'
 import 'animate.css'
 import lazyPlugin from 'vue3-lazy'
-// import 'ant-design-vue/dist/antd.less'
 import 'ant-design-vue/es/message/style/css'
 import 'ant-design-vue/es/notification/style/css'
 

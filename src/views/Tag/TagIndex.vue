@@ -2,27 +2,26 @@
 import { reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { article, labels } from '@/api'
-import { state } from './data/data'
+import { resData } from './data/data'
 
 const route = useRoute()
-
-const name: any = reactive({
-  name: route.query.id
+const resId: any = reactive({
+  id: route.query.id
 })
 
 async function GetApi() {
-  state.labels = await (await labels.GetAllAsync(true)).data
-  if (name.id === '') {
-    name.id = 'vue'
+  resData.arrayLabel = await (await labels.GetAllAsync(true)).data
+  if (resId.id === '') {
+    resId.id = 'vue'
   }
-  state.newinfo = await (await article.GetTypeAsync(2, name.id, true)).data
+  resData.resultData = await (await article.GetTypeAsync(2, resId.id, true)).data
 }
 
 async function Search(names: string) {
   if (names === '') {
     return
   }
-  state.newinfo = await (await article.GetContainsAsync(0, 'null', name, true)).data
+  resData.resultData = await (await article.GetContainsAsync(0, 'null', names, true)).data
 }
 onMounted(async () => {
   await GetApi()
@@ -30,7 +29,7 @@ onMounted(async () => {
 </script>
 <template>
   <s-header></s-header>
-  <div class="animate__animated" :class="[state.tag, state.fadeIn]">
+  <div class="animate__animated" :class="[resData.tag, resData.fadeIn]">
     <div class="tag-main">
       <div class="tag_search">
         <div>
@@ -47,7 +46,7 @@ onMounted(async () => {
           </a-select>
         </div>
       </div>
-      <TagHead :result-data="state.labels"></TagHead>
+      <TagHead :array-label="resData.arrayLabel"></TagHead>
       <TagContent></TagContent>
     </div>
   </div>
@@ -55,12 +54,9 @@ onMounted(async () => {
 
 <style lang="scss">
 .tag {
-  @apply fixed w-full h-full;
-
   .tag-main {
-    @apply absolute shadow;
-
-    top: 9%;
+    @apply absolute;
+    top: 9.5%;
     left: 0%;
     width: 100%;
     height: 100%;
@@ -68,10 +64,10 @@ onMounted(async () => {
 }
 
 .tag_search {
-  @include initialize(94%, 92%, null, null, 3%, null, #ffffff);
+  @include initialize(94%, null, null, null, 3%, null, #ffffff);
   @apply relative rounded-sm  shadow;
 
-  height: 45px;
+  height: 48px;
 
   div {
     @apply absolute left-1/2;

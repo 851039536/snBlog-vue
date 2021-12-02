@@ -1,18 +1,18 @@
 import { reactive } from 'vue'
 
-interface Res {
-  newinfo?: any
-  labels?: any
+interface ResData {
+  resultData?: any
+  arrayLabel?: any
   blog?: string
   fadeIn?: string
   tag?: string
 }
-export const state: Res = reactive({
-  newinfo: [],
-  labels: [],
+export const resData: ResData = reactive({
+  resultData: [],
+  arrayLabel: [],
   blog: '',
   fadeIn: 'animate__fadeIn',
   tag: 'tag'
 })
 
-export default state
+export default resData

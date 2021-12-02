@@ -2,25 +2,20 @@
 import { reactive, onMounted } from 'vue'
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
-import toScss from '@/hooks/dynamicScss'
 
-interface State {
+interface ResData {
   activeClass: string
   errorClass: string
-  bounceIn: string
   backInDown: string
-  fadeInTopRight: string
   fadeIn: string
-  User: any
+  resultData: any
 }
-const state: State = reactive({
+const resData: ResData = reactive({
   activeClass: 'animate__animated',
   errorClass: 'animate__fadeInRightBig',
-  bounceIn: 'animate__bounceIn',
   backInDown: 'animate__backInDown',
-  fadeInTopRight: 'animate__fadeInTopRight',
   fadeIn: 'animate__fadeIn',
-  User: []
+  resultData: []
 })
 
 const GetId = async (id: number) => {
@@ -45,9 +40,8 @@ const GetId = async (id: number) => {
   }
 }
 onMounted(async () => {
-  await toScss('sAbout')
   await user.GetByIdAsync(4).then((res: any) => {
-    state.User = res.data
+    resData.resultData = res.data
   })
   window.scrollTo(0, 0)
 })
@@ -55,24 +49,18 @@ onMounted(async () => {
 
 <template>
   <s-header></s-header>
-  <div class="about_main" :class="[state.activeClass, state.fadeIn]">
+  <div class="about_main" :class="[resData.activeClass, resData.fadeIn]">
     <div class="about_content">
       <!-- 背景图+介绍 -->
       <div class="about-bg">
-        <div class="about-1" :class="[state.activeClass, state.backInDown]">
+        <div class="about-1" :class="[resData.activeClass, resData.backInDown]">
           <div class="about-1-1">
             <div class="about-1-1-1">
               <img src="@/assets/img/bb.jpg" />
             </div>
           </div>
           <div class="about-1-2">
-            <a>{{ state.User['brief'] }}</a>
-          </div>
-          <div class="flex items-center about-1-3">
-            <div class="flex-1 about-1-3-1"></div>
-            <div class="flex-1 about-1-3-1"></div>
-            <div class="flex-1 about-1-3-1"></div>
-            <div class="flex-1 about-1-3-1"></div>
+            <a>{{ resData.resultData.brief }}</a>
           </div>
         </div>
 
@@ -97,7 +85,7 @@ onMounted(async () => {
       <!-- end 背景图+介绍 -->
 
       <!-- 关于我：  -->
-      <div class="bg-2" :class="[state.activeClass, state.errorClass]">
+      <div class="bg-2" :class="[resData.activeClass, resData.errorClass]">
         <div class="bg-2-1">
           <div class="bg-2-1-1">
             <h2>关于我：</h2>
@@ -124,3 +112,121 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.about_main {
+  @apply fixed w-full h-full bg-white;
+
+  @include initialize(94%, 92%, 4.5%, null, 3%, null, null);
+
+  @apply bg-white overflow-auto;
+
+  .about_content {
+    @apply absolute shadow;
+
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+
+    .about-bg {
+      height: 600px;
+      background: no-repeat center/100% url('../../assets/img/ab.jpg');
+
+      @apply shadow;
+
+      .about-1 {
+        @include initialize(35%, 60%, auto, auto, auto, auto, null);
+
+        @apply shadow;
+
+        .about-1-1 {
+          height: 50%;
+
+          .about-1-1-1 {
+            @include initialize(230px, 190px, 3%, auto, auto, auto, null);
+
+            @apply p-3;
+
+            img {
+              @include w-h;
+
+              border-radius: 1%;
+            }
+          }
+        }
+
+        .about-1-2 {
+          @include initialize(null, 20%, 0, auto, auto, auto, #4d4d4d);
+
+          @apply p-1 pt-4 text-lg text-center;
+        }
+      }
+
+      .about-2 {
+        @include initialize(35%, null, 10px, auto, auto, auto, null);
+
+        @apply text-base cursor-pointer bg-gray-200;
+        @apply shadow rounded-sm;
+
+        .about-2-1 {
+          @apply pl-5;
+        }
+      }
+
+      .about-3 {
+        width: 35%;
+
+        @apply m-auto mt-4 shadow;
+        @apply bg-pink-50;
+      }
+    }
+
+    .bg-2 {
+      margin: 10px auto 0 auto;
+
+      @apply w-full;
+
+      .bg-2-1 {
+        @apply m-2;
+
+        .bg-2-1-1 {
+          @apply m-2 text-lg;
+        }
+
+        .bg-2-1-2 {
+          @apply m-2 text-base font-light;
+        }
+      }
+
+      .bg-2-2 {
+        @apply m-2;
+
+        .bg-2-2-1 {
+          @apply m-2 text-lg;
+        }
+
+        .bg-2-2-2 {
+          @apply m-2 text-base font-light;
+        }
+      }
+
+      .bg-2-3 {
+        @apply m-2 text-lg;
+
+        .bg-2-3-1 {
+          @apply m-2;
+        }
+
+        .bg-2-3-2 {
+          @apply m-2 text-base font-light;
+        }
+      }
+    }
+  }
+}
+
+.about_main::-webkit-scrollbar {
+  display: none;
+}
+</style>

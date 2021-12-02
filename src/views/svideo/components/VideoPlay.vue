@@ -16,7 +16,7 @@ const resData: ResData = reactive({
   resultData: []
 })
 
-const id = reactive({
+const resId = reactive({
   id: route.query.id
 })
 
@@ -24,7 +24,7 @@ const GetApi = async () => {
   await video.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
     resData.resultData = res.data
   })
-  await video.GetByIdAsync(id.id, true).then((res: any) => {
+  await video.GetByIdAsync(resId.id, true).then((res: any) => {
     resData.URL = res.data.url
   })
 }
@@ -41,7 +41,7 @@ GetApi()
   <s-header></s-header>
   <div class="video-play">
     <div class="video-play_main animate__animated animate__fadeIn">
-      <div class="col-gap-4 video-play-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+      <div class="video-play-2">
         <div class="video-play-2-1" v-for="res in resData.resultData" :key="res.id">
           <div class="video-play-2-1-1">
             <img src="@/assets/img/sp.png" />
@@ -50,12 +50,7 @@ GetApi()
             <a @click="videos(res.id)">{{ res.title }}</a>
           </div>
           <div class="video-play-2-1-3">
-            {{
-              res.timeModified
-                .toLocaleString()
-                .replace(/T/g, ' ')
-                .replace(/\.[\d]{3}Z/, '')
-            }}
+            {{ res.timeModified.substring(0, 10) }}
           </div>
         </div>
       </div>
@@ -77,20 +72,17 @@ GetApi()
 
 <style lang="scss" scoped>
 .video-play {
-  @apply fixed w-full h-full;
-
+  @apply fixed;
+  width: 94%;
+  height: 90%;
+  top: 8.5%;
+  left: 3%;
   .video-play_main {
     @apply flex;
-
-    @include initialize(93%, 91%, 3.5%, null, 3.5%, null, #ffffff);
-
-    @apply shadow-sm rounded-sm;
-
+    @include initialize(100%, 100%, null, null, null, null, #ffffff);
     .video-play-1 {
       @include w-h(80%, 100%);
-
       @apply p-1 m-2;
-
       #if {
         margin: 0 auto;
 
@@ -104,30 +96,24 @@ GetApi()
       @apply overflow-auto cursor-pointer;
 
       .video-play-2-1 {
-        @include w-h(90%, 170px);
-
-        @apply m-2 shadow rounded-sm;
-
+        @include w-h(100%, 185px);
+        @apply mb-1 shadow;
         .video-play-2-1-1 {
           height: 65%;
-
           img {
-            @include w-h(185px, 100px);
+            @include w-h(100%, 115px);
           }
         }
 
         .video-play-2-1-2 {
           height: 18%;
-
-          @include line-one;
-
-          @apply p-1 text-sm;
+          @include line-numbers(2);
+          @apply p-1 text-base;
         }
 
         .video-play-2-1-3 {
           height: 17%;
-
-          @apply p-1;
+          @apply p-1  text-base;
         }
       }
     }

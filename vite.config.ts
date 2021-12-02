@@ -11,12 +11,12 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA(),
+    WindiCSS(),
     Components({
       dts: true, // ts支持
       dirs: ['src/components', 'src/views'], // 自定义路径按需导入
       resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
     }),
-    WindiCSS(),
     eslintPlugin()
   ],
   resolve: {
