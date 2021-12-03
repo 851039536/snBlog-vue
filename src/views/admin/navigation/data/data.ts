@@ -84,9 +84,14 @@ const stateArray: any = reactive({
   navResult: []
 })
 
-// export async function formNull {
-//   for (let key in formState) {
-//     formState[key] = ''
-//   }
-// }
+export async function formNull() {
+  formState.id = 0
+  formState.title = 'title'
+  formState.describe = 'describe'
+  formState.img = ''
+  formState.typeId = 3
+  formState.userId = 0
+  formState.url = 'www.xxx.com'
+}
+
 export { columns, resData, formState, stateArray }

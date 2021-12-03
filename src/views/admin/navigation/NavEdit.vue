@@ -17,7 +17,10 @@ const onSubmit = async () => {
     Routers('/Admin-index/NavTable')
   })
 }
-async function GetAll() {
+async function GetApi() {
+  await TOKEN()
+  navName.name = '内容分享'
+  navName.name2 = '编辑内容'
   navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
     stateArray.navResult = res.data
   })
@@ -32,11 +35,9 @@ async function GetAll() {
     formState.url = res.data.url
   })
 }
+
 onMounted(async () => {
-  await GetAll()
-  await TOKEN()
-  navName.name = '内容分享'
-  navName.name2 = '编辑内容'
+  await GetApi()
 })
 </script>
 

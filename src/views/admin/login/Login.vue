@@ -63,7 +63,7 @@ onMounted(async () => {
   box-sizing: border-box;
   width: 400px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(14, 1, 1, 0.5);
   border-radius: 10px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   transform: translate(-50%, -50%);
@@ -88,7 +88,7 @@ onMounted(async () => {
   font-size: 16px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgb(224, 188, 188);
   outline: none;
 }
 
@@ -129,7 +129,7 @@ onMounted(async () => {
   color: #fff;
   background: #c8dcdd;
   border-radius: 5px;
-  // box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
+  //box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
 }
 
 .login-box a span {

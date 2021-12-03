@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write .",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
