@@ -8,8 +8,7 @@ class tool {
    * 回到顶部
    */
   static BackTop() {
-    // eslint-disable-next-line func-names
-    const timer = setInterval(function () {
+    const timer = setInterval(function xx() {
       const osTop = document.documentElement.scrollTop || document.body.scrollTop
       const isPeed = Math.floor(-osTop / 5)
       document.body.scrollTop = osTop + isPeed

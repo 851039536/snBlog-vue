@@ -6,16 +6,31 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import eslintPlugin from 'vite-plugin-eslint'
 import { VitePWA } from 'vite-plugin-pwa'
 import WindiCSS from 'vite-plugin-windicss'
+import viteCompression from 'vite-plugin-compression'
+import { injectHtml } from 'vite-plugin-html'
 
 export default defineConfig({
   plugins: [
     vue(),
     VitePWA(),
     WindiCSS(),
+    injectHtml({
+      injectData: {
+        title: '少年的博客!'
+      }
+    }),
     Components({
       dts: true, // ts支持
       dirs: ['src/components', 'src/views'], // 自定义路径按需导入
       resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
+    }),
+    // gzip压缩 生产环境生成 .gz 文件
+    viteCompression({
+      verbose: true,
+      disable: false,
+      threshold: 10240,
+      algorithm: 'gzip',
+      ext: '.gz'
     }),
     eslintPlugin()
   ],
