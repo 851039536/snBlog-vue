@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue'
 import { one } from '@/api/index'
 
 interface State {

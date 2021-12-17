@@ -19,6 +19,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'vue/no-v-model-argument': 'off',
     'no-restricted-syntax': 0,
+    // 'no-unused-vars': 'off',
     'no-param-reassign': [
       'error',
       {
@@ -30,13 +31,25 @@ module.exports = {
           'request', // for Express requests
           'res', // for Express responses
           'response', // for Express responses
-          'state' // for vuex state
+          'state' // for vuex state,
         ]
       }
     ]
   },
   globals: {
     defineProps: true,
-    defineEmits: true
+    defineEmits: true,
+    onMounted: true,
+    reactive: true,
+    defineAsyncComponent: true,
+    useRoute: true,
+    useRouter: true,
+    axios: true,
+    ref: true,
+    getCurrentInstance: true,
+    onBeforeUpdate: true,
+    inject: true,
+    nextTick: true,
+    provide: true
   }
 }

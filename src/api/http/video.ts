@@ -9,10 +9,15 @@ export class video {
    * @returns
    */
   static async GetCountAsync(identity: number, type: string, cache: boolean) {
-    return request({
-      url: `/api/SnVideo/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnVideo/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -23,17 +28,27 @@ export class video {
    * @returns
    */
   static GetTypeAsync(identity: number, type: string, cache: boolean) {
-    return request({
-      url: `/api/SnVideo/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnVideo/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   static async AsyGestTest() {
-    return request({
-      url: '/api/SnVideoType/AsyGestTest',
-      method: 'get'
-    })
+    return request(
+      {
+        url: '/api/SnVideoType/AsyGestTest',
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -43,10 +58,15 @@ export class video {
    * @returns
    */
   static async GetByIdAsync(id: any, cache: boolean) {
-    return request({
-      url: `/api/SnVideo/GetByIdAsync?id=${id}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnVideo/GetByIdAsync?id=${id}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -69,9 +89,14 @@ export class video {
     isDesc: boolean,
     cache: boolean
   ) {
-    return request({
-      url: `/api/SnVideo/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnVideo/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 }

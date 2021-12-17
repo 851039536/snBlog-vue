@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
 import { leave } from '@/api/index'
 
 const state: any = reactive({

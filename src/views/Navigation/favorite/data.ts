@@ -1,5 +1,3 @@
-import { reactive } from 'vue'
-
 interface ResData {
   text: any
   type: any

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
-
 const state: any = reactive({
   date: '',
   time: ''

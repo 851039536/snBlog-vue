@@ -931,6 +931,11 @@
   "resolved" "https://registry.npm.taobao.org/@ctrl/tinycolor/download/@ctrl/tinycolor-3.4.0.tgz?cache=0&sync_timestamp=1612895880147&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ctrl%2Ftinycolor%2Fdownload%2F%40ctrl%2Ftinycolor-3.4.0.tgz"
   "version" "3.4.0"
 
+"@cush/relative@^1.0.0":
+  "integrity" "sha1-jNF2m/m947sn2sNWsbyUr0D2zBY="
+  "resolved" "https://registry.npm.taobao.org/@cush/relative/download/@cush/relative-1.0.0.tgz"
+  "version" "1.0.0"
+
 "@emmetio/abbreviation@^2.2.2":
   "integrity" "sha1-dGdi/Z56jC6mBPWAxi48/iUOaYk="
   "resolved" "https://registry.nlark.com/@emmetio/abbreviation/download/@emmetio/abbreviation-2.2.2.tgz"
@@ -1471,7 +1476,7 @@
     "toml" "^3.0.0"
     "upath" "^1.1.0"
 
-"@vueuse/core@^7.1.2":
+"@vueuse/core@*", "@vueuse/core@^7.1.2":
   "integrity" "sha512-SLoOPfhZdNRNUkZfx+wrHj6WycWdSw2RmNS8E4ngQ2kmBoJjRarGy51/GkGdjqHQqmhuwuFoNO2WaU0yBn3ffg=="
   "resolved" "https://registry.npmmirror.com/@vueuse/core/download/@vueuse/core-7.1.2.tgz"
   "version" "7.1.2"
@@ -3736,6 +3741,11 @@
   dependencies:
     "is-glob" "^4.0.3"
 
+"glob-regex@^0.3.0":
+  "integrity" "sha1-JzSPL2BkjsMqSlMTcJC5+5NPNCU="
+  "resolved" "https://registry.npm.taobao.org/glob-regex/download/glob-regex-0.3.2.tgz"
+  "version" "0.3.2"
+
 "glob-to-regexp@^0.3.0":
   "integrity" "sha1-jFoUlNIGbFcMw7/kSWF1rMTVAqs="
   "resolved" "https://registry.nlark.com/glob-to-regexp/download/glob-to-regexp-0.3.0.tgz"
@@ -3795,6 +3805,11 @@
     "ignore" "^4.0.3"
     "pify" "^4.0.1"
     "slash" "^2.0.0"
+
+"globrex@^0.1.2":
+  "integrity" "sha1-3V2eyCYjJzDNZ5Ol4zqTApheYJg="
+  "resolved" "https://registry.npm.taobao.org/globrex/download/globrex-0.1.2.tgz"
+  "version" "0.1.2"
 
 "graceful-fs@^4.1.2", "graceful-fs@^4.1.6", "graceful-fs@^4.2.0", "graceful-fs@^4.2.4":
   "integrity" "sha1-5BK40z9eAGWTy9PO5t+fLOu+gCo="
@@ -4561,6 +4576,13 @@
   dependencies:
     "mlly" "^0.2.2"
 
+"local-pkg@^0.4.0":
+  "integrity" "sha1-5iIRcYE9WggS3YT6gP+xyPzABTE="
+  "resolved" "https://registry.npmmirror.com/local-pkg/download/local-pkg-0.4.0.tgz"
+  "version" "0.4.0"
+  dependencies:
+    "mlly" "^0.2.2"
+
 "locate-path@^2.0.0":
   "integrity" "sha1-K1aLJl7slExtnA3pw9u7ygNUzY4="
   "resolved" "https://registry.nlark.com/locate-path/download/locate-path-2.0.0.tgz?cache=0&sync_timestamp=1629895618224&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flocate-path%2Fdownload%2Flocate-path-2.0.0.tgz"
@@ -5309,6 +5331,16 @@
   dependencies:
     "picomatch" "^2.2.1"
 
+"recrawl-sync@^2.0.3":
+  "integrity" "sha1-ywLICEwis86hA6v0a7iHNAdu1rs="
+  "resolved" "https://registry.nlark.com/recrawl-sync/download/recrawl-sync-2.2.1.tgz"
+  "version" "2.2.1"
+  dependencies:
+    "@cush/relative" "^1.0.0"
+    "glob-regex" "^0.3.0"
+    "slash" "^3.0.0"
+    "tslib" "^1.9.3"
+
 "regenerate-unicode-properties@^9.0.0":
   "integrity" "sha1-VNCccRXh9T3CMUqXSzLBw0Tv4yY="
   "resolved" "https://registry.nlark.com/regenerate-unicode-properties/download/regenerate-unicode-properties-9.0.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fregenerate-unicode-properties%2Fdownload%2Fregenerate-unicode-properties-9.0.0.tgz"
@@ -6013,7 +6045,7 @@
   dependencies:
     "punycode" "^2.1.0"
 
-"tsconfig-paths@^3.11.0":
+"tsconfig-paths@^3.11.0", "tsconfig-paths@^3.9.0":
   "integrity" "sha512-e5adrnOYT6zqVnWqZu7i/BQ3BnhzvGbjEjejFXO20lKIKpwTaupkCPgEfv4GZK1IBciJUEhYs3J3p75FdaTFVg=="
   "resolved" "https://registry.npmmirror.com/tsconfig-paths/download/tsconfig-paths-3.12.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftsconfig-paths%2Fdownload%2Ftsconfig-paths-3.12.0.tgz"
   "version" "3.12.0"
@@ -6024,6 +6056,11 @@
     "strip-bom" "^3.0.0"
 
 "tslib@^1.8.1":
+  "integrity" "sha1-zy04vcNKE0vK8QkcQfZhni9nLQA="
+  "resolved" "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz"
+  "version" "1.14.1"
+
+"tslib@^1.9.3":
   "integrity" "sha1-zy04vcNKE0vK8QkcQfZhni9nLQA="
   "resolved" "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1628722556410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz"
   "version" "1.14.1"
@@ -6127,6 +6164,18 @@
   "resolved" "https://registry.npm.taobao.org/universalify/download/universalify-2.0.0.tgz?cache=0&sync_timestamp=1603179967633&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Funiversalify%2Fdownload%2Funiversalify-2.0.0.tgz"
   "version" "2.0.0"
 
+"unplugin-auto-import@^0.5.3":
+  "integrity" "sha512-jXs0rnKTS+/TyXOild6RkVp73yz1DeLXVJWR6VRn+oageEsvHgW6zofvc2BmpAm/pTSANxZ48kLi12wOa/iwdw=="
+  "resolved" "https://registry.npmmirror.com/unplugin-auto-import/download/unplugin-auto-import-0.5.3.tgz"
+  "version" "0.5.3"
+  dependencies:
+    "@antfu/utils" "^0.3.0"
+    "@rollup/pluginutils" "^4.1.1"
+    "local-pkg" "^0.4.0"
+    "magic-string" "^0.25.7"
+    "resolve" "^1.20.0"
+    "unplugin" "^0.2.21"
+
 "unplugin-vue-components@^0.17.2":
   "integrity" "sha1-235mn6w8w2uHugVvY+LqpHp/G5s="
   "resolved" "https://registry.npmmirror.com/unplugin-vue-components/download/unplugin-vue-components-0.17.2.tgz"
@@ -6143,7 +6192,7 @@
     "resolve" "^1.20.0"
     "unplugin" "^0.2.13"
 
-"unplugin@^0.2.13":
+"unplugin@^0.2.13", "unplugin@^0.2.21":
   "integrity" "sha512-IJ15/L5XbhnV7J09Zjk0FT5HEkBjkXucWAXQWRsmEtUxmmxwh23yavrmDbCF6ZPxWiVB28+wnKIHePTRRpQPbQ=="
   "resolved" "https://registry.npmmirror.com/unplugin/download/unplugin-0.2.21.tgz?cache=0&sync_timestamp=1636878373530&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Funplugin%2Fdownload%2Funplugin-0.2.21.tgz"
   "version" "0.2.21"
@@ -6262,7 +6311,17 @@
     "kolorist" "^1.5.0"
     "windicss" "^3.2.1"
 
-"vite@^2.0.0", "vite@^2.0.1", "vite@^2.3.0", "vite@^2.5.10", "vite@^2.6.14", "vite@^2.6.4", "vite@>=2.0.0":
+"vite-tsconfig-paths@^3.3.17":
+  "integrity" "sha1-sUIcSgHmtEa3jMHdEtRfMCvDons="
+  "resolved" "https://registry.npmmirror.com/vite-tsconfig-paths/download/vite-tsconfig-paths-3.3.17.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fvite-tsconfig-paths%2Fdownload%2Fvite-tsconfig-paths-3.3.17.tgz"
+  "version" "3.3.17"
+  dependencies:
+    "debug" "^4.1.1"
+    "globrex" "^0.1.2"
+    "recrawl-sync" "^2.0.3"
+    "tsconfig-paths" "^3.9.0"
+
+"vite@^2.0.0", "vite@^2.0.1", "vite@^2.3.0", "vite@^2.5.10", "vite@^2.6.14", "vite@^2.6.4", "vite@>=2.0.0", "vite@>2.0.0-0":
   "integrity" "sha512-2HA9xGyi+EhY2MXo0+A2dRsqsAG3eFNEVIo12olkWhOmc8LfiM+eMdrXf+Ruje9gdXgvSqjLI9freec1RUM5EA=="
   "resolved" "https://registry.npmmirror.com/vite/download/vite-2.6.14.tgz"
   "version" "2.6.14"

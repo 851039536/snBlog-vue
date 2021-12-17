@@ -9,17 +9,27 @@ class interfaces {
    * @param {boolean} cache 缓存
    */
   static async GetTypeAsync(identity: number, users: string, type: string, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnInterface/GetTypeAsync?identity=${identity}&users=${users}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnInterface/GetTypeAsync?identity=${identity}&users=${users}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   static async GetAllAsync(cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnInterface/GetAllAsync?cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnInterface/GetAllAsync?cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 }
 

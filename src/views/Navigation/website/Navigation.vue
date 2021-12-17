@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { navigation } from '@/api/index'
 import { winUrl } from '@/hooks/routers'
 import { state } from './data'

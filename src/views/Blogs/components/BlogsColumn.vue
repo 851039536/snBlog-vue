@@ -11,8 +11,11 @@ async function currentchange(val: number) {
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
-method.GetCount()
-method.GetFy()
+
+onMounted(async () => {
+  method.GetCount()
+  method.GetFy()
+})
 </script>
 
 <template>

@@ -1,4 +1,3 @@
-import { reactive } from 'vue'
 import { IntArticle } from '@/api/data/interData'
 
 interface State {

@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { resData, method } from './index'
 
-method.GetType()
+onMounted(async () => {
+  await method.GetType()
+})
 </script>
 <template>
   <div id="raside">

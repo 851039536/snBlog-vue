@@ -18,10 +18,15 @@ import { interfaces } from './http/interfaces'
  * @return {*}
  */
 async function TOKEN() {
-  return request({
-    url: '/api/AngleSharp/TOKEN',
-    method: 'get'
-  })
+  return request(
+    {
+      url: '/api/AngleSharp/TOKEN',
+      method: 'get'
+    },
+    {
+      qiXiao_cancel: false
+    }
+  )
 }
 
 export { article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces }

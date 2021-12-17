@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 

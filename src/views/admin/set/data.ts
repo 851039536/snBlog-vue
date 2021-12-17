@@ -1,13 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-10-18 16:19:58
- * @LastEditTime: 2021-11-04 08:24:15
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \blogs-s\src\views\admin\index\data.ts
- */
-
-import { reactive } from 'vue'
 import { IntArticle } from '@/api/data/interData'
 
 interface State {

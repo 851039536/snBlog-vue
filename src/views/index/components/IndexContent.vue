@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { reactive, defineAsyncComponent } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { article } from '@/api/index'
 import { tool } from '@/utils/common/tool'
 import { state, method } from '../data/content'

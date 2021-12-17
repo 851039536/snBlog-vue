@@ -10,10 +10,15 @@ export class navigation {
    * @returns
    */
   static async GetCountAsync(identity: number, type: string, chche: boolean) {
-    return request({
-      url: `/api/SnNavigation/GetCountAsync?identity=${identity}&type=${type}&cache=${chche}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnNavigation/GetCountAsync?identity=${identity}&type=${type}&cache=${chche}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -24,10 +29,15 @@ export class navigation {
    * @param chche 缓存
    */
   static async GetContainsAsync(identity: number, type: string, name: string, chche: boolean): Promise<any> {
-    return request({
-      url: `/api/SnNavigation/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${chche}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnNavigation/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${chche}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -37,10 +47,15 @@ export class navigation {
    * @param cache 缓存
    */
   static async GetTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnNavigation/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnNavigation/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -49,10 +64,15 @@ export class navigation {
    * @param cache 缓存
    */
   static async GetByIdAsync(id: any, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnNavigation/GetByIdAsync?id=${id}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnNavigation/GetByIdAsync?id=${id}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -74,10 +94,15 @@ export class navigation {
     isDesc: boolean,
     cache: boolean
   ) {
-    return request({
-      url: `/api/SnNavigation/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnNavigation/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -85,11 +110,16 @@ export class navigation {
    * @param {any} dataResult
    */
   static async AddAsync(dataResult: IntNav) {
-    return request({
-      url: '/api/SnNavigation/AddAsync',
-      method: 'post',
-      data: dataResult
-    })
+    return request(
+      {
+        url: '/api/SnNavigation/AddAsync',
+        method: 'post',
+        data: dataResult
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -97,11 +127,16 @@ export class navigation {
    * @param {IntArticle} resultData
    */
   static async UpdateAsync(resultData: IntNav) {
-    return request({
-      url: '/api/SnNavigation/UpdateAsync',
-      method: 'put',
-      data: resultData
-    })
+    return request(
+      {
+        url: '/api/SnNavigation/UpdateAsync',
+        method: 'put',
+        data: resultData
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -110,10 +145,15 @@ export class navigation {
    * @return {*}
    */
   static async DeleteAsync(id: number) {
-    return request({
-      url: `/api/SnNavigation/DeleteAsync?id=${id}`,
-      method: 'delete'
-    })
+    return request(
+      {
+        url: `/api/SnNavigation/DeleteAsync?id=${id}`,
+        method: 'delete'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   // ==================分类===========================
@@ -122,9 +162,14 @@ export class navigation {
    * @description: 查询分类内容
    */
   static async GetSnNavigationTypeSAllAsync(cache: boolean) {
-    return request({
-      url: `/api/SnNavigationType/GetAllAsync?cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnNavigationType/GetAllAsync?cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 }

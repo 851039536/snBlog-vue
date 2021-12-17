@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
 import { navigation } from '@/api/index'
 import { method } from './index'
 

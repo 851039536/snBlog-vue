@@ -1,5 +1,3 @@
-import { reactive } from 'vue'
-
 interface State {
   resultData: any
   page: number

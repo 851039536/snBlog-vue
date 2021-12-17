@@ -53,6 +53,7 @@ const app = createApp(App)
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/blog/${name}`, import.meta.url).href
 }
+
 app.use(lazyPlugin, {
   loading: getImageUrl('2.jpg'),
   error: getImageUrl('1.jpg')

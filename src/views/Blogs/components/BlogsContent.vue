@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { reactive, defineAsyncComponent } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 import { article } from '@/api/index'
 import { tool } from '@/utils/common/tool'
 import { state, method } from '../data/content'
@@ -8,7 +6,6 @@ import { state, method } from '../data/content'
 const VmdContent = defineAsyncComponent(() => import('@/components/editor/VmdContent.vue'))
 const route = useRoute()
 const router = useRouter()
-
 const roId: any = reactive({
   id: route.query.id
 })
@@ -24,8 +21,10 @@ const GetApi = async () => {
     state.spinning = false
   })
 }
-GetApi()
-tool.BackTop()
+onMounted(async () => {
+  await GetApi()
+  await tool.BackTop()
+})
 </script>
 
 <template>

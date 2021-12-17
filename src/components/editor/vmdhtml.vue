@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { reactive, onMounted, ref, getCurrentInstance } from 'vue'
 import { article } from '@/api/index'
 
 const route = useRoute()

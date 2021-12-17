@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue'
-import { nextTick, provide, reactive } from 'vue'
 import { message } from 'ant-design-vue'
 import { useStore } from 'vuex'
 import { Routers } from '@/hooks/routers'

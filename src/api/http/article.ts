@@ -10,10 +10,15 @@ class article {
    * @param {boolean} cache
    */
   static GetCountAsync(identity: number, type: string, cache: boolean) {
-    return request({
-      url: `/api/SnArticle/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnArticle/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -24,10 +29,15 @@ class article {
    * @param cache 缓存
    */
   static async GetContainsAsync(identity: number, type: string, name: string, cache: boolean) {
-    const res = await request({
-      url: `/api/SnArticle/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
-      method: 'get'
-    })
+    const res = await request(
+      {
+        url: `/api/SnArticle/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
     tool.MomentTimeList(res)
     return res
   }
@@ -38,10 +48,15 @@ class article {
    * @param {boolean} cache
    */
   static async GetByIdAsync(id: number, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnArticle/GetByIdAsync?id=${id}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnArticle/GetByIdAsync?id=${id}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -52,10 +67,15 @@ class article {
    * @returns
    */
   static async GetTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnArticle/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnArticle/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -66,10 +86,15 @@ class article {
    * @param cache 缓存
    */
   static async GetSumAsync(identity: number, type: number, name: string, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnArticle/GetSumAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnArticle/GetSumAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -91,10 +116,15 @@ class article {
     isDesc: boolean,
     cache: boolean
   ) {
-    const res = await request({
-      url: `/api/SnArticle/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
-      method: 'get'
-    })
+    const res = await request(
+      {
+        url: `/api/SnArticle/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
     await tool.MomentTimeList(res)
     return res
   }
@@ -105,12 +135,17 @@ class article {
    * @param {string} type
    */
   static async UpdatePortionAsync(resultData: any, type: string): Promise<any> {
-    return request({
-      // 更新
-      url: `/api/SnArticle/UpdatePortionAsync?type=${type}`,
-      method: 'put',
-      data: resultData
-    })
+    return request(
+      {
+        // 更新
+        url: `/api/SnArticle/UpdatePortionAsync?type=${type}`,
+        method: 'put',
+        data: resultData
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -118,11 +153,16 @@ class article {
    * @param {any} resultData
    */
   static async AddAsync(resultData: IntArticle) {
-    return request({
-      url: '/api/SnArticle/AddAsync',
-      method: 'post',
-      data: resultData
-    })
+    return request(
+      {
+        url: '/api/SnArticle/AddAsync',
+        method: 'post',
+        data: resultData
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -130,11 +170,16 @@ class article {
    * @param {IntArticle} resultData
    */
   static async UpdateAsync(resultData: IntArticle) {
-    return request({
-      url: '/api/SnArticle/UpdateAsync',
-      method: 'put',
-      data: resultData
-    })
+    return request(
+      {
+        url: '/api/SnArticle/UpdateAsync',
+        method: 'put',
+        data: resultData
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -143,10 +188,15 @@ class article {
    * @return {*}
    */
   static async DeleteAsync(id: number) {
-    return request({
-      url: `/api/SnArticle/DeleteAsync?id=${id}`,
-      method: 'delete'
-    })
+    return request(
+      {
+        url: `/api/SnArticle/DeleteAsync?id=${id}`,
+        method: 'delete'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 }
 

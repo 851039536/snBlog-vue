@@ -23,7 +23,9 @@ const GetApi = async () => {
   resData.readCount = String(resData.readCount)
 }
 
-GetApi()
+onMounted(async () => {
+  await GetApi()
+})
 </script>
 
 <template>

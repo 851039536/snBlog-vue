@@ -1,4 +1,3 @@
-import { reactive } from 'vue'
 import { article } from '@/api'
 
 interface FyData {

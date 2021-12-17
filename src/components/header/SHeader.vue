@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted } from 'vue'
 import { resData, method } from './data/header'
 
 onMounted(async () => {

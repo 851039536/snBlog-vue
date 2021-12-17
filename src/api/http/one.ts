@@ -9,28 +9,43 @@ export class one {
    * @returns
    */
   static async CountAsync(identity: number, type: string, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnOne/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnOne/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   // 统计 text:内容字段数-read:阅读数量-give:点赞数量
   static async GetSumAsync(type: string): Promise<any> {
-    return request({
-      url: `/api/SnOne/GetSumAsync?type=${type}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnOne/GetSumAsync?type=${type}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   // 更新部分列[give read]
   static async UpdatePortionAsync(result: any, type: string): Promise<any> {
-    return request({
-      // 更新
-      url: `/api/SnOne/UpdatePortionAsync?type=${type}`,
-      method: 'put',
-      data: result
-    })
+    return request(
+      {
+        // 更新
+        url: `/api/SnOne/UpdatePortionAsync?type=${type}`,
+        method: 'put',
+        data: result
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -53,10 +68,15 @@ export class one {
     isDesc: boolean,
     cache: boolean
   ): Promise<any> {
-    return request({
-      url: `/api/SnOne/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnOne/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   /**
@@ -65,18 +85,28 @@ export class one {
    * @param cache 缓存
    */
   static async GetByIdAsync(id: number, cache: boolean): Promise<any> {
-    return request({
-      url: `/api/SnOne/GetByIdAsync?id=${id}&cache=${cache}`,
-      method: 'get'
-    })
+    return request(
+      {
+        url: `/api/SnOne/GetByIdAsync?id=${id}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 
   // 查询one副表
   // 查询所有
   static async GetOneTypeAllAsync(): Promise<any> {
-    return request({
-      url: '/api/SnOneType/GetAllAsync',
-      method: 'get'
-    })
+    return request(
+      {
+        url: '/api/SnOneType/GetAllAsync',
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
   }
 }

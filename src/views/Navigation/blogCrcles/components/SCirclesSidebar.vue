@@ -32,7 +32,6 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
 import { navigation } from '@/api/index'
 
 interface State {

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { onBeforeUpdate, reactive } from 'vue'
-
 // v-model 不能直接修改
 const props = defineProps<{
   result: any

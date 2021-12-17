@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, reactive } from 'vue'
 import { message } from 'ant-design-vue'
 import { labels, article, sort, TOKEN } from '@/api'
 import { formState, state } from './data'

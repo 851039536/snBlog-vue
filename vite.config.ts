@@ -8,16 +8,31 @@ import { VitePWA } from 'vite-plugin-pwa'
 import WindiCSS from 'vite-plugin-windicss'
 import viteCompression from 'vite-plugin-compression'
 import { injectHtml } from 'vite-plugin-html'
+import AutoImport from 'unplugin-auto-import/vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   plugins: [
     vue(),
     VitePWA(),
     WindiCSS(),
+    tsconfigPaths(),
     injectHtml({
       injectData: {
         title: '少年的博客!'
       }
+    }),
+    AutoImport({
+      // global imports to register
+      imports: [
+        'vue',
+        'vue-router',
+        {
+          axios: [
+            ['default', 'axios'] // import { default as axios } from 'axios',
+          ]
+        }
+      ]
     }),
     Components({
       dts: true, // ts支持
@@ -54,7 +69,7 @@ export default defineConfig({
       // less: {},
       scss: {
         // 避免出现: build时的 @charset 必须在第一行的警告
-        charset: false,
+        charset: true,
         additionalData: '@import "./src/design/methodCss.scss";'
       }
     }
@@ -65,6 +80,15 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true
+      }
+    },
+    // 拆分打包的配置方法
+    assetsDir: 'static/img/',
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'static/js/[name]-[hash].js',
+        entryFileNames: 'static/js/[name]-[hash].js',
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
       }
     }
   }

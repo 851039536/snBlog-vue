@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, reactive } from 'vue'
 import { resData } from './data'
 import { method } from './index'
 import { winUrl } from '@/hooks/routers'

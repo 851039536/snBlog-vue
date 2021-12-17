@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { reactive, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
 import { article, labels } from '@/api'
 import { resData } from './data/data'
 

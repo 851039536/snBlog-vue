@@ -1,5 +1,3 @@
-import { reactive } from 'vue'
-
 interface ResData {
   resultData?: any
   arrayLabel?: any

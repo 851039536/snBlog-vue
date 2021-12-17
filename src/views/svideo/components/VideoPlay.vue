@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
-import { useRoute } from 'vue-router'
 import { video } from '@/api'
 
 const route = useRoute()

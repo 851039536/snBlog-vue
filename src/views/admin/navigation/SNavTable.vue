@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onMounted, inject } from 'vue'
 import { message } from 'ant-design-vue'
 import { columns, resData } from './data/data'
 import { navigation } from '@/api'
