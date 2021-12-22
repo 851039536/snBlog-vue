@@ -12,7 +12,7 @@ const onSubmit = async () => {
     id: storage.get('userId')
   })
   formState.userId = res
-  formState.img = `blog/${await tool.Random(1, 5, 1)}.jpg`
+  formState.img = `blog/${tool.Random(1, 5, 1)}.jpg`
   await article.AddAsync(formState).then(() => {
     message.info('添加成功')
     Routers('/Admin-index/ArticleTable')

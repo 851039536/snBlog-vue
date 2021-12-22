@@ -15,7 +15,6 @@
     "ant-design-vue": "^2.2.8",
     "axios": "^0.24.0",
     "highlight.js": "^11.3.1",
-    "marked": "^4.0.5",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "qs": "^6.10.1",

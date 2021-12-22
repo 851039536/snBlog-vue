@@ -47,7 +47,9 @@ export default defineConfig({
       algorithm: 'gzip',
       ext: '.gz'
     }),
-    eslintPlugin()
+    eslintPlugin({
+      cache: false // 关闭缓存
+    })
   ],
   resolve: {
     extensions: ['.vue', '.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.node', '.scss'],

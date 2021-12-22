@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
 import BlogHome from '@/components/home/SHome.vue'
-import { clearPending } from '@/utils/http/pending'
 
 const routes = [
   {
@@ -253,11 +252,7 @@ const router = createRouter({
 })
 // 页面切换之前取消上一个路由中未完成的请求
 router.beforeEach((_to, _from, next) => {
-  console.log('%c [ _to ]-259', 'font-size:13px; background:pink; color:#bf2c9f;', _to)
   NProgress.start()
-  if (_to.name !== 'Login') {
-    clearPending()
-  }
   next()
 })
 router.afterEach(() => {

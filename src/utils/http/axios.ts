@@ -31,11 +31,17 @@ function myAxios(axiosConfig: any, customOptions: any) {
   service.interceptors.request.use(
     function request(req: any) {
       removePending(req) // 在请求开始前，对之前的请求做检查取消操作
-      if (qiXiao.qiXiao_cancel) {
-        addPending(req) // 将当前请求添加到 pending 中
-      }
-      if (req.method === 'post' || req.method === 'put' || req.method === 'delete') {
-        // 序列化
+      // if (qiXiao.qiXiao_cancel) {
+      //   addPending(req) // 将当前请求添加到 pending 中
+      // }
+
+      // eslint-disable-next-line no-unused-expressions
+      qiXiao.qiXiao_cancel && addPending(req)
+      // if (req.method === 'post' || req.method === 'put' || req.method === 'delete') {
+      // 序列化
+      //   req.data = qs.parse(req.data)
+      // }
+      if (['post', 'put', 'delte'].includes(req.method)) {
         req.data = qs.parse(req.data)
       }
       // 若是有做鉴权token , 就给头部带上token
@@ -53,7 +59,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
   service.interceptors.response.use(
     function response(res) {
       resData.show = true
-      // removePending(res) // 在请求结束后，移除本次请求
+      removePending(res) // 在请求结束后，移除本次请求
       if (res.status === 200 || res.status === 204) {
         setTimeout(() => {
           resData.show = false

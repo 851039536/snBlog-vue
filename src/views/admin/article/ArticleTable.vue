@@ -28,19 +28,24 @@ async function GetContains(name: string) {
 }
 async function GetTag() {
   message.info(state.labelStr)
-  if (state.labelStr === 'ALL') {
-    state.dataResult = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
-  } else {
-    state.dataResult = await article.GetFyAsync(
-      4,
-      `${state.labelStr},${storage.get('user')}`,
-      1,
-      1000,
-      'id',
-      true,
-      false
-    )
-  }
+  // if (state.labelStr === 'ALL') {
+  //   state.dataResult = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
+  // } else {
+  //   state.dataResult = await article.GetFyAsync(
+  //     4,
+  //     `${state.labelStr},${storage.get('user')}`,
+  //     1,
+  //     1000,
+  //     'id',
+  //     true,
+  //     false
+  //   )
+  // }
+
+  state.dataResult =
+    state.labelStr === 'ALL'
+      ? await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
+      : await article.GetFyAsync(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
 }
 async function Ordering() {
   if (state.order) {

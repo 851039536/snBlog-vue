@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { IntSort } from '../../../api/data/interData'
+import { IntSort } from '@/api/data/interData'
 import { RouterId } from '@/hooks/routers'
 
 defineProps({

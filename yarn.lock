@@ -4723,11 +4723,6 @@
     "mdurl" "^1.0.1"
     "uc.micro" "^1.0.5"
 
-"marked@^4.0.5":
-  "integrity" "sha512-eUToMA5d5lunnipkCN7zFD0RiunCF2Uo6bImEt/Qx8LZMW7oPXTw7R+f+M5V3eS7164HjEDPfW8/TrefuFhDfw=="
-  "resolved" "https://registry.npmmirror.com/marked/download/marked-4.0.5.tgz"
-  "version" "4.0.5"
-
 "mdurl@^1.0.1":
   "integrity" "sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4="
   "resolved" "https://registry.nlark.com/mdurl/download/mdurl-1.0.1.tgz"
