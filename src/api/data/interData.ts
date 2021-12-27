@@ -78,4 +78,23 @@ export interface IntInterface {
   identity: number
 }
 
-export type { IntVideo, IntLabels, IntArticle, IntNav }
+interface IntOne {
+  id: number
+  title: string
+  text: string
+  img: string
+  typeId: number
+  read: number
+  give: number
+  userId: number
+  commentId: number
+  timeCreate: any
+  timeModified: any
+}
+
+interface IntOneType {
+  id: number
+  title: number
+}
+
+export type { IntVideo, IntLabels, IntArticle, IntNav, IntOne, IntOneType }

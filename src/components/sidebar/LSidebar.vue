@@ -35,7 +35,6 @@ onMounted(async () => {
   @apply fixed shadow rounded-md;
   @include w-h(20%, 100%);
   @include excursion($Text_height, null, 3%, null);
-  background-color: $back_sidebar;
   .raside-main {
     @apply h-4/5 overflow-auto;
 
@@ -43,7 +42,7 @@ onMounted(async () => {
       img {
         @include w-h(100%, 144px);
 
-        @apply rounded-md;
+        @apply rounded;
       }
     }
 

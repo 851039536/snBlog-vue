@@ -14,14 +14,14 @@ onMounted(async () => {
         </div>
         <div class="header_text">
           <div v-for="res in resData.resultData" :key="res.id">
-            <a @click="method.skip(res.path)" v-if="res.identity">{{ res.title }}</a>
+            <span @click="method.skip(res.path)" v-if="res.identity">{{ res.title }}</span>
           </div>
         </div>
       </div>
       <div class="header_text_1">
         <div class="header-text-r-1">
-          <a @click="method.skip(13)" v-once>博客园</a>
-          <a @click="method.skip(14)" v-once>Login</a>
+          <span @click="method.skip(13)" v-once>博客园</span>
+          <span @click="method.skip(14)" v-once>Login</span>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .headers {
-  @apply flex fixed  p-1;
+  @apply flex fixed  p-1 z-50;
   @include excursion(0, null, 3%, null);
   @include w-h(94%, 53px);
   @apply shadow-sm rounded-sm bg-white;
@@ -41,7 +41,7 @@ onMounted(async () => {
   .header_main {
     width: 90%;
 
-    @apply flex h-full text-lg;
+    @apply flex h-full;
 
     .header-title {
       @apply flex items-center flex-shrink-0 h-full;
@@ -50,8 +50,8 @@ onMounted(async () => {
     .header_text {
       @apply w-full flex items-center flex-shrink-0;
 
-      a {
-        @apply ml-3 text-gray-800;
+      span {
+        @apply ml-3 text-xl cursor-pointer;
       }
     }
   }
@@ -64,8 +64,8 @@ onMounted(async () => {
     .header-text-r-1 {
       @apply flex items-center flex-shrink-0;
 
-      a {
-        @apply m-1 text-gray-800;
+      span {
+        @apply m-1 text-xl cursor-pointer;
       }
     }
   }

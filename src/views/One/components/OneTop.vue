@@ -16,14 +16,9 @@ defineProps({
     </div>
     <div class="One-top-text">
       <div class="One-top-text-title">
-        <a class="text-lg">舔王:{{ title }}</a>
+        <span class="text-lg text-gray-600">舔王:{{ title }}</span>
       </div>
       <div class="One-top-give">{{ text }}</div>
-
-      <div class="flex flex-row-reverse One-top-give-div">
-        <div>转载</div>
-        <div>点赞({{ read }})</div>
-      </div>
     </div>
   </div>
 </template>
@@ -55,20 +50,8 @@ defineProps({
 
     .One-top-give {
       height: 55%;
-
       @include line-numbers(5);
-
-      @apply m-1  px-4 py-4 font-thin leading-loose tracking-wide text-center shadow-2xl;
-    }
-
-    .One-top-give-div {
-      @apply m-1 cursor-pointer;
-
-      height: 17%;
-
-      div {
-        @apply px-2 py-2 m-1 text-center text-gray-700;
-      }
+      @apply m-1  px-4 py-4  text-base font-thin leading-loose tracking-wide text-center shadow-2xl;
     }
   }
 }

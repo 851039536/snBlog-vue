@@ -40,12 +40,12 @@ defineProps({
 .statistics {
   width: 97%;
 
-  @apply p-1 mb-2 shadow rounded m-auto cursor-pointer;
+  @apply m-auto p-1 mb-2 shadow rounded;
   @apply bg-white;
 
   .title {
     @apply p-1 m-1;
-    @apply text-gray-900 text-base font-semibold bg-gray-200;
+    @apply text-base font-semibold bg-gray-200;
   }
 
   .content {

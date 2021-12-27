@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store/pinia'
 import { Routers } from '@/hooks/routers'
 import { storage } from '@/utils/storage/storage'
 import { navName } from '../utils/data'
 
-const store = useStore()
+const store = useAppStore()
 function zx() {
   storage.remove('token')
   if (storage.get('token') === 'token') {
@@ -61,7 +61,7 @@ provide('reload', reload)
           <li><a href="#about" @click="zx()">注销</a></li>
           <li>
             <a href="#contact"
-              ><a-avatar>{{ store.state.Roles }}</a-avatar></a
+              ><a-avatar>{{ store.roles }}</a-avatar></a
             >
           </li>
         </ul>

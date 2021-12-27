@@ -81,30 +81,18 @@ onMounted(async () => {
   .blogs-sidebar_main {
     @include w-h;
 
-    .blogs-sidebar_count {
-      @apply p-1 mb-2 m-auto shadow rounded;
-
-      width: 97%;
-
-      @apply bg-white cursor-pointer;
-    }
-
     .blogs-sidebar_input {
-      @apply flex p-2 mt-1 mb-2 shadow rounded m-auto;
-
+      @apply flex m-auto p-2 mt-1 mb-2 shadow rounded;
       width: 97%;
-
       @apply bg-white;
 
       div > input {
         @apply ml-1 rounded bg-gray-100;
-
         height: 30px;
       }
 
       div > button {
         @apply text-base font-medium ml-3;
-
         height: 30px;
       }
     }

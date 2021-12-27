@@ -10,12 +10,12 @@ import viteCompression from 'vite-plugin-compression'
 import { injectHtml } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
 
 export default defineConfig({
   plugins: [
     vue(),
     VitePWA(),
-    WindiCSS(),
     tsconfigPaths(),
     injectHtml({
       injectData: {
@@ -27,11 +27,18 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
+        '@vueuse/core',
         {
           axios: [
             ['default', 'axios'] // import { default as axios } from 'axios',
           ]
         }
+      ],
+      // custom resolvers
+      // 可以在这自定义自己的东西，比如接口api的引入，工具函数等等
+      // see https://github.com/antfu/unplugin-auto-import/pull/23/
+      resolvers: [
+        /* ... */
       ]
     }),
     Components({
@@ -39,6 +46,10 @@ export default defineConfig({
       dirs: ['src/components', 'src/views'], // 自定义路径按需导入
       resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
     }),
+    styleImport({
+      resolves: [AndDesignVueResolve()]
+    }),
+    WindiCSS(),
     // gzip压缩 生产环境生成 .gz 文件
     viteCompression({
       verbose: true,
@@ -68,11 +79,13 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      // less: {},
       scss: {
         // 避免出现: build时的 @charset 必须在第一行的警告
         charset: true,
         additionalData: '@import "./src/design/methodCss.scss";'
+      },
+      less: {
+        javascriptEnabled: true
       }
     }
   },

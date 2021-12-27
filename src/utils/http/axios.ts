@@ -1,7 +1,6 @@
 // import axios from 'axios'
 import qs from 'qs'
 import { message } from 'ant-design-vue'
-import store from '@/store/index'
 import router from '@/router/index'
 import { resData } from '@/components/aspin/data'
 import { storage } from '../storage/storage'
@@ -41,7 +40,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
       // 序列化
       //   req.data = qs.parse(req.data)
       // }
-      if (['post', 'put', 'delte'].includes(req.method)) {
+      if (['post', 'put', 'delete'].includes(req.method)) {
         req.data = qs.parse(req.data)
       }
       // 若是有做鉴权token , 就给头部带上token
@@ -117,7 +116,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
         }
         return Promise.reject(error.response)
       }
-      store.commit('changeNetwork', false)
+      // store('changeNetwork', false)
 
       return true
     }

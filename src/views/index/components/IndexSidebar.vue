@@ -61,51 +61,12 @@ method.GetApi()
   .index_s_main {
     @include w-h(100%, 100%);
 
-    /* 说显示描述内容 */
-    .index_s_describe {
-      width: 97%;
-      color: #666;
-
-      @apply mb-2 m-auto;
-      @apply text-center rounded bg-white shadow;
-
-      div > p {
-        @apply px-1 py-2 m-1;
-        @apply bg-gray-50 text-sm;
-      }
-    }
-
-    .index-si-count {
-      width: 97%;
-
-      @apply p-1 mb-2 shadow rounded m-auto cursor-pointer;
-      @apply bg-white;
-    }
-
-    /* 分类内容框 */
-    .index_s_type {
-      width: 97%;
-
-      @apply p-1 mb-2 m-auto;
-      @apply bg-white shadow rounded cursor-pointer;
-
-      .index_s_type_name {
-        @apply p-1 m-1 text-base font-semibold;
-        @apply text-gray-900 bg-gray-200 cursor-pointer;
-      }
-
-      .index-si-type-text {
-        @apply flex-1 px-1 p-1 m-1 text-sm text-center;
-        @apply bg-gray-100 rounded;
-      }
-    }
-
     /* 搜索 */
     .index_s_input {
       width: 97%;
 
       @apply flex flex-nowrap;
-      @apply p-2 mt-1 mb-2 m-auto;
+      @apply m-auto p-2 mt-1 mb-2;
       @apply bg-white shadow rounded;
 
       .a_but {
@@ -117,14 +78,6 @@ method.GetApi()
 
 #index-sidebar::-webkit-scrollbar {
   display: none;
-}
-
-.icon {
-  @include w-h(1.5em, 1.5em);
-
-  overflow: hidden;
-  vertical-align: -0.1em;
-  fill: currentColor;
 }
 
 // @screen xp {

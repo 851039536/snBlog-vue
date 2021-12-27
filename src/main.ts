@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import 'virtual:windi.css'
-import 'animate.css'
 import lazyPlugin from 'vue3-lazy'
-import 'ant-design-vue/es/message/style/css'
-import 'ant-design-vue/es/notification/style/css'
+// import 'ant-design-vue/es/message/style/css'
+// import 'ant-design-vue/es/notification/style/css'
 
 // v-md
 import VueMarkdownEditor from '@kangc/v-md-editor'
@@ -30,7 +30,7 @@ import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css'
 //  end v-md
 
 import router from './router/index'
-import store from './store/index'
+// import store from './store/index'
 
 hljs.registerLanguage('csharp', csharp)
 hljs.registerLanguage('css', css)
@@ -53,13 +53,15 @@ const app = createApp(App)
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/blog/${name}`, import.meta.url).href
 }
-
+const pinia = createPinia()
+app.use(pinia)
 app.use(lazyPlugin, {
   loading: getImageUrl('2.jpg'),
   error: getImageUrl('1.jpg')
 })
 app.use(VueMarkdownEditor)
 app.use(VMdPreview)
-app.use(store)
+
+// app.use(store)
 app.use(router)
 app.mount('#app')

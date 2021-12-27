@@ -2,18 +2,7 @@
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 
-interface ResData {
-  activeClass: string
-  errorClass: string
-  backInDown: string
-  fadeIn: string
-  resultData: any
-}
-const resData: ResData = reactive({
-  activeClass: 'animate__animated',
-  errorClass: 'animate__fadeInRightBig',
-  backInDown: 'animate__backInDown',
-  fadeIn: 'animate__fadeIn',
+const resData: any = reactive({
   resultData: []
 })
 
@@ -48,11 +37,11 @@ onMounted(async () => {
 
 <template>
   <s-header></s-header>
-  <div class="about_main" :class="[resData.activeClass, resData.fadeIn]">
+  <div class="about_main">
     <div class="about_content">
       <!-- 背景图+介绍 -->
       <div class="about-bg">
-        <div class="about-1" :class="[resData.activeClass, resData.backInDown]">
+        <div class="about-1">
           <div class="about-1-1">
             <div class="about-1-1-1">
               <img src="@/assets/img/bb.jpg" />
@@ -84,7 +73,7 @@ onMounted(async () => {
       <!-- end 背景图+介绍 -->
 
       <!-- 关于我：  -->
-      <div class="bg-2" :class="[resData.activeClass, resData.errorClass]">
+      <div class="bg-2">
         <div class="bg-2-1">
           <div class="bg-2-1-1">
             <h2>关于我：</h2>

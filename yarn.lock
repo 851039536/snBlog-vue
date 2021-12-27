@@ -1395,7 +1395,7 @@
     "@vue/compiler-dom" "3.2.22"
     "@vue/shared" "3.2.22"
 
-"@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.0.0-beta.18":
+"@vue/devtools-api@^6.0.0-beta.18":
   "integrity" "sha512-R2rfiRY+kZugzWh9ZyITaovx+jpU4vgivAEAiz80kvh3yviiTU3CBuGuyWpSwGz9/C7TkSWVM/FtQRGlZ16n8Q=="
   "resolved" "https://registry.npmmirror.com/@vue/devtools-api/download/@vue/devtools-api-6.0.0-beta.20.1.tgz"
   "version" "6.0.0-beta.20.1"
@@ -1708,11 +1708,6 @@
     "json-schema-traverse" "^1.0.0"
     "require-from-string" "^2.0.2"
     "uri-js" "^4.2.2"
-
-"animate.css@^4.1.1":
-  "integrity" "sha1-YU7FqBEx1+TcNipYFD90BqvWgHU="
-  "resolved" "https://registry.npm.taobao.org/animate.css/download/animate.css-4.1.1.tgz"
-  "version" "4.1.1"
 
 "ansi-colors@^4.1.1":
   "integrity" "sha1-y7muJWv3UK8eqzRPIpqif+lLo0g="
@@ -2042,7 +2037,7 @@
   "resolved" "https://registry.nlark.com/callsites/download/callsites-3.1.0.tgz?cache=0&sync_timestamp=1628464722297&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcallsites%2Fdownload%2Fcallsites-3.1.0.tgz"
   "version" "3.1.0"
 
-"camel-case@^4.1.1":
+"camel-case@^4.1.1", "camel-case@^4.1.2":
   "integrity" "sha1-lygHKpVPgFIoIlpt7qazhGHhvVo="
   "resolved" "https://registry.npm.taobao.org/camel-case/download/camel-case-4.1.2.tgz?cache=0&sync_timestamp=1606867297052&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcamel-case%2Fdownload%2Fcamel-case-4.1.2.tgz"
   "version" "4.1.2"
@@ -2054,6 +2049,15 @@
   "integrity" "sha512-9RoKo841j1GQFSJz/nCXOj0sD7tHBtlowjYlrqIUS812x9/emfBLBt6IyMz1zIaYc/eRL8Cs6HPUVi2Hzq4sIg=="
   "resolved" "https://registry.npmmirror.com/caniuse-lite/download/caniuse-lite-1.0.30001283.tgz"
   "version" "1.0.30001283"
+
+"capital-case@^1.0.4":
+  "integrity" "sha1-nRMCkjU8kkn2sA+lhSvuOKcX5mk="
+  "resolved" "https://registry.npm.taobao.org/capital-case/download/capital-case-1.0.4.tgz?cache=0&sync_timestamp=1606867325844&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcapital-case%2Fdownload%2Fcapital-case-1.0.4.tgz"
+  "version" "1.0.4"
+  dependencies:
+    "no-case" "^3.0.4"
+    "tslib" "^2.0.3"
+    "upper-case-first" "^2.0.2"
 
 "chalk@^2.0.0":
   "integrity" "sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ="
@@ -2089,6 +2093,24 @@
   dependencies:
     "ansi-styles" "^4.1.0"
     "supports-color" "^7.1.0"
+
+"change-case@^4.1.2":
+  "integrity" "sha1-/t/F8TYEXiOYwEEO5EH5VwRkHhI="
+  "resolved" "https://registry.npm.taobao.org/change-case/download/change-case-4.1.2.tgz?cache=0&sync_timestamp=1606867326259&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fchange-case%2Fdownload%2Fchange-case-4.1.2.tgz"
+  "version" "4.1.2"
+  dependencies:
+    "camel-case" "^4.1.2"
+    "capital-case" "^1.0.4"
+    "constant-case" "^3.0.4"
+    "dot-case" "^3.0.4"
+    "header-case" "^2.0.4"
+    "no-case" "^3.0.4"
+    "param-case" "^3.0.4"
+    "pascal-case" "^3.1.2"
+    "path-case" "^3.0.4"
+    "sentence-case" "^3.0.4"
+    "snake-case" "^3.0.4"
+    "tslib" "^2.0.3"
 
 "character-parser@^2.2.0":
   "integrity" "sha1-x84o821LzZdE5f/CxfzeHHMmH8A="
@@ -2225,6 +2247,15 @@
   "integrity" "sha1-MNHn89G4grJexJM9HRraw1PSClk="
   "resolved" "https://registry.npmmirror.com/confusing-browser-globals/download/confusing-browser-globals-1.0.10.tgz"
   "version" "1.0.10"
+
+"constant-case@^3.0.4":
+  "integrity" "sha1-O4Sprq9M8x7EXmv13pG9+wWJ+vE="
+  "resolved" "https://registry.npm.taobao.org/constant-case/download/constant-case-3.0.4.tgz?cache=0&sync_timestamp=1606867325763&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fconstant-case%2Fdownload%2Fconstant-case-3.0.4.tgz"
+  "version" "3.0.4"
+  dependencies:
+    "no-case" "^3.0.4"
+    "tslib" "^2.0.3"
+    "upper-case" "^2.0.2"
 
 "constantinople@^4.0.1":
   "integrity" "sha1-De8RP6Dk3I3oMzGlz3nIsyUhMVE="
@@ -3126,7 +3157,7 @@
     "string.prototype.trimstart" "^1.0.4"
     "unbox-primitive" "^1.0.1"
 
-"es-module-lexer@^0.9.0":
+"es-module-lexer@^0.9.0", "es-module-lexer@^0.9.3":
   "integrity" "sha1-bxPbAMw4QXE32vdDZvU1yOtDjxk="
   "resolved" "https://registry.npmmirror.com/es-module-lexer/download/es-module-lexer-0.9.3.tgz?cache=0&sync_timestamp=1633646154044&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fes-module-lexer%2Fdownload%2Fes-module-lexer-0.9.3.tgz"
   "version" "0.9.3"
@@ -3202,6 +3233,11 @@
   "integrity" "sha1-90cbILb+ipqSVMxoRFQgKIai3Xo="
   "resolved" "https://registry.nlark.com/eslint-config-prettier/download/eslint-config-prettier-8.3.0.tgz"
   "version" "8.3.0"
+
+"eslint-config-vue-global-api@0.4.1":
+  "integrity" "sha1-9zW4thvZSUgTFgTA8+Squlgkk6U="
+  "resolved" "https://registry.nlark.com/eslint-config-vue-global-api/download/eslint-config-vue-global-api-0.4.1.tgz"
+  "version" "0.4.1"
 
 "eslint-import-resolver-node@^0.3.6":
   "integrity" "sha1-QEi5WDldqJZoJSAB29nsprg7rL0="
@@ -3907,6 +3943,14 @@
   "integrity" "sha1-hK5l+n6vsWX922FWauFLrwVmTw8="
   "resolved" "https://registry.npm.taobao.org/he/download/he-1.2.0.tgz"
   "version" "1.2.0"
+
+"header-case@^2.0.4":
+  "integrity" "sha1-WkLmO1UXc0nPQFvrjXdayruSwGM="
+  "resolved" "https://registry.npm.taobao.org/header-case/download/header-case-2.0.4.tgz?cache=0&sync_timestamp=1606867326152&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fheader-case%2Fdownload%2Fheader-case-2.0.4.tgz"
+  "version" "2.0.4"
+  dependencies:
+    "capital-case" "^1.0.4"
+    "tslib" "^2.0.3"
 
 "highlight.js@^10.7.2":
   "integrity" "sha1-aXJy45kTVuQMPKxWanTu9oF1ZTE="
@@ -5037,7 +5081,7 @@
   "resolved" "https://registry.npmmirror.com/p-try/download/p-try-1.0.0.tgz"
   "version" "1.0.0"
 
-"param-case@^3.0.3":
+"param-case@^3.0.3", "param-case@^3.0.4":
   "integrity" "sha1-fRf+SqEr3jTUp32RrPtiGcqtAcU="
   "resolved" "https://registry.nlark.com/param-case/download/param-case-3.0.4.tgz"
   "version" "3.0.4"
@@ -5069,6 +5113,14 @@
   "integrity" "sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ="
   "resolved" "https://registry.npm.taobao.org/pascalcase/download/pascalcase-0.1.1.tgz"
   "version" "0.1.1"
+
+"path-case@^3.0.4":
+  "integrity" "sha1-kWhkUzTrlCZYN1xW+AtMDLX4LG8="
+  "resolved" "https://registry.npm.taobao.org/path-case/download/path-case-3.0.4.tgz?cache=0&sync_timestamp=1606867325967&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpath-case%2Fdownload%2Fpath-case-3.0.4.tgz"
+  "version" "3.0.4"
+  dependencies:
+    "dot-case" "^3.0.4"
+    "tslib" "^2.0.3"
 
 "path-dirname@^1.0.0":
   "integrity" "sha1-zDPSTVJeCZpTiMAzbG4yuRYGCeA="
@@ -5126,6 +5178,14 @@
   "integrity" "sha1-SyzSXFDVmHNcUCkiJP2MbfQeMjE="
   "resolved" "https://registry.nlark.com/pify/download/pify-4.0.1.tgz"
   "version" "4.0.1"
+
+"pinia@^2.0.0-rc.10":
+  "integrity" "sha1-gegjkxiXpM9cU8ET0MDmO3u6mXM="
+  "resolved" "https://registry.npmmirror.com/pinia/download/pinia-2.0.0-rc.10.tgz"
+  "version" "2.0.0-rc.10"
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.18"
+    "vue-demi" "*"
 
 "pkg-dir@^2.0.0":
   "integrity" "sha1-9tXREJ4Z1j7fQo4L1X4Sd3YVM0s="
@@ -5599,6 +5659,15 @@
   "resolved" "https://registry.npm.taobao.org/semver/download/semver-7.0.0.tgz"
   "version" "7.0.0"
 
+"sentence-case@^3.0.4":
+  "integrity" "sha1-NkWnuMEXx4f96HAgViJbtipFEx8="
+  "resolved" "https://registry.npm.taobao.org/sentence-case/download/sentence-case-3.0.4.tgz?cache=0&sync_timestamp=1606867325535&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsentence-case%2Fdownload%2Fsentence-case-3.0.4.tgz"
+  "version" "3.0.4"
+  dependencies:
+    "no-case" "^3.0.4"
+    "tslib" "^2.0.3"
+    "upper-case-first" "^2.0.2"
+
 "serialize-javascript@^4.0.0":
   "integrity" "sha1-tSXhI4SJpez8Qq+sw/6Z5mb0sao="
   "resolved" "https://registry.nlark.com/serialize-javascript/download/serialize-javascript-4.0.0.tgz"
@@ -5667,6 +5736,14 @@
     "ansi-styles" "^4.0.0"
     "astral-regex" "^2.0.0"
     "is-fullwidth-code-point" "^3.0.0"
+
+"snake-case@^3.0.4":
+  "integrity" "sha1-Tyu9Vo6ZNavf1ZPzTGkdrbScRSw="
+  "resolved" "https://registry.npm.taobao.org/snake-case/download/snake-case-3.0.4.tgz?cache=0&sync_timestamp=1606867326057&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsnake-case%2Fdownload%2Fsnake-case-3.0.4.tgz"
+  "version" "3.0.4"
+  dependencies:
+    "dot-case" "^3.0.4"
+    "tslib" "^2.0.3"
 
 "snapdragon-node@^2.0.1":
   "integrity" "sha1-bBdfhv8UvbByRWPo88GwIaKGhTs="
@@ -6217,6 +6294,20 @@
   "resolved" "https://registry.npm.taobao.org/upath/download/upath-2.0.1.tgz"
   "version" "2.0.1"
 
+"upper-case-first@^2.0.2":
+  "integrity" "sha1-mSwyc/iCq9GdHgKJTMFHEX+EQyQ="
+  "resolved" "https://registry.npm.taobao.org/upper-case-first/download/upper-case-first-2.0.2.tgz?cache=0&sync_timestamp=1606867326586&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fupper-case-first%2Fdownload%2Fupper-case-first-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "tslib" "^2.0.3"
+
+"upper-case@^2.0.2":
+  "integrity" "sha1-2JgQgj+qsd8VSbfZenb4Ziuub3o="
+  "resolved" "https://registry.npm.taobao.org/upper-case/download/upper-case-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "tslib" "^2.0.3"
+
 "uri-js@^4.2.2":
   "integrity" "sha1-mxpSWVIlhZ5V9mnZKPiMbFfyp34="
   "resolved" "https://registry.nlark.com/uri-js/download/uri-js-4.4.1.tgz"
@@ -6290,6 +6381,18 @@
     "rollup" "^2.60.0"
     "workbox-build" "^6.4.0"
     "workbox-window" "^6.4.0"
+
+"vite-plugin-style-import@^1.4.0":
+  "integrity" "sha512-EGAx0zVGUkwAwvDaC66zxgzXyHE0CwAXp4O1xGKnpMcrDT9L1nlojiCjjLRQzL8C3zwY1jn9ilq+m0VABKiiLg=="
+  "resolved" "https://registry.npmmirror.com/vite-plugin-style-import/download/vite-plugin-style-import-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "@rollup/pluginutils" "^4.1.1"
+    "change-case" "^4.1.2"
+    "debug" "^4.3.2"
+    "es-module-lexer" "^0.9.3"
+    "fs-extra" "^10.0.0"
+    "magic-string" "^0.25.7"
 
 "vite-plugin-tips@^2.0.0":
   "integrity" "sha512-4TphOHbHEOav+N1UoSQDV4Eu7yWQJx9nxn5ZIAOP5iU+kj9mD0lfMOiihwX0kDF7pJT6buCA4mMJY1KpR/2jbg=="
@@ -6467,6 +6570,11 @@
   "resolved" "https://registry.npmmirror.com/vue-demi/download/vue-demi-0.12.1.tgz"
   "version" "0.12.1"
 
+"vue-demi@latest":
+  "integrity" "sha1-9+GO++z/0RqwadFHLXoG4xm0F0w="
+  "resolved" "https://registry.npmmirror.com/vue-demi/download/vue-demi-0.12.1.tgz"
+  "version" "0.12.1"
+
 "vue-eslint-parser@^8.0.1":
   "integrity" "sha1-JeCLIKQUVRUx8+GfmZkC4ez0XxM="
   "resolved" "https://registry.npmmirror.com/vue-eslint-parser/download/vue-eslint-parser-8.0.1.tgz"
@@ -6479,6 +6587,14 @@
     "esquery" "^1.4.0"
     "lodash" "^4.17.21"
     "semver" "^7.3.5"
+
+"vue-global-api@^0.4.1":
+  "integrity" "sha1-smaAIA6E2WgphtAli4JrUazQdTE="
+  "resolved" "https://registry.nlark.com/vue-global-api/download/vue-global-api-0.4.1.tgz"
+  "version" "0.4.1"
+  dependencies:
+    "eslint-config-vue-global-api" "0.4.1"
+    "vue-demi" "latest"
 
 "vue-router@^4.0.12":
   "integrity" "sha1-jceSzd9bsavMOQj5BkE23n4TxGA="
@@ -6501,7 +6617,7 @@
   dependencies:
     "is-plain-object" "3.0.1"
 
-"vue@^2.6.0 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.0-alpha.9", "vue@^3.0.2", "vue@^3.2.16", "vue@>=3.0.3", "vue@>=3.1.0", "vue@2 || 3", "vue@3.2.22":
+"vue@^2.6.0 || ^3.2.0", "vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.0-alpha.9", "vue@^3.2.16", "vue@>=3.0.3", "vue@>=3.1.0", "vue@2 || 3", "vue@3.2.22":
   "integrity" "sha512-KD5nZpXVZquOC6926Xnp3zOvswrUyO9Rya7ZUoxWFQEjFDW4iACtwzubRB4Um2Om9kj6CaJOqAVRDSFlqLpdgw=="
   "resolved" "https://registry.npmmirror.com/vue/download/vue-3.2.22.tgz?cache=0&sync_timestamp=1636947969556&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fvue%2Fdownload%2Fvue-3.2.22.tgz"
   "version" "3.2.22"
@@ -6516,13 +6632,6 @@
   "integrity" "sha1-MmpWwq3kQwx2t6yQ0zp/3gr5qqY="
   "resolved" "https://registry.nlark.com/vue3-lazy/download/vue3-lazy-1.0.0-alpha.1.tgz"
   "version" "1.0.0-alpha.1"
-
-"vuex@^4.0.2":
-  "integrity" "sha1-+Jbb1b8qDpY/AMZ+m2EN50nMrMk="
-  "resolved" "https://registry.nlark.com/vuex/download/vuex-4.0.2.tgz"
-  "version" "4.0.2"
-  dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.11"
 
 "warning@^4.0.0":
   "integrity" "sha1-Fungd+uKhtavfWSqHgX9hbRnjKM="

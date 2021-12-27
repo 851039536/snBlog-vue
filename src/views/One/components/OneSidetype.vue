@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { one } from '../data'
-import { method } from '../index'
+import { IntOne } from '@/api/data/interData'
+import { method, state } from '../data/index'
 
 defineProps({
   resultData: {
-    type: Array as () => Array<one>,
+    type: Array as () => Array<IntOne>,
     required: true,
     default: () => []
   },
@@ -15,30 +15,40 @@ defineProps({
 })
 </script>
 <template>
-  <div class="One-Sidebar-textlist">
-    <div class="One-Sidebar-textlist-title">{{ title }}</div>
-    <div class="TalkSidebar-text-4-2" v-for="result in resultData" :key="result.id">
-      <div class="p-1 pl-2 text-base">
-        <a @click="method.setModal1Visible(true, result.id)">{{ result.title }}</a>
-      </div>
+  <div class="onesidetype">
+    <div class="onesidetype-title">{{ title }}</div>
+    <div class="onesidetype-text" v-for="res in resultData" :key="res.id">
+      <span @click="method.setModal1Visible(true, res.id)">{{ res.title }}</span>
     </div>
+  </div>
+  <div>
+    <a-modal
+      v-model:visible="state.modal2Visible"
+      :title="state.text.oneTitle"
+      centered
+      cancelText="赞"
+      :closable="false"
+      okText="不了"
+      @ok="state.modal2Visible = false"
+    >
+      <p class="bg-white">{{ state.text.oneText }}</p>
+    </a-modal>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.One-Sidebar-textlist {
+.onesidetype {
   width: 97%;
 
-  @apply p-1 mb-2 m-auto cursor-pointer;
+  @apply p-1  m-auto mb-2 cursor-pointer;
   @apply shadow rounded bg-white;
 
-  .One-Sidebar-textlist-title {
-    color: #1b1e21;
-
-    @apply p-1 m-1 text-sm font-semibold bg-gray-200;
+  .onesidetype-title {
+    @apply p-1 m-1 text-base font-semibold bg-gray-200;
   }
 
-  .TalkSidebar-text-4-2 {
+  .onesidetype-text {
+    @apply p-1 pl-2 text-base text-gray-600;
     border-bottom: 1px dashed #f1f1f1;
   }
 }

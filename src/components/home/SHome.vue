@@ -6,15 +6,12 @@ import { Routers } from '@/hooks/routers'
   <div id="blogHome" class="animate__animated animate__fadeIn">
     <div class="home_main">
       <div class="centeredPrompt">
-        <div class="centeredPrompt__item centeredPromptIcon">
-          <div class="icon fa fa-smile-o"></div>
+        <div class="text-3xl">程序员xxx</div>
+        <div class="text-lg mt-2">一位热爱生活、xxxxxx开发者。</div>
+        <div class="text-lg mt-2">
+          <a @click="Routers('/Blogs/BlogsColumn')">Go</a>
         </div>
-        <div class="centeredPrompt__item centeredPromptLabel">满天星辰</div>
-        <div class="centeredPrompt__item centeredPromptDetails">一位热爱生活、xxxxxx开发者。</div>
-        <div class="centeredPrompt__item button">
-          <a class="btn btn-link" @click="Routers('/Blogs/BlogsColumn')">Go</a>
-        </div>
-        <div class="centeredPrompt__item button">
+        <div class="text-base">
           <p>
             SN © 2021.Rights Reserved.
             <a href="https://beian.miit.gov.cn/">粤ICP备19130826号-1</a>
@@ -26,8 +23,6 @@ import { Routers } from '@/hooks/routers'
 </template>
 
 <style lang="scss" scoped>
-@import './index.scss';
-
 .centeredPrompt {
   display: flex;
   flex-direction: column;
@@ -37,29 +32,19 @@ import { Routers } from '@/hooks/routers'
   padding: 10px;
 }
 
-.centeredPrompt__item + .centeredPrompt__item {
-  margin-top: 5px;
-}
+#blogHome {
+  @apply fixed;
 
-.centeredPromptIcon {
-  font-size: 60px;
-  line-height: 0;
-}
+  @include w-h;
 
-.centeredPromptLabel {
-  color: #86969c;
-  font-weight: 700;
-  font-size: 30px;
-  text-align: center;
-}
-.centeredPromptDetails {
-  margin-bottom: 10px;
-  color: #86969c;
-  font-size: 16px;
-  text-align: center;
-}
+  @apply bg-white;
 
-.icon {
-  color: #bcd2da;
+  .home_main {
+    @apply absolute m-auto top-0 left-0 bottom-0 right-0;
+
+    @include w-h(90%, 70%);
+
+    @apply shadow-2xl rounded-3xl;
+  }
 }
 </style>

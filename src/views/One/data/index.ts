@@ -1,17 +1,7 @@
 import { message } from 'ant-design-vue'
 import { one } from '@/api/index'
 
-interface State {
-  resultData: any
-  dataOne: any
-  text: any
-  modal2Visible: boolean
-  page: number
-  pagesize: number
-  count: number
-}
-
-const state: State = reactive({
+const state: any = reactive({
   resultData: [],
   dataOne: [],
   text: [],
@@ -24,6 +14,7 @@ const state: State = reactive({
 class method {
   static async setModal1Visible(modal2Visible: boolean, id: number) {
     state.modal2Visible = modal2Visible
+    console.log('%c [ state.modal2Visible ]-17', 'font-size:13px; background:pink; color:#bf2c9f;', state.modal2Visible)
     await one.GetByIdAsync(id, true).then((res: any) => {
       state.text = res.data
       if (res.data !== null) {

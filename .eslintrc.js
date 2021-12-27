@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:vue/vue3-essential', 'airbnb-base', 'plugin:prettier/recommended'],
+  extends: ['plugin:vue/vue3-essential', 'airbnb-base', 'plugin:prettier/recommended', 'vue-global-api'],
   parserOptions: {
     ecmaVersion: 13,
     parser: '@typescript-eslint/parser',
@@ -39,17 +39,17 @@ module.exports = {
   globals: {
     defineProps: true,
     defineEmits: true,
-    onMounted: true,
-    reactive: true,
-    defineAsyncComponent: true,
+    // onMounted: true,
+    // reactive: true,
+    // defineAsyncComponent: true,
     useRoute: true,
     useRouter: true,
-    axios: true,
-    ref: true,
-    getCurrentInstance: true,
-    onBeforeUpdate: true,
-    inject: true,
-    nextTick: true,
-    provide: true
+    axios: true
+    // ref: true,
+    // getCurrentInstance: true,
+    // onBeforeUpdate: true,
+    // inject: true,
+    // nextTick: true,
+    // provide: true
   }
 }

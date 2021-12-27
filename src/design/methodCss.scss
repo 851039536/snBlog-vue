@@ -166,184 +166,20 @@ $Text_height: 9%;
   }
 }
 
-@mixin blogs {
-  @apply p-3;
-  @apply antialiased rounded-sm bg-white;
-
-  h1 {
-    @apply text-2xl p-1 font-semibold text-gray-700 bg-white;
-  }
-
-  h2 {
-    @apply text-xl p-1 font-semibold text-gray-700 bg-white;
-  }
-
-  h3 {
-    @apply text-lg p-1 font-semibold bg-white;
-  }
-
-  h4 {
-    @apply text-base p-1 font-semibold bg-white;
-  }
-
-  h5 {
-    @apply text-sm p-1 font-semibold bg-white;
-  }
-
-  pre {
-    width: 100%;
-
-    @apply text-sm px-1 py-2 bg-gray-100 leading-6;
-  }
-
-  code {
-    @apply text-gray-700 px-1;
-
-    .hljs-keyword {
-      color: #6161b3;
-    }
-
-    //方法
-    .hljs-title {
-      color: #a31515;
-    }
-
-    .hljs-string {
-      @apply text-red-700;
-    }
-
-    // 注释
-    .hljs-comment {
-      @apply text-gray-400;
-    }
-
-    .hljs-params {
-      color: #00f;
-    }
-  }
-
-  blockquote {
-    p {
-      @apply bg-gray-50 mt-1 rounded-sm text-base text-current shadow-sm pl-2;
-    }
-  }
-
-  p {
-    @apply p-1 bg-white text-gray-800 leading-relaxed;
-
-    code {
-      @apply bg-gray-50 px-1 text-red-800;
-    }
-
-    .hljs {
-      @apply bg-gray-50 rounded-sm;
-    }
-  }
-
-  ul {
-    @apply p-1;
-
-    li {
-      @apply p-1;
-
-      code {
-        color: #2008fa;
-      }
-
-      @apply text-xs bg-white text-gray-500;
-    }
-  }
-
-  // table {
-  //   // background: gray;
-  // }
-
-  th {
-    border: solid #f1f1f1 1px;
-
-    @apply p-1 text-sm;
-  }
-
-  td {
-    border: solid #f1f1f1 1px;
-
-    @apply p-1 text-sm;
-  }
-
-  a {
-    @apply p-1 text-red-800;
-  }
-
-  /* 对 markdown 样式的补充 */
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 1em;
-
-    /* margin-bottom: 1em; */
-  }
-
-  strong {
-    font-weight: bold;
-  }
-
-  p > code:not([class]) {
-    padding: 2px 4px;
-    color: #c7254e;
-    font-size: 90%;
-    background-color: #f9f2f4;
-    border-radius: 4px;
-  }
-
-  p img {
-    display: flex;
-
-    /* 图片居中 */
-    margin: 0 auto;
-  }
-
-  #content .desc h1,
-  #content .desc h2 {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-
-  #content .desc a {
-    color: #009a61;
-  }
-}
 
 /* 自定义初始化样式 */
 @layer base {
   html {
-    @apply antialiased;
   }
 
   body {
-    /* 条纹背景框 */
 
-    /* background:
-      linear-gradient(45deg, #92baac 45px, transparent 45px) 64px 64px,
-      linear-gradient(45deg, #92baac 45px, transparent 45px, transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
-      linear-gradient(-45deg, #92baac 23px, transparent 23px, transparent 68px, #92baac 68px, #92baac 113px, transparent 113px, transparent 158px, #92baac 158px);
-    background-color: #e1ebbd;
-    background-size: 128px 128px; */
   }
 }
 
 @screen lg {
   .sbootom {
     @apply hidden;
-  }
-}
-
-@screen xp {
-  body {
-    background-color: #fff;
   }
 }
 

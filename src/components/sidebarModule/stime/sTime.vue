@@ -37,17 +37,16 @@ updateTime()
   font-family: 'Share Tech Mono', monospace;
   text-align: center;
 
-  @apply p-1 mb-2 mt-1 m-auto cursor-pointer;
+  @apply m-auto p-1 mb-2 mt-1;
   @apply bg-white shadow rounded;
 
   .time {
-    padding: 5px 0;
-    font-size: 30px;
+    font-size: 26px;
     letter-spacing: 0.05em;
   }
 
   .date {
-    font-size: 24px;
+    font-size: 22px;
     letter-spacing: 0.1em;
   }
 }

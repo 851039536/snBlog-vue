@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useStore } from 'vuex'
 import { message } from 'ant-design-vue/es/components'
+import { useAppStore } from '@/store/pinia'
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
 
-const store = useStore()
+const store = useAppStore()
 const state = reactive({
   name: '',
   pwd: '',
@@ -13,7 +13,8 @@ const state = reactive({
 })
 async function login() {
   user.Login(state.name, state.pwd).then((res) => {
-    if (res.data === '用户或密码错误' || res.data === '用户密码不能为空') {
+    if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
+      message.error(res.data)
       return
     }
     state.result = res.data.split(',')
@@ -26,7 +27,7 @@ async function login() {
     storage.set('userId', state.result[2]) // 用户主键
     storage.set('user', state.result[3]) // 用户名
     storage.set('token', `Bearer ${state.result[1]}`) // token
-    store.state.Roles = storage.get('rolres')
+    store.roles = storage.get('rolres')
     message.success('成功!')
     Routers('/Admin-index/ArticleTable')
   })
@@ -38,7 +39,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="login-box animate__animated animate__fadeIn">
+  <div class="login-box">
     <h2>Login</h2>
     <form>
       <div class="user-box">
@@ -49,7 +50,7 @@ onMounted(async () => {
         <input type="password" v-model="state.pwd" />
         <label>Pwd</label>
       </div>
-      <a href="#" @click="login"> Submit </a>
+      <a @click="login"> Submit </a>
     </form>
   </div>
 </template>

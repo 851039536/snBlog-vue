@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { useStore } from 'vuex'
+import { useAppStore } from '@/store/pinia'
+
 import { storage } from '@/utils/storage/storage'
 
-const store = useStore()
-store.state.Roles = storage.get('rolres')
+const store = useAppStore()
+// 刷新网页重新加载
+store.roles = storage.get('rolres')
 </script>
 
 <template>
