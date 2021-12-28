@@ -1612,27 +1612,27 @@
     "@webassemblyjs/ast" "1.11.1"
     "@xtuc/long" "4.2.2"
 
-"@windicss/config@1.5.3":
-  "integrity" "sha512-DXUR+LWOWwG+prkcvey4IV4V9BvigOcfuLP28k21fO3UkfS6G6HRRgf+STB0AgKrXIGlUDDHfoPvEbndfUlYjg=="
-  "resolved" "https://registry.npmmirror.com/@windicss/config/download/@windicss/config-1.5.3.tgz"
-  "version" "1.5.3"
+"@windicss/config@1.6.1":
+  "integrity" "sha512-E4FKtWdYl5HwFknBQ+Z2JIF58TZiR4/ZiP8B30sfRxNlG6clh4agn5MJqTb4ER0MLkDb30Hugl2tGun0AQNbFw=="
+  "resolved" "https://registry.npmmirror.com/@windicss/config/download/@windicss/config-1.6.1.tgz"
+  "version" "1.6.1"
   dependencies:
     "debug" "^4.3.3"
     "jiti" "^1.12.9"
-    "windicss" "^3.2.1"
+    "windicss" "^3.4.0"
 
-"@windicss/plugin-utils@1.5.3":
-  "integrity" "sha512-6C6R/wB2vzaiWn1Tv95FaK5/932UnnbObwitusyDcuCDmCM97aCCB93CYLZCtQtPdPlLYODezinPFhdfMm746w=="
-  "resolved" "https://registry.npmmirror.com/@windicss/plugin-utils/download/@windicss/plugin-utils-1.5.3.tgz"
-  "version" "1.5.3"
+"@windicss/plugin-utils@1.6.1":
+  "integrity" "sha512-hFQY27bOr9SSpekIvSwBpIX25nR4cwrU5/1kJFqCwAzqyazvd7U9c/iI1E2sTEQOkPbpTTJkY2Act21Q70oSDQ=="
+  "resolved" "https://registry.npmmirror.com/@windicss/plugin-utils/download/@windicss/plugin-utils-1.6.1.tgz"
+  "version" "1.6.1"
   dependencies:
     "@antfu/utils" "^0.3.0"
-    "@windicss/config" "1.5.3"
+    "@windicss/config" "1.6.1"
     "debug" "^4.3.3"
     "fast-glob" "^3.2.7"
     "magic-string" "^0.25.7"
     "micromatch" "^4.0.4"
-    "windicss" "^3.2.1"
+    "windicss" "^3.4.0"
 
 "@xtuc/ieee754@^1.2.0":
   "integrity" "sha1-7vAUoxRa5Hehy8AM0eVSM23Ot5A="
@@ -4552,10 +4552,10 @@
   "resolved" "https://registry.npmmirror.com/klona/download/klona-2.0.5.tgz"
   "version" "2.0.5"
 
-"kolorist@^1.5.0":
-  "integrity" "sha1-oG990R0bX9t0PXnIrNTh7Ly9ibM="
-  "resolved" "https://registry.nlark.com/kolorist/download/kolorist-1.5.0.tgz?cache=0&sync_timestamp=1624010652072&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fkolorist%2Fdownload%2Fkolorist-1.5.0.tgz"
-  "version" "1.5.0"
+"kolorist@^1.5.1":
+  "integrity" "sha512-lxpCM3HTvquGxKGzHeknB/sUjuVoUElLlfYnXZT73K8geR9jQbroGlSCFBax9/0mpGoD3kzcMLnOlGQPJJNyqQ=="
+  "resolved" "https://registry.npmmirror.com/kolorist/download/kolorist-1.5.1.tgz"
+  "version" "1.5.1"
 
 "less-loader@^10.2.0":
   "integrity" "sha1-lyhth5fcPcBbHRaw7OxflovdTjI="
@@ -6399,15 +6399,15 @@
   "resolved" "https://registry.npmmirror.com/vite-plugin-tips/download/vite-plugin-tips-2.0.0.tgz"
   "version" "2.0.0"
 
-"vite-plugin-windicss@^1.5.3":
-  "integrity" "sha512-t9iu+fs1egguTK/+RdV/UCp11R69EQhVvvGcrNhCMt43DQF/RU19gHZUXB8wspm0V02Bz+rSmtqy/h3laJ9Z5Q=="
-  "resolved" "https://registry.npmmirror.com/vite-plugin-windicss/download/vite-plugin-windicss-1.5.3.tgz"
-  "version" "1.5.3"
+"vite-plugin-windicss@^1.6.1":
+  "integrity" "sha512-63uv4HqBxtSZB0WOtrZS8yhyfQPgGQwYgcBald+/BpLSlYJREcDKgX9Xd/qDgTAjpDRozxKQj/JWreIlyIahGg=="
+  "resolved" "https://registry.npmmirror.com/vite-plugin-windicss/download/vite-plugin-windicss-1.6.1.tgz"
+  "version" "1.6.1"
   dependencies:
-    "@windicss/plugin-utils" "1.5.3"
+    "@windicss/plugin-utils" "1.6.1"
     "debug" "^4.3.3"
-    "kolorist" "^1.5.0"
-    "windicss" "^3.2.1"
+    "kolorist" "^1.5.1"
+    "windicss" "^3.4.0"
 
 "vite-tsconfig-paths@^3.3.17":
   "integrity" "sha1-sUIcSgHmtEa3jMHdEtRfMCvDons="
@@ -6728,10 +6728,10 @@
   dependencies:
     "isexe" "^2.0.0"
 
-"windicss@^3.2.1":
-  "integrity" "sha1-vQ97nrq7oE6o3+3LsCY8LvlZHbQ="
-  "resolved" "https://registry.npmmirror.com/windicss/download/windicss-3.2.1.tgz"
-  "version" "3.2.1"
+"windicss@^3.4.0", "windicss@^3.4.1":
+  "integrity" "sha512-g6mX0q8divtPT+TSWqvI35lc77pOhGwMrwCdcX48dFA16wUlSDn1kOv5z1msZy3SlWLx3Bjbe7FA6uNTvdVH8A=="
+  "resolved" "https://registry.npmmirror.com/windicss/download/windicss-3.4.1.tgz"
+  "version" "3.4.1"
 
 "with@^7.0.0":
   "integrity" "sha1-zO461ULSVTinp6gKrSErmChJW6w="
