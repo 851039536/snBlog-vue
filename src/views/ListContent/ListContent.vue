@@ -29,9 +29,9 @@ onMounted(async () => {
 <template>
   <div>
     <s-header></s-header>
-    <div class="ListContent animate__animated animate__fadeIn">
+    <div class="ListContent">
       <div class="ListContent_title">
-        <p>最新内容 / 总计 10</p>
+        <p>最新内容 / 总 计 10</p>
       </div>
       <div class="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         <div class="ListContent_div">

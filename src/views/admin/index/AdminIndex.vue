@@ -49,7 +49,7 @@ function reload() {
 provide('reload', reload)
 </script>
 <template>
-  <div class="admin_index animate__animated animate__fadeIn">
+  <div class="admin_index">
     <a-layout>
       <header class="header">
         <a href="" class="logo">控制台</a>
@@ -123,7 +123,7 @@ provide('reload', reload)
             }"
           >
             <!-- 子路由 -->
-            <router-view v-if="state.showRouter" class="animate__animated animate__fadeIn"></router-view>
+            <router-view v-if="state.showRouter" class=""></router-view>
             <!-- end 子路由 -->
           </a-layout-content>
         </a-layout>

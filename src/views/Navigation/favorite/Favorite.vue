@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { resData } from './data'
-import { method } from './index'
+import { resData } from './data/data'
+import { method } from './data/index'
 import { winUrl } from '@/hooks/routers'
 import { navigation } from '@/api'
 
@@ -27,17 +27,15 @@ async function clkApi(name: string) {
   await method.GetApi(name)
 }
 
-GetAll()
-
 onMounted(async () => {
   await method.GetApi('文档')
+  await GetAll()
 })
 </script>
 
 <template>
   <s-header></s-header>
   <l-sidebar></l-sidebar>
-  <!-- <fav-sidebar></fav-sidebar> -->
   <div id="favorite">
     <!-- end 加载组件 -->
     <div id="favorite_main">
@@ -45,7 +43,7 @@ onMounted(async () => {
       <div class="flex flex-wrap favorite_content">
         <div class="favorite_content_text" v-for="resda in resData.text" :key="resda.id">
           <div class="favorite_content_text-1">
-            <a @click="winUrl(resda.url)">{{ resda.title }}</a>
+            <span @click="winUrl(resda.url)">{{ resda.title }}</span>
           </div>
           <div class="favorite_content_text-2">{{ resda.describe }}</div>
         </div>
@@ -80,7 +78,7 @@ onMounted(async () => {
           <div
             class="flex-1 px-1 m-1 text-base text-center transition duration-500 ease-in-out transform hover: hover:scale-110 hover:text-red-600"
           >
-            <a @click="clkApi(result.title)">{{ result.title }}</a>
+            <span @click="clkApi(result.title)">{{ result.title }}</span>
           </div>
         </div>
       </div>
@@ -118,8 +116,6 @@ onMounted(async () => {
 
       .favorite_type_name {
         background: #e5e7eb;
-
-        @apply m-1  px-2   rounded;
       }
     }
 
@@ -127,23 +123,21 @@ onMounted(async () => {
       @apply w-full h-full m-auto;
 
       .favorite_content_text {
-        @include w-h(31%, 125px);
+        @include w-h(31%, 142px);
 
         @apply m-auto;
         @apply mt-2 ml-2  rounded-sm shadow bg-gray-100;
 
         .favorite_content_text-1 {
-          @apply px-1 text-base font-semibold;
-
+          @apply px-1 text-lg  font-thin cursor-pointer;
           height: 25%;
-
           @include line-one;
         }
 
         .favorite_content_text-2 {
           height: 65%;
 
-          @apply px-2 mt-2 mx-1 text-sm font-thin bg-white;
+          @apply px-2 mt-2 mx-1  font-thin bg-white;
 
           @include line-numbers(4);
         }
@@ -177,7 +171,7 @@ onMounted(async () => {
       @apply mb-2 shadow rounded text-center;
 
       p {
-        @apply text-sm px-2 py-4 m-1 cursor-pointer;
+        @apply text-base px-2 py-4 m-1;
       }
     }
 
@@ -187,7 +181,7 @@ onMounted(async () => {
       @apply p-1 mb-2 cursor-pointer shadow rounded;
 
       .FavSidebar_f_title {
-        @apply p-1 m-1 text-sm font-semibold bg-gray-200 cursor-pointer;
+        @apply p-1 m-1 text-base font-semibold bg-gray-200 cursor-pointer;
       }
 
       .FavSidebar_f_content {
@@ -231,13 +225,13 @@ onMounted(async () => {
     .onecategory {
       width: 97%;
 
-      @apply p-1 mb-2 m-auto cursor-pointer;
+      @apply m-auto p-1 mb-2  cursor-pointer;
       @apply shadow rounded bg-white;
 
       .onecategory_name {
         color: #1b1e21;
 
-        @apply p-1 m-1 text-sm font-semibold bg-gray-200;
+        @apply p-1 m-1 text-base font-semibold bg-gray-200;
       }
     }
   }

@@ -16,6 +16,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA(),
+
     tsconfigPaths(),
     injectHtml({
       injectData: {
@@ -23,7 +24,6 @@ export default defineConfig({
       }
     }),
     AutoImport({
-      // global imports to register
       imports: [
         'vue',
         'vue-router',
@@ -34,7 +34,6 @@ export default defineConfig({
           ]
         }
       ],
-      // custom resolvers
       // 可以在这自定义自己的东西，比如接口api的引入，工具函数等等
       // see https://github.com/antfu/unplugin-auto-import/pull/23/
       resolvers: [

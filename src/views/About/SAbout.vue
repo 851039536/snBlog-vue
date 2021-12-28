@@ -2,9 +2,7 @@
 import { Routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 
-const resData: any = reactive({
-  resultData: []
-})
+let brief = ref('')
 
 const GetId = async (id: number) => {
   switch (id) {
@@ -29,7 +27,7 @@ const GetId = async (id: number) => {
 }
 onMounted(async () => {
   await user.GetByIdAsync(4).then((res: any) => {
-    resData.resultData = res.data
+    brief = res.data.brief
   })
   window.scrollTo(0, 0)
 })
@@ -48,7 +46,7 @@ onMounted(async () => {
             </div>
           </div>
           <div class="about-1-2">
-            <a>{{ resData.resultData.brief }}</a>
+            <a>{{ brief }}</a>
           </div>
         </div>
 
@@ -118,7 +116,7 @@ onMounted(async () => {
     height: 100%;
 
     .about-bg {
-      height: 600px;
+      height: 400px;
       background: no-repeat center/100% url('../../assets/img/ab.jpg');
 
       @apply shadow;

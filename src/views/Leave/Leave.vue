@@ -21,7 +21,7 @@ onMounted(async () => {
           {{ result1.title }}
         </li>
       </ul>
-      <div class="bruce-2 animate__animated animate__fadeInUpBig">
+      <div class="bruce-2">
         <form class="w-full max-w-sm">
           <div class="md:flex md:items-center">
             <div class="md:w-2/3">

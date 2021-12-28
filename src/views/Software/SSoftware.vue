@@ -2,7 +2,7 @@
   <div id="software">
     <s-header></s-header>
     <fav-sidebar></fav-sidebar>
-    <div class="software_main animate__animated animate__fadeIn">
+    <div class="software_main">
       <div class="software_content">
         <div class="flex software_content_div">
           <div class="software_content_img">
@@ -53,8 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-import FavSidebar from '../navigation/favorite/FavSidebar.vue'
+// import FavSidebar from '../navigation/favorite/FavSidebar.vue'
 
 const router = useRouter()
 const skip = async (id: number) => {
@@ -69,12 +68,12 @@ const skip = async (id: number) => {
 
 <style lang="scss" scoped>
 #software {
-  @apply w-full h-full;
+  @apply h-full w-full;
 
   .software_main {
     @include initialize($w, 90%, 3.6%, null, $ml, null, #fafafa);
 
-    @apply shadow-sm rounded-sm overflow-auto;
+    @apply rounded-sm shadow-sm overflow-auto;
 
     .software_content {
       @apply m-2;
@@ -82,7 +81,7 @@ const skip = async (id: number) => {
       .software_content_div {
         @include initialize(100%, 125px, 10px, null, null, null, #ffffff);
 
-        @apply mb-6 shadow rounded-sm cursor-pointer;
+        @apply rounded-sm cursor-pointer shadow mb-6;
 
         .software_content_img {
           @include w-h(20%, 100%);
@@ -98,13 +97,13 @@ const skip = async (id: number) => {
           @include w-h(80%, 100%);
 
           .software_content__frame-1 {
-            @apply m-1 px-1 text-base font-semibold;
+            @apply font-semibold m-1 text-base px-1;
 
             @include line-one;
           }
 
           .software_content__frame-2 {
-            @apply px-2 m-1 p-1 text-sm font-thin;
+            @apply font-thin m-1 text-sm p-1 px-2;
 
             height: 51%;
 
@@ -112,7 +111,7 @@ const skip = async (id: number) => {
           }
 
           .software_content__frame-3 {
-            @apply m-1 px-1 font-semibold;
+            @apply font-semibold m-1 px-1;
 
             span {
               @apply p-1;

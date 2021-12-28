@@ -11,7 +11,7 @@ method.GetTypeOrder()
     <s-header></s-header>
     <l-sidebar></l-sidebar>
     <s-circles-sidebar></s-circles-sidebar>
-    <div class="circles_main animate__animated animate__fadeIn">
+    <div class="circles_main">
       <div class="grid circles_content 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         <div class="circles-1" v-for="res in resData.resultData" :key="res.id">
           <div class="circles-1-1">

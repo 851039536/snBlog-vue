@@ -76,9 +76,9 @@ onMounted(async () => {
   }
 }
 
-// @screen xp {
-//   #raside {
-//     display: none;
-//   }
-// }
+@screen <sm {
+  #raside {
+    display: none;
+  }
+}
 </style>

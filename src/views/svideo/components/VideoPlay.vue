@@ -38,7 +38,7 @@ GetApi()
 <template>
   <s-header></s-header>
   <div class="video-play">
-    <div class="video-play_main animate__animated animate__fadeIn">
+    <div class="video-play_main">
       <div class="video-play-2">
         <div class="video-play-2-1" v-for="res in resData.resultData" :key="res.id">
           <div class="video-play-2-1-1">

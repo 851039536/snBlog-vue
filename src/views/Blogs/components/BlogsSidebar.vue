@@ -103,17 +103,9 @@ onMounted(async () => {
   display: none;
 }
 
-.icon {
-  @include w-h(1.5em, 1.5em);
-
-  overflow: hidden;
-  vertical-align: -0.1em;
-  fill: currentColor;
+@screen <sm {
+  #blogs-sidebar {
+    display: none;
+  }
 }
-
-// @screen xp {
-//   #blogs-sidebar {
-//     display: none;
-//   }
-//}
 </style>

@@ -97,7 +97,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/navigation/website/Navigation.vue')
+    component: () => import('@/views/Navigation/website/Navigation.vue')
   },
   {
     path: '/BlogCircles',
@@ -105,7 +105,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/navigation/blogCrcles/BlogCircles.vue')
+    component: () => import('@/views/Navigation/blogCrcles/BlogCircles.vue')
   },
   {
     path: '/Favorite',
@@ -113,7 +113,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/navigation/favorite/Favorite.vue')
+    component: () => import('@/views/Navigation/favorite/Favorite.vue')
   },
   {
     path: '/Svideo',

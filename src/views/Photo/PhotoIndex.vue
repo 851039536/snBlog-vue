@@ -4,7 +4,7 @@
 <template>
   <div>
     <s-header></s-header>
-    <div class="photo animate__animated animate__fadeIn">
+    <div class="photo">
       <div class="photo_title">
         <p>原来是你呀 / 总计 20</p>
       </div>

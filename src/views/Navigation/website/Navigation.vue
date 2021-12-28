@@ -17,7 +17,7 @@ onMounted(async () => {
     <blog-sidebar></blog-sidebar>
     <IndexSidebar></IndexSidebar>
     <a-back-top />
-    <div class="n-nav animate__animated animate__fadeIn">
+    <div class="n-nav">
       <h5 class="px-2 py-2 m-1">网站导航</h5>
       <div class="n-nav-text">
         <div v-for="res in state.resultData" :key="res.navId" class="n-nav-1">

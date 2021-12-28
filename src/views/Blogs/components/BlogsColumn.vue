@@ -13,7 +13,6 @@ function getImageUrl(name: string) {
 }
 
 onMounted(async () => {
-  method.GetCount()
   method.GetFy()
 })
 </script>

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import SCategory from '@/components/sidebarModule/category/SCategory.vue'
 import { resData, method } from '../data/sidebar'
 
 method.GetApi()
@@ -80,9 +79,9 @@ method.GetApi()
   display: none;
 }
 
-// @screen xp {
-//   #index-sidebar {
-//     display: none;
-//   }
-// }
+@screen <sm {
+  #index-sidebar {
+    display: none;
+  }
+}
 </style>

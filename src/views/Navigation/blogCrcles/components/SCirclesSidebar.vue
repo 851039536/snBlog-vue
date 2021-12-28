@@ -67,18 +67,13 @@ onMounted(async () => {
     @include w-h(100%, 100%);
 
     overflow: auto;
-
-    .el-calendar-table .el-calendar-day {
-      height: 44px !important;
-    }
-
     .sidebar_describe {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
 
-      @apply mb-2 shadow rounded text-center;
+      @apply mb-2  shadow rounded text-center;
 
       p {
-        @apply text-sm px-2 py-4 m-1 cursor-pointer;
+        @apply text-base px-2 py-4 m-1;
       }
     }
 
@@ -88,21 +83,19 @@ onMounted(async () => {
       @apply p-1 mb-2 cursor-pointer shadow rounded;
 
       .sidebar_f_title {
-        @apply p-1 m-1 text-sm font-semibold bg-gray-200 cursor-pointer;
+        @apply p-1 m-1 text-base font-semibold bg-gray-200;
       }
 
       .sidebar_f_content {
-        @apply text-sm m-2;
+        @apply text-base m-2;
 
         .sidebar_f_content_name {
           @apply p-1;
-
           width: 35%;
         }
 
         .sidebar_f_content_text {
           width: 40%;
-
           @apply p-1;
         }
       }
@@ -110,22 +103,16 @@ onMounted(async () => {
 
     .sidebar_itme {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
-
       @apply p-1 mb-2  shadow rounded;
 
       .sidebar_itme_1 {
-        color: #1b1e21;
-
-        @apply p-1 m-1 text-sm font-semibold bg-gray-200;
+        @apply p-1 m-1 text-base font-semibold bg-gray-200;
       }
 
       .sidebar_itme_2 {
-        background-color: #f5f7fd;
-
-        @apply m-1 cursor-pointer;
-
+        @apply m-1 cursor-pointer bg-gray-100;
         div {
-          @apply p-2;
+          @apply p-2 text-gray-600;
         }
 
         .itme_1 {
@@ -133,6 +120,10 @@ onMounted(async () => {
         }
       }
     }
+  }
+
+  #sidebar_main::-webkit-scrollbar {
+    display: none;
   }
 }
 </style>

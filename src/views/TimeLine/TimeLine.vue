@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="timeline animate__animated animate__fadeIn">
+  <div class="timeline">
     <IndexSidebar></IndexSidebar>
     <div class="timeline_img">
       <h4>Archive</h4>
