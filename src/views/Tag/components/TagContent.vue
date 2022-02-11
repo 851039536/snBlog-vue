@@ -34,13 +34,17 @@ async function GetApi(id: number) {
   .text-sidebar {
     @include w-h(25%, null);
 
-    @apply overflow-auto shadow cursor-pointer;
+    @apply cursor-pointer shadow overflow-auto;
 
     .text-sidebar-forms {
-      @apply p-1 m-1 bg-gray-50  shadow;
+      @apply m-1 shadow  p-1;
 
       .forms-1 {
-        @apply bg-gray-200 text-lg p-1;
+        @apply bg-gray-50 text-lg p-1;
+
+        &:hover {
+          @apply text-blue-400;
+        }
       }
 
       .forms-2 {

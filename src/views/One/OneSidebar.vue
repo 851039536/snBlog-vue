@@ -40,7 +40,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .one-sidebar {
-  @apply fixed ml-3 bg-gray-100 rounded;
+  @apply rounded bg-gray-100 ml-3 fixed;
 
   @include excursion($Text_height, null, null, $sidebar_r_r);
   @include w-h(20%, 90%);
@@ -51,12 +51,12 @@ onMounted(async () => {
     .one-sidebar-describe {
       width: 97%;
 
-      @apply mb-2 m-auto;
-      @apply shadow rounded bg-white text-center;
+      @apply m-auto mb-2;
+      @apply bg-white rounded shadow text-center;
 
       .one-sidebar-describe-text {
         p {
-          @apply text-base px-2 py-4 m-1 cursor-pointer;
+          @apply cursor-pointer m-1 text-base py-4 px-2;
         }
       }
     }

@@ -47,34 +47,29 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <section>
-    <a-back-top />
-    <div class="anchor">
-      <div class="anchor_tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
-        {{ anchor.title }}
-      </div>
+  <a-back-top />
+  <div class="anchor">
+    <div class="anchor_tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
+      {{ anchor.title }}
     </div>
-    <div class="vmd">
-      <a-page-header style="border: 1px solid rgb(235, 237, 240)" :title="state.blog.title" />
-      <v-md-preview :text="state.blog.text" ref="preview" />
-    </div>
-  </section>
+  </div>
+  <div class="vmd">
+    <a-page-header style="border: 1px solid rgb(235, 237, 240)" :title="state.blog.title" />
+    <v-md-preview :text="state.blog.text" ref="preview" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .vmd {
-  width: 77%;
-  @apply bg-white  mt-12;
-  margin-left: 3%;
+  @apply bg-gray-50 mt-3 ml-[3%] w-[77%];
 }
 .anchor {
-  width: 16%;
-  z-index: 10;
-  @apply fixed  bg-gray-100 rounded;
-  top: 7%;
-  right: 3%;
+  @apply rounded top-[7%] right-[3%] w-[16%] z-10 fixed;
   .anchor_tag {
-    @apply bg-white m-1 p-2 cursor-pointer  text-lg text-gray-600 font-semibold;
+    @apply bg-white cursor-pointer  m-1 text-base p-2;
+    &:hover {
+      @apply rounded bg-blue-100;
+    }
   }
 }
 </style>

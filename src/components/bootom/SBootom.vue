@@ -4,7 +4,7 @@ import { Routers } from '@/hooks/routers'
 const skip = (num: number) => {
   switch (num) {
     case 1:
-      Routers('/index')
+      Routers('/index/column')
       break
     case 2:
       Routers('/One')
@@ -19,10 +19,10 @@ const skip = (num: number) => {
       Routers('./Photo')
       break
     case 6:
-      Routers('./index')
+      Routers('./BlogHome')
       break
     case 7:
-      Routers('./index')
+      Routers('./BlogHome')
       break
     default:
       break
@@ -31,7 +31,7 @@ const skip = (num: number) => {
 </script>
 <template>
   <div class="sbootom">
-    <div class="flex justify-around bootom-main">
+    <div class="">
       <div class @click="skip(1)">首页</div>
       <div class @click="skip(2)">TG</div>
       <div class @click="skip(3)">One</div>
@@ -43,12 +43,13 @@ const skip = (num: number) => {
 
 <style lang="scss" scoped>
 .sbootom {
-  @apply fixed bottom-0 w-full z-10;
+  @apply w-full bottom-0 z-10 fixed;
   @apply bg-white shadow text-base;
 
-  .bootom-main {
+  & > div {
+    @apply flex justify-around;
     div {
-      @apply px-2 py-3 m-2 text-center text-gray-700;
+      @apply m-2 text-center py-3 px-2 text-gray-700;
     }
   }
 }

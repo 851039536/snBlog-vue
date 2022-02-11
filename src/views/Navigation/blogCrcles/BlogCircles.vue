@@ -12,7 +12,7 @@ method.GetTypeOrder()
     <l-sidebar></l-sidebar>
     <s-circles-sidebar></s-circles-sidebar>
     <div class="circles_main">
-      <div class="grid circles_content 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+      <div class="grid circles_content sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
         <div class="circles-1" v-for="res in resData.resultData" :key="res.id">
           <div class="circles-1-1">
             <img v-lazy="res.img" onerror="this.style.display='none'" />
@@ -20,7 +20,7 @@ method.GetTypeOrder()
           </div>
           <div class="circles-1-2">
             <div class="circles-1-2-1">
-              <a @click="method.UrlSkip(res.url)">{{ res.title }}</a>
+              <span @click="method.UrlSkip(res.url)">{{ res.title }}</span>
             </div>
             <div class="circles-1-2-2">{{ res.describe }}</div>
           </div>
@@ -55,9 +55,9 @@ method.GetTypeOrder()
 
     // 导航窗体小
     .circles-1 {
-      @include w-h(210px, 110px);
+      @include w-h(92%, 110px);
 
-      @apply m-2 mt-4 shadow rounded hover:bg-gray-200;
+      @apply rounded m-2 shadow hover:bg-gray-50;
 
       .circles-1-1 {
         @include w-h(40%, 99%);
@@ -67,7 +67,7 @@ method.GetTypeOrder()
         img {
           @include w-h(100%, 100%);
 
-          @apply rounded-full  bg-gray-300;
+          @apply rounded  bg-gray-300;
         }
       }
 
@@ -77,7 +77,7 @@ method.GetTypeOrder()
         @include w-h(60%, 100%);
 
         .circles-1-2-1 {
-          @apply text-base font-semibold p-1 pt-2;
+          @apply font-light text-lg p-1 pt-2 hover:text-blue-400;
 
           @include line-one;
 
@@ -109,9 +109,7 @@ method.GetTypeOrder()
         }
 
         .circles-1-2-2 {
-          /* background-color: #00FFFF; */
-          @apply px-1 pt-3;
-
+          @apply font-light px-1 pt-3;
           @include line-one;
         }
       }
@@ -128,7 +126,7 @@ method.GetTypeOrder()
     }
 
     .circles_page {
-      @apply bg-white  p-1 shadow;
+      @apply bg-white  shadow p-1;
     }
   }
 }

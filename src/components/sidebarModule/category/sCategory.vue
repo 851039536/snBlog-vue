@@ -27,19 +27,17 @@ const TagSkip = async (id: any) => {
 
 <style lang="scss" scoped>
 .category {
-  width: 97%;
-
-  @apply m-auto p-1 mb-2;
-  @apply bg-white shadow rounded cursor-pointer;
+  @apply m-auto mb-2 p-1 w-[97%];
+  @apply bg-white rounded cursor-pointer shadow;
 
   .category-name {
-    @apply p-1 m-1 text-base font-semibold rounded;
+    @apply rounded font-semibold m-1 text-base p-1;
     @apply bg-gray-200;
   }
 
   .category-text {
-    @apply flex-1 px-1 p-1 m-1 text-base text-center;
-    @apply bg-gray-100 rounded;
+    @apply flex-1 m-1 text-base text-center p-1 px-1;
+    @apply rounded bg-gray-100;
   }
 }
 </style>

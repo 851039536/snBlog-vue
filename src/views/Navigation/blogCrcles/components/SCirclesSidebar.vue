@@ -70,24 +70,24 @@ onMounted(async () => {
     .sidebar_describe {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
 
-      @apply mb-2  shadow rounded text-center;
+      @apply rounded  shadow text-center mb-2;
 
       p {
-        @apply text-base px-2 py-4 m-1;
+        @apply m-1 text-base py-4 px-2;
       }
     }
 
     .sidebar_footer {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
 
-      @apply p-1 mb-2 cursor-pointer shadow rounded;
+      @apply rounded cursor-pointer shadow mb-2 p-1;
 
       .sidebar_f_title {
-        @apply p-1 m-1 text-base font-semibold bg-gray-200;
+        @apply font-semibold bg-gray-200 m-1 text-base p-1;
       }
 
       .sidebar_f_content {
-        @apply text-base m-2;
+        @apply m-2 text-base;
 
         .sidebar_f_content_name {
           @apply p-1;
@@ -103,17 +103,15 @@ onMounted(async () => {
 
     .sidebar_itme {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
-      @apply p-1 mb-2  shadow rounded;
+      @apply rounded shadow  mb-2 p-1;
 
       .sidebar_itme_1 {
-        @apply p-1 m-1 text-base font-semibold bg-gray-200;
+        @apply font-semibold bg-gray-200 m-1 text-base p-1;
       }
 
       .sidebar_itme_2 {
-        @apply m-1 cursor-pointer bg-gray-100;
-        div {
-          @apply p-2 text-gray-600;
-        }
+        @apply text-base p-1 pl-2 text-gray-600;
+        border-bottom: 1px dashed #f1f1f1;
 
         .itme_1 {
           @apply text-base;

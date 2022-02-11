@@ -38,7 +38,7 @@ onMounted(async () => {
             show-search
             v-model:value="resData.title"
             placeholder="input search text"
-            style="width: 200px"
+            style="width: 100%"
             :show-arrow="false"
             :filter-option="false"
             @search="SearchTitle"
@@ -72,7 +72,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 #blogs-sidebar {
-  @apply fixed bg-gray-100 shadow;
+  @apply bg-gray-100 shadow fixed;
 
   @include excursion($Text_height, null, null, $sidebar_r_r);
   @include w-h(20.4%, 93%);
@@ -82,18 +82,14 @@ onMounted(async () => {
     @include w-h;
 
     .blogs-sidebar_input {
-      @apply flex m-auto p-2 mt-1 mb-2 shadow rounded;
       width: 97%;
-      @apply bg-white;
+      @include center-children;
+      @apply flex flex-nowrap;
+      @apply m-auto mt-1 mb-2 p-2;
+      @apply bg-white rounded shadow;
 
-      div > input {
-        @apply ml-1 rounded bg-gray-100;
-        height: 30px;
-      }
-
-      div > button {
-        @apply text-base font-medium ml-3;
-        height: 30px;
+      & > div {
+        width: 100%;
       }
     }
   }

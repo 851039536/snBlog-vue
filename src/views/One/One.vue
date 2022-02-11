@@ -33,18 +33,17 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .one {
   position: fixed;
-
   @include w-h(100%, 100%);
 
   .one-div {
     @include initialize($w, 90%, 4.5%, null, $ml, null, #ffffff);
 
-    @apply shadow-sm rounded-sm overflow-auto;
+    @apply rounded-sm shadow-sm overflow-auto;
 
     .one-recommend {
       @include w-h(100%, 30px);
 
-      @apply px-2 my-1 mt-1 shadow bg-gray-100;
+      @apply bg-gray-100 shadow my-1 mt-1 px-2;
 
       .one-recommend-l {
         @apply float-left;
@@ -58,7 +57,7 @@ onMounted(async () => {
     }
 
     .one_div_paging {
-      @apply h-7 m-2 mt-3 shadow rounded;
+      @apply rounded h-7 m-2 shadow mt-3;
     }
   }
 
@@ -72,11 +71,11 @@ onMounted(async () => {
 //   }
 
 //   .one .one-div {
-//     @apply w-full ml-0 mb-14;
+//     @apply mb-14 ml-0 w-full;
 //   }
 
 //   .one .one-div .one-list .one-list-div {
-//     @apply w-full ml-0;
+//     @apply ml-0 w-full;
 //   }
 // }
 </style>

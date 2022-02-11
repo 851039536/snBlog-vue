@@ -27,51 +27,41 @@ onMounted(async () => {
 </script>
 <template>
   <s-header></s-header>
-  <div class="">
-    <div class="tag-main">
-      <div class="tag_search">
-        <div>
-          <a-select
-            show-search
-            placeholder="标题搜索"
-            style="width: 200px"
-            :default-active-first-option="false"
-            :show-arrow="false"
-            :filter-option="false"
-            :not-found-content="null"
-            @search="Search"
-          >
-          </a-select>
-        </div>
-      </div>
-      <TagHead :array-label="resData.arrayLabel"></TagHead>
-      <TagContent></TagContent>
+  <div class="tag-main">
+    <div class="tag_search">
+      <a-select
+        show-search
+        placeholder="标题搜索"
+        style="width: 50%"
+        :default-active-first-option="false"
+        :show-arrow="false"
+        :filter-option="false"
+        :not-found-content="null"
+        @search="Search"
+      >
+      </a-select>
     </div>
+    <TagHead :array-label="resData.arrayLabel"></TagHead>
+    <TagContent></TagContent>
   </div>
 </template>
 
 <style lang="scss">
-.tag {
-  .tag-main {
-    @apply absolute;
-    top: 9.5%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-  }
+.tag-main {
+  @apply absolute;
+  top: 9.5%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
 }
 
 .tag_search {
   @include initialize(94%, null, null, null, 3%, null, #ffffff);
-  @apply relative rounded-sm  shadow;
+  @apply rounded-sm shadow  relative;
 
   height: 48px;
-
-  div {
-    @apply absolute left-1/2;
-    top: 90%;
-    width: 40%;
-    transform: translate(-50%, -50%);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

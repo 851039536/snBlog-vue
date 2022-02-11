@@ -10,10 +10,10 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 
 <template>
   <div class="video_sidebar">
-    <div class="video_sidebar_main">
+    <div>
       <!-- 标签头部 -->
       <div class="video_s_m_top">
-        <div class="video_s_m_top_title">
+        <div>
           <p class>燃向视频收集</p>
         </div>
       </div>
@@ -33,56 +33,43 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 
 <style lang="scss" scoped>
 .video_sidebar {
-  @apply fixed ml-3;
+  @apply h-[90%] ml-3 w-[20%] fixed;
 
   @include excursion($Text_height, null, null, $sidebar_r_r);
-  @include w-h(20%, 90%);
-
-  color: #888;
-  font-size: 17px;
-
-  .video_sidebar_main {
-    @apply overflow-auto w-full h-full;
+  & > div {
+    @apply h-full w-full overflow-auto;
 
     .video_s_m_top {
-      width: 97%;
+      @apply bg-white m-auto text-center mb-2 w-[97%];
+      @apply rounded shadow;
 
-      @apply mb-2 m-auto text-center bg-white;
-      @apply shadow rounded;
-
-      .video_s_m_top_title {
+      & > div {
         p {
-          @apply text-sm px-2 py-4 m-1;
+          @apply m-1 text-base py-4 px-2;
         }
       }
     }
 
     .video_sidebar_count {
-      width: 97%;
-
-      @apply p-1 mb-2 m-auto cursor-pointer;
-      @apply shadow rounded bg-white;
+      @apply cursor-pointer m-auto mb-2 p-1 w-[97%];
+      @apply bg-white rounded shadow;
 
       .sn-list8-1 {
         color: #1b1e21;
 
-        @apply p-1 m-1 text-sm font-semibold bg-gray-200 cursor-pointer;
+        @apply cursor-pointer font-semibold bg-gray-200 m-1 text-sm p-1;
       }
 
       .sn-list8-2 {
-        @apply text-sm m-2;
+        @apply m-2 text-sm;
 
         .sn-list8-2-1 {
           .sn-list8-2-1-1 {
-            @apply p-1;
-
-            width: 35%;
+            @apply p-1 w-[35%];
           }
 
           .sn-list8-2-1-2 {
-            width: 40%;
-
-            @apply p-1;
+            @apply p-1 w-[35%];
           }
         }
       }

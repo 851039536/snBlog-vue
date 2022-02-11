@@ -7,10 +7,10 @@ onMounted(async () => {
 </script>
 <template>
   <nav class="headers">
-    <div class="headers-1">
+    <div>
       <div class="header_main">
-        <div class="header-title">
-          <span class="text-2xl font-medium tracking-tight">少年</span>
+        <div class="flex h-full flex-shrink-0 items-center">
+          <span class="font-medium tracking-tight text-2xl">少年</span>
         </div>
         <div class="header_text">
           <div v-for="res in resData.resultData" :key="res.id">
@@ -19,7 +19,7 @@ onMounted(async () => {
         </div>
       </div>
       <div class="header_text_1">
-        <div class="header-text-r-1">
+        <div>
           <span @click="method.skip(13)" v-once>博客园</span>
           <span @click="method.skip(14)" v-once>Login</span>
         </div>
@@ -30,42 +30,35 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .headers {
-  @apply flex fixed  p-1 z-50;
+  @apply flex h-[53px]  p-1 px-2 w-[94%] z-50 fixed;
   @include excursion(0, null, 3%, null);
-  @include w-h(94%, 53px);
-  @apply shadow-sm rounded-sm bg-white;
-  .headers-1 {
+  @apply bg-white rounded-sm shadow-sm;
+  & > div {
     @apply flex flex-wrap w-full;
-  }
+    .header_main {
+      @apply flex h-full w-[90%];
 
-  .header_main {
-    width: 90%;
-
-    @apply flex h-full;
-
-    .header-title {
-      @apply flex items-center flex-shrink-0 h-full;
-    }
-
-    .header_text {
-      @apply w-full flex items-center flex-shrink-0;
-
-      span {
-        @apply ml-3 text-xl cursor-pointer;
+      .header_text {
+        @apply flex flex-shrink-0 w-full items-center;
+        span {
+          @apply cursor-pointer text-xl ml-3;
+          &:hover {
+            @apply text-blue-400;
+          }
+        }
       }
     }
-  }
 
-  .header_text_1 {
-    width: 10%;
-
-    @apply flex text-lg h-full;
-
-    .header-text-r-1 {
-      @apply flex items-center flex-shrink-0;
-
-      span {
-        @apply m-1 text-xl cursor-pointer;
+    .header_text_1 {
+      @apply flex h-full text-lg;
+      & > div {
+        @apply flex  flex-shrink-0 items-center;
+        span {
+          @apply cursor-pointer m-1 text-xl;
+          &:hover {
+            @apply text-blue-400;
+          }
+        }
       }
     }
   }

@@ -79,12 +79,10 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .form {
-  @apply w-full h-full;
+  @apply h-full w-full;
 
   .form_content {
-    height: 480px;
-
-    @apply bg-white overflow-auto;
+    @apply bg-white h-[480px] overflow-auto;
 
     .form_content_1 {
       @apply mt-3;

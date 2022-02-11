@@ -58,7 +58,7 @@ onMounted(async () => {
 
     @include initialize(100%, 155px, 10px, null, null, null, #ffffff);
 
-    @apply shadow rounded-sm cursor-pointer;
+    @apply rounded-sm  shadow hover:bg-gray-50;
 
     .blogs-content_img {
       @include w-h(25%, 100%);
@@ -74,23 +74,23 @@ onMounted(async () => {
       @include w-h(75%, 100%);
 
       .blogs-content__frame-1 {
-        @apply m-1 px-1 text-base font-semibold;
+        @apply cursor-pointer m-1  text-lg px-1;
 
         @include line-one;
       }
 
       .blogs-content__frame-2 {
-        @apply px-2 m-1 p-1;
+        @apply m-1 p-1 px-2;
 
         height: 52%;
 
-        @apply text-sm font-thin;
+        @apply font-thin text-sm;
 
         @include line-numbers(4);
       }
 
       .blogs-content__frame-3 {
-        @apply m-1 px-1 font-semibold;
+        @apply font-light m-1 px-1;
 
         span {
           @apply p-1;
@@ -100,6 +100,6 @@ onMounted(async () => {
   }
 }
 .blogs-page {
-  @apply w-full py-5 bg-white shadow rounded;
+  @apply bg-white rounded shadow w-full py-5;
 }
 </style>

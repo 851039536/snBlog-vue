@@ -13,7 +13,7 @@ method.GetApi()
           show-search
           v-model:value="resData.title"
           placeholder="input search text"
-          style="width: 200px"
+          style="width: 100%"
           :show-arrow="false"
           :filter-option="false"
           @search="method.Search"
@@ -22,8 +22,6 @@ method.GetApi()
           >
           <a-select-option v-for="res in resData.articleData1" :key="res.id">{{ res.title }}</a-select-option>
         </a-select>
-
-        <a-button class="a_but">搜一搜</a-button>
       </div>
       <!-- end 搜索 -->
 
@@ -50,7 +48,7 @@ method.GetApi()
 
 <style lang="scss" scoped>
 #index-sidebar {
-  @apply fixed ml-3 overflow-auto;
+  @apply ml-3 fixed overflow-auto;
 
   @include excursion($Text_height, null, null, $sidebar_r_r);
   @include w-h(20.4%, 93%);
@@ -63,13 +61,13 @@ method.GetApi()
     /* 搜索 */
     .index_s_input {
       width: 97%;
-
+      @include center-children;
       @apply flex flex-nowrap;
-      @apply m-auto p-2 mt-1 mb-2;
-      @apply bg-white shadow rounded;
+      @apply m-auto mt-1 mb-2 p-2;
+      @apply bg-white rounded shadow;
 
       .a_but {
-        @apply p-1 ml-1;
+        @apply ml-1 p-1;
       }
     }
   }

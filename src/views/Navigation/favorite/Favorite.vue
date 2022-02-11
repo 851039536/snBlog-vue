@@ -75,9 +75,7 @@ onMounted(async () => {
       <div class="onecategory">
         <div class="onecategory_name">列表</div>
         <div class="inline-flex" v-for="result in state.resultData2" :key="result.id">
-          <div
-            class="flex-1 px-1 m-1 text-base text-center transition duration-500 ease-in-out transform hover: hover:scale-110 hover:text-red-600"
-          >
+          <div class="flex-1 m-1 text-base text-center px-1">
             <span @click="clkApi(result.title)">{{ result.title }}</span>
           </div>
         </div>
@@ -102,7 +100,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 #favorite {
-  @apply w-full h-full;
+  @apply h-full w-full;
 
   #favorite_main {
     @apply fixed;
@@ -112,7 +110,7 @@ onMounted(async () => {
     @apply rounded shadow;
 
     .favorite_type {
-      @apply text-base cursor-default text-center;
+      @apply cursor-default text-base text-center;
 
       .favorite_type_name {
         background: #e5e7eb;
@@ -120,16 +118,16 @@ onMounted(async () => {
     }
 
     .favorite_content {
-      @apply w-full h-full m-auto;
+      @apply h-full m-auto w-full;
 
       .favorite_content_text {
-        @include w-h(31%, 142px);
+        @include w-h(32%, 167px);
 
         @apply m-auto;
-        @apply mt-2 ml-2  rounded-sm shadow bg-gray-100;
+        @apply rounded-sm bg-gray-100  shadow mt-2 ml-2;
 
         .favorite_content_text-1 {
-          @apply px-1 text-lg  font-thin cursor-pointer;
+          @apply cursor-pointer font-thin  text-lg px-1;
           height: 25%;
           @include line-one;
         }
@@ -137,15 +135,15 @@ onMounted(async () => {
         .favorite_content_text-2 {
           height: 65%;
 
-          @apply px-2 mt-2 mx-1  font-thin bg-white;
+          @apply bg-white font-thin mx-1  mt-2 px-2;
 
-          @include line-numbers(4);
+          @include line-numbers(5);
         }
       }
     }
 
     .favorite_page {
-      @apply p-2 bg-white shadow;
+      @apply bg-white shadow p-2;
     }
   }
 }
@@ -159,7 +157,7 @@ onMounted(async () => {
   @apply ml-3;
 
   #FavSidebar_main {
-    @apply w-full h-full overflow-auto;
+    @apply h-full w-full overflow-auto;
 
     .el-calendar-table .el-calendar-day {
       height: 44px !important;
@@ -168,24 +166,24 @@ onMounted(async () => {
     .FavSidebar_describe {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
 
-      @apply mb-2 shadow rounded text-center;
+      @apply rounded shadow text-center mb-2;
 
       p {
-        @apply text-base px-2 py-4 m-1;
+        @apply m-1 text-base py-4 px-2;
       }
     }
 
     .FavSidebar_footer {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
 
-      @apply p-1 mb-2 cursor-pointer shadow rounded;
+      @apply rounded cursor-pointer shadow mb-2 p-1;
 
       .FavSidebar_f_title {
-        @apply p-1 m-1 text-base font-semibold bg-gray-200 cursor-pointer;
+        @apply cursor-pointer font-semibold bg-gray-200 m-1 text-base p-1;
       }
 
       .FavSidebar_f_content {
-        @apply text-sm m-2;
+        @apply m-2 text-sm;
 
         .FavSidebar_f_content_name {
           @apply p-1;
@@ -204,20 +202,20 @@ onMounted(async () => {
     .FavSidebar_itme {
       @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
 
-      @apply p-1 mb-2  shadow rounded;
+      @apply rounded shadow  mb-2 p-1;
 
       .FavSidebar_itme_1 {
         color: #1b1e21;
 
-        @apply p-1 m-1 text-sm font-semibold bg-gray-200;
+        @apply font-semibold bg-gray-200 m-1 text-sm p-1;
       }
 
       .FavSidebar_itme_2 {
         @apply bg-gray-100;
-        @apply m-2 cursor-pointer;
+        @apply cursor-pointer m-2;
 
         .itme_1 {
-          @apply p-2 text-base;
+          @apply text-base p-2;
         }
       }
     }
@@ -225,13 +223,13 @@ onMounted(async () => {
     .onecategory {
       width: 97%;
 
-      @apply m-auto p-1 mb-2  cursor-pointer;
-      @apply shadow rounded bg-white;
+      @apply cursor-pointer m-auto mb-2  p-1;
+      @apply bg-white rounded shadow;
 
       .onecategory_name {
         color: #1b1e21;
 
-        @apply p-1 m-1 text-base font-semibold bg-gray-200;
+        @apply font-semibold bg-gray-200 m-1 text-base p-1;
       }
     }
   }

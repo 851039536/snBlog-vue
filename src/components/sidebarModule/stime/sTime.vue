@@ -31,23 +31,15 @@ updateTime()
 
 <style lang="scss" scoped>
 #clock {
-  width: 97%;
-  color: #fff;
-  color: #0d1e24;
-  font-family: 'Share Tech Mono', monospace;
-  text-align: center;
-
-  @apply m-auto p-1 mb-2 mt-1;
-  @apply bg-white shadow rounded;
+  @apply m-auto mt-1 text-center mb-2 p-1  w-[97%];
+  @apply bg-white rounded shadow;
 
   .time {
-    font-size: 26px;
-    letter-spacing: 0.05em;
+    @apply text-2xl;
   }
 
   .date {
-    font-size: 22px;
-    letter-spacing: 0.1em;
+    @apply text-3xl;
   }
 }
 </style>

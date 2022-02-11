@@ -71,8 +71,7 @@ tool.BackTop()
 
       div {
         border-bottom: 1px dashed #f1f1f1;
-
-        @apply p-1 m-1 text-sm font-light;
+        @apply font-light m-1 text-sm p-1;
       }
     }
 
@@ -80,11 +79,11 @@ tool.BackTop()
       @apply flex;
 
       .blogs_comment_text {
-        @apply bg-blue-200 shadow rounded-sm;
+        @apply rounded-sm bg-blue-200 shadow;
       }
 
       div {
-        @apply px-1 py-1 m-2 text-sm font-light text-center;
+        @apply font-light m-2 text-sm text-center py-1 px-1;
       }
     }
   }
@@ -97,14 +96,10 @@ tool.BackTop()
   .blogsContent_title {
     position: relative;
 
-    @apply shadow rounded cursor-pointer;
+    @apply rounded cursor-pointer shadow;
 
     .ant-page-header-heading-title {
-      @apply text-lg;
-
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      @apply text-lg overflow-hidden overflow-ellipsis whitespace-nowrap;
     }
 
     .ant-page-header {

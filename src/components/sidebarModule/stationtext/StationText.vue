@@ -38,28 +38,25 @@ defineProps({
 
 <style lang="scss" scoped>
 .statistics {
-  width: 97%;
-
-  @apply m-auto p-1 mb-2 shadow rounded;
-  @apply bg-white;
+  @apply bg-white rounded m-auto shadow mb-2 p-1 w-[97%];
 
   .title {
-    @apply p-1 m-1;
-    @apply text-base font-semibold bg-gray-200;
+    @apply m-1 p-1;
+    @apply font-semibold bg-gray-200 text-base;
   }
 
   .content {
     @apply m-2;
 
     .content-frame {
-      @apply flex justify-between mt-1;
+      @apply flex mt-1 text-base justify-between;
 
       .content-frame-title {
         @apply p-1;
       }
 
       .content-frame-text {
-        @apply p-1 bg-gray-100 rounded;
+        @apply rounded bg-gray-100 p-1;
       }
     }
   }

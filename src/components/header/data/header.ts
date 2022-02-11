@@ -21,7 +21,7 @@ class method {
         winUrl('https://www.cnblogs.com/ouyangkai/')
         break
       case 14:
-        winUrl('https://gitee.com/kaiouyang-sn')
+        winUrl('/Admin-index/ArticleTable')
         break
       default:
         await Routers(num)

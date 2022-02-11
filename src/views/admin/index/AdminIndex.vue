@@ -52,15 +52,15 @@ provide('reload', reload)
   <div class="admin_index">
     <a-layout>
       <header class="header">
-        <a href="" class="logo">控制台</a>
+        <a class="logo">控制台</a>
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
-          <li><a href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
+          <li class="text-base"><a href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
 
-          <li><a href="#careers" @click="Routers('/Blogs/BlogsColumn')">主页</a></li>
-          <li><a href="#about" @click="zx()">注销</a></li>
-          <li>
-            <a href="#contact"
+          <li class="text-base"><a @click="Routers('/Blogs/BlogsColumn')">主页</a></li>
+          <li class="text-base"><a @click="zx()">注销</a></li>
+          <li class="text-base">
+            <a
               ><a-avatar>{{ store.roles }}</a-avatar></a
             >
           </li>
@@ -134,7 +134,7 @@ provide('reload', reload)
 
 <style lang="scss" scoped>
 .admin_index {
-  @apply fixed w-full h-full;
+  @apply h-full w-full fixed;
 
   z-index: 10;
 

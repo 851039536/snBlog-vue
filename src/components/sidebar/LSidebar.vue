@@ -7,7 +7,7 @@ onMounted(async () => {
 </script>
 <template>
   <div id="raside">
-    <div class="raside-main">
+    <div>
       <div class="raside-img">
         <img src="@/assets/img/si.jpg" />
       </div>
@@ -32,27 +32,26 @@ onMounted(async () => {
 
 <style lang="scss">
 #raside {
-  @apply fixed shadow rounded-md;
-  @include w-h(20%, 100%);
+  @apply rounded-md h-[100%] shadow w-[20%] fixed;
   @include excursion($Text_height, null, 3%, null);
-  .raside-main {
-    @apply h-4/5 overflow-auto;
+  & > div {
+    @apply h-[80%] overflow-auto;
 
     .raside-img {
       img {
-        @include w-h(100%, 144px);
-
-        @apply rounded;
+        @apply rounded h-[144px] w-[100%];
       }
     }
 
     .raside-list {
       @include initialize(40%, 6%, 4px, auto, auto, auto, null);
-
-      @apply text-center cursor-pointer;
+      @apply cursor-pointer text-center;
 
       p {
-        @apply py-1 px-4 text-lg;
+        @apply text-lg py-1 px-4;
+        &:hover {
+          @apply text-blue-400;
+        }
       }
     }
 

@@ -145,7 +145,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/one/One.vue')
+    component: () => import('@/views/One/One.vue')
   },
   {
     path: '/Book',
@@ -186,7 +186,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/components/editor/VmdHtml.vue')
+    component: () => import('@/components/editor/vmdhtml.vue')
   },
   // ------------------------------------------------------------------------------admin---------------------------------------------------
   // ------------------------------------------------------------------------------admin---------------------------------------------------

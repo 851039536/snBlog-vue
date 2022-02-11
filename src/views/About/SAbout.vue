@@ -51,19 +51,19 @@ onMounted(async () => {
         </div>
 
         <div class="flex flex-wrap about-2">
-          <div class="w-1/5 p-2 about-2-1">
+          <div class="p-2 w-1/5 about-2-1">
             <a @click="GetId(1)">文章</a>
           </div>
-          <div class="w-1/5 p-2 about-2-1">
+          <div class="p-2 w-1/5 about-2-1">
             <a @click="GetId(2)">娱乐</a>
           </div>
-          <div class="w-1/5 p-2 about-2-1">
+          <div class="p-2 w-1/5 about-2-1">
             <a @click="GetId(3)">日志</a>
           </div>
-          <div class="w-1/5 p-2 about-2-1">
+          <div class="p-2 w-1/5 about-2-1">
             <a @click="GetId(4)">分享</a>
           </div>
-          <div class="w-1/5 p-2 about-2-1">
+          <div class="p-2 w-1/5 about-2-1">
             <a @click="GetId(5)">留言</a>
           </div>
         </div>
@@ -101,14 +101,14 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .about_main {
-  @apply fixed w-full h-full bg-white;
+  @apply bg-white h-full w-full fixed;
 
   @include initialize(94%, 92%, 4.5%, null, 3%, null, null);
 
   @apply bg-white overflow-auto;
 
   .about_content {
-    @apply absolute shadow;
+    @apply shadow absolute;
 
     top: 0%;
     left: 0%;
@@ -116,10 +116,9 @@ onMounted(async () => {
     height: 100%;
 
     .about-bg {
-      height: 400px;
       background: no-repeat center/100% url('../../assets/img/ab.jpg');
 
-      @apply shadow;
+      @apply h-[400px] shadow;
 
       .about-1 {
         @include initialize(35%, 60%, auto, auto, auto, auto, null);
@@ -131,12 +130,10 @@ onMounted(async () => {
 
           .about-1-1-1 {
             @include initialize(230px, 190px, 3%, auto, auto, auto, null);
-
             @apply p-3;
 
             img {
               @include w-h;
-
               border-radius: 1%;
             }
           }
@@ -144,27 +141,19 @@ onMounted(async () => {
 
         .about-1-2 {
           @include initialize(null, 20%, 0, auto, auto, auto, #4d4d4d);
-
-          @apply p-1 pt-4 text-lg text-center;
+          @apply text-lg text-center p-1 pt-4;
         }
       }
 
       .about-2 {
         @include initialize(35%, null, 10px, auto, auto, auto, null);
 
-        @apply text-base cursor-pointer bg-gray-200;
-        @apply shadow rounded-sm;
+        @apply cursor-pointer bg-gray-200 text-base;
+        @apply rounded-sm shadow;
 
         .about-2-1 {
           @apply pl-5;
         }
-      }
-
-      .about-3 {
-        width: 35%;
-
-        @apply m-auto mt-4 shadow;
-        @apply bg-pink-50;
       }
     }
 
@@ -181,7 +170,7 @@ onMounted(async () => {
         }
 
         .bg-2-1-2 {
-          @apply m-2 text-base font-light;
+          @apply font-light m-2 text-base;
         }
       }
 
@@ -193,7 +182,7 @@ onMounted(async () => {
         }
 
         .bg-2-2-2 {
-          @apply m-2 text-base font-light;
+          @apply font-light m-2 text-base;
         }
       }
 
@@ -205,7 +194,7 @@ onMounted(async () => {
         }
 
         .bg-2-3-2 {
-          @apply m-2 text-base font-light;
+          @apply font-light m-2 text-base;
         }
       }
     }
