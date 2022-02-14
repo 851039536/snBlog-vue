@@ -26,37 +26,27 @@ async function GetApi(id: number) {
 <style lang="scss" scoped>
 .tag_content {
   @apply flex flex-nowrap;
-  @apply mt-1;
+  @apply h-[71%] mt-1 ml-[3%] w-[94%];
 
-  @include initialize(94%, 71%, null, null, 3%, null, #ffffff);
-
-  // 侧边框
   .text-sidebar {
-    @include w-h(25%, null);
-
-    @apply cursor-pointer shadow overflow-auto;
+    @apply cursor-pointer shadow w-[25%] overflow-auto;
 
     .text-sidebar-forms {
       @apply m-1 shadow  p-1;
 
       .forms-1 {
-        @apply bg-gray-50 text-lg p-1;
-
-        &:hover {
-          @apply text-blue-400;
-        }
+        @apply bg-gray-50 text-base p-1 text-gray-600 hover:text-blue-400;
       }
 
       .forms-2 {
-        @apply p-2;
+        @apply p-2 text-gray-500;
       }
     }
   }
 
   // 内容
   .text-blog {
-    @include w-h(75%, null);
-    @apply overflow-auto;
+    @apply mt-1 w-[75%] overflow-auto;
   }
 }
 </style>

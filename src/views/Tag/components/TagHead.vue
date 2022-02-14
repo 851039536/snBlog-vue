@@ -26,18 +26,14 @@ async function GetTag(name: string) {
 
 <style lang="scss" scoped>
 .tag_head {
-  @apply flex flex-wrap mt-1;
+  @apply flex flex-wrap mt-1 ml-[3%] w-[94%];
   @apply bg-white rounded-sm shadow;
 
-  @include initialize(94%, null, null, null, 3%, null, null);
   .tag_head_content {
-    @apply cursor-pointer m-1 mt-1 pt-1;
+    @apply cursor-pointer m-1 pt-1;
 
     span {
-      @apply text-lg p-1;
-      &:hover {
-        @apply text-blue-400;
-      }
+      @apply rounded shadow  text-base p-1 text-gray-600 hover:bg-blue-400;
     }
   }
 }

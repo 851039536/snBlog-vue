@@ -166,10 +166,60 @@ $Text_height: 9%;
   }
 }
 
+/*模块居中*/
 @mixin center-children {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/*全局动画过度 */
+/* 可以为进入和离开动画设置不同的持续时间和动画函数 */
+.fade-enter-active {
+  //进入过程
+  animation: fade-in 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.fade-leave-active {
+  //离开过程
+  animation: fade-out 0.3s ease-out both;
+}
+
+//进入开始和离开结束的状态
+.fade-enter-to {
+  opacity: 0;
+}
+
+//进入开始和离开结束的状态
+.fade-leave-to {
+  opacity: 0;
+}
+/*全局动画过度 */
+
+.fade-out {
+  animation: fade-out 1s ease-out both;
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+.fade-in {
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @screen lg {

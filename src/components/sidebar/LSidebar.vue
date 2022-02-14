@@ -21,7 +21,7 @@ onMounted(async () => {
         <a href="http://oykperson.xyz">http://www.oykperson.xyz</a>
       </div>
       <div class="raside-described">
-        <p class="raside-described_text">
+        <p>
           SN © 2021.Rights Reserved. 备案 :
           <a href="https://beian.miit.gov.cn/">粤ICP备19130826号-1</a>
         </p>
@@ -32,8 +32,8 @@ onMounted(async () => {
 
 <style lang="scss">
 #raside {
-  @apply rounded-md h-[100%] shadow w-[20%] fixed;
-  @include excursion($Text_height, null, 3%, null);
+  @apply top-[9%] left-[3%] fixed;
+  @apply rounded font-light h-[100%] shadow  w-[19.5%];
   & > div {
     @apply h-[80%] overflow-auto;
 
@@ -48,29 +48,16 @@ onMounted(async () => {
       @apply cursor-pointer text-center;
 
       p {
-        @apply text-lg py-1 px-4;
-        &:hover {
-          @apply text-blue-400;
-        }
+        @apply text-base py-1 px-4 hover:text-blue-400;
       }
     }
 
     .raside-website {
-      position: absolute;
-      bottom: 18%;
-      margin-left: 25%;
+      @apply text-base ml-[25%] bottom-[20%] absolute;
     }
 
     .raside-described {
-      position: absolute;
-      bottom: 12%;
-
-      @apply text-xs;
-
-      .raside-described_text {
-        color: #333336;
-        text-align: center;
-      }
+      @apply text-center bottom-[10%] absolute;
     }
   }
 }

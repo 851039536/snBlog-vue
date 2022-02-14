@@ -59,7 +59,6 @@ tool.BackTop()
       </div>
     </div>
   </div>
-  <!-- end 底部信息 -->
 </template>
 
 <style lang="scss">

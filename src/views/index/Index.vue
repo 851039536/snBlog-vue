@@ -7,17 +7,19 @@ notification.open({
 })
 </script>
 <template>
-  <a-back-top />
-  <l-sidebar></l-sidebar>
-  <index-sidebar></index-sidebar>
-  <s-header></s-header>
-  <div id="blogs">
-    <router-view></router-view>
-  </div>
+  <section>
+    <a-back-top />
+    <l-sidebar></l-sidebar>
+    <index-sidebar></index-sidebar>
+    <s-header></s-header>
+    <div id="blogs">
+      <router-view> </router-view>
+    </div>
+  </section>
 </template>
 <style lang="scss" scoped>
 #blogs {
-  @include initialize(50%, 92%, 4.5%, null, 25%, null, #ffffff);
+  @apply h-[92%] mt-[4.5%] ml-[25%] w-[50%];
   @apply rounded shadow overflow-auto;
 }
 

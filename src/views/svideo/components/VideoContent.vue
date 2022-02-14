@@ -43,34 +43,28 @@ defineProps({
 
 <style lang="scss" scoped>
 .svideo_main {
-  @include initialize($w, 99%, 4.5%, null, $ml, null, #fcfcfc);
-
-  @apply relative shadow rounded-sm;
+  @apply h-[99%] mt-[4.5%] ml-[25%] w-[50%] relative;
+  @apply rounded shadow;
 
   .svideo_main_content {
-    @apply flex flex-wrap;
-
-    @include w-h(100%, 92%);
-
-    @apply overflow-auto absolute top-2;
+    @apply flex flex-wrap absolute overflow-auto;
+    @apply h-[92%] w-full top-2;
 
     .svideo-2-1 {
-      @include w-h(32%, 50%);
-      @apply shadow m-auto mt-2;
+      @apply rounded m-auto h-[50%] shadow mt-2 w-[32%];
       .svideo-2-1-1 {
         height: 65%;
         img {
-          @include w-h(100%, 100%);
+          @apply h-full w-full;
         }
       }
       .svideo-2-1-2 {
-        height: 21%;
-        @apply text-base mt-1 p-1 bg-gray-50;
+        @apply h-[21%] mt-1 text-base p-1 text-gray-600;
         @include line-numbers(2);
       }
 
       .svideo-2-1-3 {
-        @apply p-1  text-base;
+        @apply text-base p-1;
       }
     }
   }
@@ -80,9 +74,7 @@ defineProps({
 
   .svideo_Paging {
     @include w-h(100%, 20%);
-    @apply absolute;
-    top: 95%;
-    left: 1%;
+    @apply top-[95%] left-[1%] absolute;
   }
 }
 </style>

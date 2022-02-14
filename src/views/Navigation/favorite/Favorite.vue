@@ -34,68 +34,70 @@ onMounted(async () => {
 </script>
 
 <template>
-  <s-header></s-header>
-  <l-sidebar></l-sidebar>
-  <div id="favorite">
-    <!-- end 加载组件 -->
-    <div id="favorite_main">
-      <!-- 网站内容 -->
-      <div class="flex flex-wrap favorite_content">
-        <div class="favorite_content_text" v-for="resda in resData.text" :key="resda.id">
-          <div class="favorite_content_text-1">
-            <span @click="winUrl(resda.url)">{{ resda.title }}</span>
+  <section>
+    <s-header></s-header>
+    <l-sidebar></l-sidebar>
+    <div id="favorite">
+      <!-- end 加载组件 -->
+      <div id="favorite_main">
+        <!-- 网站内容 -->
+        <div class="flex flex-wrap favorite_content">
+          <div class="favorite_content_text" v-for="resda in resData.text" :key="resda.id">
+            <div class="favorite_content_text-1">
+              <span @click="winUrl(resda.url)">{{ resda.title }}</span>
+            </div>
+            <div class="favorite_content_text-2">{{ resda.describe }}</div>
           </div>
-          <div class="favorite_content_text-2">{{ resda.describe }}</div>
         </div>
-      </div>
-      <!-- end 网站内容 -->
+        <!-- end 网站内容 -->
 
-      <!-- 分页 -->
-      <div class="favorite_page">
-        <a-pagination
-          size="small"
-          @change="method.currentchange"
-          :total="resData.count"
-          :pageSize="resData.pagesize"
-          :current="resData.current"
-          show-quick-jumper
-        />
+        <!-- 分页 -->
+        <div class="favorite_page">
+          <a-pagination
+            size="small"
+            @change="method.currentchange"
+            :total="resData.count"
+            :pageSize="resData.pagesize"
+            :current="resData.current"
+            show-quick-jumper
+          />
+        </div>
+        <!-- end 分页-->
       </div>
-      <!-- end 分页-->
     </div>
-  </div>
 
-  <div id="FavSidebar">
-    <div id="FavSidebar_main">
-      <div class="FavSidebar_describe">
-        <p class>各式各样网站收集分享</p>
-      </div>
-      <!--内容框-->
+    <div id="FavSidebar">
+      <div id="FavSidebar_main">
+        <div class="FavSidebar_describe">
+          <p class>各式各样网站收集分享</p>
+        </div>
+        <!--内容框-->
 
-      <div class="onecategory">
-        <div class="onecategory_name">列表</div>
-        <div class="inline-flex" v-for="result in state.resultData2" :key="result.id">
-          <div class="flex-1 m-1 text-base text-center px-1">
-            <span @click="clkApi(result.title)">{{ result.title }}</span>
+        <div class="onecategory">
+          <div class="onecategory_name">列表</div>
+          <div class="inline-flex" v-for="result in state.resultData2" :key="result.id">
+            <div class="flex-1 m-1 text-base text-center px-1">
+              <span @click="clkApi(result.title)">{{ result.title }}</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- end 内容框 -->
+        <!-- end 内容框 -->
 
-      <!-- 站点信息 -->
-      <div class="FavSidebar_footer">
-        <div class="FavSidebar_f_title">站点信息</div>
-        <div class="FavSidebar_f_content">
-          <div class="flex">
-            <div class="FavSidebar_f_content_name">内容数量:</div>
-            <div class="FavSidebar_f_content_text">{{ state.resultCount }}篇</div>
+        <!-- 站点信息 -->
+        <div class="FavSidebar_footer">
+          <div class="FavSidebar_f_title">站点信息</div>
+          <div class="FavSidebar_f_content">
+            <div class="flex">
+              <div class="FavSidebar_f_content_name">内容数量:</div>
+              <div class="FavSidebar_f_content_text">{{ state.resultCount }}篇</div>
+            </div>
           </div>
         </div>
+        <!-- end 站点信息 -->
       </div>
-      <!-- end 站点信息 -->
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

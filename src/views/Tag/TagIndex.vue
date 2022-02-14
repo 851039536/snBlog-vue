@@ -26,24 +26,26 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <s-header></s-header>
-  <div class="tag-main">
-    <div class="tag_search">
-      <a-select
-        show-search
-        placeholder="标题搜索"
-        style="width: 50%"
-        :default-active-first-option="false"
-        :show-arrow="false"
-        :filter-option="false"
-        :not-found-content="null"
-        @search="Search"
-      >
-      </a-select>
+  <section>
+    <s-header></s-header>
+    <div class="tag-main">
+      <div class="tag_search">
+        <a-select
+          show-search
+          placeholder="标题搜索"
+          style="width: 50%"
+          :default-active-first-option="false"
+          :show-arrow="false"
+          :filter-option="false"
+          :not-found-content="null"
+          @search="Search"
+        >
+        </a-select>
+      </div>
+      <TagHead :array-label="resData.arrayLabel"></TagHead>
+      <TagContent></TagContent>
     </div>
-    <TagHead :array-label="resData.arrayLabel"></TagHead>
-    <TagContent></TagContent>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">

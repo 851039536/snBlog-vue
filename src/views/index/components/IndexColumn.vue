@@ -16,35 +16,36 @@ method.GetFy()
 </script>
 
 <template>
-  <div class="blogs-content" v-for="res in state.resultData" :key="res.id">
-    <div class="blogs-content_div">
-      <div class="blogs-content_img">
-        <img v-lazy="getImageUrl(res.img)" />
-      </div>
-      <div class="blogs-content__frame">
-        <p class="blogs-content__frame-1">
-          <a @click="RouterId('/index/content', res.id)">{{ res.title }}</a>
-        </p>
-        <p class="blogs-content__frame-2">{{ res.sketch }}</p>
-        <p class="blogs-content__frame-3">
-          <span>文章</span>
-          <span>{{ res.read }} ℃</span>
-          <span>赞 {{ res.give }}</span>
-          <span>{{ res.timeCreate.substring(0, 10) }}</span>
-        </p>
+  <section>
+    <div class="blogs-content" v-for="res in state.resultData" :key="res.id">
+      <div class="blogs-content_div">
+        <div class="blogs-content_img">
+          <img v-lazy="getImageUrl(res.img)" />
+        </div>
+        <div class="blogs-content__frame">
+          <p class="blogs-content__frame-1">
+            <a @click="RouterId('/index/content', res.id)">{{ res.title }}</a>
+          </p>
+          <p class="blogs-content__frame-2">{{ res.sketch }}</p>
+          <p class="blogs-content__frame-3">
+            <span>文章</span>
+            <span>{{ res.read }} ℃</span>
+            <span>赞 {{ res.give }}</span>
+            <span>{{ res.timeCreate.substring(0, 10) }}</span>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="blogs-page">
-    <a-pagination
-      size="small"
-      @change="currentchange"
-      :total="state.count"
-      :pageSize="state.pagesize"
-      show-quick-jumper
-    ></a-pagination>
-  </div>
-  <!-- end 分页 -->
+    <div class="blogs-page">
+      <a-pagination
+        size="small"
+        @change="currentchange"
+        :total="state.count"
+        :pageSize="state.pagesize"
+        show-quick-jumper
+      ></a-pagination>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

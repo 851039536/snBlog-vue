@@ -81,6 +81,9 @@ const routes = [
   {
     path: '/Tag',
     name: 'Tag',
+    meta: {
+      keepAlive: false
+    },
     component: () => import('@/views/Tag/TagIndex.vue')
   },
   {
