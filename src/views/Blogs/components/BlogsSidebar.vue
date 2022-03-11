@@ -72,20 +72,15 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 #blogs-sidebar {
-  @apply bg-gray-100 shadow fixed;
-
-  @include excursion($Text_height, null, null, $sidebar_r_r);
-  @include w-h(20.4%, 93%);
-  @apply ml-3 overflow-auto;
+  @apply h-[93%] ml-3 top-[9%] right-[3%] w-[20.4%] fixed;
+  @apply bg-gray-50 shadow overflow-auto;
 
   .blogs-sidebar_main {
-    @include w-h;
-
+    @apply h-full w-full;
     .blogs-sidebar_input {
-      width: 97%;
       @include center-children;
       @apply flex flex-nowrap;
-      @apply m-auto mt-1 mb-2 p-2;
+      @apply m-auto mt-1 mb-2 p-2 w-[97%];
       @apply bg-white rounded shadow;
 
       & > div {
@@ -99,7 +94,7 @@ onMounted(async () => {
   display: none;
 }
 
-@screen <sm {
+@screen <lg {
   #blogs-sidebar {
     display: none;
   }

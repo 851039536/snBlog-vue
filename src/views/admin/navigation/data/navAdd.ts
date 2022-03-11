@@ -4,7 +4,7 @@ import { storage } from '@/utils/storage/storage'
 import { navigation, TOKEN } from '@/api'
 import { navName } from '../../utils/data'
 import { formState, stateArray, formNull } from './data'
-import { Routers } from '@/hooks/routers'
+import { routers } from '@/hooks/routers'
 
 const uid: any = ref(storage.get('userId'))
 
@@ -21,6 +21,6 @@ export const onSubmit = async () => {
   formState.userId = uid.value
   await navigation.AddAsync(formState).then(() => {
     message.info('添加成功')
-    Routers('/Admin-index/NavTable')
+    routers('/Admin-index/NavTable')
   })
 }

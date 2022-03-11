@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterId } from '@/hooks/routers'
+import { routerId } from '@/hooks/routers'
 import { IntVideo } from '@/api/data/interData'
 import { state } from '../data/data'
 import { method } from '../data/index'
@@ -21,7 +21,7 @@ defineProps({
           <img src="@/assets/img/hy.jpg" />
         </div>
         <div class="svideo-2-1-2">
-          <a @click="RouterId('/VideoPlay', res.id)">{{ res.title }}</a>
+          <a @click="routerId('/VideoPlay', res.id)">{{ res.title }}</a>
         </div>
         <div class="svideo-2-1-3">
           {{ res.timeCreate.substring(0, 10) }}

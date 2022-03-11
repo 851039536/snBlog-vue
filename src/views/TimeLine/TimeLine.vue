@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { article } from '@/api'
-import { RouterId } from '@/hooks/routers'
+import { routerId } from '@/hooks/routers'
 
 interface ResData {
   spinning: boolean
@@ -35,7 +35,7 @@ onMounted(async () => {
           <div class="block-1">
             <a-timeline-item>
               <h4>
-                <a @click="RouterId('/IndexText', activity.articleId)">{{ activity.title }}</a>
+                <a @click="routerId('/IndexText', activity.articleId)">{{ activity.title }}</a>
               </h4>
             </a-timeline-item>
             <a-timeline-item color="green">

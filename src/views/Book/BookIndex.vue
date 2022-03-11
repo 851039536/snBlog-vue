@@ -7,7 +7,7 @@
     <div class="book_main">
       <BookBar></BookBar>
       <BookFilm></BookFilm>
-      <div class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
         <div class="book_film_text">
           <div class="book_img">
             <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
@@ -79,38 +79,13 @@
 
 <style lang="scss" scoped>
 .book {
-  @apply fixed;
-
-  @include w-h(100%, 100%);
-
+  @apply h-full w-full fixed;
   .book_main {
-    @include initialize($w, 89%, 4.5%, null, $ml, null, #ffffff);
-
-    @apply shadow-sm rounded-sm overflow-auto;
-
-    .book_bar {
-      @include underline;
-
-      @apply mb-2;
-
-      p {
-        @apply px-1 py-2 m-2;
-        @apply text-base font-medium;
-      }
-    }
-
-    .book_film {
-      width: 99%;
-
-      @apply py-2 m-auto shadow rounded-sm;
-
-      span {
-        @apply px-3 text-base;
-      }
-    }
+    @apply h-[89%] mt-[4.5%] ml-[25%] w-5/10;
+    @apply rounded shadow overflow-auto;
 
     .book_film_text {
-      @apply m-1 mt-2 p-1 shadow-xl rounded-sm;
+      @apply rounded m-1 shadow-xl mt-2 p-1;
 
       @include w-h(95%, 370px);
 
@@ -131,7 +106,7 @@
       }
 
       .book_film_type {
-        @apply p-1 px-3 text-sm text-gray-400;
+        @apply text-sm p-1 px-3 text-gray-500;
 
         div {
           @apply m-1;

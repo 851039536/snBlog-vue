@@ -6,12 +6,12 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div id="raside">
+  <div class="lsidebar">
     <div>
       <div class="raside-img">
         <img src="@/assets/img/si.jpg" />
       </div>
-      <div class="raside-list" v-for="(res, index) in resData.resultData" :key="index">
+      <div class="raside-list" v-for="(res, index) in resData" :key="index">
         <p @click="method.skip(res.path)" v-if="res.identity">
           {{ res.title }}
         </p>
@@ -31,9 +31,9 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
-#raside {
-  @apply top-[9%] left-[3%] fixed;
-  @apply rounded font-light h-[100%] shadow  w-[19.5%];
+.lsidebar {
+  @apply h-[100%] top-[9%] left-[3%] w-[19.5%]  fixed;
+  @apply rounded shadow;
   & > div {
     @apply h-[80%] overflow-auto;
 
@@ -44,11 +44,11 @@ onMounted(async () => {
     }
 
     .raside-list {
-      @include initialize(40%, 6%, 4px, auto, auto, auto, null);
-      @apply cursor-pointer text-center;
+      @apply m-auto h-[6%] mt-1 w-[40%];
+      @apply cursor-pointer text-center text-base;
 
       p {
-        @apply text-base py-1 px-4 hover:text-blue-400;
+        @apply py-1 px-4 hover:text-blue-400;
       }
     }
 
@@ -62,7 +62,7 @@ onMounted(async () => {
   }
 }
 
-@screen <sm {
+@screen <lg {
   #raside {
     display: none;
   }

@@ -15,40 +15,42 @@ defineProps({
 })
 </script>
 <template>
-  <div class="onesidetype">
-    <div class="onesidetype-title">{{ title }}</div>
-    <div class="onesidetype-text" v-for="res in resultData" :key="res.id">
-      <span @click="method.setModal1Visible(true, res.id)">{{ res.title }}</span>
+  <section>
+    <div class="onesidetype">
+      <div class="onesidetype-title">{{ title }}</div>
+      <div class="onesidetype-text" v-for="res in resultData" :key="res.id">
+        <span @click="method.setModal1Visible(true, res.id)">{{ res.title }}</span>
+      </div>
     </div>
-  </div>
-  <div>
-    <a-modal
-      v-model:visible="state.modal2Visible"
-      :title="state.text.oneTitle"
-      centered
-      cancelText="赞"
-      :closable="false"
-      okText="不了"
-      @ok="state.modal2Visible = false"
-    >
-      <p class="bg-white">{{ state.text.oneText }}</p>
-    </a-modal>
-  </div>
+    <div>
+      <a-modal
+        v-model:visible="state.modal2Visible"
+        :title="state.text.oneTitle"
+        centered
+        cancelText="赞"
+        :closable="false"
+        okText="不了"
+        @ok="state.modal2Visible = false"
+      >
+        <p class="bg-white">{{ state.text.oneText }}</p>
+      </a-modal>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .onesidetype {
   width: 97%;
 
-  @apply p-1  m-auto mb-2 cursor-pointer;
-  @apply shadow rounded bg-white;
+  @apply cursor-pointer  m-auto mb-2 p-1;
+  @apply bg-white rounded shadow;
 
   .onesidetype-title {
-    @apply p-1 m-1 text-base font-semibold bg-gray-200;
+    @apply font-semibold bg-gray-200 m-1 text-base p-1;
   }
 
   .onesidetype-text {
-    @apply p-1 pl-2 text-base text-gray-600;
+    @apply text-base p-1 pl-2 text-gray-600;
     border-bottom: 1px dashed #f1f1f1;
   }
 }

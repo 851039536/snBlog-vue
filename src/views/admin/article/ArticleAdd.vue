@@ -2,26 +2,23 @@
 import { message } from 'ant-design-vue'
 import { labels, article, sort, TOKEN } from '@/api'
 import { formState, state } from './data'
-import { Routers, go, reloads } from '@/hooks/routers'
+import { routers, go, reloads } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { tool } from '@/utils/common/tool'
-import { storage } from '@/utils/storage/storage'
+import { userId } from '@/hooks/commonly'
 
 const onSubmit = async () => {
-  const res: any = reactive({
-    id: storage.get('userId')
-  })
-  formState.userId = res
+  formState.userId = userId.value
   formState.img = `blog/${tool.Random(1, 5, 1)}.jpg`
   await article.AddAsync(formState).then(() => {
     message.info('添加成功')
-    Routers('/Admin-index/ArticleTable')
+    routers('/Admin-index/ArticleTable')
   })
 }
 
 async function GetApi() {
-  state.labelResult = await labels.GetAllAsync(true)
-  state.sortResult = await sort.GetAllAsync(true)
+  state.resLabel = await labels.GetAllAsync(true)
+  state.resSort = await sort.GetAllAsync(true)
 }
 
 onMounted(async () => {
@@ -46,19 +43,15 @@ onMounted(async () => {
 
           <a-form-item label="标签" :wrapper-col="{ span: 6, offset: 0 }">
             <a-select v-model:value="formState.labelId" placeholder="请选择">
-              <a-select-option
-                v-for="item in state.labelResult.data"
-                :key="item.id"
-                :label="item.id"
-                :value="item.id"
-                >{{ item.name }}</a-select-option
-              >
+              <a-select-option v-for="item in state.resLabel.data" :key="item.id" :label="item.id" :value="item.id">{{
+                item.name
+              }}</a-select-option>
             </a-select>
           </a-form-item>
 
           <a-form-item label="类别" :wrapper-col="{ span: 6, offset: 0 }">
             <a-select v-model:value="formState.sortId" placeholder="请选择">
-              <a-select-option v-for="item in state.sortResult.data" :key="item.id" :label="item.id" :value="item.id">{{
+              <a-select-option v-for="item in state.resSort.data" :key="item.id" :label="item.id" :value="item.id">{{
                 item.name
               }}</a-select-option>
             </a-select>

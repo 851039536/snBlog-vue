@@ -47,24 +47,19 @@ defineProps({
   @apply flex flex-wrap;
 
   .one-content-div {
-    width: 31%;
-    height: 150px;
-
-    @apply m-auto mt-1;
-    @apply relative shadow rounded-sm cursor-pointer;
+    @apply m-auto h-150px mt-1 w-[31%] relative;
+    @apply rounded cursor-pointer shadow;
 
     .one-content-div-frame {
-      @apply w-full h-full;
+      @apply h-full w-full;
 
       .one-content_div_frame_title {
-        height: 24%;
-        @apply m-1 px-1 text-lg  bg-gray-100;
+        @apply bg-gray-100 h-[24%] m-1 text-lg px-1;
         @include line-one;
       }
 
       .one-content-div-frame-text {
-        @apply px-2 m-1 p-1 text-base font-thin;
-        height: 54%;
+        @apply font-thin h-[54%] m-1 text-base p-1 px-2;
         @include line-numbers(4);
       }
     }

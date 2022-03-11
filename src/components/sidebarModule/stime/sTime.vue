@@ -31,15 +31,14 @@ updateTime()
 
 <style lang="scss" scoped>
 #clock {
-  @apply m-auto mt-1 text-center mb-2 p-1  w-[97%];
-  @apply bg-white rounded shadow;
+  @apply m-auto h-90px mt-1 text-center mb-2 w-[97%];
+  @apply bg-white rounded font-light shadow;
 
   .time {
-    @apply text-2xl;
+    @apply text-xl;
   }
-
   .date {
-    @apply text-3xl;
+    @apply text-xl pt-2;
   }
 }
 </style>

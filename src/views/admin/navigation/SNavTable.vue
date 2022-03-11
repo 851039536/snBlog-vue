@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue'
 import { columns, resData } from './data/data'
 import { navigation } from '@/api'
-import { Routers, RouterId } from '@/hooks/routers'
+import { routers, routerId } from '@/hooks/routers'
 import { method } from './data/navTable'
 
 const reload: any = inject('reload')
@@ -21,7 +21,7 @@ onMounted(async () => {
   <div>
     <div class="table-operations">
       <a-space>
-        <a-button @click="Routers('/Admin-index/NavAdd')">添加</a-button>
+        <a-button @click="routers('/Admin-index/NavAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
         <a-select style="width: 100px" v-model:value="resData.navStr" @change="method.SelectNav()">
           <a-select-option value="ALL">ALL</a-select-option>
@@ -54,7 +54,7 @@ onMounted(async () => {
       :scroll="{ x: 1500, y: 360 }"
     >
       <template #ed="{ record }">
-        <a @click="RouterId('/Admin-index/NavEdit', record.id)">Edit</a>
+        <a @click="routerId('/Admin-index/NavEdit', record.id)">Edit</a>
       </template>
       <template #de="{ record }">
         <a-popconfirm

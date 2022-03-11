@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue'
 import { columns, state, stateArray, stateStr } from './data'
 import { article, TOKEN, labels, interfaces } from '@/api'
-import { Routers, RouterId } from '@/hooks/routers'
+import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 
 async function GetAllAsync() {
@@ -58,7 +58,7 @@ onMounted(async () => {
   <div>
     <div class="table-operations">
       <a-space>
-        <a-button @click="Routers('/Admin-index/ArticleAdd')">添加</a-button>
+        <a-button @click="routers('/Admin-index/ArticleAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
         <a-select style="width: 120px" v-model:value="stateStr.labelStr" @change="selectTag">
           <a-select-option value="ALL">ALL</a-select-option>
@@ -96,7 +96,7 @@ onMounted(async () => {
           <a>{{ record.identity }}</a>
         </template>
         <template #ed="{ record }">
-          <a @click="RouterId('/Admin-index/ArticleEdit', record.articleId)">编辑</a>
+          <a @click="routerId('/Admin-index/ArticleEdit', record.articleId)">编辑</a>
         </template>
         <template #de="{ record }">
           <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="confirm(record)" @cancel="cancel">

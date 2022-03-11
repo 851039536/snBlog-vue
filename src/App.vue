@@ -1,13 +1,3 @@
-<script lang="ts" setup>
-import { useAppStore } from '@/store/pinia'
-
-import { storage } from '@/utils/storage/storage'
-
-const store = useAppStore()
-// 刷新网页重新加载
-store.roles = storage.get('rolres')
-</script>
-
 <template>
   <div id="app">
     <router-view v-slot="{ Component }">
@@ -21,9 +11,12 @@ store.roles = storage.get('rolres')
       </transition>
     </router-view>
     <s-bootom></s-bootom>
+    <s-aspin></s-aspin>
   </div>
 </template>
 
 <style lang="scss">
 @include scroll;
+#app {
+}
 </style>

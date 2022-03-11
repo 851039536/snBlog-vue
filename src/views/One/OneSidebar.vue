@@ -40,18 +40,12 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .one-sidebar {
-  @apply rounded bg-gray-100 ml-3 fixed;
-
-  @include excursion($Text_height, null, null, $sidebar_r_r);
-  @include w-h(20%, 90%);
-  overflow: auto;
+  @apply h-1/10 ml-3 top-[9%] right-[3%] w-2/10 fixed;
+  @apply rounded bg-gray-100 overflow-auto;
   .one-sidebar-div {
-    @include w-h(100%, 100%);
-
+    @apply h-full w-full;
     .one-sidebar-describe {
-      width: 97%;
-
-      @apply m-auto mb-2;
+      @apply m-auto mb-2 w-[97%];
       @apply bg-white rounded shadow text-center;
 
       .one-sidebar-describe-text {

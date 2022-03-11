@@ -2,26 +2,22 @@
 // v-model 不能直接修改
 const props = defineProps<{
   result: any
-  loading?: boolean
 }>()
 
-const state = reactive({
-  result: props.result
-})
+const result = ref(props.result)
 // 在更新之前赋值
 onBeforeUpdate(async () => {
-  state.result = props.result
+  result.value = props.result
 })
 </script>
 <template>
-  <div class="vmdcontent">
-    <a-skeleton :loading="loading" :paragraph="{ rows: 15 }" active />
-    <v-md-editor v-model="state.result" mode="preview"></v-md-editor>
+  <div>
+    <v-md-editor v-model="result" mode="preview"></v-md-editor>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.vmdcontent {
+div {
   @apply bg-white mt-6;
 }
 </style>

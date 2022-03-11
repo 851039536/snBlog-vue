@@ -209,8 +209,8 @@ $Text_height: 9%;
   }
 }
 .fade-in {
-  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 @keyframes fade-in {
   0% {
@@ -222,26 +222,35 @@ $Text_height: 9%;
   }
 }
 
+// 屏幕宽度小于px时启用工具
+// sm 640px  md 768px lg 1024px xl 1280px 2xl 1536px
+@screen <sm {
+
+}
+@screen <md {
+
+}
+@screen <lg {
+
+}
+@screen <xl {
+
+}
+@screen <2xl {
+
+}
+// 屏幕宽度大于px时启用工具
+@screen sm {
+
+}
+
+@screen md {}
 @screen lg {
   .sbootom {
     @apply hidden;
   }
 }
-
-@screen md {
-  .sbootom {
-    @apply hidden;
-  }
-}
-
-@screen 2xl {
-  .sbootom {
-    @apply hidden;
-  }
-}
-
 @screen xl {
-  .sbootom {
-    @apply hidden;
-  }
+}
+@screen 2xl {
 }

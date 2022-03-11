@@ -1,28 +1,28 @@
 <script lang="ts" setup>
-import { Routers } from '@/hooks/routers'
+import { routers } from '@/hooks/routers'
 
 const skip = (num: number) => {
   switch (num) {
     case 1:
-      Routers('/index/column')
+      routers('/index/column')
       break
     case 2:
-      Routers('/One')
+      routers('/One')
       break
     case 3:
-      Routers('./Book')
+      routers('./Book')
       break
     case 4:
-      Routers('./svideo')
+      routers('./svideo')
       break
     case 5:
-      Routers('./Photo')
+      routers('./Photo')
       break
     case 6:
-      Routers('./BlogHome')
+      routers('./BlogHome')
       break
     case 7:
-      Routers('./BlogHome')
+      routers('./BlogHome')
       break
     default:
       break
@@ -31,26 +31,22 @@ const skip = (num: number) => {
 </script>
 <template>
   <div class="sbootom">
-    <div class="">
-      <div class @click="skip(1)">首页</div>
-      <div class @click="skip(2)">TG</div>
-      <div class @click="skip(3)">One</div>
-      <div class @click="skip(4)">视频</div>
-      <div class @click="skip(5)">图库</div>
-    </div>
+    <div @click="skip(1)">首页</div>
+    <div @click="skip(2)">TG</div>
+    <div @click="skip(3)">One</div>
+    <div @click="skip(4)">视频</div>
+    <div @click="skip(5)">图库</div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .sbootom {
-  @apply w-full bottom-0 z-10 fixed;
+  @apply flex justify-around;
+  @apply w-full bottom-0 fixed;
   @apply bg-white shadow text-base;
 
-  & > div {
-    @apply flex justify-around;
-    div {
-      @apply m-2 text-center py-3 px-2 text-gray-700;
-    }
+  div {
+    @apply m-2 py-3 px-2 text-gray-600;
   }
 }
 </style>

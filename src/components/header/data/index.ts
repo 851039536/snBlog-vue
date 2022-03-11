@@ -1,17 +1,14 @@
 import { interfaces } from '@/api/index'
-import { Routers, winUrl } from '@/hooks/routers'
+import { routers, winUrl } from '@/hooks/routers'
 
-const resData: any = reactive({
-  resultData: []
-})
-
+const resData: any = ref([])
 /**
  * @description: 导出header类
  */
 class method {
   static async GetType() {
     await interfaces.GetTypeAsync(0, 'kai', 'header', true).then((res: any) => {
-      resData.resultData = res.data
+      resData.value = res.data
     })
   }
 
@@ -24,7 +21,7 @@ class method {
         winUrl('/Admin-index/ArticleTable')
         break
       default:
-        await Routers(num)
+        await routers(num)
         break
     }
   }

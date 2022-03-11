@@ -1,18 +1,33 @@
 import { IntArticle } from '@/api/data/interData'
 
 interface State {
-  dataResult: any
-  labelResult: any
-  sortResult: any
+  resData: any
+  resLabel: any
+  resSort: any
   labelStr: string
   order: boolean
 }
 const state: State = reactive({
-  dataResult: [],
-  labelResult: [],
-  sortResult: [],
+  resData: [],
+  resLabel: [],
+  resSort: [],
   labelStr: 'ALL',
   order: true
+})
+const formState: IntArticle = reactive({
+  labelId: 0,
+  sortId: 0,
+  userId: 0,
+  id: 0,
+  title: '标题',
+  sketch: '简述',
+  text: '',
+  read: 0,
+  img: 'img',
+  commentId: 0,
+  give: 0,
+  timeCreate: '2021-11-13T03:18:19.821Z',
+  timeModified: '2021-11-13T03:18:19.821Z'
 })
 
 const columns = [
@@ -73,21 +88,5 @@ const columns = [
     slots: { customRender: 'de' } // 绑定插槽
   }
 ]
-
-const formState: IntArticle = reactive({
-  labelId: 0,
-  sortId: 0,
-  userId: 0,
-  id: 0,
-  title: '标题',
-  sketch: '简述',
-  text: '',
-  read: 0,
-  img: 'img',
-  commentId: 0,
-  give: 0,
-  timeCreate: '2021-11-13T03:18:19.821Z',
-  timeModified: '2021-11-13T03:18:19.821Z'
-})
 
 export { columns, state, formState }

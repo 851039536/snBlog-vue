@@ -16,7 +16,7 @@ onMounted(async () => {
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
       <OneContent :resultData="state.resultData"></OneContent>
       <!-- 分页 -->
-      <div class="one_div_paging">
+      <div class="paging">
         <a-pagination
           size="small"
           @change="method.currentchange"
@@ -32,31 +32,13 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .one {
-  position: fixed;
-  @include w-h(100%, 100%);
+  @apply h-full w-full fixed;
 
   .one-div {
-    @include initialize($w, 90%, 4.5%, null, $ml, null, #ffffff);
+    @apply h-[90%] mt-[4.5%] ml-[25%] w-2/4;
+    @apply rounded shadow overflow-auto;
 
-    @apply rounded-sm shadow-sm overflow-auto;
-
-    .one-recommend {
-      @include w-h(100%, 30px);
-
-      @apply bg-gray-100 shadow my-1 mt-1 px-2;
-
-      .one-recommend-l {
-        @apply float-left;
-        @apply text-lg;
-      }
-
-      .one-recommend-r {
-        @apply float-right;
-        @apply text-lg;
-      }
-    }
-
-    .one_div_paging {
+    .paging {
       @apply rounded h-7 m-2 shadow mt-3;
     }
   }

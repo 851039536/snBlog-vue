@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue'
 import { columns, state } from './data'
 import { article, TOKEN, labels } from '@/api'
-import { Routers, RouterId } from '@/hooks/routers'
+import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { tool } from '@/utils/common/tool'
 
@@ -64,7 +64,7 @@ onMounted(async () => {
   <div>
     <div class="table-operations">
       <a-space>
-        <a-button @click="Routers('/Admin-index/ArticleAdd')">添加</a-button>
+        <a-button @click="routers('/Admin-index/ArticleAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
         <a-select style="width: 100px" v-model:value="state.labelStr" @change="GetTag">
           <a-select-option value="ALL">ALL</a-select-option>
@@ -98,7 +98,7 @@ onMounted(async () => {
         :scroll="{ x: 1500, y: 360 }"
       >
         <template #ed="{ record }">
-          <a type="primary" ghost @click="RouterId('/Admin-index/ArticleEdit', record.id)">Edit</a>
+          <a type="primary" ghost @click="routerId('/Admin-index/ArticleEdit', record.id)">Edit</a>
         </template>
         <template #de="{ record }">
           <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="confirm(record)" @cancel="cancel">

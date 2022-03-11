@@ -48,27 +48,16 @@ method.GetApi()
 
 <style lang="scss" scoped>
 #index-sidebar {
-  @apply ml-3 fixed overflow-auto;
-
-  @include excursion($Text_height, null, null, $sidebar_r_r);
-  @include w-h(20.4%, 93%);
-
-  @apply bg-gray-100 shadow;
+  @apply h-[93%] ml-3 top-[9%] right-[3%] w-[20.4%] fixed;
+  @apply bg-gray-50 shadow overflow-auto;
 
   .index_s_main {
-    @include w-h(100%, 100%);
-
-    /* 搜索 */
+    @apply h-full w-full;
     .index_s_input {
-      width: 97%;
       @include center-children;
       @apply flex flex-nowrap;
-      @apply m-auto mt-1 mb-2 p-2;
+      @apply m-auto mt-1 mb-2 p-2 w-[97%];
       @apply bg-white rounded shadow;
-
-      .a_but {
-        @apply ml-1 p-1;
-      }
     }
   }
 }
@@ -77,7 +66,7 @@ method.GetApi()
   display: none;
 }
 
-@screen <sm {
+@screen <lg {
   #index-sidebar {
     display: none;
   }

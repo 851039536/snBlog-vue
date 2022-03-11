@@ -1,9 +1,7 @@
 import { interfaces } from '@/api/http/interfaces'
-import { Routers } from '@/hooks/routers'
+import { routers } from '@/hooks/routers'
 
-export const resData: any = reactive({
-  resultData: []
-})
+export const resData: any = ref([])
 
 export class method {
   /**
@@ -11,7 +9,7 @@ export class method {
    */
   static async GetType() {
     await interfaces.GetTypeAsync(0, 'kai', 'sidebar', true).then((res: any) => {
-      resData.resultData = res.data
+      resData.value = res.data
     })
   }
 
@@ -20,6 +18,6 @@ export class method {
    * @param {string} path 路径
    */
   static async skip(path: string) {
-    await Routers(path)
+    await routers(path)
   }
 }

@@ -87,15 +87,9 @@ tool.BackTop()
     }
   }
 
-  .icons {
-    @include w-h(1.5em, 1.5em);
-  }
-
   /* 返回上一页 */
   .blogsContent_title {
-    position: relative;
-
-    @apply rounded cursor-pointer shadow;
+    @apply rounded cursor-pointer shadow relative;
 
     .ant-page-header-heading-title {
       @apply text-lg overflow-hidden overflow-ellipsis whitespace-nowrap;
@@ -111,11 +105,9 @@ tool.BackTop()
   }
 }
 
-// @screen xp {
-//   .blogsContent {
-//     width: 100%;
-
-//     @apply ml-0;
-//   }
-// }
+@screen <lg {
+  .blogsContent {
+    @apply mt-[6%] mb-[20%] ml-0 w-full;
+  }
+}
 </style>

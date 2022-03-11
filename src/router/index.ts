@@ -15,11 +15,7 @@ const routes = [
     name: 'BlogHome',
     component: () => import('@/components/home/SHome.vue')
   },
-  {
-    path: '/SAbout',
-    name: 'SAbout',
-    component: () => import('@/views/About/SAbout.vue')
-  },
+
   {
     path: '/Blogs',
     name: 'Blogs',

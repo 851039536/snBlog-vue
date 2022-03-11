@@ -2,7 +2,7 @@
 import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
-import { resData } from '@/components/aspin/data'
+import { aspShow } from '@/hooks/data'
 import { storage } from '../storage/storage'
 import { removePending, addPending } from './pending'
 
@@ -47,6 +47,8 @@ function myAxios(axiosConfig: any, customOptions: any) {
       if (storage.get('token')) {
         req.headers.Authorization = storage.get('token') as string
       }
+      // 请求之前发送loading
+      aspShow.value = true
       return req
     },
     (error) => {
@@ -57,13 +59,10 @@ function myAxios(axiosConfig: any, customOptions: any) {
   // 响应拦截器
   service.interceptors.response.use(
     function response(res) {
-      resData.show = true
       removePending(res) // 在请求结束后，移除本次请求
+      // 请求之后关闭loading
+      aspShow.value = false
       if (res.status === 200 || res.status === 204) {
-        setTimeout(() => {
-          resData.show = false
-        }, 1000)
-
         return Promise.resolve(res)
       }
       return Promise.reject(res)
@@ -71,6 +70,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
     (error: any) => {
       console.log('%c [ error ]', 'font-size:13px; background:pink; color:#bf2c9f;', error)
 
+      aspShow.value = false
       if (error.response.status) {
         switch (error.response.status) {
           case 400:
@@ -112,6 +112,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
             message.error(`网关超时==>${error.response.status}`)
             break
           default:
+            aspShow.value = false
             message.error(`其他错误错误==>${error.response.status}`)
         }
         return Promise.reject(error.response)

@@ -1,23 +1,26 @@
 <template>
-  <l-sidebar></l-sidebar>
-  <blogs-sidebar></blogs-sidebar>
-  <s-header></s-header>
-  <a-back-top />
-  <s-aspin></s-aspin>
-  <div class="blogs">
-    <router-view></router-view>
-  </div>
+  <section>
+    <l-sidebar></l-sidebar>
+    <blogs-sidebar></blogs-sidebar>
+    <s-header></s-header>
+    <a-back-top>
+      <div class="rounded-lg bg-gray-400 shadow text-center text-white text-base py-2">UP</div>
+    </a-back-top>
+
+    <div class="blogs-index">
+      <router-view></router-view>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
-.blogs {
-  @include initialize(50%, 92%, 4.5%, null, 25%, null, #ffffff);
+.blogs-index {
+  @apply h-[92%] mt-[4.5%] ml-[25%] w-[50%];
   @apply rounded shadow overflow-auto;
 }
-
-@screen <sm {
-  .blogs {
-    @apply m-0 w-full;
+@screen <lg {
+  .blogs-index {
+    @apply mt-[10%] ml-0 w-full;
   }
 }
 </style>

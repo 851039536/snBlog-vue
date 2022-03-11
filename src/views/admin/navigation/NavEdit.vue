@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue'
 import { navigation, TOKEN } from '@/api'
 import { formState, stateArray } from './data/data'
-import { Routers, go, winUrl } from '@/hooks/routers'
+import { routers, go, winUrl } from '@/hooks/routers'
 import { navName } from '../utils/data'
 
 const route = useRoute()
@@ -12,7 +12,7 @@ const Rid = reactive({
 const onSubmit = async () => {
   await navigation.UpdateAsync(formState).then(() => {
     message.info('更新完成')
-    Routers('/Admin-index/NavTable')
+    routers('/Admin-index/NavTable')
   })
 }
 async function GetApi() {

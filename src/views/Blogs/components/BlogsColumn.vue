@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { fyData, method } from '../data/column'
-import { RouterId } from '@/hooks/routers'
+import { routerId } from '@/hooks/routers'
 import { tool } from '@/utils/common/tool'
 
 async function currentchange(val: number) {
@@ -25,7 +25,7 @@ onMounted(async () => {
       </div>
       <div class="blogs-content__frame">
         <p class="blogs-content__frame-1">
-          <a @click="RouterId('/Blogs/BlogsContent', res.id)">{{ res.title }}</a>
+          <a @click="routerId('/Blogs/BlogsContent', res.id)">{{ res.title }}</a>
         </p>
         <p class="blogs-content__frame-2">{{ res.sketch }}</p>
         <p class="blogs-content__frame-3">
@@ -54,44 +54,31 @@ onMounted(async () => {
   @apply m-2;
 
   .blogs-content_div {
-    @apply flex;
-
-    @include initialize(100%, 155px, 10px, null, null, null, #ffffff);
-
-    @apply rounded-sm  shadow hover:bg-gray-50;
+    @apply flex h-155px mt-10px w-full;
+    @apply rounded shadow hover:bg-gray-50;
 
     .blogs-content_img {
-      @include w-h(25%, 100%);
-
-      @apply p-2;
-
+      @apply h-full p-2 w-[25%];
       img {
-        @include w-h;
+        @apply h-full w-full;
       }
     }
 
     .blogs-content__frame {
-      @include w-h(75%, 100%);
-
+      @apply h-full w-[75%];
       .blogs-content__frame-1 {
         @apply cursor-pointer m-1  text-lg px-1;
-
         @include line-one;
       }
 
       .blogs-content__frame-2 {
-        @apply m-1 p-1 px-2;
-
-        height: 52%;
-
+        @apply h-[52%] m-1 p-1 px-2;
         @apply font-thin text-sm;
-
         @include line-numbers(4);
       }
 
       .blogs-content__frame-3 {
         @apply font-light m-1 px-1;
-
         span {
           @apply p-1;
         }

@@ -73,7 +73,7 @@ onMounted(async () => {
       div {
         border-bottom: 1px dashed #f1f1f1;
 
-        @apply p-1 m-1 text-sm font-light;
+        @apply font-light m-1 text-sm p-1;
       }
     }
 
@@ -81,28 +81,22 @@ onMounted(async () => {
       @apply flex;
 
       .blogs_comment_text {
-        @apply bg-blue-200 shadow rounded-sm;
+        @apply rounded-sm bg-blue-200 shadow;
       }
 
       div {
-        @apply px-1 py-1 m-2 text-sm font-light text-center;
+        @apply font-light m-2 text-sm text-center py-1 px-1;
       }
     }
   }
 
-  .icons {
-    @include w-h(1.5em, 1.5em);
-  }
-
   /* 返回上一页 */
   .blogsContent_title {
-    position: relative;
-
-    @apply shadow rounded cursor-pointer;
+    @apply rounded cursor-pointer shadow relative;
 
     .ant-page-header-heading-title {
       @apply text-lg;
-
+      @include line-one;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -118,11 +112,9 @@ onMounted(async () => {
   }
 }
 
-// @screen xp {
-//   .blogsContent {
-//     width: 100%;
-
-//     @apply ml-0;
-//   }
-// }
+@screen <lg {
+  .blogsContent {
+    @apply mt-[6%] mb-[20%] ml-0 w-full;
+  }
+}
 </style>

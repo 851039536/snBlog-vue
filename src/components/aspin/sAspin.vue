@@ -1,27 +1,20 @@
 <script lang="ts" setup>
-import { h } from 'vue'
-import { LoadingOutlined } from '@ant-design/icons-vue'
-import { resData } from './data'
-
-const indicator = h(LoadingOutlined, {
-  style: {
-    fontSize: '24px'
-  },
-  spin: true
-})
+import { aspShow } from '@/hooks/data'
 </script>
 <template>
-  <div class="aspin_main" v-show="resData.show">
-    <a-spin :spinning="true" size="large" tip="Load" :indicator="indicator" />
-  </div>
+  <section v-show="aspShow">
+    <div>
+      <a-spin size="large" tip="Loading..." />
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
-.aspin_main {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 20;
-  width: 200px;
+section {
+  @apply top-0 left-0 z-20 fixed;
+  @apply h-full w-full;
+  div {
+    @apply top-5/10 left-5/10 absolute;
+  }
 }
 </style>

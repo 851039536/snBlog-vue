@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue/es/components'
 import { useAppStore } from '@/store/pinia'
-import { Routers } from '@/hooks/routers'
+import { routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
+import { isToken, removeStorage } from '@/hooks/commonly'
 
 const store = useAppStore()
 const state = reactive({
@@ -18,24 +19,18 @@ async function login() {
       return
     }
     state.result = res.data.split(',')
-    storage.remove('rolres')
-    storage.remove('userId')
-    storage.remove('user')
-    storage.remove('token')
-
+    removeStorage()
     storage.set('rolres', state.result[0]) // 角色名
-    storage.set('userId', state.result[2]) // 用户主键
+    storage.set('id', state.result[2]) // 用户主键
     storage.set('user', state.result[3]) // 用户名
     storage.set('token', `Bearer ${state.result[1]}`) // token
     store.roles = storage.get('rolres')
     message.success('登录成功')
-    Routers('/Admin-index/ArticleTable')
+    routers('/Admin-index/ArticleTable')
   })
 }
 onMounted(async () => {
-  if (storage.get('token') !== 'token') {
-    await Routers('/Admin-index/ArticleTable')
-  }
+  await isToken()
 })
 </script>
 <template>

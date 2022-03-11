@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { IntSort } from '@/api/data/interData'
-import { RouterId } from '@/hooks/routers'
+import { routerId } from '@/hooks/routers'
 
 defineProps({
   resultData: {
@@ -11,7 +11,7 @@ defineProps({
   name: String
 })
 const TagSkip = async (id: any) => {
-  await RouterId('/Tag', id)
+  await routerId('/Tag', id)
 }
 </script>
 <template>
@@ -31,8 +31,8 @@ const TagSkip = async (id: any) => {
   @apply bg-white rounded cursor-pointer shadow;
 
   .category-name {
-    @apply rounded font-semibold m-1 text-base p-1;
-    @apply bg-gray-200;
+    @apply font-semibold m-1 text-base p-1;
+    @apply rounded bg-gray-200;
   }
 
   .category-text {

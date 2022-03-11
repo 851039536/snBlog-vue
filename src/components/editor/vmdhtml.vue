@@ -2,7 +2,6 @@
 import { article } from '@/api/index'
 
 const route = useRoute()
-
 const state: any = reactive({
   blog: [],
   id: route.query.id,
@@ -33,6 +32,7 @@ function handleAnchorClick(anchor: any) {
 onMounted(async () => {
   await GetAll()
   const anchors = proxy.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6')
+  console.log('%c [ anchors ]-35', 'font-size:13px; background:pink; color:#bf2c9f;', anchors)
   const titles = Array.from(anchors).filter((title: any) => !!title.innerText.trim())
   if (!titles.length) {
     state.titles = []
@@ -47,15 +47,17 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <a-back-top />
-  <div class="anchor">
-    <div class="anchor_tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
-      {{ anchor.title }}
+  <div class="m-auto w-[80%]">
+    <a-back-top />
+    <div class="vmd">
+      <a-page-header style="border: 1px solid rgb(235, 237, 240)" :title="state.blog.title" />
+      <v-md-preview :text="state.blog.text" ref="preview" />
     </div>
-  </div>
-  <div class="vmd">
-    <a-page-header style="border: 1px solid rgb(235, 237, 240)" :title="state.blog.title" />
-    <v-md-preview :text="state.blog.text" ref="preview" />
+    <div class="anchor">
+      <div class="anchor_tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
+        {{ anchor.title }}
+      </div>
+    </div>
   </div>
 </template>
 

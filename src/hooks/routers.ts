@@ -4,7 +4,7 @@ import router from '@/router/index'
  * @description: 路由跳转
  * @param {string} path 路径
  */
-async function Routers(path: string) {
+async function routers(path: string) {
   await router.push({
     path,
     query: {
@@ -18,7 +18,7 @@ async function Routers(path: string) {
  * @param {string} path
  * @param {number} id
  */
-const RouterId = async (path: string, id: number | string) => {
+const routerId = async (path: string, id: number | string) => {
   await router.push({
     path,
     query: {
@@ -61,4 +61,4 @@ async function reloads() {
   window.location.reload()
 }
 
-export { Routers, RouterId, winUrl, go, resolve, reloads }
+export { routers, routerId, winUrl, go, resolve, reloads }

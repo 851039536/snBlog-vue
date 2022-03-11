@@ -8,7 +8,10 @@ notification.open({
 </script>
 <template>
   <section>
-    <a-back-top />
+    <a-back-top>
+      <div class="rounded-lg bg-gray-400 shadow text-center text-white text-base py-2">UP</div>
+    </a-back-top>
+    <!-- <a-back-top /> -->
     <l-sidebar></l-sidebar>
     <index-sidebar></index-sidebar>
     <s-header></s-header>
@@ -23,13 +26,9 @@ notification.open({
   @apply rounded shadow overflow-auto;
 }
 
-// @screen xp {
-//   #blogs {
-//     .blogs_main {
-//       @apply m-0 mt-14;
-
-//       width: 100%;
-//     }
-//   }
-// }
+@screen <lg {
+  #blogs {
+    @apply mt-[10%]  ml-0 w-full;
+  }
+}
 </style>
