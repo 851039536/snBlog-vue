@@ -1,35 +1,35 @@
 import { message } from 'ant-design-vue'
 import { navigation, TOKEN } from '@/api'
 import { tool } from '@/utils/common/tool'
-import { resData } from './data'
+import { state } from './data'
 import { navName } from '../../utils/data'
 
 export class method {
   static async GetFy() {
-    if (resData.navStr === 'ALL') {
-      navigation.GetFyAsync(0, resData.navStr, 1, 1000, 'id', true, false).then((res) => {
+    if (state.navStr === 'ALL') {
+      navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then((res) => {
         tool.MomentTimeList(res)
-        resData.resultData = res.data
+        state.resData = res.data
       })
     } else {
-      navigation.GetFyAsync(1, resData.navStr, 1, 1000, 'id', true, false).then((res) => {
+      navigation.GetFyAsync(1, state.navStr, 1, 1000, 'id', true, false).then((res) => {
         tool.MomentTimeList(res)
-        resData.resultData = res.data
+        state.resData = res.data
       })
     }
   }
 
   static async SelectNav() {
-    message.info(resData.navStr)
-    if (resData.navStr === 'ALL') {
-      navigation.GetFyAsync(0, resData.navStr, 1, 1000, 'id', true, false).then((res) => {
+    message.info(state.navStr)
+    if (state.navStr === 'ALL') {
+      navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then((res) => {
         tool.MomentTimeList(res)
-        resData.resultData = res.data
+        state.resData = res.data
       })
     } else {
-      navigation.GetFyAsync(1, resData.navStr, 1, 1000, 'id', true, false).then((res) => {
+      navigation.GetFyAsync(1, state.navStr, 1, 1000, 'id', true, false).then((res) => {
         tool.MomentTimeList(res)
-        resData.resultData = res.data
+        state.resData = res.data
       })
     }
   }
@@ -42,13 +42,13 @@ export class method {
     if (name === '') {
       return
     }
-    if (resData.navStr === 'ALL') {
+    if (state.navStr === 'ALL') {
       await navigation.GetContainsAsync(0, 'null', name, false).then((res) => {
-        resData.resultData = res.data
+        state.resData = res.data
       })
     } else {
-      await navigation.GetContainsAsync(1, resData.navStr, name, false).then((res) => {
-        resData.resultData = res.data
+      await navigation.GetContainsAsync(1, state.navStr, name, false).then((res) => {
+        state.resData = res.data
       })
     }
   }
@@ -59,9 +59,9 @@ export class method {
 
   static async GetApi() {
     await TOKEN()
-    await this.GetFy()
+    await method.GetFy()
     await navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
-      resData.navTypeData = res.data
+      state.resNavType = res.data
     })
 
     navName.name = '内容分享'

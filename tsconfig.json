@@ -10,6 +10,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
+    "jsx": "preserve",
     "types": ["vite/client"],
     "baseUrl": ".",
     "lib": ["dom", "esnext"],

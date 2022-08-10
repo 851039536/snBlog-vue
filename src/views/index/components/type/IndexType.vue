@@ -1,24 +1,31 @@
 <script lang="ts" setup>
 import { IntSort } from '@/api/data/interData'
-import { routerId } from '@/hooks/routers'
+import { tool } from '@/utils/common/tool'
+import { method } from '../../data'
+import { state } from '../../data/data'
 
 defineProps({
-  resultData: {
+  resData: {
     type: Array as () => Array<IntSort>,
     required: true,
     default: () => []
   },
   name: String
 })
-const TagSkip = async (id: any) => {
-  await routerId('/Tag', id)
+const GetFy = async (name: string) => {
+  await method.GetCount(1, name)
+  state.current = 1
+  state.identity = 1
+  state.typeStr = name
+  await method.GetFy()
+  tool.BackTop()
 }
 </script>
 <template>
   <div class="category">
     <div class="category-name">{{ name }}</div>
-    <div class="inline-flex" v-for="res in resultData" :key="res.id">
-      <div class="category-text" @click="TagSkip(res.id)">
+    <div class="inline-flex" v-for="res in resData" :key="res.id">
+      <div class="category-text" @click="GetFy(res.name)">
         {{ res.name }}
       </div>
     </div>

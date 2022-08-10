@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, resData } from './data/data'
+import { columns, state } from './data/data'
 import { navigation } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { method } from './data/navTable'
@@ -23,9 +23,9 @@ onMounted(async () => {
       <a-space>
         <a-button @click="routers('/Admin-index/NavAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select style="width: 100px" v-model:value="resData.navStr" @change="method.SelectNav()">
+        <a-select style="width: 100px" v-model:value="state.navStr" @change="method.SelectNav()">
           <a-select-option value="ALL">ALL</a-select-option>
-          <a-select-option :value="item.title" v-for="item in resData.navTypeData" :key="item.id">{{
+          <a-select-option :value="item.title" v-for="item in state.resNavType" :key="item.id">{{
             item.title
           }}</a-select-option>
         </a-select>
@@ -49,9 +49,9 @@ onMounted(async () => {
       :bordered="true"
       :columns="columns"
       rowKey="id"
-      :data-source="resData.resultData"
+      :data-source="state.resData"
       :pagination="{ pageSize: 15 }"
-      :scroll="{ x: 1500, y: 360 }"
+      :scroll="{ x: 1280, y: 420 }"
     >
       <template #ed="{ record }">
         <a @click="routerId('/Admin-index/NavEdit', record.id)">Edit</a>

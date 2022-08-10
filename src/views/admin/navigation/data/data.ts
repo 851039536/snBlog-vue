@@ -1,14 +1,13 @@
-import { reactive } from 'vue'
 import { IntNav } from '@/api/data/interData'
 
 interface ResData {
-  resultData: any
-  navTypeData: any
+  resData: any
+  resNavType: any
   navStr: string
 }
-const resData: ResData = reactive({
-  resultData: [],
-  navTypeData: [],
+const state: ResData = reactive({
+  resData: [],
+  resNavType: [],
   navStr: 'ALL'
 })
 
@@ -80,9 +79,7 @@ const formState: IntNav = reactive({
   userId: 0,
   url: 'www.xxx.com'
 })
-const stateArray: any = reactive({
-  navResult: []
-})
+export const resType: any = ref([])
 
 export async function formNull() {
   formState.id = 0
@@ -94,4 +91,4 @@ export async function formNull() {
   formState.url = 'www.xxx.com'
 }
 
-export { columns, resData, formState, stateArray }
+export { columns, state, formState }

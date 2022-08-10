@@ -33,9 +33,8 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .one {
   @apply h-full w-full fixed;
-
   .one-div {
-    @apply h-[90%] mt-[4.5%] ml-[25%] w-2/4;
+    @apply h-[90%] ml-[26%] w-[47%];
     @apply rounded shadow overflow-auto;
 
     .paging {
@@ -47,17 +46,13 @@ onMounted(async () => {
     display: none;
   }
 }
-// @screen xp {
-//   .oneSidebar {
-//     @apply hidden;
-//   }
-
-//   .one .one-div {
-//     @apply mb-14 ml-0 w-full;
-//   }
-
-//   .one .one-div .one-list .one-list-div {
-//     @apply ml-0 w-full;
-//   }
-// }
+@screen xp {
+  .one {
+    .one-div {
+      @apply mt-[6.3%];
+      .paging {
+      }
+    }
+  }
+}
 </style>

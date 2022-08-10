@@ -4,9 +4,10 @@ import { columns, state } from './data'
 import { article, TOKEN, labels } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
-import { tool } from '@/utils/common/tool'
+import { storage } from '@/utils/storage/storage'
 
 const reload: any = inject('reload')
+
 const confirm = async (data: any) => {
   await article.DeleteAsync(data.id).then(() => {
     message.success('删除成功')
@@ -19,44 +20,35 @@ const cancel = () => {
 
 async function GetContains(name: string) {
   if (name === '' && state.labelStr === 'ALL') {
-    state.dataResult = await article.GetFyAsync(0, 'null', 1, 1000, 'id', true, false)
-    await tool.MomentTimeList(state.dataResult)
+    state.resData = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
   } else if (state.labelStr === 'ALL') {
-    state.dataResult = await article.GetContainsAsync(0, '0', name, true)
-    tool.MomentTimeList(state.dataResult)
+    state.resData = await article.GetContainsAsync(0, '0', name, true)
   } else {
-    state.dataResult = await article.GetContainsAsync(2, state.labelStr, name, true)
-    tool.MomentTimeList(state.dataResult)
+    state.resData = await article.GetContainsAsync(2, state.labelStr, name, true)
   }
 }
 async function GetTag() {
   message.info(state.labelStr)
-  if (state.labelStr === 'ALL') {
-    state.dataResult = await article.GetFyAsync(0, 'null', 1, 1000, 'id', true, false)
-    await tool.MomentTimeList(state.dataResult)
-  } else {
-    state.dataResult = await article.GetFyAsync(2, state.labelStr, 1, 1000, 'id', true, false)
-    await tool.MomentTimeList(state.dataResult)
-  }
+  state.resData =
+    state.labelStr === 'ALL'
+      ? await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
+      : await article.GetFyAsync(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
 }
 async function Ordering() {
   if (state.order) {
-    state.dataResult = await article.GetFyAsync(0, 'null', 1, 1000, 'id', state.order, false)
-    await tool.MomentTimeList(state.dataResult)
+    state.resData = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', state.order, false)
     state.order = false
   } else {
-    state.dataResult = await article.GetFyAsync(0, 'null', 1, 1000, 'id', state.order, false)
-    await tool.MomentTimeList(state.dataResult)
+    state.resData = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', state.order, false)
     state.order = true
   }
 }
 
 onMounted(async () => {
   await TOKEN()
-  state.dataResult = await article.GetFyAsync(0, 'null', 1, 1000, 'id', true, false)
-  await tool.MomentTimeList(state.dataResult)
-  state.labelResult = await labels.GetAllAsync(false)
-  navName.name = '标签'
+  state.resData = await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
+  state.resLabel = await labels.GetAllAsync(false)
+  navName.name = '文章'
   navName.name2 = '标签列表'
 })
 </script>
@@ -68,11 +60,10 @@ onMounted(async () => {
         <a-button @click="reload()">刷新</a-button>
         <a-select style="width: 100px" v-model:value="state.labelStr" @change="GetTag">
           <a-select-option value="ALL">ALL</a-select-option>
-          <a-select-option :value="res.name" v-for="res in state.labelResult.data" :key="res.id">{{
+          <a-select-option :value="res.name" v-for="res in state.resLabel.data" :key="res.id">{{
             res.name
           }}</a-select-option>
         </a-select>
-        <!-- 搜索  -->
         <a-select
           show-search
           placeholder="标题搜索"
@@ -93,9 +84,9 @@ onMounted(async () => {
         :bordered="true"
         :columns="columns"
         rowKey="id"
-        :data-source="state.dataResult.data"
+        :data-source="state.resData.data"
         :pagination="{ pageSize: 15 }"
-        :scroll="{ x: 1500, y: 360 }"
+        :scroll="{ x: 1280, y: 420 }"
       >
         <template #ed="{ record }">
           <a type="primary" ghost @click="routerId('/Admin-index/ArticleEdit', record.id)">Edit</a>

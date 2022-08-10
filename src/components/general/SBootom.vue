@@ -46,7 +46,7 @@ const skip = (num: number) => {
   @apply bg-white shadow text-base;
 
   div {
-    @apply m-2 py-3 px-2 text-gray-600;
+    @apply m-2 py-3 px-2;
   }
 }
 </style>

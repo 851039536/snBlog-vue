@@ -32,7 +32,6 @@ function handleAnchorClick(anchor: any) {
 onMounted(async () => {
   await GetAll()
   const anchors = proxy.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6')
-  console.log('%c [ anchors ]-35', 'font-size:13px; background:pink; color:#bf2c9f;', anchors)
   const titles = Array.from(anchors).filter((title: any) => !!title.innerText.trim())
   if (!titles.length) {
     state.titles = []
@@ -63,12 +62,12 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .vmd {
-  @apply bg-gray-50 mt-3 ml-[3%] w-[77%];
+  @apply bg-gray-50 mt-3 ml-[3%] w-[75%];
 }
 .anchor {
-  @apply rounded top-[7%] right-[3%] w-[16%] z-10 fixed;
+  @apply rounded top-[7%] right-[9%] w-[14%] z-10 fixed;
   .anchor_tag {
-    @apply bg-white cursor-pointer  m-1 text-base p-2;
+    @apply bg-white cursor-pointer m-1 text-base p-2;
     &:hover {
       @apply rounded bg-blue-100;
     }

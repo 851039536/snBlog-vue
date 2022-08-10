@@ -7,7 +7,7 @@ const resData: any = ref([])
  */
 class method {
   static async GetType() {
-    await interfaces.GetTypeAsync(0, 'kai', 'header', true).then((res: any) => {
+    await interfaces.GetTypeAsync(0, 'kai', 'header', false).then((res: any) => {
       resData.value = res.data
     })
   }

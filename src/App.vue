@@ -18,5 +18,6 @@
 <style lang="scss">
 @include scroll;
 #app {
+  // @apply h-full  w-full;
 }
 </style>

@@ -32,30 +32,30 @@ onMounted(async () => {
 
 <style lang="scss">
 .lsidebar {
-  @apply h-[100%] top-[9%] left-[3%] w-[19.5%]  fixed;
+  @apply h-[100%] top-[9%] left-[8%] w-[17%] fixed;
   @apply rounded shadow;
   & > div {
     @apply h-[80%] overflow-auto;
 
     .raside-img {
       img {
-        @apply rounded h-[144px] w-[100%];
+        @apply rounded h-[175px] mb-10 w-[100%];
       }
     }
 
     .raside-list {
-      @apply m-auto h-[6%] mt-1 w-[40%];
-      @apply cursor-pointer text-center text-base;
-
+      @apply m-auto h-[39px] my-1 w-[40%];
+      @apply cursor-pointer text-center text-xl;
       p {
-        @apply py-1 px-4 hover:text-blue-400;
+        @apply hover:text-blue-400;
       }
     }
-
     .raside-website {
-      @apply text-base ml-[25%] bottom-[20%] absolute;
+      @apply text-base ml-[25%] bottom-[17%] absolute;
+      a {
+        @apply text-gray-600;
+      }
     }
-
     .raside-described {
       @apply text-center bottom-[10%] absolute;
     }
@@ -63,8 +63,24 @@ onMounted(async () => {
 }
 
 @screen <lg {
-  #raside {
-    display: none;
+}
+
+@screen <xp {
+  .lsidebar {
+    @apply top-[11%];
+    & > div {
+      .raside-website {
+        @apply text-base ml-7;
+      }
+      .raside-list {
+        @apply h-[35px] w-[60%];
+      }
+      .raside-img {
+        img {
+          @apply h-[140px];
+        }
+      }
+    }
   }
 }
 </style>

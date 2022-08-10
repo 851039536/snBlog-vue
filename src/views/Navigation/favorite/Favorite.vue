@@ -103,42 +103,26 @@ onMounted(async () => {
 <style lang="scss" scoped>
 #favorite {
   @apply h-full w-full;
-
   #favorite_main {
     @apply fixed;
-
-    @include initialize($w, 85%, 4.5%, null, $ml, null, #ffffff);
-
+    @apply h-[85%] mt-[4.6%] ml-[26%] w-[47%];
     @apply rounded shadow;
-
-    .favorite_type {
-      @apply cursor-default text-base text-center;
-
-      .favorite_type_name {
-        background: #e5e7eb;
-      }
-    }
 
     .favorite_content {
       @apply h-full m-auto w-full;
-
       .favorite_content_text {
-        @include w-h(32%, 167px);
-
-        @apply m-auto;
-        @apply rounded-sm bg-gray-100  shadow mt-2 ml-2;
+        @include w-h(31.5%, 170px);
+        @apply m-auto mt-4 ml-2;
+        @apply rounded-sm bg-gray-100 shadow;
 
         .favorite_content_text-1 {
-          @apply cursor-pointer font-thin  text-lg px-1;
-          height: 25%;
+          @apply cursor-pointer h-[25%] text-lg p-2;
           @include line-one;
         }
 
         .favorite_content_text-2 {
-          height: 65%;
-
-          @apply bg-white font-thin mx-1  mt-2 px-2;
-
+          @apply h-[65%] mx-1 mt-2 px-2;
+          @apply bg-white font-thin;
           @include line-numbers(5);
         }
       }
@@ -151,95 +135,66 @@ onMounted(async () => {
 }
 
 #FavSidebar {
-  position: fixed;
-
-  @include excursion($Text_height, null, null, $sidebar_r_r);
-  @include w-h(20%, 90%);
-
-  @apply ml-3;
-
+  @apply fixed;
+  @apply h-[90%] top-[9%] right-[8%] w-[18%];
   #FavSidebar_main {
     @apply h-full w-full overflow-auto;
-
-    .el-calendar-table .el-calendar-day {
-      height: 44px !important;
-    }
-
     .FavSidebar_describe {
-      @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
-
-      @apply rounded shadow text-center mb-2;
-
+      @apply mb-2 w-[97%];
+      @apply rounded shadow text-center;
       p {
         @apply m-1 text-base py-4 px-2;
       }
     }
-
     .FavSidebar_footer {
-      @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
-
-      @apply rounded cursor-pointer shadow mb-2 p-1;
+      @apply mb-2 p-1 w-[97%];
+      @apply rounded cursor-pointer shadow;
 
       .FavSidebar_f_title {
-        @apply cursor-pointer font-semibold bg-gray-200 m-1 text-base p-1;
+        @apply m-1 text-base p-1;
+        @apply cursor-pointer font-semibold bg-gray-200;
       }
 
       .FavSidebar_f_content {
         @apply m-2 text-sm;
 
         .FavSidebar_f_content_name {
-          @apply p-1;
-
-          width: 35%;
+          @apply p-1 w-[35%];
         }
 
         .FavSidebar_f_content_text {
-          width: 40%;
-
-          @apply p-1;
-        }
-      }
-    }
-
-    .FavSidebar_itme {
-      @include initialize(97%, null, auto, auto, auto, auto, #ffffff);
-
-      @apply rounded shadow  mb-2 p-1;
-
-      .FavSidebar_itme_1 {
-        color: #1b1e21;
-
-        @apply font-semibold bg-gray-200 m-1 text-sm p-1;
-      }
-
-      .FavSidebar_itme_2 {
-        @apply bg-gray-100;
-        @apply cursor-pointer m-2;
-
-        .itme_1 {
-          @apply text-base p-2;
+          @apply p-1 w-[40%];
         }
       }
     }
 
     .onecategory {
-      width: 97%;
-
-      @apply cursor-pointer m-auto mb-2  p-1;
-      @apply bg-white rounded shadow;
+      @apply m-auto mb-2 p-1 w-[97%];
+      @apply bg-white rounded cursor-pointer shadow;
 
       .onecategory_name {
-        color: #1b1e21;
-
-        @apply font-semibold bg-gray-200 m-1 text-base p-1;
+        @apply m-1 text-base p-1;
+        @apply font-semibold bg-gray-200;
       }
     }
   }
 }
 
-// @screen xp {
-//   #FavSidebar {
-//     display: none;
-//   }
-// }
+@screen <xp {
+  #favorite {
+    #favorite_main {
+      @apply fixed;
+      @apply h-[83%] mt-[6.3%];
+
+      .favorite_content {
+        .favorite_content_text {
+          @include w-h(31%, 140px);
+        }
+      }
+    }
+  }
+  #FavSidebar {
+    @apply top-[11%];
+  }
+}
 </style>

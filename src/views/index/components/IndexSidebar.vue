@@ -26,8 +26,8 @@ method.GetApi()
       <!-- end 搜索 -->
 
       <s-describe :userTalk="resData.userTalk"></s-describe>
-      <s-category :result-data="resData.sortData" name="分类"></s-category>
-      <s-category :result-data="resData.labelsData" name="标签"></s-category>
+      <index-type :res-data="resData.sortData" name="分类"></index-type>
+      <index-tag :res-data="resData.labelsData" name="标签"></index-tag>
 
       <!-- 站点统计框 -->
       <station-text
@@ -48,9 +48,8 @@ method.GetApi()
 
 <style lang="scss" scoped>
 #index-sidebar {
-  @apply h-[93%] ml-3 top-[9%] right-[3%] w-[20.4%] fixed;
+  @apply s-side;
   @apply bg-gray-50 shadow overflow-auto;
-
   .index_s_main {
     @apply h-full w-full;
     .index_s_input {
@@ -61,7 +60,6 @@ method.GetApi()
     }
   }
 }
-
 #index-sidebar::-webkit-scrollbar {
   display: none;
 }
@@ -69,6 +67,11 @@ method.GetApi()
 @screen <lg {
   #index-sidebar {
     display: none;
+  }
+}
+@screen <xp {
+  #index-sidebar {
+    @apply h-[90%] top-[11%];
   }
 }
 </style>

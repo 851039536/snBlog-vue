@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
-import BlogHome from '@/components/home/SHome.vue'
+import Home from '@/components/general/SHome.vue'
 
 const routes = [
   {
     path: '/',
     // 重定向，当前路径'/'没有对应的组件，需要重定向到其他路由页面
-    redirect: '/BlogHome',
-    name: 'Home',
-    component: BlogHome
+    redirect: '/Home',
+    name: 'Homes',
+    component: Home
   },
   {
-    path: '/BlogHome',
-    name: 'BlogHome',
-    component: () => import('@/components/home/SHome.vue')
+    path: '/Home',
+    name: 'Home',
+    component: () => import('@/components/general/SHome.vue')
   },
 
   {
@@ -65,15 +65,6 @@ const routes = [
     },
     component: () => import('@/views/index/components/IndexSidebar.vue')
   },
-
-  {
-    path: '/TimeLine',
-    name: 'TimeLine',
-    meta: {
-      keepAlive: false
-    },
-    component: () => import('@/views/TimeLine/TimeLine.vue')
-  },
   {
     path: '/Tag',
     name: 'Tag',
@@ -88,7 +79,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Photo/PhotoIndex.vue')
+    component: () => import('@/views/page/photo/PhotoIndex.vue')
   },
   {
     path: '/Navigation',
@@ -136,7 +127,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/leave/Leave.vue')
+    component: () => import('@/views/page/leave/Leave.vue')
   },
   {
     path: '/One',
@@ -160,7 +151,7 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/listContent/ListContent.vue')
+    component: () => import('@/views/page/listContent/ListContent.vue')
   },
   {
     path: '/Software',

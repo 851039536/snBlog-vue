@@ -1,23 +1,27 @@
 <script lang="ts" setup>
-import { state, method } from '../data/column'
+import { method } from '../data/index'
 import { routerId } from '@/hooks/routers'
 import { tool } from '@/utils/common/tool'
+import { state } from '../data/data'
 
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
 async function currentchange(val: number) {
-  state.page = val
+  state.current = val
   await method.GetFy()
   tool.BackTop()
 }
-method.GetCount()
-method.GetFy()
+
+onMounted(async () => {
+  await method.GetCount(0, 'null')
+  await method.GetFy()
+})
 </script>
 
 <template>
   <section>
-    <div class="blogs-content" v-for="res in state.resultData" :key="res.id">
+    <div class="blogs-content" v-for="res in state.resData" :key="res.id">
       <div class="blogs-content_div">
         <div class="blogs-content_img">
           <img v-lazy="getImageUrl(res.img)" />
@@ -42,6 +46,7 @@ method.GetFy()
         @change="currentchange"
         :total="state.count"
         :pageSize="state.pagesize"
+        :current="state.current"
         show-quick-jumper
       ></a-pagination>
     </div>

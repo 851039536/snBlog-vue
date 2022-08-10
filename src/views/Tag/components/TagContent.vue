@@ -26,7 +26,7 @@ async function GetApi(id: number) {
 <style lang="scss" scoped>
 .tag_content {
   @apply flex flex-nowrap;
-  @apply h-[71%] mt-1 ml-[3%] w-[94%];
+  @apply h-[71%] mt-1 ml-[8%] w-[84%];
 
   .text-sidebar {
     @apply cursor-pointer shadow w-[25%] overflow-auto;

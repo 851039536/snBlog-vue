@@ -38,7 +38,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .statistics {
-  @apply bg-white rounded m-auto shadow mb-2 p-1 w-[97%];
+  @apply bg-white rounded m-auto  shadow mb-2 p-1 w-[97%];
 
   .title {
     @apply m-1 p-1;

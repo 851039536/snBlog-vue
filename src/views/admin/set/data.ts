@@ -1,76 +1,65 @@
-import { IntArticle } from '@/api/data/interData'
-
 interface State {
-  dataResult: any
+  resData: any
 }
 const state: State = reactive({
-  dataResult: []
+  resData: []
 })
 
 const columns = [
   {
     title: '主键',
     dataIndex: 'id',
-    width: 100
+    width: 40
   },
   {
     title: '标题',
     dataIndex: 'title',
-    width: 250
+    width: 120
   },
 
   {
     title: '路径',
-    dataIndex: 'path'
+    dataIndex: 'path',
+    width: 150
   },
   {
-    title: 'typeId',
-    dataIndex: 'typeId'
+    title: '类别',
+    align: 'center',
+    dataIndex: 'type.name',
+    width: 50
   },
   {
-    title: 'userId',
-    dataIndex: 'userId'
+    title: '用户',
+    align: 'center',
+    dataIndex: 'user.name',
+    width: 50
   },
 
   {
     title: '是否启用',
     key: 'identity',
-    width: 100,
+    align: 'center',
+    width: 80,
     slots: { customRender: 'identity' } // 绑定插槽
   },
   {
     title: '操作',
     key: '编辑',
-    width: 80,
+    fixed: 'right',
+    align: 'center',
+    width: 70,
     slots: { customRender: 'ed' } // 绑定插槽
   },
   {
     title: '操作',
     key: '删除',
-    width: 80,
+    fixed: 'right',
+    align: 'center',
+    width: 70,
     slots: { customRender: 'de' } // 绑定插槽
   }
 ]
 
-const formState: IntArticle = reactive({
-  labelId: 1,
-  sortId: 1,
-  urlImg: 'img',
-  userId: 1,
-  id: 0,
-  title: '标题',
-  sketch: '简述',
-  text: '',
-  read: 0,
-  img: 'img',
-  commentId: 0,
-  give: 0,
-  timeCreate: '2090-10-01',
-  timeModified: '2090-10-01',
-  label: [],
-  sort: [],
-  user: []
-})
 const stateArray: any = reactive({
   labelResult: [],
   sortResult: []
@@ -78,4 +67,4 @@ const stateArray: any = reactive({
 const stateStr: any = reactive({
   labelStr: 'ALL'
 })
-export { columns, state, formState, stateArray, stateStr }
+export { columns, state, stateArray, stateStr }

@@ -26,7 +26,7 @@ async function GetTag(name: string) {
 
 <style lang="scss" scoped>
 .tag_head {
-  @apply flex flex-wrap mt-1 ml-[3%] w-[94%];
+  @apply flex flex-wrap mt-1 ml-[8%] w-[84%];
   @apply bg-white rounded-sm shadow;
 
   .tag_head_content {

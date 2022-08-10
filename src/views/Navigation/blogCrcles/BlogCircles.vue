@@ -12,7 +12,7 @@ method.GetTypeOrder()
     <l-sidebar></l-sidebar>
     <s-circles-sidebar></s-circles-sidebar>
     <div class="circles_main">
-      <div class="grid circles_content sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+      <div class="grid circles_content sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xp:grid-cols-3 2xl:grid-cols-3">
         <div class="circles-1" v-for="res in resData.resultData" :key="res.id">
           <div class="circles-1-1">
             <img v-lazy="res.img" onerror="this.style.display='none'" />
@@ -44,21 +44,16 @@ method.GetTypeOrder()
 
 <style lang="scss" scoped>
 .circles {
-  position: fixed;
-
-  @include w-h(100%, 100%);
+  @apply s-hw fixed;
 
   .circles_main {
-    @include initialize($w, 86%, 4.5%, null, $ml, null, #ffffff);
-
+    @apply h-[85%] mt-[4.6%] ml-[26%] w-[47%];
     @apply rounded-sm shadow;
 
     // 导航窗体小
     .circles-1 {
       @include w-h(92%, 110px);
-
       @apply rounded m-2 shadow hover:bg-gray-50;
-
       .circles-1-1 {
         @include w-h(40%, 99%);
 

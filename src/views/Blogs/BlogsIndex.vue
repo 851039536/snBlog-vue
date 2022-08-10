@@ -15,12 +15,18 @@
 
 <style lang="scss" scoped>
 .blogs-index {
-  @apply h-[92%] mt-[4.5%] ml-[25%] w-[50%];
+  @apply h-[92%] mt-[4.5%] ml-[26%] w-[47%];
   @apply rounded shadow overflow-auto;
 }
 @screen <lg {
   .blogs-index {
     @apply mt-[10%] ml-0 w-full;
+  }
+}
+
+@screen <xp {
+  .blogs-index {
+    @apply h-[88%] mt-[6.3%];
   }
 }
 </style>

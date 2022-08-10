@@ -8,7 +8,7 @@
       <div class="photo_title">
         <p>原来是你呀 / 总计 20</p>
       </div>
-      <div class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
         <div class="photo_img">
           <img src="https://cdn.share-man.com/mailImage/e8f1120dfaca01d78bc90f0c71e3736e.jpeg" />
 
@@ -70,18 +70,18 @@
 
 <style lang="scss" scoped>
 .photo {
-  @include initialize(94%, null, 4.5%, null, 3%, null, #ffffff);
-  @apply shadow rounded-md;
+  @include initialize(84%, null, 4.5%, null, 8%, null, #ffffff);
+  @apply rounded-md shadow;
   .photo_title {
     @include underline;
     margin-bottom: 6px;
     p {
-      @apply px-1 py-2 m-2 text-lg font-medium;
+      @apply font-medium m-2 text-lg py-2 px-1;
     }
   }
 
   .photo_img {
-    @apply relative m-3;
+    @apply m-3 relative;
     @apply rounded-md shadow;
 
     img {
@@ -101,7 +101,7 @@
     .photo_text {
       color: #5f6c7b;
 
-      @apply p-2 px-4 text-base cursor-pointer hover:text-red-300;
+      @apply cursor-pointer text-base p-2 px-4 hover:text-red-300;
     }
   }
 }

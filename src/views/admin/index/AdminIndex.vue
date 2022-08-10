@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { useAppStore } from '@/store/pinia'
 import { routers } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { isToken, removeStorage } from '@/hooks/commonly'
+import { storage } from '@/utils/storage/storage'
 
-const store = useAppStore()
 function zx() {
   removeStorage()
   isToken()
@@ -28,7 +27,6 @@ const handleClick = (e: any) => {
       break
   }
 }
-
 const showRouter = ref(true)
 function reload() {
   showRouter.value = false
@@ -50,7 +48,7 @@ provide('reload', reload)
           <li><a @click="zx()">注销</a></li>
           <li>
             <a
-              ><a-avatar>{{ store.roles }}</a-avatar></a
+              ><a-avatar>{{ storage.get('user') }}</a-avatar></a
             >
           </li>
         </ul>
@@ -58,7 +56,7 @@ provide('reload', reload)
 
       <a-layout>
         <div class="bg-warm-gray-50 shadow mt-1">
-          <a-layout-sider breakpoint="lg" collapsed-width="0" width="200">
+          <a-layout-sider breakpoint="lg" collapsed-width="0" width="220">
             <a-menu mode="inline" @click="handleClick" :style="{ height: '100%', borderRight: 0 }">
               <a-sub-menu key="article">
                 <template #title>

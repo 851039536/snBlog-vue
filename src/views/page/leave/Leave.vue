@@ -1,20 +1,61 @@
+<script lang="ts" setup>
+import { leave } from '@/api/index'
+
+const state: any = reactive({
+  result: []
+})
+
+const GetApi = async () => {
+  state.result = await (await leave.GetAllAsync()).data
+}
+onMounted(async () => {
+  await GetApi()
+})
+</script>
+
+<template>
+  <div class="leave">
+    <div class="leave_main" data-title="气泡背景墙">
+      <ul class="bubble_bgwall">
+        <li v-for="res in state.result" :key="res.id">
+          {{ res.text }}
+        </li>
+      </ul>
+      <div class="bruce-2">
+        <form class="max-w-sm w-full">
+          <div class="md:flex md:items-center">
+            <div class="md:w-2/3">
+              <input
+                class="rounded bg-gray-200 border-2 border-gray-200 leading-tight w-full py-2 px-4 text-gray-700 appearance-none focus:bg-white focus:outline-none focus:border-purple-500"
+                id="inline-full-name"
+                type="text"
+                value="666666666666！"
+              />
+            </div>
+            <button
+              class="rounded font-bold bg-purple-500 shadow text-white py-2 px-3 hover:bg-purple-400 focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
 .leave {
-  position: fixed;
-
-  @include w-h;
-
+  @apply absolute s-hw;
   .leave_main {
-    @apply relative h-full;
-
+    @apply h-full relative;
     background-image: linear-gradient(270deg, #e96dc4, #3367eb);
 
     .bubble_bgwall {
       @apply overflow-hidden relative;
-
-      width: 100%;
-      max-width: 1200px;
-      height: 100%;
-      margin: 0 auto;
+      @apply m-auto s-hw;
+      // max-width: 1200px;
 
       li {
         position: absolute;
@@ -238,3 +279,4 @@
     opacity: 0;
   }
 }
+</style>

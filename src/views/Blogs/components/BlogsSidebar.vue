@@ -72,7 +72,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 #blogs-sidebar {
-  @apply h-[93%] ml-3 top-[9%] right-[3%] w-[20.4%] fixed;
+  @apply h-[93%] ml-3 top-[9%] right-[8%] w-[18%] fixed;
   @apply bg-gray-50 shadow overflow-auto;
 
   .blogs-sidebar_main {
@@ -97,6 +97,11 @@ onMounted(async () => {
 @screen <lg {
   #blogs-sidebar {
     display: none;
+  }
+}
+@screen <xp {
+  #blogs-sidebar {
+    @apply h-[88%] ml-3 top-[11%];
   }
 }
 </style>

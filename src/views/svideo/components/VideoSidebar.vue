@@ -33,9 +33,8 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 
 <style lang="scss" scoped>
 .video_sidebar {
-  @apply h-[90%] ml-3 w-[20%] fixed;
+  @apply h-[90%] top-[9%] right-[8%] w-[18%] fixed;
 
-  @include excursion($Text_height, null, null, $sidebar_r_r);
   & > div {
     @apply h-full w-full overflow-auto;
 
@@ -81,9 +80,9 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
   }
 }
 
-// @screen xp {
-//   .video_sidebar {
-//     @apply hidden;
-//   }
-// }
+@screen<xp {
+  .video_sidebar {
+    @apply top-[11%];
+  }
+}
 </style>

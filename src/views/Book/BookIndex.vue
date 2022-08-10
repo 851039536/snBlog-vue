@@ -79,19 +79,17 @@
 
 <style lang="scss" scoped>
 .book {
-  @apply h-full w-full fixed;
+  @apply s-hw fixed;
   .book_main {
-    @apply h-[89%] mt-[4.5%] ml-[25%] w-5/10;
+    @apply h-[90%] mt-[4.5%] ml-[26%] w-[47%];
     @apply rounded shadow overflow-auto;
 
     .book_film_text {
       @apply rounded m-1 shadow-xl mt-2 p-1;
-
       @include w-h(95%, 370px);
 
       .book_img {
         @include w-h(100%, 220px);
-
         img {
           @include w-h(100%, 100%);
 
@@ -100,14 +98,11 @@
       }
 
       .book_film_title {
-        background-color: wheat;
-
-        @apply text-lg text-center p-1;
+        @apply bg-amber-50 text-lg text-center p-1;
       }
 
       .book_film_type {
         @apply text-sm p-1 px-3 text-gray-500;
-
         div {
           @apply m-1;
         }
@@ -116,19 +111,11 @@
   }
 }
 
-// @screen xp {
-//   .book .book_text {
-//     width: 100%;
-
-//     @apply ml-2;
-//   }
-
-//   .book .book_text .book_film_text .book_img {
-//     height: 380px;
-//   }
-
-//   .book .book_text .book_film_text {
-//     height: 540px;
-//   }
-// }
+@screen <xp {
+  .book {
+    .book_main {
+      @apply h-[88%] mt-[6.3%];
+    }
+  }
+}
 </style>

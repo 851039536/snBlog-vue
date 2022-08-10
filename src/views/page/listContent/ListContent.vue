@@ -33,7 +33,7 @@ onMounted(async () => {
       <div class="ListContent_title">
         <p>最新内容 / 总 计 10</p>
       </div>
-      <div class="grid 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
         <div class="ListContent_div">
           <div class="ListContent_text">
             <div class="ListContent_t_title">
@@ -99,5 +99,48 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import './index.scss';
+// @import './index.scss';
+.ListContent {
+  @apply mt-[4.5%] ml-[8%] w-[84%];
+  @apply rounded-md shadow;
+
+  .ListContent_title {
+    @include underline;
+    margin-bottom: 6px;
+    p {
+      @apply font-medium m-2 text-lg py-2 px-1;
+    }
+  }
+
+  .ListContent_div {
+    @apply m-3;
+    @apply rounded shadow;
+
+    .ListContent_text {
+      @apply bg-white rounded text-base p-2;
+
+      .ListContent_t_title {
+        @apply rounded flex bg-gray-100 justify-between;
+        div {
+          @apply p-1;
+        }
+      }
+
+      .ListContent_t_content {
+        @apply p-1;
+        a {
+          span {
+            @apply rounded bg-gray-200 px-1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@screen <xp {
+  .ListContent {
+    @apply mt-[7.3%];
+  }
+}
 </style>

@@ -7,6 +7,7 @@ import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 
 const reload: any = inject('reload')
+
 const confirm = async (data: any) => {
   await article.DeleteAsync(data.id).then(() => {
     message.success('删除成功')
@@ -63,7 +64,6 @@ onMounted(async () => {
             res.name
           }}</a-select-option>
         </a-select>
-        <!-- 搜索  -->
         <a-select
           show-search
           placeholder="标题搜索"
@@ -86,7 +86,7 @@ onMounted(async () => {
         rowKey="id"
         :data-source="state.resData.data"
         :pagination="{ pageSize: 15 }"
-        :scroll="{ x: 1280, y: 420 }"
+        :scroll="{ x: 1280, y: 520 }"
       >
         <template #ed="{ record }">
           <a type="primary" ghost @click="routerId('/Admin-index/ArticleEdit', record.id)">Edit</a>

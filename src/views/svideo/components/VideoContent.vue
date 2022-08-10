@@ -43,7 +43,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .svideo_main {
-  @apply h-[99%] mt-[4.5%] ml-[25%] w-[50%] relative;
+  @apply h-[99%] mt-[4.5%] ml-[26%] w-[47%] relative;
   @apply rounded shadow;
 
   .svideo_main_content {
@@ -75,6 +75,12 @@ defineProps({
   .svideo_Paging {
     @include w-h(100%, 20%);
     @apply top-[95%] left-[1%] absolute;
+  }
+}
+
+@screen<xp {
+  .svideo_main {
+    @apply mt-[6.3%];
   }
 }
 </style>

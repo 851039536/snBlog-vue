@@ -58,8 +58,8 @@ onMounted(async () => {
 }
 
 .tag_search {
-  @include initialize(94%, null, null, null, 3%, null, #ffffff);
-  @apply rounded-sm shadow  relative;
+  @apply ml-[8%] w-[84%];
+  @apply rounded-sm shadow relative;
 
   height: 48px;
   display: flex;

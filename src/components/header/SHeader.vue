@@ -27,7 +27,7 @@ onMounted(async () => {
   <nav class="sheader" v-if="local">
     <div>
       <div class="sheader-start">
-        <div class="flex h-full text-2xl items-center">
+        <div class="flex text-2xl items-center">
           <span>少年</span>
         </div>
         <div class="sheader-text">
@@ -38,8 +38,8 @@ onMounted(async () => {
       </div>
       <div class="sheader-end">
         <div>
-          <span @click="method.skip(13)" v-once>博客园</span>
-          <span @click="method.skip(14)" v-once>Login</span>
+          <!-- <span @click="method.skip(13)" v-once>博客园</span> -->
+          <span @click="method.skip(14)" v-once>登录</span>
         </div>
       </div>
     </div>
@@ -48,23 +48,23 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .sheader {
-  @apply flex h-[53px] top-0 left-[3%] w-[94%] z-50 fixed;
-  @apply bg-white rounded shadow px-3;
+  @apply flex h-75px top-0 left-[0%] w-[100%] z-50 fixed;
+  @apply bg-white shadow px-3;
   & > div {
     @apply w-full inline-flex;
     .sheader-start {
       @apply flex h-full w-[50%];
       .sheader-text {
-        @apply flex items-center;
+        @apply flex  m-1 p-1 items-center;
         span {
-          @apply cursor-pointer text-lg ml-3 text-gray-600 hover:text-blue-400;
+          @apply cursor-pointer m-1 text-xl p-1 hover:text-blue-400;
         }
       }
     }
     .sheader-end {
-      @apply flex h-full text-lg text-gray-600 w-[50%] justify-end;
+      @apply flex h-full text-xl w-[50%] justify-end;
       & > div {
-        @apply flex  items-center;
+        @apply flex items-center;
         span {
           @apply cursor-pointer m-1 hover:text-blue-400;
         }

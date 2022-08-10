@@ -22,8 +22,11 @@ const GetApi = async () => {
     state.spinning = false
   })
 }
-GetApi()
-tool.BackTop()
+
+onMounted(async () => {
+  await GetApi()
+  tool.BackTop()
+})
 </script>
 
 <template>

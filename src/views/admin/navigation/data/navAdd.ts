@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import { storage } from '@/utils/storage/storage'
 import { navigation, TOKEN } from '@/api'
 import { navName } from '../../utils/data'
-import { formState, stateArray, formNull } from './data'
+import { formState, resType, formNull } from './data'
 import { routers } from '@/hooks/routers'
 
 const uid: any = ref(storage.get('userId'))
@@ -12,7 +12,7 @@ export async function GetApi() {
   await formNull()
   await TOKEN()
   await navigation.GetSnNavigationTypeSAllAsync(false).then((ress) => {
-    stateArray.navResult = ress.data
+    resType.value = ress.data
   })
   navName.name = '内容分享'
   navName.name2 = '新增内容'

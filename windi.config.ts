@@ -12,15 +12,8 @@ export default defineConfig({
   },
   // 快速创建可复用的组件和工具类。
   shortcuts: {
-    btn: 'py-2 px-4 font-semibold rounded-lg shadow-md cursor-pointer hover:(bg-gray-400 font-medium) bg-white font-light',
-    ceShi: {
-      color: 'white',
-      '@apply': 'py-2 px-4 font-semibold rounded-lg',
-      '&:hover': {
-        '@apply': 'bg-green-700',
-        color: 'black'
-      }
-    }
+    's-side': 'h-[92%] top-[9%] right-[8%] w-[18%] fixed',
+    's-hw': 'h-full w-full'
   },
   theme: {
     extend: {
@@ -29,6 +22,7 @@ export default defineConfig({
         md: '768px',
         lg: '1024px',
         xl: '1280px',
+        xp: '1399px',
         '2xl': '1536px'
       },
       colors: {

@@ -12,7 +12,7 @@ import { aspShow } from '@/hooks/data'
 <style lang="scss" scoped>
 section {
   @apply top-0 left-0 z-20 fixed;
-  @apply h-full w-full;
+  @apply s-hw;
   div {
     @apply top-5/10 left-5/10 absolute;
   }

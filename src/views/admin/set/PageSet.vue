@@ -7,8 +7,7 @@ import { navName } from '../utils/data'
 
 async function GetAllAsync() {
   await interfaces.GetAllAsync(false).then((result: any) => {
-    state.dataResult = result.data
-    console.log('%c [ state.dataResult ]', 'font-size:13px; background:pink; color:#bf2c9f;', state.dataResult)
+    state.resData = result.data
   })
 }
 
@@ -33,11 +32,11 @@ async function SearchTitle(name: string) {
   }
   if (stateStr.labelStr === 'ALL') {
     await article.GetContainsAsync(0, 'null', name, false).then((res) => {
-      state.dataResult = res.data
+      state.resData = res.data
     })
   } else {
     await article.GetContainsAsync(1, stateStr.labelStr, name, false).then((res) => {
-      state.dataResult = res.data
+      state.resData = res.data
     })
   }
 }
@@ -86,11 +85,9 @@ onMounted(async () => {
         :bordered="true"
         :columns="columns"
         rowKey="id"
-        :data-source="state.dataResult"
+        :data-source="state.resData"
         :pagination="{ pageSize: 8 }"
-        :scroll="{
-          y: 380
-        }"
+        :scroll="{ x: 1280, y: 420 }"
       >
         <template #identity="{ record }">
           <a>{{ record.identity }}</a>
