@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
 
 class labels {
-  static async GetByIdAsync(id: number) {
+  static GetByIdAsync(id: number) {
     return request(
       {
         url: `/api/SnLabels/GetByIdAsync?id=${id}&cache=true`,
@@ -13,7 +13,7 @@ class labels {
     )
   }
 
-  static async GetAllAsync(cache: boolean) {
+  static GetAllAsync(cache: boolean) {
     return request(
       {
         url: `/api/SnLabels/GetAllAsync?cache=${cache}`,

@@ -7,7 +7,7 @@ async function GetApi(id: number) {
 }
 </script>
 <template>
-  <div class="tag_content">
+  <div class="tag-content">
     <div class="text-sidebar">
       <div class="text-sidebar-forms" v-for="result in resData.resultData" :key="result.id">
         <div class="forms-1" @click="GetApi(result.id)">
@@ -24,18 +24,18 @@ async function GetApi(id: number) {
 </template>
 
 <style lang="scss" scoped>
-.tag_content {
+.tag-content {
   @apply flex flex-nowrap;
-  @apply h-[71%] mt-1 ml-[8%] w-[84%];
+  @apply rounded h-[80%] shadow mt-1 ml-[8%] w-[84%];
 
   .text-sidebar {
     @apply cursor-pointer shadow w-[25%] overflow-auto;
 
     .text-sidebar-forms {
-      @apply m-1 shadow  p-1;
+      @apply m-1 shadow p-1;
 
       .forms-1 {
-        @apply bg-gray-50 text-base p-1 text-gray-600 hover:text-blue-400;
+        @apply bg-gray-50 text-lg p-1 text-gray-600 hover: text-blue-400 ;
       }
 
       .forms-2 {

@@ -5,7 +5,7 @@ import { state } from './data'
 import { navName } from '../../utils/data'
 
 export class method {
-  static async GetFy() {
+  static GetFy() {
     if (state.navStr === 'ALL') {
       navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then((res) => {
         tool.MomentTimeList(res)
@@ -19,7 +19,7 @@ export class method {
     }
   }
 
-  static async SelectNav() {
+  static SelectNav() {
     message.info(state.navStr)
     if (state.navStr === 'ALL') {
       navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then((res) => {
@@ -53,13 +53,13 @@ export class method {
     }
   }
 
-  static async cancel() {
+  static cancel() {
     message.info('已取消')
   }
 
   static async GetApi() {
     await TOKEN()
-    await method.GetFy()
+    method.GetFy()
     await navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
       state.resNavType = res.data
     })

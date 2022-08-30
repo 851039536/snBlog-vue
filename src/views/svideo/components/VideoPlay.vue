@@ -39,7 +39,7 @@ GetApi()
   <section>
     <s-header></s-header>
     <div class="video-play">
-      <div class="video-play_main">
+      <div class="video-play-main">
         <div class="video-play-2">
           <div class="video-play-2-1" v-for="res in resData.resultData" :key="res.id">
             <div class="video-play-2-1-1">
@@ -55,15 +55,8 @@ GetApi()
         </div>
 
         <div class="video-play-1">
-          <iframe
-            id="if"
-            :src="resData.URL"
-            scrolling="no"
-            border="0"
-            frameborder="no"
-            framespacing="0"
-            allowfullscreen="true"
-          ></iframe>
+          <iframe id="if" :src="resData.URL" scrolling="no" border="0" frameborder="no" framespacing="0"
+            allowfullscreen="true"></iframe>
         </div>
       </div>
     </div>
@@ -73,12 +66,15 @@ GetApi()
 <style lang="scss" scoped>
 .video-play {
   @apply h-[90%] top-[8.5%] left-[3%] w-[94%] fixed;
-  .video-play_main {
+
+  .video-play-main {
     @apply flex;
     @include initialize(100%, 100%, null, null, null, null, #ffffff);
+
     .video-play-1 {
       @include w-h(80%, 100%);
       @apply m-2 p-1;
+
       #if {
         margin: 0 auto;
 
@@ -94,8 +90,10 @@ GetApi()
       .video-play-2-1 {
         @include w-h(100%, 185px);
         @apply shadow mb-1;
+
         .video-play-2-1-1 {
           height: 65%;
+
           img {
             @include w-h(100%, 115px);
           }
@@ -103,13 +101,15 @@ GetApi()
 
         .video-play-2-1-2 {
           height: 18%;
+
           @include line-numbers(2);
           @apply text-base p-1;
         }
 
         .video-play-2-1-3 {
           height: 17%;
-          @apply text-base  p-1;
+
+          @apply text-base p-1;
         }
       }
     }
@@ -121,7 +121,7 @@ GetApi()
 //     @apply hidden;
 //   }
 
-//   .video-play .video-play_main .video-play-1 {
+//   .video-play .video-play-main .video-play-1 {
 //     width: 100%;
 //     height: 90%;
 //   }

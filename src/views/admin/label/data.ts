@@ -31,7 +31,9 @@ const formState: IntArticle = reactive({
 })
 
 const columns = [
-  { title: '标题', width: 130, dataIndex: 'title', key: 'title', fixed: 'left', ellipsis: true },
+  {
+    title: '标题', width: 130, dataIndex: 'title', key: 'title', fixed: 'left', ellipsis: true
+  },
 
   {
     title: '用户',

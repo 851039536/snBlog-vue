@@ -18,13 +18,13 @@ onMounted(async () => {
     <IndexSidebar></IndexSidebar>
     <a-back-top />
     <div class="n-nav">
-      <h5 class="px-2 py-2 m-1">网站导航</h5>
+      <h5 class="m-1 py-2 px-2">网站导航</h5>
       <div class="n-nav-text">
         <div v-for="res in state.resultData" :key="res.navId" class="n-nav-1">
           <div class="n-nav-1-1">
             <img v-lazy="res.img" align="left" />
           </div>
-          <div class="text-base font-semibold n-nav-1-2">
+          <div class="font-semibold text-base n-nav-1-2">
             <a @click="winUrl(res.url)">{{ res.title }}</a>
           </div>
           <div class="n-nav-1-3">
@@ -32,14 +32,9 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <div class="n-nav_Paging">
-        <a-pagination
-          size="small"
-          @change="method.currentchange"
-          :total="state.count"
-          :pageSize="state.pagesize"
-          show-quick-jumper
-        />
+      <div class="n-nav-paging">
+        <a-pagination size="small" @change="method.currentchange" :total="state.count" :pageSize="state.pagesize"
+          show-quick-jumper />
         <!-- end 分页-->
       </div>
     </div>
@@ -49,16 +44,14 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .n-nav {
   @include initialize($w, null, 4.5%, null, $ml, null, #ffffff);
-
-  @apply shadow rounded-sm;
+  @apply rounded-sm shadow;
 
   .n-nav-text {
-    @apply grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl: grid-cols-4 ;
 
     .n-nav-1 {
       @include w-h(null, 200px);
-
-      @apply shadow rounded-sm m-2.5;
+      @apply rounded-sm shadow m-2.5;
 
       .n-nav-1-1 {
         img {
@@ -79,7 +72,7 @@ onMounted(async () => {
     }
   }
 
-  .n-nav_Paging {
+  .n-nav-paging {
     @apply bg-white p-1;
   }
 }

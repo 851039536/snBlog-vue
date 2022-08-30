@@ -97,4 +97,6 @@ interface IntOneType {
   title: number
 }
 
-export type { IntVideo, IntLabels, IntArticle, IntNav, IntOne, IntOneType }
+export type {
+  IntVideo, IntLabels, IntArticle, IntNav, IntOne, IntOneType
+}

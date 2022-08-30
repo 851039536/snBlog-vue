@@ -1,15 +1,14 @@
 $w: 47%;
 $ml: 26%;
-$back_sidebar: #fffffe;
-$back_headers: #fffffe;
+$back-sidebar: #fffffe;
+$back-headers: #fffffe;
 
 // 侧边栏偏移值
-$sidebar_r_t: 60px;
-$sidebar_r_b: 3%;
-$sidebar_r_l: 3%;
-$sidebar_r_r: 3%;
-//内容高度
-$Text_height: 9%;
+$sidebar-r-t: 60px;
+$sidebar-r-b: 3%;
+$sidebar-r-l: 3%;
+$sidebar-r-r: 3%;
+$text-height: 9%;
 
 // 渐变色文字
 @mixin gradient-text() {
@@ -70,9 +69,6 @@ $Text_height: 9%;
 / **/
 @mixin img-dim {
   transform: scale(1.1);
-  -webkit-filter: blur(1px);
-  -ms-filter: blur(1px);
-  -moz-filter: blur(1px);
   filter: blur(1px);
 }
 
@@ -88,7 +84,7 @@ $Text_height: 9%;
 // 2行数
 @mixin line-number {
   /* 有些示例里需要定义该属性，实际可省略 */
-  display: -webkit-box;
+  display: box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -107,7 +103,7 @@ $Text_height: 9%;
 
 @mixin line-numbers($num) {
   /* 有些示例里需要定义该属性，实际可省略 */
-  display: -webkit-box;
+  display: box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -126,21 +122,23 @@ $Text_height: 9%;
     width: 5px;
     height: 5px;
   }
-  //滚动条轨道.
+
+  /*
+  **滚动条轨道.
+  */
   ::-webkit-scrollbar-track {
     width: 6px;
     background: rgba(#101f1c, 0.1);
-    -webkit-border-radius: 2em;
-    -moz-border-radius: 2em;
     border-radius: 2em;
   }
-  //滚动条上的滚动滑块.
+
+  /*
+  **滚动条上的滚动滑块.
+  */
   ::-webkit-scrollbar-thumb {
     min-height: 28px;
     background-color: rgba(#101f1c, 0.5);
     background-clip: padding-box;
-    -webkit-border-radius: 2em;
-    -moz-border-radius: 2em;
     border-radius: 2em;
   }
 
@@ -149,55 +147,61 @@ $Text_height: 9%;
   }
 }
 
-/*上 下 左 右边 偏移*/
+/* 上 下 左 右边 偏移 */
 @mixin excursion($t, $b, $l, $r) {
   @if $t !=null {
     top: $t;
   }
+
   @if $b !=null {
     bottom: $b;
   }
+
   @if $l !=null {
     left: $l;
   }
+
   @if $r !=null {
     right: $r;
   }
 }
 
-/*模块居中*/
+/* 模块居中 */
 @mixin center-children {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-/*全局动画过度 */
+/* 全局动画过度 */
+
 /* 可以为进入和离开动画设置不同的持续时间和动画函数 */
 .fade-enter-active {
-  //进入过程
+  /* 进入过程 */
   animation: fade-in 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .fade-leave-active {
-  //离开过程
+  /* 离开过程 */
   animation: fade-out 0.3s ease-out both;
 }
 
-//进入开始和离开结束的状态
+/* 进入开始和离开结束的状态 */
 .fade-enter-to {
   opacity: 0;
 }
 
-//进入开始和离开结束的状态
+/* 进入开始和离开结束的状态 */
 .fade-leave-to {
   opacity: 0;
 }
-/*全局动画过度 */
+
+/* 全局动画过度 */
 
 .fade-out {
   animation: fade-out 1s ease-out both;
 }
+
 @keyframes fade-out {
   0% {
     opacity: 1;
@@ -207,10 +211,11 @@ $Text_height: 9%;
     opacity: 0;
   }
 }
+
 .fade-in {
-  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -220,40 +225,45 @@ $Text_height: 9%;
     opacity: 1;
   }
 }
-@layer{
- body {
-  font-family:"Times New Roman",Georgia,Serif;
+
+@layer {
+  body {
+    // font-family: 'Times New Roman', Georgia, serif;
+  }
 }
-}
+
 // 屏幕宽度小于px时启用工具
 // sm 640px  md 768px lg 1024px xl 1280px 2xl 1536px
-@screen <sm {
+// @screen <sm {
+// }
 
-}
-@screen <md {
+// @screen <md {
+// }
 
-}
-@screen <lg {
+// @screen <lg {
+// }
 
-}
-@screen <xl {
+// @screen <xl {
+// }
 
-}
-@screen <2xl {
+// @screen <2xl {
+// }
 
-}
 // 屏幕宽度大于px时启用工具
-@screen sm {
+// @screen sm {
+// }
 
-}
+// @screen md {
+// }
 
-@screen md {}
 @screen lg {
   .sbootom {
     @apply hidden;
   }
 }
-@screen xl {
-}
-@screen 2xl {
-}
+
+// @screen xl {
+// }
+
+// @screen 2xl {
+// }

@@ -2,5 +2,9 @@ const navName = reactive({
   name: '',
   name2: ''
 })
+const navName1 = reactive({
+  name: '',
+  name2: ''
+})
 
-export { navName }
+export { navName, navName1 }

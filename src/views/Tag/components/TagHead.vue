@@ -5,9 +5,11 @@ import { resData } from '../data/data'
 
 defineProps({
   arrayLabel: {
-    type: Array as () => Array<IntLabels>,
+    type: Array as () => IntLabels[],
     required: true,
-    default: () => []
+    default: () => {
+      return []
+    }
   }
 })
 
@@ -17,23 +19,23 @@ async function GetTag(name: string) {
 </script>
 
 <template>
-  <div class="tag_head">
-    <div class="tag_head_content" v-for="res in arrayLabel" :key="res.id">
-      <span @click="GetTag(res.name)" variant="light">{{ res.name }}</span>
+  <div class="tag-head">
+    <div class="tag-head-content" v-for="res in arrayLabel" :key="res.id">
+      <div @click="GetTag(res.name)" variant="light">{{  res.name  }}</div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.tag_head {
-  @apply flex flex-wrap mt-1 ml-[8%] w-[84%];
-  @apply bg-white rounded-sm shadow;
+.tag-head {
+  @apply flex flex-wrap mt-2 mb-2 ml-[8%] w-[84%];
+  @apply rounded shadow;
 
-  .tag_head_content {
-    @apply cursor-pointer m-1 pt-1;
+  .tag-head-content {
+    @apply cursor-pointer m-2;
 
-    span {
-      @apply rounded shadow  text-base p-1 text-gray-600 hover:bg-blue-400;
+    div {
+      @apply rounded shadow text-base p-1 text-gray-600 hover: bg-blue-100 ;
     }
   }
 }

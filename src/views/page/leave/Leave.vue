@@ -15,10 +15,10 @@ onMounted(async () => {
 
 <template>
   <div class="leave">
-    <div class="leave_main" data-title="气泡背景墙">
-      <ul class="bubble_bgwall">
+    <div class="leave-main" data-title="气泡背景墙">
+      <ul class="bubble-bgwall">
         <li v-for="res in state.result" :key="res.id">
-          {{ res.text }}
+          {{  res.text  }}
         </li>
       </ul>
       <div class="bruce-2">
@@ -27,15 +27,11 @@ onMounted(async () => {
             <div class="md:w-2/3">
               <input
                 class="rounded bg-gray-200 border-2 border-gray-200 leading-tight w-full py-2 px-4 text-gray-700 appearance-none focus:bg-white focus:outline-none focus:border-purple-500"
-                id="inline-full-name"
-                type="text"
-                value="666666666666！"
-              />
+                id="inline-full-name" type="text" value="666666666666！" />
             </div>
             <button
               class="rounded font-bold bg-purple-500 shadow text-white py-2 px-3 hover:bg-purple-400 focus:outline-none focus:shadow-outline"
-              type="button"
-            >
+              type="button">
               Up
             </button>
           </div>
@@ -48,13 +44,16 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .leave {
   @apply absolute s-hw;
-  .leave_main {
+
+  .leave-main {
     @apply h-full relative;
+
     background-image: linear-gradient(270deg, #e96dc4, #3367eb);
 
-    .bubble_bgwall {
+    .bubble-bgwall {
       @apply overflow-hidden relative;
       @apply m-auto s-hw;
+
       // max-width: 1200px;
 
       li {

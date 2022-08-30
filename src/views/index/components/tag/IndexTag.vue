@@ -6,9 +6,11 @@ import { state } from '../../data/data'
 
 defineProps({
   resData: {
-    type: Array as () => Array<IntSort>,
+    type: Array as () => IntSort[],
     required: true,
-    default: () => []
+    default: () => {
+      return []
+    }
   },
   name: String
 })
@@ -23,10 +25,10 @@ const GetFy = async (name: string) => {
 </script>
 <template>
   <div class="category">
-    <div class="category-name">{{ name }}</div>
+    <div class="category-name">{{  name  }}</div>
     <div class="inline-flex" v-for="res in resData" :key="res.id">
       <div class="category-text" @click="GetFy(res.name)">
-        {{ res.name }}
+        {{  res.name  }}
       </div>
     </div>
   </div>

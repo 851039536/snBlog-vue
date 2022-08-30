@@ -37,7 +37,7 @@ function reload() {
 provide('reload', reload)
 </script>
 <template>
-  <div class="admin_index">
+  <div class="admin-index">
     <a-layout>
       <header class="header">
         <a class="logo">控制台</a>
@@ -47,9 +47,9 @@ provide('reload', reload)
           <li><a @click="routers('/Blogs/BlogsColumn')">主页</a></li>
           <li><a @click="zx()">注销</a></li>
           <li>
-            <a
-              ><a-avatar>{{ storage.get('user') }}</a-avatar></a
-            >
+            <a>
+              <a-avatar>{{ storage.get('user') }}</a-avatar>
+            </a>
           </li>
         </ul>
       </header>
@@ -84,19 +84,17 @@ provide('reload', reload)
           </a-layout-sider>
         </div>
 
-        <a-layout style="padding: 0 12px 12px">
-          <a-breadcrumb style="margin: 14px 0">
+        <a-layout style="padding: 0 12px 12px;">
+          <a-breadcrumb style="margin: 14px 0;">
             <a-breadcrumb-item>{{ navName.name }}</a-breadcrumb-item>
             <a-breadcrumb-item>{{ navName.name2 }}</a-breadcrumb-item>
           </a-breadcrumb>
-          <a-layout-content
-            :style="{
-              background: '#fff',
-              padding: '10px',
-              margin: 0,
-              minHeight: '98%'
-            }"
-          >
+          <a-layout-content :style="{
+            background: '#fff',
+            padding: '10px',
+            margin: 0,
+            minHeight: '98%'
+          }">
             <router-view v-if="showRouter" class=""></router-view>
           </a-layout-content>
         </a-layout>
@@ -106,13 +104,15 @@ provide('reload', reload)
 </template>
 
 <style lang="scss" scoped>
-.admin_index {
+.admin-index {
   @apply h-full w-full z-10 fixed;
   @apply bg-gray-100;
 
   .header {
     @apply bg-white w-full;
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+
+    box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 10%);
+
     .logo {
       display: block;
       float: left;
@@ -120,6 +120,7 @@ provide('reload', reload)
       font-size: 2em;
       text-decoration: none;
     }
+
     .menu-icon {
       position: relative;
       display: inline-block;
@@ -127,6 +128,7 @@ provide('reload', reload)
       padding: 28px 20px;
       cursor: pointer;
       user-select: none;
+
       .navicon {
         position: relative;
         display: block;
@@ -136,6 +138,7 @@ provide('reload', reload)
         transition: background 0.2s ease-out;
       }
     }
+
     ul {
       margin: 0;
       padding: 0;
@@ -143,12 +146,14 @@ provide('reload', reload)
       list-style: none;
       background-color: #fff;
     }
+
     li a {
       display: block;
-      padding: 20px 20px;
+      padding: 20px;
       text-decoration: none;
       border-right: 1px solid #f4f4f4;
     }
+
     .menu {
       clear: both;
       max-height: 0;
@@ -168,7 +173,7 @@ provide('reload', reload)
     height: 100%;
     background: #333;
     transition: all 0.2s ease-out;
-    content: '';
+    content: "";
   }
 
   .header .menu-icon .navicon::before {

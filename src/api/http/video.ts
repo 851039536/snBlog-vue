@@ -8,7 +8,7 @@ export class video {
    * @param cache 缓存
    * @returns
    */
-  static async GetCountAsync(identity: number, type: string, cache: boolean) {
+  static GetCountAsync(identity: number, type: string, cache: boolean) {
     return request(
       {
         url: `/api/SnVideo/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
@@ -39,7 +39,7 @@ export class video {
     )
   }
 
-  static async AsyGestTest() {
+  static AsyGestTest() {
     return request(
       {
         url: '/api/SnVideoType/AsyGestTest',
@@ -57,7 +57,7 @@ export class video {
    * @param cache 缓存
    * @returns
    */
-  static async GetByIdAsync(id: any, cache: boolean) {
+  static GetByIdAsync(id: any, cache: boolean) {
     return request(
       {
         url: `/api/SnVideo/GetByIdAsync?id=${id}&cache=${cache}`,
@@ -80,7 +80,7 @@ export class video {
    * @param cache 缓存
    * @returns
    */
-  static async GetFyAsync(
+  static GetFyAsync(
     identity: number,
     type: string,
     page: number,

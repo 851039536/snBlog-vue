@@ -5,20 +5,12 @@ method.GetApi()
 </script>
 <template>
   <div id="index-sidebar">
-    <div class="index_s_main">
+    <div class="index-s-main">
       <s-time></s-time>
       <!-- 搜索 -->
-      <div class="index_s_input">
-        <a-select
-          show-search
-          v-model:value="resData.title"
-          placeholder="input search text"
-          style="width: 100%"
-          :show-arrow="false"
-          :filter-option="false"
-          @search="method.Search"
-          @select="method.skip"
-        >
+      <div class="index-s-input">
+        <a-select show-search v-model:value="resData.title" placeholder="input search text" style="width: 100%;"
+          :show-arrow="false" :filter-option="false" @search="method.Search" @select="method.skip">
           >
           <a-select-option v-for="res in resData.articleData1" :key="res.id">{{ res.title }}</a-select-option>
         </a-select>
@@ -30,17 +22,8 @@ method.GetApi()
       <index-tag :res-data="resData.labelsData" name="标签"></index-tag>
 
       <!-- 站点统计框 -->
-      <station-text
-        title="站点统计"
-        title1="文章数量"
-        title2="总字符数"
-        title3="热度"
-        title4="最近更新"
-        :res1="resData.articleCount"
-        :res2="resData.textCount"
-        :res3="resData.readCount"
-        :res4="resData.articleStr.substring(0, 10)"
-      ></station-text>
+      <station-text title="站点统计" title1="文章数量" title2="总字符数" title3="热度" title4="最近更新" :res1="resData.articleCount"
+        :res2="resData.textCount" :res3="resData.readCount" :res4="resData.articleStr.substring(0, 10)"></station-text>
       <!-- end 站点统计框 -->
     </div>
   </div>
@@ -50,9 +33,11 @@ method.GetApi()
 #index-sidebar {
   @apply s-side;
   @apply bg-gray-50 shadow overflow-auto;
-  .index_s_main {
+
+  .index-s-main {
     @apply h-full w-full;
-    .index_s_input {
+
+    .index-s-input {
       @include center-children;
       @apply flex flex-nowrap;
       @apply m-auto mt-1 mb-2 p-2 w-[97%];
@@ -60,6 +45,7 @@ method.GetApi()
     }
   }
 }
+
 #index-sidebar::-webkit-scrollbar {
   display: none;
 }
@@ -69,6 +55,7 @@ method.GetApi()
     display: none;
   }
 }
+
 @screen <xp {
   #index-sidebar {
     @apply h-[90%] top-[11%];

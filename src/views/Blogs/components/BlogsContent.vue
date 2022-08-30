@@ -3,7 +3,10 @@ import { article } from '@/api/index'
 import { tool } from '@/utils/common/tool'
 import { state, method } from '../data/content'
 
-const VmdContent = defineAsyncComponent(() => import('@/components/editor/VmdContent.vue'))
+const VmdContent = defineAsyncComponent(() => {
+  // eslint-disable-next-line import/extensions
+  return import('@/components/editor/VmdContent.vue')
+})
 const route = useRoute()
 const router = useRouter()
 const roId: any = reactive({
@@ -28,9 +31,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="blogsContent">
+  <div class="blogs-content">
     <!--标题-->
-    <div class="blogsContent_title">
+    <div class="blogs-content-title">
       <a-page-header :title="state.resultData.title" @back="() => router.back()" />
     </div>
     <!-- end 标题 -->
@@ -40,34 +43,33 @@ onMounted(async () => {
     <!-- end 内容 -->
 
     <!--底部信息-->
-    <div class="blogs_copyright">
-      <div class="blogs_copyright_title">
+    <div class="blogs-copyright">
+      <div class="blogs-copyright-title">
         <!-- <div>版权属于：少年</div> -->
         <div class="text">本文链接：原创文章转载请注明</div>
       </div>
-      <div class="blogs_comment">
+      <div class="blogs-comment">
         <div class>
           <a @click="method.UpGive">
-            {{ state.resultData.give }}
+            {{  state.resultData.give  }}
           </a>
         </div>
-        <div>{{ state.resultData.read }} ℃</div>
-        <div class="blogs_comment_text">{{ state.sortName }}</div>
-        <div class="blogs_comment_text">
-          {{ state.labelName }}
+        <div>{{  state.resultData.read  }} ℃</div>
+        <div class="blogs-comment-text">{{  state.sortName  }}</div>
+        <div class="blogs-comment-text">
+          {{  state.labelName  }}
         </div>
-        <div class>{{ state.time }}</div>
+        <div class>{{  state.time  }}</div>
       </div>
     </div>
   </div>
   <!-- end 底部信息 -->
 </template>
 
-<style lang="scss">
-.blogsContent {
-  /* 底部信息 */
-  .blogs_copyright {
-    .blogs_copyright_title {
+<style lang="scss" scoped>
+.blogs-content {
+  .blogs-copyright {
+    .blogs-copyright-title {
       @apply p-1;
 
       div {
@@ -77,10 +79,10 @@ onMounted(async () => {
       }
     }
 
-    .blogs_comment {
+    .blogs-comment {
       @apply flex;
 
-      .blogs_comment_text {
+      .blogs-comment-text {
         @apply rounded-sm bg-blue-200 shadow;
       }
 
@@ -91,12 +93,13 @@ onMounted(async () => {
   }
 
   /* 返回上一页 */
-  .blogsContent_title {
+  .blogs-content-title {
     @apply rounded cursor-pointer shadow relative;
 
     .ant-page-header-heading-title {
       @apply text-lg;
       @include line-one;
+
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -113,7 +116,7 @@ onMounted(async () => {
 }
 
 @screen <lg {
-  .blogsContent {
+  .blogs-content {
     @apply mt-[6%] mb-[20%] ml-0 w-full;
   }
 }

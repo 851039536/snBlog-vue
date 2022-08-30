@@ -47,7 +47,7 @@ class article {
    * @param {number} id
    * @param {boolean} cache
    */
-  static async GetByIdAsync(id: number, cache: boolean): Promise<any> {
+  static GetByIdAsync(id: number, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnArticle/GetByIdAsync?id=${id}&cache=${cache}`,
@@ -66,7 +66,7 @@ class article {
    * @param cache 缓存
    * @returns
    */
-  static async GetTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
+  static GetTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnArticle/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
@@ -85,7 +85,7 @@ class article {
    * @param name 查询参数
    * @param cache 缓存
    */
-  static async GetSumAsync(identity: number, type: number, name: string, cache: boolean): Promise<any> {
+  static GetSumAsync(identity: number, type: number, name: string, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnArticle/GetSumAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
@@ -134,7 +134,7 @@ class article {
    * @param {any} resultData
    * @param {string} type
    */
-  static async UpdatePortionAsync(resultData: any, type: string): Promise<any> {
+  static UpdatePortionAsync(resultData: any, type: string): Promise<any> {
     return request(
       {
         // 更新
@@ -152,7 +152,7 @@ class article {
    * @description: 新增数据
    * @param {any} resultData
    */
-  static async AddAsync(resultData: IntArticle) {
+  static AddAsync(resultData: IntArticle) {
     return request(
       {
         url: '/api/SnArticle/AddAsync',
@@ -169,7 +169,7 @@ class article {
    * @description: 更新数据
    * @param {IntArticle} resultData
    */
-  static async UpdateAsync(resultData: IntArticle) {
+  static UpdateAsync(resultData: IntArticle) {
     return request(
       {
         url: '/api/SnArticle/UpdateAsync',
@@ -187,7 +187,7 @@ class article {
    * @param {number} id
    * @return {*}
    */
-  static async DeleteAsync(id: number) {
+  static DeleteAsync(id: number) {
     return request(
       {
         url: `/api/SnArticle/DeleteAsync?id=${id}`,

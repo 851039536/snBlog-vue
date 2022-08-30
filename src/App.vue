@@ -1,4 +1,5 @@
 <template>
+  <!-- <s-header></s-header> -->
   <div id="app">
     <router-view v-slot="{ Component }">
       <transition name="fade" :duration="1000">
@@ -10,14 +11,15 @@
         <component :is="Component" v-if="!$route.meta.keepAlive" />
       </transition>
     </router-view>
-    <s-bootom></s-bootom>
-    <s-aspin></s-aspin>
   </div>
+  <s-bootom></s-bootom>
+  <s-aspin></s-aspin>
 </template>
 
 <style lang="scss">
 @include scroll;
+
 #app {
-  // @apply h-full  w-full;
+  @apply bg-gray-100 w-full relative overflow-auto;
 }
 </style>

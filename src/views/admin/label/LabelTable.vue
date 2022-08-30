@@ -29,10 +29,9 @@ async function GetContains(name: string) {
 }
 async function GetTag() {
   message.info(state.labelStr)
-  state.resData =
-    state.labelStr === 'ALL'
-      ? await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
-      : await article.GetFyAsync(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
+  state.resData = state.labelStr === 'ALL'
+    ? await article.GetFyAsync(3, storage.get('user'), 1, 1000, 'id', true, false)
+    : await article.GetFyAsync(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
 }
 async function Ordering() {
   if (state.order) {
@@ -58,36 +57,22 @@ onMounted(async () => {
       <a-space>
         <a-button @click="routers('/Admin-index/ArticleAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select style="width: 100px" v-model:value="state.labelStr" @change="GetTag">
+        <a-select style="width: 100px;" v-model:value="state.labelStr" @change="GetTag">
           <a-select-option value="ALL">ALL</a-select-option>
           <a-select-option :value="res.name" v-for="res in state.resLabel.data" :key="res.id">{{
-            res.name
-          }}</a-select-option>
+             res.name
+            }}</a-select-option>
         </a-select>
-        <a-select
-          show-search
-          placeholder="标题搜索"
-          style="width: 150px"
-          :default-active-first-option="false"
-          :show-arrow="false"
-          :not-found-content="null"
-          @search="GetContains"
-        >
+        <a-select show-search placeholder="标题搜索" style="width: 150px;" :default-active-first-option="false"
+          :show-arrow="false" :not-found-content="null" @search="GetContains">
         </a-select>
       </a-space>
       <!-- end 搜索 -->
-      <a-button style="margin-left: 10px" @click="Ordering()">排序</a-button>
+      <a-button style="margin-left: 10px;" @click="Ordering()">排序</a-button>
     </div>
     <div>
-      <a-table
-        size="small"
-        :bordered="true"
-        :columns="columns"
-        rowKey="id"
-        :data-source="state.resData.data"
-        :pagination="{ pageSize: 15 }"
-        :scroll="{ x: 1280, y: 420 }"
-      >
+      <a-table size="small" :bordered="true" :columns="columns" rowKey="id" :data-source="state.resData.data"
+        :pagination="{ pageSize: 15 }" :scroll="{ x: 1280, y: 420 }">
         <template #ed="{ record }">
           <a type="primary" ghost @click="routerId('/Admin-index/ArticleEdit', record.id)">Edit</a>
         </template>

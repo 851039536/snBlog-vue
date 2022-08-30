@@ -21,6 +21,7 @@ method.currentchange(1)
 <style lang="scss" scoped>
 #svideo {
   @apply w-full fixed;
+
   height: 92%;
 }
 

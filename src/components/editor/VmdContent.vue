@@ -6,7 +6,7 @@ const props = defineProps<{
 
 const result = ref(props.result)
 // 在更新之前赋值
-onBeforeUpdate(async () => {
+onBeforeUpdate(() => {
   result.value = props.result
 })
 </script>

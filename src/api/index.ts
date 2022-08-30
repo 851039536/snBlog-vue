@@ -17,7 +17,7 @@ import { interfaces } from './http/interfaces'
  * @param {*}
  * @return {*}
  */
-async function TOKEN() {
+function TOKEN() {
   return request(
     {
       url: '/api/AngleSharp/TOKEN',
@@ -29,4 +29,6 @@ async function TOKEN() {
   )
 }
 
-export { article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces }
+export {
+  article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces
+}

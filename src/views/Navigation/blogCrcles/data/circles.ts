@@ -25,7 +25,7 @@ class method {
     })
   }
 
-  static async UrlSkip(url: string) {
+  static UrlSkip(url: string) {
     window.open(url)
   }
 

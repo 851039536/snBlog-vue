@@ -1,4 +1,6 @@
-import { article, labels, sort, userTalk } from '@/api/index'
+import {
+  article, labels, sort, userTalk
+} from '@/api/index'
 import { winUrl } from '@/hooks/routers'
 
 interface Res {
@@ -44,7 +46,7 @@ export class method {
   }
 
   static async skip(id: number) {
-    winUrl(`/VmdHtml?id=${id}`)
+    await winUrl(`/VmdHtml?id=${id}`)
   }
 
   static async GetApi() {

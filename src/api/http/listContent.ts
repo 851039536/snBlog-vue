@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
 
 export class listContent {
-  static async Cnblogs(): Promise<any> {
+  static Cnblogs() {
     return request(
       {
         url: '/api/AngleSharp/Cnblogs',

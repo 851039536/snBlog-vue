@@ -15,15 +15,9 @@ onMounted(async () => {
     <div class="one-div">
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
       <OneContent :resultData="state.resultData"></OneContent>
-      <!-- 分页 -->
       <div class="paging">
-        <a-pagination
-          size="small"
-          @change="method.currentchange"
-          :total="state.count"
-          :pageSize="state.pagesize"
-          show-quick-jumper
-        />
+        <a-pagination size="small" @change="method.currentchange" :total="state.count" :pageSize="state.pagesize"
+          show-quick-jumper />
       </div>
       <!-- end 分页-->
     </div>
@@ -33,6 +27,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .one {
   @apply h-full w-full fixed;
+
   .one-div {
     @apply h-[90%] ml-[26%] w-[47%];
     @apply rounded shadow overflow-auto;
@@ -46,12 +41,11 @@ onMounted(async () => {
     display: none;
   }
 }
+
 @screen xp {
   .one {
     .one-div {
       @apply mt-[6.3%];
-      .paging {
-      }
     }
   }
 }

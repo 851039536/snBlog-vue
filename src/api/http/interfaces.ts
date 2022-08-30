@@ -8,7 +8,7 @@ class interfaces {
    * @param {string} type 条件:类别
    * @param {boolean} cache 缓存
    */
-  static async GetTypeAsync(identity: number, users: string, type: string, cache: boolean): Promise<any> {
+  static GetTypeAsync(identity: number, users: string, type: string, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnInterface/GetTypeAsync?identity=${identity}&users=${users}&type=${type}&cache=${cache}`,
@@ -20,7 +20,7 @@ class interfaces {
     )
   }
 
-  static async GetAllAsync(cache: boolean): Promise<any> {
+  static GetAllAsync(cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnInterface/GetAllAsync?cache=${cache}`,

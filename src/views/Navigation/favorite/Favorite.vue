@@ -39,42 +39,36 @@ onMounted(async () => {
     <l-sidebar></l-sidebar>
     <div id="favorite">
       <!-- end 加载组件 -->
-      <div id="favorite_main">
+      <div id="favorite-main">
         <!-- 网站内容 -->
-        <div class="flex flex-wrap favorite_content">
-          <div class="favorite_content_text" v-for="resda in resData.text" :key="resda.id">
-            <div class="favorite_content_text-1">
+        <div class="flex flex-wrap favorite-content">
+          <div class="favorite-content-text" v-for="resda in resData.text" :key="resda.id">
+            <div class="favorite-content-text-1">
               <span @click="winUrl(resda.url)">{{ resda.title }}</span>
             </div>
-            <div class="favorite_content_text-2">{{ resda.describe }}</div>
+            <div class="favorite-content-text-2">{{ resda.describe }}</div>
           </div>
         </div>
         <!-- end 网站内容 -->
 
         <!-- 分页 -->
-        <div class="favorite_page">
-          <a-pagination
-            size="small"
-            @change="method.currentchange"
-            :total="resData.count"
-            :pageSize="resData.pagesize"
-            :current="resData.current"
-            show-quick-jumper
-          />
+        <div class="favorite-page">
+          <a-pagination size="small" @change="method.currentchange" :total="resData.count" :pageSize="resData.pagesize"
+            :current="resData.current" show-quick-jumper />
         </div>
         <!-- end 分页-->
       </div>
     </div>
 
     <div id="FavSidebar">
-      <div id="FavSidebar_main">
-        <div class="FavSidebar_describe">
+      <div id="FavSidebar-main">
+        <div class="fav-sidebar-describe">
           <p class>各式各样网站收集分享</p>
         </div>
         <!--内容框-->
 
         <div class="onecategory">
-          <div class="onecategory_name">列表</div>
+          <div class="onecategory-name">列表</div>
           <div class="inline-flex" v-for="result in state.resultData2" :key="result.id">
             <div class="flex-1 m-1 text-base text-center px-1">
               <span @click="clkApi(result.title)">{{ result.title }}</span>
@@ -85,12 +79,12 @@ onMounted(async () => {
         <!-- end 内容框 -->
 
         <!-- 站点信息 -->
-        <div class="FavSidebar_footer">
-          <div class="FavSidebar_f_title">站点信息</div>
-          <div class="FavSidebar_f_content">
+        <div class="fav-sidebar-footer">
+          <div class="fav-sidebar-f-title">站点信息</div>
+          <div class="fav-sidebar-f-content">
             <div class="flex">
-              <div class="FavSidebar_f_content_name">内容数量:</div>
-              <div class="FavSidebar_f_content_text">{{ state.resultCount }}篇</div>
+              <div class="fav-sidebar-f-content-name">内容数量:</div>
+              <div class="fav-sidebar-f-content-text">{{ state.resultCount }}篇</div>
             </div>
           </div>
         </div>
@@ -103,24 +97,26 @@ onMounted(async () => {
 <style lang="scss" scoped>
 #favorite {
   @apply h-full w-full;
-  #favorite_main {
+
+  #favorite-main {
     @apply fixed;
     @apply h-[85%] mt-[4.6%] ml-[26%] w-[47%];
     @apply rounded shadow;
 
-    .favorite_content {
+    .favorite-content {
       @apply h-full m-auto w-full;
-      .favorite_content_text {
+
+      .favorite-content-text {
         @include w-h(31.5%, 170px);
         @apply m-auto mt-4 ml-2;
         @apply rounded-sm bg-gray-100 shadow;
 
-        .favorite_content_text-1 {
+        .favorite-content-text-1 {
           @apply cursor-pointer h-[25%] text-lg p-2;
           @include line-one;
         }
 
-        .favorite_content_text-2 {
+        .favorite-content-text-2 {
           @apply h-[65%] mx-1 mt-2 px-2;
           @apply bg-white font-thin;
           @include line-numbers(5);
@@ -128,41 +124,45 @@ onMounted(async () => {
       }
     }
 
-    .favorite_page {
+    .favorite-page {
       @apply bg-white shadow p-2;
     }
   }
 }
 
-#FavSidebar {
+#fav-sidebar {
   @apply fixed;
   @apply h-[90%] top-[9%] right-[8%] w-[18%];
-  #FavSidebar_main {
+
+  #fav-sidebar-main {
     @apply h-full w-full overflow-auto;
-    .FavSidebar_describe {
+
+    .fav-sidebar-describe {
       @apply mb-2 w-[97%];
       @apply rounded shadow text-center;
+
       p {
         @apply m-1 text-base py-4 px-2;
       }
     }
-    .FavSidebar_footer {
+
+    .fav-sidebar-footer {
       @apply mb-2 p-1 w-[97%];
       @apply rounded cursor-pointer shadow;
 
-      .FavSidebar_f_title {
+      .fav-sidebar-f-title {
         @apply m-1 text-base p-1;
         @apply cursor-pointer font-semibold bg-gray-200;
       }
 
-      .FavSidebar_f_content {
+      .fav-sidebar-f-content {
         @apply m-2 text-sm;
 
-        .FavSidebar_f_content_name {
+        .fav-sidebar-f-content-name {
           @apply p-1 w-[35%];
         }
 
-        .FavSidebar_f_content_text {
+        .fav-sidebar-f-content-text {
           @apply p-1 w-[40%];
         }
       }
@@ -172,7 +172,7 @@ onMounted(async () => {
       @apply m-auto mb-2 p-1 w-[97%];
       @apply bg-white rounded cursor-pointer shadow;
 
-      .onecategory_name {
+      .onecategory-name {
         @apply m-1 text-base p-1;
         @apply font-semibold bg-gray-200;
       }
@@ -182,18 +182,19 @@ onMounted(async () => {
 
 @screen <xp {
   #favorite {
-    #favorite_main {
+    #favorite-main {
       @apply fixed;
       @apply h-[83%] mt-[6.3%];
 
-      .favorite_content {
-        .favorite_content_text {
+      .favorite-content {
+        .favorite-content-text {
           @include w-h(31%, 140px);
         }
       }
     }
   }
-  #FavSidebar {
+
+  #fav-sidebar {
     @apply top-[11%];
   }
 }

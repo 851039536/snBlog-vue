@@ -1,19 +1,35 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  createRouter, createWebHistory, RouteRecordRaw, _RouteRecordBase
+} from 'vue-router'
 import NProgress from 'nprogress'
-import Home from '@/components/general/SHome.vue'
+// import Home from '@/components/general/SHome.vue'
 
-const routes = [
+declare module 'vue-router' {
+  // eslint-disable-next-line no-shadow
+  interface _RouteRecordBase {
+    hidden?: boolean | string | number
+  }
+}
+const routes: RouteRecordRaw[] = [
   {
+    // path: '/',
+    // redirect: '/Home',
+    // name: 'Homes',
+    // component: Home
+
     path: '/',
-    // 重定向，当前路径'/'没有对应的组件，需要重定向到其他路由页面
-    redirect: '/Home',
     name: 'Homes',
-    component: Home
+    component: () => {
+      return import('@/components/general/SHome.vue')
+    }
   },
   {
     path: '/Home',
     name: 'Home',
-    component: () => import('@/components/general/SHome.vue')
+    component: () => {
+      return import('@/components/general/SHome.vue')
+    }
   },
 
   {
@@ -22,17 +38,23 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Blogs/BlogsIndex.vue'),
+    component: () => {
+      return import('@/views/Blogs/BlogsIndex.vue')
+    },
     children: [
       {
         path: 'BlogsColumn',
         name: 'BlogsColumn',
-        component: () => import('@/views/Blogs/components/BlogsColumn.vue')
+        component: () => {
+          return import('@/views/Blogs/components/BlogsColumn.vue')
+        }
       },
       {
         path: 'BlogsContent',
         name: 'BlogsContent',
-        component: () => import('@/views/Blogs/components/BlogsContent.vue')
+        component: () => {
+          return import('@/views/Blogs/components/BlogsContent.vue')
+        }
       }
     ]
   },
@@ -42,18 +64,24 @@ const routes = [
     meta: {
       keepAlive: true
     },
-    component: () => import('@/views/index/Index.vue'),
+    component: () => {
+      return import('@/views/index/Index.vue')
+    },
     children: [
       // 添加子路由
       {
         path: 'content',
         name: 'content',
-        component: () => import('@/views/index/components/IndexContent.vue')
+        component: () => {
+          return import('@/views/index/components/IndexContent.vue')
+        }
       },
       {
         path: 'column',
         name: 'column',
-        component: () => import('@/views/index/components/IndexColumn.vue')
+        component: () => {
+          return import('@/views/index/components/IndexColumn.vue')
+        }
       }
     ]
   },
@@ -63,7 +91,9 @@ const routes = [
     meta: {
       keepAlive: true
     },
-    component: () => import('@/views/index/components/IndexSidebar.vue')
+    component: () => {
+      return import('@/views/index/components/IndexSidebar.vue')
+    }
   },
   {
     path: '/Tag',
@@ -71,7 +101,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Tag/TagIndex.vue')
+    component: () => {
+      return import('@/views/Tag/TagIndex.vue')
+    }
   },
   {
     path: '/Photo',
@@ -79,7 +111,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/page/photo/PhotoIndex.vue')
+    component: () => {
+      return import('@/views/page/photo/PhotoIndex.vue')
+    }
   },
   {
     path: '/Navigation',
@@ -87,7 +121,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Navigation/website/Navigation.vue')
+    component: () => {
+      return import('@/views/Navigation/website/Navigation.vue')
+    }
   },
   {
     path: '/BlogCircles',
@@ -95,7 +131,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Navigation/blogCrcles/BlogCircles.vue')
+    component: () => {
+      return import('@/views/Navigation/blogCrcles/BlogCircles.vue')
+    }
   },
   {
     path: '/Favorite',
@@ -103,7 +141,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Navigation/favorite/Favorite.vue')
+    component: () => {
+      return import('@/views/Navigation/favorite/Favorite.vue')
+    }
   },
   {
     path: '/Svideo',
@@ -111,7 +151,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Svideo/Svideo.vue')
+    component: () => {
+      return import('@/views/Svideo/Svideo.vue')
+    }
   },
   {
     path: '/VideoPlay',
@@ -119,7 +161,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Svideo/components/VideoPlay.vue')
+    component: () => {
+      return import('@/views/Svideo/components/VideoPlay.vue')
+    }
   },
   {
     path: '/Leave',
@@ -127,7 +171,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/page/leave/Leave.vue')
+    component: () => {
+      return import('@/views/page/leave/Leave.vue')
+    }
   },
   {
     path: '/One',
@@ -135,7 +181,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/One/One.vue')
+    component: () => {
+      return import('@/views/One/One.vue')
+    }
   },
   {
     path: '/Book',
@@ -143,7 +191,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Book/BookIndex.vue')
+    component: () => {
+      return import('@/views/Book/BookIndex.vue')
+    }
   },
   {
     path: '/ListContent',
@@ -151,7 +201,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/page/listContent/ListContent.vue')
+    component: () => {
+      return import('@/views/page/listContent/ListContent.vue')
+    }
   },
   {
     path: '/Software',
@@ -159,7 +211,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Software/SSoftware.vue')
+    component: () => {
+      return import('@/views/Software/SSoftware.vue')
+    }
   },
   {
     path: '/SoftwareContent',
@@ -167,7 +221,9 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/views/Software/SoftwareContent.vue')
+    component: () => {
+      return import('@/views/Software/SoftwareContent.vue')
+    }
   },
 
   {
@@ -176,60 +232,82 @@ const routes = [
     meta: {
       keepAlive: false
     },
-    component: () => import('@/components/editor/vmdhtml.vue')
+    component: () => {
+      return import('@/components/editor/vmdhtml.vue')
+    }
   },
   // ------------------------------------------------------------------------------admin---------------------------------------------------
   // ------------------------------------------------------------------------------admin---------------------------------------------------
   {
     path: '/Login',
     name: 'Login',
-    component: () => import('@/views/admin/login/Login.vue')
+    component: () => {
+      return import('@/views/admin/login/Login.vue')
+    }
   },
   {
     path: '/Admin-index',
     name: 'Admin-index',
-    component: () => import('@/views/admin/index/AdminIndex.vue'),
+    component: () => {
+      return import('@/views/admin/index/AdminIndex.vue')
+    },
     children: [
       // 添加子路由
       {
         path: 'ArticleTable',
         name: 'ArticleTable',
-        component: () => import('@/views/admin/article/ArticleTable.vue')
+        component: () => {
+          return import('@/views/admin/article/ArticleTable.vue')
+        }
       },
       {
         path: 'ArticleAdd',
         name: 'ArticleAdd',
-        component: () => import('@/views/admin/article/ArticleAdd.vue')
+        component: () => {
+          return import('@/views/admin/article/ArticleAdd.vue')
+        }
       },
       {
         path: 'ArticleEdit',
         name: 'ArticleEdit',
-        component: () => import('@/views/admin/article/ArticleEdit.vue')
+        component: () => {
+          return import('@/views/admin/article/ArticleEdit.vue')
+        }
       },
       {
         path: 'NavTable',
         name: 'NavTable',
-        component: () => import('@/views/admin/navigation/SNavTable.vue')
+        component: () => {
+          return import('@/views/admin/navigation/SNavTable.vue')
+        }
       },
       {
         path: 'NavEdit',
         name: 'NavEdit',
-        component: () => import('@/views/admin/navigation/NavEdit.vue')
+        component: () => {
+          return import('@/views/admin/navigation/NavEdit.vue')
+        }
       },
       {
         path: 'NavAdd',
         name: 'NavAdd',
-        component: () => import('@/views/admin/navigation/NavAdd.vue')
+        component: () => {
+          return import('@/views/admin/navigation/NavAdd.vue')
+        }
       },
       {
         path: 'PageSet',
         name: 'PageSet',
-        component: () => import('@/views/admin/set/PageSet.vue')
+        component: () => {
+          return import('@/views/admin/set/PageSet.vue')
+        }
       },
       {
         path: 'LabelTable',
         name: 'LabelTable',
-        component: () => import('@/views/admin/label/LabelTable.vue')
+        component: () => {
+          return import('@/views/admin/label/LabelTable.vue')
+        }
       }
     ]
   }

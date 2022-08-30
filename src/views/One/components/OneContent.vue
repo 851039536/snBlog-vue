@@ -4,9 +4,11 @@ import { method, state } from '../data/index'
 
 defineProps({
   resultData: {
-    type: Array as () => Array<IntOne>,
+    type: Array as () => IntOne[],
     required: true,
-    default: () => []
+    default: () => {
+      return []
+    }
   }
 })
 </script>
@@ -15,29 +17,21 @@ defineProps({
   <div class="one-content">
     <div class="one-content-div" v-for="res in resultData" :key="res.id">
       <div class="one-content-div-frame">
-        <p class="one-content_div_frame_title">
+        <p class="one-content-div-frame-title">
           <span @click="method.setModal1Visible(true, res.id)">
-            {{ res.title }}
+            {{  res.title  }}
           </span>
         </p>
-        <p class="one-content-div-frame-text">{{ res.text }}</p>
+        <p class="one-content-div-frame-text">{{  res.text  }}</p>
         <div></div>
       </div>
     </div>
   </div>
 
   <div>
-    <a-modal
-      v-model:visible="state.modal2Visible"
-      :title="state.text.title"
-      centered
-      cancelText="赞"
-      :closable="false"
-      okText="关闭"
-      @cancel="method.give(state.text.id)"
-      @ok="state.modal2Visible = false"
-    >
-      <p>{{ state.text.text }}</p>
+    <a-modal v-model:visible="state.modal2Visible" :title="state.text.title" centered cancelText="赞" :closable="false"
+      okText="关闭" @cancel="method.give(state.text.id)" @ok="state.modal2Visible = false">
+      <p>{{  state.text.text  }}</p>
     </a-modal>
   </div>
 </template>
@@ -53,7 +47,7 @@ defineProps({
     .one-content-div-frame {
       @apply h-full w-full;
 
-      .one-content_div_frame_title {
+      .one-content-div-frame-title {
         @apply bg-gray-100 h-[24%] m-1 text-lg px-1;
         @include line-one;
       }

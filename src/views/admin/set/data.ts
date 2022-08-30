@@ -67,4 +67,6 @@ const stateArray: any = reactive({
 const stateStr: any = reactive({
   labelStr: 'ALL'
 })
-export { columns, state, stateArray, stateStr }
+export {
+  columns, state, stateArray, stateStr
+}

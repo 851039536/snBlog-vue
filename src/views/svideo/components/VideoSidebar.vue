@@ -9,16 +9,16 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 </script>
 
 <template>
-  <div class="video_sidebar">
+  <div class="video-sidebar">
     <div>
       <!-- 标签头部 -->
-      <div class="video_s_m_top">
+      <div class="video-s-m-top">
         <div>
           <p class>燃向视频收集</p>
         </div>
       </div>
 
-      <div class="video_sidebar_count">
+      <div class="video-sidebar-count">
         <div class="sn-list8-1">视频信息</div>
         <div class="sn-list8-2">
           <div class="flex sn-list8-2-1">
@@ -32,13 +32,13 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 </template>
 
 <style lang="scss" scoped>
-.video_sidebar {
+.video-sidebar {
   @apply h-[90%] top-[9%] right-[8%] w-[18%] fixed;
 
   & > div {
     @apply h-full w-full overflow-auto;
 
-    .video_s_m_top {
+    .video-s-m-top {
       @apply bg-white m-auto text-center mb-2 w-[97%];
       @apply rounded shadow;
 
@@ -49,7 +49,7 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
       }
     }
 
-    .video_sidebar_count {
+    .video-sidebar-count {
       @apply cursor-pointer m-auto mb-2 p-1 w-[97%];
       @apply bg-white rounded shadow;
 
@@ -75,13 +75,13 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
     }
   }
 
-  .video_sidebar_main::-webkit-scrollbar {
+  .video-sidebar-main::-webkit-scrollbar {
     display: none;
   }
 }
 
-@screen<xp {
-  .video_sidebar {
+@screen <xp {
+  .video-sidebar {
     @apply top-[11%];
   }
 }

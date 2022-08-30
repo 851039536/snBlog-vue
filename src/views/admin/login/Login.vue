@@ -12,7 +12,7 @@ const state = reactive({
   pwd: '',
   result: []
 })
-async function login() {
+function login() {
   user.Login(state.name, state.pwd).then((res) => {
     if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
       message.error(res.data)
@@ -48,47 +48,55 @@ onMounted(async () => {
 .login {
   position: absolute;
   top: 50%;
-  margin-top: -200px;
   left: 50%;
-  margin-left: -200px;
-  /* absolute居中的一种方法 */
-  background-color: #fff;
+  box-sizing: border-box;
   width: 400px;
   height: 400px;
-  border-radius: 25px;
-  text-align: center;
+  margin-top: -200px;
+  margin-left: -200px;
   padding: 5px 40px;
-  box-sizing: border-box;
+  text-align: center;
+
+  /* absolute居中的一种方法 */
+  background-color: #fff;
+  border-radius: 25px;
+
   /* 这样padding就不会影响大小 */
 }
+
 p {
-  font-size: 42px;
   font-weight: 600;
+  font-size: 42px;
 }
 
 input {
-  background-color: #fff;
   width: 100%;
   height: 48px;
   margin-bottom: 10px;
+  font-size: 22px;
+  background-color: #fff;
   border: none;
-  border-bottom: 2px solid rgb(95, 90, 90);
+  border-bottom: 2px solid rgb(95 90 90);
+
   /* 下面的会覆盖上面的步伐 */
   outline: none;
-  font-size: 22px;
 }
 
 .btn {
   @apply text-xl w-[38%];
 }
+
 .btn:hover {
   background-color: #13e269;
 }
+
 .login-box {
   @apply top-0 left-0 fixed;
+
   width: 100%;
   height: 100%;
-  background: url(../../../assets/img/login/wallpaper.jpg) no-repeat;
+
+  // background: url(../../../assets/img/login/wallpaper.jpg) no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }

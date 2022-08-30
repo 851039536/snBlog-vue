@@ -23,7 +23,7 @@ onMounted(async () => {
       <a-space>
         <a-button @click="routers('/Admin-index/NavAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select style="width: 100px" v-model:value="state.navStr" @change="method.SelectNav()">
+        <a-select style="width: 100px;" v-model:value="state.navStr" @change="method.SelectNav()">
           <a-select-option value="ALL">ALL</a-select-option>
           <a-select-option :value="item.title" v-for="item in state.resNavType" :key="item.id">{{
             item.title
@@ -34,7 +34,7 @@ onMounted(async () => {
         <a-select
           show-search
           placeholder="标题搜索"
-          style="width: 150px"
+          style="width: 150px;"
           :default-active-first-option="false"
           :show-arrow="false"
           :not-found-content="null"

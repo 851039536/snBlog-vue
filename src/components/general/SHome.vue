@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { routers } from '@/hooks/routers'
+import { routers } from '@h/routers'
 </script>
 
 <template>
@@ -31,10 +31,13 @@ import { routers } from '@/hooks/routers'
 <style lang="scss" scoped>
 .home {
   // 居中
-  @apply top-1/2 left-1/2 absolute;
+  @apply bg-white top-1/2 left-1/2 fixed;
+
   transform: translate(-50%, -50%);
+
   .home2 {
     @apply flex p-2 justify-center;
+
     flex-direction: column;
     align-items: center;
     min-height: 300px;

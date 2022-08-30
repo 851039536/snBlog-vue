@@ -8,7 +8,7 @@ export class one {
    * @param cache 缓存
    * @returns
    */
-  static async CountAsync(identity: number, type: string, cache: boolean): Promise<any> {
+  static CountAsync(identity: number, type: string, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnOne/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
@@ -21,7 +21,7 @@ export class one {
   }
 
   // 统计 text:内容字段数-read:阅读数量-give:点赞数量
-  static async GetSumAsync(type: string): Promise<any> {
+  static GetSumAsync(type: string): Promise<any> {
     return request(
       {
         url: `/api/SnOne/GetSumAsync?type=${type}`,
@@ -34,7 +34,7 @@ export class one {
   }
 
   // 更新部分列[give read]
-  static async UpdatePortionAsync(result: any, type: string): Promise<any> {
+  static UpdatePortionAsync(result: any, type: string): Promise<any> {
     return request(
       {
         // 更新
@@ -59,7 +59,7 @@ export class one {
    * @param cache 缓存
    * @returns
    */
-  static async GetFyAsync(
+  static GetFyAsync(
     identity: number,
     type: string,
     page: number,
@@ -84,7 +84,7 @@ export class one {
    * @param id 主键
    * @param cache 缓存
    */
-  static async GetByIdAsync(id: number, cache: boolean): Promise<any> {
+  static GetByIdAsync(id: number, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnOne/GetByIdAsync?id=${id}&cache=${cache}`,
@@ -98,7 +98,7 @@ export class one {
 
   // 查询one副表
   // 查询所有
-  static async GetOneTypeAllAsync(): Promise<any> {
+  static GetOneTypeAllAsync(): Promise<any> {
     return request(
       {
         url: '/api/SnOneType/GetAllAsync',

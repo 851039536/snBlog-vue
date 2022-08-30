@@ -8,13 +8,12 @@ const pending = new Map()
  */
 export const addPending = (res: any) => {
   const url = [res.method, res.url, qs.stringify(res.params), qs.stringify(res.data)].join('&')
-  res.cancelToken =
-    res.cancelToken ||
-    new axios.CancelToken((cancel) => {
+  res.cancelToken = res.cancelToken
+    || new axios.CancelToken((cancel) => {
       if (!pending.has(url)) {
         // 如果 pending 中不存在当前请求，则添加进去
         pending.set(url, cancel)
-        console.log('[ 添加请求 ]=>', url)
+        // console.log('[ 添加请求 ]=>', url)
       }
     })
 }
@@ -29,16 +28,17 @@ export const removePending = (config: any) => {
     const cancel = pending.get(url)
     cancel(url)
     pending.delete(url)
-    console.log('[ 移除请求 ]=>', url)
+    // console.log('[ 移除请求 ]=>', url)
   }
 }
 /**
  * 清空 pending 中的请求（在路由跳转时调用）
  */
 export const clearPending = () => {
+  // eslint-disable-next-line no-restricted-syntax
   for (const [url, cancel] of pending) {
     cancel(url)
-    console.log('[ 清空请求 ]=>', url)
+    // console.log('[ 清空请求 ]=>', url)
   }
   pending.clear()
 }

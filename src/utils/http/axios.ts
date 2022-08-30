@@ -28,7 +28,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
   }
   // 请求拦截器
   service.interceptors.request.use(
-    function request(req: any) {
+    (req: any) => {
       removePending(req) // 在请求开始前，对之前的请求做检查取消操作
       // if (qiXiao.qiXiao_cancel) {
       //   addPending(req) // 将当前请求添加到 pending 中
@@ -58,7 +58,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
   )
   // 响应拦截器
   service.interceptors.response.use(
-    function response(res) {
+    (res) => {
       removePending(res) // 在请求结束后，移除本次请求
       // 请求之后关闭loading
       aspShow.value = false
@@ -68,7 +68,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
       return Promise.reject(res)
     },
     (error: any) => {
-      console.log('%c [ error ]', 'font-size:13px; background:pink; color:#bf2c9f;', error)
+      // console.log('%c [ error ]', 'font-size:13px; background:pink; color:#bf2c9f;', error)
 
       aspShow.value = false
       if (error.response.status) {

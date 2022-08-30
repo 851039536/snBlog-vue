@@ -41,9 +41,11 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .one-sidebar {
   @apply h-[91%] ml-3 top-[9%] right-[8%] w-[18%] fixed;
-  @apply rounded  overflow-auto;
+  @apply rounded overflow-auto;
+
   .one-sidebar-div {
     @apply h-full w-full;
+
     .one-sidebar-describe {
       @apply m-auto mb-2 w-[97%];
       @apply bg-white rounded shadow text-center;
@@ -60,7 +62,8 @@ onMounted(async () => {
 .one-sidebar::-webkit-scrollbar {
   display: none;
 }
-@screen<xp {
+
+@screen <xp {
   .one-sidebar {
     @apply top-[11%];
   }

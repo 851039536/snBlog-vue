@@ -32,29 +32,35 @@ function handleAnchorClick(anchor: any) {
 onMounted(async () => {
   await GetAll()
   const anchors = proxy.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6')
-  const titles = Array.from(anchors).filter((title: any) => !!title.innerText.trim())
+  const titles = Array.from(anchors).filter((title: any) => {
+    return !!title.innerText.trim()
+  })
   if (!titles.length) {
     state.titles = []
     return
   }
-  const hTags = Array.from(new Set(titles.map((title: any) => title.tagName))).sort()
-  state.titles = titles.map((el: any) => ({
-    title: el.innerText,
-    lineIndex: el.getAttribute('data-v-md-line'),
-    indent: hTags.indexOf(el.tagName)
-  }))
+  const hTags = Array.from(new Set(titles.map((title: any) => {
+    return title.tagName
+  }))).sort()
+  state.titles = titles.map((el: any) => {
+    return {
+      title: el.innerText,
+      lineIndex: el.getAttribute('data-v-md-line'),
+      indent: hTags.indexOf(el.tagName)
+    }
+  })
 })
 </script>
 <template>
   <div class="m-auto w-[80%]">
     <a-back-top />
     <div class="vmd">
-      <a-page-header style="border: 1px solid rgb(235, 237, 240)" :title="state.blog.title" />
+      <a-page-header style="border: 1px solid rgb(235 237 240);" :title="state.blog.title" />
       <v-md-preview :text="state.blog.text" ref="preview" />
     </div>
     <div class="anchor">
-      <div class="anchor_tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
-        {{ anchor.title }}
+      <div class="anchor-tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
+        {{  anchor.title  }}
       </div>
     </div>
   </div>
@@ -64,10 +70,13 @@ onMounted(async () => {
 .vmd {
   @apply bg-gray-50 mt-3 ml-[3%] w-[75%];
 }
+
 .anchor {
   @apply rounded top-[7%] right-[9%] w-[14%] z-10 fixed;
-  .anchor_tag {
+
+  .anchor-tag {
     @apply bg-white cursor-pointer m-1 text-base p-2;
+
     &:hover {
       @apply rounded bg-blue-100;
     }

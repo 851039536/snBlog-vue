@@ -12,7 +12,9 @@ const state: ResData = reactive({
 })
 
 const columns = [
-  { title: '标题', width: 100, dataIndex: 'title', key: 'title', fixed: 'left' },
+  {
+    title: '标题', width: 100, dataIndex: 'title', key: 'title', fixed: 'left'
+  },
 
   {
     title: '用户',
@@ -81,7 +83,7 @@ const formState: IntNav = reactive({
 })
 export const resType: any = ref([])
 
-export async function formNull() {
+export function formNull() {
   formState.id = 0
   formState.title = 'title'
   formState.describe = 'describe'

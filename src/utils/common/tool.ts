@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment'
 
 /**
@@ -8,7 +9,7 @@ class tool {
    * 回到顶部
    */
   static BackTop() {
-    const timer = setInterval(function xx() {
+    const timer = setInterval(() => {
       const osTop = document.documentElement.scrollTop || document.body.scrollTop
       const isPeed = Math.floor(-osTop / 5)
       document.body.scrollTop = osTop + isPeed

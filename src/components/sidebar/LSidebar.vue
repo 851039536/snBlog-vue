@@ -8,13 +8,10 @@ onMounted(async () => {
 <template>
   <div class="lsidebar">
     <div>
-      <div class="raside-img">
-        <img src="@/assets/img/si.jpg" />
-      </div>
-      <div class="raside-list" v-for="(res, index) in resData" :key="index">
-        <p @click="method.skip(res.path)" v-if="res.identity">
+      <div class="lsidebar-list" v-for="(res, index) in resData" :key="index">
+        <div class="m-2 p-2" @click="method.skip(res.path)" v-if="res.identity">
           {{ res.title }}
-        </p>
+        </div>
       </div>
 
       <div class="raside-website">
@@ -33,48 +30,47 @@ onMounted(async () => {
 <style lang="scss">
 .lsidebar {
   @apply h-[100%] top-[9%] left-[8%] w-[17%] fixed;
-  @apply rounded shadow;
+  @apply bg-white rounded shadow;
+
   & > div {
-    @apply h-[80%] overflow-auto;
+    @apply h-[80%];
 
-    .raside-img {
-      img {
-        @apply rounded h-[175px] mb-10 w-[100%];
-      }
+    .lsidebar-list {
+      @apply rounded-lg shadow my-3 mx-8;
+      @apply cursor-pointer text-center text-lg p-1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .raside-list {
-      @apply m-auto h-[39px] my-1 w-[40%];
-      @apply cursor-pointer text-center text-xl;
-      p {
-        @apply hover:text-blue-400;
-      }
-    }
     .raside-website {
       @apply text-base ml-[25%] bottom-[17%] absolute;
+
       a {
         @apply text-gray-600;
       }
     }
+
     .raside-described {
-      @apply text-center bottom-[10%] absolute;
+      @apply m-1 text-center bottom-[10%] absolute;
     }
   }
-}
-
-@screen <lg {
 }
 
 @screen <xp {
   .lsidebar {
     @apply top-[11%];
+
     & > div {
       .raside-website {
         @apply text-base ml-7;
       }
+
       .raside-list {
         @apply h-[35px] w-[60%];
       }
+
       .raside-img {
         img {
           @apply h-[140px];

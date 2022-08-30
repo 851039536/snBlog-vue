@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
 
 export class setBlog {
-  static async GetByIdAsync(id: number, cache: boolean): Promise<any> {
+  static GetByIdAsync(id: number, cache: boolean) {
     return request(
       {
         url: `/api/SnSetBlog/GetByIdAsync?id=${id}&cache=${cache}`,

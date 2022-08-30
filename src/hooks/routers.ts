@@ -28,7 +28,7 @@ const routerId = async (path: string, id: number | string) => {
   })
 }
 
-async function resolve(path: string, id: number) {
+function resolve(path: string, id: number) {
   return router.resolve({
     path,
     query: {
@@ -42,7 +42,7 @@ async function resolve(path: string, id: number) {
  * @description: 前进后退
  * @param {number} n n可为正数可为负数。正数返回上一个页面
  */
-async function go(n: number) {
+function go(n: number) {
   router.go(n)
 }
 
@@ -50,15 +50,17 @@ async function go(n: number) {
  * @description: 跳转新页面
  * @param {string} url
  */
-async function winUrl(url: string) {
+function winUrl(url: string) {
   window.open(url)
 }
 
 /**
  *页面刷新
  */
-async function reloads() {
+function reloads() {
   window.location.reload()
 }
 
-export { routers, routerId, winUrl, go, resolve, reloads }
+export {
+  routers, routerId, winUrl, go, resolve, reloads
+}

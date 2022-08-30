@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, state, stateArray, stateStr } from './data'
-import { article, TOKEN, labels, interfaces } from '@/api'
+import {
+  columns, state, stateArray, stateStr
+} from './data'
+import {
+  article, TOKEN, labels, interfaces
+} from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 
@@ -40,7 +44,7 @@ async function SearchTitle(name: string) {
     })
   }
 }
-async function selectTag() {
+function selectTag() {
   message.info(stateStr.labelStr)
 }
 onMounted(async () => {
@@ -59,38 +63,24 @@ onMounted(async () => {
       <a-space>
         <a-button @click="routers('/Admin-index/ArticleAdd')">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select style="width: 120px" v-model:value="stateStr.labelStr" @change="selectTag">
+        <a-select style="width: 120px;" v-model:value="stateStr.labelStr" @change="selectTag">
           <a-select-option value="ALL">ALL</a-select-option>
           <a-select-option :value="item.labelId" v-for="item in stateArray.labelResult" :key="item.labelId">{{
-            item.labelName
-          }}</a-select-option>
+             item.labelName
+            }}</a-select-option>
         </a-select>
         <!-- 搜索  -->
-        <a-select
-          show-search
-          placeholder="标题搜索"
-          style="width: 200px"
-          :default-active-first-option="false"
-          :show-arrow="false"
-          :not-found-content="null"
-          @search="SearchTitle"
-        >
+        <a-select show-search placeholder="标题搜索" style="width: 200px;" :default-active-first-option="false"
+          :show-arrow="false" :not-found-content="null" @search="SearchTitle">
         </a-select>
       </a-space>
       <!-- end 搜索 -->
     </div>
     <div>
-      <a-table
-        size="small"
-        :bordered="true"
-        :columns="columns"
-        rowKey="id"
-        :data-source="state.resData"
-        :pagination="{ pageSize: 8 }"
-        :scroll="{ x: 1280, y: 420 }"
-      >
+      <a-table size="small" :bordered="true" :columns="columns" rowKey="id" :data-source="state.resData"
+        :pagination="{ pageSize: 8 }" :scroll="{ x: 1280, y: 420 }">
         <template #identity="{ record }">
-          <a>{{ record.identity }}</a>
+          <a>{{  record.identity  }}</a>
         </template>
         <template #ed="{ record }">
           <a @click="routerId('/Admin-index/ArticleEdit', record.articleId)">编辑</a>

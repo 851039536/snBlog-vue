@@ -26,44 +26,31 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <section>
-    <s-header></s-header>
-    <div class="tag-main">
-      <div class="tag_search">
-        <a-select
-          show-search
-          placeholder="标题搜索"
-          style="width: 50%"
-          :default-active-first-option="false"
-          :show-arrow="false"
-          :filter-option="false"
-          :not-found-content="null"
-          @search="Search"
-        >
-        </a-select>
-      </div>
-      <TagHead :array-label="resData.arrayLabel"></TagHead>
-      <TagContent></TagContent>
+  <s-header></s-header>
+  <div class="tag-index">
+    <div class="tag-search">
+      <a-select show-search placeholder="标题搜索" style="width: 100% ;height: 100%" :default-active-first-option="false"
+        :show-arrow="false" :filter-option="false" :not-found-content="null" @search="Search">
+      </a-select>
     </div>
-  </section>
+    <TagHead :array-label="resData.arrayLabel"></TagHead>
+    <TagContent></TagContent>
+  </div>
 </template>
 
-<style lang="scss">
-.tag-main {
-  @apply absolute;
-  top: 9.5%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
+<style lang="scss" scoped>
+.tag-index {
+  @apply h-[92%] w-[90%] fixed;
+  @apply top-[8%] left-[5%];
+  @apply rounded;
 }
 
-.tag_search {
+.tag-search {
   @apply ml-[8%] w-[84%];
-  @apply rounded-sm shadow relative;
 
-  height: 48px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 50px;
 }
 </style>
