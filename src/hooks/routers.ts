@@ -61,6 +61,4 @@ function reloads() {
   window.location.reload()
 }
 
-export {
-  routers, routerId, winUrl, go, resolve, reloads
-}
+export { routers, routerId, winUrl, go, resolve, reloads }

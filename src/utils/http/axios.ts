@@ -6,7 +6,7 @@ import { aspShow } from '@/hooks/data'
 import { storage } from '../storage/storage'
 import { removePending, addPending } from './pending'
 
-const obj: any = reactive({
+const obj = reactive({
   urls: import.meta.env.VITE_API_DOMAIN
 })
 // 全局配置
@@ -51,14 +51,14 @@ function myAxios(axiosConfig: any, customOptions: any) {
       aspShow.value = true
       return req
     },
-    (error) => {
+    error => {
       message.error(error.data.error.message)
       return Promise.reject(error.data.error.message)
     }
   )
   // 响应拦截器
   service.interceptors.response.use(
-    (res) => {
+    res => {
       removePending(res) // 在请求结束后，移除本次请求
       // 请求之后关闭loading
       aspShow.value = false

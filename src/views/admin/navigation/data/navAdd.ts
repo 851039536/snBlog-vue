@@ -6,12 +6,12 @@ import { navName } from '../../utils/data'
 import { formState, resType, formNull } from './data'
 import { routers } from '@/hooks/routers'
 
-const uid: any = ref(storage.get('userId'))
+const uid: any = ref(storage.get('id'))
 
 export async function GetApi() {
-  await formNull()
+  formNull()
   await TOKEN()
-  await navigation.GetSnNavigationTypeSAllAsync(false).then((ress) => {
+  await navigation.GetSnNavigationTypeSAllAsync(false).then(ress => {
     resType.value = ress.data
   })
   navName.name = '内容分享'

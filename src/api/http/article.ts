@@ -28,7 +28,7 @@ class article {
    * @param name 查询字段
    * @param cache 缓存
    */
-  static async GetContainsAsync(identity: number, type: string, name: string, cache: boolean) {
+  static async GetContains(identity: number, type: string, name: string, cache: boolean) {
     const res = await request(
       {
         url: `/api/SnArticle/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
@@ -47,7 +47,7 @@ class article {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetByIdAsync(id: number, cache: boolean): Promise<any> {
+  static GetById(id: number, cache: boolean) {
     return request(
       {
         url: `/api/SnArticle/GetByIdAsync?id=${id}&cache=${cache}`,
@@ -66,7 +66,7 @@ class article {
    * @param cache 缓存
    * @returns
    */
-  static GetTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
+  static GetType(identity: number, type: string, cache: boolean) {
     return request(
       {
         url: `/api/SnArticle/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
@@ -85,7 +85,7 @@ class article {
    * @param name 查询参数
    * @param cache 缓存
    */
-  static GetSumAsync(identity: number, type: number, name: string, cache: boolean): Promise<any> {
+  static GetSum(identity: number, type: number, name: string, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnArticle/GetSumAsync?identity=${identity}&type=${type}&name=${name}&cache=${cache}`,
@@ -107,7 +107,7 @@ class article {
    * @param {boolean} isDesc 升序/降序
    * @param {boolean} cache 是否开启缓存
    */
-  static async GetFyAsync(
+  static async GetFy(
     identity: number,
     type: string | undefined,
     pageIndex: number,
@@ -134,7 +134,7 @@ class article {
    * @param {any} resultData
    * @param {string} type
    */
-  static UpdatePortionAsync(resultData: any, type: string): Promise<any> {
+  static UpdatePortion(resultData: any, type: string): Promise<any> {
     return request(
       {
         // 更新
@@ -169,7 +169,7 @@ class article {
    * @description: 更新数据
    * @param {IntArticle} resultData
    */
-  static UpdateAsync(resultData: IntArticle) {
+  static Update(resultData: IntArticle) {
     return request(
       {
         url: '/api/SnArticle/UpdateAsync',
@@ -185,9 +185,8 @@ class article {
   /**
    * @description: 删除
    * @param {number} id
-   * @return {*}
    */
-  static DeleteAsync(id: number) {
+  static Del(id: number) {
     return request(
       {
         url: `/api/SnArticle/DeleteAsync?id=${id}`,

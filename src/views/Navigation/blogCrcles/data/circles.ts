@@ -10,7 +10,7 @@ interface Res {
 const resData: Res = reactive({
   resultData: [],
   page: 1,
-  pagesize: 15,
+  pagesize: 18,
   count: 0,
   current: 1
 })

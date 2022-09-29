@@ -4,12 +4,14 @@
 <template>
   <div>
     <div class="photo">
+      <l-sidebar></l-sidebar>
+      <s-header></s-header>
       <div class="photo-title">
         <p>原来是你呀 / 总计 20</p>
       </div>
       <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
         <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/e8f1120dfaca01d78bc90f0c71e3736e.jpeg" />
+          <img src="https://cdn.share-man.com/mailImage/e8f1120dfaca01d78bc90f0c71e3736e.jpeg" alt="test" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -27,7 +29,9 @@
           </div>
         </div>
         <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/751e475835955b416fc54978ca751bfb.jpeg" />
+          <img
+            src="https://cdn.share-man.com/mailImage/751e475835955b416fc54978ca751bfb.jpeg"
+            onerror="this.style.display='none'" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -36,7 +40,9 @@
           </div>
         </div>
         <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/1fa79317d3ec1b08758e6318f8776c38.jpeg" />
+          <img
+            src="https://cdn.share-man.com/mailImage/1fa79317d3ec1b08758e6318f8776c38.jpeg"
+            onerror="this.style.display='none'" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -45,7 +51,9 @@
           </div>
         </div>
         <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/73483879c650cc43d96038ce40938b0d.jpeg" />
+          <img
+            src="https://cdn.share-man.com/mailImage/73483879c650cc43d96038ce40938b0d.jpeg"
+            onerror="this.style.display='none'" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -69,8 +77,8 @@
 
 <style lang="scss" scoped>
 .photo {
-  @include initialize(84%, null, 4.5%, null, 8%, null, #ffffff);
-  @apply rounded-md shadow;
+  @apply h-[80%] mt-[4.6%] ml-[22%] w-[65%];
+  @apply rounded-md shadow bg-white;
 
   .photo-title {
     @include underline;
@@ -103,7 +111,7 @@
     .photo-text {
       color: #5f6c7b;
 
-      @apply cursor-pointer text-base p-2 px-4 hover: text-red-300 ;
+      @apply cursor-pointer text-base p-2 px-4 hover: text-red-300;
     }
   }
 }

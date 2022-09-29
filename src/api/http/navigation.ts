@@ -1,7 +1,6 @@
 import request from '@/utils/http/axios'
 import { IntNav } from '@/api/data/interData'
 
-// eslint-disable-next-line import/prefer-default-export
 export class navigation {
   /**
    * 查询总数
@@ -29,7 +28,7 @@ export class navigation {
    * @param name 查询字段
    * @param chche 缓存
    */
-  static GetContainsAsync(identity: number, type: string, name: string, chche: boolean): Promise<any> {
+  static GetContains(identity: number, type: string, name: string, chche: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnNavigation/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${chche}`,
@@ -108,14 +107,14 @@ export class navigation {
 
   /**
    * @description: 新增数据
-   * @param {any} dataResult
+   * @param {any} data
    */
-  static AddAsync(dataResult: IntNav) {
+  static AddAsync(data: IntNav) {
     return request(
       {
         url: '/api/SnNavigation/AddAsync',
         method: 'post',
-        data: dataResult
+        data: data
       },
       {
         qiXiao_cancel: false

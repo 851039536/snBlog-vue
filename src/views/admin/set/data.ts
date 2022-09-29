@@ -14,49 +14,38 @@ const columns = [
   {
     title: '标题',
     dataIndex: 'title',
-    width: 120
+    width: 70
   },
 
   {
     title: '路径',
     dataIndex: 'path',
-    width: 150
+    width: 100
+  },
+  {
+    title: '是否启用',
+    dataIndex: 'identity',
+    width: 50
   },
   {
     title: '类别',
-    align: 'center',
-    dataIndex: 'type.name',
+    dataIndex: 'type',
     width: 50
   },
   {
     title: '用户',
-    align: 'center',
-    dataIndex: 'user.name',
+    dataIndex: 'user',
     width: 50
   },
-
   {
-    title: '是否启用',
-    key: 'identity',
-    align: 'center',
-    width: 80,
-    slots: { customRender: 'identity' } // 绑定插槽
+    title: '编辑',
+    dataIndex: 'edit',
+    width: 30
   },
   {
-    title: '操作',
-    key: '编辑',
-    fixed: 'right',
-    align: 'center',
-    width: 70,
-    slots: { customRender: 'ed' } // 绑定插槽
-  },
-  {
-    title: '操作',
-    key: '删除',
-    fixed: 'right',
-    align: 'center',
-    width: 70,
-    slots: { customRender: 'de' } // 绑定插槽
+    title: '删除',
+    dataIndex: 'del',
+    width: 30
   }
 ]
 
@@ -67,6 +56,4 @@ const stateArray: any = reactive({
 const stateStr: any = reactive({
   labelStr: 'ALL'
 })
-export {
-  columns, state, stateArray, stateStr
-}
+export { columns, state, stateArray, stateStr }

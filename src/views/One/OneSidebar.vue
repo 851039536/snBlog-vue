@@ -23,48 +23,31 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="one-sidebar">
-    <div class="one-sidebar-div">
-      <div class="one-sidebar-describe">
-        <div class="one-sidebar-describe-text">
-          <p class>内容来源于网络</p>
-        </div>
-      </div>
-
-      <OneSidetype title="舔狗好评" :result-data="state.resultOne"></OneSidetype>
-
-      <OneCategory :result="state.resultOneType"></OneCategory>
-    </div>
+  <div class="one-side">
+    <div>内容来源于网络</div>
+    <OneSidetype title="舔狗好评" :result-data="state.resultOne"></OneSidetype>
+    <OneCategory :result="state.resultOneType"></OneCategory>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.one-sidebar {
-  @apply h-[91%] ml-3 top-[9%] right-[8%] w-[18%] fixed;
-  @apply rounded overflow-auto;
+.one-side {
+  @apply h-[91%] ml-3 top-[9%] right-[12%] w-[18%] fixed;
+  @apply overflow-auto;
 
-  .one-sidebar-div {
-    @apply h-full w-full;
-
-    .one-sidebar-describe {
-      @apply m-auto mb-2 w-[97%];
-      @apply bg-white rounded shadow text-center;
-
-      .one-sidebar-describe-text {
-        p {
-          @apply cursor-pointer m-1 text-base py-4 px-2;
-        }
-      }
-    }
+  div {
+    @apply m-auto mb-2 w-[97%];
+    @apply bg-white rounded shadow text-center;
+    @apply cursor-pointer m-1 text-base py-4 px-2;
   }
 }
 
-.one-sidebar::-webkit-scrollbar {
+.one-side::-webkit-scrollbar {
   display: none;
 }
 
 @screen <xp {
-  .one-sidebar {
+  .one-side {
     @apply top-[11%];
   }
 }

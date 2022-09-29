@@ -1,38 +1,7 @@
-/**
- * @description: 视频接口
- */
-interface IntVideo {
-  id: number
-  title: string
-  img: string
-  typeId: number
-  userId: number
-  timeCreate: any
-  timeModified: any
-  url: string
-}
-
-interface IntLabels {
-  id: number
-  name: string
-  description: string
-  snArticles: any
-}
-interface IntArticle {
-  id: number
-  title: string
-  sketch: string
-  text: string
-  read: number
-  img: string
-  commentId: number
-  give: number
-  labelId: number
-  sortId: number
-  userId: number
-  timeCreate: any
-  timeModified: any
-}
+import { IArticle } from './model/artileModel'
+import { IVideo } from './model/videoModel'
+import { ITag } from './model/tagModel'
+import { ILabel } from './model/labelModel'
 
 interface IntNav {
   id: number
@@ -51,11 +20,7 @@ export interface IntSort {
   name: string
   description: string
 }
-export interface IntTag {
-  id: number
-  name: string
-  description: string
-}
+
 export interface IntTalk {
   id: number
   title: string
@@ -97,6 +62,4 @@ interface IntOneType {
   title: number
 }
 
-export type {
-  IntVideo, IntLabels, IntArticle, IntNav, IntOne, IntOneType
-}
+export { ILabel, IntNav, IntOne, IntOneType, IArticle, IVideo, ITag }

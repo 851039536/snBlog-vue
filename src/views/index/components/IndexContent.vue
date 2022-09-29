@@ -4,7 +4,6 @@ import { tool } from '@/utils/common/tool'
 import { state, method } from '../data/content'
 
 const VmdContent = defineAsyncComponent(() => {
-  // eslint-disable-next-line import/extensions
   return import('@/components/editor/VmdContent.vue')
 })
 const route = useRoute()
@@ -15,7 +14,7 @@ const roId: any = reactive({
 })
 
 const GetApi = async () => {
-  await article.GetByIdAsync(roId.id, true).then((res: any) => {
+  await article.GetById(roId.id, true).then((res: any) => {
     const result = res.data[0]
     method.UpRead(result)
     state.resultData = result
@@ -50,15 +49,15 @@ onMounted(async () => {
       <div class="blogs-comment">
         <div class>
           <a @click="method.UpGive">
-            {{  state.resultData.give  }}
+            {{ state.resultData.give }}
           </a>
         </div>
-        <div>{{  state.resultData.read  }} ℃</div>
-        <div class="blogs-comment-text">{{  state.sortName  }}</div>
+        <div>{{ state.resultData.read }} ℃</div>
+        <div class="blogs-comment-text">{{ state.sortName }}</div>
         <div class="blogs-comment-text">
-          {{  state.labelName  }}
+          {{ state.labelName }}
         </div>
-        <div class>{{  state.time  }}</div>
+        <div class>{{ state.time }}</div>
       </div>
     </div>
   </div>
@@ -97,7 +96,7 @@ onMounted(async () => {
       @apply flex;
 
       .blogs-comment-text {
-        @apply rounded-sm bg-blue-200 shadow;
+        @apply rounded-sm bg-blue-100 shadow;
       }
 
       div {

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import moment from 'moment'
 
 /**
@@ -24,7 +23,7 @@ class tool {
    * 日期格式化
    * @param time
    */
-  static MomentTime(time: any) {
+  static MomentTime(time: Date) {
     moment(time).format('YYYY-MM-DD- H:mm:ss')
   }
 

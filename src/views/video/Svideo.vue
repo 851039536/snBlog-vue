@@ -10,19 +10,17 @@ method.currentchange(1)
 </script>
 
 <template>
-  <div id="svideo">
+  <div class="svideo">
     <s-header></s-header>
     <l-sidebar></l-sidebar>
     <video-sidebar></video-sidebar>
-    <video-content :arrayVideo="state.resultData"></video-content>
+    <video-content :array-video="state.resultData"></video-content>
   </div>
 </template>
 
 <style lang="scss" scoped>
-#svideo {
-  @apply w-full fixed;
-
-  height: 92%;
+.svideo {
+  @apply w-full fixed h-[92%];
 }
 
 // @screen xp {

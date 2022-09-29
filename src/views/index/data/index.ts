@@ -9,7 +9,7 @@ class method {
 
   static async GetFy() {
     await article
-      .GetFyAsync(state.identity, state.typeStr, state.current, state.pagesize, 'id', true, true)
+      .GetFy(state.identity, state.typeStr, state.current, state.pagesize, 'id', true, true)
       .then((res: any) => {
         state.resData = res.data
       })
@@ -22,7 +22,4 @@ class method {
   }
 }
 
-export {
-  // eslint-disable-next-line import/prefer-default-export
-  method
-}
+export { method }

@@ -2,8 +2,10 @@
 import { formState, resType } from './data/data'
 import { go, reloads } from '@/hooks/routers'
 import { GetApi, onSubmit } from './data/navAdd'
+import { TOKEN } from '@/api'
 
 onMounted(async () => {
+  await TOKEN()
   await GetApi()
 })
 </script>
@@ -19,10 +21,10 @@ onMounted(async () => {
 
     <div class="rounded flex m-auto bg-gray-50 shadow p-2">
       <div>
-        <a-select v-model:value="formState.typeId" style="width: 120px;">
-          <a-select-option v-for="item in resType" :key="item.id" :label="item.id" :value="item.id">{{
-            item.title
-          }}</a-select-option>
+        <a-select v-model:value="formState.typeId" style="width: 120px">
+          <a-select-option v-for="item in resType" :key="item.id" :label="item.id" :value="item.id">
+            {{ item.title }}
+          </a-select-option>
         </a-select>
       </div>
       <div class="ml-2">
@@ -34,8 +36,8 @@ onMounted(async () => {
     </div>
     <div class="bg-gray-100 shadow p-2">
       <a-button type="primary" @click="onSubmit">添加</a-button>
-      <a-button style="margin-left: 10px;" @click="go(-1)">返回</a-button>
-      <a-button style="margin-left: 10px;" @click="reloads">刷新</a-button>
+      <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
+      <a-button style="margin-left: 10px" @click="reloads">刷新</a-button>
     </div>
   </div>
 </template>

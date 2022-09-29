@@ -19,12 +19,12 @@ export class method {
   static async UpRead(res: any) {
     if (res !== null) {
       res.read += 1
-      await article.UpdatePortionAsync(res, 'Read')
+      await article.UpdatePortion(res, 'Read')
     }
   }
 
   static UpGive = throttle(() => {
     state.resultData.give += 1
-    article.UpdatePortionAsync(state.resultData, 'Give')
+    article.UpdatePortion(state.resultData, 'Give')
   }, 1000)
 }

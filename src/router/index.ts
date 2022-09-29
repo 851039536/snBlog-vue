@@ -1,7 +1,5 @@
-import {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  createRouter, createWebHistory, RouteRecordRaw, _RouteRecordBase
-} from 'vue-router'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { createRouter, createWebHistory, RouteRecordRaw, _RouteRecordBase } from 'vue-router'
 import NProgress from 'nprogress'
 // import Home from '@/components/general/SHome.vue'
 
@@ -33,20 +31,20 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/Blogs',
-    name: 'Blogs',
+    path: '/blogs',
+    name: 'blogs',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Blogs/BlogsIndex.vue')
+      return import('@/views/blogs/BlogsIndex.vue')
     },
     children: [
       {
         path: 'BlogsColumn',
         name: 'BlogsColumn',
         component: () => {
-          return import('@/views/Blogs/components/BlogsColumn.vue')
+          return import('@/views/blogs/components/BlogsColumn.vue')
         }
       },
       {
@@ -96,13 +94,13 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/Tag',
-    name: 'Tag',
+    path: '/tag',
+    name: 'tag',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Tag/TagIndex.vue')
+      return import('@/views/tag/TagIndex.vue')
     }
   },
   {
@@ -116,13 +114,13 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/Navigation',
-    name: 'Navigation',
+    path: '/navigation',
+    name: 'navigation',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Navigation/website/Navigation.vue')
+      return import('@/views/navigation/website/Navigation.vue')
     }
   },
   {
@@ -132,7 +130,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Navigation/blogCrcles/BlogCircles.vue')
+      return import('@/views/navigation/blogCrcles/BlogCircles.vue')
     }
   },
   {
@@ -142,17 +140,17 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Navigation/favorite/Favorite.vue')
+      return import('@/views/navigation/favorite/Favorite.vue')
     }
   },
   {
-    path: '/Svideo',
-    name: 'Svideo',
+    path: '/video',
+    name: 'video',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Svideo/Svideo.vue')
+      return import('@/views/video/Svideo.vue')
     }
   },
   {
@@ -162,7 +160,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Svideo/components/VideoPlay.vue')
+      return import('@/views/video/components/VideoPlay.vue')
     }
   },
   {
@@ -176,23 +174,23 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/One',
-    name: 'One',
+    path: '/one',
+    name: 'one',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/One/One.vue')
+      return import('@/views/one/One.vue')
     }
   },
   {
-    path: '/Book',
-    name: 'Book',
+    path: '/book',
+    name: 'book',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/Book/BookIndex.vue')
+      return import('@/views/book/BookIndex.vue')
     }
   },
   {
@@ -203,16 +201,6 @@ const routes: RouteRecordRaw[] = [
     },
     component: () => {
       return import('@/views/page/listContent/ListContent.vue')
-    }
-  },
-  {
-    path: '/Software',
-    name: 'Software',
-    meta: {
-      keepAlive: false
-    },
-    component: () => {
-      return import('@/views/Software/SSoftware.vue')
     }
   },
   {

@@ -82,7 +82,7 @@
   @apply s-hw fixed;
 
   .book-main {
-    @apply h-[90%] mt-[4.5%] ml-[26%] w-[47%];
+    @apply h-[90%] mt-[4.5%] ml-[22%] w-[47%];
     @apply rounded shadow overflow-auto;
 
     .book-film-text {

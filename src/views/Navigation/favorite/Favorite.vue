@@ -34,167 +34,148 @@ onMounted(async () => {
 </script>
 
 <template>
+  <s-header></s-header>
+  <l-sidebar></l-sidebar>
   <section>
-    <s-header></s-header>
-    <l-sidebar></l-sidebar>
-    <div id="favorite">
-      <!-- end 加载组件 -->
-      <div id="favorite-main">
-        <!-- 网站内容 -->
-        <div class="flex flex-wrap favorite-content">
-          <div class="favorite-content-text" v-for="resda in resData.text" :key="resda.id">
-            <div class="favorite-content-text-1">
-              <span @click="winUrl(resda.url)">{{ resda.title }}</span>
-            </div>
-            <div class="favorite-content-text-2">{{ resda.describe }}</div>
+    <div class="fa-main">
+      <div class="fa-cont">
+        <div v-for="res in resData.text" :key="res.id" class="fa-cont-list">
+          <div class="fa-cont-list1">
+            <span @click="winUrl(res.url)">{{ res.title }}</span>
           </div>
+          <div class="fa-cont-list2">{{ res.describe }}</div>
         </div>
-        <!-- end 网站内容 -->
+      </div>
 
-        <!-- 分页 -->
-        <div class="favorite-page">
-          <a-pagination size="small" @change="method.currentchange" :total="resData.count" :pageSize="resData.pagesize"
-            :current="resData.current" show-quick-jumper />
-        </div>
-        <!-- end 分页-->
+      <div class="fa-page">
+        <a-pagination
+          size="small"
+          :total="resData.count"
+          :page-size="resData.pagesize"
+          :current="resData.current"
+          show-quick-jumper
+          @change="method.currentchange" />
       </div>
     </div>
-
-    <div id="FavSidebar">
-      <div id="FavSidebar-main">
-        <div class="fav-sidebar-describe">
-          <p class>各式各样网站收集分享</p>
-        </div>
-        <!--内容框-->
-
-        <div class="onecategory">
-          <div class="onecategory-name">列表</div>
-          <div class="inline-flex" v-for="result in state.resultData2" :key="result.id">
-            <div class="flex-1 m-1 text-base text-center px-1">
-              <span @click="clkApi(result.title)">{{ result.title }}</span>
-            </div>
+    <!-- 右侧边栏 -->
+    <div class="faside">
+      <div class="faside-describe">
+        <p class>各式各样网站收集分享</p>
+      </div>
+      <div class="onecategory">
+        <div class="onecategory-name">列表</div>
+        <div v-for="result in state.resultData2" :key="result.id" class="inline-flex">
+          <div class="flex-1 m-1 text-base text-center px-1 shadow rounded hover:bg-blue-300">
+            <span @click="clkApi(result.title)">{{ result.title }}</span>
           </div>
         </div>
-
-        <!-- end 内容框 -->
-
-        <!-- 站点信息 -->
-        <div class="fav-sidebar-footer">
-          <div class="fav-sidebar-f-title">站点信息</div>
-          <div class="fav-sidebar-f-content">
-            <div class="flex">
-              <div class="fav-sidebar-f-content-name">内容数量:</div>
-              <div class="fav-sidebar-f-content-text">{{ state.resultCount }}篇</div>
-            </div>
-          </div>
+      </div>
+      <div class="faside-footer">
+        <div class="faside-f-title">站点信息</div>
+        <div class="faside-f-cont">
+          <div class="faside-f-cont-name">内容数量:</div>
+          <div class="faside-f-cont-text">{{ state.resultCount }}篇</div>
         </div>
-        <!-- end 站点信息 -->
       </div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
-#favorite {
-  @apply h-full w-full;
+// @apply h-full w-full bg-yellow-300;
+.fa-main {
+  @apply relative;
+  @apply h-[85%] mt-[4.6%] ml-[22%] w-[47%];
+  @apply rounded shadow;
 
-  #favorite-main {
-    @apply fixed;
-    @apply h-[85%] mt-[4.6%] ml-[26%] w-[47%];
-    @apply rounded shadow;
+  .fa-cont {
+    @apply h-full m-auto w-full;
+    @apply flex flex-wrap;
 
-    .favorite-content {
-      @apply h-full m-auto w-full;
+    .fa-cont-list {
+      @include w-h(31.5%, 168px);
+      @apply m-auto mt-2 ml-2;
+      @apply rounded-sm bg-blue-gray-200 shadow;
 
-      .favorite-content-text {
-        @include w-h(31.5%, 170px);
-        @apply m-auto mt-4 ml-2;
-        @apply rounded-sm bg-gray-100 shadow;
+      .fa-cont-list1 {
+        @apply cursor-pointer h-[24%] text-lg p-2 hover:text-blue-400;
+        @include line-one;
+      }
 
-        .favorite-content-text-1 {
-          @apply cursor-pointer h-[25%] text-lg p-2;
-          @include line-one;
-        }
-
-        .favorite-content-text-2 {
-          @apply h-[65%] mx-1 mt-2 px-2;
-          @apply bg-white font-thin;
-          @include line-numbers(5);
-        }
+      .fa-cont-list2 {
+        @apply h-[65%] mx-1 mt-2 px-2;
+        @apply bg-white font-thin;
+        @include line-numbers(5);
       }
     }
+  }
 
-    .favorite-page {
-      @apply bg-white shadow p-2;
-    }
+  .fa-page {
+    @apply bg-white shadow p-2;
   }
 }
 
-#fav-sidebar {
+.faside {
   @apply fixed;
-  @apply h-[90%] top-[9%] right-[8%] w-[18%];
+  @apply h-[90%] top-[9%] right-[12%] w-[18%];
 
-  #fav-sidebar-main {
-    @apply h-full w-full overflow-auto;
+  .faside-describe {
+    @apply mb-2 w-[97%];
+    @apply rounded shadow text-center;
 
-    .fav-sidebar-describe {
-      @apply mb-2 w-[97%];
-      @apply rounded shadow text-center;
+    p {
+      @apply m-1 text-base py-4 px-2;
+    }
+  }
 
-      p {
-        @apply m-1 text-base py-4 px-2;
-      }
+  .faside-footer {
+    @apply mb-2 p-1 w-[97%];
+    @apply rounded cursor-pointer shadow;
+
+    .faside-f-title {
+      @apply m-1 text-base p-1;
+      @apply cursor-pointer font-semibold bg-gray-200;
     }
 
-    .fav-sidebar-footer {
-      @apply mb-2 p-1 w-[97%];
-      @apply rounded cursor-pointer shadow;
+    .faside-f-cont {
+      @apply m-2 text-sm flex;
 
-      .fav-sidebar-f-title {
-        @apply m-1 text-base p-1;
-        @apply cursor-pointer font-semibold bg-gray-200;
+      .faside-f-cont-name {
+        @apply p-1 w-[35%];
       }
 
-      .fav-sidebar-f-content {
-        @apply m-2 text-sm;
-
-        .fav-sidebar-f-content-name {
-          @apply p-1 w-[35%];
-        }
-
-        .fav-sidebar-f-content-text {
-          @apply p-1 w-[40%];
-        }
+      .faside-f-cont-text {
+        @apply p-1 w-[40%];
       }
     }
+  }
 
-    .onecategory {
-      @apply m-auto mb-2 p-1 w-[97%];
-      @apply bg-white rounded cursor-pointer shadow;
+  .onecategory {
+    @apply m-auto mb-2 p-1 w-[97%];
+    @apply bg-white rounded cursor-pointer shadow;
 
-      .onecategory-name {
-        @apply m-1 text-base p-1;
-        @apply font-semibold bg-gray-200;
-      }
+    .onecategory-name {
+      @apply m-1 text-base p-1;
+      @apply font-semibold bg-gray-200;
     }
   }
 }
 
 @screen <xp {
-  #favorite {
-    #favorite-main {
+  .favorite {
+    .fa-main {
       @apply fixed;
       @apply h-[83%] mt-[6.3%];
 
-      .favorite-content {
-        .favorite-content-text {
+      .fa-cont {
+        .fa-cont-list {
           @include w-h(31%, 140px);
         }
       }
     }
   }
 
-  #fav-sidebar {
+  .fav-sidebar {
     @apply top-[11%];
   }
 }

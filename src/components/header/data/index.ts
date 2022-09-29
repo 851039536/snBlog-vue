@@ -12,7 +12,7 @@ class method {
     })
   }
 
-  static async skip(num: any) {
+  static async skip(num: number) {
     switch (num) {
       case 13:
         winUrl('https://www.cnblogs.com/ouyangkai/')

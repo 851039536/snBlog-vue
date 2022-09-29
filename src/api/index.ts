@@ -14,8 +14,6 @@ import { interfaces } from './http/interfaces'
 
 /**
  * @description: 空函数查token权限
- * @param {*}
- * @return {*}
  */
 function TOKEN() {
   return request(
@@ -29,6 +27,4 @@ function TOKEN() {
   )
 }
 
-export {
-  article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces
-}
+export { article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces }

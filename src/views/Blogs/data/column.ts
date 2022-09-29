@@ -16,7 +16,7 @@ export class method {
 
   static async GetFy() {
     await method.GetCount()
-    await article.GetFyAsync(1, '转载', fyData.page, fyData.pagesize, 'id', true, true).then((res: any) => {
+    await article.GetFy(1, '转载', fyData.page, fyData.pagesize, 'id', true, true).then((res: any) => {
       fyData.resultData = res.data
     })
   }

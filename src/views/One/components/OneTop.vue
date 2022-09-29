@@ -6,46 +6,56 @@ defineProps({
       return 'title'
     }
   },
-  text: String,
-  read: Number
+  text: {
+    type: String,
+    default: () => {
+      return 'text'
+    }
+  },
+  read: {
+    type: Number,
+    default: () => {
+      return 0
+    }
+  }
 })
 </script>
 
 <template>
-  <div class="one-top">
-    <div class="one-top-img">
+  <div class="otop">
+    <div class="otop-img">
       <img src="@/assets/img/tg.jpg" />
     </div>
-    <div class="one-top-text">
-      <div class="one-top-text-title">
-        <span class="text-lg text-gray-600">舔王:{{  title  }}</span>
+    <div class="otop-cont">
+      <div class="otop-cont-title">
+        <span class="">舔王:{{ title }}</span>
       </div>
-      <div class="one-top-give">{{  text  }}</div>
+      <div class="otop-cont-give">{{ text }}</div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.one-top {
-  @apply h-[55%] w-full;
+.otop {
+  @apply h-420px w-full flex;
 
-  .one-top-img {
-    @apply h-[76.5%] w-[45%] float-left;
+  .otop-img {
+    @apply w-[45%];
 
     img {
       @apply h-full w-full;
     }
   }
 
-  .one-top-text {
-    @apply h-full w-[55%] float-right;
+  .otop-cont {
+    @apply h-full w-[55%];
 
-    .one-top-text-title {
-      @apply h-[19%] m-1 text-center pt-2;
+    .otop-cont-title {
+      @apply text-2xl m-1 text-center pt-2;
     }
 
-    .one-top-give {
-      @apply h-[55%] m-1 py-4 px-4;
+    .otop-cont-give {
+      @apply m-1 py-4 px-4;
       @apply font-thin text-base text-center leading-loose tracking-wide shadow-2xl;
       @include line-numbers(5);
     }

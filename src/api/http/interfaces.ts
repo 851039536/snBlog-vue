@@ -31,6 +31,17 @@ class interfaces {
       }
     )
   }
+  static GetFy(identity: number, type: string, pageIndex: number, pageSize: number) {
+    return request(
+      {
+        url: `/api/SnInterface/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=id&isDesc=true&cache=false`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
+  }
 }
 
 export { interfaces }

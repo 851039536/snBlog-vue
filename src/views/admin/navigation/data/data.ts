@@ -13,20 +13,22 @@ const state: ResData = reactive({
 
 const columns = [
   {
-    title: '标题', width: 100, dataIndex: 'title', key: 'title', fixed: 'left'
+    title: '标题',
+    width: 100,
+    dataIndex: 'title',
+    key: 'title'
+    // fixed: 'left'
   },
-
   {
     title: '用户',
-    dataIndex: 'user.name',
-    width: 55,
-    align: 'center'
+    dataIndex: 'user',
+    width: 55
+    // align: 'center'
   },
   {
-    title: 'img',
-    dataIndex: 'img',
-    width: 50,
-    ellipsis: true // 超过宽度将自动省略
+    title: '链接',
+    dataIndex: 'url',
+    width: 20
   },
   {
     title: '描述',
@@ -36,39 +38,39 @@ const columns = [
   },
   {
     title: '类别',
-    dataIndex: 'type.title',
-    width: 60,
-    align: 'center'
+    dataIndex: 'type',
+    width: 60
+    // align: 'center'
   },
 
   {
     title: '创建',
     dataIndex: 'timeCreate',
-    width: 80,
-    align: 'center'
+    width: 80
+    // align: 'center'
   },
   {
     title: '更新',
     dataIndex: 'timeModified',
-    width: 80,
-    align: 'center'
+    width: 80
+    // align: 'center'
   },
 
   {
     title: '操作',
+    dataIndex: 'edit',
     key: '编辑',
-    width: 40,
-    fixed: 'right',
-    align: 'center',
-    slots: { customRender: 'ed' } // 绑定插槽
+    width: 40
+    // fixed: 'right',
+    // align: 'center'
   },
   {
     title: '操作',
+    dataIndex: 'del',
     key: '删除',
-    fixed: 'right',
-    width: 40,
-    align: 'center',
-    slots: { customRender: 'de' } // 绑定插槽
+    // fixed: 'right',
+    width: 40
+    // align: 'center'
   }
 ]
 

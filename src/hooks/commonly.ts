@@ -14,7 +14,7 @@ export const removeStorage = () => {
 /**
  * 当前登录用户id
  */
-export const userId: any = ref(storage.get('id'))
+export const userId: string | object = ref(storage.get('id'))
 
 /**
  * 判断token是否存在否则跳转登录界面

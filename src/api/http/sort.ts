@@ -1,10 +1,9 @@
 import request from '@/utils/http/axios'
 // 主键查询
 
-// eslint-disable-next-line import/prefer-default-export
 export class sort {
   // 主键查询
-  static GetByIdAsync(id: number): Promise<any> {
+  static GetById(id: number) {
     return request(
       {
         url: `/api/SnSort/GetByIdAsync?id=${id}&cache=true`,
@@ -16,7 +15,7 @@ export class sort {
     )
   }
 
-  static GetAllAsync(cache: boolean): Promise<any> {
+  static GetAll(cache: boolean) {
     return request(
       {
         url: `/api/SnSort/GetAllAsync?cache=${cache}`,

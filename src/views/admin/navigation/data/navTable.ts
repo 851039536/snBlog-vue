@@ -5,30 +5,29 @@ import { state } from './data'
 import { navName } from '../../utils/data'
 
 export class method {
-  static GetFy() {
+  static async GetFy() {
     if (state.navStr === 'ALL') {
-      navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then((res) => {
-        tool.MomentTimeList(res)
+      await navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then(async res => {
+        await tool.MomentTimeList(res)
         state.resData = res.data
       })
     } else {
-      navigation.GetFyAsync(1, state.navStr, 1, 1000, 'id', true, false).then((res) => {
-        tool.MomentTimeList(res)
+      await navigation.GetFyAsync(1, state.navStr, 1, 1000, 'id', true, false).then(async res => {
+        await tool.MomentTimeList(res)
         state.resData = res.data
       })
     }
   }
 
-  static SelectNav() {
-    message.info(state.navStr)
+  static async SelectNav() {
     if (state.navStr === 'ALL') {
-      navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then((res) => {
-        tool.MomentTimeList(res)
+      await navigation.GetFyAsync(0, state.navStr, 1, 1000, 'id', true, false).then(async res => {
+        await tool.MomentTimeList(res)
         state.resData = res.data
       })
     } else {
-      navigation.GetFyAsync(1, state.navStr, 1, 1000, 'id', true, false).then((res) => {
-        tool.MomentTimeList(res)
+      await navigation.GetFyAsync(1, state.navStr, 1, 1000, 'id', true, false).then(async res => {
+        await tool.MomentTimeList(res)
         state.resData = res.data
       })
     }
@@ -43,11 +42,11 @@ export class method {
       return
     }
     if (state.navStr === 'ALL') {
-      await navigation.GetContainsAsync(0, 'null', name, false).then((res) => {
+      await navigation.GetContains(0, 'null', name, false).then(res => {
         state.resData = res.data
       })
     } else {
-      await navigation.GetContainsAsync(1, state.navStr, name, false).then((res) => {
+      await navigation.GetContains(1, state.navStr, name, false).then(res => {
         state.resData = res.data
       })
     }
@@ -59,8 +58,8 @@ export class method {
 
   static async GetApi() {
     await TOKEN()
-    method.GetFy()
-    await navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
+    await method.GetFy()
+    await navigation.GetSnNavigationTypeSAllAsync(false).then(res => {
       state.resNavType = res.data
     })
 

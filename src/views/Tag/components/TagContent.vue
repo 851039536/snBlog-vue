@@ -3,17 +3,20 @@ import { article } from '@/api'
 import { resData } from '../data/data'
 
 async function GetApi(id: number) {
-  resData.blog = await (await article.GetByIdAsync(id, true)).data[0].text
+  resData.blog = await (await article.GetById(id, true)).data[0].text
 }
 </script>
 <template>
-  <div class="tag-content">
-    <div class="text-sidebar">
-      <div class="text-sidebar-forms" v-for="result in resData.resultData" :key="result.id">
-        <div class="forms-1" @click="GetApi(result.id)">
-          <span>{{ result.title }}</span>
+  <div class="tagcont">
+    <div class="tagcont-side">
+      <div v-for="res in resData.resultData" :key="res.id" class="text-sidebar-forms">
+        <div class="forms-1" @click="GetApi(res.id)">
+          <span>{{ res.title }}</span>
         </div>
-        <div class="forms-2">{{ result.timeCreate.substring(0, 10) }}</div>
+        <div class="forms-2">
+          {{ res.timeCreate.substring(0, 10) }}
+          <span>测试</span>
+        </div>
       </div>
     </div>
 
@@ -24,22 +27,22 @@ async function GetApi(id: number) {
 </template>
 
 <style lang="scss" scoped>
-.tag-content {
+.tagcont {
   @apply flex flex-nowrap;
-  @apply rounded h-[80%] shadow mt-1 ml-[8%] w-[84%];
+  @apply rounded h-730px shadow mt-1;
 
-  .text-sidebar {
+  .tagcont-side {
     @apply cursor-pointer shadow w-[25%] overflow-auto;
 
     .text-sidebar-forms {
       @apply m-1 shadow p-1;
 
       .forms-1 {
-        @apply bg-gray-50 text-lg p-1 text-gray-600 hover: text-blue-400 ;
+        @apply bg-gray-100 text-lg p-1 text-gray-700 hover: text-blue-400;
       }
 
       .forms-2 {
-        @apply p-2 text-gray-500;
+        @apply p-1 text-gray-500;
       }
     }
   }

@@ -3,6 +3,9 @@ import { routers } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { isToken, removeStorage } from '@/hooks/commonly'
 import { storage } from '@/utils/storage/storage'
+import AWenzhang from '@assets/svg/admin/a-wenzhangh.svg'
+import ADaohang from '@assets/svg/admin/a-daohangl.svg'
+import ASet from '@assets/svg/admin/a-set.svg'
 
 function zx() {
   removeStorage()
@@ -43,59 +46,69 @@ provide('reload', reload)
         <a class="logo">控制台</a>
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
-          <li><a href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
-          <li><a @click="routers('/Blogs/BlogsColumn')">主页</a></li>
-          <li><a @click="zx()">注销</a></li>
+          <li><a class="text-gray-700" href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
+          <li><a class="text-gray-700" @click="routers('/index/column')">主页</a></li>
+          <li><a class="text-gray-700" @click="zx()">注销</a></li>
           <li>
             <a>
-              <a-avatar>{{ storage.get('user') }}</a-avatar>
+              {{ storage.get('user') }}
             </a>
           </li>
         </ul>
       </header>
 
       <a-layout>
-        <div class="bg-warm-gray-50 shadow mt-1">
-          <a-layout-sider breakpoint="lg" collapsed-width="0" width="220">
-            <a-menu mode="inline" @click="handleClick" :style="{ height: '100%', borderRight: 0 }">
-              <a-sub-menu key="article">
-                <template #title>
-                  <span> 文章展示 </span>
+        <div class="bg-warm-gray-50 mt-1">
+          <a-layout-sider breakpoint="lg" collapsed-width="0" width="230">
+            <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="handleClick">
+              <a-sub-menu key="sub1">
+                <template #icon>
+                  <AWenzhang></AWenzhang>
                 </template>
-                <a-menu-item key="1-1">文章列表</a-menu-item>
+                <template #title>
+                  <span>文章展示</span>
+                </template>
+                <a-menu-item key="1-1">文章</a-menu-item>
                 <a-menu-item key="1-2">标签</a-menu-item>
                 <a-menu-item key="1-3">类别</a-menu-item>
-                <a-menu-item key="1-4">Login</a-menu-item>
               </a-sub-menu>
               <a-sub-menu key="sub2">
-                <template #title>
-                  <span> 内容分享 </span>
+                <template #icon>
+                  <ADaohang></ADaohang>
                 </template>
-                <a-menu-item key="2-1">导航列表</a-menu-item>
+                <template #title>
+                  <span>内容导航</span>
+                </template>
+                <a-menu-item key="2-1">导航列</a-menu-item>
                 <a-menu-item key="2-2">标签</a-menu-item>
               </a-sub-menu>
               <a-sub-menu key="sub3">
-                <template #title>
-                  <span> 设置 </span>
+                <template #icon>
+                  <ASet></ASet>
                 </template>
-                <a-menu-item key="3-1">页面设置</a-menu-item>
+                <template #title>
+                  <span>设置</span>
+                </template>
+                <a-menu-item key="3-1">页面导航</a-menu-item>
+                <a-menu-item key="3-2">SQL备份</a-menu-item>
               </a-sub-menu>
             </a-menu>
           </a-layout-sider>
         </div>
 
-        <a-layout style="padding: 0 12px 12px;">
-          <a-breadcrumb style="margin: 14px 0;">
+        <a-layout style="padding: 0 12px 12px">
+          <a-breadcrumb style="margin: 14px 0">
             <a-breadcrumb-item>{{ navName.name }}</a-breadcrumb-item>
             <a-breadcrumb-item>{{ navName.name2 }}</a-breadcrumb-item>
           </a-breadcrumb>
-          <a-layout-content :style="{
-            background: '#fff',
-            padding: '10px',
-            margin: 0,
-            minHeight: '98%'
-          }">
-            <router-view v-if="showRouter" class=""></router-view>
+          <a-layout-content
+            :style="{
+              background: '#fff',
+              padding: '10px',
+              margin: 0,
+              minHeight: '98%'
+            }">
+            <router-view v-if="showRouter"></router-view>
           </a-layout-content>
         </a-layout>
       </a-layout>
@@ -173,7 +186,8 @@ provide('reload', reload)
     height: 100%;
     background: #333;
     transition: all 0.2s ease-out;
-    content: "";
+
+    // content: '';
   }
 
   .header .menu-icon .navicon::before {

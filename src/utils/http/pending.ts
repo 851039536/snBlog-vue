@@ -8,8 +8,9 @@ const pending = new Map()
  */
 export const addPending = (res: any) => {
   const url = [res.method, res.url, qs.stringify(res.params), qs.stringify(res.data)].join('&')
-  res.cancelToken = res.cancelToken
-    || new axios.CancelToken((cancel) => {
+  res.cancelToken =
+    res.cancelToken ||
+    new axios.CancelToken(cancel => {
       if (!pending.has(url)) {
         // 如果 pending 中不存在当前请求，则添加进去
         pending.set(url, cancel)

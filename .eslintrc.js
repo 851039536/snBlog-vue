@@ -8,9 +8,19 @@ module.exports = {
     es2021: true
   },
   // 扩展配置
-  extends: ['airbnb-base', 'vue-global-api', 'plugin:vue/vue3-essential'],
+  extends: [
+    'eslint:recommended',
+    'vue-global-api',
+    'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-recommended', // 让 eslint 识别 vue 文件
+    'plugin:prettier/recommended',
+    'prettier' // eslint-config-prettier 的缩写
+  ],
+
   // 解析器选项
   parser: 'vue-eslint-parser',
+  // 插件
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   parserOptions: {
     ecmaVersion: 2022, // 指定你想要使用的 ECMAScript 版本
     parser: '@typescript-eslint/parser',
@@ -25,10 +35,11 @@ module.exports = {
       // (不建议开启)
     }
   },
-  // 插件
-  plugins: ['vue', '@typescript-eslint'],
+
   // 启用规则
   rules: {
+    // 开启 prettier 自动修复的功能
+    'prettier/prettier': 'error',
     'vue/multi-word-component-names': 0, // 要求组件名称始终为多字
     'vue/no-dupe-v-else-if': 1, // 不允许 /链中的重复条件
     'vue/no-async-in-computed-properties': 1, // 不允许计算属性中的异步操作
@@ -39,6 +50,36 @@ module.exports = {
         allowCoexistStyle: true
       }
     ], // 禁止重复属性
+    // 强制校验 v-bind 指令
+    'vue/valid-v-bind': 'error',
+    // 强制校验 v-cloak 指令
+    'vue/valid-v-cloak': 'error',
+    // 强制校验 v-else-if 指令
+    'vue/valid-v-else-if': 'error',
+    // 强制校验 v-else 指令
+    'vue/valid-v-else': 'error',
+    // 强制校验 v-for 指令
+    'vue/valid-v-for': 'error',
+    // 强制校验 v-html 指令
+    'vue/valid-v-html': 'error',
+    // 强制校验 v-if 指令
+    'vue/valid-v-if': 'error',
+    // 强制校验 v-model 指令
+    'vue/valid-v-model': 'error',
+    // 强制校验 v-on 指令
+    'vue/valid-v-on': 'error',
+    // 强制校验 v-once 指令
+    'vue/valid-v-once': 'error',
+    // 强制校验 v-pre 指令
+    'vue/valid-v-pre': 'error',
+    // 强制校验 v-show 指令
+    'vue/valid-v-show': 'error',
+    // 强制校验 v-text 指令
+    'vue/valid-v-text': 'error',
+    'vue/comment-directive': 0,
+    // 强制校验 template 根节点
+    'vue/valid-template-root': 'error',
+    'vue/script-setup-uses-vars': 'error', // setup 语法糖校验
     'vue/no-export-in-script-setup': 1, // 禁止export<script setup>
     'vue/no-dupe-keys': 2, // 此规则可防止使用重复的名称
     'vue/no-unused-vars': 2, // 禁止 v-for 指令或作用域属性的未使用变量定义
@@ -61,17 +102,15 @@ module.exports = {
     '@typescript-eslint/no-array-constructor': 1, // 禁止泛型构造函数Array
     '@typescript-eslint/no-empty-function': 1, // 禁止空函数
 
-    // 'no-extra-semi': 'off', // 必须禁用基本规则，因为它可能报告错误
-    // '@typescript-eslint/no-extra-semi': 'error', // 禁止不必要的分号
+    // 'no-extra-semi': 'off', //必须禁用基本规则，因为它可能报告错误
+    // '@typescript-eslint/no-extra-semi': 'error', //禁止不必要的分号
+
     'no-loss-of-precision': 'off',
     '@typescript-eslint/no-loss-of-precision': 'error', // 禁止丢失精度的文字数字
 
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn', // 禁止未使用的变量
 
-    'import/extensions': [2, 'never', { 'web.js': 'never', json: 'never' }],
-    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
-    'import/no-unresolved': [0, { ignore: ['./src'] }],
     // '@typescript-eslint/init-declarations': 1, //要求或禁止在变量声明中进行初始化
     // '@typescript-eslint/no-explicit-any': 1, //不允许使用该类型any
     // '@typescript-eslint/consistent-type-imports': 1, //强制使用类型导入的一致
@@ -82,12 +121,12 @@ module.exports = {
     // "double"（默认）要求尽可能使用双引号
     // "single"要求尽可能使用单引号
     // "backtick"要求尽可能使用反引号
+
     // allowTemplateLiterals 表示支持单引号的同时允许模版字符串的写法。
     quotes: ['error', 'single', { allowTemplateLiterals: true }],
     'no-return-await': 2, // 在 async function， return await 很少有用。因为 async function 的返回值总是封装在 Promise.resolve，return await 实际上并没有做任何事情，只是在 Promise resolve 或 reject 之前增加了额外的时间。唯一有效是，如果 try/catch 语句中使用 return await 来捕获另一个基于 Promise 的函数的错误，则会出现异常。
     'no-redeclare': 2, // 禁止重新声明变量
     'require-await': 1, // 禁止使用不带 await 表达式的 async 函数
-    'comma-dangle': 0,
     // eslint-disable-next-line no-dupe-keys
     'arrow-body-style': ['error', 'always'], // 要求箭头函数体使用大括号
     // 'arrow-parens': ['error', 'always'], //要求箭头函数的参数使用圆括号
@@ -102,9 +141,6 @@ module.exports = {
     //     memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
     //   }
     // ],
-    'import/prefer-default-export': 0,
-    // eslint-disable-next-line no-dupe-keys
-    'import/extensions': 0,
     'prefer-template': 1, // 建议使用模板字面量而非字符串连接
     // 'template-curly-spacing': ['error', 'always'],//强制模板字符串中空格的使用
     // 'init-declarations': 2, //强制或禁止变量声明语句中初始化
@@ -125,8 +161,7 @@ module.exports = {
     'max-classes-per-file': 2, // 强制每个文件中包含的的类的最大数量
     'guard-for-in': 1, // 需要约束 for-in
     complexity: ['error', 19], // 限制圈复杂度
-    eqeqeq: ['error', 'always'], // 选项 "always"（默认）强制在任何情况下都使用 === 和 !==  smart 除了
-    // 比较两个字面量的值,比较 typeof 的值 与 null 进行比较 强制使用 === 和 !==
+    eqeqeq: ['error', 'always'], // 选项 "always"（默认）强制在任何情况下都使用 === 和 !==  smart 除了 比较两个字面量的值,比较 typeof 的值 与 null 进行比较 强制使用 === 和 !==
     'dot-notation': ['error', { allowKeywords: true }], // 要求使用点号
     'default-case': 1, // 要求 Switch 语句中有 Default 分支
     'dot-location': ['error', 'property'], // 强制在点号之前或之后换行 object要求点操作符和对象部分放在同一行 property要求点操作符和属性放在同一行。
@@ -134,7 +169,7 @@ module.exports = {
     'use-isnan': 2, // 要求调用 isNaN()检查 NaN
     'no-unsafe-finally': 2, // 禁止在 finally 语句块中出现控制流语句
     'no-unreachable': 2, // 禁止在 return、throw、continue 和 break 语句后出现不可达代码
-    'no-regex-spaces': 2, // 禁止正则表达式字面量中出现多个空格
+    // 'no-regex-spaces': 2, //禁止正则表达式字面量中出现多个空格
     'no-ex-assign': 2, // 禁止对 catch 子句中的异常重新赋值
     'no-dupe-keys': 2, // 禁止在对象字面量中出现重复的键
     'no-debugger': 2, // 该规则禁止 debugger 语句。
@@ -144,17 +179,15 @@ module.exports = {
     'no-useless-escape': 0, // 禁止不必要的转义字符
     'no-var': 'error', // 不能使用var声明变量
     // 'no-unused-vars': 0, // 定义未使用的变量
-    'prettier/prettier': 'off', // 关闭prettier的提示,
+    // 'prettier/prettier': 'off', //关闭prettier的提示,
     'no-cond-assign': 2, // 条件语句的条件中不允许出现赋值运算符
     'no-dupe-args': 2, // 函数参数不能重复
     'no-duplicate-case': 2, // switch中的case标签不能重复
     'no-func-assign': 2, // 禁止重复的函数声明
-    // 'no-extra-semi': 2, // 禁止多余的冒号
+    // 'no-extra-semi': 2, //禁止多余的冒号
     'no-irregular-whitespace': 2, // 不能有不规则的空格
-    'no-extra-parens': 2, // 禁止非必要的括号
+    // 'no-extra-parens': 2, //禁止非必要的括号
     'no-const-assign': 2, // 禁止修改const声明的变量
-    semi: ['error', 'never'],
-    'max-len': ['error', { code: 520 }],
     'for-direction': 2 // 强制 “for” 循环中更新子句的计数器朝着正确的方向移动
   },
   // 全局变量

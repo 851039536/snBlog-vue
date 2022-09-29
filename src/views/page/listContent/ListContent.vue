@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-// eslint-disable-next-line import/no-unresolved
 import { listContent } from '@/api'
 
 const state: any = reactive({
@@ -11,7 +10,7 @@ const info = () => {
   message.info('功能进行中...')
 }
 const GetApi = () => {
-  listContent.Cnblogs().then((res) => {
+  listContent.Cnblogs().then(res => {
     const str = res.data
     for (let index = 0; index < str.length; index += 1) {
       const element = str[index].split('-')
@@ -29,6 +28,7 @@ onMounted(async () => {
 </script>
 <template>
   <div>
+    <l-sidebar></l-sidebar>
     <s-header></s-header>
     <div class="list-content">
       <div class="list-content-title">
@@ -41,10 +41,10 @@ onMounted(async () => {
               <div>博客园</div>
               <div>最新</div>
             </div>
-            <div class="list-content-t-content" v-for="(res, index) in state.listTitle" :key="index">
+            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
               <a :href="state.listHref[index]" target="-blank">
-                <span>{{  index  }}</span>
-                {{  res  }}
+                <span>{{ index }}</span>
+                {{ res }}
               </a>
             </div>
           </div>
@@ -56,10 +56,10 @@ onMounted(async () => {
               <div>博客园</div>
               <div>最新</div>
             </div>
-            <div class="list-content-t-content" v-for="(res, index) in state.listTitle" :key="index">
+            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
               <a :href="state.listHref[index]" target="-blank">
-                <span>{{  index  }}</span>
-                {{  res  }}
+                <span>{{ index }}</span>
+                {{ res }}
               </a>
             </div>
           </div>
@@ -71,10 +71,10 @@ onMounted(async () => {
               <div>博客园</div>
               <div>最新</div>
             </div>
-            <div class="list-content-t-content" v-for="(res, index) in state.listTitle" :key="index">
+            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
               <a :href="state.listHref[index]" target="-blank">
-                <span>{{  index  }}</span>
-                {{  res  }}
+                <span>{{ index }}</span>
+                {{ res }}
               </a>
             </div>
           </div>
@@ -86,10 +86,10 @@ onMounted(async () => {
               <div>博客园</div>
               <div>最新</div>
             </div>
-            <div class="list-content-t-content" v-for="(res, index) in state.listTitle" :key="index">
+            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
               <a :href="state.listHref[index]" target="-blank">
-                <span>{{  index  }}</span>
-                {{  res  }}
+                <span>{{ index }}</span>
+                {{ res }}
               </a>
             </div>
           </div>
@@ -102,7 +102,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 // @import './index.scss';
 .list-content {
-  @apply mt-[4.5%] ml-[8%] w-[84%];
+  @apply mt-[4.5%] ml-[22%] w-[69%];
   @apply rounded-md shadow;
 
   .list-content-title {

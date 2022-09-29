@@ -38,24 +38,30 @@ GetApi()
 <template>
   <section>
     <s-header></s-header>
-    <div class="video-play">
-      <div class="video-play-main">
-        <div class="video-play-2">
-          <div class="video-play-2-1" v-for="res in resData.resultData" :key="res.id">
-            <div class="video-play-2-1-1">
+    <div class="vplay">
+      <div class="vplay-main">
+        <div class="vplay-2">
+          <div v-for="res in resData.resultData" :key="res.id" class="vplay-2-1">
+            <div class="vplay-2-1-1">
               <img src="@/assets/img/sp.png" />
             </div>
-            <div class="video-play-2-1-2">
+            <div class="vplay-2-1-2">
               <a @click="videos(res.id)">{{ res.title }}</a>
             </div>
-            <div class="video-play-2-1-3">
+            <div class="vplay-2-1-3">
               {{ res.timeModified.substring(0, 10) }}
             </div>
           </div>
         </div>
 
-        <div class="video-play-1">
-          <iframe id="if" :src="resData.URL" scrolling="no" border="0" frameborder="no" framespacing="0"
+        <div class="vplay-1">
+          <iframe
+            id="if"
+            :src="resData.URL"
+            scrolling="no"
+            border="0"
+            frameborder="no"
+            framespacing="0"
             allowfullscreen="true"></iframe>
         </div>
       </div>
@@ -64,14 +70,14 @@ GetApi()
 </template>
 
 <style lang="scss" scoped>
-.video-play {
-  @apply h-[90%] top-[8.5%] left-[3%] w-[94%] fixed;
+.vplay {
+  @apply h-[90%] top-[8.5%] left-[5%] w-[90%] fixed;
 
-  .video-play-main {
+  .vplay-main {
     @apply flex;
     @include initialize(100%, 100%, null, null, null, null, #ffffff);
 
-    .video-play-1 {
+    .vplay-1 {
       @include w-h(80%, 100%);
       @apply m-2 p-1;
 
@@ -82,16 +88,16 @@ GetApi()
       }
     }
 
-    .video-play-2 {
+    .vplay-2 {
       width: 19%;
 
       @apply cursor-pointer overflow-auto;
 
-      .video-play-2-1 {
+      .vplay-2-1 {
         @include w-h(100%, 185px);
         @apply shadow mb-1;
 
-        .video-play-2-1-1 {
+        .vplay-2-1-1 {
           height: 65%;
 
           img {
@@ -99,14 +105,14 @@ GetApi()
           }
         }
 
-        .video-play-2-1-2 {
+        .vplay-2-1-2 {
           height: 18%;
 
           @include line-numbers(2);
           @apply text-base p-1;
         }
 
-        .video-play-2-1-3 {
+        .vplay-2-1-3 {
           height: 17%;
 
           @apply text-base p-1;
@@ -117,11 +123,11 @@ GetApi()
 }
 
 // @screen xp {
-//   .video-play-2 {
+//   .vplay-2 {
 //     @apply hidden;
 //   }
 
-//   .video-play .video-play-main .video-play-1 {
+//   .vplay .vplay-main .vplay-1 {
 //     width: 100%;
 //     height: 90%;
 //   }

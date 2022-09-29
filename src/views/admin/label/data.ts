@@ -1,4 +1,4 @@
-import { IntArticle } from '@/api/data/interData'
+import { IArticle } from '@/api/data/interData'
 
 interface State {
   resData: any
@@ -14,7 +14,7 @@ const state: State = reactive({
   labelStr: 'ALL',
   order: true
 })
-const formState: IntArticle = reactive({
+const formState: IArticle = reactive({
   labelId: 1,
   sortId: 1,
   userId: 0,
@@ -32,69 +32,59 @@ const formState: IntArticle = reactive({
 
 const columns = [
   {
-    title: '标题', width: 130, dataIndex: 'title', key: 'title', fixed: 'left', ellipsis: true
+    title: '标题',
+    width: 130,
+    dataIndex: 'title',
+    key: 'title'
   },
 
   {
     title: '用户',
     dataIndex: 'user.name',
-    width: 55,
-    align: 'center'
+    width: 55
   },
   {
     title: '分类',
     dataIndex: 'sort.name',
-    width: 60,
-    align: 'center'
+    width: 60
   },
   {
     title: '标签',
     dataIndex: 'label.name',
-    width: 60,
-    align: 'center'
+    width: 60
   },
 
   {
     title: '更新时间',
     dataIndex: 'timeModified',
-    width: 80,
-    align: 'center'
+    width: 80
   },
   {
     title: '创建时间',
     dataIndex: 'timeCreate',
-    width: 80,
-    align: 'center'
+    width: 80
   },
 
   {
     title: '阅读量',
     dataIndex: 'read',
-    width: 35,
-    align: 'center'
+    width: 35
   },
   {
     title: '点赞',
     dataIndex: 'give',
-    width: 35,
-    align: 'center'
+    width: 35
   },
 
   {
     title: '操作',
     key: '编辑',
-    width: 40,
-    fixed: 'right',
-    align: 'center',
-    slots: { customRender: 'ed' } // 绑定插槽
+    width: 40
   },
   {
     title: '操作',
     key: '删除',
-    width: 40,
-    fixed: 'right',
-    align: 'center',
-    slots: { customRender: 'de' } // 绑定插槽
+    width: 40
   }
 ]
 

@@ -4,7 +4,7 @@
  * @param {number}  delay
  * @return {*}
  */
-function debounce(fn: any, delay: number) {
+function debounce(fn: any, delay: number): any {
   let timer: any
   return function res() {
     if (timer) {

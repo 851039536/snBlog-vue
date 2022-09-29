@@ -19,11 +19,11 @@ async function GetApi() {
   await TOKEN()
   navName.name = '内容分享'
   navName.name2 = '编辑内容'
-  navigation.GetSnNavigationTypeSAllAsync(false).then((res) => {
+  navigation.GetSnNavigationTypeSAllAsync(false).then(res => {
     resType.value = res.data
   })
 
-  navigation.GetByIdAsync(Rid.id, false).then((res) => {
+  navigation.GetByIdAsync(Rid.id, false).then(res => {
     formState.id = res.data.id
     formState.title = res.data.title
     formState.describe = res.data.describe
@@ -50,10 +50,10 @@ onMounted(async () => {
 
     <div class="rounded flex m-auto bg-gray-50 shadow p-2">
       <div>
-        <a-select v-model:value="formState.typeId" style="width: 120px;">
-          <a-select-option v-for="item in resType" :key="item.id" :label="item.id" :value="item.id">{{
-            item.title
-          }}</a-select-option>
+        <a-select v-model:value="formState.typeId" style="width: 120px">
+          <a-select-option v-for="item in resType" :key="item.id" :label="item.id" :value="item.id">
+            {{ item.title }}
+          </a-select-option>
         </a-select>
       </div>
       <div class="ml-2">
@@ -69,7 +69,7 @@ onMounted(async () => {
 
     <div class="bg-gray-100 shadow p-2">
       <a-button type="primary" @click="onSubmit">更新</a-button>
-      <a-button style="margin-left: 10px;" @click="go(-1)">返回</a-button>
+      <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
   </div>
 </template>

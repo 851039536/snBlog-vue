@@ -24,5 +24,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import "../index";
+/* stylelint-disable-next-line string-quotes */
+@import '../index';
 </style>

@@ -9,7 +9,7 @@ const state: any = reactive({
 })
 
 const GetAll = async () => {
-  await article.GetByIdAsync(state.id, true).then((res: any) => {
+  await article.GetById(state.id, true).then((res: any) => {
     const { title, text } = res.data[0]
     state.blog = { title, text }
   })
@@ -39,9 +39,13 @@ onMounted(async () => {
     state.titles = []
     return
   }
-  const hTags = Array.from(new Set(titles.map((title: any) => {
-    return title.tagName
-  }))).sort()
+  const hTags = Array.from(
+    new Set(
+      titles.map((title: any) => {
+        return title.tagName
+      })
+    )
+  ).sort()
   state.titles = titles.map((el: any) => {
     return {
       title: el.innerText,
@@ -55,12 +59,12 @@ onMounted(async () => {
   <div class="m-auto w-[80%]">
     <a-back-top />
     <div class="vmd">
-      <a-page-header style="border: 1px solid rgb(235 237 240);" :title="state.blog.title" />
-      <v-md-preview :text="state.blog.text" ref="preview" />
+      <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.title" />
+      <v-md-preview ref="preview" :text="state.blog.text" />
     </div>
     <div class="anchor">
-      <div class="anchor-tag" v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
-        {{  anchor.title  }}
+      <div v-for="anchor in state.titles" :key="anchor" class="anchor-tag" @click="handleAnchorClick(anchor)">
+        {{ anchor.title }}
       </div>
     </div>
   </div>

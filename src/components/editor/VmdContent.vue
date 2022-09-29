@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // v-model 不能直接修改
 const props = defineProps<{
-  result: any
+  result: String
 }>()
 
 const result = ref(props.result)

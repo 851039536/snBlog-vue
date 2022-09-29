@@ -33,8 +33,12 @@ onMounted(async () => {
         </div>
       </div>
       <div class="n-nav-paging">
-        <a-pagination size="small" @change="method.currentchange" :total="state.count" :pageSize="state.pagesize"
-          show-quick-jumper />
+        <a-pagination
+          size="small"
+          :total="state.count"
+          :page-size="state.pagesize"
+          show-quick-jumper
+          @change="method.currentchange" />
         <!-- end 分页-->
       </div>
     </div>
@@ -47,7 +51,7 @@ onMounted(async () => {
   @apply rounded-sm shadow;
 
   .n-nav-text {
-    @apply grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl: grid-cols-4 ;
+    @apply grid sm: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl: grid-cols-4;
 
     .n-nav-1 {
       @include w-h(null, 200px);

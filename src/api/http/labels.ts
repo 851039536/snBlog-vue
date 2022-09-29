@@ -13,7 +13,7 @@ class labels {
     )
   }
 
-  static GetAllAsync(cache: boolean) {
+  static GetAll(cache: boolean) {
     return request(
       {
         url: `/api/SnLabels/GetAllAsync?cache=${cache}`,

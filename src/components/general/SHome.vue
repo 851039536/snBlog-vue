@@ -4,7 +4,7 @@ import { routers } from '@h/routers'
 
 <template>
   <div class="home">
-    <div class="home2">
+    <div class="home-cont">
       <div class="text-[3rem] text-gray-700">xxxx-xxx</div>
       <div class="font-light mt-4 text-lg text-center">
         <p>一位热爱生活、xxxxxx开发者,</p>
@@ -35,7 +35,7 @@ import { routers } from '@h/routers'
 
   transform: translate(-50%, -50%);
 
-  .home2 {
+  .home-cont {
     @apply flex p-2 justify-center;
 
     flex-direction: column;

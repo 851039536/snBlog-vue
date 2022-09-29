@@ -12,7 +12,7 @@ export default defineConfig({
   },
   // 快速创建可复用的组件和工具类。
   shortcuts: {
-    's-side': 'h-[92%] top-[9%] right-[8%] w-[18%] fixed',
+    's-side': 'h-[92%] top-[9%] right-[12%] w-[18%] fixed',
     's-hw': 'h-full w-full'
   },
   theme: {

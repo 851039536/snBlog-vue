@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { IntSort } from '@/api/data/interData'
 import { tool } from '@/utils/common/tool'
+import { string } from 'vue-types'
 import { method } from '../../data'
 import { state } from '../../data/data'
 
@@ -12,7 +13,14 @@ defineProps({
       return []
     }
   },
-  name: String
+  name: {
+    type: string,
+    required: true,
+    default: () => {
+      return ''
+    }
+  }
+  // name: String
 })
 const GetFy = async (name: string) => {
   await method.GetCount(1, name)
@@ -25,10 +33,10 @@ const GetFy = async (name: string) => {
 </script>
 <template>
   <div class="category">
-    <div class="category-name">{{  name  }}</div>
-    <div class="inline-flex" v-for="res in resData" :key="res.id">
+    <div class="category-name">{{ name }}</div>
+    <div v-for="res in resData" :key="res.id" class="inline-flex">
       <div class="category-text" @click="GetFy(res.name)">
-        {{  res.name  }}
+        {{ res.name }}
       </div>
     </div>
   </div>

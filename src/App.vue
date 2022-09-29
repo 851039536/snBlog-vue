@@ -20,6 +20,7 @@
 @include scroll;
 
 #app {
-  @apply bg-gray-100 w-full relative overflow-auto;
+  // @apply bg-gray-100 w-full overflow-auto;
+  @apply bg-gray-100 absolute w-full;
 }
 </style>

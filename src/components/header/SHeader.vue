@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { storage } from '@/utils/storage/storage'
 import { resData, method } from './data/index'
 
 const local = ref(true)
@@ -24,21 +25,22 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav class="headers">
-    <div class="headers-div">
-      <div class="sheader-l">
+  <nav class="head">
+    <div class="head-cont">
+      <div class="head-cont-l">
         <div class="flex text-2xl items-center">
           <span>少年</span>
         </div>
-        <div class="sheader-l-text">
+        <div class="head-l-text">
           <div v-for="res in resData" :key="res.id">
-            <span @click="method.skip(res.path)" v-if="res.identity">{{  res.title  }}</span>
+            <span v-if="res.identity" @click="method.skip(res.path)">{{ res.title }}</span>
           </div>
         </div>
       </div>
-      <div class="sheader-r">
-        <div class="sheader-r-div">
-          <span @click="method.skip(14)" v-once>登录</span>
+      <div class="head-cont-r">
+        <div class="head-r-div">
+          <span v-if="storage.get('user') === 'user'" v-once @click="method.skip(14)">登录</span>
+          <span v-else v-once @click="method.skip(14)">{{ storage.get('user') }}</span>
         </div>
       </div>
     </div>
@@ -46,33 +48,33 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.headers {
+.head {
   @apply flex h-70px w-full top-0 left-0 z-50 fixed;
   @apply bg-white shadow px-3;
 
-  .headers-div {
+  .head-cont {
     @apply w-full inline-flex;
 
-    .sheader-l {
+    .head-cont-l {
       @apply flex h-full w-[50%];
 
-      .sheader-l-text {
+      .head-l-text {
         @apply flex m-1 p-1 items-center;
 
         span {
-          @apply cursor-pointer m-1 text-xl p-1 hover: text-blue-400 ;
+          @apply cursor-pointer m-1 text-xl p-1 hover: text-blue-400;
         }
       }
     }
 
-    .sheader-r {
+    .head-cont-r {
       @apply flex h-full text-xl w-[50%] justify-end;
 
-      .sheader-r-div {
+      .head-r-div {
         @apply flex items-center;
 
         span {
-          @apply cursor-pointer m-1 hover: text-blue-400 ;
+          @apply cursor-pointer m-1 hover: text-blue-400;
         }
       }
     }
@@ -80,10 +82,10 @@ onMounted(async () => {
 }
 
 @screen <lg {
-  .headers {
+  .head {
     @apply w-full left-0;
 
-    .headers-div .sheader-l {
+    .head-cont .head-cont-l {
       @apply w-[75%];
     }
   }

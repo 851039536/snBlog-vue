@@ -21,28 +21,33 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="blogs" v-for="res in state.resData" :key="res.id">
+    <div v-for="res in state.resData" :key="res.id" class="blogs">
       <div class="blogs-div">
         <div class="blogs-div-img">
           <img v-lazy="getImageUrl(res.img)" />
         </div>
         <div class="blogs-div-frame">
           <p class="blogs-div-frame-1">
-            <span @click="routerId('/index/content', res.id)">{{  res.title  }}</span>
+            <span @click="routerId('/index/content', res.id)">{{ res.title }}</span>
           </p>
-          <p class="blogs-div-frame-2">{{  res.sketch  }}</p>
-          <p class="blogs-div-frame-3">
+          <p class="blogs-div-frame-2">{{ res.sketch }}</p>
+          <div class="blogs-div-frame-3">
             <span>文章</span>
-            <span>{{  res.read  }} ℃</span>
-            <span>赞 {{  res.give  }}</span>
-            <span>{{  res.timeCreate.substring(0, 10)  }}</span>
-          </p>
+            <span>{{ res.read }} ℃</span>
+            <span>赞 {{ res.give }}</span>
+            <span>{{ res.timeCreate.substring(0, 10) }}</span>
+          </div>
         </div>
       </div>
     </div>
     <div class="blogs-page">
-      <a-pagination size="small" @change="currentchange" :total="state.count" :pageSize="state.pagesize"
-        :current="state.current" show-quick-jumper></a-pagination>
+      <a-pagination
+        size="small"
+        :total="state.count"
+        :page-size="state.pagesize"
+        :current="state.current"
+        show-quick-jumper
+        @change="currentchange"></a-pagination>
     </div>
   </section>
 </template>
@@ -51,7 +56,7 @@ onMounted(async () => {
 .blogs {
   .blogs-div {
     @apply flex h-155px mt-10px w-full;
-    @apply bg-white rounded shadow hover: bg-gray-50 ;
+    @apply bg-white rounded hover: bg-gray-50;
 
     .blogs-div-img {
       @apply h-full p-2 w-[25%];
@@ -65,7 +70,7 @@ onMounted(async () => {
       @apply h-full w-[75%];
 
       .blogs-div-frame-1 {
-        @apply cursor-pointer m-1 text-xl px-1;
+        @apply cursor-pointer m-1 text-xl px-1 hover:text-blue-400;
         @include line-one;
       }
 
@@ -77,6 +82,8 @@ onMounted(async () => {
 
       .blogs-div-frame-3 {
         @apply m-1 px-1;
+
+        color: #666;
 
         span {
           @apply p-1;

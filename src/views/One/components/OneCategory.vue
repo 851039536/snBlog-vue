@@ -11,24 +11,24 @@ defineProps({
 })
 </script>
 <template>
-  <div class="onecategory">
-    <div class="onecategory-name">分类</div>
-    <div class="inline-flex" v-for="res in result" :key="res.id">
+  <div class="ocategory">
+    <div class="ocategory-title">分类</div>
+    <div v-for="res in result" :key="res.id" class="inline-flex">
       <div class="flex-1 m-1 text-base text-center px-1 text-gray-600">
-        {{  res.title  }}
+        {{ res.title }}
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.onecategory {
+.ocategory {
   width: 97%;
 
   @apply cursor-pointer m-auto mb-2 p-1;
   @apply bg-white rounded shadow;
 
-  .onecategory-name {
+  .ocategory-title {
     @apply font-semibold bg-gray-200 m-1 text-base p-1;
   }
 }

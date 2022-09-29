@@ -13,7 +13,7 @@ const state = reactive({
   result: []
 })
 function login() {
-  user.Login(state.name, state.pwd).then((res) => {
+  user.Login(state.name, state.pwd).then(res => {
     if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
       message.error(res.data)
       return
@@ -37,8 +37,8 @@ onMounted(async () => {
   <div class="login-box">
     <form class="login">
       <p>Login</p>
-      <input type="text" v-model="state.name" placeholder="用户名" />
-      <input type="password" v-model="state.pwd" placeholder="密码" />
+      <input v-model="state.name" type="text" placeholder="用户名" />
+      <input v-model="state.pwd" type="password" placeholder="密码" />
       <span class="btn" @click="login">登 录</span>
     </form>
   </div>
@@ -80,14 +80,17 @@ input {
 
   /* 下面的会覆盖上面的步伐 */
   outline: none;
+
+  @apply cursor-pointer;
 }
 
 .btn {
-  @apply text-xl w-[38%];
+  @apply text-xl w-[38%] p-2;
+  @apply cursor-pointer shadow rounded;
 }
 
 .btn:hover {
-  background-color: #13e269;
+  background-color: #4f99ee;
 }
 
 .login-box {

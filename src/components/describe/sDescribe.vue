@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 defineProps({
   userTalk: {
-    type: String
+    type: String,
+    required: true
   }
 })
 </script>

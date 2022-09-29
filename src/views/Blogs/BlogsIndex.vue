@@ -15,7 +15,7 @@
 
 <style lang="scss" scoped>
 .blogs-index {
-  @apply h-[92%] mt-[4.5%] ml-[26%] w-[47%];
+  @apply h-[92%] mt-[4.5%] ml-[22%] w-[47%];
 }
 
 @screen <lg {

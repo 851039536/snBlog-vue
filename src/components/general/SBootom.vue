@@ -7,16 +7,16 @@ const skip = (num: number) => {
       routers('/index/column')
       break
     case 2:
-      routers('/One')
+      routers('/one')
       break
     case 3:
-      routers('./Book')
+      routers('./book')
       break
     case 4:
-      routers('./svideo')
+      routers('./video')
       break
     case 5:
-      routers('./Photo')
+      routers('./photo')
       break
     case 6:
       routers('./BlogHome')

@@ -107,7 +107,8 @@
       "@comp/*": ["./src/components/*"],
       "@api/*": ["./src/api/*"],
       "@vi/*": ["./src/views/*"],
-      "@h/*": ["./src/hooks/*"]
+      "@h/*": ["./src/hooks/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
 
