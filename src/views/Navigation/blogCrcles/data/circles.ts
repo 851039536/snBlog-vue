@@ -10,7 +10,7 @@ interface Res {
 const resData: Res = reactive({
   resultData: [],
   page: 1,
-  pagesize: 18,
+  pagesize: 21,
   count: 0,
   current: 1
 })
@@ -20,7 +20,7 @@ class method {
     await navigation.GetFyAsync(1, '博客圈', resData.page, resData.pagesize, 'id', true, true).then((res: any) => {
       resData.resultData = res.data
     })
-    await navigation.GetCountAsync(1, '博客圈', true).then((res: any) => {
+    await navigation.GetCount(1, '博客圈', true).then((res: any) => {
       resData.count = res.data
     })
   }

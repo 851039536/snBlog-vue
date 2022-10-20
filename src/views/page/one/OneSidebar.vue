@@ -32,7 +32,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .one-side {
-  @apply h-[91%] ml-3 top-[9%] right-[12%] w-[18%] fixed;
+  @apply h-[91%] ml-3 top-[9%] right-[11%] w-[17%] fixed;
   @apply overflow-auto;
 
   div {

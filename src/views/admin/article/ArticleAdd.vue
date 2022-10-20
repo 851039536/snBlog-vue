@@ -1,17 +1,16 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { labels, article, sort, TOKEN } from '@/api'
+import { labels, articleApi, sort, TOKEN } from '@/api'
 import { formState, state } from './data'
 import { routers, go, reloads } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { tool } from '@/utils/common/tool'
-import { userId } from '@/hooks/commonly'
+import { storage } from '@/utils/storage/storage'
 
 const onSubmit = async () => {
-  formState.userId = userId.value
-  console.log('%c [ userId ]-12', 'font-size:13px; background:pink; color:#bf2c9f;', userId)
+  formState.userId = storage.get('id')
   formState.img = `blog/${tool.Random(1, 5, 1)}.jpg`
-  await article.AddAsync(formState).then(() => {
+  await articleApi.AddAsync(formState).then(() => {
     message.info('添加成功')
     routers('/Admin-index/ArticleTable')
   })
@@ -46,19 +45,19 @@ onMounted(async () => {
 
 <template>
   <div class="form">
-    <div class="bg-gray-100 shadow p-2">
+    <div class="bg-gray-100 p-2">
       <a-button type="primary" @click="onSubmit">添加</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
       <a-button style="margin-left: 10px" @click="reloads">刷新</a-button>
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="rounded bg-gray-50 mt-2 p-2">
       <a-input v-model:value="formState.title" prefix="标题:" />
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="rounded bg-gray-50 mt-2 p-2">
       <a-textarea v-model:value="formState.sketch" prefix="描述" />
     </div>
 
-    <div class="rounded flex m-auto bg-gray-50 shadow p-2">
+    <div class="rounded flex m-auto bg-gray-50 p-2">
       <div class="ml-2">
         标签
         <a-select v-model:value="formState.labelId" style="width: 120px" placeholder="请选择">
@@ -76,7 +75,7 @@ onMounted(async () => {
         </a-select>
       </div>
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="rounded bg-gray-50 mt-2 p-2">
       <v-md-editor v-model="formState.text" height="390px"></v-md-editor>
     </div>
   </div>

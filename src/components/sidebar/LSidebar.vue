@@ -1,13 +1,23 @@
 <script lang="ts" setup>
-import { resData, method } from './index'
+import { sideIndex } from '@/hooks/data'
+import { rData, method } from './index'
 
+function getTopic(index: number) {
+  sideIndex.value = index
+}
 onMounted(async () => {
   await method.GetType()
+  getTopic(sideIndex.value)
 })
 </script>
 <template>
   <div class="lside">
-    <div v-for="(res, index) in resData" :key="index" class="lside-list">
+    <div
+      v-for="(res, index) in rData"
+      :key="index"
+      class="lside-list"
+      :class="sideIndex == index ? 'active' : ''"
+      @click="getTopic(index)">
       <div v-if="res.identity" @click="method.skip(res.path)">
         {{ res.title }}
       </div>
@@ -26,12 +36,17 @@ onMounted(async () => {
     color: #666;
     font-size: 15px;
 
-    @apply font-normal;
+    @apply font-normal hover:bg-blue-500;
 
     div {
       @apply m-2 py-1 mx-7;
-      @apply rounded hover:bg-blue-500 hover:text-white;
+      @apply rounded  hover:text-white;
     }
+  }
+
+  .lside-list.active {
+    color: #fff;
+    background-color: #0ea5e9;
   }
 }
 

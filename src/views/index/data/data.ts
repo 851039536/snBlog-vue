@@ -10,7 +10,7 @@ interface State {
 export const state: State = reactive({
   resData: [],
   page: 1,
-  pagesize: 8,
+  pagesize: 6,
   count: 0,
   identity: 0,
   typeStr: 'null',

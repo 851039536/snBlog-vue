@@ -12,8 +12,8 @@ class method {
   static async GetApi(name: string) {
     resData.current = 1
     resData.name = name
-    resData.count = await (await navigation.GetCountAsync(1, resData.name, true)).data
-    resData.type = await (await navigation.GetSnNavigationTypeSAllAsync(true)).data
+    resData.count = await (await navigation.GetCount(1, resData.name, true)).data
+    resData.type = await (await navigation.GetNavTypeAll(true)).data
     await navigation.GetFyAsync(1, name, resData.page, resData.pagesize, 'id', true, true).then(res => {
       resData.text = res.data
     })

@@ -14,7 +14,7 @@ import SBackTop from '../../components/general/SBackTop.vue'
 </template>
 <style lang="scss" scoped>
 .blog {
-  @apply h-[92%] mt-[4.6%] ml-[22%] w-[47%] relative;
+  @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
 }
 
 @screen <lg {

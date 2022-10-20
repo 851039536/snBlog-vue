@@ -23,7 +23,12 @@ defineProps({
           </span>
         </p>
         <p class="ocont-list-cont-text">{{ res.text }}</p>
-        <div></div>
+        <p class="ocont-list-cont-text2">
+          <span class="bg-yellow-100">1C</span>
+          <span class="bg-fuchsia-100">123</span>
+          <span class="bg-cyan-100">日记</span>
+          <span class="bg-red-100">日记</span>
+        </p>
       </div>
     </div>
   </div>
@@ -45,23 +50,33 @@ defineProps({
 
 <style lang="scss" scoped>
 .ocont {
-  @apply flex flex-wrap;
+  @apply grid grid-cols-3;
 
   .ocont-list {
-    @apply m-auto h-150px mt-1 w-[31%] relative bg-white;
+    @apply m-auto h-140px mt-1 w-[97%] bg-white;
     @apply rounded cursor-pointer shadow;
 
     .ocont-list-cont {
       @apply h-full w-full;
 
       .ocont-list-cont-title {
-        @apply bg-gray-100 h-[24%] m-1 text-lg px-1;
+        @apply h-[20%] m-1 text-lg px-1;
+        @apply rounded bg-blue-100 hover:bg-blue-300 hover:text-white;
         @include line-one;
       }
 
       .ocont-list-cont-text {
-        @apply font-thin h-[54%] m-1 text-base p-1 px-2;
-        @include line-numbers(4);
+        @apply font-thin h-[52%] m-1 text-base p-1 px-2;
+        @include line-numbers(3);
+      }
+
+      .ocont-list-cont-text2 {
+        @apply font-thin h-[54%] p-1 px-2;
+
+        span {
+          @apply m-1 px-1 rounded-none;
+          @apply hover:text-white hover:bg-blue-400;
+        }
       }
     }
   }

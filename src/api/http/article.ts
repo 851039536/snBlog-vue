@@ -1,8 +1,16 @@
 import request from '@/utils/http/axios'
-import { IntArticle } from '@/api/data/interData'
+import { IArticle } from '@/api/data/interData'
 import { tool } from '@/utils/common/tool'
-
-class article {
+// enum Api {
+//   FY = '/api/v1/article/fy/',
+//   SUM = '/api/v1/article/count/',
+//   BYID = '/api/v1/article/by-id/',
+//   CONTAINS = '/api/v1/article/contains/',
+//   ADD = '/api/v1/article',
+//   UPDATE = '/api/v1/article',
+//   DELETE = '/api/v1/article/'
+// }
+class articleApi {
   /**
    * @description: 查询总数
    * @param {number} identity 所有:0 || 分类:1 || 标签:2
@@ -152,7 +160,7 @@ class article {
    * @description: 新增数据
    * @param {any} resultData
    */
-  static AddAsync(resultData: IntArticle) {
+  static AddAsync(resultData: IArticle) {
     return request(
       {
         url: '/api/SnArticle/AddAsync',
@@ -169,7 +177,7 @@ class article {
    * @description: 更新数据
    * @param {IntArticle} resultData
    */
-  static Update(resultData: IntArticle) {
+  static Update(resultData: IArticle) {
     return request(
       {
         url: '/api/SnArticle/UpdateAsync',
@@ -199,4 +207,4 @@ class article {
   }
 }
 
-export { article }
+export { articleApi }

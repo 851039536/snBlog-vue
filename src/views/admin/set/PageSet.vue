@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, state, stateArray, stateStr } from './data'
-import { article, TOKEN, labels, interfaces } from '@/api'
+import { articleApi, TOKEN, labels, interfaces } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 
@@ -13,7 +13,7 @@ async function QueryFy() {
 
 const reload: any = inject('reload')
 const confirm = async (data: any) => {
-  await article.Del(data.articleId).then(() => {
+  await articleApi.Del(data.articleId).then(() => {
     message.success('删除成功')
     reload()
   })
@@ -31,11 +31,11 @@ async function SearchTitle(name: string) {
     return
   }
   if (stateStr.labelStr === 'ALL') {
-    await article.GetContains(0, 'null', name, false).then(res => {
+    await articleApi.GetContains(0, 'null', name, false).then(res => {
       state.resData = res.data
     })
   } else {
-    await article.GetContains(1, stateStr.labelStr, name, false).then(res => {
+    await articleApi.GetContains(1, stateStr.labelStr, name, false).then(res => {
       state.resData = res.data
     })
   }

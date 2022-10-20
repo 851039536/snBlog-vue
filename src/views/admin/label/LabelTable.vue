@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, state } from './data'
-import { article, TOKEN, labels } from '@/api'
+import { articleApi, TOKEN, labels } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
@@ -9,7 +9,7 @@ import { storage } from '@/utils/storage/storage'
 const reload: any = inject('reload')
 
 const confirm = async (data: any) => {
-  await article.Del(data.id).then(() => {
+  await articleApi.Del(data.id).then(() => {
     message.success('删除成功')
     reload()
   })
@@ -20,33 +20,33 @@ const cancel = () => {
 
 async function GetContains(name: string) {
   if (name === '' && state.labelStr === 'ALL') {
-    state.resData = await article.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
+    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
   } else if (state.labelStr === 'ALL') {
-    state.resData = await article.GetContains(0, '0', name, true)
+    state.resData = await articleApi.GetContains(0, '0', name, true)
   } else {
-    state.resData = await article.GetContains(2, state.labelStr, name, true)
+    state.resData = await articleApi.GetContains(2, state.labelStr, name, true)
   }
 }
 async function GetTag() {
   message.info(state.labelStr)
   state.resData =
     state.labelStr === 'ALL'
-      ? await article.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
-      : await article.GetFy(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
+      ? await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
+      : await articleApi.GetFy(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
 }
 async function Ordering() {
   if (state.order) {
-    state.resData = await article.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
+    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
     state.order = false
   } else {
-    state.resData = await article.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
+    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
     state.order = true
   }
 }
 
 onMounted(async () => {
   await TOKEN()
-  state.resData = await article.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
+  state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
   state.resLabel = await labels.GetAll(false)
   navName.name = '文章'
   navName.name2 = '标签列表'

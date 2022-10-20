@@ -19,7 +19,7 @@ async function GetApi() {
   await TOKEN()
   navName.name = '内容分享'
   navName.name2 = '编辑内容'
-  navigation.GetSnNavigationTypeSAllAsync(false).then(res => {
+  navigation.GetNavTypeAll(false).then(res => {
     resType.value = res.data
   })
 
@@ -34,21 +34,24 @@ async function GetApi() {
   })
 }
 
+function GetTypeId(id: number) {
+  formState.typeId = id
+}
 onMounted(async () => {
   await GetApi()
 })
 </script>
 
 <template>
-  <div class="form">
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+  <div class="form m-auto">
+    <div class="form-div">
       <a-input v-model:value="formState.title" prefix="标题:" />
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
-      <a-input v-model:value="formState.describe" prefix="描述:" />
+    <div class="form-div">
+      描述:
+      <a-textarea v-model:value="formState.describe" show-count :maxlength="100" />
     </div>
-
-    <div class="rounded flex m-auto bg-gray-50 shadow p-2">
+    <div class="p-2 flex">
       <div>
         <a-select v-model:value="formState.typeId" style="width: 120px">
           <a-select-option v-for="item in resType" :key="item.id" :label="item.id" :value="item.id">
@@ -56,18 +59,25 @@ onMounted(async () => {
           </a-select-option>
         </a-select>
       </div>
-      <div class="ml-2">
-        <a-input v-model:value="formState.img" prefix="图片链接:" />
+
+      <div class="bg-yellow-50 w-600px flex flex-wrap ml-2 rounded cursor-pointer">
+        <template v-for="item in resType" :key="item.id">
+          <div class="m-1 hover:text-blue-400" @click="GetTypeId(item.id)">
+            {{ item.title }}
+          </div>
+        </template>
       </div>
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="form-div">
+      <a-input v-model:value="formState.img" prefix="图片链接:" />
+    </div>
+    <div class="form-div">
       <a-input v-model:value="formState.url" prefix="地址:" />
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
-      <a @click="winUrl(formState.url)">{{ formState.url }}</a>
+    <div class="form-div">
+      <a @click="winUrl(formState.url)">前往: {{ formState.url }}</a>
     </div>
-
-    <div class="bg-gray-100 shadow p-2">
+    <div class="p-2">
       <a-button type="primary" @click="onSubmit">更新</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
@@ -76,6 +86,10 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .form {
-  @apply h-full w-full;
+  @apply pt-10 h-700px w-[70%];
+
+  .form-div {
+    @apply mt-2 p-2 w-full;
+  }
 }
 </style>

@@ -1,25 +1,25 @@
 <script lang="ts" setup>
-import { article, userTalk } from '@/api/index'
+import { articleApi, userTalk } from '@/api/index'
 import { resolve, winUrl } from '@/hooks/routers'
 import { resData } from '../data/sidebar'
 
 const SearchTitle = async (name: string) => {
-  resData.searchData = await article.GetContains(1, '转载', name, true)
+  resData.searchData = await articleApi.GetContains(1, '转载', name, true)
 }
 const skip = async (id: any) => {
   const { href } = await resolve('/VmdHtml', id)
   await winUrl(href)
 }
 const GetApi = async () => {
-  await article.GetFy(0, 'null', 1, 1, 'data', true, true).then((res: { data: { timeCreate: string }[] }) => {
+  await articleApi.GetFy(0, 'null', 1, 1, 'data', true, true).then((res: { data: { timeCreate: string }[] }) => {
     resData.articledata = res.data[0].timeCreate
   })
   resData.talk = await (await userTalk.GetUserTalkFirst()).data
-  resData.ArticleCount = await (await article.GetCountAsync(1, '转载', true)).data
+  resData.ArticleCount = await (await articleApi.GetCountAsync(1, '转载', true)).data
   resData.ArticleCount = String(resData.ArticleCount)
-  resData.textCount = await (await article.GetSum(1, 1, '转载', true)).data
+  resData.textCount = await (await articleApi.GetSum(1, 1, '转载', true)).data
   resData.textCount = String(resData.textCount)
-  resData.readCount = await (await article.GetSum(1, 2, '转载', true)).data
+  resData.readCount = await (await articleApi.GetSum(1, 2, '转载', true)).data
   resData.readCount = String(resData.readCount)
 }
 

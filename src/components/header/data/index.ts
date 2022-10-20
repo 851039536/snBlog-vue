@@ -1,18 +1,20 @@
 import { interfaces } from '@/api/index'
 import { routers, winUrl } from '@/hooks/routers'
+import { sideIndex } from '@/hooks/data'
 
-const resData: any = ref([])
+const rData: any = ref([])
 /**
  * @description: 导出header类
  */
 class method {
   static async GetType() {
-    await interfaces.GetTypeAsync(0, 'kai', 'header', false).then((res: any) => {
-      resData.value = res.data
+    await interfaces.GetType(0, 'kai', 'header', false).then((res: any) => {
+      rData.value = res.data
     })
   }
 
   static async skip(num: number) {
+    sideIndex.value = -1
     switch (num) {
       case 13:
         winUrl('https://www.cnblogs.com/ouyangkai/')
@@ -26,4 +28,4 @@ class method {
     }
   }
 }
-export { method, resData }
+export { method, rData }

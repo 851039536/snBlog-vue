@@ -2,24 +2,9 @@ import { IArticle } from './model/artileModel'
 import { IVideo } from './model/videoModel'
 import { ITag } from './model/tagModel'
 import { ILabel } from './model/labelModel'
-
-interface IntNav {
-  id: number
-  title: string
-  describe: string
-  img: string
-  typeId: number
-  userId: number
-  url: string
-  // timeCreate: any
-  // timeModified: any
-}
-
-export interface IntSort {
-  id: number
-  name: string
-  description: string
-}
+import { IOneType } from './model/oneModel'
+import { ISort } from './model/sortModel'
+import { INav } from './model/navModel'
 
 export interface IntTalk {
   id: number
@@ -57,9 +42,4 @@ interface IntOne {
   timeModified: any
 }
 
-interface IntOneType {
-  id: number
-  title: number
-}
-
-export { ILabel, IntNav, IntOne, IntOneType, IArticle, IVideo, ITag }
+export { ILabel, INav, IntOne, IOneType, IArticle, IVideo, ITag, ISort }

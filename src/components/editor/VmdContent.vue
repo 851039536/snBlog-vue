@@ -18,6 +18,6 @@ onBeforeUpdate(() => {
 
 <style lang="scss" scoped>
 div {
-  @apply bg-white mt-6;
+  @apply bg-white;
 }
 </style>

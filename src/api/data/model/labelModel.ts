@@ -1,5 +1,5 @@
 /**
- * @description:Labels
+ * @description:ILabel
  */
 export interface ILabel {
   id: number

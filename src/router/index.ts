@@ -100,7 +100,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/tag/TagIndex.vue')
+      return import('@/views/page/tag/index.vue')
     }
   },
   {
@@ -150,7 +150,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/video/Svideo.vue')
+      return import('@/views/page/video/Video.vue')
     }
   },
   {
@@ -160,7 +160,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/video/components/VideoPlay.vue')
+      return import('@/views/page/video/components/VideoPlay.vue')
     }
   },
   {
@@ -180,7 +180,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/one/One.vue')
+      return import('@/views/page/one/One.vue')
     }
   },
   {
@@ -203,17 +203,6 @@ const routes: RouteRecordRaw[] = [
       return import('@/views/page/listContent/ListContent.vue')
     }
   },
-  {
-    path: '/SoftwareContent',
-    name: 'SoftwareContent',
-    meta: {
-      keepAlive: false
-    },
-    component: () => {
-      return import('@/views/Software/SoftwareContent.vue')
-    }
-  },
-
   {
     path: '/VmdHtml',
     name: 'VmdHtml',

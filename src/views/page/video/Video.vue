@@ -20,7 +20,7 @@ method.currentchange(1)
 
 <style lang="scss" scoped>
 .svideo {
-  @apply w-full fixed h-[92%];
+  @apply w-full relative h-[92%];
 }
 
 // @screen xp {

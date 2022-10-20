@@ -1,5 +1,5 @@
 /**
- * @description: 视频接口
+ * @description: IVideo
  */
 export interface IVideo {
   id: number

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { article } from '@/api/index'
+import { articleApi } from '@/api/index'
 
 const route = useRoute()
 const state: any = reactive({
@@ -9,7 +9,7 @@ const state: any = reactive({
 })
 
 const GetAll = async () => {
-  await article.GetById(state.id, true).then((res: any) => {
+  await articleApi.GetById(state.id, true).then((res: any) => {
     const { title, text } = res.data[0]
     state.blog = { title, text }
   })
@@ -72,18 +72,20 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .vmd {
-  @apply bg-gray-50 mt-3 ml-[3%] w-[75%];
+  @apply bg-white mt-3 mb-800px ml-[3%] w-[75%];
 }
 
 .anchor {
   @apply rounded top-[7%] right-[9%] w-[14%] z-10 fixed;
 
   .anchor-tag {
-    @apply bg-white cursor-pointer m-1 text-base p-2;
+    @apply rounded bg-white cursor-pointer m-1 text-base p-2;
 
     &:hover {
-      @apply rounded bg-blue-100;
+      @apply rounded bg-blue-400;
     }
+
+    @apply hover:text-white;
   }
 }
 </style>

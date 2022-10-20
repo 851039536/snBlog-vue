@@ -1,4 +1,4 @@
-import { article } from '@/api/index'
+import { articleApi } from '@/api/index'
 import { throttle } from '@/utils/common/dethrottle'
 
 interface State {
@@ -19,12 +19,12 @@ export class method {
   static async UpRead(res: any) {
     if (res !== null) {
       res.read += 1
-      await article.UpdatePortion(res, 'Read')
+      await articleApi.UpdatePortion(res, 'Read')
     }
   }
 
   static UpGive = throttle(() => {
     state.resultData.give += 1
-    article.UpdatePortion(state.resultData, 'Give')
+    articleApi.UpdatePortion(state.resultData, 'Give')
   }, 1000)
 }

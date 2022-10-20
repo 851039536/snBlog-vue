@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { labels, article, sort, TOKEN } from '@/api'
+import { labels, articleApi, sort, TOKEN } from '@/api'
 import { formState, state } from './data'
 import { routers, go } from '@/hooks/routers'
 import { navName } from '../utils/data'
@@ -9,7 +9,7 @@ const route = useRoute()
 const rid: any = ref(route.query.id)
 
 const onSubmit = async () => {
-  await article.Update(formState).then(() => {
+  await articleApi.Update(formState).then(() => {
     message.info('更新完成')
     routers('/Admin-index/ArticleTable')
   })
@@ -19,7 +19,7 @@ async function GetApi() {
   state.resLabel = await labels.GetAll(true)
   state.resSort = await sort.GetAll(true)
 
-  article.GetById(rid.value, false).then((res: any) => {
+  articleApi.GetById(rid.value, false).then((res: any) => {
     formState.id = res.data[0].id
     formState.commentId = res.data[0].commentId
     formState.give = res.data[0].give

@@ -1,4 +1,4 @@
-import { article } from '@/api'
+import { articleApi } from '@/api'
 
 export const fyData: any = reactive({
   resultData: [],
@@ -9,14 +9,14 @@ export const fyData: any = reactive({
 
 export class method {
   static async GetCount() {
-    await article.GetCountAsync(1, '转载', true).then((result: any) => {
+    await articleApi.GetCountAsync(1, '转载', true).then((result: any) => {
       fyData.count = result.data
     })
   }
 
   static async GetFy() {
     await method.GetCount()
-    await article.GetFy(1, '转载', fyData.page, fyData.pagesize, 'id', true, true).then((res: any) => {
+    await articleApi.GetFy(1, '转载', fyData.page, fyData.pagesize, 'id', true, true).then((res: any) => {
       fyData.resultData = res.data
     })
   }

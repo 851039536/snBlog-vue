@@ -4,10 +4,10 @@ import { resData, method } from '../data/sidebar'
 method.GetApi()
 </script>
 <template>
-  <div class="index-sidebar">
-    <div class="index-s-main">
+  <div class="iside">
+    <div class="iside-main">
       <s-time></s-time>
-      <div class="index-s-input">
+      <div class="iside-input">
         <a-select
           v-model:value="resData.title"
           show-search
@@ -23,8 +23,7 @@ method.GetApi()
       </div>
 
       <s-describe :user-talk="resData.userTalk"></s-describe>
-      <index-type :res-data="resData.sortData" name="分类"></index-type>
-      <index-tag :res-data="resData.labelsData" name="标签"></index-tag>
+      <index-tool :res-data="resData.navType" tag-name="常用工具"></index-tool>
 
       <!-- 站点统计框 -->
       <station-text
@@ -43,14 +42,15 @@ method.GetApi()
 </template>
 
 <style lang="scss" scoped>
-.index-sidebar {
+.iside {
   @apply s-side;
-  @apply overflow-auto;
 
-  .index-s-main {
+  // @apply overflow-auto;
+
+  .iside-main {
     @apply h-full w-full;
 
-    .index-s-input {
+    .iside-input {
       @include center-children;
       @apply flex flex-nowrap;
       @apply m-auto mt-1 mb-2 p-2 w-[97%];
@@ -59,18 +59,18 @@ method.GetApi()
   }
 }
 
-.index-sidebar::-webkit-scrollbar {
+.iside::-webkit-scrollbar {
   display: none;
 }
 
 @screen <lg {
-  .index-sidebar {
+  .iside {
     display: none;
   }
 }
 
 @screen <xp {
-  .index-sidebar {
+  .iside {
     @apply h-[90%] top-[11%];
   }
 }

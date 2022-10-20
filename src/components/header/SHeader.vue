@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { storage } from '@/utils/storage/storage'
-import { resData, method } from './data/index'
+import { rData, method } from './data/index'
 
 const local = ref(true)
 const scroll = () => {
@@ -32,8 +32,11 @@ onMounted(async () => {
           <span>少年</span>
         </div>
         <div class="head-l-text">
-          <div v-for="res in resData" :key="res.id">
+          <div v-for="res in rData" :key="res.id">
             <span v-if="res.identity" @click="method.skip(res.path)">{{ res.title }}</span>
+          </div>
+          <div>
+            <input type="text" />
           </div>
         </div>
       </div>
@@ -48,6 +51,23 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
+input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  padding: 10px 15px;
+  border: 1.2px solid #c0c4cc;
+  border-radius: 5px;
+  outline-style: none;
+
+  &:focus {
+    border-color: #f07b00;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%), #f07b00;
+  }
+}
+
 .head {
   @apply flex h-70px w-full top-0 left-0 z-50 fixed;
   @apply bg-white shadow px-3;

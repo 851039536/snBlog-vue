@@ -4,7 +4,7 @@ import { aspShow } from '@/hooks/data'
 <template>
   <section v-show="aspShow">
     <div>
-      <a-spin size="large" tip="Loading..." />
+      <a-spin size="large" />
     </div>
   </section>
 </template>

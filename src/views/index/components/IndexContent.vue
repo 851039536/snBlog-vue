@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { article } from '@/api/index'
+import { articleApi } from '@/api/index'
 import { tool } from '@/utils/common/tool'
 import { state, method } from '../data/content'
 
@@ -9,18 +9,17 @@ const VmdContent = defineAsyncComponent(() => {
 const route = useRoute()
 const router = useRouter()
 
-const roId: any = reactive({
+const aid: any = reactive({
   id: route.query.id
 })
-
 const GetApi = async () => {
-  await article.GetById(roId.id, true).then((res: any) => {
-    const result = res.data[0]
-    method.UpRead(result)
-    state.resultData = result
-    state.time = tool.MomentTime(result.timeCreate)
-    state.labelName = result.label.name
-    state.sortName = result.sort.name
+  await articleApi.GetById(aid.id, true).then((res: any) => {
+    const rData = res.data[0]
+    method.UpRead(rData)
+    state.resData = rData
+    state.time = tool.MomentTime(rData.timeCreate)
+    state.labelName = rData.label.name
+    state.sortName = rData.sort.name
     state.spinning = false
   })
 }
@@ -32,41 +31,57 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="blogs-content">
-    <div class="blogs-content-title">
-      <a-page-header :title="state.resultData.title" @back="() => router.back()" />
+  <div class="icont">
+    <div class="icont-title">
+      <a-page-header :title="state.resData.title" @back="() => router.back()" />
     </div>
-
-    <!--内容-->
-    <VmdContent :loading="state.spinning" :result="state.resultData.text"></VmdContent>
-
-    <!--底部信息-->
-    <div class="blogs-copyright">
-      <div class="blogs-copyright-title">
-        <!-- <div>版权属于：少年</div> -->
-        <div class="text">本文链接：原创文章转载请注明</div>
+    <VmdContent :loading="state.spinning" :result="state.resData.text"></VmdContent>
+    <div class="icont-ft">
+      <div class="icont-ft-title">
+        <p>本文链接：原创文章转载请注明</p>
       </div>
-      <div class="blogs-comment">
-        <div class>
-          <a @click="method.UpGive">
-            {{ state.resultData.give }}
-          </a>
+      <div class="icont-cont">
+        <div class="flex" @click="method.UpGive">
+          <svg
+            t="1666226833254"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="1405"
+            width="23"
+            height="22">
+            <path
+              d="M510.671749 348.792894S340.102978 48.827055 134.243447 254.685563C-97.636714 486.565724 510.671749 913.435858 510.671749 913.435858s616.107079-419.070494 376.428301-658.749272c-194.095603-194.096626-376.428302 94.106308-376.428301 94.106308z"
+              fill="#FF713C"
+              p-id="1406"></path>
+            <path
+              d="M510.666632 929.674705c-3.267417 0-6.534833-0.983397-9.326413-2.950192-16.924461-11.872399-414.71121-293.557896-435.220312-529.448394-5.170766-59.482743 13.879102-111.319341 56.643068-154.075121 51.043536-51.043536 104.911398-76.930113 160.095231-76.930114 112.524796 0 196.878996 106.48115 228.475622 153.195078 33.611515-45.214784 122.406864-148.20646 234.04343-148.20646 53.930283 0 105.46603 24.205285 153.210428 71.941496 45.063335 45.063335 64.954361 99.200326 59.133795 160.920016C935.306982 641.685641 536.758893 915.327952 519.80271 926.859589a16.205077 16.205077 0 0 1-9.136078 2.815116zM282.857183 198.75574c-46.25344 0-92.396363 22.682605-137.127124 67.413365-36.149315 36.157501-51.614541 78.120218-47.25321 128.291898 17.575284 202.089671 352.199481 455.119525 412.332023 499.049037 60.434417-42.86732 395.406538-289.147446 414.567947-492.458945 4.933359-52.344159-11.341303-96.465029-49.759288-134.88199-41.431621-41.423435-85.24243-62.424748-130.242319-62.424748-122.041544 0-220.005716 152.203494-220.989114 153.742547-3.045359 4.806469-8.53335 7.883551-14.101159 7.534603a16.257266 16.257266 0 0 1-13.736863-8.184403c-0.902556-1.587148-91.569532-158.081365-213.690893-158.081364z"
+              fill="#885F44"
+              p-id="1407"></path>
+          </svg>
+
+          <div>
+            {{ state.resData.give }}
+          </div>
         </div>
-        <div>{{ state.resultData.read }} ℃</div>
-        <div class="blogs-comment-text">{{ state.sortName }}</div>
-        <div class="blogs-comment-text">
+
+        <div>{{ state.resData.read }} ℃</div>
+        <div>{{ state.sortName }}</div>
+        <div>
           {{ state.labelName }}
         </div>
-        <div class>{{ state.time }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.blogs-content {
-  .blogs-content-title {
-    @apply rounded cursor-pointer shadow relative;
+.icont {
+  @apply bg-white;
+
+  .icont-title {
+    @apply rounded cursor-pointer bg-white shadow relative;
 
     .ant-page-header-heading-title {
       @apply text-lg overflow-hidden overflow-ellipsis whitespace-nowrap;
@@ -81,26 +96,22 @@ onMounted(async () => {
     }
   }
 
-  .blogs-copyright {
-    .blogs-copyright-title {
+  .icont-ft {
+    .icont-ft-title {
       @apply p-1;
 
-      div {
-        border-bottom: 1px dashed #f1f1f1;
+      p {
+        border-bottom: 1.5px dashed #afa6a6;
 
-        @apply font-light m-1 text-sm p-1;
+        @apply font-light m-1 text-sm py-1 pb-2;
       }
     }
 
-    .blogs-comment {
-      @apply flex;
-
-      .blogs-comment-text {
-        @apply rounded-sm bg-blue-100 shadow;
-      }
+    .icont-cont {
+      @apply flex mb-5 p-2;
 
       div {
-        @apply font-light m-2 text-sm text-center py-1 px-1;
+        @apply mx-1 cursor-pointer rounded;
       }
     }
   }

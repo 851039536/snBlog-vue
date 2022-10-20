@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { article } from '@/api/index'
+import { articleApi } from '@/api/index'
 import { tool } from '@/utils/common/tool'
 import { state, method } from '../data/content'
 
@@ -13,7 +13,7 @@ const roId: any = reactive({
 })
 
 const GetApi = async () => {
-  await article.GetById(roId.id, true).then((res: any) => {
+  await articleApi.GetById(roId.id, true).then((res: any) => {
     const result = res.data[0]
     method.UpRead(result)
     state.resultData = result

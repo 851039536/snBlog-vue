@@ -73,7 +73,7 @@ $text-height: 9%;
 }
 
 /**
- * @description: 显示省略号
+ * @description: 单行截断
  */
 @mixin line-one {
   overflow: hidden;
@@ -109,7 +109,7 @@ $text-height: 9%;
   word-break: break-all;
   -webkit-line-clamp: $num;
 
-  /* 规定超过两行的部分截断 */
+  /* 规定超过行的部分截断 */
   -webkit-box-orient: vertical;
 }
 

@@ -59,7 +59,7 @@ export class method {
   static async GetApi() {
     await TOKEN()
     await method.GetFy()
-    await navigation.GetSnNavigationTypeSAllAsync(false).then(res => {
+    await navigation.GetNavTypeAll(false).then(res => {
       state.resNavType = res.data
     })
 

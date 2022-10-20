@@ -5,7 +5,7 @@ import { state } from './data'
 import { method } from './index'
 
 onMounted(async () => {
-  await navigation.GetCountAsync(1, '网站', true).then((res: any) => {
+  await navigation.GetCount(1, '网站', true).then((res: any) => {
     state.count = res.data
   })
   await method.currentchange(1)

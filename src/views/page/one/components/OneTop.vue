@@ -30,20 +30,28 @@ defineProps({
       <div class="otop-cont-title">
         <span class="">舔王:{{ title }}</span>
       </div>
-      <div class="otop-cont-give">{{ text }}</div>
+      <div class="otop-cont-give">
+        <div>{{ text }}</div>
+        <div class="otop-cont-give2">
+          <span class="bg-yellow-100">1C</span>
+          <span class="bg-fuchsia-100">123</span>
+          <span class="bg-cyan-100">日记</span>
+          <span class="bg-red-100">日记</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .otop {
-  @apply h-420px w-full flex;
+  @apply h-410px w-full flex bg-white;
 
   .otop-img {
-    @apply w-[45%];
+    @apply w-[45%] mx-1;
 
     img {
-      @apply h-full w-full;
+      @apply h-full w-full rounded;
     }
   }
 
@@ -56,8 +64,16 @@ defineProps({
 
     .otop-cont-give {
       @apply m-1 py-4 px-4;
-      @apply font-thin text-base text-center leading-loose tracking-wide shadow-2xl;
+      @apply font-thin text-base text-center leading-loose tracking-wide shadow-2xl rounded;
       @include line-numbers(5);
+    }
+
+    .otop-cont-give2 {
+      span {
+        @apply m-1 p-1 rounded;
+        @apply cursor-pointer;
+        @apply hover:text-white hover:bg-blue-400;
+      }
     }
   }
 }

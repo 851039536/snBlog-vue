@@ -1,5 +1,5 @@
 import request from '@/utils/http/axios'
-import { article } from './http/article'
+import { articleApi } from './http/article'
 import { labels } from './http/labels'
 import { sort } from './http/sort'
 import { userTalk } from './http/usertalk'
@@ -27,4 +27,18 @@ function TOKEN() {
   )
 }
 
-export { article, labels, sort, userTalk, setBlog, leave, navigation, one, video, user, listContent, TOKEN, interfaces }
+export {
+  articleApi,
+  labels,
+  sort,
+  userTalk,
+  setBlog,
+  leave,
+  navigation,
+  one,
+  video,
+  user,
+  listContent,
+  TOKEN,
+  interfaces
+}

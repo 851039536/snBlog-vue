@@ -1,4 +1,4 @@
-import { IntNav } from '@/api/data/interData'
+import { INav } from '@/api/data/interData'
 
 interface ResData {
   resData: any
@@ -17,13 +17,11 @@ const columns = [
     width: 100,
     dataIndex: 'title',
     key: 'title'
-    // fixed: 'left'
   },
   {
     title: '用户',
     dataIndex: 'user',
     width: 55
-    // align: 'center'
   },
   {
     title: '链接',
@@ -40,20 +38,17 @@ const columns = [
     title: '类别',
     dataIndex: 'type',
     width: 60
-    // align: 'center'
   },
 
   {
     title: '创建',
     dataIndex: 'timeCreate',
     width: 80
-    // align: 'center'
   },
   {
     title: '更新',
     dataIndex: 'timeModified',
     width: 80
-    // align: 'center'
   },
 
   {
@@ -61,20 +56,16 @@ const columns = [
     dataIndex: 'edit',
     key: '编辑',
     width: 40
-    // fixed: 'right',
-    // align: 'center'
   },
   {
     title: '操作',
     dataIndex: 'del',
     key: '删除',
-    // fixed: 'right',
     width: 40
-    // align: 'center'
   }
 ]
 
-const formState: IntNav = reactive({
+const formState: INav = reactive({
   id: 0,
   title: '',
   describe: '',

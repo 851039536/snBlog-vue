@@ -14,7 +14,7 @@ onMounted(async () => {
     <OneSidebar></OneSidebar>
     <div class="one-cont">
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
-      <OneContent :result-data="state.resultData"></OneContent>
+      <OneContent :result-data="state.rData"></OneContent>
       <div class="paging">
         <a-pagination
           size="small"
@@ -29,14 +29,13 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .one {
-  @apply h-[92%] mt-[4.6%] ml-[22%] w-[47%] relative;
+  @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
 
   .one-cont {
-    // @apply h-[90%] ml-[22%] w-[47%];
     @apply rounded shadow overflow-auto;
 
     .paging {
-      @apply rounded h-7 m-2 shadow mt-3;
+      @apply rounded-none p-2 shadow mt-2 bg-white;
     }
   }
 

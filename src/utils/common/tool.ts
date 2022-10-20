@@ -1,5 +1,5 @@
-import moment from 'moment'
-
+// import moment from 'moment'
+import dayjs from 'dayjs'
 /**
  * 常用工具类
  */
@@ -24,7 +24,7 @@ class tool {
    * @param time
    */
   static MomentTime(time: Date) {
-    moment(time).format('YYYY-MM-DD- H:mm:ss')
+    dayjs(time).format('YYYY-MM-DD- H:mm:ss')
   }
 
   /**
@@ -33,8 +33,8 @@ class tool {
    */
   static async MomentTimeList(time: any) {
     await time.data.forEach((res: any) => {
-      res.timeCreate = moment(res.timeCreate).format('YYYY-MM-DD- H:mm:ss')
-      res.timeModified = moment(res.timeModified).format('YYYY-MM-DD- H:mm:ss')
+      res.timeCreate = dayjs(res.timeCreate).format('YYYY-MM-DD- H:mm:ss')
+      res.timeModified = dayjs(res.timeModified).format('YYYY-MM-DD- H:mm:ss')
     })
   }
 

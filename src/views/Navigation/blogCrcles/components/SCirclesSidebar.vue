@@ -46,7 +46,7 @@ const GetAll = async () => {
   await navigation.GetFyAsync(1, '博客圈', 1, 10, 'id', true, true).then((res: any) => {
     state.resultData = res.data
   })
-  await navigation.GetCountAsync(1, '博客圈', true).then((res: any) => {
+  await navigation.GetCount(1, '博客圈', true).then((res: any) => {
     state.resultCount = res.data
   })
 }
@@ -64,7 +64,7 @@ onMounted(async () => {
     @apply w-full h-full overflow-auto;
 
     .cside-describe {
-      @apply w-[97%] mb-2 ml-1;
+      @apply w-[97%] mb-2 ml-1 bg-white;
       @apply rounded shadow text-center;
 
       p {

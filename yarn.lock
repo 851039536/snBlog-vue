@@ -3040,7 +3040,7 @@
     "graphlib" "^2.1.8"
     "lodash" "^4.17.15"
 
-"dayjs@^1.10.5":
+"dayjs@^1.10.5", "dayjs@^1.11.5":
   "integrity" "sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA=="
   "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.11.5.tgz"
   "version" "1.11.5"
@@ -5531,11 +5531,6 @@
   "resolved" "https://registry.npmjs.org/moment-mini/-/moment-mini-2.24.0.tgz"
   "version" "2.24.0"
 
-"moment@^2.29.4":
-  "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
-  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
-  "version" "2.29.4"
-
 "ms@^2.1.1":
   "integrity" "sha1-V0yBOM4dK1hh8LRFedut1gxmFbI="
   "resolved" "https://registry.npmmirror.com/ms/download/ms-2.1.3.tgz"
@@ -7946,6 +7941,11 @@
     "@vue/runtime-dom" "3.2.38"
     "@vue/server-renderer" "3.2.38"
     "@vue/shared" "3.2.38"
+
+"vue3-infinite-scroll-better@^2.2.0":
+  "integrity" "sha512-tIqY7Ab0Hu9j7SiLLNn9jUR2te2THvfVrDvdOfilx/Qk84mc3YS8rjxMNYM5OAlv7Wk92u2HD3rRqx892JafdA=="
+  "resolved" "https://registry.npmjs.org/vue3-infinite-scroll-better/-/vue3-infinite-scroll-better-2.2.0.tgz"
+  "version" "2.2.0"
 
 "vue3-lazy@^1.0.0-alpha.1":
   "integrity" "sha1-MmpWwq3kQwx2t6yQ0zp/3gr5qqY="

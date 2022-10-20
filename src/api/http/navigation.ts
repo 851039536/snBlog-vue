@@ -1,5 +1,5 @@
 import request from '@/utils/http/axios'
-import { IntNav } from '@/api/data/interData'
+import { INav } from '@/api/data/interData'
 
 export class navigation {
   /**
@@ -9,7 +9,7 @@ export class navigation {
    * @param chche 缓存
    * @returns
    */
-  static GetCountAsync(identity: number, type: string, chche: boolean) {
+  static GetCount(identity: number, type: string, chche: boolean) {
     return request(
       {
         url: `/api/SnNavigation/GetCountAsync?identity=${identity}&type=${type}&cache=${chche}`,
@@ -109,7 +109,7 @@ export class navigation {
    * @description: 新增数据
    * @param {any} data
    */
-  static AddAsync(data: IntNav) {
+  static AddAsync(data: INav) {
     return request(
       {
         url: '/api/SnNavigation/AddAsync',
@@ -126,7 +126,7 @@ export class navigation {
    * @description: 更新数据
    * @param {IntArticle} resultData
    */
-  static UpdateAsync(resultData: IntNav) {
+  static UpdateAsync(resultData: INav) {
     return request(
       {
         url: '/api/SnNavigation/UpdateAsync',
@@ -161,7 +161,7 @@ export class navigation {
   /**
    * @description: 查询分类内容
    */
-  static GetSnNavigationTypeSAllAsync(cache: boolean) {
+  static GetNavTypeAll(cache: boolean) {
     return request(
       {
         url: `/api/SnNavigationType/GetAllAsync?cache=${cache}`,

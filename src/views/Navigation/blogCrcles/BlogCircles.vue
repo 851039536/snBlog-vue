@@ -22,7 +22,9 @@ method.GetTypeOrder()
             <div class="circles-1-2-1">
               <span @click="method.UrlSkip(res.url)">{{ res.title }}</span>
             </div>
-            <div class="circles-1-2-2">{{ res.describe }}</div>
+            <div class="circles-1-2-2">
+              {{ res.describe }}
+            </div>
           </div>
         </div>
       </div>
@@ -43,16 +45,17 @@ method.GetTypeOrder()
 
 <style lang="scss" scoped>
 .circles {
-  @apply s-hw fixed;
+  @apply s-hw relative;
 
   .circles-main {
-    @apply h-[85%] mt-[4.6%] ml-[22%] w-[47%];
-    @apply rounded-sm shadow;
+    @apply mt-[4.3%] ml-[22%] w-[47%];
+
+    // @apply rounded-sm shadow;
 
     // 导航窗体小
     .circles-1 {
-      @include w-h(92%, 110px);
-      @apply rounded m-2 shadow hover: bg-gray-50;
+      @include w-h(95%, 115px);
+      @apply bg-white rounded m-2 shadow hover: bg-gray-50;
 
       .circles-1-1 {
         @include w-h(40%, 99%);
@@ -69,40 +72,15 @@ method.GetTypeOrder()
         @include w-h(60%, 100%);
 
         .circles-1-2-1 {
-          @apply font-light text-lg p-1 pt-2 hover: text-blue-400;
+          @apply text-lg p-1 m-1 hover: text-blue-400 cursor-pointer;
           @include line-one;
-
-          /* 动态下划线 */
-          position: relative;
-          text-decoration: none;
-
-          &:hover {
-            cursor: pointer;
-          }
-
-          &::before {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #7f828f;
-            transform: scaleX(0);
-            visibility: hidden;
-            transition: all 0.3s ease-in-out 0s;
-
-            // content: '';
-          }
-
-          &:hover::before {
-            transform: scaleX(1);
-            visibility: visible;
-          }
         }
 
         .circles-1-2-2 {
-          @apply font-light px-1 pt-3;
-          @include line-one;
+          height: 47px;
+
+          @apply m-1 mt-2 text-base font-light;
+          @include line-numbers(2);
         }
       }
     }
@@ -118,7 +96,7 @@ method.GetTypeOrder()
     }
 
     .circles-page {
-      @apply bg-white shadow p-1;
+      @apply bg-white shadow p-1 mx-2;
     }
   }
 }

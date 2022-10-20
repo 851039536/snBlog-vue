@@ -9,10 +9,11 @@ export interface IArticle {
   give: number
   labelId: number
   sortId: number
-  userId: number
+  userId: number | string
   timeCreate: any
   timeModified: any
 }
+
 export const articleForm: IArticle = reactive({
   id: 0,
   title: '',

@@ -1,14 +1,14 @@
-import { article } from '@/api/index'
+import { articleApi } from '@/api/index'
 import { tool } from '@/utils/common/tool'
 import { state } from './data'
 
 class method {
   static async GetCount(identity: number, type: string) {
-    state.count = await (await article.GetCountAsync(identity, type, true)).data
+    state.count = await (await articleApi.GetCountAsync(identity, type, true)).data
   }
 
   static async GetFy() {
-    await article
+    await articleApi
       .GetFy(state.identity, state.typeStr, state.current, state.pagesize, 'id', true, true)
       .then((res: any) => {
         state.resData = res.data

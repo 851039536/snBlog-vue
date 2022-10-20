@@ -11,7 +11,7 @@ const uid: any = ref(storage.get('id'))
 export async function GetApi() {
   formNull()
   await TOKEN()
-  await navigation.GetSnNavigationTypeSAllAsync(false).then(ress => {
+  await navigation.GetNavTypeAll(false).then(ress => {
     resType.value = ress.data
   })
   navName.name = '内容分享'

@@ -2,12 +2,12 @@ import { message } from 'ant-design-vue'
 import { one } from '@/api/index'
 
 const state: any = reactive({
-  resultData: [],
+  rData: [],
   dataOne: [],
   text: [],
   modal2Visible: false,
   page: 1,
-  pagesize: 6,
+  pagesize: 9,
   count: 0
 })
 
@@ -26,7 +26,7 @@ class method {
   static async currentchange(val: number) {
     state.page = val
     await one.GetFyAsync(0, '0', state.page, state.pagesize, 'id', true, true).then((res: any) => {
-      state.resultData = res.data
+      state.rData = res.data
     })
   }
 
@@ -38,7 +38,7 @@ class method {
 
   static async getOne() {
     await one.GetFyAsync(0, '0', state.page, state.pagesize, 'id', true, true).then((res: any) => {
-      state.resultData = res.data
+      state.rData = res.data
     })
     await one.GetFyAsync(0, '0', 1, 1, 'id', true, true).then((res: any) => {
       const { title, text } = res.data[0]

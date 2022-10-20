@@ -14,11 +14,10 @@ const state: State = reactive({
 })
 
 const GetAll = async () => {
-  await navigation.GetCountAsync(0, 'null', true).then((res: any) => {
+  await navigation.GetCount(0, 'null', true).then((res: any) => {
     state.resultCount = res.data
   })
-
-  await navigation.GetSnNavigationTypeSAllAsync(true).then((res: any) => {
+  await navigation.GetNavTypeAll(true).then((res: any) => {
     state.resultData2 = res.data
   })
 }
@@ -40,10 +39,15 @@ onMounted(async () => {
     <div class="fa-main">
       <div class="fa-cont">
         <div v-for="res in resData.text" :key="res.id" class="fa-cont-list">
-          <div class="fa-cont-list1">
-            <span @click="winUrl(res.url)">{{ res.title }}</span>
+          <div class="fa-cont-list1 flex">
+            <div @click="winUrl(res.url)">{{ res.title }}</div>
           </div>
           <div class="fa-cont-list2">{{ res.describe }}</div>
+          <div class="fa-cont-list3">
+            <span class="mr-1">作者:xxx</span>
+            <span class="mx-1">热度:102</span>
+            <span class="mx-1">热度:102</span>
+          </div>
         </div>
       </div>
 
@@ -85,17 +89,18 @@ onMounted(async () => {
 // @apply h-full w-full bg-yellow-300;
 .fa-main {
   @apply relative;
-  @apply h-[85%] mt-[4.6%] ml-[22%] w-[47%];
-  @apply rounded shadow;
+  @apply mt-[4.3%] ml-[22%] w-[47%];
+
+  // @apply rounded shadow;
 
   .fa-cont {
-    @apply h-full m-auto w-full;
-    @apply flex flex-wrap;
+    @apply h-full w-full;
+    @apply grid grid-cols-3;
 
     .fa-cont-list {
-      @include w-h(31.5%, 168px);
+      @include w-h(95%, 155px);
       @apply m-auto mt-2 ml-2;
-      @apply rounded-sm bg-blue-gray-200 shadow;
+      @apply rounded-sm bg-white shadow;
 
       .fa-cont-list1 {
         @apply cursor-pointer h-[24%] text-lg p-2 hover:text-blue-400;
@@ -103,15 +108,26 @@ onMounted(async () => {
       }
 
       .fa-cont-list2 {
-        @apply h-[65%] mx-1 mt-2 px-2;
-        @apply bg-white font-thin;
-        @include line-numbers(5);
+        @apply h-[45%] mx-1 px-2;
+        @apply font-thin;
+        @include line-numbers(3);
+
+        border-bottom: 1.2px dashed #bbb2b2;
+      }
+
+      .fa-cont-list3 {
+        @apply mx-1 mt-3 px-2 font-thin;
+        @apply cursor-pointer;
+
+        span {
+          @apply bg-blue-50 p-1 rounded hover:text-blue-500;
+        }
       }
     }
   }
 
   .fa-page {
-    @apply bg-white shadow p-2;
+    @apply bg-white shadow p-2 m-2 mb-5;
   }
 }
 
@@ -120,7 +136,7 @@ onMounted(async () => {
   @apply h-[90%] top-[9%] right-[12%] w-[18%];
 
   .faside-describe {
-    @apply mb-2 w-[97%];
+    @apply m-auto mb-2 w-[97%] bg-white;
     @apply rounded shadow text-center;
 
     p {
@@ -129,7 +145,7 @@ onMounted(async () => {
   }
 
   .faside-footer {
-    @apply mb-2 p-1 w-[97%];
+    @apply m-auto mb-2 p-1 w-[97%] bg-white;
     @apply rounded cursor-pointer shadow;
 
     .faside-f-title {

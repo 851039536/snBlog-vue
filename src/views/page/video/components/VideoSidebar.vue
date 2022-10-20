@@ -9,26 +9,26 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 </script>
 
 <template>
-  <div class="video-sidebar">
-    <div class="video-s-title">
+  <div class="vside">
+    <div class="vside-title">
       <p>燃向视频收集</p>
     </div>
 
-    <div class="video-s-list">
-      <div class="video-s-list-title">视频信息</div>
-      <div class="video-s-list-cnt">
-        <div class="s-v-l-1">视频数量</div>
-        <div class="s-v-l-2">{{ state }}篇</div>
+    <div class="vside-list">
+      <div class="vside-list-title">视频信息</div>
+      <div class="vside-list-cnt">
+        <div class="vside-l-1">视频数量</div>
+        <div class="vside-l-2">{{ state }}篇</div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.video-sidebar {
-  @apply h-[90%] top-[9%] right-[12%] w-[18%] fixed;
+.vside {
+  @apply h-[90%] top-[9%] right-[11%] w-[17%] fixed;
 
-  .video-s-title {
+  .vside-title {
     @apply bg-white m-auto text-center mb-2 w-[97%];
     @apply rounded shadow;
 
@@ -37,24 +37,23 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
     }
   }
 
-  .video-s-list {
+  .vside-list {
     @apply cursor-pointer m-auto mb-2 p-1 w-[97%];
     @apply bg-white rounded shadow;
 
-    .video-s-list-title {
-      color: #1b1e21;
-
-      @apply cursor-pointer font-semibold bg-gray-200 m-1 text-base p-1;
+    .vside-list-title {
+      @apply m-1 text-base p-1;
+      @apply rounded cursor-pointer bg-emerald-200;
     }
 
-    .video-s-list-cnt {
+    .vside-list-cnt {
       @apply m-2 text-sm flex;
 
-      .s-v-l-1 {
+      .vside-l-1 {
         @apply p-1 w-[35%];
       }
 
-      .s-v-l-2 {
+      .vside-l-2 {
         @apply p-1 w-[35%];
       }
     }
@@ -62,7 +61,7 @@ video.GetCountAsync(0, '0', true).then((res: any) => {
 }
 
 @screen <xp {
-  .video-sidebar {
+  .vside {
     @apply top-[11%];
   }
 }
