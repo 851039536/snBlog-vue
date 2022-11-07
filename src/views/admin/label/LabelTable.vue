@@ -1,26 +1,24 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, state } from './data'
-import { articleApi, TOKEN, labels } from '@/api'
+import { articleApi, TOKEN, labelsApi } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
+import { hUser } from '@/hooks/commonly'
+import { aCancel, aData } from '../data'
 
 const reload: any = inject('reload')
-
+const userName = ref('')
 const confirm = async (data: any) => {
   await articleApi.Del(data.id).then(() => {
-    message.success('删除成功')
+    message.success(aData.SUCCESS)
     reload()
   })
 }
-const cancel = () => {
-  message.info('已取消')
-}
-
 async function GetContains(name: string) {
   if (name === '' && state.labelStr === 'ALL') {
-    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
+    state.resData = await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)
   } else if (state.labelStr === 'ALL') {
     state.resData = await articleApi.GetContains(0, '0', name, true)
   } else {
@@ -31,23 +29,24 @@ async function GetTag() {
   message.info(state.labelStr)
   state.resData =
     state.labelStr === 'ALL'
-      ? await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
-      : await articleApi.GetFy(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
+      ? await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)
+      : await articleApi.GetFy(4, `${state.labelStr},${userName.value}`, 1, 1000, 'id', true, false)
 }
 async function Ordering() {
   if (state.order) {
-    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
+    state.resData = await articleApi.GetFy(3, userName.value, 1, 1000, 'id', state.order, false)
     state.order = false
   } else {
-    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
+    state.resData = await articleApi.GetFy(3, userName.value, 1, 1000, 'id', state.order, false)
     state.order = true
   }
 }
 
 onMounted(async () => {
   await TOKEN()
-  state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
-  state.resLabel = await labels.GetAll(false)
+  userName.value = storage.get(hUser.NAME)
+  state.resData = await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)
+  state.resLabel = await labelsApi.GetAll(false)
   navName.name = '文章'
   navName.name2 = '标签列表'
 })
@@ -89,7 +88,7 @@ onMounted(async () => {
           <a type="primary" ghost @click="routerId('/Admin-index/ArticleEdit', record.id)">Edit</a>
         </template>
         <template #de="{ record }">
-          <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="confirm(record)" @cancel="cancel">
+          <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="confirm(record)" @cancel="aCancel">
             <a href="#">Delete</a>
           </a-popconfirm>
         </template>

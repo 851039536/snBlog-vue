@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, state, stateArray, stateStr } from './data'
-import { articleApi, TOKEN, labels, interfaces } from '@/api'
+import { articleApi, TOKEN, labelsApi, interfaces } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 
@@ -46,7 +46,7 @@ function selectTag() {
 onMounted(async () => {
   await TOKEN()
   await QueryFy()
-  await labels.GetAll(false).then(res => {
+  await labelsApi.GetAll(false).then(res => {
     stateArray.labelResult = res.data
   })
   navName.name = '设置'

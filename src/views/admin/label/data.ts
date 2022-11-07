@@ -1,5 +1,3 @@
-import { IArticle } from '@/api/data/interData'
-
 interface State {
   resData: any
   resLabel: any
@@ -14,27 +12,13 @@ const state: State = reactive({
   labelStr: 'ALL',
   order: true
 })
-const formState: IArticle = reactive({
-  labelId: 1,
-  sortId: 1,
-  userId: 0,
-  id: 0,
-  title: '',
-  sketch: '',
-  text: '',
-  read: 0,
-  img: 'img',
-  commentId: 0,
-  give: 0,
-  timeCreate: '2021-11-13T03:18:19.821Z',
-  timeModified: '2021-11-13T03:18:19.821Z'
-})
 
-const columns = [
+const columns: any = [
   {
     title: '标题',
     width: 130,
     dataIndex: 'title',
+    align: 'center',
     key: 'title'
   },
 
@@ -88,4 +72,4 @@ const columns = [
   }
 ]
 
-export { columns, state, formState }
+export { columns, state }

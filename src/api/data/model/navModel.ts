@@ -22,3 +22,13 @@ export const navForm: INav = reactive({
   userId: 0,
   url: ''
 })
+
+export const clearNav = () => {
+  navForm.id = 0
+  navForm.title = ''
+  navForm.describe = ''
+  navForm.img = ''
+  navForm.typeId = 3
+  navForm.userId = 0
+  navForm.url = ''
+}

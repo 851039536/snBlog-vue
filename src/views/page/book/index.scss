@@ -1,0 +1,73 @@
+.book {
+  @apply fixed;
+  @include w-h(100%, 100%);
+
+  .book-main {
+    @include initialize($w, 89%, 4.5%, null, $ml, null, #ffffff);
+    @apply rounded-sm shadow-sm overflow-auto;
+
+    .book-bar {
+      @include underline;
+      @apply mb-2;
+
+      p {
+        @apply m-2 py-2 px-1;
+        @apply font-medium text-base;
+      }
+    }
+
+    .book-film {
+      width: 99%;
+
+      @apply rounded-sm m-auto shadow py-2;
+
+      span {
+        @apply text-base px-3;
+      }
+    }
+
+    .book-film-text {
+      @apply rounded-sm m-1 shadow-xl mt-2 p-1;
+      @include w-h(95%, 370px);
+
+      .book-img {
+        @include w-h(100%, 220px);
+
+        img {
+          @include w-h(100%, 100%);
+          @apply rounded-sm;
+        }
+      }
+
+      .book-film-title {
+        background-color: wheat;
+
+        @apply text-lg text-center p-1;
+      }
+
+      .book-film-type {
+        @apply text-sm p-1 px-3 text-gray-400;
+
+        div {
+          @apply m-1;
+        }
+      }
+    }
+  }
+}
+
+// @screen xp {
+//   .book .book-text {
+//     width: 100%;
+
+//     @apply ml-2;
+//   }
+
+//   .book .book-text .book-film-text .book-img {
+//     height: 380px;
+//   }
+
+//   .book .book-text .book-film-text {
+//     height: 540px;
+//   }
+// }

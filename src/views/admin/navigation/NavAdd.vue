@@ -1,38 +1,57 @@
 <script lang="ts" setup>
-import { formState, resType } from './data/data'
 import { go, reloads } from '@/hooks/routers'
-import { GetApi, onSubmit } from './data/navAdd'
-import { TOKEN } from '@/api'
+import { navigationApi, TOKEN } from '@/api'
+import { message } from 'ant-design-vue'
+import { aData } from '../data'
+import { routers } from '@/hooks/routers'
+import { navName } from '../utils/data'
+import { storage } from '@/utils/storage/storage'
+import { hUser } from '@/hooks/commonly'
+import { clearNav, navForm } from '@/api/data/model/navModel'
+import { rRouter } from '@/router/data'
 function GetTypeId(id: number) {
-  formState.typeId = id
+  navForm.typeId = id
+}
+
+const rType: any = ref([])
+const uid: any = ref(storage.get(hUser.ID))
+const onSubmit = async () => {
+  navForm.userId = uid.value
+  await navigationApi.AddAsync(navForm).then(() => {
+    message.info(aData.SUCCESS)
+    routers(rRouter.navTable)
+  })
 }
 onMounted(async () => {
   await TOKEN()
-  await GetApi()
+  clearNav()
+  rType.value = await (await navigationApi.GetNavTypeAll(false)).data
+  navName.name = '内容分享'
+  navName.name2 = '新增内容'
 })
 </script>
 
 <template>
   <div class="navform m-auto">
     <div class="form-div">
-      <a-input v-model:value="formState.title" prefix="标题:" />
+      <a-input v-model:value="navForm.title" prefix="标题:" />
     </div>
     <div class="form-div">
       <div>描述:</div>
-      <a-textarea v-model:value="formState.describe" show-count :maxlength="100" />
+      <a-textarea v-model:value="navForm.describe" show-count :maxlength="100" />
     </div>
 
     <div class="flex p-2">
       <div>
-        <a-select v-model:value="formState.typeId" style="width: 120px">
-          <a-select-option v-for="item in resType" :key="item.id" :label="item.id" :value="item.id">
+        <a-select v-model:value="navForm.typeId" style="width: 120px">
+          <a-select-option v-for="item in rType" :key="item.id" :label="item.id" :value="item.id">
             {{ item.title }}
           </a-select-option>
         </a-select>
       </div>
 
       <div class="bg-yellow-50 w-600px flex flex-wrap ml-2 rounded cursor-pointer">
-        <template v-for="item in resType" :key="item.id">
+        <template v-for="item in rType" :key="item.id">
           <div class="m-1 hover:text-blue-400" @click="GetTypeId(item.id)">
             {{ item.title }}
           </div>
@@ -40,10 +59,10 @@ onMounted(async () => {
       </div>
     </div>
     <div class="form-div">
-      <a-input v-model:value="formState.img" prefix="图片链接:" />
+      <a-input v-model:value="navForm.img" prefix="图片链接:" />
     </div>
     <div class="form-div">
-      <a-input v-model:value="formState.url" prefix="地址:" />
+      <a-input v-model:value="navForm.url" prefix="地址:" />
     </div>
     <div class="p-2">
       <a-button type="primary" @click="onSubmit">添加</a-button>

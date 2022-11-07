@@ -42,4 +42,10 @@ interface IntOne {
   timeModified: any
 }
 
-export { ILabel, INav, IntOne, IOneType, IArticle, IVideo, ITag, ISort }
+interface IFy {
+  page: number
+  pagesize: number
+  count: number
+  current: number
+}
+export { ILabel, INav, IntOne, IOneType, IArticle, IVideo, ITag, ISort, IFy }

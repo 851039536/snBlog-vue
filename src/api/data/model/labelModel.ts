@@ -13,3 +13,10 @@ export const labelForm: ILabel = reactive({
   description: '',
   snArticles: ''
 })
+
+export const clearLabel = () => {
+  labelForm.id = 0
+  labelForm.name = ''
+  labelForm.description = ''
+  labelForm.snArticles = ''
+}

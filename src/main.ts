@@ -5,8 +5,6 @@ import 'nprogress/nprogress.css'
 import 'virtual:windi.css'
 import lazyPlugin from 'vue3-lazy'
 import infiniteScroll from 'vue3-infinite-scroll-better'
-// import dayjs from 'dayjs'
-
 // v-md
 import VueMarkdownEditor from '@kangc/v-md-editor'
 import '@kangc/v-md-editor/lib/style/base-editor.css'
@@ -64,7 +62,6 @@ app.use(lazyPlugin, {
 })
 app.use(VueMarkdownEditor)
 app.use(VMdPreview)
-
 app.use(infiniteScroll)
 // app.use(store)
 app.use(router)

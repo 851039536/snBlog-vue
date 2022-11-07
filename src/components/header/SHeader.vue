@@ -1,7 +1,11 @@
 <script lang="ts" setup>
+import { ClearUser, hUser } from '@/hooks/commonly'
 import { storage } from '@/utils/storage/storage'
 import { rData, method } from './data/index'
-
+import type { CascaderProps } from 'ant-design-vue'
+import { routers } from '@/hooks/routers'
+import { rRouter } from '@/router/data'
+import uservg from '@assets/svg/components/user.svg?component'
 const local = ref(true)
 const scroll = () => {
   // 滚动条高度
@@ -9,11 +13,37 @@ const scroll = () => {
   // 可视区的高度
   const { clientHeight } = document.documentElement
   if (scrollTop > clientHeight) {
-    local.value = true
+    local.value = false
   } else {
     local.value = true
   }
 }
+
+const options: CascaderProps['options'] = [
+  {
+    value: '注销',
+    label: '注销'
+  },
+  {
+    value: '后台',
+    label: '后台'
+  }
+]
+
+const value = ref<string[]>([])
+async function onChange() {
+  switch (value.value[0]) {
+    case '后台':
+      await routers(rRouter.articleTable)
+      break
+    case '注销':
+      ClearUser()
+      break
+    default:
+      break
+  }
+}
+
 onDeactivated(() => {
   // 离开这个界面之后，删除，不然会有问题
   window.removeEventListener('scroll', scroll)
@@ -25,11 +55,11 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav class="head">
-    <div class="head-cont">
-      <div class="head-cont-l">
-        <div class="flex text-2xl items-center">
-          <span>少年</span>
+  <nav v-show="local" class="head">
+    <div class="h-cont">
+      <div class="h-cont-l">
+        <div class="">
+          <span>SN BLOG</span>
         </div>
         <div class="head-l-text">
           <div v-for="res in rData" :key="res.id">
@@ -42,8 +72,12 @@ onMounted(async () => {
       </div>
       <div class="head-cont-r">
         <div class="head-r-div">
-          <span v-if="storage.get('user') === 'user'" v-once @click="method.skip(14)">登录</span>
-          <span v-else v-once @click="method.skip(14)">{{ storage.get('user') }}</span>
+          <span v-if="storage.get(hUser.NAME) === hUser.NAME" v-once @click="method.skip(14)">登录</span>
+          <div v-else>
+            <a-cascader v-model:value="value" :options="options" @change="onChange">
+              <uservg></uservg>
+            </a-cascader>
+          </div>
         </div>
       </div>
     </div>
@@ -72,11 +106,15 @@ input {
   @apply flex h-70px w-full top-0 left-0 z-50 fixed;
   @apply bg-white shadow px-3;
 
-  .head-cont {
+  .h-cont {
     @apply w-full inline-flex;
 
-    .head-cont-l {
+    .h-cont-l {
       @apply flex h-full w-[50%];
+
+      div {
+        @apply flex text-2xl items-center;
+      }
 
       .head-l-text {
         @apply flex m-1 p-1 items-center;
@@ -105,7 +143,7 @@ input {
   .head {
     @apply w-full left-0;
 
-    .head-cont .head-cont-l {
+    .h-cont .h-cont-l {
       @apply w-[75%];
     }
   }

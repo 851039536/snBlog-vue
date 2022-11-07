@@ -1,11 +1,11 @@
 import request from '@/utils/http/axios'
 import { articleApi } from './http/article'
-import { labels } from './http/labels'
+import { labelsApi } from './http/labels'
 import { sort } from './http/sort'
 import { userTalk } from './http/usertalk'
 import { setBlog } from './http/setBlog'
 import { leave } from './http/leave'
-import { navigation } from './http/navigation'
+import { navigationApi } from './http/navigation'
 import { one } from './http/one'
 import { video } from './http/video'
 import { user } from './http/user'
@@ -29,12 +29,12 @@ function TOKEN() {
 
 export {
   articleApi,
-  labels,
+  labelsApi,
   sort,
   userTalk,
   setBlog,
   leave,
-  navigation,
+  navigationApi,
   one,
   video,
   user,

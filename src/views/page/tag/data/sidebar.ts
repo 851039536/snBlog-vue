@@ -1,4 +1,4 @@
-import { articleApi, labels, sort, userTalk } from '@api/index'
+import { articleApi, labelsApi, sort, userTalk } from '@api/index'
 import { winUrl } from '@/hooks/routers'
 
 interface Res {
@@ -48,7 +48,7 @@ export class method {
   }
 
   static async GetApi() {
-    resData.labelsData = await (await labels.GetAll(true)).data
+    resData.labelsData = await (await labelsApi.GetAll(true)).data
     resData.sortData = await (await sort.GetAll(true)).data
     resData.articleStr = await (await articleApi.GetFy(0, 'null', 1, 1, 'id', true, true)).data[0].timeCreate
     resData.userTalk = await (await userTalk.GetUserTalkFirst()).data

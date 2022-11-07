@@ -1,12 +1,17 @@
 <script lang="ts" setup>
+import { interfaces } from '@/api'
+import { hUser } from '@/hooks/commonly'
 import { sideIndex } from '@/hooks/data'
-import { rData, method } from './index'
+import { routers } from '@/hooks/routers'
+import { storage } from '@/utils/storage/storage'
+
+const rData: any = ref([])
 
 function getTopic(index: number) {
   sideIndex.value = index
 }
 onMounted(async () => {
-  await method.GetType()
+  rData.value = await (await interfaces.GetType(0, storage.get(hUser.NAME), 'sidebar', true)).data
   getTopic(sideIndex.value)
 })
 </script>
@@ -18,9 +23,12 @@ onMounted(async () => {
       class="lside-list"
       :class="sideIndex == index ? 'active' : ''"
       @click="getTopic(index)">
-      <div v-if="res.identity" @click="method.skip(res.path)">
+      <div v-if="res.identity" @click="routers(res.path)">
         {{ res.title }}
       </div>
+    </div>
+    <div v-show="storage.get(hUser.NAME) === hUser.NAME" class="lside-list bg-blue-400">
+      <div class="text-lg text-white">登录</div>
     </div>
   </div>
 </template>
@@ -31,12 +39,8 @@ onMounted(async () => {
   @apply bg-white rounded shadow;
 
   .lside-list {
-    @apply cursor-pointer text-center;
-
-    color: #666;
-    font-size: 15px;
-
-    @apply font-normal hover:bg-blue-500;
+    @apply text-cool-gray-600 text-center text-lg;
+    @apply cursor-pointer hover:bg-blue-500;
 
     div {
       @apply m-2 py-1 mx-7;

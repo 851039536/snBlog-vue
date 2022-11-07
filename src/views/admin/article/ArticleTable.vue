@@ -1,52 +1,56 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, state } from './data'
-import { articleApi, TOKEN, labels } from '@/api'
+import { columns, rLabel } from './data'
+import { articleApi, TOKEN, labelsApi } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
+import { aData, aCancel } from '../data'
+import { rRouter } from '@/router/data'
+import { hUser } from '@/hooks/commonly'
 
 const reload: any = inject('reload')
-
-const confirm = async (data: any) => {
+const rArticle = ref()
+const userName = ref('')
+const labelStr = ref('')
+const order = ref(false)
+const del = async (data: any) => {
   await articleApi.Del(data.id).then(() => {
-    message.success('删除成功')
+    message.success(aData.SUCCESS)
     reload()
   })
 }
-const cancel = () => {
-  message.info('已取消')
-}
-
 async function GetContains(name: string) {
-  if (name === '' && state.labelStr === 'ALL') {
-    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
-  } else if (state.labelStr === 'ALL') {
-    state.resData = await articleApi.GetContains(0, '0', name, true)
-  } else {
-    state.resData = await articleApi.GetContains(2, state.labelStr, name, true)
-  }
+  if (name === '' && labelStr.value === 'ALL')
+    return (rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)).data)
+  if (labelStr.value === 'ALL') return (rArticle.value = await (await articleApi.GetContains(0, '0', name, true)).data)
+  rArticle.value = await (await articleApi.GetContains(2, labelStr.value, name, true)).data
 }
-async function GetTag() {
-  state.resData =
-    state.labelStr === 'ALL'
-      ? await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
-      : await articleApi.GetFy(4, `${state.labelStr},${storage.get('user')}`, 1, 1000, 'id', true, false)
+async function SelectTag() {
+  rArticle.value =
+    labelStr.value === 'ALL'
+      ? await (
+          await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)
+        ).data
+      : await (
+          await articleApi.GetFy(4, `${labelStr.value},${userName.value}`, 1, 1000, 'id', true, false)
+        ).data
 }
 async function Ordering() {
-  if (state.order) {
-    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
-    state.order = false
-  } else {
-    state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', state.order, false)
-    state.order = true
+  if (order.value) {
+    rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', order.value, false)).data
+    order.value = false
+    return
   }
+  rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', order.value, false)).data
+  order.value = true
 }
 
 onMounted(async () => {
   await TOKEN()
-  state.resData = await articleApi.GetFy(3, storage.get('user'), 1, 1000, 'id', true, false)
-  state.resLabel = await labels.GetAll(false)
+  userName.value = storage.get(hUser.NAME)
+  rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)).data
+  rLabel.value = await (await labelsApi.GetAll(false)).data
   navName.name = '文章展示'
   navName.name2 = '文章列表'
 })
@@ -55,11 +59,11 @@ onMounted(async () => {
   <div>
     <div class="mb-2">
       <a-space>
-        <a-button @click="routers('/Admin-index/ArticleAdd')">添加</a-button>
+        <a-button @click="routers(rRouter.articleAdd)">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select v-model:value="state.labelStr" style="width: 100px" @change="GetTag">
+        <a-select v-model:value="labelStr" style="width: 140px" @change="SelectTag">
           <a-select-option value="ALL">ALL</a-select-option>
-          <a-select-option v-for="res in state.resLabel.data" :key="res.id" :value="res.name">
+          <a-select-option v-for="res in rLabel" :key="res.id" :value="res.name">
             {{ res.name }}
           </a-select-option>
         </a-select>
@@ -72,7 +76,6 @@ onMounted(async () => {
           :not-found-content="null"
           @search="GetContains"></a-select>
       </a-space>
-      <!-- end 搜索 -->
       <a-button style="margin-left: 10px" @click="Ordering()">排序</a-button>
     </div>
     <div>
@@ -81,7 +84,7 @@ onMounted(async () => {
         :bordered="true"
         :columns="columns"
         row-key="id"
-        :data-source="state.resData.data"
+        :data-source="rArticle"
         :pagination="{ pageSize: 15 }"
         :scroll="{ x: 1280, y: 520 }">
         <template #bodyCell="{ column, record }">
@@ -95,11 +98,11 @@ onMounted(async () => {
             <p>{{ record.label.name }}</p>
           </template>
           <template v-if="column.dataIndex === 'edit'">
-            <a type="primary" ghost @click="routerId('/Admin-index/ArticleEdit', record.id)">Edit</a>
+            <a type="primary" ghost @click="routerId(rRouter.articleEdit, record.id)">编辑</a>
           </template>
           <template v-if="column.dataIndex === 'del'">
-            <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="confirm(record)" @cancel="cancel">
-              <a href="#">Delete</a>
+            <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="del(record)" @cancel="aCancel">
+              <a>删除</a>
             </a-popconfirm>
           </template>
         </template>

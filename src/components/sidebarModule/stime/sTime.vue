@@ -63,8 +63,8 @@ updateTime()
 
 <style lang="scss" scoped>
 #clock {
-  @apply m-auto h-92px mt-2 text-center mb-2 w-[97%];
-  @apply bg-white rounded shadow text-2xl;
+  @apply m-auto h-60px mt-2 text-center mb-2 w-[97%];
+  @apply bg-white rounded shadow text-xl;
 
   display: flex;
   align-items: center;

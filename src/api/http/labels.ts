@@ -1,6 +1,6 @@
 import request from '@/utils/http/axios'
 
-class labels {
+class labelsApi {
   static GetByIdAsync(id: number) {
     return request(
       {
@@ -26,4 +26,4 @@ class labels {
   }
 }
 
-export { labels }
+export { labelsApi }

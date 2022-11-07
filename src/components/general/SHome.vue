@@ -5,7 +5,7 @@ import { routers } from '@h/routers'
 <template>
   <div class="home">
     <div class="home-cont">
-      <div class="text-[3rem] text-gray-700">Kai ouyang-blogs</div>
+      <div class="text-[3rem] text-gray-700">SN BLOG</div>
       <div class="font-light mt-4 text-lg text-center">
         <p>一位热爱生活、全栈开发者,</p>
         <p>表面腼腆,内心奔放。</p>
@@ -19,8 +19,8 @@ import { routers } from '@h/routers'
         <a class="btn" @click="routers('/index/column')">Go-></a>
       </div>
 
-      <div class="flex bg-warm-gray-100 p-4 rounded">
-        <div>
+      <div class="flex p-4 rounded">
+        <div class="m-2">
           <svg
             t="1666248855271"
             class="icon"
@@ -44,7 +44,7 @@ import { routers } from '@h/routers'
               p-id="2373"></path>
           </svg>
         </div>
-        <div>
+        <div class="m-2">
           <svg
             t="1666248904275"
             class="icon"
@@ -64,7 +64,7 @@ import { routers } from '@h/routers'
               p-id="4520"></path>
           </svg>
         </div>
-        <div>
+        <div class="m-2">
           <svg
             t="1666248962226"
             class="icon"
@@ -80,7 +80,7 @@ import { routers } from '@h/routers'
               p-id="5003"></path>
           </svg>
         </div>
-        <div>
+        <div class="m-2">
           <svg
             t="1666249043685"
             class="icon"
@@ -100,7 +100,7 @@ import { routers } from '@h/routers'
               p-id="7101"></path>
           </svg>
         </div>
-        <div>
+        <div class="m-2">
           <svg
             t="1666249077181"
             class="icon"

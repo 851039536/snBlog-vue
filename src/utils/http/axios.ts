@@ -36,12 +36,8 @@ function myAxios(axiosConfig: any, customOptions: any) {
 
       // eslint-disable-next-line no-unused-expressions
       qiXiao.qiXiao_cancel && addPending(req)
-      // if (req.method === 'post' || req.method === 'put' || req.method === 'delete') {
-      // 序列化
-      //   req.data = qs.parse(req.data)
-      // }
       if (['post', 'put', 'delete'].includes(req.method)) {
-        req.data = qs.parse(req.data)
+        req.data = qs.parse(req.data) //序列化
       }
       // 若是有做鉴权token , 就给头部带上token
       if (storage.get('token')) {

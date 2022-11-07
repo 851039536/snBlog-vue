@@ -4,8 +4,8 @@ import router from '@/router/index'
  * @description: 路由跳转
  * @param {string} path 路径
  */
-async function routers(path: string) {
-  await router.push({
+function routers(path: string) {
+  return router.push({
     path,
     query: {
       t: +new Date()
@@ -18,8 +18,8 @@ async function routers(path: string) {
  * @param {string} path
  * @param {number} id
  */
-const routerId = async (path: string, id: number | string) => {
-  await router.push({
+const routerId = (path: string, id: number | string) => {
+  return router.push({
     path,
     query: {
       id,
@@ -43,7 +43,7 @@ function resolve(path: string, id: number) {
  * @param {number} n n可为正数可为负数。正数返回上一个页面
  */
 function go(n: number) {
-  router.go(n)
+  return router.go(n)
 }
 
 /**
@@ -51,14 +51,14 @@ function go(n: number) {
  * @param {string} url
  */
 function winUrl(url: string) {
-  window.open(url)
+  return window.open(url)
 }
 
 /**
  *页面刷新
  */
 function reloads() {
-  window.location.reload()
+  return window.location.reload()
 }
 
 export { routers, routerId, winUrl, go, resolve, reloads }

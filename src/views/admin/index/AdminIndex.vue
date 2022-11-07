@@ -1,32 +1,33 @@
 <script lang="ts" setup>
 import { routers } from '@/hooks/routers'
 import { navName } from '../utils/data'
-import { isToken, removeStorage } from '@/hooks/commonly'
-import { storage } from '@/utils/storage/storage'
-import AWenzhang from '@assets/svg/admin/a-wenzhangh.svg'
-import ADaohang from '@assets/svg/admin/a-daohangl.svg'
-import ASet from '@assets/svg/admin/a-set.svg'
+import { isToken, ClearUser } from '@/hooks/commonly'
+import AWenzhang from '@assets/svg/admin/a-wenzhangh.svg?component'
+import ADaohang from '@assets/svg/admin/a-daohangl.svg?component'
+import ASet from '@assets/svg/admin/a-set.svg?component'
+import { rRouter } from '@/router/data'
+import uservg from '@assets/svg/components/user.svg?component'
 
-function zx() {
-  removeStorage()
+function clear() {
+  ClearUser()
   isToken()
 }
 const handleClick = (e: any) => {
   switch (e.key) {
     case '1-1':
-      routers('/Admin-index/ArticleTable')
+      routers(rRouter.articleTable)
       break
     case '1-2':
-      routers('/Admin-index/LabelTable')
+      routers(rRouter.labelTable)
       break
     case '2-1':
-      routers('/Admin-index/NavTable')
+      routers(rRouter.navTable)
       break
     case '3-1':
-      routers('/Admin-index/PageSet')
+      routers(rRouter.pageSet)
       break
     default:
-      routers('/Admin-index/ArticleTable')
+      routers(rRouter.articleTable)
       break
   }
 }
@@ -48,10 +49,12 @@ provide('reload', reload)
         <ul class="menu">
           <li><a class="text-gray-700" href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
           <li><a class="text-gray-700" @click="routers('/index/column')">主页</a></li>
-          <li><a class="text-gray-700" @click="zx()">注销</a></li>
+          <li>
+            <a class="text-gray-700" @click="clear()">注销</a>
+          </li>
           <li>
             <a>
-              {{ storage.get('user') }}
+              <uservg />
             </a>
           </li>
         </ul>
@@ -68,9 +71,9 @@ provide('reload', reload)
                 <template #title>
                   <span>文章展示</span>
                 </template>
-                <a-menu-item key="1-1">文章</a-menu-item>
-                <a-menu-item key="1-2">标签</a-menu-item>
-                <a-menu-item key="1-3">类别</a-menu-item>
+                <a-menu-item key="1-1">文章管理</a-menu-item>
+                <a-menu-item key="1-2">标签管理</a-menu-item>
+                <a-menu-item key="1-3">类别管理</a-menu-item>
               </a-sub-menu>
               <a-sub-menu key="sub2">
                 <template #icon>
@@ -79,8 +82,8 @@ provide('reload', reload)
                 <template #title>
                   <span>内容导航</span>
                 </template>
-                <a-menu-item key="2-1">导航列</a-menu-item>
-                <a-menu-item key="2-2">标签</a-menu-item>
+                <a-menu-item key="2-1">导航管理</a-menu-item>
+                <a-menu-item key="2-2">标签管理</a-menu-item>
               </a-sub-menu>
               <a-sub-menu key="sub3">
                 <template #icon>
@@ -173,7 +176,7 @@ provide('reload', reload)
       transition: max-height 0.2s ease-out;
 
       li {
-        @apply text-base;
+        @apply text-lg;
       }
     }
   }

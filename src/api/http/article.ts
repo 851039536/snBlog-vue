@@ -175,14 +175,14 @@ class articleApi {
 
   /**
    * @description: 更新数据
-   * @param {IntArticle} resultData
+   * @param {IntArticle} entity
    */
-  static Update(resultData: IArticle) {
+  static Update(entity: IArticle) {
     return request(
       {
         url: '/api/SnArticle/UpdateAsync',
         method: 'put',
-        data: resultData
+        data: entity
       },
       {
         qiXiao_cancel: false

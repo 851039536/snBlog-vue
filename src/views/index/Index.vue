@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-import SBackTop from '../../components/general/SBackTop.vue'
-</script>
+<script lang="ts" setup></script>
 <template>
   <section>
     <s-back-top></s-back-top>

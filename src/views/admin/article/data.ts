@@ -1,90 +1,72 @@
-import { IArticle } from '@/api/data/interData'
+export const rLabel: any = ref([])
+export const rSort: any = ref([])
 
-interface State {
-  resData: any
-  resLabel: any
-  resSort: any
-  labelStr: string
-  order: boolean
-}
-const state: State = reactive({
-  resData: [],
-  resLabel: [],
-  resSort: [],
-  labelStr: 'ALL',
-  order: true
-})
-const formState: IArticle = reactive({
-  labelId: 1,
-  sortId: 1,
-  userId: 0,
-  id: 0,
-  title: '',
-  sketch: '',
-  text: '',
-  read: 0,
-  img: 'img',
-  commentId: 0,
-  give: 0,
-  timeCreate: '2021-11-13T03:18:19.821Z',
-  timeModified: '2021-11-13T03:18:19.821Z'
-})
-
-const columns = [
+const columns: any = [
   {
     title: '标题',
-    width: 130,
+    width: 120,
     dataIndex: 'title'
   },
 
   {
     title: '用户',
     dataIndex: 'user',
-    width: 55
+    align: 'center',
+    width: 50
   },
   {
     title: '分类',
     dataIndex: 'sort',
+    align: 'center',
     width: 60
   },
   {
     title: '标签',
     dataIndex: 'label',
+    align: 'center',
     width: 60
   },
 
   {
     title: '更新时间',
     dataIndex: 'timeModified',
-    width: 80
+    align: 'center',
+    width: 78
   },
   {
     title: '创建时间',
     dataIndex: 'timeCreate',
-    width: 80
+    align: 'center',
+    width: 78
   },
 
   {
     title: '阅读量',
     dataIndex: 'read',
+    align: 'center',
     width: 35
   },
   {
     title: '点赞',
     dataIndex: 'give',
+    align: 'center',
     width: 35
   },
 
   {
     title: '操作',
     dataIndex: 'edit',
+    align: 'center',
+    fixed: 'right',
     width: 40
   },
   {
     title: '操作',
     dataIndex: 'del',
+    align: 'center',
+    fixed: 'right',
     width: 40
   }
 ]
 
-export { columns, state, formState }
+export { columns }

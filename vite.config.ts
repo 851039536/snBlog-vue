@@ -16,14 +16,16 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      reactivityTransform: true //主要是这个开启，ref
+    }),
     svgLoader(),
     ViteTips(), // 服务器状态提示
     VitePWA(),
     tsconfigPaths(),
     injectHtml({
       injectData: {
-        title: '少年的博客!'
+        title: 'SN BLOG'
       }
     }),
     AutoImport({
@@ -86,12 +88,14 @@ export default defineConfig({
     open: false, // 设置服务启动时是否自动打开浏览器
     cors: true // 允许跨域,默认启用并允许任何源
     // proxy: {
-    //   "/api": {
-    //     target: "http://jsonplaceholder.typicode.com",
+    //   '/api': {
+    //     target: 'http://localhost:8088/',
     //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/api/, ""),
-    //   },
-    // },
+    //     rewrite: path => {
+    //       return path.replace(/^\/api/, '')
+    //     }
+    //   }
+    // }
   },
   css: {
     preprocessorOptions: {

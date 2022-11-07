@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
 import { INav } from '@/api/data/interData'
 
-export class navigation {
+export class navigationApi {
   /**
    * 查询总数
    * @param identity 所有:0 || 分类:1 || 用户:2
@@ -159,7 +159,7 @@ export class navigation {
   // ==================分类===========================
 
   /**
-   * @description: 查询分类内容
+   * @description: 查询导航表分类的内容
    */
   static GetNavTypeAll(cache: boolean) {
     return request(

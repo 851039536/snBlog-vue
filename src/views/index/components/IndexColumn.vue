@@ -1,19 +1,11 @@
 <script lang="ts" setup>
 import { method } from '../data/index'
 import { routerId } from '@/hooks/routers'
-// import { tool } from '@/utils/common/tool'
 import { state } from '../data/data'
-
+import { aData } from '@/views/admin/data'
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
-// async function currentchange(val: number) {
-//   state.current = val
-
-//   await method.GetFy()
-//   tool.BackTop()
-// }
-
 const handleInfiniteOnLoad = async () => {
   // 异步加载数据等逻辑
   if (scrollDisabled.value) {
@@ -29,8 +21,7 @@ const scrollDisabled = computed(() => {
 })
 
 onMounted(async () => {
-  await method.GetCount(0, 'null')
-  await method.GetFy()
+  await axios.all([await method.GetCount(0, aData.NULL), await method.GetFy()])
 })
 </script>
 
@@ -56,22 +47,14 @@ onMounted(async () => {
             <span class="bg-sky-100">{{ res.sort.name }}</span>
             <span class="bg-yellow-100">{{ res.read }} ℃</span>
             <span class="bg-teal-100">赞 {{ res.give }}</span>
-            <span class="bg-purple-200">{{ res.timeCreate.substring(0, 10) }}</span>
+            <span class="bg-teal-200">{{ res.user.nickname }}</span>
+            <span class="">{{ res.timeCreate.substring(0, 10) }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-if="scrollDisabled">数据加载完毕</div>
-    <!-- <div class="blogs-page">
-      <a-pagination
-        size="small"
-        :total="state.count"
-        :page-size="state.pagesize"
-        :current="state.current"
-        show-quick-jumper
-        @change="currentchange"></a-pagination>
-    </div> -->
+    <div v-if="scrollDisabled" class="text-2xl mt-2 mb-10 m-1 text-cool-gray-400">数据加载完毕 ^</div>
   </section>
 </template>
 
@@ -93,27 +76,23 @@ onMounted(async () => {
       @apply h-full w-[75%];
 
       .blogs-div-frame-1 {
-        @apply cursor-pointer m-1 text-xl px-1 hover:text-blue-400;
+        @apply cursor-pointer m-1 text-xl px-1;
+        @apply rounded transition duration-800 hover:bg-blue-200;
         @include line-one;
       }
 
       .blogs-div-frame-2 {
-        @apply h-[51%] m-1 px-2 mt-2;
-        @apply text-sm;
-
-        color: rgb(109 104 104);
-
-        @include line-numbers(3);
+        @apply h-[49%] m-1 px-2 mt-2;
+        @apply text-base text-cool-gray-500;
+        @include line-numbers(2);
       }
 
       .blogs-div-frame-3 {
-        @apply m-1 mt-2 px-1;
-
-        color: #666;
+        @apply m-1 mt-2 px-1 text-cool-gray-500;
 
         span {
-          @apply p-1 mx-1 cursor-pointer rounded;
-          @apply hover:bg-light-blue-400;
+          @apply px-1 py-2px mx-2px cursor-pointer rounded;
+          @apply hover:bg-light-blue-100;
         }
       }
     }

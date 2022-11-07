@@ -1,4 +1,4 @@
-import { articleApi, navigation, sort, userTalk } from '@api/index'
+import { articleApi, navigationApi, sort, userTalk } from '@api/index'
 import { winUrl } from '@/hooks/routers'
 
 interface Res {
@@ -16,7 +16,7 @@ interface Res {
   title: string
   navType: any
 }
-export const resData: Res = reactive({
+export const rData: Res = reactive({
   sortData: [],
   articleData: [],
   articleData1: [],
@@ -39,7 +39,7 @@ export class method {
    */
   static async Search(name: string) {
     await articleApi.GetContains(0, 'null', name, false).then(res => {
-      resData.articleData1 = res.data
+      rData.articleData1 = res.data
     })
   }
 
@@ -48,16 +48,16 @@ export class method {
   }
 
   static async GetApi() {
-    resData.navType = await (await navigation.GetTypeAsync(1, '常用工具', true)).data
+    rData.navType = await (await navigationApi.GetTypeAsync(1, '常用工具', true)).data
 
-    resData.sortData = await (await sort.GetAll(true)).data
-    resData.articleStr = await (await articleApi.GetFy(0, 'null', 1, 1, 'id', true, true)).data[0].timeCreate
-    resData.userTalk = await (await userTalk.GetUserTalkFirst()).data
-    resData.articleCount = await (await articleApi.GetCountAsync(0, 'null', true)).data
-    resData.articleCount = String(resData.articleCount)
-    resData.textCount = await (await articleApi.GetSum(0, 1, 'null', true)).data
-    resData.textCount = String(resData.textCount)
-    resData.readCount = await (await articleApi.GetSum(0, 2, 'null', true)).data
-    resData.readCount = String(resData.readCount)
+    rData.sortData = await (await sort.GetAll(true)).data
+    rData.articleStr = await (await articleApi.GetFy(0, 'null', 1, 1, 'id', true, true)).data[0].timeCreate
+    rData.userTalk = await (await userTalk.GetUserTalkFirst()).data
+    rData.articleCount = await (await articleApi.GetCountAsync(0, 'null', true)).data
+    rData.articleCount = String(rData.articleCount)
+    rData.textCount = await (await articleApi.GetSum(0, 1, 'null', true)).data
+    rData.textCount = String(rData.textCount)
+    rData.readCount = await (await articleApi.GetSum(0, 2, 'null', true)).data
+    rData.readCount = String(rData.readCount)
   }
 }

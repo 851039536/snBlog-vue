@@ -4,13 +4,14 @@ import { useAppStore } from '@/store/pinia'
 import { routers } from '@/hooks/routers'
 import { user } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
-import { isToken, removeStorage } from '@/hooks/commonly'
+import { hUser, isToken, ClearUser } from '@/hooks/commonly'
+import { rRouter } from '@/router/data'
 
 const store = useAppStore()
 const state = reactive({
   name: '',
   pwd: '',
-  result: []
+  res: []
 })
 function login() {
   user.Login(state.name, state.pwd).then(res => {
@@ -18,15 +19,15 @@ function login() {
       message.error(res.data)
       return
     }
-    state.result = res.data.split(',')
-    removeStorage()
-    storage.set('rolres', state.result[0]) // 角色名
-    storage.set('id', state.result[2]) // 用户主键
-    storage.set('user', state.result[3]) // 用户名
-    storage.set('token', `Bearer ${state.result[1]}`) // token
-    store.roles = storage.get('rolres')
+    state.res = res.data.split(',')
+    ClearUser()
+    storage.set(hUser.ROLE, state.res[0]) // 角色名
+    storage.set(hUser.ID, state.res[2]) // 用户主键
+    storage.set(hUser.NAME, state.res[3]) // 用户名
+    storage.set(hUser.TOKEN, `Bearer ${state.res[1]}`) // token
+    store.roles = storage.get(hUser.ROLE)
     message.success('登录成功')
-    routers('/Admin-index/ArticleTable')
+    routers(rRouter.articleTable)
   })
 }
 onMounted(async () => {
@@ -36,7 +37,7 @@ onMounted(async () => {
 <template>
   <div class="login-box">
     <form class="login">
-      <p>Login</p>
+      <p>博客后台</p>
       <input v-model="state.name" type="text" placeholder="用户名" />
       <input v-model="state.pwd" type="password" placeholder="密码" />
       <span class="btn" @click="login">登 录</span>
@@ -78,6 +79,8 @@ input {
   border: none;
   border-bottom: 2px solid rgb(95 90 90);
 
+  // @apply mb-5;
+
   /* 下面的会覆盖上面的步伐 */
   outline: none;
 
@@ -89,17 +92,11 @@ input {
   @apply cursor-pointer shadow rounded;
 }
 
-.btn:hover {
-  background-color: #4f99ee;
-}
-
 .login-box {
   @apply top-0 left-0 fixed;
 
   width: 100%;
   height: 100%;
-
-  // background: url(../../../assets/img/login/wallpaper.jpg) no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }

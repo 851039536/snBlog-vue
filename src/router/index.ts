@@ -29,33 +29,6 @@ const routes: RouteRecordRaw[] = [
       return import('@/components/general/SHome.vue')
     }
   },
-
-  {
-    path: '/blogs',
-    name: 'blogs',
-    meta: {
-      keepAlive: false
-    },
-    component: () => {
-      return import('@/views/blogs/BlogsIndex.vue')
-    },
-    children: [
-      {
-        path: 'BlogsColumn',
-        name: 'BlogsColumn',
-        component: () => {
-          return import('@/views/blogs/components/BlogsColumn.vue')
-        }
-      },
-      {
-        path: 'BlogsContent',
-        name: 'BlogsContent',
-        component: () => {
-          return import('@/views/Blogs/components/BlogsContent.vue')
-        }
-      }
-    ]
-  },
   {
     path: '/index',
     name: 'index',
@@ -120,7 +93,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/navigation/website/Navigation.vue')
+      return import('@/views/page/navigation/Navigation.vue')
     }
   },
   {
@@ -130,7 +103,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/navigation/blogCrcles/BlogCircles.vue')
+      return import('@/views/page/navigation/BlogCircles.vue')
     }
   },
   {
@@ -140,7 +113,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/navigation/favorite/Favorite.vue')
+      return import('@/views/page/navigation/Favorite.vue')
     }
   },
   {
@@ -190,7 +163,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/book/BookIndex.vue')
+      return import('@/views/page/book/BookIndex.vue')
     }
   },
   {

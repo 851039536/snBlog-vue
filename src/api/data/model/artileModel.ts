@@ -23,9 +23,29 @@ export const articleForm: IArticle = reactive({
   img: '',
   commentId: 0,
   give: 0,
-  labelId: 0,
-  sortId: 0,
+  labelId: 1,
+  sortId: 1,
   userId: 0,
-  timeCreate: '',
-  timeModified: ''
+  timeCreate: '2021-11-13T03:18:19.821Z',
+  timeModified: '2021-11-13T03:18:19.821Z'
 })
+
+export const clearArticle = () => {
+  articleForm.labelId = 1
+  articleForm.sortId = 1
+  articleForm.userId = 0
+  articleForm.id = 0
+  articleForm.title = ''
+  articleForm.sketch = ''
+  articleForm.text = ''
+  articleForm.read = 0
+  articleForm.img = 'img'
+  articleForm.commentId = 0
+  articleForm.give = 0
+  articleForm.timeCreate = '2021-11-13T03:18:19.821Z'
+  articleForm.timeModified = '2021-11-13T03:18:19.821Z'
+}
+// const state = reactive(clearArticle)
+// const resetState = () => {
+//   Object.assign(state, clearArticle())
+// }
