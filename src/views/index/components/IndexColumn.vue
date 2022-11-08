@@ -1,8 +1,26 @@
 <script lang="ts" setup>
-import { method } from '../data/index'
 import { routerId } from '@/hooks/routers'
-import { state } from '../data/data'
 import { aData } from '@/views/admin/data'
+import { articleApi } from '@/api'
+
+const rArticle: any = ref([])
+const state = reactive({
+  page: 1,
+  pagesize: 6,
+  count: 0,
+  identity: 0,
+  typeStr: 'null',
+  current: 1
+})
+async function GetCount(identity: number, type: string) {
+  state.count = await (await articleApi.GetCountAsync(identity, type, true)).data
+}
+async function GetFy() {
+  rArticle.value = await (
+    await articleApi.GetFy(state.identity, state.typeStr, state.current, state.pagesize, 'id', true, true)
+  ).data
+}
+
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
@@ -13,15 +31,15 @@ const handleInfiniteOnLoad = async () => {
   } else {
     // 加载数据列表
     state.pagesize += 8
-    await method.GetFy()
+    await GetFy()
   }
 }
 const scrollDisabled = computed(() => {
-  return state.resData.length >= state.count
+  return rArticle.value.length >= state.count
 })
 
 onMounted(async () => {
-  await axios.all([await method.GetCount(0, aData.NULL), await method.GetFy()])
+  await axios.all([await GetCount(0, aData.NULL), await GetFy()])
 })
 </script>
 
@@ -32,7 +50,7 @@ onMounted(async () => {
     :infinite-scroll-disabled="scrollDisabled"
     infinite-scroll-watch-disabled="scrollDisabled"
     :infinite-scroll-distance="20">
-    <div v-for="res in state.resData" :key="res.id" class="blogs">
+    <div v-for="res in rArticle" :key="res.id" class="blogs">
       <div class="blogs-cont">
         <div class="blogs-cont-img">
           <img v-lazy="getImageUrl(res.img)" />

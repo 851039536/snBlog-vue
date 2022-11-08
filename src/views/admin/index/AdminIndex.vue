@@ -92,7 +92,7 @@ provide('reload', reload)
                 <template #title>
                   <span>设置</span>
                 </template>
-                <a-menu-item key="3-1">页面导航</a-menu-item>
+                <a-menu-item key="3-1">页面设置</a-menu-item>
                 <a-menu-item key="3-2">SQL备份</a-menu-item>
               </a-sub-menu>
             </a-menu>

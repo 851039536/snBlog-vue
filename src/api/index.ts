@@ -10,7 +10,7 @@ import { one } from './http/one'
 import { video } from './http/video'
 import { user } from './http/user'
 import { listContent } from './http/listContent'
-import { interfaces } from './http/interfaces'
+import { interfacesApi } from './http/interfaces'
 
 /**
  * @description: 空函数查token权限
@@ -40,5 +40,5 @@ export {
   user,
   listContent,
   TOKEN,
-  interfaces
+  interfacesApi
 }

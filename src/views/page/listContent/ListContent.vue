@@ -100,7 +100,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-// @import './index.scss';
 .list-content {
   @apply mt-[4.5%] ml-[22%] w-[69%];
   @apply rounded-md shadow;

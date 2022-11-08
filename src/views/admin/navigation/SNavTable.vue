@@ -16,7 +16,7 @@ const confirm = async (data: any) => {
   })
 }
 
-const rNav = ref([])
+const rNav: any = ref([])
 const rnavType: any = ref([])
 const navStr = ref('ALL')
 async function GetFy() {
@@ -47,7 +47,7 @@ async function SelectNav() {
   })
 }
 
-async function Search(name: string) {
+async function Search(name: any) {
   if (name === '') {
     return
   }
@@ -71,6 +71,7 @@ async function GetApi() {
   navName.name = '内容分享'
   navName.name2 = '导航列表'
 }
+
 onMounted(async () => {
   await GetApi()
 })

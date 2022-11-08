@@ -9,6 +9,7 @@ import { storage } from '@/utils/storage/storage'
 import { hUser } from '@/hooks/commonly'
 import { clearNav, navForm } from '@/api/data/model/navModel'
 import { rRouter } from '@/router/data'
+
 function GetTypeId(id: number) {
   navForm.typeId = id
 }

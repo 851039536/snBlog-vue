@@ -1,10 +1,3 @@
-interface State {
-  resData: any
-}
-const state: State = reactive({
-  resData: []
-})
-
 const columns: any = [
   {
     title: '主键',
@@ -23,7 +16,7 @@ const columns: any = [
     title: '路径',
     dataIndex: 'path',
     align: 'center',
-    width: 100
+    width: 80
   },
   {
     title: '是否启用',
@@ -47,21 +40,16 @@ const columns: any = [
     title: '编辑',
     dataIndex: 'edit',
     align: 'center',
+    fixed: 'right',
     width: 30
   },
   {
     title: '删除',
     dataIndex: 'del',
     align: 'center',
+    fixed: 'right',
     width: 30
   }
 ]
 
-const stateArray: any = reactive({
-  labelResult: [],
-  sortResult: []
-})
-const stateStr: any = reactive({
-  labelStr: 'ALL'
-})
-export { columns, state, stateArray, stateStr }
+export { columns }

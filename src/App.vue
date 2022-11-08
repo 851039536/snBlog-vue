@@ -1,5 +1,4 @@
 <template>
-  <!-- <s-header></s-header> -->
   <div id="app">
     <router-view v-slot="{ Component }">
       <transition name="fade" :duration="1000">

@@ -1,6 +1,7 @@
 import request from '@/utils/http/axios'
+import { IInterface } from '../data/interData'
 
-class interfaces {
+class interfacesApi {
   /**
    * @description: 条件查询
    * @param {number} identity 分类和用户:0 || 用户:1 || 分类:2
@@ -42,6 +43,73 @@ class interfaces {
       }
     )
   }
+
+  /**
+   * @description: 新增数据
+   * @param {IInterface} rData
+   */
+  static AddAsync(rData: IInterface) {
+    return request(
+      {
+        url: '/api/SnInterface/AddAsync',
+        method: 'post',
+        data: rData
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
+  }
+
+  /**
+   * @description: 更新数据
+   * @param {IInterface} entity
+   */
+  static Update(entity: IInterface) {
+    return request(
+      {
+        url: '/api/SnInterface/UpdateAsync',
+        method: 'put',
+        data: entity
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
+  }
+
+  /**
+   * @description: 删除
+   * @param {number} id
+   */
+  static Del(id: number) {
+    return request(
+      {
+        url: `/api/SnInterface/DeleteAsync?id=${id}`,
+        method: 'delete'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
+  }
+
+  /**
+   * @description: 主键查询
+   * @param {number} id
+   * @param {boolean} cache
+   */
+  static GetById(id: number, cache = false) {
+    return request(
+      {
+        url: `/api/SnInterface/GetByIdAsync?id=${id}&cache=${cache}`,
+        method: 'get'
+      },
+      {
+        qiXiao_cancel: false
+      }
+    )
+  }
 }
 
-export { interfaces }
+export { interfacesApi }

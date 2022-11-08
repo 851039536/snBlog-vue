@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { interfaces } from '@/api'
+import { interfacesApi } from '@/api'
 import { hUser } from '@/hooks/commonly'
 import { sideIndex } from '@/hooks/data'
 import { routers } from '@/hooks/routers'
@@ -11,7 +11,7 @@ function getTopic(index: number) {
   sideIndex.value = index
 }
 onMounted(async () => {
-  rData.value = await (await interfaces.GetType(0, storage.get(hUser.NAME), 'sidebar', true)).data
+  rData.value = await (await interfacesApi.GetType(0, storage.get(hUser.NAME), 'sidebar', true)).data
   getTopic(sideIndex.value)
 })
 </script>

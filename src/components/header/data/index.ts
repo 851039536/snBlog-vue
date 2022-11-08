@@ -1,6 +1,8 @@
-import { interfaces } from '@/api/index'
+import { interfacesApi } from '@/api/index'
 import { routers, winUrl } from '@/hooks/routers'
 import { sideIndex } from '@/hooks/data'
+import { storage } from '@/utils/storage/storage'
+import { hUser } from '@/hooks/commonly'
 
 const rData: any = ref([])
 /**
@@ -8,7 +10,7 @@ const rData: any = ref([])
  */
 class method {
   static async GetType() {
-    await interfaces.GetType(0, 'kai', 'header', false).then((res: any) => {
+    await interfacesApi.GetType(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
       rData.value = res.data
     })
   }

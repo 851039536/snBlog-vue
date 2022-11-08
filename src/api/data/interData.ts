@@ -5,6 +5,7 @@ import { ILabel } from './model/labelModel'
 import { IOneType } from './model/oneModel'
 import { ISort } from './model/sortModel'
 import { INav } from './model/navModel'
+import { IInterface } from './model/intInterfaceModel'
 
 export interface IntTalk {
   id: number
@@ -18,14 +19,6 @@ export interface IntTalk {
   typeId: number
   timeCreate: string
   timeModified: string
-}
-export interface IntInterface {
-  id: number
-  title: string
-  path: string
-  typeId: number
-  userId: number
-  identity: number
 }
 
 interface IntOne {
@@ -48,4 +41,4 @@ interface IFy {
   count: number
   current: number
 }
-export { ILabel, INav, IntOne, IOneType, IArticle, IVideo, ITag, ISort, IFy }
+export { ILabel, INav, IntOne, IOneType, IArticle, IVideo, ITag, ISort, IFy, IInterface }

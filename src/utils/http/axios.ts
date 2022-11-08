@@ -18,7 +18,7 @@ axios.defaults.headers.post['Access-Control-Allow-Origin-Type'] = '*'
 function myAxios(axiosConfig: any, customOptions: any) {
   const service = axios.create({
     baseURL: obj.urls, // 设置统一的请求前缀
-    timeout: 10000 // 设置统一的超时时长
+    timeout: 8000 // 设置统一的超时时长
   })
 
   // 是否开启取消重复请求

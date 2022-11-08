@@ -22,11 +22,6 @@ export const ClearUser = () => {
 }
 
 /**
- * 当前登录用户id
- */
-export const userId: string | object = ref(storage.get(hUser.ID))
-
-/**
  * 判断token是否存在否则跳转登录界面
  */
 export const isToken = async () => {
