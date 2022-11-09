@@ -8,7 +8,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "build:dev": "vite build --mode development",
     "build:pro": "vite build --mode production",
-    "serve": "vite preview",
+    "serve": "vite --mode production",
     "lint:eslint": "eslint --ext .vue,.ts src/",
     "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix",
     "tsc": "vue-tsc --noEmit && vite build"

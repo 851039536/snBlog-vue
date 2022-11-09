@@ -74,7 +74,10 @@ onMounted(async () => {
       </div>
     </div>
     <div class="rounded bg-gray-50 shadow mt-2 p-2">
-      <v-md-editor v-model="articleForm.text" height="390px"></v-md-editor>
+      <v-md-editor
+        v-model="articleForm.text"
+        left-toolbar="undo redo | emoji | clear | h | code"
+        height="390px"></v-md-editor>
     </div>
   </div>
 </template>

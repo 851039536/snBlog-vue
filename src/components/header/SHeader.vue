@@ -2,7 +2,6 @@
 import { ClearUser, hUser } from '@/hooks/commonly'
 import { storage } from '@/utils/storage/storage'
 import { rData, method } from './data/index'
-import type { CascaderProps } from 'ant-design-vue'
 import { routers } from '@/hooks/routers'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
@@ -19,24 +18,12 @@ const scroll = () => {
   }
 }
 
-const options: CascaderProps['options'] = [
-  {
-    value: '注销',
-    label: '注销'
-  },
-  {
-    value: '后台',
-    label: '后台'
-  }
-]
-
-const value = ref<string[]>([])
-async function onChange() {
-  switch (value.value[0]) {
-    case '后台':
+async function onChange(id: number) {
+  switch (id) {
+    case 1:
       await routers(rRouter.articleTable)
       break
-    case '注销':
+    case 2:
       ClearUser()
       break
     default:
@@ -74,9 +61,22 @@ onMounted(async () => {
         <div class="head-r-div">
           <span v-if="storage.get(hUser.NAME) === hUser.NAME" v-once @click="method.skip(14)">登录</span>
           <div v-else>
-            <a-cascader v-model:value="value" :options="options" @change="onChange">
+            <a-popover placement="bottomRight">
+              <template #content>
+                <div class="text-center mb-1 cursor-pointer hover:text-blue-400" @click="onChange(1)">后台管理</div>
+                <div class="text-center cursor-pointer hover:text-blue-400" @click="onChange(2)">退出登录</div>
+              </template>
+              <template #title>
+                <div class="flex">
+                  <div class="mt-11px mr-2"><uservg></uservg></div>
+                  <div class="m-1">
+                    <div>少年</div>
+                    <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
+                  </div>
+                </div>
+              </template>
               <uservg></uservg>
-            </a-cascader>
+            </a-popover>
           </div>
         </div>
       </div>

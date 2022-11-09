@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     APageHeader: typeof import('ant-design-vue/es')['PageHeader']
     APagination: typeof import('ant-design-vue/es')['Pagination']
     APopconfirm: typeof import('ant-design-vue/es')['Popconfirm']
+    APopover: typeof import('ant-design-vue/es')['Popover']
     ArticleAdd: typeof import('./src/views/admin/article/ArticleAdd.vue')['default']
     ArticleEdit: typeof import('./src/views/admin/article/ArticleEdit.vue')['default']
     ArticleTable: typeof import('./src/views/admin/article/ArticleTable.vue')['default']

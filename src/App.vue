@@ -19,6 +19,8 @@
 @include scroll;
 
 #app {
-  @apply bg-gray-100 absolute w-full;
+  background: #f3f7fd;
+
+  @apply absolute w-full;
 }
 </style>

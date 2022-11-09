@@ -12,6 +12,7 @@ const state = reactive({
   typeStr: 'null',
   current: 1
 })
+
 async function GetCount(identity: number, type: string) {
   state.count = await (await articleApi.GetCountAsync(identity, type, true)).data
 }
@@ -50,7 +51,7 @@ onMounted(async () => {
     :infinite-scroll-disabled="scrollDisabled"
     infinite-scroll-watch-disabled="scrollDisabled"
     :infinite-scroll-distance="20">
-    <div v-for="res in rArticle" :key="res.id" class="blogs">
+    <div v-for="res in rArticle" :key="res.id" ref="rr" class="blogs">
       <div class="blogs-cont">
         <div class="blogs-cont-img">
           <img v-lazy="getImageUrl(res.img)" />

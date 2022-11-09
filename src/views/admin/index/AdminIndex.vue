@@ -41,7 +41,7 @@ function reload() {
 provide('reload', reload)
 </script>
 <template>
-  <div class="admin-index">
+  <div class="admin">
     <a-layout>
       <header class="header">
         <a class="logo">控制台</a>
@@ -61,8 +61,8 @@ provide('reload', reload)
       </header>
 
       <a-layout>
-        <div class="bg-warm-gray-50 mt-1">
-          <a-layout-sider breakpoint="lg" collapsed-width="0" width="230">
+        <div class="mt-1">
+          <a-layout-sider breakpoint="xl" collapsed-width="0" width="230">
             <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="handleClick">
               <a-sub-menu key="sub1">
                 <template #icon>
@@ -120,14 +120,12 @@ provide('reload', reload)
 </template>
 
 <style lang="scss" scoped>
-.admin-index {
+.admin {
   @apply h-full w-full z-10 fixed;
   @apply bg-gray-100;
 
   .header {
-    @apply bg-white w-full;
-
-    box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 10%);
+    @apply bg-white w-full shadow;
 
     .logo {
       display: block;
@@ -200,10 +198,6 @@ provide('reload', reload)
   .header .menu-icon .navicon::after {
     top: -5px;
   }
-
-  /* menu btn */
-
-  /* 48em = 768px */
 
   @media (min-width: 48em) {
     .header li {

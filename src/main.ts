@@ -25,6 +25,8 @@ import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/
 import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index'
 import App from './App.vue'
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css'
+import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index'
+import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css'
 //  end v-md
 
 import router from './router/index'
@@ -45,6 +47,8 @@ VMdPreview.use(githubTheme, {
 })
 VMdPreview.use(createLineNumbertPlugin())
 VMdPreview.use(createCopyCodePlugin())
+
+VueMarkdownEditor.use(createEmojiPlugin())
 // use
 const app = createApp(App)
 
