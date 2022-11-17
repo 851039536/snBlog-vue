@@ -24,7 +24,8 @@ module.exports = {
     'no-descending-specificity': null,
     // 'at-rule-name-case': 'lower', // 指定@规则名的大小写,
     // 'shorthand-property-no-redundant-values': true, // 简写属性
-    'declaration-block-trailing-semicolon': null
+    'declaration-block-trailing-semicolon': null,
+    'declaration-block-no-duplicate-custom-properties': null //允许重复声明
     // 'no-descending-specificity': null
   }
 }

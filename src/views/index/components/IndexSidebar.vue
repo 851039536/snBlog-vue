@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { articleApi, navigationApi, userTalk } from '@/api'
-import { IArticle, INav } from '@/api/data/interData'
+import { IArticle } from '@/api/data/interData'
+import { hSearch, hSearchValue } from '@/hooks/data'
 import { winUrl } from '@/hooks/routers'
 const annunciate = ref('') //通告
 const articleTime = ref()
@@ -8,14 +9,19 @@ const articleCount = ref('')
 const name = ref('')
 const textCount = ref('')
 const readCount = ref('')
-const rNav = ref([] as INav[]) //导航
+const rNav = ref([]) //导航
 const rArticle = ref([] as IArticle[])
 
 async function search(name: string) {
   rArticle.value = await (await articleApi.GetContains(0, 'null', name, false)).data
 }
 async function skip(id: number) {
-  await winUrl(`/VmdHtml?id=${id}`)
+  await winUrl(`/c-mdContent?id=${id}`)
+}
+const proxy: any = getCurrentInstance()
+function onSearch() {
+  hSearch.value = true //显示元素内容
+  hSearchValue.value = proxy.ctx.$refs.ipu //如果存在不隐藏
 }
 onMounted(async () => {
   annunciate.value = await (await userTalk.GetUserTalkFirst()).data
@@ -32,7 +38,7 @@ onMounted(async () => {
 <template>
   <div class="side">
     <div class="side-main">
-      <s-time></s-time>
+      <CTime></CTime>
       <div class="side-input">
         <a-select
           v-model:value="name"
@@ -46,9 +52,12 @@ onMounted(async () => {
           <a-select-option v-for="res in rArticle" :key="res.id">{{ res.title }}</a-select-option>
         </a-select>
       </div>
-      <s-describe :user-talk="annunciate"></s-describe>
+      <div ref="ipu" class="side-input">
+        <a-input-search placeholder="input search text" style="width: 100%" @search="onSearch" />
+      </div>
+      <SidebarAnnunciate :user-talk="annunciate"></SidebarAnnunciate>
       <index-tool :res-data="rNav" tag-name="常用工具"></index-tool>
-      <station-text
+      <CStatistics
         title="站点统计"
         title1="文章数量"
         title2="总字符数"
@@ -57,7 +66,7 @@ onMounted(async () => {
         :res1="articleCount"
         :res2="textCount"
         :res3="readCount"
-        :res4="articleTime"></station-text>
+        :res4="articleTime"></CStatistics>
     </div>
   </div>
 </template>
@@ -73,7 +82,7 @@ onMounted(async () => {
       @include center-children;
       @apply flex flex-nowrap;
       @apply m-auto mt-1 mb-2 p-2 w-[97%];
-      @apply bg-white rounded shadow;
+      @apply bg-white rounded shadow-sm;
     }
   }
 }
@@ -82,15 +91,21 @@ onMounted(async () => {
   display: none;
 }
 
-@screen <lg {
+@media screen and (max-width: 768px) {
   .side {
     display: none;
   }
 }
 
-@screen <xp {
+@media screen and (min-width: 1366px) {
   .side {
-    @apply h-[90%] top-[11%];
+    @apply h-[90%] top-[9.9%] overflow-auto;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .side {
+    @apply h-[90%] top-[8.2%];
   }
 }
 </style>

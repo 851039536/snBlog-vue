@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { video } from '@/api'
+import { videoApi } from '@/api'
 
 const route = useRoute()
 
@@ -19,10 +19,10 @@ const resId = reactive({
 })
 
 const GetApi = async () => {
-  await video.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
+  await videoApi.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
     resData.resultData = res.data
   })
-  await video.GetByIdAsync(resId.id, true).then((res: any) => {
+  await videoApi.GetByIdAsync(resId.id, true).then((res: any) => {
     resData.URL = res.data.url
   })
 }
@@ -37,8 +37,8 @@ GetApi()
 
 <template>
   <section>
-    <s-header></s-header>
-    <l-sidebar></l-sidebar>
+    <c-header></c-header>
+    <c-sidebar></c-sidebar>
     <video-play-side></video-play-side>
     <div class="vplay">
       <div class="vplay-if">

@@ -27,36 +27,49 @@ onMounted(async () => {
         {{ res.title }}
       </div>
     </div>
-    <div v-show="storage.get(hUser.NAME) === hUser.NAME" class="lside-list bg-blue-400">
-      <div class="text-lg text-white">登录</div>
+    <div v-show="storage.get(hUser.NAME) === hUser.NAME" bg-gray-200 text-lg>
+      <div flex m-auto w-17 cursor-pointer hover:text-cool-gray-50>
+        <div i-fxemoji-bolt h-5 w-5 mt-5px mr-1></div>
+        登录
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 .lside {
-  @apply h-[88%] top-[9%] left-[12%] w-175px fixed;
-  @apply bg-white rounded shadow;
+  --at-apply: h-[92%] top-[9%] left-[12%] w-175px fixed;
+  --at-apply: bg-white rounded shadow;
 
   .lside-list {
-    @apply text-cool-gray-600 text-center text-lg;
-    @apply cursor-pointer hover:bg-blue-500;
+    --at-apply: text-cool-gray-600 text-center text-lg;
+    --at-apply: cursor-pointer transition duration-500 hover:bg-blue-400 rounded;
 
     div {
-      @apply m-2 py-1 mx-7;
-      @apply rounded  hover:text-white;
+      --at-apply: m-2 py-1 mx-7;
     }
   }
 
   .lside-list.active {
-    color: #fff;
-    background-color: #0ea5e9;
+    --at-apply: text-cool-gray-50 bg-blue-400;
   }
 }
 
-@screen <xp {
+@media screen and (max-width: 768px) {
   .lside {
-    @apply top-[11%] left-[8%];
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .lside {
+    --at-apply: top-[10.9%] left-[8%];
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .lside {
+    --at-apply: top-[8.9%] left-[12%];
   }
 }
 </style>

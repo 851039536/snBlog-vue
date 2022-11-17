@@ -23,7 +23,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="one-side">
+  <div class="sdie">
     <div>内容来源于网络</div>
     <OneSidetype title="舔狗好评" :result-data="state.resultOne"></OneSidetype>
     <OneCategory :result="state.resultOneType"></OneCategory>
@@ -31,9 +31,8 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.one-side {
-  @apply h-[91%] ml-3 top-[9%] right-[11%] w-[17%] fixed;
-  @apply overflow-auto;
+.sdie {
+  @apply h-[91%] ml-3 top-[8.7%] right-[11%] w-[17%] fixed;
 
   div {
     @apply m-auto mb-2 w-[97%];
@@ -42,13 +41,8 @@ onMounted(async () => {
   }
 }
 
-.one-side::-webkit-scrollbar {
-  display: none;
-}
-
-@screen <xp {
-  .one-side {
-    @apply top-[11%];
-  }
-}
+//   .one-side {
+//     @apply top-[11%];
+//   }
+// }
 </style>

@@ -20,7 +20,7 @@ class articleApi {
   static GetCountAsync(identity: number, type: string, cache: boolean) {
     return request(
       {
-        url: `/api/SnArticle/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        url: `/api/SnArticle?identity=${identity}&type=${type}&cache=${cache}`,
         method: 'get'
       },
       {

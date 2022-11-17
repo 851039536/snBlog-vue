@@ -1,23 +1,15 @@
 import request from '@/utils/http/axios'
+import { get, add } from '@/utils/http/funApi'
 
-export class video {
+export class videoApi {
   /**
    * 查询总数
    * @param identity 所有:0 || 分类:1 || 用户:2
    * @param type 查询参数
    * @param cache 缓存
-   * @returns
    */
-  static GetCountAsync(identity: number, type: string, cache: boolean) {
-    return request(
-      {
-        url: `/api/SnVideo/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+  static GetSumAsync(identity: number, type: string, cache: boolean) {
+    return get(`/video/sum?identity=${identity}&type=${type}&cache=${cache}`)
   }
 
   /**
@@ -25,18 +17,9 @@ export class video {
    * @param identity 分类:1 || 用户:2
    * @param type 查询参数
    * @param cache 缓存
-   * @returns
    */
   static GetTypeAsync(identity: number, type: string, cache: boolean) {
-    return request(
-      {
-        url: `/api/SnVideo/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get(`/video/type?identity=${identity}&type=${type}&cache=${cache}`)
   }
 
   static AsyGestTest() {
@@ -55,18 +38,9 @@ export class video {
    * 主键查询
    * @param id 主键
    * @param cache 缓存
-   * @returns
    */
   static GetByIdAsync(id: any, cache: boolean) {
-    return request(
-      {
-        url: `/api/SnVideo/GetByIdAsync?id=${id}&cache=${cache}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get(`/video/byid?id=${id}&cache=${cache}`)
   }
 
   /**
@@ -78,7 +52,6 @@ export class video {
    * @param ordering 排序条件[data:时间 按id排序]
    * @param isDesc 是否倒序[true/false]
    * @param cache 缓存
-   * @returns
    */
   static GetFyAsync(
     identity: number,
@@ -89,14 +62,8 @@ export class video {
     isDesc: boolean,
     cache: boolean
   ) {
-    return request(
-      {
-        url: `/api/SnVideo/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
+    return get(
+      `/video/paging?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`
     )
   }
 }

@@ -1,8 +1,8 @@
 <script lang="ts" setup></script>
 <template>
   <div class="book">
-    <l-sidebar></l-sidebar>
-    <s-header></s-header>
+    <c-sidebar></c-sidebar>
+    <c-header></c-header>
     <index-sidebar></index-sidebar>
     <div class="book-main">
       <BookBar></BookBar>
@@ -113,11 +113,11 @@
   }
 }
 
-@screen <xp {
-  .book {
-    .book-main {
-      @apply h-[88%] mt-[6.3%];
-    }
-  }
-}
+// @screen <xp {
+//   .book {
+//     .book-main {
+//       @apply h-[88%] mt-[6.3%];
+//     }
+//   }
+// }
 </style>

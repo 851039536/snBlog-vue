@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue/es/components'
 import { useAppStore } from '@/store/pinia'
 import { routers } from '@/hooks/routers'
-import { user } from '@/api/index'
+import { userApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
 import { hUser, isToken, ClearUser } from '@/hooks/commonly'
 import { rRouter } from '@/router/data'
@@ -14,7 +14,7 @@ const state = reactive({
   res: []
 })
 function login() {
-  user.Login(state.name, state.pwd).then(res => {
+  userApi.Login(state.name, state.pwd).then(res => {
     if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
       message.error(res.data)
       return

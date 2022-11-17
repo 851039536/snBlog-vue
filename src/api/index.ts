@@ -7,8 +7,8 @@ import { setBlog } from './http/setBlog'
 import { leave } from './http/leave'
 import { navigationApi } from './http/navigation'
 import { one } from './http/one'
-import { video } from './http/video'
-import { user } from './http/user'
+import { videoApi } from './http/video'
+import { userApi } from './http/user'
 import { listContent } from './http/listContent'
 import { interfacesApi } from './http/interfaces'
 
@@ -36,8 +36,8 @@ export {
   leave,
   navigationApi,
   one,
-  video,
-  user,
+  videoApi,
+  userApi,
   listContent,
   TOKEN,
   interfacesApi

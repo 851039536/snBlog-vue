@@ -1,10 +1,3 @@
-interface RData {
-  articleData?: any
-  arrayLabel?: any
-  blog?: string
-}
-export const rData: RData = reactive({
-  articleData: [],
-  arrayLabel: [],
-  blog: ''
-})
+import { IArticle } from '@/api/data/interData'
+
+export const rArticle = ref([] as IArticle[])

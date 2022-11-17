@@ -81,13 +81,13 @@ onMounted(async () => {
 .blogs {
   .blogs-cont {
     @apply flex h-155px mt-10px w-full;
-    @apply bg-white rounded shadow;
+    @apply bg-white rounded-lg shadow-sm;
 
     .blogs-cont-img {
       @apply h-full p-1 w-[25%];
 
       img {
-        @apply h-full w-full;
+        @apply h-full w-full rounded;
       }
     }
 

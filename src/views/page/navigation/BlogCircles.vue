@@ -26,8 +26,8 @@ onMounted(async () => {
 </script>
 <template>
   <div class="circles">
-    <s-header></s-header>
-    <l-sidebar></l-sidebar>
+    <c-header></c-header>
+    <c-sidebar></c-sidebar>
     <blog-circles-side></blog-circles-side>
     <div class="circles-main">
       <div class="grid circles-content sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xp:grid-cols-3 2xl:grid-cols-3">

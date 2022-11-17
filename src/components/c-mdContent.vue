@@ -56,11 +56,14 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="m-auto w-[80%]">
-    <a-back-top />
+  <div m-auto w="[80%]">
+    <s-back-top />
     <div class="vmd">
       <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.title" />
       <v-md-preview ref="preview" :text="state.blog.text" />
+      <!-- <div v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
+        {{ anchor.title }}
+      </div> -->
     </div>
     <div class="anchor">
       <div v-for="anchor in state.titles" :key="anchor" class="anchor-tag" @click="handleAnchorClick(anchor)">
@@ -72,20 +75,15 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .vmd {
-  @apply bg-white mt-3 mb-800px ml-[3%] w-[75%];
+  --at-apply: bg-white mt-3 mb-800px ml-[3%] w-[75%];
 }
 
 .anchor {
-  @apply rounded top-[7%] right-[9%] w-[14%] z-10 fixed;
+  --at-apply: rounded top-[7%] right-[9%] w-[14%] z-10 fixed;
 
   .anchor-tag {
-    @apply rounded bg-white cursor-pointer m-1 text-base p-2;
-
-    &:hover {
-      @apply rounded bg-blue-400;
-    }
-
-    @apply hover:text-white;
+    --at-apply: rounded bg-white cursor-pointer m-1 text-base p-2;
+    --at-apply: hover:bg-blue-400 hover:text-white;
   }
 }
 </style>

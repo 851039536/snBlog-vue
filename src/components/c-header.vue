@@ -1,11 +1,15 @@
 <script lang="ts" setup>
 import { ClearUser, hUser } from '@/hooks/commonly'
 import { storage } from '@/utils/storage/storage'
-import { rData, method } from './data/index'
 import { routers } from '@/hooks/routers'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
+import { hLogin, sideIndex } from '@/hooks/data'
+import { interfacesApi } from '@/api'
+import { winUrl } from '@/hooks/routers'
+
 const local = ref(true)
+const rData: any = ref([])
 const scroll = () => {
   // 滚动条高度
   const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
@@ -18,6 +22,27 @@ const scroll = () => {
   }
 }
 
+async function GetType() {
+  await interfacesApi.GetType(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
+    rData.value = res.data
+  })
+}
+
+async function skip(num: number) {
+  sideIndex.value = -1
+  switch (num) {
+    case 13:
+      winUrl('https://www.cnblogs.com/ouyangkai/')
+      break
+    case 14:
+      winUrl('/Admin-index/ArticleTable')
+      break
+    default:
+      await routers(num)
+      break
+  }
+}
+
 async function onChange(id: number) {
   switch (id) {
     case 1:
@@ -25,18 +50,26 @@ async function onChange(id: number) {
       break
     case 2:
       ClearUser()
+      location.reload()
+      break
+    case 3:
+      hLogin.value = true
       break
     default:
       break
   }
 }
-
+// const proxy: any = getCurrentInstance()
+// function test() {
+//   hSearch.value = true //显示元素内容
+//   hSearchValue.value = proxy.ctx.$refs.ipu //如果存在不隐藏
+// }
 onDeactivated(() => {
   // 离开这个界面之后，删除，不然会有问题
   window.removeEventListener('scroll', scroll)
 })
 onMounted(async () => {
-  await method.GetType()
+  await GetType()
   // 给window添加一个滚动监听事件
   window.addEventListener('scroll', scroll)
 })
@@ -46,11 +79,12 @@ onMounted(async () => {
     <div class="h-cont">
       <div class="h-cont-l">
         <div class="">
+          <div i-fxemoji-alien mx-1></div>
           <span>SN BLOG</span>
         </div>
         <div class="head-l-text">
           <div v-for="res in rData" :key="res.id">
-            <span v-if="res.identity" @click="method.skip(res.path)">{{ res.title }}</span>
+            <div v-if="res.identity" @click="skip(res.path)">{{ res.title }}</div>
           </div>
           <div>
             <input type="text" />
@@ -59,7 +93,7 @@ onMounted(async () => {
       </div>
       <div class="head-cont-r">
         <div class="head-r-div">
-          <span v-if="storage.get(hUser.NAME) === hUser.NAME" v-once @click="method.skip(14)">登录</span>
+          <span v-if="storage.get(hUser.NAME) === hUser.NAME" v-once @click="onChange(3)">登录</span>
           <div v-else>
             <a-popover placement="bottomRight">
               <template #content>
@@ -82,6 +116,8 @@ onMounted(async () => {
       </div>
     </div>
   </nav>
+  <c-login></c-login>
+  <c-search></c-search>
 </template>
 
 <style lang="scss" scoped>
@@ -119,8 +155,8 @@ input {
       .head-l-text {
         @apply flex m-1 p-1 items-center;
 
-        span {
-          @apply cursor-pointer m-1 text-xl p-1 hover: text-blue-400;
+        div {
+          @apply cursor-pointer ml-1 text-2xl hover:text-blue-400;
         }
       }
     }
@@ -132,19 +168,34 @@ input {
         @apply flex items-center;
 
         span {
-          @apply cursor-pointer m-1 hover: text-blue-400;
+          @apply cursor-pointer m-1 hover:text-blue-400;
         }
       }
     }
   }
 }
 
-@screen <lg {
+// @screen <lg {
+// .head {
+//   @apply w-full left-0;
+
+//   .h-cont .h-cont-l {
+//     @apply w-[75%];
+//   }
+// }
+
+// }
+
+@media screen and (max-width: 768px) {
   .head {
     @apply w-full left-0;
 
     .h-cont .h-cont-l {
       @apply w-[75%];
+
+      .head-l-text {
+        display: none;
+      }
     }
   }
 }

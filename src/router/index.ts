@@ -19,14 +19,14 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Homes',
     component: () => {
-      return import('@/components/general/SHome.vue')
+      return import('@/components/c-home.vue')
     }
   },
   {
     path: '/Home',
     name: 'Home',
     component: () => {
-      return import('@/components/general/SHome.vue')
+      return import('@/components/c-home.vue')
     }
   },
   {
@@ -177,13 +177,13 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/VmdHtml',
-    name: 'VmdHtml',
+    path: '/c-mdContent',
+    name: 'c-mdContent',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/components/editor/vmdhtml.vue')
+      return import('@/components/c-mdContent.vue')
     }
   },
   // ------------------------------------------------------------------------------admin---------------------------------------------------
@@ -257,6 +257,13 @@ const routes: RouteRecordRaw[] = [
         name: 'LabelTable',
         component: () => {
           return import('@/views/admin/label/LabelTable.vue')
+        }
+      },
+      {
+        path: 'userTable',
+        name: 'userTable',
+        component: () => {
+          return import('@/views/admin/user/UserTable.vue')
         }
       }
     ]

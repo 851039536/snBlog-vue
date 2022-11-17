@@ -9,8 +9,8 @@ onMounted(async () => {
 
 <template>
   <div class="one">
-    <s-header></s-header>
-    <l-sidebar></l-sidebar>
+    <c-header></c-header>
+    <c-sidebar></c-sidebar>
     <OneSidebar></OneSidebar>
     <div class="one-cont">
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
@@ -44,11 +44,11 @@ onMounted(async () => {
   }
 }
 
-@screen xp {
-  .one {
-    .one-cont {
-      @apply mt-[6.3%];
-    }
-  }
-}
+// @screen xp {
+//   .one {
+//     .one-cont {
+//       @apply mt-[6.3%];
+//     }
+//   }
+// }
 </style>

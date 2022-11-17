@@ -1,25 +1,25 @@
 <script lang="ts" setup>
-import { video } from '@/api'
+import { videoApi } from '@/api'
 import { state } from './data/data'
 import { method } from './data/index'
 
-video.GetCountAsync(0, '0', true).then((res: any) => {
+videoApi.GetSumAsync(0, '0', true).then((res: any) => {
   state.count = res.data
 })
 method.currentchange(1)
 </script>
 
 <template>
-  <div class="svideo">
-    <s-header></s-header>
-    <l-sidebar></l-sidebar>
+  <div class="video">
+    <c-header></c-header>
+    <c-sidebar></c-sidebar>
     <video-sidebar></video-sidebar>
     <video-content :array-video="state.resultData"></video-content>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.svideo {
+.video {
   @apply w-full relative h-[92%];
 }
 

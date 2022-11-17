@@ -5,6 +5,7 @@ import { aspShow } from '@/hooks/data'
   <section v-show="aspShow">
     <div>
       <a-spin size="large" />
+      <!-- <div i-fxemoji-spurtingwhale w-10 h-10></div> -->
     </div>
   </section>
 </template>

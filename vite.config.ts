@@ -5,7 +5,7 @@ import Components from 'unplugin-vue-components/vite' // 针对 Vue 的按需组
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import eslintPlugin from 'vite-plugin-eslint'
 import { VitePWA } from 'vite-plugin-pwa'
-import WindiCSS from 'vite-plugin-windicss'
+// import WindiCSS from 'vite-plugin-windicss'
 import viteCompression from 'vite-plugin-compression' // 打包压缩
 import { injectHtml } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -13,6 +13,18 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
 import { ViteTips } from 'vite-plugin-tips'
 import svgLoader from 'vite-svg-loader'
+
+// Unocss 插件
+import Unocss from 'unocss/vite'
+// Unocss 默认预设
+import presetUno from '@unocss/preset-uno'
+// Unocss 属性模式预设
+import presetAttributify from '@unocss/preset-attributify'
+// Unocss 指令转换插件
+import transformerDirective from '@unocss/transformer-directives'
+// import presetRemToPx from '@unocss/preset-rem-to-px'
+import presetWebFonts from '@unocss/preset-web-fonts'
+import presetIcons from '@unocss/preset-icons'
 
 export default defineConfig({
   plugins: [
@@ -28,12 +40,53 @@ export default defineConfig({
         title: 'SN BLOG'
       }
     }),
+    // 新增一个 Unocss 插件配置
+    Unocss({
+      // 预设
+      presets: [
+        presetUno(),
+        presetAttributify(),
+        // presetRemToPx(),
+        presetIcons(),
+        presetWebFonts({
+          provider: 'fontshare', // default provider
+          fonts: {
+            // these will extend the default theme
+            sans: 'Roboto',
+            mono: ['Fira Code', 'Fira Mono:400,700'],
+            // custom ones
+            lobster: 'Lobster',
+            lato: [
+              {
+                name: 'Lato',
+                weights: ['400', '700'],
+                italic: true
+              },
+              {
+                name: 'sans-serif',
+                provider: 'none'
+              }
+            ]
+          }
+        })
+      ],
+      // 指令转换插件
+      transformers: [transformerDirective()],
+      // 自定义规则
+      rules: [],
+      // 快速创建可复用的组件和工具类。
+      shortcuts: {
+        's-side': 'h-[92%] top-[8.4%] right-[11%] w-[17%] fixed',
+        's-hw': 'h-full w-full'
+      }
+    }),
     AutoImport({
       // 自动导入vue3的hooks
       imports: [
         'vue',
         'vue-router',
         '@vueuse/core',
+        'pinia',
         {
           axios: [
             ['default', 'axios'] // import { default as axios } from 'axios',
@@ -55,7 +108,7 @@ export default defineConfig({
     styleImport({
       resolves: [AndDesignVueResolve()]
     }),
-    WindiCSS(),
+    // WindiCSS(),
     // gzip压缩 生产环境生成 .gz 文件
     viteCompression({
       verbose: true, // 是否在控制台输出压缩结果

@@ -28,8 +28,8 @@ onMounted(async () => {
 </script>
 <template>
   <div>
-    <l-sidebar></l-sidebar>
-    <s-header></s-header>
+    <c-sidebar></c-sidebar>
+    <c-header></c-header>
     <div class="list-content">
       <div class="list-content-title">
         <p>最新内容 / 总 计 10</p>
@@ -142,9 +142,9 @@ onMounted(async () => {
   }
 }
 
-@screen <xp {
-  .list-content {
-    @apply mt-[7.3%];
-  }
-}
+// @screen <xp {
+//   .list-content {
+//     @apply mt-[7.3%];
+//   }
+// }
 </style>

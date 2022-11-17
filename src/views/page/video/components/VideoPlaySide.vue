@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { video } from '@/api'
+import { videoApi } from '@/api'
 
 const state = ref(0)
 interface ResData {
@@ -16,20 +16,20 @@ const route = useRoute()
 const resId = reactive({
   id: route.query.id
 })
-video.GetCountAsync(0, '0', true).then((res: any) => {
+videoApi.GetSumAsync(0, '0', true).then((res: any) => {
   state.value = res.data
 })
 
 const videos = async (vid: number) => {
-  await video.GetByIdAsync(vid, true).then((res: any) => {
+  await videoApi.GetByIdAsync(vid, true).then((res: any) => {
     resData.URL = res.data.url
   })
 }
 const GetApi = async () => {
-  await video.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
+  await videoApi.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
     resData.resultData = res.data
   })
-  await video.GetByIdAsync(resId.id, true).then((res: any) => {
+  await videoApi.GetByIdAsync(resId.id, true).then((res: any) => {
     resData.URL = res.data.url
   })
 }
@@ -45,7 +45,7 @@ GetApi()
           <img src="@/assets/img/sp.png" />
         </div>
         <div class="vplay-2-1-2">
-          <a @click="videos(res.id)">{{ res.title }}</a>
+          <a @click="videos(res.id)">{{ res.name }}</a>
         </div>
         <div class="vplay-2-1-3">
           {{ res.timeModified.substring(0, 10) }}
@@ -90,9 +90,9 @@ GetApi()
   }
 }
 
-@screen <xp {
-  .vside {
-    @apply top-[11%];
-  }
-}
+// @screen <xp {
+//   .vside {
+//     @apply top-[11%];
+//   }
+// }
 </style>

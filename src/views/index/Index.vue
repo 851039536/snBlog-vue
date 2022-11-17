@@ -1,10 +1,10 @@
 <script lang="ts" setup></script>
 <template>
   <section>
-    <s-back-top></s-back-top>
-    <l-sidebar></l-sidebar>
+    <c-back-top></c-back-top>
+    <c-sidebar></c-sidebar>
     <index-sidebar></index-sidebar>
-    <s-header></s-header>
+    <c-header></c-header>
     <div class="blog">
       <router-view></router-view>
     </div>
@@ -12,18 +12,24 @@
 </template>
 <style lang="scss" scoped>
 .blog {
-  @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
+  --at-apply: h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
 }
 
-@screen <lg {
+@media screen and (max-width: 768px) {
   .blog {
-    @apply mt-[10%] ml-0 w-full;
+    --at-apply: mt-[19%] ml-0 w-full;
   }
 }
 
-@screen <xp {
+@media screen and (min-width: 1366px) {
   .blog {
-    @apply h-[90%] mt-[6.3%];
+    --at-apply: h-[90%] mt-[6.1%];
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .blog {
+    --at-apply: mt-[4.6%];
   }
 }
 </style>

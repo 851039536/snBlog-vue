@@ -11,9 +11,7 @@ onBeforeUpdate(() => {
 })
 </script>
 <template>
-  <div>
-    <v-md-editor v-model="result" mode="preview"></v-md-editor>
-  </div>
+  <v-md-editor v-model="result" mode="preview"></v-md-editor>
 </template>
 
 <style lang="scss" scoped>

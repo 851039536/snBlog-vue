@@ -3,7 +3,7 @@
  */
 export interface IVideo {
   id: number
-  title: string
+  name: string
   img: string
   typeId: number
   userId: number
@@ -13,7 +13,7 @@ export interface IVideo {
 }
 export const videoForm: IVideo = reactive({
   id: 0,
-  title: '',
+  name: '',
   img: '',
   typeId: 0,
   userId: 0,

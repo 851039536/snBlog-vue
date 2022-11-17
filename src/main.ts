@@ -2,7 +2,9 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
-import 'virtual:windi.css'
+// import 'virtual:windi.css'
+// 导入Unocss样式
+import 'uno.css'
 import lazyPlugin from 'vue3-lazy'
 import infiniteScroll from 'vue3-infinite-scroll-better'
 // v-md

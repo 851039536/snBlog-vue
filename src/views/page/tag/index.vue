@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api'
-import { rData } from './data/data'
+import { rArticle } from './data/data'
 
 async function Search(names: string) {
   if (names === '') return
-  rData.articleData = await (await articleApi.GetContains(0, 'null', names, true)).data
+  rArticle.value = await (await articleApi.GetContains(0, 'null', names, true)).data
 }
 </script>
 <template>
   <div class="tindex">
-    <l-sidebar></l-sidebar>
-    <s-header></s-header>
-    <div class="tag-search">
+    <c-sidebar></c-sidebar>
+    <c-header></c-header>
+    <div class="search">
       <a-select
         show-search
         placeholder="标题搜索"
@@ -29,11 +29,11 @@ async function Search(names: string) {
 
 <style lang="scss" scoped>
 .tindex {
-  @apply h-[92%] mt-[4.7%] ml-[22%] w-[49.5%] relative;
+  @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
   @apply bg-white;
 
-  .tag-search {
-    @apply p-1 shadow;
+  .search {
+    @apply p-1 shadow rounded;
   }
 }
 </style>

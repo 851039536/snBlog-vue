@@ -26,6 +26,9 @@ const handleClick = (e: any) => {
     case '3-1':
       routers(rRouter.pageSet)
       break
+    case '3-3':
+      routers(rRouter.userTable)
+      break
     default:
       routers(rRouter.articleTable)
       break
@@ -94,6 +97,7 @@ provide('reload', reload)
                 </template>
                 <a-menu-item key="3-1">页面设置</a-menu-item>
                 <a-menu-item key="3-2">SQL备份</a-menu-item>
+                <a-menu-item key="3-3">用户管理</a-menu-item>
               </a-sub-menu>
             </a-menu>
           </a-layout-sider>

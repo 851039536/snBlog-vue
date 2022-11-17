@@ -1,27 +1,25 @@
-import request from '@/utils/http/axios'
+import { get, add } from '@/utils/http/funApi'
+import { IUser } from '../data/model/userModel'
 
-export class user {
+enum API {
+  LOGIN = '/user/login?user='
+}
+export class userApi {
   static GetByIdAsync(id: number) {
-    return request(
-      {
-        url: `/api/SnUser/GetByIdAsync?id=${id}&cache=true`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get(`/user/byid?id=${id}&cache=false`)
   }
 
-  static Login(users: string, pwd: string) {
-    return request(
-      {
-        url: `/api/SnUser/Login?users=${users}&pwd=${pwd}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+  static Login(user: string, pwd: string) {
+    return get(`${API.LOGIN}${user}&pwd=${pwd}`)
+  }
+  static GetPaging(pageIndex: number, pageSize: number) {
+    return get(`/user/paging?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  }
+
+  static Contains(name: string) {
+    return get(`/user/contains?name=${name}&cache=false`)
+  }
+  static Add(entity: IUser) {
+    return add(`/user/add`, entity)
   }
 }

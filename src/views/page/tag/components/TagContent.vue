@@ -1,26 +1,47 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api'
-import { rData } from '../data/data'
+import { rArticle } from '../data/data'
+import { ref, nextTick } from 'vue'
 /**
  * 选中后变色并且效果不消失
  */
 const sideIndex = ref(0)
+const blog = ref('')
 async function GetApi(id: number) {
+  onScroll('top')
   sideIndex.value = id
-  rData.blog = await (await articleApi.GetById(id, true)).data[0].text
+  blog.value = await (await articleApi.GetById(id, true)).data[0].text
 }
+const xxxRef = ref()
+const onScroll = (type: string) => {
+  nextTick(() => {
+    const distance = type === 'top' ? 0 : xxxRef.value.scrollHeight
+    xxxRef.value.scrollTop = distance
+  })
+}
+const onScroll2 = (type: number) => {
+  nextTick(() => {
+    xxxRef.value.scrollTop += type
+  })
+}
+const onScroll3 = (type: number) => {
+  nextTick(() => {
+    xxxRef.value.scrollTop -= type
+  })
+}
+
 onMounted(async () => {
   await GetApi(147)
 })
 </script>
 <template>
-  <div class="tagcont">
-    <div class="tagcont-side">
-      <div v-for="res in rData.articleData" :key="res.id" class="text-sidebar-forms">
-        <div class="forms-1" :class="sideIndex == res.id ? 'active' : ''" @click="GetApi(res.id)">
+  <div class="cont">
+    <div class="cont-side">
+      <div v-for="res in rArticle" :key="res.id" class="cont-side-form">
+        <div class="form-1" :class="sideIndex == res.id ? 'active' : ''" @click="GetApi(res.id)">
           <span>{{ res.title }}</span>
         </div>
-        <div class="forms-2">
+        <div class="form-2">
           <span>{{ res.give }}</span>
           <span>{{ res.read }}</span>
           <span>{{ res.timeCreate.substring(0, 10) }}</span>
@@ -29,35 +50,40 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div class="tagcont-text">
-      <v-md-preview :text="rData.blog" model="preview" />
+    <div ref="xxxRef" class="cont-text">
+      <v-md-preview :text="blog" model="preview" />
     </div>
+  </div>
+  <div fixed class="right-80 bottom-5 cursor-pointer z-1">
+    <button p-1 @click="onScroll('top')">顶部</button>
+    <button p-1 @click="onScroll('bottom')">底部</button>
+    <button p-1 @click="onScroll2(200)">下滑</button>
+    <button p-1 @click="onScroll3(200)">上划</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.tagcont {
+.cont {
   @apply flex flex-nowrap;
   @apply rounded h-840px shadow mt-1;
 
-  .tagcont-side {
+  .cont-side {
     @apply cursor-pointer shadow w-[25%] overflow-auto;
 
-    .text-sidebar-forms {
+    .cont-side-form {
       @apply m-1 shadow p-1;
 
-      .forms-1 {
-        @apply p-1 text-lg;
-        @apply bg-blue-100 rounded;
-        @apply hover: text-blue-400;
+      .form-1 {
+        @apply p-1 text-base;
+        @apply bg-blue-50 rounded;
+        @apply hover:text-blue-400;
       }
 
-      .forms-1.active {
-        color: #fff;
-        background-color: #0ea5e9;
+      .form-1.active {
+        @apply bg-blue-400 text-cool-gray-50;
       }
 
-      .forms-2 {
+      .form-2 {
         @apply p-1 text-gray-500;
 
         span {
@@ -68,8 +94,10 @@ onMounted(async () => {
   }
 
   // 内容
-  .tagcont-text {
+  .cont-text {
     @apply mt-1 w-[75%] overflow-auto;
+
+    scroll-behavior: smooth;
   }
 }
 </style>

@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api/index'
 import { tool } from '@/utils/common/tool'
-import xin from '@assets/svg/page/p-xin.svg?component'
 import { throttle } from '@/utils/common/dethrottle'
 import { articleForm } from '@/api/data/model/artileModel'
 
-const VmdContent = defineAsyncComponent(() => {
-  return import('@/components/editor/VmdContent.vue')
+const md = defineAsyncComponent(() => {
+  return import('@/views/index/components/mdContent.vue')
 })
 const route = useRoute()
 const router = useRouter()
@@ -51,17 +50,16 @@ onMounted(async () => {
     <div class="icont-title">
       <a-page-header :title="articleForm.title" @back="() => router.back()" />
     </div>
-    <VmdContent :loading="spinning" :result="articleForm.text"></VmdContent>
+    <md :loading="spinning" :result="articleForm.text"></md>
     <div class="icont-ft">
       <div class="icont-ft-title">
         <p>本文链接：原创文章转载请注明</p>
       </div>
       <div class="icont-cont">
         <div class="flex" @click="UpGive">
-          <xin />
-          <div>
-            {{ articleForm.give }}
-          </div>
+          <!-- <xin /> -->
+          <div i-fxemoji-beating-heart h-5 w-5></div>
+          {{ articleForm.give }}
         </div>
 
         <div>{{ articleForm.read }} ℃</div>

@@ -11,9 +11,10 @@
       </transition>
     </router-view>
   </div>
-  <s-bootom></s-bootom>
-  <s-aspin></s-aspin>
+  <c-bootom></c-bootom>
+  <c-aspin></c-aspin>
 </template>
+<script lang="ts" setup></script>
 
 <style lang="scss">
 @include scroll;

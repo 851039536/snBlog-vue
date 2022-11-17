@@ -5,6 +5,7 @@ import router from '@/router/index'
 import { aspShow } from '@/hooks/data'
 import { storage } from '../storage/storage'
 import { removePending, addPending } from './pending'
+import { ClearUser } from '@/hooks/commonly'
 
 const obj = reactive({
   urls: import.meta.env.VITE_API_DOMAIN
@@ -45,6 +46,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
       }
       // 请求之前发送loading
       aspShow.value = true
+
       return req
     },
     error => {
@@ -57,7 +59,10 @@ function myAxios(axiosConfig: any, customOptions: any) {
     res => {
       removePending(res) // 在请求结束后，移除本次请求
       // 请求之后关闭loading
-      aspShow.value = false
+      // aspShow.value = false
+      setTimeout(function () {
+        aspShow.value = false
+      }, 200)
       if (res.status === 200 || res.status === 204) {
         return Promise.resolve(res)
       }
@@ -74,12 +79,11 @@ function myAxios(axiosConfig: any, customOptions: any) {
             break
           case 401: // 重定向
             message.error(`token:登录失效==>${error.response.status}:${'token'}`)
-            storage.remove('token')
+            ClearUser()
             router.replace({
               path: '/Login'
             })
             break
-
           case 403:
             message.error(`用户得到授权，但是访问是被禁止的==>${error.response.status}`)
             break

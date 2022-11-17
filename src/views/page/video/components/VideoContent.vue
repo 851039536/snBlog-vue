@@ -23,7 +23,7 @@ defineProps({
           <img src="@/assets/img/hy.jpg" />
         </div>
         <div class="vcontent-2-1-2">
-          <p @click="routerId('/VideoPlay', res.id)">{{ res.title }}</p>
+          <p @click="routerId('/VideoPlay', res.id)">{{ res.name }}</p>
         </div>
         <div class="vcontent-2-1-3">
           <span>少年</span>
@@ -93,9 +93,9 @@ defineProps({
   }
 }
 
-@screen <xp {
-  .vcontent {
-    @apply mt-[6.3%];
-  }
-}
+// @screen <xp {
+//   .vcontent {
+//     @apply mt-[6.3%];
+//   }
+// }
 </style>
