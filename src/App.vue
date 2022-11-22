@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <router-view v-slot="{ Component }">
-      <transition name="fade" :duration="1000">
+      <transition name="fade" :duration="500">
         <keep-alive>
           <component :is="Component" v-if="$route.meta.keepAlive" />
         </keep-alive>
       </transition>
-      <transition name="fade" :duration="1000">
+      <transition name="fade" :duration="500">
         <component :is="Component" v-if="!$route.meta.keepAlive" />
       </transition>
     </router-view>
   </div>
+  <c-header></c-header>
+  <c-sidebar></c-sidebar>
   <c-bootom></c-bootom>
   <c-aspin></c-aspin>
 </template>

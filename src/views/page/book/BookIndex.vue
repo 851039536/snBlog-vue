@@ -1,8 +1,6 @@
 <script lang="ts" setup></script>
 <template>
   <div class="book">
-    <c-sidebar></c-sidebar>
-    <c-header></c-header>
     <index-sidebar></index-sidebar>
     <div class="book-main">
       <BookBar></BookBar>

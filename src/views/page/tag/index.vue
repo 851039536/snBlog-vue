@@ -9,8 +9,6 @@ async function Search(names: string) {
 </script>
 <template>
   <div class="tindex">
-    <c-sidebar></c-sidebar>
-    <c-header></c-header>
     <div class="search">
       <a-select
         show-search

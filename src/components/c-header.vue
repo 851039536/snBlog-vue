@@ -4,11 +4,10 @@ import { storage } from '@/utils/storage/storage'
 import { routers } from '@/hooks/routers'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
-import { hLogin, sideIndex } from '@/hooks/data'
+import { hHead, hLogin, sideIndex } from '@/hooks/data'
 import { interfacesApi } from '@/api'
 import { winUrl } from '@/hooks/routers'
 
-const local = ref(true)
 const rData: any = ref([])
 const scroll = () => {
   // 滚动条高度
@@ -16,9 +15,9 @@ const scroll = () => {
   // 可视区的高度
   const { clientHeight } = document.documentElement
   if (scrollTop > clientHeight) {
-    local.value = false
+    hHead.value = false
   } else {
-    local.value = true
+    hHead.value = true
   }
 }
 
@@ -59,11 +58,7 @@ async function onChange(id: number) {
       break
   }
 }
-// const proxy: any = getCurrentInstance()
-// function test() {
-//   hSearch.value = true //显示元素内容
-//   hSearchValue.value = proxy.ctx.$refs.ipu //如果存在不隐藏
-// }
+
 onDeactivated(() => {
   // 离开这个界面之后，删除，不然会有问题
   window.removeEventListener('scroll', scroll)
@@ -75,7 +70,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav v-show="local" class="head">
+  <nav v-show="hHead" class="head">
     <div class="h-cont">
       <div class="h-cont-l">
         <div class="">

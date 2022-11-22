@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { interfacesApi } from '@/api'
 import { hUser } from '@/hooks/commonly'
-import { sideIndex } from '@/hooks/data'
+import { hSide, sideIndex } from '@/hooks/data'
 import { routers } from '@/hooks/routers'
 import { storage } from '@/utils/storage/storage'
 
@@ -16,7 +16,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="lside">
+  <div v-show="hSide" class="lside">
     <div
       v-for="(res, index) in rData"
       :key="index"

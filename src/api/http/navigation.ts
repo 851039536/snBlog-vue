@@ -12,7 +12,7 @@ export class navigationApi {
   static GetCount(identity: number, type: string, chche: boolean) {
     return request(
       {
-        url: `/api/SnNavigation/GetCountAsync?identity=${identity}&type=${type}&cache=${chche}`,
+        url: `/api/SnNavigation/GetSunAsync?identity=${identity}&type=${type}&cache=${chche}`,
         method: 'get'
       },
       {

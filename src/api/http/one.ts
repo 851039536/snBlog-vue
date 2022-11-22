@@ -11,7 +11,7 @@ export class one {
   static CountAsync(identity: number, type: string, cache: boolean): Promise<any> {
     return request(
       {
-        url: `/api/SnOne/GetCountAsync?identity=${identity}&type=${type}&cache=${cache}`,
+        url: `/api/SnOne/GetSunAsync?identity=${identity}&type=${type}&cache=${cache}`,
         method: 'get'
       },
       {

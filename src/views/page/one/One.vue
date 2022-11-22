@@ -9,8 +9,6 @@ onMounted(async () => {
 
 <template>
   <div class="one">
-    <c-header></c-header>
-    <c-sidebar></c-sidebar>
     <OneSidebar></OneSidebar>
     <div class="one-cont">
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>

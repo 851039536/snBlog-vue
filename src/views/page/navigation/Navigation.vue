@@ -31,7 +31,6 @@ onMounted(async () => {
 </script>
 <template>
   <div>
-    <c-header></c-header>
     <blog-sidebar></blog-sidebar>
     <IndexSidebar></IndexSidebar>
     <a-back-top />

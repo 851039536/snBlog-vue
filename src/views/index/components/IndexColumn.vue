@@ -2,6 +2,7 @@
 import { routerId } from '@/hooks/routers'
 import { aData } from '@/views/admin/data'
 import { articleApi } from '@/api'
+import { hHead, hSide } from '@/hooks/data'
 
 const rArticle: any = ref([])
 const state = reactive({
@@ -40,6 +41,8 @@ const scrollDisabled = computed(() => {
 })
 
 onMounted(async () => {
+  hSide.value = true
+  hHead.value = true
   await axios.all([await GetCount(0, aData.NULL), await GetFy()])
 })
 </script>
@@ -51,23 +54,23 @@ onMounted(async () => {
     :infinite-scroll-disabled="scrollDisabled"
     infinite-scroll-watch-disabled="scrollDisabled"
     :infinite-scroll-distance="20">
-    <div v-for="res in rArticle" :key="res.id" ref="rr" class="blogs">
-      <div class="blogs-cont">
-        <div class="blogs-cont-img">
+    <div v-for="res in rArticle" :key="res.id" class="blog">
+      <div class="blog-cont">
+        <div class="blog-cont-img">
           <img v-lazy="getImageUrl(res.img)" />
         </div>
-        <div class="blogs-cont-frame">
-          <p class="blogs-div-frame-1">
-            <span @click="routerId('/index/content', res.id)">{{ res.title }}</span>
-          </p>
-          <p class="blogs-div-frame-2">{{ res.sketch }}</p>
-          <div class="blogs-div-frame-3">
+        <div class="blog-cont-frame">
+          <div class="blog-div-frame-1" @click="routerId('/index/content', res.id)">
+            {{ res.title }}
+          </div>
+          <div class="blog-div-frame-2">{{ res.sketch }}</div>
+          <div class="blog-div-frame-3">
             <span class="bg-red-100">{{ res.label.name }}</span>
             <span class="bg-sky-100">{{ res.sort.name }}</span>
             <span class="bg-yellow-100">{{ res.read }} ℃</span>
             <span class="bg-teal-100">赞 {{ res.give }}</span>
             <span class="bg-teal-200">{{ res.user.nickname }}</span>
-            <span class="">{{ res.timeCreate.substring(0, 10) }}</span>
+            <span class="bg-red-50">{{ res.timeCreate.substring(0, 10) }}</span>
           </div>
         </div>
       </div>
@@ -78,12 +81,12 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.blogs {
-  .blogs-cont {
+.blog {
+  .blog-cont {
     @apply flex h-155px mt-10px w-full;
     @apply bg-white rounded-lg shadow-sm;
 
-    .blogs-cont-img {
+    .blog-cont-img {
       @apply h-full p-1 w-[25%];
 
       img {
@@ -91,22 +94,22 @@ onMounted(async () => {
       }
     }
 
-    .blogs-cont-frame {
+    .blog-cont-frame {
       @apply h-full w-[75%];
 
-      .blogs-div-frame-1 {
-        @apply cursor-pointer m-1 text-xl px-1;
-        @apply rounded transition duration-800 hover:bg-blue-200;
+      .blog-div-frame-1 {
+        @apply cursor-pointer m-1 text-xl font-medium px-1;
+        @apply rounded transition duration-800 hover:text-blue-400;
         @include line-one;
       }
 
-      .blogs-div-frame-2 {
+      .blog-div-frame-2 {
         @apply h-[49%] m-1 px-2 mt-2;
         @apply text-base text-cool-gray-500;
         @include line-numbers(2);
       }
 
-      .blogs-div-frame-3 {
+      .blog-div-frame-3 {
         @apply m-1 mt-2 px-1 text-cool-gray-500;
 
         span {
@@ -118,7 +121,7 @@ onMounted(async () => {
   }
 }
 
-.blogs-page {
+.blog-page {
   @apply bg-white mt-1 shadow w-full py-5;
 }
 </style>

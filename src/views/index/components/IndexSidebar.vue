@@ -3,6 +3,7 @@ import { articleApi, navigationApi, userTalk } from '@/api'
 import { IArticle } from '@/api/data/interData'
 import { hSearch, hSearchValue } from '@/hooks/data'
 import { winUrl } from '@/hooks/routers'
+
 const annunciate = ref('') //通告
 const articleTime = ref()
 const articleCount = ref('')
@@ -15,6 +16,7 @@ const rArticle = ref([] as IArticle[])
 async function search(name: string) {
   rArticle.value = await (await articleApi.GetContains(0, 'null', name, false)).data
 }
+
 async function skip(id: number) {
   await winUrl(`/c-mdContent?id=${id}`)
 }

@@ -2,11 +2,13 @@
 <template>
   <section>
     <c-back-top></c-back-top>
-    <c-sidebar></c-sidebar>
     <index-sidebar></index-sidebar>
-    <c-header></c-header>
     <div class="blog">
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" :duration="500">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </section>
 </template>

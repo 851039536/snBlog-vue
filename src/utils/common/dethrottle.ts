@@ -2,7 +2,6 @@
  * @description: 防抖
  * @param {any} fn
  * @param {number}  delay
- * @return {*}
  */
 function debounce(fn: any, delay: number): any {
   let timer: any
@@ -20,7 +19,6 @@ function debounce(fn: any, delay: number): any {
  * 节流
  * @param fn
  * @param delay
- * @returns
  */
 function throttle(fn: any, delay: number) {
   const isThrottle = ref(true)

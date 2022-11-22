@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api/index'
 import { tool } from '@/utils/common/tool'
-import { throttle } from '@/utils/common/dethrottle'
+import { debounce } from '@/utils/common/dethrottle'
 import { articleForm } from '@/api/data/model/artileModel'
 
 const md = defineAsyncComponent(() => {
@@ -17,7 +17,7 @@ const time = ref()
 const labelName = ref()
 const sortName = ref()
 const spinning = ref(true)
-const UpGive = throttle(() => {
+const UpGive = debounce(() => {
   articleForm.give += 1
   articleApi.UpdatePortion(articleForm, 'Give')
 }, 1000)

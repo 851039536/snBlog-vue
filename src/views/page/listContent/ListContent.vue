@@ -27,71 +27,22 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div>
-    <c-sidebar></c-sidebar>
-    <c-header></c-header>
-    <div class="list-content">
-      <div class="list-content-title">
-        <p>最新内容 / 总 计 10</p>
-      </div>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
-        <div class="list-content-div">
-          <div class="list-content-text">
-            <div class="list-content-t-title">
-              <div>博客园</div>
-              <div>最新</div>
-            </div>
-            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
-              <a :href="state.listHref[index]" target="-blank">
-                <span>{{ index }}</span>
-                {{ res }}
-              </a>
-            </div>
+  <div class="list-cont">
+    <div class="list-cont-title">
+      <p>最新内容 / 总 计 10</p>
+    </div>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+      <div class="list-cont-div">
+        <div class="list-cont-text">
+          <div class="list-cont-t-title">
+            <div>博客园</div>
+            <div>最新</div>
           </div>
-        </div>
-
-        <div class="list-content-div">
-          <div class="list-content-text">
-            <div class="list-content-t-title">
-              <div>博客园</div>
-              <div>最新</div>
-            </div>
-            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
-              <a :href="state.listHref[index]" target="-blank">
-                <span>{{ index }}</span>
-                {{ res }}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="list-content-div">
-          <div class="list-content-text">
-            <div class="list-content-t-title">
-              <div>博客园</div>
-              <div>最新</div>
-            </div>
-            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
-              <a :href="state.listHref[index]" target="-blank">
-                <span>{{ index }}</span>
-                {{ res }}
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="list-content-div">
-          <div class="list-content-text">
-            <div class="list-content-t-title">
-              <div>博客园</div>
-              <div>最新</div>
-            </div>
-            <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
-              <a :href="state.listHref[index]" target="-blank">
-                <span>{{ index }}</span>
-                {{ res }}
-              </a>
-            </div>
+          <div v-for="(res, index) in state.listTitle" :key="index" class="list-content-t-content">
+            <a :href="state.listHref[index]" target="-blank">
+              <span>{{ index }}</span>
+              {{ res }}
+            </a>
           </div>
         </div>
       </div>
@@ -100,11 +51,11 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.list-content {
-  @apply mt-[4.5%] ml-[22%] w-[69%];
-  @apply rounded-md shadow;
+.list-cont {
+  @apply mt-[4.6%] ml-[22%] w-[65%] mb-70;
+  @apply rounded-md shadow bg-white;
 
-  .list-content-title {
+  .list-cont-title {
     @include underline;
 
     margin-bottom: 6px;
@@ -114,14 +65,14 @@ onMounted(async () => {
     }
   }
 
-  .list-content-div {
+  .list-cont-div {
     @apply m-3;
     @apply rounded shadow;
 
-    .list-content-text {
+    .list-cont-text {
       @apply bg-white rounded text-base p-2;
 
-      .list-content-t-title {
+      .list-cont-t-title {
         @apply rounded flex bg-gray-100 justify-between;
 
         div {
@@ -133,6 +84,8 @@ onMounted(async () => {
         @apply p-1;
 
         a {
+          @apply text-gray-700 hover:text-blue-400;
+
           span {
             @apply rounded bg-gray-200 px-1;
           }

@@ -37,8 +37,6 @@ GetApi()
 
 <template>
   <section>
-    <c-header></c-header>
-    <c-sidebar></c-sidebar>
     <video-play-side></video-play-side>
     <div class="vplay">
       <div class="vplay-if">

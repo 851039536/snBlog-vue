@@ -11,3 +11,11 @@ export const sideIndex = ref(-1)
 export const hLogin = ref(false)
 export const hSearch = ref(false) //是否显示搜素框
 export const hSearchValue = ref('') //搜素事件是否存在
+/**
+ *  是否显示顶部栏
+ */
+export const hHead = ref(true)
+/**
+ *  是否显示侧边栏
+ */
+export const hSide = ref(true)

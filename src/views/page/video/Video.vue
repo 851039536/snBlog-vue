@@ -11,8 +11,6 @@ method.currentchange(1)
 
 <template>
   <div class="video">
-    <c-header></c-header>
-    <c-sidebar></c-sidebar>
     <video-sidebar></video-sidebar>
     <video-content :array-video="state.resultData"></video-content>
   </div>

@@ -4,8 +4,6 @@
 <template>
   <div>
     <div class="photo">
-      <c-sidebar></c-sidebar>
-      <c-header></c-header>
       <div class="photo-title">
         <p>原来是你呀 / 总计 20</p>
       </div>

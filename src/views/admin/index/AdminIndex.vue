@@ -7,6 +7,7 @@ import ADaohang from '@assets/svg/admin/a-daohangl.svg?component'
 import ASet from '@assets/svg/admin/a-set.svg?component'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
+import { hHead, hSide } from '@/hooks/data'
 
 function clear() {
   ClearUser()
@@ -42,6 +43,11 @@ function reload() {
   })
 }
 provide('reload', reload)
+
+onMounted(() => {
+  hHead.value = false
+  hSide.value = false
+})
 </script>
 <template>
   <div class="admin">

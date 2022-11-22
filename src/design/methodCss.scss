@@ -193,6 +193,8 @@ $text-height: 9%;
 
 /* 进入开始和离开结束的状态 */
 .fade-leave-to {
+  /* 防抖动 */
+  display: none;
   opacity: 0;
 }
 

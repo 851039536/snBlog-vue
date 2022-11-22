@@ -40,8 +40,6 @@ onMounted(async () => {
 
 <template>
   <section>
-    <c-header></c-header>
-    <c-sidebar></c-sidebar>
     <div class="fa-main">
       <div class="fa-cont">
         <div v-for="res in rNav" :key="res.id" class="fa-cont-list">
