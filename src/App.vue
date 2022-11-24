@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app ">
     <router-view v-slot="{ Component }">
       <transition name="fade" :duration="500">
         <keep-alive>
@@ -25,5 +25,15 @@
   background: #f3f7fd;
 
   @apply absolute w-full;
+}
+
+#nprogress .bar {
+  height: 1px !important; // 自定义高度
+  background: #66b1ff !important; // 自定义颜色
+}
+
+.lg-sm {
+  height: 1px !important; // 自定义高度
+  background: #8ba1b8 !important; // 自定义颜色
 }
 </style>

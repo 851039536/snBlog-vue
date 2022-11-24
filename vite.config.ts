@@ -73,11 +73,26 @@ export default defineConfig({
       // 指令转换插件
       transformers: [transformerDirective()],
       // 自定义规则
-      rules: [],
+      rules: [
+        [
+          /^text-(.*)$/,
+          ([, c], { theme }) => {
+            if (theme.colors[c]) return { color: theme.colors[c] }
+          }
+        ]
+      ],
       // 快速创建可复用的组件和工具类。
       shortcuts: {
         's-side': 'h-[92%] top-[8.4%] right-[11%] w-[17%] fixed',
         's-hw': 'h-full w-full'
+      },
+      theme: {
+        colors: {
+          veryCool: '#0000ff', // class="text-very-cool"
+          brand: {
+            primary: '#1f6ae3' //class="bg-brand-primary"
+          }
+        }
       }
     }),
     AutoImport({

@@ -1,4 +1,4 @@
-import { get, add } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/utils/http/funApi'
 import { IUser } from '../data/model/userModel'
 
 enum API {
@@ -21,5 +21,11 @@ export class userApi {
   }
   static Add(entity: IUser) {
     return add(`/user/add`, entity)
+  }
+  static Update(entity: IUser) {
+    return update(`/user/update`, entity)
+  }
+  static Del(id: number) {
+    return del(`/user/del?id=${id}`)
   }
 }

@@ -8,6 +8,7 @@ import ASet from '@assets/svg/admin/a-set.svg?component'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
 import { hHead, hSide } from '@/hooks/data'
+import { TOKEN } from '@/api'
 
 function clear() {
   ClearUser()
@@ -27,6 +28,9 @@ const handleClick = (e: any) => {
     case '3-1':
       routers(rRouter.pageSet)
       break
+    case '3-2':
+      routers(rRouter.sqlBackups)
+      break
     case '3-3':
       routers(rRouter.userTable)
       break
@@ -44,7 +48,8 @@ function reload() {
 }
 provide('reload', reload)
 
-onMounted(() => {
+onMounted(async () => {
+  await TOKEN()
   hHead.value = false
   hSide.value = false
 })

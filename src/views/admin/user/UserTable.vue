@@ -1,17 +1,22 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns } from './data'
-import { navigationApi, TOKEN, userApi } from '@/api'
-import { routers, routerId } from '@h/routers'
-import { aData, aCancel } from '../data'
-import { rRouter } from '@/router/data'
+import { columns, editVisible, addDisabled, upDisabled } from './data'
+import { userApi } from '@/api'
+import { aCancel, aData } from '../data'
 import { navName } from '../utils/data'
+import dayjs from 'dayjs'
+import { clearUser, userForm } from '@/api/data/model/userModel'
 
 const reload: any = inject('reload')
-const confirm = async (data: any) => {
-  await navigationApi.DeleteAsync(data.id).then(() => {
-    message.success(aData.SUCCESS)
+const del = async (id: number) => {
+  await userApi.Del(id).then(res => {
+    if (res.data === 1) {
+      reload()
+      message.success(aData.SUCCESS)
+      return
+    }
     reload()
+    message.error(aData.FAIL)
   })
 }
 const rUser: any = ref([])
@@ -20,22 +25,50 @@ async function search(name: string) {
   if (name === '') return
   await userApi.Contains(name).then(res => {
     rUser.value = res.data
+    for (let index = 0; index < rUser.value.length; index++) {
+      rUser.value[index].timeCreate = dayjs(rUser.value[index].timeCreate).format('YYYY-MM-DD')
+      rUser.value[index].timeModified = dayjs(rUser.value[index].timeModified).format('YYYY-MM-DD-H:mm')
+    }
   })
+}
+const edit = (id: number) => {
+  userApi.GetByIdAsync(id).then(res => {
+    userForm.id = res.data.id
+    userForm.name = res.data.name
+    userForm.email = res.data.email
+    userForm.pwd = res.data.pwd
+    userForm.ip = res.data.ip
+    userForm.photo = res.data.photo
+    userForm.nickname = res.data.nickname
+    userForm.brief = res.data.brief
+  })
+  editVisible.value = true
+  upDisabled.value = false
+  addDisabled.value = true
+}
+const Add = () => {
+  editVisible.value = true
+  addDisabled.value = false
+  upDisabled.value = true
+  clearUser()
 }
 
 onMounted(async () => {
-  await TOKEN()
-  navName.name = '内容分享'
-  navName.name2 = '导航列表'
+  navName.name = '用户管理'
+  navName.name2 = '用户列表'
   await userApi.GetPaging(1, 1000).then(res => {
     rUser.value = res.data.result
+    for (let index = 0; index < rUser.value.length; index++) {
+      rUser.value[index].timeCreate = dayjs(rUser.value[index].timeCreate).format('YYYY-MM-DD')
+      rUser.value[index].timeModified = dayjs(rUser.value[index].timeModified).format('YYYY-MM-DD-H:mm')
+    }
   })
 })
 </script>
 <template>
   <div mb-2>
     <a-space>
-      <a-button @click="routers(rRouter.navAdd)">添加</a-button>
+      <a-button @click="Add()">添加</a-button>
       <a-button @click="reload()">刷新</a-button>
       <a-select
         show-search
@@ -57,13 +90,14 @@ onMounted(async () => {
     :scroll="{ x: 1280, y: 500 }">
     <template #bodyCell="{ column, record }">
       <template v-if="column.dataIndex === 'edit'">
-        <a @click="routerId('/Admin-index/NavEdit', record.id)">修改</a>
+        <a @click="edit(record.id)">修改</a>
       </template>
       <template v-if="column.dataIndex === 'del'">
-        <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="confirm(record)" @cancel="aCancel()">
+        <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="del(record.id)" @cancel="aCancel()">
           <a>删除</a>
         </a-popconfirm>
       </template>
     </template>
   </a-table>
+  <user-edit-modal></user-edit-modal>
 </template>

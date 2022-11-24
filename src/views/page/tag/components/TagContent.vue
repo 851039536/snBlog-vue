@@ -10,7 +10,7 @@ const blog = ref('')
 async function GetApi(id: number) {
   onScroll('top')
   sideIndex.value = id
-  blog.value = await (await articleApi.GetById(id, true)).data[0].text
+  blog.value = await (await articleApi.GetById(id, true)).data.text
 }
 const xxxRef = ref()
 const onScroll = (type: string) => {
@@ -31,7 +31,7 @@ const onScroll3 = (type: number) => {
 }
 
 onMounted(async () => {
-  await GetApi(147)
+  // await GetApi(147)
 })
 </script>
 <template>
@@ -42,8 +42,7 @@ onMounted(async () => {
           <span>{{ res.title }}</span>
         </div>
         <div class="form-2">
-          <span>{{ res.give }}</span>
-          <span>{{ res.read }}</span>
+          <span>{{ res.read }}℃</span>
           <span>{{ res.timeCreate.substring(0, 10) }}</span>
           <span>编辑</span>
         </div>
@@ -84,7 +83,7 @@ onMounted(async () => {
       }
 
       .form-2 {
-        @apply p-1 text-gray-500;
+        @apply text-cool-gray-500 text-sm mt-1;
 
         span {
           @apply ml-1 rounded;

@@ -1,3 +1,7 @@
+export const editVisible = ref(false)
+// export const dUser: any = ref([])
+export const addDisabled = ref(true)
+export const upDisabled = ref(true)
 const columns: any = [
   {
     title: '主键',

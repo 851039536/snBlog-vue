@@ -44,5 +44,6 @@ export enum rRouter {
   navAdd = '/Admin-index/NavAdd',
   pageSet = '/Admin-index/PageSet',
   Login = '/Login',
-  userTable = '/Admin-index/userTable'
+  userTable = '/Admin-index/userTable',
+  sqlBackups = '/Admin-index/SqlBackups'
 }

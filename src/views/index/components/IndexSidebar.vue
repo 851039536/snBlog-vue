@@ -58,7 +58,7 @@ onMounted(async () => {
         <a-input-search placeholder="input search text" style="width: 100%" @search="onSearch" />
       </div>
       <SidebarAnnunciate :user-talk="annunciate"></SidebarAnnunciate>
-      <index-tool :res-data="rNav" tag-name="常用工具"></index-tool>
+      <SidebarTool :res-data="rNav" tag-name="常用工具"></SidebarTool>
       <CStatistics
         title="站点统计"
         title1="文章数量"
@@ -75,7 +75,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .side {
-  @apply s-side;
+  @apply h-[92%] top-[8.4%] right-[11%] w-[17%] fixed;
 
   .side-main {
     @apply h-full w-full;

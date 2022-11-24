@@ -33,8 +33,8 @@ class tool {
    */
   static async MomentTimeList(time: any) {
     await time.data.forEach((res: any) => {
-      res.timeCreate = dayjs(res.timeCreate).format('YYYY-MM-DD- H:mm:ss')
-      res.timeModified = dayjs(res.timeModified).format('YYYY-MM-DD- H:mm:ss')
+      res.timeCreate = dayjs(res.timeCreate).format('YYYY-MM-DD-H:mm:ss')
+      res.timeModified = dayjs(res.timeModified).format('YYYY-MM-DD-H:mm:ss')
     })
   }
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data/data'
-import { navigationApi, TOKEN } from '@/api'
+import { navigationApi } from '@/api'
 import { routers, routerId, winUrl } from '@h/routers'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/data'
@@ -65,7 +65,6 @@ async function Search(name: any) {
 }
 
 async function GetApi() {
-  await TOKEN()
   await GetFy()
   rnavType.value = await (await navigationApi.GetNavTypeAll(false)).data
   navName.name = '内容分享'

@@ -36,10 +36,6 @@ onMounted(async () => {
       @apply rounded-none p-2 shadow mt-2 bg-white;
     }
   }
-
-  .one-cont::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 // @screen xp {

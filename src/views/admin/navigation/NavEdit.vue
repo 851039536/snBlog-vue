@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { navigationApi, TOKEN } from '@/api'
+import { navigationApi } from '@/api'
 import { routers, go, winUrl } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { aData } from '../data'
@@ -19,14 +19,13 @@ const onSubmit = async () => {
   })
 }
 async function GetApi() {
-  await TOKEN()
   navName.name = '内容分享'
   navName.name2 = '编辑内容'
-  navigationApi.GetNavTypeAll(false).then(res => {
+  await navigationApi.GetNavTypeAll(false).then(res => {
     rType.value = res.data
   })
 
-  navigationApi.GetByIdAsync(Rid.id, false).then(res => {
+  await navigationApi.GetByIdAsync(Rid.id, false).then(res => {
     navForm.id = res.data.id
     navForm.title = res.data.title
     navForm.describe = res.data.describe

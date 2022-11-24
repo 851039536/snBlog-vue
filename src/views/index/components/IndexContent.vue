@@ -12,10 +12,8 @@ const router = useRouter()
 const aid: any = reactive({
   id: route.query.id
 })
-
-const time = ref()
-const labelName = ref()
-const sortName = ref()
+const labelName = ref('')
+const sortName = ref('')
 const spinning = ref(true)
 const UpGive = debounce(() => {
   articleForm.give += 1
@@ -27,16 +25,15 @@ async function UpRead(res: any) {
   res.read += 1
   await articleApi.UpdatePortion(res, 'Read')
 }
-
 onMounted(async () => {
   await articleApi.GetById(aid.id, true).then((res: any) => {
-    const rData = res.data[0]
+    const rData = res.data
     UpRead(rData)
     articleForm.title = rData.title
     articleForm.text = rData.text
     articleForm.give = rData.give
     articleForm.read = rData.read
-    time.value = tool.MomentTime(rData.timeCreate)
+    articleForm.timeCreate = rData.timeCreate
     labelName.value = rData.label.name
     sortName.value = rData.sort.name
     spinning.value = false
@@ -47,8 +44,22 @@ onMounted(async () => {
 
 <template>
   <div class="icont">
-    <div class="icont-title">
-      <a-page-header :title="articleForm.title" @back="() => router.back()" />
+    <div class="text-center">
+      <div class="text-2xl p-3 font-semibold flex justify-center items-center">
+        <div i-fxemoji-backwithleftwardsarrow mt-1 mr-2 class="cursor-pointer" @click="router.back()"></div>
+        {{ articleForm.title }}
+        <div i-fxemoji-openbook mt-1 ml-1></div>
+      </div>
+      <div class="pt-1 text-sm text-cool-gray-500">
+        <span class="mr-2">{{ sortName }}</span>
+        <span class="mr-2">{{ labelName }}</span>
+        <span class="mr-2">{{ articleForm.read }} ℃</span>
+        <span class="mr-2">赞 {{ articleForm.give }}</span>
+        <!-- <span class="bg-teal-200">{{ rArticle.user.nickname }}</span> -->
+        <span class="mr-2">{{ articleForm.timeCreate.substring(0, 10) }}</span>
+        <span class="mr-2">编辑</span>
+        <span class="mr-1">收藏</span>
+      </div>
     </div>
     <md :loading="spinning" :result="articleForm.text"></md>
     <div class="icont-ft">
@@ -76,22 +87,6 @@ onMounted(async () => {
 .icont {
   @apply bg-white;
 
-  .icont-title {
-    @apply cursor-pointer bg-white relative;
-
-    .ant-page-header-heading-title {
-      @apply text-lg overflow-hidden overflow-ellipsis whitespace-nowrap;
-    }
-
-    .ant-page-header {
-      @apply shadow-sm;
-    }
-
-    .ant-page-header-back {
-      @apply mt-0;
-    }
-  }
-
   .icont-ft {
     .icont-ft-title {
       @apply p-1;
@@ -104,7 +99,7 @@ onMounted(async () => {
     }
 
     .icont-cont {
-      @apply flex mb-150 p-2;
+      @apply flex mb-150 p-2 text-sm text-cool-gray-500;
 
       div {
         @apply mx-1 cursor-pointer rounded;

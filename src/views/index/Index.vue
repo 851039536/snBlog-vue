@@ -1,16 +1,14 @@
 <script lang="ts" setup></script>
 <template>
-  <section>
+  <div class="blog">
     <c-back-top></c-back-top>
     <index-sidebar></index-sidebar>
-    <div class="blog">
-      <router-view v-slot="{ Component }">
-        <transition name="fade" :duration="500">
-          <component :is="Component" />
-        </transition>
-      </router-view>
-    </div>
-  </section>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" :duration="500">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
 </template>
 <style lang="scss" scoped>
 .blog {

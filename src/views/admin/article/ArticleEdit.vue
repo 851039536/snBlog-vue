@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { labelsApi, articleApi, sort, TOKEN } from '@/api'
+import { labelsApi, articleApi, sort } from '@/api'
 import { rLabel, rSort } from './data'
 import { routers, go } from '@/hooks/routers'
 import { navName } from '../utils/data'
@@ -37,7 +37,6 @@ async function GetApi() {
 }
 onMounted(async () => {
   await GetApi()
-  await TOKEN()
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
 })

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data'
-import { TOKEN, interfacesApi } from '@/api'
+import { interfacesApi } from '@/api'
 import { navName } from '../utils/data'
 import { useData } from '../data'
 import { clearInterface, interfaceForm } from '@/api/data/model/intInterfaceModel'
@@ -55,7 +55,6 @@ const edit = async (id: number) => {
   })
 }
 onMounted(async () => {
-  await TOKEN()
   rData.value = await (await interfacesApi.GetFy(2, storage.get(hUser.NAME), 1, 100)).data
   navName.name = '页面设置'
   navName.name2 = '参数列表'

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { go, reloads } from '@/hooks/routers'
-import { navigationApi, TOKEN } from '@/api'
+import { navigationApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { routers } from '@/hooks/routers'
@@ -24,7 +24,6 @@ const onSubmit = async () => {
   })
 }
 onMounted(async () => {
-  await TOKEN()
   clearNav()
   rType.value = await (await navigationApi.GetNavTypeAll(false)).data
   navName.name = '内容分享'

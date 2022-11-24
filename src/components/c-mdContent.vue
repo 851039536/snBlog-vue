@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { articleApi } from '@/api/index'
+import { hSide } from '@/hooks/data'
 
 const route = useRoute()
 const state: any = reactive({
@@ -10,7 +11,7 @@ const state: any = reactive({
 
 const GetAll = async () => {
   await articleApi.GetById(state.id, true).then((res: any) => {
-    const { title, text } = res.data[0]
+    const { title, text } = res.data
     state.blog = { title, text }
   })
 }
@@ -30,6 +31,7 @@ function handleAnchorClick(anchor: any) {
 }
 
 onMounted(async () => {
+  hSide.value = false
   await GetAll()
   const anchors = proxy.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6')
   const titles = Array.from(anchors).filter((title: any) => {
@@ -57,7 +59,7 @@ onMounted(async () => {
 </script>
 <template>
   <div m-auto w="[80%]">
-    <s-back-top />
+    <c-back-top />
     <div class="vmd">
       <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.title" />
       <v-md-preview ref="preview" :text="state.blog.text" />
@@ -75,11 +77,11 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .vmd {
-  --at-apply: bg-white mt-3 mb-800px ml-[3%] w-[75%];
+  --at-apply: bg-white mt-20 mb-800px ml-[3%] w-[75%];
 }
 
 .anchor {
-  --at-apply: rounded top-[7%] right-[9%] w-[14%] z-10 fixed;
+  --at-apply: rounded top-[8%] right-[9%] w-[14%] z-10 fixed;
 
   .anchor-tag {
     --at-apply: rounded bg-white cursor-pointer m-1 text-base p-2;

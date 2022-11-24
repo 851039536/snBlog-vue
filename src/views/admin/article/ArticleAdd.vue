@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { labelsApi, articleApi, sort, TOKEN } from '@/api'
+import { labelsApi, articleApi, sort } from '@/api'
 import { rLabel, rSort } from './data'
 import { routers, go, reloads } from '@/hooks/routers'
 import { navName } from '../utils/data'
@@ -21,7 +21,6 @@ const onSubmit = async () => {
 }
 async function GetApi() {
   clearArticle()
-  await TOKEN()
   axios.all([await sort.GetAll(true), await labelsApi.GetAll(true)]).then(
     axios.spread((aSort: any, aLabel: any) => {
       rSort.value = aSort

@@ -253,6 +253,13 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'SqlBackups',
+        name: 'SqlBackups',
+        component: () => {
+          return import('@/views/admin/sql/SqlBackups.vue')
+        }
+      },
+      {
         path: 'LabelTable',
         name: 'LabelTable',
         component: () => {
