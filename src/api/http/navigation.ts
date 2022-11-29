@@ -147,7 +147,7 @@ export class navigationApi {
   static DeleteAsync(id: number) {
     return request(
       {
-        url: `/api/SnNavigation/DeleteAsync?id=${id}`,
+        url: `/api/SnNavigation/DelAsync?id=${id}`,
         method: 'delete'
       },
       {

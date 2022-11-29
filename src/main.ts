@@ -69,6 +69,5 @@ app.use(lazyPlugin, {
 app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.use(infiniteScroll)
-// app.use(store)
 app.use(router)
 app.mount('#app')

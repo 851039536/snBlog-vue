@@ -4,6 +4,7 @@ import { hUser } from '@/hooks/commonly'
 import { hSide, sideIndex } from '@/hooks/data'
 import { routers } from '@/hooks/routers'
 import { storage } from '@/utils/storage/storage'
+import user2 from '@assets/svg/components/user2.svg?component'
 
 const rData: any = ref([])
 const isVisible: any = ref(false)
@@ -28,7 +29,7 @@ onMounted(async () => {
       :class="sideIndex == index ? 'active' : ''"
       @click="getTopic(index)">
       <div v-if="res.identity" class="flex" @click="routers(res.path)">
-        <div v-if="res.path == '/index/column'" i-fxemoji-linksymbol></div>
+        <div v-if="res.path == '/article/column'" i-fxemoji-linksymbol></div>
         <div v-if="res.path == '/tag'" i-fxemoji-emptynotepage></div>
         <div v-if="res.path == '/one'" i-fxemoji-dog></div>
         <div v-if="res.path == '/video'" i-flat-color-icons-video-file></div>
@@ -47,13 +48,10 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div text-lg>
-      <div flex m-auto w-17 cursor-pointer hover:text-cool-gray-50>
-        <span @click="cliTest()">测试</span>
+    <div v-show="storage.get(hUser.NAME) !== hUser.NAME" text-sm class="absolute bottom-1 bg-slate-400 h-110px w-full">
+      <div text-center class="text-lg bg-slate-500 text-cool-gray-50">
+        <span @click="cliTest()">关于我</span>
       </div>
-    </div>
-
-    <div text-sm class="absolute bottom-1 bg-slate-400 h-80px w-full">
       <div class="flex mt-1">
         <div i-fxemoji-newmoonwithface h-25px w-25px></div>
         <div i-fxemoji-fullmoonwithface h-25px w-25px></div>
@@ -68,7 +66,27 @@ onMounted(async () => {
       <div class="text-cool-gray-50 h-25px text-center">粤ICP备19130826号-1</div>
     </div>
   </div>
-  <c-modal-dialog :visible="isVisible" title="用户登录" @close-model="isVisible = false"></c-modal-dialog>
+  <c-modal-dialog :visible="isVisible" title="关于我" @close-model="isVisible = false">
+    <template #userModel>
+      <div class="w350px">
+        <div class="w-100px m-auto mb-3">
+          <user2></user2>
+        </div>
+
+        <div class="text-center text-xl">一个不会前端的前端</div>
+        <div class="flex justify-center items-center mt-3">
+          <div i-fxemoji-newmoonwithface h-25px w-25px></div>
+          <div i-fxemoji-fullmoonwithface h-25px w-25px></div>
+          <div i-fxemoji-medicalmask h-25px w-25px></div>
+          <div i-fxemoji-angry h-25px w-25px></div>
+          <div i-fxemoji-anguish h-25px w-25px></div>
+          <div i-fxemoji-relieved h-25px w-25px></div>
+          <div i-fxemoji-smiletongue h-25px w-25px></div>
+          <div i-fxemoji-sunglasses h-25px w-25px></div>
+        </div>
+      </div>
+    </template>
+  </c-modal-dialog>
 </template>
 
 <style lang="scss">

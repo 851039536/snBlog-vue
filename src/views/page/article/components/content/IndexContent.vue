@@ -5,7 +5,7 @@ import { debounce } from '@/utils/common/dethrottle'
 import { articleForm } from '@/api/data/model/artileModel'
 
 const md = defineAsyncComponent(() => {
-  return import('@/views/index/components/mdContent.vue')
+  return import('@/views/page/article/components/content/mdContent.vue')
 })
 const route = useRoute()
 const router = useRouter()
@@ -29,7 +29,7 @@ onMounted(async () => {
   await articleApi.GetById(aid.id, true).then((res: any) => {
     const rData = res.data
     UpRead(rData)
-    articleForm.title = rData.title
+    articleForm.name = rData.name
     articleForm.text = rData.text
     articleForm.give = rData.give
     articleForm.read = rData.read
@@ -47,7 +47,7 @@ onMounted(async () => {
     <div class="text-center">
       <div class="text-2xl p-3 font-semibold flex justify-center items-center">
         <div i-fxemoji-backwithleftwardsarrow mt-1 mr-2 class="cursor-pointer" @click="router.back()"></div>
-        {{ articleForm.title }}
+        {{ articleForm.name }}
         <div i-fxemoji-openbook mt-1 ml-1></div>
       </div>
       <div class="pt-1 text-sm text-cool-gray-500">

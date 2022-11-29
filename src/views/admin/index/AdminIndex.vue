@@ -62,7 +62,7 @@ onMounted(async () => {
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
           <li><a class="text-gray-700" href="https://www.cnblogs.com/ouyangkai/">博客园</a></li>
-          <li><a class="text-gray-700" @click="routers('/index/column')">主页</a></li>
+          <li><a class="text-gray-700" @click="routers('/article/column')">主页</a></li>
           <li>
             <a class="text-gray-700" @click="clear()">注销</a>
           </li>

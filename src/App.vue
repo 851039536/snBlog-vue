@@ -15,6 +15,7 @@
   <c-sidebar></c-sidebar>
   <c-bootom></c-bootom>
   <c-aspin></c-aspin>
+  <!-- <c-search></c-search> -->
 </template>
 <script lang="ts" setup></script>
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api'
 import { ISort } from '@/api/data/interData'
-import { rArticle } from '../data/data'
+import { rArticle } from '../../data'
 defineProps({
   sortData: {
     type: Array as () => ISort[],

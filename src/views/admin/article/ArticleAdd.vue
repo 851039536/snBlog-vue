@@ -14,7 +14,7 @@ import { aData } from '../data'
 const onSubmit = async () => {
   articleForm.userId = storage.get(hUser.ID)
   articleForm.img = `blog/${tool.Random(1, 14, 2)}.jpg`
-  await articleApi.AddAsync(articleForm).then(() => {
+  await articleApi.Add(articleForm).then(() => {
     message.info(aData.SUCCESS)
     routers(rRouter.articleTable)
   })
@@ -43,7 +43,7 @@ onMounted(async () => {
       <a-button style="margin-left: 10px" @click="reloads">刷新</a-button>
     </div>
     <div class="rounded bg-gray-50 mt-2 p-2">
-      <a-input v-model:value="articleForm.title" prefix="标题:" />
+      <a-input v-model:value="articleForm.name" prefix="标题:" />
     </div>
     <div class="rounded bg-gray-50 mt-2 p-2">
       <a-textarea v-model:value="articleForm.sketch" />

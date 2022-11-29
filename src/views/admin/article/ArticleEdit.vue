@@ -10,6 +10,7 @@ import { articleForm } from '@/api/data/model/artileModel'
 
 const route = useRoute()
 const rid: any = ref(route.query.id)
+console.log('%c [ rid ]-13', 'font-size:13px; background:pink; color:#bf2c9f;', rid.value)
 
 const onSubmit = async () => {
   await articleApi.Update(articleForm).then(() => {
@@ -21,18 +22,19 @@ const onSubmit = async () => {
 async function GetApi() {
   rLabel.value = await labelsApi.GetAll(true)
   rSort.value = await sort.GetAll(true)
+
   await articleApi.GetById(rid.value, false).then((res: any) => {
-    articleForm.id = res.data[0].id
-    articleForm.commentId = res.data[0].commentId
-    articleForm.give = res.data[0].give
-    articleForm.labelId = res.data[0].labelId
-    articleForm.read = res.data[0].read
-    articleForm.sortId = res.data[0].sortId
-    articleForm.text = res.data[0].text
-    articleForm.title = res.data[0].title
-    articleForm.sketch = res.data[0].sketch
-    articleForm.img = res.data[0].img
-    articleForm.userId = res.data[0].userId
+    articleForm.id = res.data.id
+    articleForm.commentId = res.data.commentId
+    articleForm.give = res.data.give
+    articleForm.labelId = res.data.labelId
+    articleForm.read = res.data.read
+    articleForm.sortId = res.data.sortId
+    articleForm.text = res.data.text
+    articleForm.name = res.data.name
+    articleForm.sketch = res.data.sketch
+    articleForm.img = res.data.img
+    articleForm.userId = res.data.userId
   })
 }
 onMounted(async () => {
@@ -49,7 +51,7 @@ onMounted(async () => {
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
     <div class="rounded bg-gray-50 shadow mt-2 p-2">
-      <a-input v-model:value="articleForm.title" prefix="标题:" />
+      <a-input v-model:value="articleForm.name" prefix="标题:" />
     </div>
     <div class="rounded bg-gray-50 shadow mt-2 p-2">
       <a-textarea v-model:value="articleForm.sketch" />

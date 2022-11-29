@@ -4,8 +4,10 @@
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>
         <div class="model-title">{{ title }}</div>
-        <div class="model-body">
-          <slot>第一个对话框</slot>
+        <div class="model-body relative">
+          <slot name="userModel"></slot>
+          <slot name="loginModel"></slot>
+          <slot name="snippetEditModel"></slot>
         </div>
       </div>
     </div>
@@ -28,29 +30,27 @@ defineProps({
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2000;
+  z-index: 100;
   height: 100%;
   overflow: auto;
-  background-color: #00000080;
+  background-color: #00000015;
 }
 
 .modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 999;
-  width: 600px;
-  min-height: 300px;
+  z-index: 100;
   background: #fff;
-  border: 1px solid #eee;
   transform: translate(-50%, -50%);
+
+  @apply rounded shadow;
 
   .model-title {
     height: 32px;
-    color: #000;
-    line-height: 32px;
     text-align: center;
-    background: #eee;
+
+    @apply text-lg text-cool-gray-600;
   }
 
   .model-body {
@@ -59,11 +59,13 @@ defineProps({
 
   .close {
     position: absolute;
-    top: 5px;
+    top: 3px;
     right: 10px;
     padding: 2px;
     border: none;
     cursor: pointer;
+
+    @apply bg-white;
   }
 }
 </style>

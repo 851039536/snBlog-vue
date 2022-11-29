@@ -30,13 +30,13 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/index',
-    name: 'index',
+    path: '/article',
+    name: 'article',
     meta: {
       keepAlive: true
     },
     component: () => {
-      return import('@/views/index/Index.vue')
+      return import('@/views/page/article/Index.vue')
     },
     children: [
       // 添加子路由
@@ -44,14 +44,14 @@ const routes: RouteRecordRaw[] = [
         path: 'content',
         name: 'content',
         component: () => {
-          return import('@/views/index/components/IndexContent.vue')
+          return import('@/views/page/article/components/content/IndexContent.vue')
         }
       },
       {
         path: 'column',
         name: 'column',
         component: () => {
-          return import('@/views/index/components/IndexColumn.vue')
+          return import('@/views/page/article/components/column/IndexColumn.vue')
         }
       }
     ]
@@ -63,7 +63,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: true
     },
     component: () => {
-      return import('@/views/index/components/IndexSidebar.vue')
+      return import('@/views/index/components/sidebar/IndexSidebar.vue')
     }
   },
   {

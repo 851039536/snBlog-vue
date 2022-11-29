@@ -1,6 +1,6 @@
 export interface IArticle {
   id: number
-  title: string
+  name: string
   sketch: string
   text: string
   read: number
@@ -16,7 +16,7 @@ export interface IArticle {
 
 export const articleForm: IArticle = reactive({
   id: 0,
-  title: '',
+  name: '',
   sketch: '',
   text: '',
   read: 0,
@@ -35,7 +35,7 @@ export const clearArticle = () => {
   articleForm.sortId = 1
   articleForm.userId = 0
   articleForm.id = 0
-  articleForm.title = ''
+  articleForm.name = ''
   articleForm.sketch = ''
   articleForm.text = ''
   articleForm.read = 0

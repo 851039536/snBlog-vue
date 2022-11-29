@@ -5,9 +5,8 @@ const columns: any = [
   {
     title: '标题',
     width: 120,
-    dataIndex: 'title'
+    dataIndex: 'name'
   },
-
   {
     title: '用户',
     dataIndex: 'user',

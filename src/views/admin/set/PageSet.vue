@@ -140,8 +140,8 @@ onMounted(async () => {
           style="width: 160px"
           :bordered="false" />
         <a-select v-model:value="interfaceForm.path" style="width: 130px">
-          <a-select-option value="/index/column">主页</a-select-option>
-          <a-select-option value="/index/column">首页</a-select-option>
+          <a-select-option value="/article/column">主页</a-select-option>
+          <a-select-option value="/article/column">首页</a-select-option>
           <a-select-option value="/tag">博客</a-select-option>
           <a-select-option value="/Login">后台管理</a-select-option>
           <a-select-option value="/code">代码块</a-select-option>

@@ -7,11 +7,11 @@ const articleStr = ref('')
 const rLabel = ref([])
 onMounted(async () => {
   rLabel.value = await (await labelsApi.GetAll(true)).data
-  articleCount.value = await (await articleApi.GetCountAsync(0, 'null', true)).data
+  articleCount.value = await (await articleApi.GetSum(0, 'null', true)).data
   articleCount.value = String(articleCount.value)
-  textCount.value = await (await articleApi.GetSum(0, 1, 'null', true)).data
+  textCount.value = await (await articleApi.GetStrSum(0, 1, 'null', true)).data
   textCount.value = String(textCount.value)
-  readCount.value = await (await articleApi.GetSum(0, 2, 'null', true)).data
+  readCount.value = await (await articleApi.GetStrSum(0, 2, 'null', true)).data
   readCount.value = String(readCount.value)
   articleStr.value = await (await articleApi.GetFy(0, 'null', 1, 1, 'id', true, true)).data[0].timeCreate
 })
@@ -35,7 +35,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .side {
-  @apply s-side;
+  @apply h-[92%] top-[8.4%] right-[11%] w-[17%] fixed;
 }
 
 .side::-webkit-scrollbar {

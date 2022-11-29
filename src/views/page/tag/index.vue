@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api'
-import { rArticle } from './data/data'
+import { rArticle } from './data'
 
-async function Search(names: string) {
-  if (names === '') return
-  rArticle.value = await (await articleApi.GetContains(0, 'null', names, true)).data
+async function Search(name: string) {
+  if (name === '') return
+  rArticle.value = await (await articleApi.GetContains(0, 'null', name, true)).data
 }
 </script>
 <template>
-  <div class="tindex">
+  <div class="index">
     <div class="search">
       <a-select
         show-search
@@ -26,7 +26,7 @@ async function Search(names: string) {
 </template>
 
 <style lang="scss" scoped>
-.tindex {
+.index {
   @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
   @apply bg-white;
 

@@ -15,7 +15,7 @@ const state = reactive({
 })
 
 async function GetCount(identity: number, type: string) {
-  state.count = await (await articleApi.GetCountAsync(identity, type, true)).data
+  state.count = await (await articleApi.GetSum(identity, type, true)).data
 }
 async function GetFy() {
   rArticle.value = await (
@@ -60,8 +60,8 @@ onMounted(async () => {
           <img v-lazy="getImageUrl(res.img)" />
         </div>
         <div class="blog-cont-frame">
-          <div class="blog-div-frame-1" @click="routerId('/index/content', res.id)">
-            {{ res.title }}
+          <div class="blog-div-frame-1" @click="routerId('/article/content', res.id)">
+            {{ res.name }}
           </div>
           <div class="blog-div-frame-2">{{ res.sketch }}</div>
           <div class="blog-div-frame-3">

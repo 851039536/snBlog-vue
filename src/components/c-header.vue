@@ -5,10 +5,15 @@ import { routers } from '@/hooks/routers'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
 import { hHead, hLogin, sideIndex } from '@/hooks/data'
-import { interfacesApi } from '@/api'
-import { winUrl } from '@/hooks/routers'
-
+import { interfacesApi, userApi } from '@/api'
+import { message } from 'ant-design-vue'
+import { useAppStore } from '@/store/pinia'
+const rName = ref('')
+const pwd = ref('')
+const store = useAppStore()
 const rData: any = ref([])
+const isVisible = ref(false)
+
 const scroll = () => {
   // 滚动条高度
   const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
@@ -20,28 +25,22 @@ const scroll = () => {
     hHead.value = true
   }
 }
-
 async function GetType() {
   await interfacesApi.GetType(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
     rData.value = res.data
   })
 }
-
-async function skip(num: number) {
+async function skip(num: string) {
   sideIndex.value = -1
   switch (num) {
-    case 13:
-      winUrl('https://www.cnblogs.com/ouyangkai/')
-      break
-    case 14:
-      winUrl('/Admin-index/ArticleTable')
+    case 'code':
+      isVisible.value = true
       break
     default:
       await routers(num)
       break
   }
 }
-
 async function onChange(id: number) {
   switch (id) {
     case 1:
@@ -57,6 +56,22 @@ async function onChange(id: number) {
     default:
       break
   }
+}
+function login() {
+  userApi.Login(rName.value, pwd.value).then(res => {
+    if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
+      message.error(res.data)
+      return
+    }
+    rData.value = res.data.split(',')
+    ClearUser()
+    storage.set(hUser.ROLE, rData.value[0]) // 角色名
+    storage.set(hUser.ID, rData.value[2]) // 用户主键
+    storage.set(hUser.NAME, rData.value[3]) // 用户名
+    storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
+    store.roles = storage.get(hUser.ROLE)
+    location.reload()
+  })
 }
 
 onDeactivated(() => {
@@ -111,11 +126,58 @@ onMounted(async () => {
       </div>
     </div>
   </nav>
-  <c-login></c-login>
-  <c-search></c-search>
+
+  <c-modal-dialog :visible="hLogin" title="Login" @close-model="hLogin = false">
+    <template #loginModel>
+      <form class="login">
+        <p>用户登录</p>
+        <input v-model="rName" class="login-put" type="text" placeholder="用户名" autocomplete="off" />
+        <input v-model="pwd" autocomplete="off" class="login-put" type="password" placeholder="密码" />
+        <div class="btn" @click="login">登 录</div>
+      </form>
+    </template>
+  </c-modal-dialog>
+
+  <c-snippet :visible="isVisible" @close-model="isVisible = false">
+    <template #snippetModel>
+      <SnippetContent></SnippetContent>
+    </template>
+  </c-snippet>
 </template>
 
 <style lang="scss" scoped>
+.login {
+  text-align: center;
+
+  @apply w-400px;
+
+  p {
+    @apply text-2xl;
+  }
+}
+
+.login-put {
+  width: 100%;
+  height: 48px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  background-color: #fff;
+  border: none;
+  border-bottom: 2px solid rgb(95 90 90);
+
+  // @apply mb-5;
+
+  /* 下面的会覆盖上面的步伐 */
+  outline: none;
+
+  @apply cursor-pointer;
+}
+
+.btn {
+  @apply text-2xl p-2 mt-4 rounded shadow-sm;
+  @apply cursor-pointer  hover:bg-slate-500 hover:text-white;
+}
+
 input {
   box-sizing: border-box;
   width: 100%;

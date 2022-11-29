@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { articleApi } from '@/api'
-import { rArticle } from '../data/data'
 import { ref, nextTick } from 'vue'
+import { rArticle } from '../../data'
 /**
  * 选中后变色并且效果不消失
  */
@@ -29,7 +29,6 @@ const onScroll3 = (type: number) => {
     xxxRef.value.scrollTop -= type
   })
 }
-
 onMounted(async () => {
   // await GetApi(147)
 })
@@ -39,7 +38,7 @@ onMounted(async () => {
     <div class="cont-side">
       <div v-for="res in rArticle" :key="res.id" class="cont-side-form">
         <div class="form-1" :class="sideIndex == res.id ? 'active' : ''" @click="GetApi(res.id)">
-          <span>{{ res.title }}</span>
+          <span>{{ res.name }}</span>
         </div>
         <div class="form-2">
           <span>{{ res.read }}℃</span>

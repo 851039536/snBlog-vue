@@ -6,6 +6,7 @@ import { userApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
 import { hUser, isToken, ClearUser } from '@/hooks/commonly'
 import { rRouter } from '@/router/data'
+import { hHead, hSide } from '@/hooks/data'
 
 const store = useAppStore()
 const state = reactive({
@@ -31,6 +32,8 @@ function login() {
   })
 }
 onMounted(async () => {
+  hHead.value = false
+  hSide.value = false
   await isToken()
 })
 </script>

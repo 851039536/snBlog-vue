@@ -11,8 +11,8 @@ const state: any = reactive({
 
 const GetAll = async () => {
   await articleApi.GetById(state.id, true).then((res: any) => {
-    const { title, text } = res.data
-    state.blog = { title, text }
+    const { name, text } = res.data
+    state.blog = { name, text }
   })
 }
 
@@ -61,11 +61,8 @@ onMounted(async () => {
   <div m-auto w="[80%]">
     <c-back-top />
     <div class="vmd">
-      <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.title" />
+      <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.name" />
       <v-md-preview ref="preview" :text="state.blog.text" />
-      <!-- <div v-for="anchor in state.titles" :key="anchor" @click="handleAnchorClick(anchor)">
-        {{ anchor.title }}
-      </div> -->
     </div>
     <div class="anchor">
       <div v-for="anchor in state.titles" :key="anchor" class="anchor-tag" @click="handleAnchorClick(anchor)">

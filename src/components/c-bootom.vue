@@ -4,7 +4,7 @@ import { routers } from '@/hooks/routers'
 const skip = (num: number) => {
   switch (num) {
     case 1:
-      routers('/index/column')
+      routers('/article/column')
       break
     case 2:
       routers('/one')

@@ -12,7 +12,7 @@ import { hUser } from '@/hooks/commonly'
 const reload: any = inject('reload')
 const rArticle = ref()
 const userName = ref('')
-const labelStr = ref('')
+const labelStr = ref('ALL')
 const order = ref(false)
 const del = async (data: any) => {
   await articleApi.Del(data.id).then(() => {
