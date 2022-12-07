@@ -7,8 +7,8 @@ export interface IArticle {
   img: string
   commentId: number
   give: number
-  labelId: number
-  sortId: number
+  tagId: number
+  typeId: number
   userId: number | string
   timeCreate: any
   timeModified: any
@@ -23,16 +23,16 @@ export const articleForm: IArticle = reactive({
   img: '',
   commentId: 0,
   give: 0,
-  labelId: 1,
-  sortId: 1,
+  tagId: 1,
+  typeId: 1,
   userId: 0,
   timeCreate: '2021-11-13T03:18:19.821Z',
   timeModified: '2021-11-13T03:18:19.821Z'
 })
 
 export const clearArticle = () => {
-  articleForm.labelId = 1
-  articleForm.sortId = 1
+  articleForm.tagId = 1
+  articleForm.typeId = 1
   articleForm.userId = 0
   articleForm.id = 0
   articleForm.name = ''

@@ -1,5 +1,5 @@
 import request from '@/utils/http/axios'
-import { get, add } from '@/utils/http/funApi'
+import { get } from '@/utils/http/funApi'
 
 export class videoApi {
   /**

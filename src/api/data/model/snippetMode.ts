@@ -5,6 +5,7 @@ export interface ISnippet {
   typeId: number
   tagId: number
   userId: number
+  labelId: number
 }
 
 export const snippetForm: ISnippet = reactive({
@@ -13,7 +14,8 @@ export const snippetForm: ISnippet = reactive({
   text: '',
   typeId: 1,
   tagId: 1,
-  userId: 0
+  userId: 0,
+  labelId: 0
 })
 
 export const clearSnippet = () => {
@@ -23,6 +25,7 @@ export const clearSnippet = () => {
   snippetForm.typeId = 0
   snippetForm.userId = 0
   snippetForm.tagId = 0
+  snippetForm.labelId = 0
 }
 // const state = reactive(clearArticle)
 // const resetState = () => {

@@ -13,7 +13,6 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
 import { ViteTips } from 'vite-plugin-tips'
 import svgLoader from 'vite-svg-loader'
-
 // Unocss 插件
 import Unocss from 'unocss/vite'
 // Unocss 默认预设
@@ -25,7 +24,7 @@ import transformerDirective from '@unocss/transformer-directives'
 // import presetRemToPx from '@unocss/preset-rem-to-px'
 import presetWebFonts from '@unocss/preset-web-fonts'
 import presetIcons from '@unocss/preset-icons'
-
+import { visualizer } from 'rollup-plugin-visualizer'
 export default defineConfig({
   plugins: [
     vue({
@@ -39,6 +38,11 @@ export default defineConfig({
       injectData: {
         title: 'SN BLOG'
       }
+    }),
+    visualizer({
+      open: true, //注意这里要设置为true，否则无效
+      gzipSize: true,
+      brotliSize: true
     }),
     // 新增一个 Unocss 插件配置
     Unocss({
@@ -177,6 +181,7 @@ export default defineConfig({
     }
   },
   build: {
+    target: 'es2015', // 支持es6文件
     // 打包配置
     minify: 'terser', // esbuild  terser
     terserOptions: {

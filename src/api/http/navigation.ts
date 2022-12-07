@@ -28,7 +28,7 @@ export class navigationApi {
    * @param name 查询字段
    * @param chche 缓存
    */
-  static GetContains(identity: number, type: string, name: string, chche: boolean): Promise<any> {
+  static GetContains(identity: number, type: string, name: string, chche = false): Promise<any> {
     return request(
       {
         url: `/api/SnNavigation/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${chche}`,
@@ -63,7 +63,7 @@ export class navigationApi {
    * @param id 主键
    * @param cache 缓存
    */
-  static GetByIdAsync(id: any, cache: boolean): Promise<any> {
+  static GetByIdAsync(id: any, cache = false): Promise<any> {
     return request(
       {
         url: `/api/SnNavigation/GetByIdAsync?id=${id}&cache=${cache}`,
@@ -85,7 +85,7 @@ export class navigationApi {
    * @param isDesc 是否倒序[true/false]
    * @param cache 缓存
    */
-  static GetFyAsync(
+  static GetPaging(
     identity: number,
     type: string,
     page: number,
@@ -96,7 +96,7 @@ export class navigationApi {
   ) {
     return request(
       {
-        url: `/api/SnNavigation/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+        url: `/api/SnNavigation/GetPagingAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
         method: 'get'
       },
       {
@@ -161,7 +161,7 @@ export class navigationApi {
   /**
    * @description: 查询导航表分类的内容
    */
-  static GetNavTypeAll(cache: boolean) {
+  static GetNavTypeAll(cache = false) {
     return request(
       {
         url: `/api/SnNavigationType/GetAllAsync?cache=${cache}`,

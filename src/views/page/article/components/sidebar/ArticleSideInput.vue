@@ -1,0 +1,35 @@
+<script lang="ts" setup>
+import { articleApi } from '@/api'
+import { hSearch } from '@/hooks/data'
+import { rArticle, rSearchName } from '../../data'
+async function search() {
+  rArticle.value = await (await articleApi.GetContains(0, 'null', rSearchName.value, false)).data
+}
+async function onSearch() {
+  if (rSearchName.value === '') {
+    hSearch.value = false
+    return
+  }
+  hSearch.value = true //显示元素内容
+  await search()
+}
+</script>
+<template>
+  <div class="side-input">
+    <a-input-search
+      v-model:value="rSearchName"
+      placeholder="内容搜索"
+      style="width: 100%"
+      @search="onSearch()"
+      @change="onSearch()" />
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.side-input {
+  @include center-children;
+  @apply flex flex-nowrap;
+  @apply m-auto mt-1 mb-2 p-2 w-[97%];
+  @apply bg-white rounded shadow-sm;
+}
+</style>

@@ -39,11 +39,13 @@ export enum rRouter {
   articleAdd = '/Admin-index/ArticleAdd',
   articleEdit = '/Admin-index/ArticleEdit',
   articleTable = '/Admin-index/ArticleTable',
-  labelTable = '/Admin-index/LabelTable',
+  articleTypeTable = '/Admin-index/ArticleTypeTable',
+  articleTagTable = '/Admin-index/ArticleTagTable',
   navTable = '/Admin-index/NavTable',
   navAdd = '/Admin-index/NavAdd',
   pageSet = '/Admin-index/PageSet',
   Login = '/Login',
   userTable = '/Admin-index/userTable',
-  sqlBackups = '/Admin-index/SqlBackups'
+  sqlBackups = '/Admin-index/SqlBackups',
+  snippetTable = '/Admin-index/snippetTable'
 }

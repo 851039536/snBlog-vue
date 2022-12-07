@@ -12,20 +12,24 @@ const Rid = reactive({
   id: route.query.id
 })
 const rType: any = ref([])
-const onSubmit = async () => {
+const update = async () => {
   await navigationApi.UpdateAsync(navForm).then(() => {
     message.info(aData.SUCCESS)
     routers(rRouter.navTable)
   })
 }
-async function GetApi() {
+
+function GetTypeId(id: number) {
+  navForm.typeId = id
+}
+onMounted(async () => {
   navName.name = '内容分享'
   navName.name2 = '编辑内容'
-  await navigationApi.GetNavTypeAll(false).then(res => {
+  await navigationApi.GetNavTypeAll().then(res => {
     rType.value = res.data
   })
 
-  await navigationApi.GetByIdAsync(Rid.id, false).then(res => {
+  await navigationApi.GetByIdAsync(Rid.id).then(res => {
     navForm.id = res.data.id
     navForm.title = res.data.title
     navForm.describe = res.data.describe
@@ -34,13 +38,6 @@ async function GetApi() {
     navForm.userId = res.data.userId
     navForm.url = res.data.url
   })
-}
-
-function GetTypeId(id: number) {
-  navForm.typeId = id
-}
-onMounted(async () => {
-  await GetApi()
 })
 </script>
 
@@ -80,7 +77,7 @@ onMounted(async () => {
       <a @click="winUrl(navForm.url)">前往: {{ navForm.url }}</a>
     </div>
     <div class="p-2">
-      <a-button type="primary" @click="onSubmit">更新</a-button>
+      <a-button type="primary" @click="update">更新</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
   </div>

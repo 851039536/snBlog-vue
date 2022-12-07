@@ -11,21 +11,21 @@ import { hHead, hSide } from '@/hooks/data'
 const store = useAppStore()
 const state = reactive({
   name: '',
-  pwd: '',
-  res: []
+  pwd: ''
 })
+const rData = ref([])
 function login() {
   userApi.Login(state.name, state.pwd).then(res => {
     if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
       message.error(res.data)
       return
     }
-    state.res = res.data.split(',')
+    rData.value = res.data.split(',')
     ClearUser()
-    storage.set(hUser.ROLE, state.res[0]) // 角色名
-    storage.set(hUser.ID, state.res[2]) // 用户主键
-    storage.set(hUser.NAME, state.res[3]) // 用户名
-    storage.set(hUser.TOKEN, `Bearer ${state.res[1]}`) // token
+    storage.set(hUser.ROLE, rData.value[0]) // 角色名
+    storage.set(hUser.ID, rData.value[2]) // 用户主键
+    storage.set(hUser.NAME, rData.value[3]) // 用户名
+    storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
     store.roles = storage.get(hUser.ROLE)
     message.success('登录成功')
     routers(rRouter.articleTable)
@@ -60,12 +60,8 @@ onMounted(async () => {
   margin-left: -200px;
   padding: 5px 40px;
   text-align: center;
-
-  /* absolute居中的一种方法 */
   background-color: #fff;
   border-radius: 25px;
-
-  /* 这样padding就不会影响大小 */
 }
 
 p {

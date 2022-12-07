@@ -29,7 +29,7 @@ class articleApi {
    * @param name 查询字段
    * @param cache 缓存
    */
-  static async GetContains(identity: number, type: string, name: string, cache: boolean) {
+  static async GetContains(identity = 0, type = 'null', name = '', cache = false) {
     const res = await request(`/article/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
     tool.MomentTimeList(res)
     return res
@@ -40,7 +40,7 @@ class articleApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetById(id: number, cache: boolean) {
+  static GetById(id: number, cache = false) {
     return get(`/article/byid?id=${id}&cache=${cache}`, false)
   }
   /**
@@ -75,7 +75,7 @@ class articleApi {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  static async GetFy(
+  static async GetPaging(
     identity: number,
     type: string | undefined,
     pageIndex: number,

@@ -138,11 +138,11 @@ onMounted(async () => {
     </template>
   </c-modal-dialog>
 
-  <c-snippet :visible="isVisible" @close-model="isVisible = false">
+  <c-modal-snippet :visible="isVisible" @close-model="isVisible = false">
     <template #snippetModel>
       <SnippetContent></SnippetContent>
     </template>
-  </c-snippet>
+  </c-modal-snippet>
 </template>
 
 <style lang="scss" scoped>

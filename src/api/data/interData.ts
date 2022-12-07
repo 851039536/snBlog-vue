@@ -1,9 +1,9 @@
 import { IArticle } from './model/artileModel'
 import { IVideo } from './model/videoModel'
 import { ITag } from './model/tagModel'
-import { ILabel } from './model/labelModel'
+import { IArticleTag } from './model/articleTagModel'
 import { IOneType } from './model/oneModel'
-import { ISort } from './model/sortModel'
+import { IArticleType } from './model/articleTypeModel'
 import { INav } from './model/navModel'
 import { IInterface } from './model/intInterfaceModel'
 
@@ -41,4 +41,4 @@ interface IFy {
   count: number
   current: number
 }
-export { ILabel, INav, IntOne, IOneType, IArticle, IVideo, ITag, ISort, IFy, IInterface }
+export { IArticleTag, INav, IntOne, IOneType, IArticle, IVideo, ITag, IArticleType, IFy, IInterface }

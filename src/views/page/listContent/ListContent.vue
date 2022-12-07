@@ -9,8 +9,8 @@ const state: any = reactive({
 const info = () => {
   message.info('功能进行中...')
 }
-const GetApi = () => {
-  listContent.Cnblogs().then(res => {
+const GetApi = async () => {
+  await listContent.Cnblogs().then(res => {
     const str = res.data
     for (let index = 0; index < str.length; index += 1) {
       const element = str[index].split('-')

@@ -5,7 +5,7 @@ import { winUrl } from '@/hooks/routers'
 
 const rData: IFy = reactive({
   page: 1,
-  pagesize: 21,
+  pagesize: 18,
   count: 0,
   current: 1
 })
@@ -14,13 +14,11 @@ const rNav = ref([] as INav[])
 const rTitle = ref('博客圈')
 async function currentchange(val: number) {
   rData.current = val
-  rNav.value = await (await navigationApi.GetFyAsync(1, rTitle.value, val, rData.pagesize, 'id', true, true)).data
+  rNav.value = await (await navigationApi.GetPaging(1, rTitle.value, val, rData.pagesize, 'id', true, true)).data
 }
 
 onMounted(async () => {
-  rNav.value = await (
-    await navigationApi.GetFyAsync(1, rTitle.value, rData.page, rData.pagesize, 'id', true, true)
-  ).data
+  rNav.value = await (await navigationApi.GetPaging(1, rTitle.value, rData.page, rData.pagesize, 'id', true, true)).data
   rData.count = await (await navigationApi.GetCount(1, rTitle.value, true)).data
 })
 </script>
@@ -59,7 +57,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .circles {
-  @apply s-hw relative;
+  @apply relative;
 
   .circles-main {
     @apply mt-[4.3%] ml-[22%] w-[47%];

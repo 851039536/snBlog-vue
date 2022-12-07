@@ -1,5 +1,5 @@
-export const rLabel: any = ref([])
-export const rSort: any = ref([])
+export const rTag: any = ref([])
+export const rType: any = ref([])
 
 const columns: any = [
   {
@@ -15,13 +15,13 @@ const columns: any = [
   },
   {
     title: '分类',
-    dataIndex: 'sort',
+    dataIndex: 'type',
     align: 'center',
     width: 60
   },
   {
     title: '标签',
-    dataIndex: 'label',
+    dataIndex: 'tag',
     align: 'center',
     width: 60
   },

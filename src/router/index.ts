@@ -44,36 +44,36 @@ const routes: RouteRecordRaw[] = [
         path: 'content',
         name: 'content',
         component: () => {
-          return import('@/views/page/article/components/content/IndexContent.vue')
+          return import('@/views/page/article/components/ArticleContent.vue')
         }
       },
       {
         path: 'column',
         name: 'column',
         component: () => {
-          return import('@/views/page/article/components/column/IndexColumn.vue')
+          return import('@/views/page/article/components/ArticleColumn.vue')
         }
       }
     ]
   },
+  // {
+  //   path: '/IndexSidebar',
+  //   name: 'IndexSidebar',
+  //   meta: {
+  //     keepAlive: true
+  //   },
+  //   component: () => {
+  //     return import('@/views/page/article/sidebar/IndexSidebar.vue')
+  //   }
+  // },
   {
-    path: '/IndexSidebar',
-    name: 'IndexSidebar',
-    meta: {
-      keepAlive: true
-    },
-    component: () => {
-      return import('@/views/index/components/sidebar/IndexSidebar.vue')
-    }
-  },
-  {
-    path: '/tag',
-    name: 'tag',
+    path: '/qarticle',
+    name: 'qarticle',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/page/tag/index.vue')
+      return import('@/views/page/article2/index.vue')
     }
   },
   {
@@ -153,7 +153,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/page/one/One.vue')
+      return import('@/views/page/one/index.vue')
     }
   },
   {
@@ -199,7 +199,7 @@ const routes: RouteRecordRaw[] = [
     path: '/Admin-index',
     name: 'Admin-index',
     component: () => {
-      return import('@/views/admin/index/AdminIndex.vue')
+      return import('@/views/admin/index.vue')
     },
     children: [
       // 添加子路由
@@ -225,10 +225,24 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'ArticleTypeTable',
+        name: 'ArticleTypeTable',
+        component: () => {
+          return import('@/views/admin/article/type/ArticleTypeTable.vue')
+        }
+      },
+      {
+        path: 'ArticleTagTable',
+        name: 'ArticleTagTable',
+        component: () => {
+          return import('@/views/admin/article/tag/ArticleTagTable.vue')
+        }
+      },
+      {
         path: 'NavTable',
         name: 'NavTable',
         component: () => {
-          return import('@/views/admin/navigation/SNavTable.vue')
+          return import('@/views/admin/navigation/NavigationTable.vue')
         }
       },
       {
@@ -249,7 +263,7 @@ const routes: RouteRecordRaw[] = [
         path: 'PageSet',
         name: 'PageSet',
         component: () => {
-          return import('@/views/admin/set/PageSet.vue')
+          return import('@/views/admin/set/InterfaceTable.vue')
         }
       },
       {
@@ -260,17 +274,17 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'LabelTable',
-        name: 'LabelTable',
-        component: () => {
-          return import('@/views/admin/label/LabelTable.vue')
-        }
-      },
-      {
         path: 'userTable',
         name: 'userTable',
         component: () => {
           return import('@/views/admin/user/UserTable.vue')
+        }
+      },
+      {
+        path: 'snippetTable',
+        name: 'snippetTable',
+        component: () => {
+          return import('@/views/admin/snippet/SnippetTable.vue')
         }
       }
     ]

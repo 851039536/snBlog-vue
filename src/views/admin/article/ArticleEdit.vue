@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { labelsApi, articleApi, sort } from '@/api'
-import { rLabel, rSort } from './data'
+import { articleApi, articleTypeApi, articleTagApi } from '@/api'
+import { rTag, rType } from './data'
 import { routers, go } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { aData } from '../data'
@@ -10,71 +10,70 @@ import { articleForm } from '@/api/data/model/artileModel'
 
 const route = useRoute()
 const rid: any = ref(route.query.id)
-console.log('%c [ rid ]-13', 'font-size:13px; background:pink; color:#bf2c9f;', rid.value)
 
-const onSubmit = async () => {
-  await articleApi.Update(articleForm).then(() => {
-    message.info(aData.SUCCESS)
-    routers(rRouter.articleTable)
+const update = async () => {
+  await articleApi.Update(articleForm).then(r => {
+    if (r.data) {
+      message.success(aData.SUCCESS)
+      routers(rRouter.articleTable)
+    }
   })
 }
 
-async function GetApi() {
-  rLabel.value = await labelsApi.GetAll(true)
-  rSort.value = await sort.GetAll(true)
-
-  await articleApi.GetById(rid.value, false).then((res: any) => {
-    articleForm.id = res.data.id
-    articleForm.commentId = res.data.commentId
-    articleForm.give = res.data.give
-    articleForm.labelId = res.data.labelId
-    articleForm.read = res.data.read
-    articleForm.sortId = res.data.sortId
-    articleForm.text = res.data.text
-    articleForm.name = res.data.name
-    articleForm.sketch = res.data.sketch
-    articleForm.img = res.data.img
-    articleForm.userId = res.data.userId
-  })
-}
 onMounted(async () => {
-  await GetApi()
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
+  await axios.all([articleTagApi.GetAll(), articleTypeApi.GetAll(), articleApi.GetById(rid.value)]).then(
+    axios.spread((tag: any, type: any, article) => {
+      rTag.value = tag
+      rType.value = type
+      articleForm.id = article.data.id
+      articleForm.commentId = article.data.commentId
+      articleForm.give = article.data.give
+      articleForm.tagId = article.data.tagId
+      articleForm.read = article.data.read
+      articleForm.typeId = article.data.typeId
+      articleForm.text = article.data.text
+      articleForm.name = article.data.name
+      articleForm.sketch = article.data.sketch
+      articleForm.img = article.data.img
+      articleForm.userId = article.data.userId
+    })
+  )
 })
 </script>
 
 <template>
   <div class="h-full w-full">
-    <div class="bg-gray-100 shadow p-2">
-      <a-button type="primary" @click="onSubmit">更新</a-button>
+    <div class="p-2">
+      <a-button type="primary" @click="update">更新</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="mt-2 p-2">
       <a-input v-model:value="articleForm.name" prefix="标题:" />
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="mt-2 p-2">
       <a-textarea v-model:value="articleForm.sketch" />
     </div>
-    <div class="rounded flex m-auto bg-gray-50 shadow p-2">
+    <div class="flex m-auto p-2">
       <div class="ml-2">
         标签
-        <a-select v-model:value="articleForm.labelId" style="width: 120px" placeholder="请选择">
-          <a-select-option v-for="item in rLabel.data" :key="item.id" :label="item.id" :value="item.id">
-            {{ item.name }}
+        <a-select v-model:value="articleForm.tagId" style="width: 120px" placeholder="请选择">
+          <a-select-option v-for="r in rTag.data" :key="r.id" :label="r.id" :value="r.id">
+            {{ r.name }}
           </a-select-option>
         </a-select>
       </div>
       <div class="ml-2">
         类别
-        <a-select v-model:value="articleForm.sortId" style="width: 120px" placeholder="请选择">
-          <a-select-option v-for="item in rSort.data" :key="item.id" :label="item.id" :value="item.id">
-            {{ item.name }}
+        <a-select v-model:value="articleForm.typeId" style="width: 120px" placeholder="请选择">
+          <a-select-option v-for="r in rType.data" :key="r.id" :label="r.id" :value="r.id">
+            {{ r.name }}
           </a-select-option>
         </a-select>
       </div>
     </div>
-    <div class="rounded bg-gray-50 shadow mt-2 p-2">
+    <div class="mt-2 p-2">
       <v-md-editor
         v-model="articleForm.text"
         left-toolbar="undo redo | emoji | clear | h | code"

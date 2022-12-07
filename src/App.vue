@@ -1,5 +1,5 @@
 <template>
-  <div id="app ">
+  <div id="app">
     <router-view v-slot="{ Component }">
       <transition name="fade" :duration="500">
         <keep-alive>
@@ -15,9 +15,16 @@
   <c-sidebar></c-sidebar>
   <c-bootom></c-bootom>
   <c-aspin></c-aspin>
-  <!-- <c-search></c-search> -->
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { message } from 'ant-design-vue'
+
+window.addEventListener('keydown', e => {
+  if (e.metaKey && e.key === 'Meta') {
+    message.loading('测试')
+  }
+})
+</script>
 
 <style lang="scss">
 @include scroll;

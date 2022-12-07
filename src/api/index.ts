@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
 import { articleApi } from './http/articleApi'
-import { labelsApi } from './http/labels'
-import { sort } from './http/sort'
+import { articleTagApi } from './http/articleTagApi'
+import { articleTypeApi } from './http/articleTypeApi'
 import { userTalk } from './http/usertalk'
 import { setBlog } from './http/setBlog'
 import { leave } from './http/leave'
@@ -13,6 +13,8 @@ import { listContent } from './http/listContent'
 import { interfacesApi } from './http/interfaces'
 import { snippetApi } from './http/snippetApi'
 import { snippetTagApi } from './http/snippetTagApi'
+import { snippetTypeApi } from './http/snippetTypeApi'
+import { snippetLabelApi } from './http/snippetLabelApi'
 
 /**
  * @description: 空函数查token权限
@@ -31,8 +33,8 @@ function TOKEN() {
 
 export {
   articleApi,
-  labelsApi,
-  sort,
+  articleTagApi,
+  articleTypeApi,
   userTalk,
   setBlog,
   leave,
@@ -44,5 +46,7 @@ export {
   TOKEN,
   interfacesApi,
   snippetApi,
-  snippetTagApi
+  snippetTagApi,
+  snippetTypeApi,
+  snippetLabelApi
 }

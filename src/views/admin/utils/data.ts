@@ -1,10 +1,8 @@
-const navName = reactive({
+export const navName = reactive({
   name: '',
   name2: ''
 })
-const navName1 = reactive({
+export const navName1 = reactive({
   name: '',
   name2: ''
 })
-
-export { navName, navName1 }

@@ -17,14 +17,14 @@ const rnavTable = ref([] as INav[])
 const rNav = ref([] as INav[])
 async function currentchange(val: number) {
   rData.current = val
-  rNav.value = await (await navigationApi.GetFyAsync(1, rData.name, val, rData.pagesize, 'id', true, true)).data
+  rNav.value = await (await navigationApi.GetPaging(1, rData.name, val, rData.pagesize, 'id', true, true)).data
 }
 
 async function GetApi(name: string) {
   rData.current = 1
   rData.name = name
   rData.count = await (await navigationApi.GetCount(1, rData.name, true)).data
-  rNav.value = await (await navigationApi.GetFyAsync(1, name, rData.page, rData.pagesize, 'id', true, true)).data
+  rNav.value = await (await navigationApi.GetPaging(1, name, rData.page, rData.pagesize, 'id', true, true)).data
 }
 
 async function clkApi(name: string) {

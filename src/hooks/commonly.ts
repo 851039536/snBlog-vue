@@ -31,3 +31,20 @@ export const isToken = async () => {
     await routers(rRouter.articleTable)
   }
 }
+/**
+ * 判断是否是当前用户
+ * @param uid 用户id
+ * @returns bool
+ */
+export const isUserId = (uid: number) => {
+  if (Number(storage.get(hUser.ID)) === uid) return true
+  return false
+}
+
+/**
+ * 读取当前用户id
+ * @returns id
+ */
+export const getUserId = () => {
+  return Number(storage.get(hUser.ID))
+}

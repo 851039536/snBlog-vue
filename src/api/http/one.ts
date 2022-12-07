@@ -70,7 +70,7 @@ export class one {
   ): Promise<any> {
     return request(
       {
-        url: `/api/SnOne/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+        url: `/api/SnOne/GetPagingAsync?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
         method: 'get'
       },
       {

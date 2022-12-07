@@ -35,7 +35,7 @@ import { navigationApi } from '@/api/index'
 const rNav = ref([] as INav[])
 const rCount = ref(0)
 onMounted(async () => {
-  rNav.value = await (await navigationApi.GetFyAsync(1, '博客圈', 1, 18, 'id', true, true)).data
+  rNav.value = await (await navigationApi.GetPaging(1, '博客圈', 1, 18, 'id', true, true)).data
   rCount.value = await (await navigationApi.GetCount(1, '博客圈', true)).data
 })
 </script>

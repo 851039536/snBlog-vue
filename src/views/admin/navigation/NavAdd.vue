@@ -16,7 +16,7 @@ function GetTypeId(id: number) {
 
 const rType: any = ref([])
 const uid: any = ref(storage.get(hUser.ID))
-const onSubmit = async () => {
+const add = async () => {
   navForm.userId = uid.value
   await navigationApi.AddAsync(navForm).then(() => {
     message.info(aData.SUCCESS)
@@ -65,7 +65,7 @@ onMounted(async () => {
       <a-input v-model:value="navForm.url" prefix="地址:" />
     </div>
     <div class="p-2">
-      <a-button type="primary" @click="onSubmit">添加</a-button>
+      <a-button type="primary" @click="add">添加</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
       <a-button style="margin-left: 10px" @click="reloads">刷新</a-button>
     </div>

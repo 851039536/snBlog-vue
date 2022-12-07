@@ -35,7 +35,7 @@ class interfacesApi {
   static GetFy(identity: number, type: string, pageIndex: number, pageSize: number) {
     return request(
       {
-        url: `/api/SnInterface/GetFyAsync?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=id&isDesc=true&cache=false`,
+        url: `/api/SnInterface/GetPagingAsync?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=id&isDesc=true&cache=false`,
         method: 'get'
       },
       {
@@ -85,7 +85,7 @@ class interfacesApi {
   static Del(id: number) {
     return request(
       {
-        url: `/api/SnInterface/DeleteAsync?id=${id}`,
+        url: `/api/SnInterface/DelAsync?id=${id}`,
         method: 'delete'
       },
       {

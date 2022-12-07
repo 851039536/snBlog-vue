@@ -5,6 +5,10 @@ import 'nprogress/nprogress.css'
 // import 'virtual:windi.css'
 // 导入Unocss样式
 import 'uno.css'
+
+// 引入全局自定义指令
+import directive from '@/utils/common/directive'
+
 import lazyPlugin from 'vue3-lazy'
 import infiniteScroll from 'vue3-infinite-scroll-better'
 // v-md
@@ -14,12 +18,16 @@ import VMdPreview from '@kangc/v-md-editor/lib/preview'
 import '@kangc/v-md-editor/lib/style/preview.css'
 import githubTheme from '@kangc/v-md-editor/lib/theme/github.js'
 import '@kangc/v-md-editor/lib/theme/style/github.css'
-import hljs from 'highlight.js/lib/core'
+
 // 按需引入语言包
-import csharp from 'highlight.js/lib/languages/csharp'
-import css from 'highlight.js/lib/languages/css'
-import javascript from 'highlight.js/lib/languages/javascript'
-import typescript from 'highlight.js/lib/languages/typescript'
+// import hljs from 'highlight.js/lib/core'
+// import csharp from 'highlight.js/lib/languages/csharp'
+// import css from 'highlight.js/lib/languages/css'
+// import javascript from 'highlight.js/lib/languages/javascript'
+// import typescript from 'highlight.js/lib/languages/typescript'
+// import scss from 'highlight.js/lib/languages/scss'
+// 引入所有语言包
+import hljs from 'highlight.js'
 
 // 显示代码行数
 import createLineNumbertPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index'
@@ -34,10 +42,11 @@ import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css'
 import router from './router/index'
 // import store from './store/index'
 
-hljs.registerLanguage('csharp', csharp)
-hljs.registerLanguage('css', css)
-hljs.registerLanguage('javascript', javascript)
-hljs.registerLanguage('typescript', typescript)
+// hljs.registerLanguage('csharp', csharp)
+// hljs.registerLanguage('css', css)
+// hljs.registerLanguage('javascript', javascript)
+// hljs.registerLanguage('typescript', typescript)
+// hljs.registerLanguage('scss', scss)
 
 VueMarkdownEditor.use(githubTheme, {
   Hljs: hljs
@@ -70,4 +79,5 @@ app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.use(infiniteScroll)
 app.use(router)
+app.use(directive)
 app.mount('#app')

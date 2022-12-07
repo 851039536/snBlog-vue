@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, rLabel } from './data'
-import { articleApi, labelsApi } from '@/api'
+import { columns, rTag } from './data'
+import { articleApi, articleTagApi } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
@@ -12,44 +12,51 @@ import { hUser } from '@/hooks/commonly'
 const reload: any = inject('reload')
 const rArticle = ref()
 const userName = ref('')
-const labelStr = ref('ALL')
+const tagSrt = ref('ALL')
 const order = ref(false)
 const del = async (data: any) => {
-  await articleApi.Del(data.id).then(() => {
-    message.success(aData.SUCCESS)
-    reload()
+  await articleApi.Del(data.id).then(r => {
+    if (r.data) {
+      reload()
+      message.success(aData.SUCCESS)
+    }
   })
 }
-async function GetContains(name: string) {
-  if (name === '' && labelStr.value === 'ALL')
-    return (rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)).data)
-  if (labelStr.value === 'ALL') return (rArticle.value = await (await articleApi.GetContains(0, '0', name, true)).data)
-  rArticle.value = await (await articleApi.GetContains(2, labelStr.value, name, true)).data
+const QPaging = async (identity: number, name: string, order = true) => {
+  rArticle.value = await (await articleApi.GetPaging(identity, name, 1, 9000, 'id', order, false)).data
 }
-async function SelectTag() {
-  rArticle.value =
-    labelStr.value === 'ALL'
-      ? await (
-          await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)
-        ).data
-      : await (
-          await articleApi.GetFy(4, `${labelStr.value},${userName.value}`, 1, 1000, 'id', true, false)
-        ).data
+async function QContains(name: string) {
+  if (name === '' && tagSrt.value === 'ALL') return QPaging(3, userName.value)
+  if (tagSrt.value === 'ALL') {
+    rArticle.value = await (await articleApi.GetContains(0, '0', name)).data
+    return
+  }
+  rArticle.value = await (await articleApi.GetContains(2, tagSrt.value, name)).data
 }
-async function Ordering() {
+async function STag() {
+  if (tagSrt.value === 'ALL') {
+    await QPaging(3, userName.value)
+    return
+  }
+  await QPaging(4, `${tagSrt.value},${userName.value}`)
+}
+async function ordering() {
   if (order.value) {
-    rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', order.value, false)).data
+    await QPaging(3, userName.value, order.value)
     order.value = false
     return
   }
-  rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', order.value, false)).data
+  await QPaging(3, userName.value, order.value)
   order.value = true
 }
 
 onMounted(async () => {
   userName.value = storage.get(hUser.NAME)
-  rArticle.value = await (await articleApi.GetFy(3, userName.value, 1, 1000, 'id', true, false)).data
-  rLabel.value = await (await labelsApi.GetAll(false)).data
+  await axios.all([await articleTagApi.GetAll(), await QPaging(3, userName.value)]).then(
+    axios.spread((tag: any) => {
+      rTag.value = tag.data
+    })
+  )
   navName.name = '文章展示'
   navName.name2 = '文章列表'
 })
@@ -60,10 +67,10 @@ onMounted(async () => {
       <a-space>
         <a-button @click="routers(rRouter.articleAdd)">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select v-model:value="labelStr" style="width: 140px" @change="SelectTag">
+        <a-select v-model:value="tagSrt" style="width: 140px" @change="STag">
           <a-select-option value="ALL">ALL</a-select-option>
-          <a-select-option v-for="res in rLabel" :key="res.id" :value="res.name">
-            {{ res.name }}
+          <a-select-option v-for="r in rTag" :key="r.id" :value="r.name">
+            {{ r.name }}
           </a-select-option>
         </a-select>
         <a-select
@@ -73,9 +80,9 @@ onMounted(async () => {
           :default-active-first-option="false"
           :show-arrow="false"
           :not-found-content="null"
-          @search="GetContains"></a-select>
+          @search="QContains"></a-select>
       </a-space>
-      <a-button style="margin-left: 10px" @click="Ordering()">排序</a-button>
+      <a-button style="margin-left: 10px" @click="ordering()">排序</a-button>
     </div>
     <div>
       <a-table
@@ -88,13 +95,13 @@ onMounted(async () => {
         :scroll="{ x: 1280, y: 520 }">
         <template #bodyCell="{ column, record }">
           <template v-if="column.dataIndex === 'user'">
-            <p>{{ record.user.nickname }}</p>
+            <span>{{ record.user.nickname }}</span>
           </template>
-          <template v-if="column.dataIndex === 'sort'">
-            <p>{{ record.sort.name }}</p>
+          <template v-if="column.dataIndex === 'type'">
+            <span>{{ record.type.name }}</span>
           </template>
-          <template v-if="column.dataIndex === 'label'">
-            <p>{{ record.label.name }}</p>
+          <template v-if="column.dataIndex === 'tag'">
+            <span>{{ record.tag.name }}</span>
           </template>
           <template v-if="column.dataIndex === 'edit'">
             <a type="primary" ghost @click="routerId(rRouter.articleEdit, record.id)">编辑</a>

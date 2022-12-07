@@ -18,7 +18,7 @@ const state: State = reactive({
 
 async function currentchange(val: number) {
   state.page = val
-  await navigationApi.GetFyAsync(1, '网站', state.page, state.pagesize, 'id', true, true).then((res: any) => {
+  await navigationApi.GetPaging(1, '网站', state.page, state.pagesize, 'id', true, true).then((res: any) => {
     state.resultData = res.data
   })
 }

@@ -1,0 +1,163 @@
+<script lang="ts" setup>
+import { routers } from '@/hooks/routers'
+import { navName } from './utils/data'
+import { isToken, ClearUser } from '@/hooks/commonly'
+import { rRouter } from '@/router/data'
+import uservg from '@assets/svg/components/user.svg?component'
+import { hHead, hSide } from '@/hooks/data'
+import { TOKEN } from '@/api'
+
+function clear() {
+  ClearUser()
+  isToken()
+}
+const handleClick = (e: any) => {
+  switch (e.key) {
+    case '1-1':
+      routers(rRouter.articleTable)
+      break
+    case '1-2':
+      routers(rRouter.articleTagTable)
+      break
+    case '1-3':
+      routers(rRouter.articleTypeTable)
+      break
+    case '2-1':
+      routers(rRouter.navTable)
+      break
+    case '3-1':
+      routers(rRouter.pageSet)
+      break
+    case '3-2':
+      routers(rRouter.sqlBackups)
+      break
+    case '3-3':
+      routers(rRouter.userTable)
+      break
+    case '4-1':
+      routers(rRouter.snippetTable)
+      break
+    default:
+      break
+  }
+}
+const showRouter = ref(true)
+function reload() {
+  showRouter.value = false
+  nextTick(() => {
+    showRouter.value = true
+  })
+}
+provide('reload', reload)
+
+onMounted(async () => {
+  await TOKEN()
+  hHead.value = false
+  hSide.value = false
+})
+</script>
+<template>
+  <div class="admin">
+    <a-layout>
+      <div class="bg-white h-70px mb-1">
+        <div class="float-left h-full flex justify-center items-center">
+          <div class="text-3xl ml-4">控制台</div>
+        </div>
+        <div class="h-full float-right flex justify-center items-center">
+          <div class="mr-4">
+            <a-popover placement="bottomRight">
+              <template #content>
+                <div class="text-center mb-1 cursor-pointer hover:text-blue-400" @click="routers('/article/column')">
+                  主页
+                </div>
+                <div class="text-center cursor-pointer hover:text-blue-400" @click="clear()">退出登录</div>
+              </template>
+              <template #title>
+                <div class="flex">
+                  <div class="mt-11px mr-2"><uservg></uservg></div>
+                  <div class="m-1">
+                    <div>少年</div>
+                    <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
+                  </div>
+                </div>
+              </template>
+              <uservg></uservg>
+            </a-popover>
+          </div>
+        </div>
+      </div>
+      <a-layout>
+        <div class="mt-1">
+          <a-layout-sider breakpoint="xl" collapsed-width="0" width="230">
+            <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="handleClick">
+              <a-sub-menu key="sub1">
+                <template #title>
+                  <div flex class="items-center">
+                    <div i-fxemoji-bluebook h-5 w-5 mr-2></div>
+                    <span>文章展示</span>
+                  </div>
+                </template>
+                <a-menu-item key="1-1">文章管理</a-menu-item>
+                <a-menu-item key="1-2">标签管理</a-menu-item>
+                <a-menu-item key="1-3">类别管理</a-menu-item>
+              </a-sub-menu>
+              <a-sub-menu key="sub2">
+                <template #icon>
+                  <div i-fxemoji-cookie h-5 w-5></div>
+                </template>
+                <template #title>
+                  <span>内容导航</span>
+                </template>
+                <a-menu-item key="2-1">导航管理</a-menu-item>
+                <a-menu-item key="2-2">标签管理</a-menu-item>
+              </a-sub-menu>
+              <a-sub-menu key="sub4">
+                <template #icon>
+                  <div i-fxemoji-cookedrice h-5 w-5></div>
+                </template>
+                <template #title>
+                  <span>代码片段</span>
+                </template>
+                <a-menu-item key="4-1">片段管理</a-menu-item>
+              </a-sub-menu>
+              <a-sub-menu key="sub3">
+                <template #icon>
+                  <div i-flat-color-icons-settings h-5 w-5></div>
+                </template>
+                <template #title>
+                  <span>设置</span>
+                </template>
+                <a-menu-item key="3-1">页面设置</a-menu-item>
+                <a-menu-item key="3-2">SQL备份</a-menu-item>
+                <a-menu-item key="3-3">用户管理</a-menu-item>
+              </a-sub-menu>
+            </a-menu>
+          </a-layout-sider>
+        </div>
+
+        <a-layout style="padding: 0 12px 12px">
+          <a-breadcrumb style="margin: 14px 0">
+            <a-breadcrumb-item>{{ navName.name }}</a-breadcrumb-item>
+            <a-breadcrumb-item>{{ navName.name2 }}</a-breadcrumb-item>
+          </a-breadcrumb>
+          <a-layout-content
+            :style="{
+              background: '#fff',
+              padding: '10px',
+              margin: 0,
+              minHeight: '98%'
+            }">
+            <router-view v-if="showRouter"></router-view>
+          </a-layout-content>
+        </a-layout>
+      </a-layout>
+    </a-layout>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.admin {
+  @apply h-full w-full z-10 fixed;
+  @apply bg-gray-100;
+}
+</style>
