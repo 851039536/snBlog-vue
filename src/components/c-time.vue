@@ -23,17 +23,18 @@ setInterval(updateTime, 1000)
 updateTime()
 </script>
 <template>
-  <div id="clock">
-    <div i-fxemoji-alarmclock mr-1></div>
-    <span>{{ state.date }}</span>
-    <span>{{ state.time }}</span>
-  </div>
+  <c-sidebar-container>
+    <div class="time">
+      <div i-fxemoji-alarmclock mr-1></div>
+      <span>{{ state.date }}</span>
+      <span>{{ state.time }}</span>
+    </div>
+  </c-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
-#clock {
-  @apply m-auto h-60px mt-2 text-center mb-2 w-[97%];
-  @apply bg-white rounded shadow text-xl;
+.time {
+  @apply text-xl p-1;
 
   display: flex;
   align-items: center;

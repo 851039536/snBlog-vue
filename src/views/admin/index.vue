@@ -72,7 +72,7 @@ onMounted(async () => {
                 </div>
                 <div class="text-center cursor-pointer hover:text-blue-400" @click="clear()">退出登录</div>
               </template>
-              <template #title>
+              <!-- <template #title>
                 <div class="flex">
                   <div class="mt-11px mr-2"><uservg></uservg></div>
                   <div class="m-1">
@@ -80,7 +80,7 @@ onMounted(async () => {
                     <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
                   </div>
                 </div>
-              </template>
+              </template> -->
               <uservg></uservg>
             </a-popover>
           </div>

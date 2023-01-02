@@ -9,7 +9,7 @@ import user2 from '@assets/svg/components/user2.svg?component'
 const rData: any = ref([])
 const isVisible: any = ref(false)
 
-const cliTest = () => {
+const CliAbout = () => {
   isVisible.value = true
 }
 function getTopic(index: number) {
@@ -23,22 +23,22 @@ onMounted(async () => {
 <template>
   <div v-show="hSide" class="lside">
     <div
-      v-for="(res, index) in rData"
+      v-for="(r, index) in rData"
       :key="index"
       class="lside-list"
       :class="sideIndex == index ? 'active' : ''"
       @click="getTopic(index)">
-      <div v-if="res.identity" class="flex" @click="routers(res.path)">
-        <div v-if="res.path == '/article/column'" i-fxemoji-linksymbol></div>
-        <div v-if="res.path == '/tag'" i-fxemoji-emptynotepage></div>
-        <div v-if="res.path == '/one'" i-fxemoji-dog></div>
-        <div v-if="res.path == '/video'" i-flat-color-icons-video-file></div>
-        <div v-if="res.path == '/favorite'" i-fxemoji-wiredkeyboard></div>
-        <div v-if="res.path == '/BlogCircles'" i-fxemoji-cyclone></div>
-        <div v-if="res.path == '/book'" i-fxemoji-notebookdecorativecover></div>
-        <div v-if="res.path == '/ListContent'" i-fxemoji-onebuttonmouse></div>
-        <div v-if="res.path == '/Login'" i-fxemoji-maximize></div>
-        {{ res.title }}
+      <div v-if="r.identity" class="flex" @click="routers(r.path)">
+        <div v-if="r.path == '/article/column'" i-fxemoji-linksymbol></div>
+        <div v-if="r.path == '/qarticle'" i-flat-color-icons-reddit></div>
+        <div v-if="r.path == '/one'" i-fxemoji-dog></div>
+        <div v-if="r.path == '/video'" i-flat-color-icons-headset></div>
+        <div v-if="r.path == '/favorite'" i-fxemoji-wiredkeyboard></div>
+        <div v-if="r.path == '/BlogCircles'" i-fxemoji-cyclone></div>
+        <div v-if="r.path == '/book'" i-fxemoji-notebookdecorativecover></div>
+        <div v-if="r.path == '/ListContent'" i-fxemoji-onebuttonmouse></div>
+        <div v-if="r.path == '/Login'" i-fxemoji-maximize></div>
+        {{ r.title }}
       </div>
     </div>
     <div v-show="storage.get(hUser.NAME) === hUser.NAME" bg-gray-200 text-lg>
@@ -50,7 +50,7 @@ onMounted(async () => {
 
     <div v-show="storage.get(hUser.NAME) !== hUser.NAME" text-sm class="absolute bottom-1 bg-slate-400 h-110px w-full">
       <div text-center class="text-lg bg-slate-500 text-cool-gray-50">
-        <span @click="cliTest()">关于我</span>
+        <span @click="CliAbout()">关于我</span>
       </div>
       <div class="flex mt-1">
         <div i-fxemoji-newmoonwithface h-25px w-25px></div>

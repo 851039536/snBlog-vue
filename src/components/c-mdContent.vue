@@ -64,7 +64,7 @@ onMounted(async () => {
       <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.name" />
       <v-md-preview ref="preview" :text="state.blog.text" />
     </div>
-    <div class="anchor">
+    <div class="anchor h-800px overflow-auto">
       <div v-for="anchor in state.titles" :key="anchor" class="anchor-tag" @click="handleAnchorClick(anchor)">
         {{ anchor.title }}
       </div>
@@ -78,7 +78,7 @@ onMounted(async () => {
 }
 
 .anchor {
-  --at-apply: rounded top-[8%] right-[9%] w-[14%] z-10 fixed;
+  --at-apply: rounded top-[8%] right-[12%] w-[14%] z-10 fixed mb-20;
 
   .anchor-tag {
     --at-apply: rounded bg-white cursor-pointer m-1 text-base p-2;

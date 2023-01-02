@@ -5,7 +5,7 @@
         <div class="modal-content">
           <button class="close" @click="emit('close-model')">X</button>
           <div class="model-body">
-            <slot name="snippetModel"></slot>
+            <slot></slot>
           </div>
         </div>
       </div>

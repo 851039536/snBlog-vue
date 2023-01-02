@@ -8,7 +8,7 @@ export class videoApi {
    * @param type 查询参数
    * @param cache 缓存
    */
-  static GetSumAsync(identity: number, type: string, cache: boolean) {
+  static GetSumAsync(identity: number, type: string, cache = false) {
     return get(`/video/sum?identity=${identity}&type=${type}&cache=${cache}`)
   }
 
@@ -53,17 +53,9 @@ export class videoApi {
    * @param isDesc 是否倒序[true/false]
    * @param cache 缓存
    */
-  static GetFyAsync(
-    identity: number,
-    type: string,
-    page: number,
-    pagesize: number,
-    ordering: string,
-    isDesc: boolean,
-    cache: boolean
-  ) {
+  static GetPaging(identity: number, type: string, page: number, pagesize: number, isDesc: boolean, cache: boolean) {
     return get(
-      `/video/paging?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`
+      `/video/paging?identity=${identity}&type=${type}&pageIndex=${page}&pageSize=${pagesize}&isDesc=${isDesc}&cache=${cache}`
     )
   }
 }

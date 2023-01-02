@@ -3,7 +3,7 @@
   @include w-h(100%, 100%);
 
   .book-main {
-    @include initialize($w, 89%, 4.5%, null, $ml, null, #ffffff);
+    // @include initialize($w, 89%, 4.5%, null, $ml, null, #ffffff);
     @apply rounded-sm shadow-sm overflow-auto;
 
     .book-bar {

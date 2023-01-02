@@ -3,6 +3,8 @@ import { routerId } from '@/hooks/routers'
 import { aData } from '@/views/admin/data'
 import { articleApi } from '@/api'
 import { hHead, hSide } from '@/hooks/data'
+import { useWindowScroll } from '@vueuse/core'
+const { y } = useWindowScroll()
 
 const rArticle: any = ref([])
 const state = reactive({
@@ -26,34 +28,40 @@ async function GetFy() {
 function getImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
-const handleInfiniteOnLoad = async () => {
-  // 异步加载数据等逻辑
-  if (scrollDisabled.value) {
-    // 数据加载完毕
-  } else {
-    // 加载数据列表
-    state.pagesize += 8
-    await GetFy()
-  }
-}
-const scrollDisabled = computed(() => {
-  return rArticle.value.length >= state.count
+const scDisabled = computed(() => {
+  return rArticle.value.length <= state.count
 })
+const cheight = ref(50)
 
+watch(
+  () => {
+    return [y]
+  },
+  async () => {
+    if (scDisabled.value) {
+      if (y.value > cheight.value) {
+        console.log('触发加载')
+        cheight.value += 400
+        state.pagesize += 3
+        await GetFy()
+      }
+    }
+  },
+  { deep: true }
+)
 onMounted(async () => {
   hSide.value = true
   hHead.value = true
   await axios.all([await GetSum(0, aData.NULL), await GetFy()])
+  window.onresize = function () {
+    console.log('宽度', document.documentElement.clientWidth)
+    console.log('高度', document.documentElement.clientHeight)
+  }
 })
 </script>
 
 <template>
-  <section
-    v-infinite-scroll="handleInfiniteOnLoad"
-    :infinite-scroll-immediate-check="false"
-    :infinite-scroll-disabled="scrollDisabled"
-    infinite-scroll-watch-disabled="scrollDisabled"
-    :infinite-scroll-distance="20">
+  <section>
     <div v-for="r in rArticle" :key="r.id" class="blog">
       <div class="blog-cont">
         <div class="blog-cont-img">
@@ -75,14 +83,14 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div v-if="scrollDisabled" class="text-2xl mt-2 mb-10 m-1 text-cool-gray-400">数据加载完毕 ^</div>
+    <div v-if="scDisabled" class="text-center mt-2 mb-10 m-1 text-cool-gray-400">数据加载完毕 ^</div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .blog {
   .blog-cont {
-    @apply flex h-155px mt-10px w-full;
+    @apply flex h-155px mt-2 w-full;
     @apply bg-white rounded-lg shadow-sm;
 
     .blog-cont-img {

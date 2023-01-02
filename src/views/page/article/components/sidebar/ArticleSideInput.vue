@@ -15,21 +15,20 @@ async function onSearch() {
 }
 </script>
 <template>
-  <div class="side-input">
-    <a-input-search
-      v-model:value="rSearchName"
-      placeholder="内容搜索"
-      style="width: 100%"
-      @search="onSearch()"
-      @change="onSearch()" />
-  </div>
+  <c-sidebar-container>
+    <div class="side-input">
+      <a-input-search
+        v-model:value="rSearchName"
+        placeholder="内容搜索"
+        style="width: 100%"
+        @search="onSearch()"
+        @change="onSearch()" />
+    </div>
+  </c-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
 .side-input {
-  @include center-children;
-  @apply flex flex-nowrap;
-  @apply m-auto mt-1 mb-2 p-2 w-[97%];
-  @apply bg-white rounded shadow-sm;
+  @apply p-2;
 }
 </style>

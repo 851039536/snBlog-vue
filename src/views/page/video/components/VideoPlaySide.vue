@@ -40,15 +40,15 @@ GetApi()
 <template>
   <div class="vside">
     <div class="vplay-side">
-      <div v-for="res in resData.resultData" :key="res.id" class="vplay-2-1">
+      <div v-for="r in resData.resultData" :key="r.id" class="vplay-2-1">
         <div class="vplay-2-1-1">
           <img src="@/assets/img/sp.png" />
         </div>
         <div class="vplay-2-1-2">
-          <a @click="videos(res.id)">{{ res.name }}</a>
+          <a @click="videos(r.id)">{{ r.name }}</a>
         </div>
         <div class="vplay-2-1-3">
-          {{ res.timeModified.substring(0, 10) }}
+          {{ r.timeModified.substring(0, 10) }}
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
       // aspShow.value = false
       setTimeout(function () {
         aspShow.value = false
-      }, 200)
+      }, 400)
       if (res.status === 200 || res.status === 204) {
         return Promise.resolve(res)
       }

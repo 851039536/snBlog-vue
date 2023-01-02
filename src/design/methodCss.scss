@@ -22,46 +22,10 @@ $text-height: 9%;
   border-bottom: 1px dashed #f1f1f1;
 }
 
-// 页面初始化
-@mixin initialize($w, $h, $mt, $mb, $ml, $mr, $bg) {
-  @if $w !=null {
-    width: $w;
-  }
-
-  @if $h !=null {
-    height: $h;
-  }
-
-  @if $mt !=null {
-    margin-top: $mt;
-  }
-
-  @if $mb !=null {
-    margin-bottom: $mb;
-  }
-
-  @if $ml !=null {
-    margin-left: $ml;
-  }
-
-  @if $mr !=null {
-    margin-right: $mr;
-  }
-
-  @if $bg !=null {
-    background-color: $bg;
-  }
-}
-
 // 宽高
 @mixin w-h($w: 100%, $h: 100%) {
   width: $w;
   height: $h;
-}
-
-// 背景图片
-@mixin bg-img($imgUrl) {
-  // background: no-repeat center/100% url($imgUrl);
 }
 
 /**
@@ -84,7 +48,8 @@ $text-height: 9%;
 // 2行数
 @mixin line-number {
   /* 有些示例里需要定义该属性，实际可省略 */
-  display: box;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -103,13 +68,13 @@ $text-height: 9%;
 
 @mixin line-numbers($num) {
   /* 有些示例里需要定义该属性，实际可省略 */
-  display: box;
+
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
   -webkit-line-clamp: $num;
-
-  /* 规定超过行的部分截断 */
   -webkit-box-orient: vertical;
 }
 
@@ -119,8 +84,8 @@ $text-height: 9%;
 @mixin scroll {
   // 整个滚动条.
   ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 3px;
+    height: 3px;
   }
 
   /*
@@ -143,26 +108,7 @@ $text-height: 9%;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(#101f1c, 1);
-  }
-}
-
-/* 上 下 左 右边 偏移 */
-@mixin excursion($t, $b, $l, $r) {
-  @if $t !=null {
-    top: $t;
-  }
-
-  @if $b !=null {
-    bottom: $b;
-  }
-
-  @if $l !=null {
-    left: $l;
-  }
-
-  @if $r !=null {
-    right: $r;
+    background-color: rgba(#59c9b2, 1);
   }
 }
 

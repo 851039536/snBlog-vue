@@ -144,7 +144,7 @@
     a {
       position: absolute;
 
-      @include excursion(null, 3%, null, 3%);
+      // @include excursion(null, 3%, null, 3%);
     }
 
     .photo-text {

@@ -15,16 +15,9 @@
   <c-sidebar></c-sidebar>
   <c-bootom></c-bootom>
   <c-aspin></c-aspin>
+  <c-footer></c-footer>
 </template>
-<script lang="ts" setup>
-import { message } from 'ant-design-vue'
-
-window.addEventListener('keydown', e => {
-  if (e.metaKey && e.key === 'Meta') {
-    message.loading('测试')
-  }
-})
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss">
 @include scroll;

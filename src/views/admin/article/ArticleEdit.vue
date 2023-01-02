@@ -45,14 +45,14 @@ onMounted(async () => {
 
 <template>
   <div class="h-full w-full">
-    <div class="p-2">
+    <div class="px-2">
       <a-button type="primary" @click="update">更新</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
-    <div class="mt-2 p-2">
+    <div class="mt-2 px-2">
       <a-input v-model:value="articleForm.name" prefix="标题:" />
     </div>
-    <div class="mt-2 p-2">
+    <div class="mt-2 px-2">
       <a-textarea v-model:value="articleForm.sketch" />
     </div>
     <div class="flex m-auto p-2">
@@ -73,11 +73,11 @@ onMounted(async () => {
         </a-select>
       </div>
     </div>
-    <div class="mt-2 p-2">
+    <div class="mt-1 px-2">
       <v-md-editor
         v-model="articleForm.text"
         left-toolbar="undo redo | emoji | clear | h | code"
-        height="390px"></v-md-editor>
+        height="440px"></v-md-editor>
     </div>
   </div>
 </template>

@@ -26,6 +26,10 @@ onMounted(async () => {
   <div class="circles">
     <blog-circles-side></blog-circles-side>
     <div class="circles-main">
+      <div class="mx-3 text-base flex items-center">
+        <div i-flat-color-icons-idea w-5 h-5 mr-1></div>
+        博客导航
+      </div>
       <div class="grid circles-content sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xp:grid-cols-3 2xl:grid-cols-3">
         <div v-for="res in rNav" :key="res.id" class="circles-1">
           <div class="circles-1-1">
@@ -66,8 +70,8 @@ onMounted(async () => {
 
     // 导航窗体小
     .circles-1 {
-      @include w-h(95%, 115px);
-      @apply bg-white rounded m-2 shadow hover: bg-gray-50;
+      @include w-h(98%, 110px);
+      @apply bg-white rounded m-1 shadow-sm hover: bg-gray-50;
 
       .circles-1-1 {
         @include w-h(40%, 99%);
@@ -84,14 +88,14 @@ onMounted(async () => {
         @include w-h(60%, 100%);
 
         .circles-1-2-1 {
-          @apply text-lg p-1 m-1 hover: text-blue-400 cursor-pointer;
+          @apply text-lg p-1 font-medium m-1 cursor-pointer hover:text-blue-400;
           @include line-one;
         }
 
         .circles-1-2-2 {
           height: 47px;
 
-          @apply m-1 mt-2 text-base font-light;
+          @apply m-1 mt-2 text-cool-gray-500;
           @include line-numbers(2);
         }
       }
@@ -108,7 +112,7 @@ onMounted(async () => {
     }
 
     .circles-page {
-      @apply bg-white shadow p-1 mx-2 mb-50;
+      @apply bg-white  p-1 mx-2 mb-50;
     }
   }
 }

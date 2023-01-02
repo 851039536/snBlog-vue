@@ -27,11 +27,6 @@ const GetApi = async () => {
   })
 }
 
-// const videos = async (vid: number) => {
-//   await video.GetByIdAsync(vid, true).then((res: any) => {
-//     resData.URL = res.data.url
-//   })
-// }
 GetApi()
 </script>
 

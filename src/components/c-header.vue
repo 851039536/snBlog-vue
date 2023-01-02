@@ -14,17 +14,6 @@ const store = useAppStore()
 const rData: any = ref([])
 const isVisible = ref(false)
 
-const scroll = () => {
-  // 滚动条高度
-  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
-  // 可视区的高度
-  const { clientHeight } = document.documentElement
-  if (scrollTop > clientHeight) {
-    hHead.value = false
-  } else {
-    hHead.value = true
-  }
-}
 async function GetType() {
   await interfacesApi.GetType(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
     rData.value = res.data
@@ -73,15 +62,8 @@ function login() {
     location.reload()
   })
 }
-
-onDeactivated(() => {
-  // 离开这个界面之后，删除，不然会有问题
-  window.removeEventListener('scroll', scroll)
-})
 onMounted(async () => {
   await GetType()
-  // 给window添加一个滚动监听事件
-  window.addEventListener('scroll', scroll)
 })
 </script>
 <template>
@@ -93,8 +75,8 @@ onMounted(async () => {
           <span>SN BLOG</span>
         </div>
         <div class="head-l-text">
-          <div v-for="res in rData" :key="res.id">
-            <div v-if="res.identity" @click="skip(res.path)">{{ res.title }}</div>
+          <div v-for="r in rData" :key="r.id">
+            <div v-if="r.identity" @click="skip(r.path)">{{ r.title }}</div>
           </div>
           <div>
             <input type="text" />
@@ -128,20 +110,16 @@ onMounted(async () => {
   </nav>
 
   <c-modal-dialog :visible="hLogin" title="Login" @close-model="hLogin = false">
-    <template #loginModel>
-      <form class="login">
-        <p>用户登录</p>
-        <input v-model="rName" class="login-put" type="text" placeholder="用户名" autocomplete="off" />
-        <input v-model="pwd" autocomplete="off" class="login-put" type="password" placeholder="密码" />
-        <div class="btn" @click="login">登 录</div>
-      </form>
-    </template>
+    <form class="login">
+      <p>用户登录</p>
+      <input v-model="rName" class="login-put" type="text" placeholder="用户名" autocomplete="off" />
+      <input v-model="pwd" autocomplete="off" class="login-put" type="password" placeholder="密码" />
+      <div class="btn" @click="login">登 录</div>
+    </form>
   </c-modal-dialog>
 
   <c-modal-snippet :visible="isVisible" @close-model="isVisible = false">
-    <template #snippetModel>
-      <SnippetContent></SnippetContent>
-    </template>
+    <SnippetContent></SnippetContent>
   </c-modal-snippet>
 </template>
 
@@ -196,8 +174,8 @@ input {
 }
 
 .head {
-  @apply flex h-70px w-full top-0 left-0 z-50 fixed;
-  @apply bg-white shadow px-3;
+  @apply flex h-71px w-full top-0 left-0 z-50 fixed;
+  @apply bg-white shadow-sm px-3;
 
   .h-cont {
     @apply w-full inline-flex;

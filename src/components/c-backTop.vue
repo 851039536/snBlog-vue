@@ -1,8 +1,6 @@
-<script lang="ts" setup>
-import CBack from '@assets/svg/components/c-back.svg?component'
-</script>
+<script lang="ts" setup></script>
 <template>
   <a-back-top>
-    <CBack></CBack>
+    <div i-flat-color-icons-upload w-7 h-6></div>
   </a-back-top>
 </template>

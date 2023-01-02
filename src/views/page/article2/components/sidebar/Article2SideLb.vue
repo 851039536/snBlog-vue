@@ -35,9 +35,9 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="sidelb">
+  <c-sidebar-container>
     <div class="sidelb-name">
-      <div i-fxemoji-pandaface h-22px w-32px></div>
+      <div i-flat-color-icons-radar-plot h-22px w-32px></div>
       {{ name }}
     </div>
     <div v-for="r in rData" :key="r.id" class="inline-flex" @click="getTopic(r.id)">
@@ -45,28 +45,22 @@ onMounted(() => {
         {{ r.name }}
       </div>
     </div>
-  </div>
+  </c-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
-.sidelb {
-  @apply m-auto mb-2 p-1 w-[97%];
-  @apply bg-white rounded shadow;
+.sidelb-name {
+  @apply flex items-center;
+  @apply text-base py-1;
+}
 
-  .sidelb-name {
-    @apply flex items-center;
-    @apply m-1 text-base p-1;
-    @apply rounded bg-light-blue-300;
-  }
+.sidelb-col {
+  @apply flex-1 m-1 text-sm text-center p-1;
+  @apply rounded bg-gray-100 shadow-2xl cursor-pointer;
+  @apply hover:bg-blue-400 hover:text-white;
+}
 
-  .sidelb-col {
-    @apply flex-1 m-1 text-sm text-center p-1;
-    @apply rounded bg-gray-100 shadow-2xl cursor-pointer;
-    @apply hover:bg-blue-400 hover:text-white;
-  }
-
-  .sidelb-col.active {
-    @apply text-cool-gray-50 bg-blue-400;
-  }
+.sidelb-col.active {
+  @apply text-cool-gray-50 bg-blue-400;
 }
 </style>

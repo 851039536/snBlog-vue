@@ -1,3 +1,4 @@
+<!-- 右侧边主栏 -->
 <template>
   <div class="model-side">
     <div class="modal-content">
@@ -10,7 +11,7 @@
 
 <style lang="scss" scoped>
 .model-side {
-  @apply h-[92%] top-[8.4%] right-[11%] w-[17%] fixed;
+  @apply h-[92%] top-[8.4%] right-[11.5%] w-[16.5%] fixed;
 }
 
 .modal-content {

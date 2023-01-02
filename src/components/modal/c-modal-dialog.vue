@@ -6,7 +6,6 @@
         <div class="model-title">{{ title }}</div>
         <div class="model-body relative">
           <slot name="userModel"></slot>
-          <slot name="loginModel"></slot>
           <slot name="snippetEditModel"></slot>
           <slot></slot>
         </div>

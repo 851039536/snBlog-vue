@@ -7,23 +7,18 @@ defineProps({
 })
 </script>
 <template>
-  <div class="desc">
-    <div flex m-1 py-2 text-base>
+  <c-sidebar-container>
+    <div flex py-3px text-base>
       <div i-flat-color-icons-advertising text-size-25px ml-1 mr-1></div>
       <span>公告</span>
     </div>
-    <p class="desc-cont">{{ name }}</p>
-  </div>
+    <div class="desc-cont">{{ name }}</div>
+  </c-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
-.desc {
-  @apply rounded m-auto shadow  mb-2 w-[97%];
-  @apply bg-white;
-
-  .desc-cont {
-    @apply px-2 mb-2 pb-5;
-    @apply rounded bg-white text-base text-cool-gray-500;
-  }
+.desc-cont {
+  @apply px-1 pb-1 text-center;
+  @apply bg-white text-base text-cool-gray-500;
 }
 </style>

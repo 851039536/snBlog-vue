@@ -11,14 +11,18 @@
     "backwithleftwardsarrow",
     "bgwall",
     "bigbox",
+    "bigfront",
+    "bigpic",
     "brotli",
     "BYID",
     "Cascader",
+    "cheight",
     "clickoutside",
     "Cnblogs",
     "cookedrice",
     "Crcles",
     "cside",
+    "cubemove",
     "currentchange",
     "Daohang",
     "daohangl",
@@ -27,15 +31,18 @@
     "eacape",
     "emptynote",
     "emptynotepage",
+    "endwithleftwardsarrow",
     "faside",
     "Fira",
     "fontshare",
     "framespacing",
     "fullmoonwithface",
+    "furion",
     "fxemoji",
     "gitee",
     "Graphik",
     "hljs",
+    "icones",
     "iconify",
     "icont",
     "iscity",
@@ -110,6 +117,7 @@
     "usertalk",
     "uservg",
     "vcontent",
+    "vicont",
     "vmdcontent",
     "vplay",
     "vside",
@@ -122,5 +130,20 @@
     "windi",
     "wiredkeyboard",
     "Xiao"
+  ],
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "askForPassword": true,
+      "driver": "MySQL",
+      "name": "localhost",
+      "username": "root",
+      "database": "snblog"
+    }
   ]
 }

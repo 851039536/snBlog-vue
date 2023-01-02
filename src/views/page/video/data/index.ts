@@ -4,8 +4,9 @@ import { state } from './data'
 class method {
   static async currentchange(val: number) {
     state.page = val
-    await videoApi.GetFyAsync(0, '0', state.page, state.pagesize, 'id', true, true).then((res: any) => {
-      state.resultData = res.data
+    await videoApi.GetPaging(0, '0', state.page, state.pagesize, true, true).then((r: any) => {
+      state.rData = r.data
+      console.log('%c [ state.rData ]-9', 'font-size:13px; background:pink; color:#bf2c9f;', state.rData)
     })
   }
 }

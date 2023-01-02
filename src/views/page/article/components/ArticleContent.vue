@@ -45,17 +45,15 @@ onMounted(async () => {
 <template>
   <div class="icont">
     <div class="text-center">
-      <div class="text-2xl p-3 font-semibold flex justify-center items-center">
-        <div i-fxemoji-backwithleftwardsarrow mt-1 mr-2 class="cursor-pointer" @click="router.back()"></div>
-        {{ articleForm.name }}
-        <div i-fxemoji-openbook mt-1 ml-1></div>
+      <div class="text-2xl p-3 font-semibold">
+        <div i-flat-color-icons-previous mt-1 class="cursor-pointer float-left" @click="router.back()"></div>
+        <div class="">{{ articleForm.name }}</div>
       </div>
       <div class="pt-1 text-sm text-cool-gray-500">
         <span class="mr-2">{{ sortName }}</span>
         <span class="mr-2">{{ labelName }}</span>
         <span class="mr-2">{{ articleForm.read }} ℃</span>
         <span class="mr-2">赞 {{ articleForm.give }}</span>
-        <!-- <span class="bg-teal-200">{{ rArticle.user.nickname }}</span> -->
         <span class="mr-2">{{ articleForm.timeCreate.substring(0, 10) }}</span>
         <span class="mr-2">编辑</span>
         <span class="mr-1">收藏</span>

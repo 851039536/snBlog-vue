@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import Components from 'unplugin-vue-components/vite' // 针对 Vue 的按需组件自动导入
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import eslintPlugin from 'vite-plugin-eslint'
-import { VitePWA } from 'vite-plugin-pwa'
+// import { VitePWA } from 'vite-plugin-pwa'
 // import WindiCSS from 'vite-plugin-windicss'
 import viteCompression from 'vite-plugin-compression' // 打包压缩
 import { injectHtml } from 'vite-plugin-html'
@@ -32,7 +32,7 @@ export default defineConfig({
     }),
     svgLoader(),
     ViteTips(), // 服务器状态提示
-    VitePWA(),
+    // VitePWA(),
     tsconfigPaths(),
     injectHtml({
       injectData: {

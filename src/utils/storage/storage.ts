@@ -35,7 +35,6 @@ export const sessionStorage = {
   /**
    * 取出数据
    * @param key
-   * @param value
    */
   get(key: string) {
     const value = window.sessionStorage.getItem(key)

@@ -17,7 +17,6 @@ const GetApi = async (id: number) => {
 <template>
   <div class="side">
     <div v-for="r in rArticle" :key="r.id" class="side-col">
-      <!-- <div class="side-col-title" :class="sideIndex == r.id ? 'active' : ''" @click="GetApi(r.id)"> -->
       <div v-debounce:200="() => GetApi(r.id)" class="side-col-title" :class="sideIndex == r.id ? 'active' : ''">
         <span>{{ r.name }}</span>
       </div>

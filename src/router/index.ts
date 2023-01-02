@@ -56,16 +56,6 @@ const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  // {
-  //   path: '/IndexSidebar',
-  //   name: 'IndexSidebar',
-  //   meta: {
-  //     keepAlive: true
-  //   },
-  //   component: () => {
-  //     return import('@/views/page/article/sidebar/IndexSidebar.vue')
-  //   }
-  // },
   {
     path: '/qarticle',
     name: 'qarticle',
@@ -86,16 +76,7 @@ const routes: RouteRecordRaw[] = [
       return import('@/views/page/photo/PhotoIndex.vue')
     }
   },
-  {
-    path: '/navigation',
-    name: 'navigation',
-    meta: {
-      keepAlive: false
-    },
-    component: () => {
-      return import('@/views/page/navigation/Navigation.vue')
-    }
-  },
+
   {
     path: '/BlogCircles',
     name: 'BlogCircles',
@@ -123,7 +104,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/page/video/Video.vue')
+      return import('@/views/page/video/index.vue')
     }
   },
   {

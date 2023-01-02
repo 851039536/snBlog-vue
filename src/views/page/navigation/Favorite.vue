@@ -6,7 +6,7 @@ import { INav } from '@/api/data/interData'
 
 const rData: any = reactive({
   page: 1,
-  pagesize: 15,
+  pagesize: 21,
   count: 0,
   name: '',
   current: 1
@@ -41,17 +41,16 @@ onMounted(async () => {
 <template>
   <section>
     <div class="fa-main">
+      <div class="mx-3 text-base flex items-center">
+        <div i-flat-color-icons-doughnut-chart w-5 h-5 mr-1></div>
+        网站导航
+      </div>
       <div class="fa-cont">
-        <div v-for="res in rNav" :key="res.id" class="fa-cont-list">
-          <div class="fa-cont-list1 flex">
-            <div @click="winUrl(res.url)">{{ res.title }}</div>
+        <div v-for="r in rNav" :key="r.id" class="fa-cont-list">
+          <div class="fa-cont-list1">
+            <div @click="winUrl(r.url)">{{ r.title }}</div>
           </div>
-          <div class="fa-cont-list2">{{ res.describe }}</div>
-          <div class="fa-cont-list3">
-            <span class="mr-1">作者:xxx</span>
-            <span class="mx-1">热度:102</span>
-            <span class="mx-1">热度:102</span>
-          </div>
+          <div class="fa-cont-list2">{{ r.describe }}</div>
         </div>
       </div>
 
@@ -68,12 +67,12 @@ onMounted(async () => {
     <!-- 右侧边栏 -->
     <div class="faside">
       <div class="faside-describe">
-        <p class>各式各样网站收集分享</p>
+        <p class>网站收集</p>
       </div>
       <div class="onecategory">
         <div class="onecategory-name">列表</div>
         <div v-for="result in rnavTable" :key="result.id" class="inline-flex">
-          <div class="flex-1 m-1 text-base text-center p-1 shadow rounded hover:bg-blue-400">
+          <div class="flex-1 m-1 text-base text-center p-1 rounded hover:bg-blue-400">
             <span @click="clkApi(result.title)">{{ result.title }}</span>
           </div>
         </div>
@@ -99,27 +98,18 @@ onMounted(async () => {
     @apply grid grid-cols-3;
 
     .fa-cont-list {
-      @include w-h(95%, 155px);
-      @apply m-auto mt-2 ml-2;
-      @apply rounded bg-white shadow;
+      @include w-h(98%, 96px);
+      @apply m-auto mt-6px;
+      @apply rounded bg-white shadow-sm;
 
       .fa-cont-list1 {
-        @apply cursor-pointer h-[24%] text-xl py-2 px-3 hover:text-blue-400;
-        @include line-one;
+        @apply cursor-pointer text-lg font-medium py-1 mx-3 hover:text-blue-400;
+        @include line-numbers(1);
       }
 
       .fa-cont-list2 {
-        @apply h-[45%]  px-3 text-cool-gray-500;
+        @apply mx-3 text-cool-gray-500;
         @include line-numbers(2);
-      }
-
-      .fa-cont-list3 {
-        @apply mx-1 mt-3 px-2;
-        @apply cursor-pointer text-cool-gray-500;
-
-        span {
-          @apply bg-blue-100 p-1 rounded hover:text-blue-500;
-        }
       }
     }
   }
@@ -166,7 +156,7 @@ onMounted(async () => {
 
   .onecategory {
     @apply m-auto mb-2 p-1 w-[97%];
-    @apply bg-white rounded cursor-pointer shadow;
+    @apply bg-white rounded cursor-pointer;
 
     .onecategory-name {
       @apply m-1 text-base p-1;

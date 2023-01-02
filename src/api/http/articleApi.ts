@@ -2,15 +2,6 @@ import request from '@/utils/http/axios'
 import { IArticle } from '@/api/data/interData'
 import { tool } from '@/utils/common/tool'
 import { get, add, update, del } from '@/utils/http/funApi'
-// enum Api {
-//   FY = '/api/v1/article/fy/',
-//   SUM = '/api/v1/article/count/',
-//   BYID = '/api/v1/article/by-id/',
-//   CONTAINS = '/api/v1/article/contains/',
-//   ADD = '/api/v1/article',
-//   UPDATE = '/api/v1/article',
-//   DELETE = '/api/v1/article/'
-// }
 class articleApi {
   /**
    * @description: 查询总数

@@ -1,12 +1,12 @@
 interface State {
-  resultData: any
+  rData: any
   page: number
   pagesize: number
   count: number
   current: number
 }
 const state: State = reactive({
-  resultData: [],
+  rData: [],
   page: 1,
   pagesize: 6,
   count: 0,

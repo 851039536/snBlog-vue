@@ -1,18 +1,14 @@
 <script lang="ts" setup>
-import { videoApi } from '@/api'
 import { state } from './data/data'
 import { method } from './data/index'
 
-videoApi.GetSumAsync(0, '0', true).then((res: any) => {
-  state.count = res.data
-})
 method.currentchange(1)
 </script>
 
 <template>
   <div class="video">
     <video-sidebar></video-sidebar>
-    <video-content :array-video="state.resultData"></video-content>
+    <video-content :r-data="state.rData"></video-content>
   </div>
 </template>
 
