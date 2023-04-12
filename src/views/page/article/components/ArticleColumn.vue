@@ -19,13 +19,13 @@ const state = reactive({
 async function GetSum(identity: number, type: string) {
   state.count = await (await articleApi.GetSum(identity, type, true)).data
 }
-async function GetFy() {
+async function QPaging() {
   rArticle.value = await (
     await articleApi.GetPaging(state.identity, state.typeStr, state.current, state.pagesize, 'id', true, true)
   ).data
 }
 
-function getImageUrl(name: string) {
+function QImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
 const scDisabled = computed(() => {
@@ -43,7 +43,7 @@ watch(
         console.log('触发加载')
         cheight.value += 400
         state.pagesize += 3
-        await GetFy()
+        await QPaging()
       }
     }
   },
@@ -52,7 +52,7 @@ watch(
 onMounted(async () => {
   hSide.value = true
   hHead.value = true
-  await axios.all([await GetSum(0, aData.NULL), await GetFy()])
+  await axios.all([await GetSum(0, aData.NULL), await QPaging()])
   window.onresize = function () {
     console.log('宽度', document.documentElement.clientWidth)
     console.log('高度', document.documentElement.clientHeight)
@@ -62,10 +62,15 @@ onMounted(async () => {
 
 <template>
   <section>
+    <div class="bg-white rounded-lg cursor-pointer flex">
+      <div class="p-1 hover:text-blue-400">热门</div>
+      <div class="p-1 hover:text-blue-400">最新</div>
+      <div class="p-1 hover:text-blue-400">最新</div>
+    </div>
     <div v-for="r in rArticle" :key="r.id" class="blog">
       <div class="blog-cont">
         <div class="blog-cont-img">
-          <img v-lazy="getImageUrl(r.img)" />
+          <img v-lazy="QImageUrl(r.img)" />
         </div>
         <div class="blog-cont-frame">
           <div class="blog-div-frame-1" @click="routerId('/article/content', r.id)">

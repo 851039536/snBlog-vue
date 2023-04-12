@@ -15,6 +15,7 @@ const aid: any = reactive({
 const labelName = ref('')
 const sortName = ref('')
 const spinning = ref(true)
+
 const UpGive = debounce(() => {
   articleForm.give += 1
   articleApi.UpdatePortion(articleForm, 'Give')
@@ -26,8 +27,8 @@ async function UpRead(res: any) {
   await articleApi.UpdatePortion(res, 'Read')
 }
 onMounted(async () => {
-  await articleApi.GetById(aid.id, true).then((res: any) => {
-    const rData = res.data
+  await articleApi.GetById(aid.id, true).then((r: any) => {
+    const rData = r.data
     UpRead(rData)
     articleForm.name = rData.name
     articleForm.text = rData.text

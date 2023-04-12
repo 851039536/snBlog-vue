@@ -7,7 +7,7 @@ const columns: any = [
   },
   {
     title: '标题',
-    dataIndex: 'title',
+    dataIndex: 'name',
     align: 'center',
     width: 70
   },
@@ -19,7 +19,7 @@ const columns: any = [
     width: 80
   },
   {
-    title: '是否启用',
+    title: '启用',
     dataIndex: 'identity',
     align: 'center',
     width: 50
@@ -28,7 +28,7 @@ const columns: any = [
     title: '类别',
     dataIndex: 'type',
     align: 'center',
-    width: 50
+    width: 40
   },
   {
     title: '用户',

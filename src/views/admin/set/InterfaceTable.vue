@@ -1,41 +1,45 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data'
-import { interfacesApi } from '@/api'
+import { interfaceApi } from '@/api'
 import { navName } from '../utils/data'
 import { useData } from '../data'
 import { clearInterface, interfaceForm } from '@/api/data/model/intInterfaceModel'
 import { storage } from '@/utils/storage/storage'
 import { hUser } from '@/hooks/commonly'
+import type { SelectProps } from 'ant-design-vue'
 const { cancel, data } = useData()
 const rData = ref([])
-const addVisible = ref(false)
+const visible = ref(false)
 const addDisabled = ref(true)
 const upDisabled = ref(true)
+const selectValue = ref('ALL')
 
 const reload: any = inject('reload')
+
 const del = async (entity: any) => {
-  await interfacesApi.Del(entity.id).then(() => {
+  await interfaceApi.Del(entity.id).then(() => {
     message.success(data.DEL)
     reload()
   })
 }
 
 const uid: any = ref(storage.get(hUser.ID))
+
 const Add = async () => {
   interfaceForm.userId = uid.value
-  await interfacesApi.AddAsync(interfaceForm).then(() => {
+  await interfaceApi.Add(interfaceForm).then(() => {
     message.info(data.SUCCESS)
-    addVisible.value = false
+    visible.value = false
     reload()
   })
 }
 
 const update = async () => {
   interfaceForm.userId = uid.value
-  await interfacesApi.Update(interfaceForm).then(() => {
+  await interfaceApi.Update(interfaceForm).then(() => {
     message.info(data.SUCCESS)
-    addVisible.value = false
+    visible.value = false
     reload()
   })
 }
@@ -43,19 +47,27 @@ const edit = async (id: number) => {
   clearInterface()
   upDisabled.value = false
   addDisabled.value = true
-  addVisible.value = true
+  visible.value = true
 
-  await interfacesApi.GetById(id).then(res => {
-    interfaceForm.id = res.data.id
-    interfaceForm.title = res.data.title
-    interfaceForm.path = res.data.path
-    interfaceForm.typeId = res.data.typeId
-    interfaceForm.userId = res.data.userId
-    interfaceForm.identity = res.data.identity
+  await interfaceApi.GetById(id).then(r => {
+    interfaceForm.id = r.data.id
+    interfaceForm.name = r.data.name
+    interfaceForm.path = r.data.path
+    interfaceForm.typeId = r.data.typeId
+    interfaceForm.userId = r.data.userId
+    interfaceForm.identity = r.data.identity
   })
 }
+
+const handleChange = async () => {
+  rData.value = await (await interfaceApi.GetPaging(3, `${storage.get(hUser.NAME)},${selectValue.value}`, 1, 100)).data
+}
+const options = ref<SelectProps['options']>([
+  { value: 'sidebar', label: 'sidebar' },
+  { value: 'header', label: 'header' }
+])
 onMounted(async () => {
-  rData.value = await (await interfacesApi.GetFy(2, storage.get(hUser.NAME), 1, 100)).data
+  rData.value = await (await interfaceApi.GetPaging(2, storage.get(hUser.NAME), 1, 100)).data
   navName.name = '页面设置'
   navName.name2 = '参数列表'
 })
@@ -63,10 +75,14 @@ onMounted(async () => {
 <template>
   <div class="table">
     <a-space>
-      <a-button @click=";(addVisible = true), (addDisabled = false), (upDisabled = true), clearInterface()">
-        添加
-      </a-button>
+      <a-button @click=";(visible = true), (addDisabled = false), (upDisabled = true), clearInterface()">添加</a-button>
       <a-button @click="reload()">刷新</a-button>
+      <a-select
+        ref="select"
+        v-model:value="selectValue"
+        style="width: 120px"
+        :options="options"
+        @change="handleChange"></a-select>
     </a-space>
   </div>
   <div>
@@ -86,7 +102,8 @@ onMounted(async () => {
           <span>{{ record.user.name }}</span>
         </template>
         <template v-if="column.dataIndex === 'identity'">
-          <span>{{ record.identity }}</span>
+          <span v-if="record.identity == 0" class="text-red-600 text-xl">x</span>
+          <span v-if="record.identity == 1" class="text-green-600 text-xl">√</span>
         </template>
         <template v-if="column.dataIndex === 'edit'">
           <a @click="edit(record.id)">修改</a>
@@ -99,16 +116,17 @@ onMounted(async () => {
       </template>
     </a-table>
   </div>
-  <c-modal-dialog :visible="addVisible" title="导航添加" @close-model="addVisible = false">
+
+  <c-modal-dialog :visible="visible" title="内容编辑" @close-model="visible = false">
     <div class="cont">
       <div class="flex">
         <a-input
-          v-model:value="interfaceForm.title"
+          v-model:value="interfaceForm.name"
           size="large"
           prefix="标题 :"
           style="width: 160px"
           :bordered="false" />
-        <a-select v-model:value="interfaceForm.title" style="width: 130px">
+        <a-select v-model:value="interfaceForm.name" style="width: 130px">
           <a-select-option value="主页">主页</a-select-option>
           <a-select-option value="首页">首页</a-select-option>
           <a-select-option value="博客">博客页</a-select-option>
@@ -153,8 +171,8 @@ onMounted(async () => {
           style="width: 160px"
           :bordered="false" />
         <a-select v-model:value="interfaceForm.identity" style="width: 130px">
-          <a-select-option :value="1">开启</a-select-option>
-          <a-select-option :value="0">关闭</a-select-option>
+          <a-select-option :value="true">开启</a-select-option>
+          <a-select-option :value="false">关闭</a-select-option>
         </a-select>
       </div>
       <div>
@@ -181,7 +199,7 @@ onMounted(async () => {
 }
 
 .cont {
-  @apply m-auto w-82 bg-gray-50 mb-10;
+  @apply m-auto w-95 bg-gray-50 mb-10;
 
   div {
     @apply text-lg m-1 px-2;

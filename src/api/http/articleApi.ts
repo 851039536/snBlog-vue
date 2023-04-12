@@ -10,7 +10,8 @@ class articleApi {
    * @param {boolean} cache 缓存
    */
   static GetSum(identity: number, type: string, cache: boolean) {
-    return get(`/article/sum?identity=${identity}&type=${type}&cache=${cache}`, false)
+    const url = `/article/sum?identity=${identity}&type=${type}&cache=${cache}`
+    return get(url, false)
   }
 
   /**

@@ -5,7 +5,7 @@ import { routers } from '@/hooks/routers'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
 import { hHead, hLogin, sideIndex } from '@/hooks/data'
-import { interfacesApi, userApi } from '@/api'
+import { interfaceApi, userApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { useAppStore } from '@/store/pinia'
 const rName = ref('')
@@ -15,7 +15,7 @@ const rData: any = ref([])
 const isVisible = ref(false)
 
 async function GetType() {
-  await interfacesApi.GetType(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
+  await interfaceApi.GetCondition(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
     rData.value = res.data
   })
 }
@@ -55,13 +55,15 @@ function login() {
     rData.value = res.data.split(',')
     ClearUser()
     storage.set(hUser.ROLE, rData.value[0]) // 角色名
+    storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
     storage.set(hUser.ID, rData.value[2]) // 用户主键
     storage.set(hUser.NAME, rData.value[3]) // 用户名
-    storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
+
     store.roles = storage.get(hUser.ROLE)
     location.reload()
   })
 }
+
 onMounted(async () => {
   await GetType()
 })
@@ -76,10 +78,20 @@ onMounted(async () => {
         </div>
         <div class="head-l-text">
           <div v-for="r in rData" :key="r.id">
-            <div v-if="r.identity" @click="skip(r.path)">{{ r.title }}</div>
+            <div v-if="r.identity" @click="skip(r.path)">{{ r.name }}</div>
           </div>
           <div>
-            <input type="text" />
+            <div class="">导航</div>
+          </div>
+          <div>
+            <div class="">圈子</div>
+          </div>
+          <div>
+            <div @click="isVisible = true">code</div>
+          </div>
+          <div>
+            <div class="mt-1" i-flat-color-icons-search h-6 w-6></div>
+            <!-- <input type="text" /> -->
           </div>
         </div>
       </div>
@@ -118,9 +130,9 @@ onMounted(async () => {
     </form>
   </c-modal-dialog>
 
-  <c-modal-snippet :visible="isVisible" @close-model="isVisible = false">
+  <modal-snippet :visible="isVisible" @close-model="isVisible = false">
     <SnippetContent></SnippetContent>
-  </c-modal-snippet>
+  </modal-snippet>
 </template>
 
 <style lang="scss" scoped>
@@ -142,10 +154,6 @@ onMounted(async () => {
   background-color: #fff;
   border: none;
   border-bottom: 2px solid rgb(95 90 90);
-
-  // @apply mb-5;
-
-  /* 下面的会覆盖上面的步伐 */
   outline: none;
 
   @apply cursor-pointer;
@@ -191,7 +199,7 @@ input {
         @apply flex m-1 p-1 items-center;
 
         div {
-          @apply cursor-pointer ml-1 text-2xl hover:text-blue-400;
+          @apply cursor-pointer ml-1 text-xl hover:text-blue-400;
         }
       }
     }

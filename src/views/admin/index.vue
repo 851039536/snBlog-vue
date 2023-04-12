@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { routers } from '@/hooks/routers'
+import { routers, winUrl } from '@/hooks/routers'
 import { navName } from './utils/data'
 import { isToken, ClearUser } from '@/hooks/commonly'
 import { rRouter } from '@/router/data'
@@ -67,7 +67,7 @@ onMounted(async () => {
           <div class="mr-4">
             <a-popover placement="bottomRight">
               <template #content>
-                <div class="text-center mb-1 cursor-pointer hover:text-blue-400" @click="routers('/article/column')">
+                <div class="text-center mb-1 cursor-pointer hover:text-blue-400" @click="winUrl('/article/column')">
                   主页
                 </div>
                 <div class="text-center cursor-pointer hover:text-blue-400" @click="clear()">退出登录</div>

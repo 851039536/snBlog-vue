@@ -24,6 +24,7 @@ export const aCancel = () => {
   message.info('已取消', 6)
 }
 export const useData = () => {
+  /** 取消提示 */
   const cancel = () => {
     message.info('已取消', 6)
   }

@@ -21,9 +21,9 @@ const del = async (data: any) => {
 const addVisible = ref(false)
 const edVisible = ref(false)
 const rNav: any = ref([])
-const tagStr = ref('ALL')
-const typeStr = ref('ALL')
-const LabelStr = ref('ALL')
+const tagStr = ref<string>('ALL')
+const typeStr = ref<string>('ALL')
+const LabelStr = ref<string>('ALL')
 
 const edit = async (id: number) => {
   await snippetApi.GetById(id, false).then(r => {
@@ -64,7 +64,7 @@ async function search(name: any) {
   if (name === '') {
     return
   }
-  await snippetApi.GetContains(0, aData.NULL, name, false).then(async res => {
+  await snippetApi.GetContains(0, aData.NULL, name, false, 1, 999).then(async res => {
     await tool.MomentTimeList(res)
     rNav.value = res.data
   })

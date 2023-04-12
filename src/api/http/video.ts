@@ -49,7 +49,6 @@ export class videoApi {
    * @param type 查询参数
    * @param page 当前页码
    * @param pagesize 每页记录条数
-   * @param ordering 排序条件[data:时间 按id排序]
    * @param isDesc 是否倒序[true/false]
    * @param cache 缓存
    */

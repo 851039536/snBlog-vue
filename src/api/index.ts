@@ -10,11 +10,12 @@ import { one } from './http/one'
 import { videoApi } from './http/video'
 import { userApi } from './http/user'
 import { listContent } from './http/listContent'
-import { interfacesApi } from './http/interfaces'
+import { interfaceApi } from './http/interfaceApi'
 import { snippetApi } from './http/snippetApi'
 import { snippetTagApi } from './http/snippetTagApi'
 import { snippetTypeApi } from './http/snippetTypeApi'
 import { snippetLabelApi } from './http/snippetLabelApi'
+import { commonApi } from './http/commonApi'
 
 /**
  * @description: 空函数查token权限
@@ -22,7 +23,7 @@ import { snippetLabelApi } from './http/snippetLabelApi'
 function TOKEN() {
   return request(
     {
-      url: '/api/AngleSharp/TOKEN',
+      url: '/angleSharp/TOKEN',
       method: 'get'
     },
     {
@@ -44,9 +45,10 @@ export {
   userApi,
   listContent,
   TOKEN,
-  interfacesApi,
+  interfaceApi,
   snippetApi,
   snippetTagApi,
   snippetTypeApi,
-  snippetLabelApi
+  snippetLabelApi,
+  commonApi
 }

@@ -29,11 +29,18 @@ class snippetApi {
    * @param name 查询字段
    * @param cache 缓存
    */
-  static async GetContains(identity: number, type: string, name: string, cache: boolean) {
-    const res = await request(`/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+  // static async GetContains(identity: number, type: string, name: string, cache = true) {
+  //   const res = await request(
+  //     `/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=1&pageSize=10`,
+  //     false
+  //   )
+  //   return res
+  // }
+  static async GetContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
+    const url = `/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=${pageIndex}&pageSize=${pageSize}`
+    const res = await request(url, false)
     return res
   }
-
   /**
    * @description: 主键查询
    * @param {number} id

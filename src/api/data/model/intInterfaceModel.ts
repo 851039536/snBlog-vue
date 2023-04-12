@@ -1,6 +1,6 @@
 export interface IInterface {
   id: number
-  title: string
+  name: string
   path: string
   typeId: number
   userId: number
@@ -8,7 +8,7 @@ export interface IInterface {
 }
 export const interfaceForm: IInterface = reactive({
   id: 0,
-  title: '',
+  name: '',
   path: '',
   typeId: 0,
   userId: 0,
@@ -17,7 +17,7 @@ export const interfaceForm: IInterface = reactive({
 
 export const clearInterface = () => {
   interfaceForm.id = 0
-  interfaceForm.title = ''
+  interfaceForm.name = ''
   interfaceForm.path = ''
   interfaceForm.typeId = 1
   interfaceForm.userId = 0

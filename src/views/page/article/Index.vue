@@ -19,7 +19,8 @@ const articleCount = ref('')
 const textCount = ref('')
 const readCount = ref('')
 const rNav = ref([])
-const annunciate = ref('') //通告
+/** 通告信息 */
+const annunciate = ref('')
 onMounted(async () => {
   hSearch.value = false //
   annunciate.value = await (await userTalk.GetUserTalkFirst()).data

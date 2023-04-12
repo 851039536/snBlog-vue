@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { interfacesApi } from '@/api'
+import { interfaceApi } from '@/api'
 import { hUser } from '@/hooks/commonly'
 import { hSide, sideIndex } from '@/hooks/data'
 import { routers } from '@/hooks/routers'
@@ -16,7 +16,7 @@ function getTopic(index: number) {
   sideIndex.value = index
 }
 onMounted(async () => {
-  rData.value = await (await interfacesApi.GetType(0, storage.get(hUser.NAME), 'sidebar', true)).data
+  rData.value = await (await interfaceApi.GetCondition(0, storage.get(hUser.NAME), 'sidebar', true)).data
   getTopic(sideIndex.value)
 })
 </script>
@@ -38,7 +38,7 @@ onMounted(async () => {
         <div v-if="r.path == '/book'" i-fxemoji-notebookdecorativecover></div>
         <div v-if="r.path == '/ListContent'" i-fxemoji-onebuttonmouse></div>
         <div v-if="r.path == '/Login'" i-fxemoji-maximize></div>
-        {{ r.title }}
+        {{ r.name }}
       </div>
     </div>
     <div v-show="storage.get(hUser.NAME) === hUser.NAME" bg-gray-200 text-lg>
@@ -83,6 +83,9 @@ onMounted(async () => {
           <div i-fxemoji-relieved h-25px w-25px></div>
           <div i-fxemoji-smiletongue h-25px w-25px></div>
           <div i-fxemoji-sunglasses h-25px w-25px></div>
+        </div>
+        <div class="text-lg text-slate-500 text-center">
+          一位热爱生活、全栈开发者, 表面腼腆,内心奔放。 建站缘由 搭建一个属于自己的世界。
         </div>
       </div>
     </template>
