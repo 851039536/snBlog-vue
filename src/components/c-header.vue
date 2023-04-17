@@ -14,19 +14,17 @@ const store = useAppStore()
 const rData: any = ref([])
 const isVisible = ref(false)
 
-async function GetType() {
-  await interfaceApi.GetCondition(0, storage.get(hUser.NAME), 'header', false).then((res: any) => {
-    rData.value = res.data
-  })
-}
-async function skip(num: string) {
+async function skip(path: string) {
   sideIndex.value = -1
-  switch (num) {
+  switch (path) {
     case 'code':
       isVisible.value = true
       break
+    case 'home':
+      await routers(path)
+      break
     default:
-      await routers(num)
+      await routers('home')
       break
   }
 }
@@ -47,12 +45,13 @@ async function onChange(id: number) {
   }
 }
 function login() {
-  userApi.Login(rName.value, pwd.value).then(res => {
-    if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
-      message.error(res.data)
+  userApi.Login(rName.value, pwd.value).then(r => {
+    if (['用户或密码错误', '用户密码不能为空'].includes(r.data)) {
+      // Show error message to user
+      message.error(r.data)
       return
     }
-    rData.value = res.data.split(',')
+    rData.value = r.data.split(',')
     ClearUser()
     storage.set(hUser.ROLE, rData.value[0]) // 角色名
     storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
@@ -65,14 +64,19 @@ function login() {
 }
 
 onMounted(async () => {
-  await GetType()
+  // get the conditions from the API
+  const conditions = await interfaceApi.GetCondition(0, storage.get(hUser.NAME), 'header', false)
+  // get the data from the conditions
+  const data = await conditions.data
+  // put the data into the return object
+  rData.value = data
 })
 </script>
 <template>
   <nav v-show="hHead" class="head">
     <div class="h-cont">
       <div class="h-cont-l">
-        <div class="">
+        <div>
           <div i-fxemoji-alien mx-1></div>
           <span>SN BLOG</span>
         </div>
@@ -81,17 +85,16 @@ onMounted(async () => {
             <div v-if="r.identity" @click="skip(r.path)">{{ r.name }}</div>
           </div>
           <div>
-            <div class="">导航</div>
+            <div>导航</div>
           </div>
           <div>
-            <div class="">圈子</div>
+            <div>圈子</div>
           </div>
           <div>
             <div @click="isVisible = true">code</div>
           </div>
           <div>
             <div class="mt-1" i-flat-color-icons-search h-6 w-6></div>
-            <!-- <input type="text" /> -->
           </div>
         </div>
       </div>

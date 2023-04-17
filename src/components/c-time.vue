@@ -3,6 +3,7 @@ const state: any = reactive({
   date: '',
   time: ''
 })
+
 const week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 function zeroPadding(num: number, digit: number) {
   let zero = ''
