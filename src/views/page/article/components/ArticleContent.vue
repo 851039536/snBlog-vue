@@ -21,14 +21,14 @@ const UpGive = debounce(() => {
   articleApi.UpdatePortion(articleForm, 'Give')
 }, 1000)
 
-async function UpRead(res: any) {
-  if (res === null) return
-  res.read += 1
-  await articleApi.UpdatePortion(res, 'Read')
+async function UpRead(data: any) {
+  if (data === null) return
+  data.read += 1
+  await articleApi.UpdatePortion(data, 'Read')
 }
 onMounted(async () => {
-  await articleApi.GetById(aid.id, true).then((r: any) => {
-    const rData = r.data
+  await articleApi.GetById(aid.id).then((data: any) => {
+    const rData = data.data
     UpRead(rData)
     articleForm.name = rData.name
     articleForm.text = rData.text
@@ -44,7 +44,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="icont">
+  <div class="article-content">
     <div class="text-center">
       <div class="text-2xl p-3 font-semibold">
         <div i-flat-color-icons-previous mt-1 class="cursor-pointer float-left" @click="router.back()"></div>
@@ -82,7 +82,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.icont {
+.article-content {
   @apply bg-white;
 
   .icont-ft {

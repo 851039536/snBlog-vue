@@ -6,7 +6,7 @@ import { rArticle } from '../data'
 const search = (name: string) => {
   throttle(async () => {
     if (name === '') return
-    rArticle.value = await (await articleApi.GetContains(0, 'null', name, true)).data
+    rArticle.value = await (await articleApi.GetContains(0, 'null', name)).data
   }, 300)()
 }
 </script>

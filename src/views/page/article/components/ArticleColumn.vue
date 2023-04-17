@@ -17,12 +17,10 @@ const state = reactive({
 })
 
 async function GetSum(identity: number, type: string) {
-  state.count = await (await articleApi.GetSum(identity, type, true)).data
+  state.count = await (await articleApi.GetSum(identity, type)).data
 }
 async function QPaging() {
-  rArticle.value = await (
-    await articleApi.GetPaging(state.identity, state.typeStr, state.current, state.pagesize, 'id', true, true)
-  ).data
+  rArticle.value = await (await articleApi.GetPaging(state.identity, state.typeStr, state.current, state.pagesize)).data
 }
 
 function QImageUrl(name: string) {

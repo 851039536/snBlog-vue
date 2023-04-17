@@ -4,9 +4,9 @@
 
 ### 技术栈
 
-- net5:webapi
+- net5:api
 
-- mysql 数据库
+- mysql
 
 #### 缓存
 

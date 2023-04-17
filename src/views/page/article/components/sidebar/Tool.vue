@@ -41,7 +41,8 @@ defineProps({
 }
 
 .tool-text {
-  @apply flex justify-center items-center m-3px text-base text-center p-3px;
+  @apply flex justify-center items-center m-3px p-3px;
+  @apply cursor-default text-base text-center;
   @apply rounded bg-blue-100 hover:text-white hover:bg-blue-500;
 }
 </style>

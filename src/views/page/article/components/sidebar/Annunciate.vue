@@ -18,7 +18,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .desc-cont {
-  @apply px-1 pb-1 text-center;
-  @apply bg-white text-base text-cool-gray-500;
+  @apply p-1 pb-4;
+  @apply bg-white text-sm text-cool-gray-500;
 }
 </style>

@@ -11,7 +11,7 @@ const emit = defineEmits(['refresh'])
 const GetApi = async (id: number) => {
   emit('refresh', 123) // onScroll('top')
   sideIndex.value = id
-  blog.value = await (await articleApi.GetById(id, true)).data.text
+  blog.value = await (await articleApi.GetById(id)).data.text
 }
 </script>
 <template>

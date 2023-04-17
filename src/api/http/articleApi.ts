@@ -9,7 +9,7 @@ class articleApi {
    * @param {string} type 条件
    * @param {boolean} cache 缓存
    */
-  static GetSum(identity: number, type: string, cache: boolean) {
+  static GetSum(identity = 0, type = 'null', cache = true) {
     const url = `/article/sum?identity=${identity}&type=${type}&cache=${cache}`
     return get(url, false)
   }
@@ -21,10 +21,10 @@ class articleApi {
    * @param name 查询字段
    * @param cache 缓存
    */
-  static async GetContains(identity = 0, type = 'null', name = '', cache = false) {
-    const res = await request(`/article/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-    tool.MomentTimeList(res)
-    return res
+  static async GetContains(identity = 0, type = 'null', name = '', cache = true) {
+    const data = await request(`/article/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+    tool.MomentTimeList(data)
+    return data
   }
 
   /**
@@ -42,7 +42,7 @@ class articleApi {
    * @param cache 缓存
    * @returns
    */
-  static GetType(identity: number, type: string, cache: boolean) {
+  static GetType(identity: number, type = 'null', cache = true) {
     return get(`/article/type?identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 
@@ -53,7 +53,7 @@ class articleApi {
    * @param name 查询参数
    * @param cache 缓存
    */
-  static GetStrSum(identity: number, type: number, name: string, cache: boolean): Promise<any> {
+  static GetStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
     return get(`/article/strSum??identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
   }
 
@@ -68,20 +68,20 @@ class articleApi {
    * @param {boolean} cache 缓存
    */
   static async GetPaging(
-    identity: number,
-    type: string | undefined,
-    pageIndex: number,
-    pagesize: number,
-    ordering: string,
-    isDesc: boolean,
-    cache: boolean
+    identity = 0,
+    type = 'null',
+    pageIndex = 1,
+    pagesize = 6,
+    ordering = 'id',
+    isDesc = true,
+    cache = true
   ) {
-    const res = await get(
+    const data = await get(
       `/article/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
-    await tool.MomentTimeList(res)
-    return res
+    await tool.MomentTimeList(data)
+    return data
   }
 
   /**
@@ -95,7 +95,7 @@ class articleApi {
 
   /**
    * @description: 新增数据
-   * @param {any} entity
+   * @param {IArticle} entity
    */
   static Add(entity: IArticle) {
     return add('/article/add', entity)

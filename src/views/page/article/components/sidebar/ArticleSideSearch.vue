@@ -5,7 +5,7 @@ import { rArticle, rSearchName } from '../../data'
 
 //自定义函数，父组件可以触发
 async function search() {
-  rArticle.value = await (await articleApi.GetContains(0, 'null', rSearchName.value, true)).data
+  rArticle.value = await (await articleApi.GetContains(0, 'null', rSearchName.value)).data
 }
 </script>
 <template>
@@ -14,7 +14,7 @@ async function search() {
       v-model="rSearchName"
       v-focus
       class="rounded h-10 w-full text-xl outline-none border-0 bg-gray-200"
-      placeholder="搜索1..."
+      placeholder="搜索..."
       @input="search()" />
   </div>
   <div class="h-full overflow-auto">

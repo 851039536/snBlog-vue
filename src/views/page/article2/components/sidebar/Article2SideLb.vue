@@ -27,7 +27,7 @@ function getTopic(index: number) {
 }
 
 async function GetApi(name: string) {
-  rArticle.value = await (await articleApi.GetType(2, name, true)).data
+  rArticle.value = await (await articleApi.GetType(2, name)).data
 }
 onMounted(() => {
   getTopic(sideIndex.value)

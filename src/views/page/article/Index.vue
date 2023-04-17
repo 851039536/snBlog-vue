@@ -11,26 +11,28 @@ const ArSideSearch = defineAsyncComponent(() => {
 const ArAnnunciate = defineAsyncComponent(() => {
   return import('./components/sidebar/Annunciate.vue')
 })
+// Define an asynchronous component.
 const statistics = defineAsyncComponent(() => {
+  // Return a Promise for the asynchronous component.
   return import('@/components/c-statistics.vue')
 })
-const articleTime = ref()
-const articleCount = ref('')
-const textCount = ref('')
-const readCount = ref('')
-const rNav = ref([])
+const articleTime = ref() // time of the last article
+const articleCount = ref('') // number of articles
+const textCount = ref('') // number of words in the articles
+const readCount = ref('') // number of words read
+const rNavData = ref([]) // array of links
 /** 通告信息 */
 const annunciate = ref('')
 onMounted(async () => {
   hSearch.value = false //
   annunciate.value = await (await userTalk.GetUserTalkFirst()).data
-  rNav.value = await (await navigationApi.GetTypeAsync(1, '常用工具', true)).data
-  articleTime.value = await (await articleApi.GetPaging(0, 'null', 1, 1, 'id', true, true)).data[0].timeCreate
-  articleCount.value = await (await articleApi.GetSum(0, 'null', true)).data
+  rNavData.value = await (await navigationApi.GetTypeAsync(1, '常用工具', true)).data
+  articleTime.value = await (await articleApi.GetPaging(0, 'null', 1, 1)).data[0].timeCreate
+  articleCount.value = await (await articleApi.GetSum()).data
   articleCount.value = String(articleCount.value)
-  textCount.value = await (await articleApi.GetStrSum(0, 1, 'null', true)).data
+  textCount.value = await (await articleApi.GetStrSum(0, 1)).data
   textCount.value = String(textCount.value)
-  readCount.value = await (await articleApi.GetStrSum(0, 2, 'null', true)).data
+  readCount.value = await (await articleApi.GetStrSum(0, 2)).data
   readCount.value = String(readCount.value)
 })
 </script>
@@ -47,22 +49,22 @@ onMounted(async () => {
       <c-sidebar-container>
         <div class="h-30px text-base text-cool-gray-500 cursor-pointer">
           <!-- <div class="float-left">创作中心</div> -->
-          <div class="float-right hover:text-blue-400">管理></div>
+          <div class="float-right hover:text-blue-400">管理 ></div>
         </div>
         <div class="bor flex justify-center items-center my-2 cursor-pointer">
-          <div class="mx-3 hover:text-blue-400">
+          <div class="mx-3 hover:text-blue-400 text-gray-600">
             <div i-flat-color-icons-about w-7 h-7 m-auto></div>
             快捷发文
           </div>
-          <div class="mx-3 hover:text-blue-400">
+          <div class="mx-3 hover:text-blue-400 text-gray-600">
             <div i-flat-color-icons-file w-7 h-7 m-auto></div>
             写文章
           </div>
-          <div class="mx-3 hover:text-blue-400">
+          <div class="mx-3 hover:text-blue-400 text-gray-600">
             <div i-flat-color-icons-sports-mode w-7 h-7 m-auto></div>
             发动态
           </div>
-          <div class="mx-3 hover:text-blue-400">
+          <div class="mx-3 hover:text-blue-400 text-gray-600">
             <div i-flat-color-icons-wikipedia w-7 h-7 m-auto></div>
             发代码
           </div>
@@ -78,7 +80,7 @@ onMounted(async () => {
       <ArSideInput></ArSideInput>
 
       <ArAnnunciate :name="annunciate"></ArAnnunciate>
-      <Tool :r-data="rNav" name="常用工具"></Tool>
+      <Tool :r-data="rNavData" name="常用工具"></Tool>
       <statistics
         title="站点统计"
         title1="文章数量"

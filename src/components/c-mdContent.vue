@@ -10,7 +10,7 @@ const state: any = reactive({
 })
 
 const GetAll = async () => {
-  await articleApi.GetById(state.id, true).then((res: any) => {
+  await articleApi.GetById(state.id).then((res: any) => {
     const { name, text } = res.data
     state.blog = { name, text }
   })
