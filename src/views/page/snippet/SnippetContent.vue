@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { snippetApi, snippetTagApi, snippetTypeApi, TOKEN } from '@/api'
-import { snippetForm } from '@/api/data/model/snippetMode'
-import { isUserId } from '@/hooks/commonly'
-import { debounce } from '@/utils/common/dethrottle'
+import { SnippetApi, SnippetTagApi, SnippetTypeApi, TOKEN } from '@/api'
+import { snippetForm } from '@/api/data/model/SnippetMode'
+import { isUserId } from '@/hooks/Commonly'
+import { debounce } from '@/utils/common/Dethrottle'
 import { message } from 'ant-design-vue'
 // JS
 import { ref, nextTick } from 'vue'
@@ -63,23 +63,23 @@ const GetSnippet = async () => {
 
   switch (radioValue.value) {
     case 'ALL':
-      rSnippet.value = await (await snippetApi.GetContains(0, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await SnippetApi.getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'title':
-      rSnippet.value = await (await snippetApi.GetContains(0, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await SnippetApi.getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'type':
       rSnippet.value = await (
-        await snippetApi.GetContains(1, selectValue.value, rName.value, false, 1, pageSize.value)
+        await SnippetApi.getContains(1, selectValue.value, rName.value, false, 1, pageSize.value)
       ).data
       break
     case 'tag':
       rSnippet.value = await (
-        await snippetApi.GetContains(2, selectValue.value, rName.value, false, 1, pageSize.value)
+        await SnippetApi.getContains(2, selectValue.value, rName.value, false, 1, pageSize.value)
       ).data
       break
     case 'text':
-      rSnippet.value = await (await snippetApi.GetContains(4, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await SnippetApi.getContains(4, 'null', rName.value, false, 1, pageSize.value)).data
       break
     default:
       return null
@@ -98,7 +98,7 @@ const RadioFun = async () => {
   switch (radioValue.value) {
     case 'tag':
       rName.value = ''
-      rSnippetTag.value = await snippetTagApi.GetAll(true)
+      rSnippetTag.value = await SnippetTagApi.getAll(true)
       if (rSnippetTag.value === null) {
         rSnippetTag.value = []
       } else {
@@ -108,7 +108,7 @@ const RadioFun = async () => {
 
     case 'type':
       rName.value = ''
-      rSnippetTag.value = await snippetTypeApi.GetAll(true)
+      rSnippetTag.value = await SnippetTypeApi.getAll(true)
       if (rSnippetTag.value === null) {
         rSnippetTag.value = []
       } else {
@@ -133,7 +133,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
-  await snippetApi.GetById(id, false).then((r: any) => {
+  await SnippetApi.getById(id, false).then((r: any) => {
     snippetForm.id = r.data.id
     snippetForm.name = r.data.name
     snippetForm.text = r.data.text
@@ -146,7 +146,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
 }
 
 onMounted(async () => {
-  await snippetApi.GetStrSum(0, 'null', true).then(r => {
+  await SnippetApi.getStrSum(0, 'null', true).then(r => {
     rCharSun.value = r.data
   })
 })

@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { routers, winUrl } from '@/hooks/routers'
 import { navName } from './utils/data'
-import { isToken, ClearUser } from '@/hooks/commonly'
+import { isToken, clearUser } from '@/hooks/Commonly'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
-import { hHead, hSide } from '@/hooks/data'
+import { hHead, hSide } from '@/hooks/CommonData'
 import { TOKEN } from '@/api'
 
 function clear() {
-  ClearUser()
+  clearUser()
   isToken()
 }
 const handleClick = (e: any) => {

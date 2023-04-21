@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { one } from '@/api/index'
+import { OneApi } from '@/api/index'
 
 const state: any = reactive({
   resultOneType: [],
@@ -9,10 +9,10 @@ const state: any = reactive({
 })
 
 const GetApi = async () => {
-  await one.GetOneTypeAllAsync().then((res: any) => {
+  await OneApi.getOneTypeAll().then((res: any) => {
     state.resultOneType = res.data
   })
-  await one.GetFyAsync(0, '0', 1, 10, 'read', true, true).then((res: any) => {
+  await OneApi.getPaging(0, '0', 1, 10, 'read', true, true).then((res: any) => {
     state.resultOne = res.data
   })
 }

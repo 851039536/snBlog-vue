@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { snippetApi, snippetLabelApi, snippetTagApi, snippetTypeApi } from '@/api'
-import { snippetForm } from '@/api/data/model/snippetMode'
-import { debounce } from '@/utils/common/dethrottle'
+import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
+import { snippetForm } from '@/api/data/model/SnippetMode'
+import { debounce } from '@/utils/common/Dethrottle'
 import { message } from 'ant-design-vue'
 
 const rSnippetTag: any = ref([])
@@ -9,7 +9,7 @@ const rSnippetType: any = ref([])
 const rSnippetLabel: any = ref([])
 
 const update = debounce(async () => {
-  await snippetApi.Update(snippetForm).then(r => {
+  await SnippetApi.update(snippetForm).then(r => {
     if (r.data) {
       message.success('更新成功')
     } else {
@@ -18,9 +18,9 @@ const update = debounce(async () => {
   })
 }, 1000)
 onMounted(async () => {
-  rSnippetTag.value = await (await snippetTagApi.GetAll(true)).data
-  rSnippetType.value = await (await snippetTypeApi.GetAll(true)).data
-  rSnippetLabel.value = await (await snippetLabelApi.GetAll(true)).data
+  rSnippetTag.value = await (await SnippetTagApi.getAll(true)).data
+  rSnippetType.value = await (await SnippetTypeApi.getAll(true)).data
+  rSnippetLabel.value = await (await SnippetLabelApi.getAll(true)).data
 })
 </script>
 <template>

@@ -1,10 +1,10 @@
 import request from '@/utils/http/axios'
 
-export class listContent {
-  static Cnblogs() {
+export class LeaveApi {
+  static getAll(): Promise<any> {
     return request(
       {
-        url: '/api/AngleSharp/Cnblogs',
+        url: '/api/Snleave/GetAllAsync',
         method: 'get'
       },
       {

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data'
-import { interfaceApi } from '@/api'
+import { InterfaceApi } from '@/api'
 import { navName } from '../utils/data'
 import { useData } from '../data'
-import { clearInterface, interfaceForm } from '@/api/data/model/intInterfaceModel'
+import { clearInterface, interfaceForm } from '@/api/data/model/IntInterfaceModel'
 import { storage } from '@/utils/storage/storage'
-import { hUser } from '@/hooks/commonly'
+import { hUser } from '@/hooks/Commonly'
 import type { SelectProps } from 'ant-design-vue'
 const { cancel, data } = useData()
 const rData = ref([])
@@ -18,7 +18,7 @@ const selectValue = ref('ALL')
 const reload: any = inject('reload')
 
 const del = async (entity: any) => {
-  await interfaceApi.Del(entity.id).then(() => {
+  await InterfaceApi.del(entity.id).then(() => {
     message.success(data.DEL)
     reload()
   })
@@ -28,7 +28,7 @@ const uid: any = ref(storage.get(hUser.ID))
 
 const Add = async () => {
   interfaceForm.userId = uid.value
-  await interfaceApi.Add(interfaceForm).then(() => {
+  await InterfaceApi.add(interfaceForm).then(() => {
     message.info(data.SUCCESS)
     visible.value = false
     reload()
@@ -37,7 +37,7 @@ const Add = async () => {
 
 const update = async () => {
   interfaceForm.userId = uid.value
-  await interfaceApi.Update(interfaceForm).then(() => {
+  await InterfaceApi.update(interfaceForm).then(() => {
     message.info(data.SUCCESS)
     visible.value = false
     reload()
@@ -49,7 +49,7 @@ const edit = async (id: number) => {
   addDisabled.value = true
   visible.value = true
 
-  await interfaceApi.GetById(id).then(r => {
+  await InterfaceApi.getById(id).then(r => {
     interfaceForm.id = r.data.id
     interfaceForm.name = r.data.name
     interfaceForm.path = r.data.path
@@ -60,14 +60,14 @@ const edit = async (id: number) => {
 }
 
 const handleChange = async () => {
-  rData.value = await (await interfaceApi.GetPaging(3, `${storage.get(hUser.NAME)},${selectValue.value}`, 1, 100)).data
+  rData.value = await (await InterfaceApi.getPaging(3, `${storage.get(hUser.NAME)},${selectValue.value}`, 1, 100)).data
 }
 const options = ref<SelectProps['options']>([
   { value: 'sidebar', label: 'sidebar' },
   { value: 'header', label: 'header' }
 ])
 onMounted(async () => {
-  rData.value = await (await interfaceApi.GetPaging(2, storage.get(hUser.NAME), 1, 100)).data
+  rData.value = await (await InterfaceApi.getPaging(2, storage.get(hUser.NAME), 1, 100)).data
   navName.name = '页面设置'
   navName.name2 = '参数列表'
 })

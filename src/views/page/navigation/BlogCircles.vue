@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { navigationApi } from '@/api'
-import { IFy, INav } from '@/api/data/interData'
+import { NavigationApi } from '@/api'
+import { IFy, INav } from '@/api/data/InterData'
 import { winUrl } from '@/hooks/routers'
 
 const rData: IFy = reactive({
@@ -14,12 +14,12 @@ const rNav = ref([] as INav[])
 const rTitle = ref('博客圈')
 async function currentchange(val: number) {
   rData.current = val
-  rNav.value = await (await navigationApi.GetPaging(1, rTitle.value, val, rData.pagesize, 'id', true, true)).data
+  rNav.value = await (await NavigationApi.getPaging(1, rTitle.value, val, rData.pagesize, 'id', true, true)).data
 }
 
 onMounted(async () => {
-  rNav.value = await (await navigationApi.GetPaging(1, rTitle.value, rData.page, rData.pagesize, 'id', true, true)).data
-  rData.count = await (await navigationApi.GetCount(1, rTitle.value, true)).data
+  rNav.value = await (await NavigationApi.getPaging(1, rTitle.value, rData.page, rData.pagesize, 'id', true, true)).data
+  rData.count = await (await NavigationApi.getCount(1, rTitle.value, true)).data
 })
 </script>
 <template>

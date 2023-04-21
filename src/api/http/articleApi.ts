@@ -1,15 +1,16 @@
 import request from '@/utils/http/axios'
-import { IArticle } from '@/api/data/interData'
-import { tool } from '@/utils/common/tool'
+import { IArticle } from '@/api/data/InterData'
+import { Tool } from '@/utils/common/Tool'
 import { get, add, update, del } from '@/utils/http/funApi'
-class articleApi {
+
+export class ArticleApi {
   /**
    * @description: 查询总数
    * @param {number} identity 所有:0|分类:1|标签:2|用户3
    * @param {string} type 条件
    * @param {boolean} cache 缓存
    */
-  static GetSum(identity = 0, type = 'null', cache = true) {
+  static getSum(identity = 0, type = 'null', cache = true) {
     const url = `/article/sum?identity=${identity}&type=${type}&cache=${cache}`
     return get(url, false)
   }
@@ -21,9 +22,9 @@ class articleApi {
    * @param name 查询字段
    * @param cache 缓存
    */
-  static async GetContains(identity = 0, type = 'null', name = '', cache = true) {
+  static async getContains(identity = 0, type = 'null', name = '', cache = true) {
     const data = await request(`/article/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-    tool.MomentTimeList(data)
+    Tool.momentTimeList(data)
     return data
   }
 
@@ -32,7 +33,7 @@ class articleApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetById(id: number, cache = false) {
+  static getById(id: number, cache = false) {
     return get(`/article/byid?id=${id}&cache=${cache}`, false)
   }
   /**
@@ -42,7 +43,7 @@ class articleApi {
    * @param cache 缓存
    * @returns
    */
-  static GetType(identity: number, type = 'null', cache = true) {
+  static getType(identity: number, type = 'null', cache = true) {
     return get(`/article/type?identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 
@@ -53,8 +54,8 @@ class articleApi {
    * @param name 查询参数
    * @param cache 缓存
    */
-  static GetStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
-    return get(`/article/strSum??identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+  static getStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
+    return get(`/article/strSum?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
   }
 
   /**
@@ -67,7 +68,7 @@ class articleApi {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  static async GetPaging(
+  static async getPaging(
     identity = 0,
     type = 'null',
     pageIndex = 1,
@@ -80,7 +81,7 @@ class articleApi {
       `/article/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
-    await tool.MomentTimeList(data)
+    await Tool.momentTimeList(data)
     return data
   }
 
@@ -89,7 +90,7 @@ class articleApi {
    * @param {any} entity
    * @param {string} type
    */
-  static UpdatePortion(entity: any, type: string): Promise<any> {
+  static updatePortion(entity: any, type: string): Promise<any> {
     return update(`/article/upPortion?type=${type}`, entity)
   }
 
@@ -97,7 +98,7 @@ class articleApi {
    * @description: 新增数据
    * @param {IArticle} entity
    */
-  static Add(entity: IArticle) {
+  static add(entity: IArticle) {
     return add('/article/add', entity)
   }
 
@@ -105,7 +106,7 @@ class articleApi {
    * @description: 更新数据
    * @param {IntArticle} entity
    */
-  static Update(entity: IArticle) {
+  static update(entity: IArticle) {
     return update(`/article/edit`, entity)
   }
 
@@ -113,9 +114,7 @@ class articleApi {
    * @description: 删除
    * @param {number} id
    */
-  static Del(id: number) {
+  static del(id: number) {
     return del(`/article/del?id=${id}`, false)
   }
 }
-
-export { articleApi }

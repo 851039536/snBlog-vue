@@ -1,12 +1,10 @@
 <template>
   <teleport to="body">
-    <div v-show="visible" class="model-bg">
+    <div v-if="visible" class="model-bg">
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>
         <div class="model-title">{{ title }}</div>
         <div class="model-body relative">
-          <slot name="userModel"></slot>
-          <slot name="snippetEditModel"></slot>
           <slot></slot>
         </div>
       </div>
@@ -33,7 +31,12 @@ defineProps({
   z-index: 100;
   height: 100%;
   overflow: auto;
-  background-color: #00000015;
+  background-color: rgb(0 0 0 / 15%);
+
+  @apply (
+    rounded,
+    @apply
+  );
 }
 
 .modal-content {
@@ -44,13 +47,19 @@ defineProps({
   background: #fff;
   transform: translate(-50%, -50%);
 
-  @apply rounded shadow;
+  @apply (
+    rounded,
+    @apply
+  );
 
   .model-title {
     height: 32px;
     text-align: center;
 
-    @apply text-lg text-cool-gray-600;
+    @apply (
+      text-lg,
+      @apply -cool-gray-600
+    );
   }
 
   .model-body {

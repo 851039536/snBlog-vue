@@ -1,7 +1,3 @@
-/**
- * @description:Labels
- */
-
 export interface INav {
   id: number
   title: string

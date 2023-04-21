@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { IntOne } from '@/api/data/interData'
+import { IntOne } from '@/api/data/InterData'
 import { method, state } from '../data/index'
 
 defineProps({

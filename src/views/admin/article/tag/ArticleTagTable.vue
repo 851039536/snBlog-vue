@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { addVisible, columns, editVisible } from './data'
-import { articleTagApi } from '@/api'
+import { ArticleTagApi } from '@/api'
 import { aData, aCancel } from '../../data'
 import { navName } from '../../utils/data'
-import { articleTagForm, ClearArticleTag } from '@/api/data/model/articleTagModel'
+import { articleTagForm, clearArticleTag } from '@/api/data/model/ArticleTagModel'
 
 const reload: any = inject('reload')
 const rArticleType = ref()
 
 const del = async (id: number) => {
-  await articleTagApi.Del(id).then(r => {
+  await ArticleTagApi.del(id).then(r => {
     if (r.data) {
       reload()
       message.success(aData.SUCCESS)
@@ -18,7 +18,7 @@ const del = async (id: number) => {
   })
 }
 const edit = async (id: number) => {
-  await articleTagApi.GetById(id).then(r => {
+  await ArticleTagApi.getById(id).then(r => {
     articleTagForm.id = r.data.id
     articleTagForm.name = r.data.name
     articleTagForm.description = r.data.description
@@ -26,12 +26,12 @@ const edit = async (id: number) => {
   editVisible.value = true
 }
 const add = () => {
-  ClearArticleTag()
+  clearArticleTag()
   addVisible.value = true
 }
 
 onMounted(async () => {
-  rArticleType.value = (await articleTagApi.GetAll()).data
+  rArticleType.value = (await ArticleTagApi.getAll()).data
   navName.name = '文章标签'
   navName.name2 = '标签列表'
 })

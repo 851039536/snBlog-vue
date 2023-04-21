@@ -1,10 +1,10 @@
 import request from '@/utils/http/axios'
 
-class leave {
-  static GetAllAsync(): Promise<any> {
+export class SetBlogApi {
+  static getById(id: number, cache: boolean) {
     return request(
       {
-        url: '/api/Snleave/GetAllAsync',
+        url: `/api/SnSetBlog/GetByIdAsync?id=${id}&cache=${cache}`,
         method: 'get'
       },
       {
@@ -13,4 +13,3 @@ class leave {
     )
   }
 }
-export { leave }

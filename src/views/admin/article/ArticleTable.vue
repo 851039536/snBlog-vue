@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, rTag } from './data'
-import { articleApi, articleTagApi } from '@/api'
+import { ArticleApi, ArticleTagApi } from '@/api'
 import { routers, routerId } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/data'
-import { hUser } from '@/hooks/commonly'
+import { hUser } from '@/hooks/Commonly'
 
 const reload: any = inject('reload')
 const rArticle = ref()
@@ -15,7 +15,7 @@ const userName = ref('')
 const tagSrt = ref('ALL')
 const order = ref(false)
 const del = async (data: any) => {
-  await articleApi.Del(data.id).then(r => {
+  await ArticleApi.del(data.id).then(r => {
     if (r.data) {
       reload()
       message.success(aData.SUCCESS)
@@ -23,15 +23,15 @@ const del = async (data: any) => {
   })
 }
 const QPaging = async (identity: number, name: string, order = true) => {
-  rArticle.value = await (await articleApi.GetPaging(identity, name, 1, 9000, 'id', order, false)).data
+  rArticle.value = await (await ArticleApi.getPaging(identity, name, 1, 9000, 'id', order, false)).data
 }
 async function QContains(name: string) {
   if (name === '' && tagSrt.value === 'ALL') return QPaging(3, userName.value)
   if (tagSrt.value === 'ALL') {
-    rArticle.value = await (await articleApi.GetContains(0, '0', name)).data
+    rArticle.value = await (await ArticleApi.getContains(0, '0', name)).data
     return
   }
-  rArticle.value = await (await articleApi.GetContains(2, tagSrt.value, name)).data
+  rArticle.value = await (await ArticleApi.getContains(2, tagSrt.value, name)).data
 }
 async function STag() {
   if (tagSrt.value === 'ALL') {
@@ -52,7 +52,7 @@ async function ordering() {
 
 onMounted(async () => {
   userName.value = storage.get(hUser.NAME)
-  await axios.all([await articleTagApi.GetAll(), await QPaging(3, userName.value)]).then(
+  await axios.all([await ArticleTagApi.getAll(), await QPaging(3, userName.value)]).then(
     axios.spread((tag: any) => {
       rTag.value = tag.data
     })

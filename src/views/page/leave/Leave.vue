@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { leave } from '@/api/index'
+import { LeaveApi } from '@/api/index'
 
 const state: any = reactive({
   result: []
 })
 
 const GetApi = async () => {
-  state.result = await (await leave.GetAllAsync()).data
+  state.result = await (await LeaveApi.getAll()).data
 }
 onMounted(async () => {
   await GetApi()
@@ -45,7 +45,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .leave {
-  @apply absolute s-hw;
+  @apply absolute;
 
   .leave-main {
     @apply h-full relative;

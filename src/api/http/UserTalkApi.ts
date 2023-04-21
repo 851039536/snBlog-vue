@@ -1,10 +1,10 @@
 import request from '@/utils/http/axios'
 
-export class setBlog {
-  static GetByIdAsync(id: number, cache: boolean) {
+export class UserTalkApi {
+  static getUserTalkFirst() {
     return request(
       {
-        url: `/api/SnSetBlog/GetByIdAsync?id=${id}&cache=${cache}`,
+        url: '/api/SnUserTalk/GetUserTalkFirst?UserId=4&isdesc=true',
         method: 'get'
       },
       {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IOneType } from '@/api/data/interData'
+import { IOneType } from '@/api/data/InterData'
 
 defineProps({
   result: {

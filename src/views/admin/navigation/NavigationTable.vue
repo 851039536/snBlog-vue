@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data'
-import { navigationApi } from '@/api'
-import { routers, routerId, winUrl } from '@h/routers'
+import { NavigationApi } from '@/api'
+import { routers, routerId, winUrl } from '@/hooks/Routers'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/data'
 import { navName } from '../utils/data'
-import { tool } from '@/utils/common/tool'
+import { Tool } from '@/utils/common/Tool'
 
 const reload: any = inject('reload')
 const del = async (data: any) => {
-  await navigationApi.DeleteAsync(data.id).then(() => {
+  await NavigationApi.del(data.id).then(() => {
     message.success(aData.SUCCESS)
     reload()
   })
@@ -21,8 +21,8 @@ const rnavType: any = ref([])
 const navStr = ref('ALL')
 
 const QPaging = async (identity = 0, name = '') => {
-  await navigationApi.GetPaging(identity, name, 1, 1000, 'id', true, false).then(async res => {
-    await tool.MomentTimeList(res)
+  await NavigationApi.getPaging(identity, name, 1, 1000, 'id', true, false).then(async res => {
+    await Tool.momentTimeList(res)
     rNav.value = res.data
   })
 }
@@ -40,21 +40,21 @@ async function search(name: any) {
     return
   }
   if (navStr.value === aData.ALL) {
-    await navigationApi.GetContains(0, aData.NULL, name).then(async res => {
-      await tool.MomentTimeList(res)
+    await NavigationApi.getContains(0, aData.NULL, name).then(async res => {
+      await Tool.momentTimeList(res)
       rNav.value = res.data
     })
     return
   }
-  await navigationApi.GetContains(1, navStr.value, name).then(async res => {
-    await tool.MomentTimeList(res)
+  await NavigationApi.getContains(1, navStr.value, name).then(async res => {
+    await Tool.momentTimeList(res)
     rNav.value = res.data
   })
 }
 
 onMounted(async () => {
   await QPaging()
-  rnavType.value = await (await navigationApi.GetNavTypeAll()).data
+  rnavType.value = await (await NavigationApi.getNavTypeAll()).data
   navName.name = '内容分享'
   navName.name2 = '导航列表'
 })

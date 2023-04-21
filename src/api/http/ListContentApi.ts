@@ -1,10 +1,10 @@
 import request from '@/utils/http/axios'
 
-export class userTalk {
-  static GetUserTalkFirst() {
+export class ListContentApi {
+  static cnblogs() {
     return request(
       {
-        url: '/api/SnUserTalk/GetUserTalkFirst?UserId=4&isdesc=true',
+        url: '/api/AngleSharp/Cnblogs',
         method: 'get'
       },
       {

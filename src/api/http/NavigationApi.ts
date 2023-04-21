@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
-import { INav } from '@/api/data/interData'
+import { INav } from '@/api/data/InterData'
 
-export class navigationApi {
+export class NavigationApi {
   /**
    * 查询总数
    * @param identity 所有:0 || 分类:1 || 用户:2
@@ -9,7 +9,7 @@ export class navigationApi {
    * @param chche 缓存
    * @returns
    */
-  static GetCount(identity: number, type: string, chche: boolean) {
+  static getCount(identity: number, type: string, chche: boolean) {
     return request(
       {
         url: `/api/SnNavigation/GetSunAsync?identity=${identity}&type=${type}&cache=${chche}`,
@@ -28,7 +28,7 @@ export class navigationApi {
    * @param name 查询字段
    * @param chche 缓存
    */
-  static GetContains(identity: number, type: string, name: string, chche = false): Promise<any> {
+  static getContains(identity: number, type: string, name: string, chche = false): Promise<any> {
     return request(
       {
         url: `/api/SnNavigation/GetContainsAsync?identity=${identity}&type=${type}&name=${name}&cache=${chche}`,
@@ -46,7 +46,7 @@ export class navigationApi {
    * @param type 查询条件
    * @param cache 缓存
    */
-  static GetTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
+  static getTypeAsync(identity: number, type: string, cache: boolean): Promise<any> {
     return request(
       {
         url: `/api/SnNavigation/GetTypeAsync?identity=${identity}&type=${type}&cache=${cache}`,
@@ -63,7 +63,7 @@ export class navigationApi {
    * @param id 主键
    * @param cache 缓存
    */
-  static GetByIdAsync(id: any, cache = false): Promise<any> {
+  static getByIdAsync(id: any, cache = false): Promise<any> {
     return request(
       {
         url: `/api/SnNavigation/GetByIdAsync?id=${id}&cache=${cache}`,
@@ -85,7 +85,7 @@ export class navigationApi {
    * @param isDesc 是否倒序[true/false]
    * @param cache 缓存
    */
-  static GetPaging(
+  static getPaging(
     identity: number,
     type: string,
     page: number,
@@ -109,7 +109,7 @@ export class navigationApi {
    * @description: 新增数据
    * @param {any} data
    */
-  static AddAsync(data: INav) {
+  static add(data: INav) {
     return request(
       {
         url: '/api/SnNavigation/AddAsync',
@@ -126,7 +126,7 @@ export class navigationApi {
    * @description: 更新数据
    * @param {IntArticle} resultData
    */
-  static UpdateAsync(resultData: INav) {
+  static update(resultData: INav) {
     return request(
       {
         url: '/api/SnNavigation/UpdateAsync',
@@ -144,7 +144,7 @@ export class navigationApi {
    * @param {number} id
    * @return {*}
    */
-  static DeleteAsync(id: number) {
+  static del(id: number) {
     return request(
       {
         url: `/api/SnNavigation/DelAsync?id=${id}`,
@@ -161,7 +161,7 @@ export class navigationApi {
   /**
    * @description: 查询导航表分类的内容
    */
-  static GetNavTypeAll(cache = false) {
+  static getNavTypeAll(cache = false) {
     return request(
       {
         url: `/api/SnNavigationType/GetAllAsync?cache=${cache}`,

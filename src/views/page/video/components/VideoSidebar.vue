@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { videoApi } from '@/api'
+import { VideoApi } from '@/api'
 
 const sum = ref(0)
-videoApi.GetSumAsync(0, '0', true).then((res: any) => {
+VideoApi.getSum(0, '0', true).then((res: any) => {
   sum.value = res.data
 })
 </script>

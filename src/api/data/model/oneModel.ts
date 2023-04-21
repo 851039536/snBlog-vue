@@ -1,6 +1,3 @@
-/**
- * @description:Labels
- */
 export interface IOneType {
   id: number
   title: string

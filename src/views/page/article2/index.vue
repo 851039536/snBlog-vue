@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { articleApi, articleTagApi } from '@/api'
+import { ArticleApi, ArticleTagApi } from '@/api'
 const articleCount = ref('')
 const textCount = ref('')
 const readCount = ref('')
 const articleStr = ref('')
 const rTag = ref([])
 onMounted(async () => {
-  rTag.value = await (await articleTagApi.GetAll(true)).data
-  articleCount.value = await (await articleApi.GetSum()).data
+  rTag.value = await (await ArticleTagApi.getAll(true)).data
+  articleCount.value = await (await ArticleApi.getSum()).data
   articleCount.value = String(articleCount.value)
-  textCount.value = await (await articleApi.GetStrSum(0, 1)).data
+  textCount.value = await (await ArticleApi.getStrSum(0, 1)).data
   textCount.value = String(textCount.value)
-  readCount.value = await (await articleApi.GetStrSum(0, 2)).data
+  readCount.value = await (await ArticleApi.getStrSum(0, 2)).data
   readCount.value = String(readCount.value)
-  articleStr.value = await (await articleApi.GetPaging(0, 'null', 1, 1)).data[0].timeCreate
+  articleStr.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
 })
 </script>
 <template>

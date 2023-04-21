@@ -3,11 +3,11 @@ import dayjs from 'dayjs'
 /**
  * 常用工具类
  */
-class tool {
+class Tool {
   /**
    * 回到顶部
    */
-  static BackTop() {
+  static backTop() {
     const timer = setInterval(() => {
       const osTop = document.documentElement.scrollTop || document.body.scrollTop
       const isPeed = Math.floor(-osTop / 5)
@@ -23,7 +23,7 @@ class tool {
    * 日期格式化
    * @param time
    */
-  static MomentTime(time: Date) {
+  static momentTime(time: Date) {
     dayjs(time).format('YYYY-MM-DD- H:mm:ss')
   }
 
@@ -31,7 +31,7 @@ class tool {
    *  日期格式化
    * @param time
    */
-  static async MomentTimeList(time: any) {
+  static async momentTimeList(time: any) {
     await time.data.forEach((res: any) => {
       res.timeCreate = dayjs(res.timeCreate).format('YYYY-MM-DD-H:mm:ss')
       res.timeModified = dayjs(res.timeModified).format('YYYY-MM-DD-H:mm:ss')
@@ -39,4 +39,4 @@ class tool {
   }
 }
 
-export { tool }
+export { Tool }

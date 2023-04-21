@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { aspShow } from '@/hooks/data'
+import { aspShow } from '@/hooks/CommonData'
 aspShow.value = true
 </script>
 <template>

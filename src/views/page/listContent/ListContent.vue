@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { listContent } from '@/api'
+import { ListContentApi } from '@/api'
 
 const state: any = reactive({
   listTitle: [],
@@ -10,7 +10,7 @@ const info = () => {
   message.info('功能进行中...')
 }
 const GetApi = async () => {
-  await listContent.Cnblogs().then(res => {
+  await ListContentApi.cnblogs().then(res => {
     const str = res.data
     for (let index = 0; index < str.length; index += 1) {
       const element = str[index].split('-')

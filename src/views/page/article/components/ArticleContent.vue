@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { articleApi } from '@/api/index'
-import { tool } from '@/utils/common/tool'
-import { debounce } from '@/utils/common/dethrottle'
-import { articleForm } from '@/api/data/model/artileModel'
+import { ArticleApi } from '@/api/index'
+import { Tool } from '@/utils/common/Tool'
+import { debounce } from '@/utils/common/Dethrottle'
+import { articleForm } from '@/api/data/model/ArtileModel'
 
 const md = defineAsyncComponent(() => {
   return import('@/views/page/article/components/content/mdContent.vue')
@@ -18,16 +18,16 @@ const spinning = ref(true)
 
 const UpGive = debounce(() => {
   articleForm.give += 1
-  articleApi.UpdatePortion(articleForm, 'Give')
+  ArticleApi.updatePortion(articleForm, 'Give')
 }, 1000)
 
 async function UpRead(data: any) {
   if (data === null) return
   data.read += 1
-  await articleApi.UpdatePortion(data, 'Read')
+  await ArticleApi.updatePortion(data, 'Read')
 }
 onMounted(async () => {
-  await articleApi.GetById(aid.id).then((data: any) => {
+  await ArticleApi.getById(aid.id).then((data: any) => {
     const rData = data.data
     UpRead(rData)
     articleForm.name = rData.name
@@ -39,7 +39,7 @@ onMounted(async () => {
     sortName.value = rData.type.name
     spinning.value = false
   })
-  tool.BackTop()
+  Tool.backTop()
 })
 </script>
 

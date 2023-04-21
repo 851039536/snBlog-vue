@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { articleApi } from '@/api'
+import { ArticleApi } from '@/api'
 import { rArticle } from '../../data'
 
 import { blog } from '../data'
@@ -11,7 +11,7 @@ const emit = defineEmits(['refresh'])
 const GetApi = async (id: number) => {
   emit('refresh', 123) // onScroll('top')
   sideIndex.value = id
-  blog.value = await (await articleApi.GetById(id)).data.text
+  blog.value = await (await ArticleApi.getById(id)).data.text
 }
 </script>
 <template>

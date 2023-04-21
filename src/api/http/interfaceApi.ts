@@ -1,7 +1,7 @@
-import { IInterface } from '../data/interData'
+import { IInterface } from '../data/InterData'
 import { get, add, update, del } from '@/utils/http/funApi'
 
-class interfaceApi {
+export class InterfaceApi {
   /**
    * @description: 条件查询
    * @param {number} identity 用户-分类: 0 | 用户: 1 | 分类: 2
@@ -9,7 +9,7 @@ class interfaceApi {
    * @param {string} type 条件:类别
    * @param {boolean} cache 缓存
    */
-  static GetCondition(identity: number, userName: string, type: string, cache: boolean) {
+  static getCondition(identity: number, userName: string, type: string, cache: boolean) {
     return get(`/Interface/condition?identity=${identity}&userName=${userName}&type=${type}&cache=${cache}`, false)
   }
 
@@ -21,7 +21,7 @@ class interfaceApi {
    * @param pageSize 每页记录条数
    * @returns
    */
-  static GetPaging(identity: number, type: string, pageIndex: number, pageSize: number) {
+  static getPaging(identity: number, type: string, pageIndex: number, pageSize: number) {
     return get(
       `/Interface/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=id&isDesc=true&cache=false`,
       false
@@ -32,7 +32,7 @@ class interfaceApi {
    * @description: 新增
    * @param {IInterface} rData
    */
-  static Add(rData: IInterface) {
+  static add(rData: IInterface) {
     return add('/Interface/add', rData)
   }
 
@@ -40,7 +40,7 @@ class interfaceApi {
    * @description: 更新
    * @param {IInterface} entity
    */
-  static Update(entity: IInterface) {
+  static update(entity: IInterface) {
     return update('/Interface/edit', entity)
   }
 
@@ -48,7 +48,7 @@ class interfaceApi {
    * @description: 删除
    * @param {number} id
    */
-  static Del(id: number) {
+  static del(id: number) {
     return del(`/Interface/del?id=${id}`)
   }
 
@@ -57,9 +57,7 @@ class interfaceApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetById(id: number, cache = false) {
+  static getById(id: number, cache = false) {
     return get(`/Interface/byid?id=${id}&cache=${cache}`, false)
   }
 }
-
-export { interfaceApi }

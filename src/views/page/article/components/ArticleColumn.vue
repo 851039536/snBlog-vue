@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { routerId } from '@/hooks/routers'
 import { aData } from '@/views/admin/data'
-import { articleApi } from '@/api'
-import { hHead, hSide } from '@/hooks/data'
+import { ArticleApi } from '@/api'
+import { hHead, hSide } from '@/hooks/CommonData'
 import { useWindowScroll } from '@vueuse/core'
 const { y } = useWindowScroll()
 
@@ -17,10 +17,10 @@ const state = reactive({
 })
 
 async function GetSum(identity: number, type: string) {
-  state.count = await (await articleApi.GetSum(identity, type)).data
+  state.count = await (await ArticleApi.getSum(identity, type)).data
 }
 async function QPaging() {
-  rArticle.value = await (await articleApi.GetPaging(state.identity, state.typeStr, state.current, state.pagesize)).data
+  rArticle.value = await (await ArticleApi.getPaging(state.identity, state.typeStr, state.current, state.pagesize)).data
 }
 
 function QImageUrl(name: string) {

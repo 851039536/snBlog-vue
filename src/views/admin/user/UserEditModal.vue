@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { userApi } from '@/api'
-import { userForm } from '@/api/data/model/userModel'
+import { UserApi } from '@/api'
+import { userForm } from '@/api/data/model/UserModel'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { editVisible, addDisabled, upDisabled } from './data'
 const reload: any = inject('reload')
 const Update = async () => {
-  await userApi.Update(userForm).then(res => {
+  await UserApi.update(userForm).then(res => {
     if (res.data === 1) {
       reload()
       editVisible.value = false
@@ -18,7 +18,7 @@ const Update = async () => {
 }
 
 const Add = async () => {
-  await userApi.Add(userForm).then(res => {
+  await UserApi.add(userForm).then(res => {
     if (res.data === 1) {
       reload()
       editVisible.value = false

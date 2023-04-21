@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { articleApi, articleTagApi, articleTypeApi } from '@/api'
+import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
 import { routers, go } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
-import { articleForm, clearArticle } from '@/api/data/model/artileModel'
-import { hUser } from '@/hooks/commonly'
+import { articleForm, clearArticle } from '@/api/data/model/ArtileModel'
+import { hUser } from '@/hooks/Commonly'
 import { rRouter } from '@/router/data'
 import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
-const { Random } = useRandom()
+const { random } = useRandom()
 const reload: any = inject('reload')
 const tagName = ref('选择')
 const add = async () => {
   articleForm.userId = storage.get(hUser.ID)
-  articleForm.img = `blog/${Random(1, 20, 2)}.jpg`
-  await articleApi.Add(articleForm).then(r => {
+  articleForm.img = `blog/${random(1, 20, 2)}.jpg`
+  await ArticleApi.add(articleForm).then(r => {
     if (r.data) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
@@ -30,7 +30,7 @@ const test = (data: any) => {
 
 onMounted(async () => {
   clearArticle()
-  axios.all([await articleTypeApi.GetAll(), await articleTagApi.GetAll()]).then(
+  axios.all([await ArticleTypeApi.getAll(), await ArticleTagApi.getAll()]).then(
     axios.spread((sort: any, label: any) => {
       rType.value = sort
       rTag.value = label

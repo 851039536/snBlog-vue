@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { articleApi } from '@/api'
-import { hSearch } from '@/hooks/data'
+import { ArticleApi } from '@/api'
+import { hSearch } from '@/hooks/CommonData'
 import { rArticle, rSearchName } from '../../data'
 async function search() {
-  rArticle.value = await (await articleApi.GetContains(0, 'null', rSearchName.value, false)).data
+  rArticle.value = await (await ArticleApi.getContains(0, 'null', rSearchName.value, false)).data
 }
 async function onSearch() {
   if (rSearchName.value === '') {

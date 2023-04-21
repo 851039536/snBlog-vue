@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { articleApi } from '@/api'
-import { throttle } from '@/utils/common/dethrottle'
+import { ArticleApi } from '@/api'
+import { throttle } from '@/utils/common/Dethrottle'
 import { rArticle } from '../data'
 
 const search = (name: string) => {
   throttle(async () => {
     if (name === '') return
-    rArticle.value = await (await articleApi.GetContains(0, 'null', name)).data
+    rArticle.value = await (await ArticleApi.getContains(0, 'null', name)).data
   }, 300)()
 }
 </script>

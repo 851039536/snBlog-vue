@@ -1,12 +1,14 @@
-import { IArticle } from './model/artileModel'
-import { IVideo } from './model/videoModel'
-import { ITag } from './model/tagModel'
-import { IArticleTag } from './model/articleTagModel'
-import { IOneType } from './model/oneModel'
-import { IArticleType } from './model/articleTypeModel'
-import { INav } from './model/navModel'
-import { IInterface } from './model/intInterfaceModel'
+// 引入所需的 model
+import { IArticle } from './model/ArtileModel'
+import { IVideo } from './model/VideoModel'
+import { ITag } from './model/TagModel'
+import { IArticleTag } from './model/ArticleTagModel'
+import { IOneType } from './model/OneModel'
+import { IArticleType } from './model/ArticleTypeModel'
+import { INav } from './model/NavModel'
+import { IInterface } from './model/IntInterfaceModel'
 
+// 导出所需的接口
 export interface IntTalk {
   id: number
   title: string
@@ -41,4 +43,5 @@ interface IFy {
   count: number
   current: number
 }
+// 导出所有模块
 export { IArticleTag, INav, IntOne, IOneType, IArticle, IVideo, ITag, IArticleType, IFy, IInterface }

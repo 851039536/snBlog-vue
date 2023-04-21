@@ -2,11 +2,11 @@
 import { message } from 'ant-design-vue/es/components'
 import { useAppStore } from '@/store/pinia'
 import { routers } from '@/hooks/routers'
-import { userApi } from '@/api/index'
+import { UserApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
-import { hUser, isToken, ClearUser } from '@/hooks/commonly'
+import { hUser, isToken, clearUser } from '@/hooks/Commonly'
 import { rRouter } from '@/router/data'
-import { hHead, hSide } from '@/hooks/data'
+import { hHead, hSide } from '@/hooks/CommonData'
 
 const store = useAppStore()
 const state = reactive({
@@ -15,13 +15,13 @@ const state = reactive({
 })
 const rData = ref([])
 function login() {
-  userApi.Login(state.name, state.pwd).then(res => {
+  UserApi.login(state.name, state.pwd).then(res => {
     if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
       message.error(res.data)
       return
     }
     rData.value = res.data.split(',')
-    ClearUser()
+    clearUser()
     storage.set(hUser.ROLE, rData.value[0]) // 角色名
     storage.set(hUser.ID, rData.value[2]) // 用户主键
     storage.set(hUser.NAME, rData.value[3]) // 用户名

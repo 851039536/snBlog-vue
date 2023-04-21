@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { articleApi, navigationApi, userTalk } from '@/api'
-import { hSearch } from '@/hooks/data'
+import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
+import { hSearch } from '@/hooks/CommonData'
 
 const ArSideInput = defineAsyncComponent(() => {
   return import('./components/sidebar/ArticleSideInput.vue')
@@ -25,14 +25,14 @@ const rNavData = ref([]) // array of links
 const annunciate = ref('')
 onMounted(async () => {
   hSearch.value = false //
-  annunciate.value = await (await userTalk.GetUserTalkFirst()).data
-  rNavData.value = await (await navigationApi.GetTypeAsync(1, '常用工具', true)).data
-  articleTime.value = await (await articleApi.GetPaging(0, 'null', 1, 1)).data[0].timeCreate
-  articleCount.value = await (await articleApi.GetSum()).data
+  annunciate.value = await (await UserTalkApi.getUserTalkFirst()).data
+  rNavData.value = await (await NavigationApi.getTypeAsync(1, '常用工具', true)).data
+  articleTime.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
+  articleCount.value = await (await ArticleApi.getSum()).data
   articleCount.value = String(articleCount.value)
-  textCount.value = await (await articleApi.GetStrSum(0, 1)).data
+  textCount.value = await (await ArticleApi.getStrSum(0, 1)).data
   textCount.value = String(textCount.value)
-  readCount.value = await (await articleApi.GetStrSum(0, 2)).data
+  readCount.value = await (await ArticleApi.getStrSum(0, 2)).data
   readCount.value = String(readCount.value)
 })
 </script>

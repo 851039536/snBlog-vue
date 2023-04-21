@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { articleApi } from '@/api'
-import { IArticleType } from '@/api/data/interData'
+import { ArticleApi } from '@/api'
+import { IArticleType } from '@/api/data/InterData'
 import { rArticle } from '../../data'
 defineProps({
   rData: {
@@ -27,7 +27,7 @@ function getTopic(index: number) {
 }
 
 async function GetApi(name: string) {
-  rArticle.value = await (await articleApi.GetType(2, name)).data
+  rArticle.value = await (await ArticleApi.getType(2, name)).data
 }
 onMounted(() => {
   getTopic(sideIndex.value)

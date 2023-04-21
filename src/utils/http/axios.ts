@@ -2,10 +2,10 @@
 import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
-import { aspShow } from '@/hooks/data'
+import { aspShow } from '@/hooks/CommonData'
 import { storage } from '../storage/storage'
 import { removePending, addPending } from './pending'
-import { ClearUser } from '@/hooks/commonly'
+import { clearUser } from '@/hooks/Commonly'
 
 const obj = reactive({
   urls: import.meta.env.VITE_API_DOMAIN
@@ -79,7 +79,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
             break
           case 401: // 重定向
             message.error(`token:登录失效==>${error.response.status}:${'token'}`)
-            ClearUser()
+            clearUser()
             router.replace({
               path: '/Login'
             })

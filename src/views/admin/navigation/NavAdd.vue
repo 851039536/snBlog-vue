@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { go, reloads } from '@/hooks/routers'
-import { navigationApi } from '@/api'
+import { NavigationApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { routers } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
-import { hUser } from '@/hooks/commonly'
-import { clearNav, navForm } from '@/api/data/model/navModel'
+import { hUser } from '@/hooks/Commonly'
+import { clearNav, navForm } from '@/api/data/model/NavModel'
 import { rRouter } from '@/router/data'
 
 function GetTypeId(id: number) {
@@ -18,14 +18,14 @@ const rType: any = ref([])
 const uid: any = ref(storage.get(hUser.ID))
 const add = async () => {
   navForm.userId = uid.value
-  await navigationApi.AddAsync(navForm).then(() => {
+  await NavigationApi.add(navForm).then(() => {
     message.info(aData.SUCCESS)
     routers(rRouter.navTable)
   })
 }
 onMounted(async () => {
   clearNav()
-  rType.value = await (await navigationApi.GetNavTypeAll(false)).data
+  rType.value = await (await NavigationApi.getNavTypeAll(false)).data
   navName.name = '内容分享'
   navName.name2 = '新增内容'
 })

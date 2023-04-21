@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, editVisible, addDisabled, upDisabled } from './data'
-import { userApi } from '@/api'
+import { UserApi } from '@/api'
 import { aCancel, aData } from '../data'
 import { navName } from '../utils/data'
 import dayjs from 'dayjs'
-import { clearUser, userForm } from '@/api/data/model/userModel'
+import { clearUser, userForm } from '@/api/data/model/UserModel'
 
 const reload: any = inject('reload')
 const del = async (id: number) => {
-  await userApi.Del(id).then(res => {
+  await UserApi.del(id).then(res => {
     if (res.data === 1) {
       reload()
       message.success(aData.SUCCESS)
@@ -23,7 +23,7 @@ const rUser: any = ref([])
 
 async function search(name: string) {
   if (name === '') return
-  await userApi.Contains(name).then(res => {
+  await UserApi.contains(name).then(res => {
     rUser.value = res.data
     for (let index = 0; index < rUser.value.length; index++) {
       rUser.value[index].timeCreate = dayjs(rUser.value[index].timeCreate).format('YYYY-MM-DD')
@@ -32,7 +32,7 @@ async function search(name: string) {
   })
 }
 const edit = (id: number) => {
-  userApi.GetByIdAsync(id).then(res => {
+  UserApi.getById(id).then(res => {
     userForm.id = res.data.id
     userForm.name = res.data.name
     userForm.email = res.data.email
@@ -56,7 +56,7 @@ const Add = () => {
 onMounted(async () => {
   navName.name = '用户管理'
   navName.name2 = '用户列表'
-  await userApi.GetPaging(1, 1000).then(res => {
+  await UserApi.getPaging(1, 1000).then(res => {
     rUser.value = res.data.result
     for (let index = 0; index < rUser.value.length; index++) {
       rUser.value[index].timeCreate = dayjs(rUser.value[index].timeCreate).format('YYYY-MM-DD')

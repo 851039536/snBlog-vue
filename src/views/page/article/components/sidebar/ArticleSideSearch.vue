@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { articleApi } from '@/api'
+import { ArticleApi } from '@/api'
 import { winUrl } from '@/hooks/routers'
 import { rArticle, rSearchName } from '../../data'
 
 //自定义函数，父组件可以触发
 async function search() {
-  rArticle.value = await (await articleApi.GetContains(0, 'null', rSearchName.value)).data
+  rArticle.value = await (await ArticleApi.getContains(0, 'null', rSearchName.value)).data
 }
 </script>
 <template>

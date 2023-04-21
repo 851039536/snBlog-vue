@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { articleApi } from '@/api/index'
-import { hSide } from '@/hooks/data'
+import { ArticleApi } from '@/api/index'
+import { hSide } from '@/hooks/CommonData'
 
 const route = useRoute()
 const state: any = reactive({
@@ -10,7 +10,7 @@ const state: any = reactive({
 })
 
 const GetAll = async () => {
-  await articleApi.GetById(state.id).then((res: any) => {
+  await ArticleApi.getById(state.id).then((res: any) => {
     const { name, text } = res.data
     state.blog = { name, text }
   })

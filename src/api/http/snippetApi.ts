@@ -1,7 +1,7 @@
 import request from '@/utils/http/axios'
-import { tool } from '@/utils/common/tool'
+import { Tool } from '@/utils/common/Tool'
 import { get, add, update, del } from '@/utils/http/funApi'
-import { ISnippet } from '../data/model/snippetMode'
+import { ISnippet } from '../data/model/SnippetMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',
 //   SUM = '/api/v1/article/count/',
@@ -11,7 +11,7 @@ import { ISnippet } from '../data/model/snippetMode'
 //   UPDATE = '/api/v1/article',
 //   DELETE = '/api/v1/article/'
 // }
-class snippetApi {
+export class SnippetApi {
   /**
    * @description: 查询总数
    * @param {number} identity 所有:0|分类:1|标签:2|用户3
@@ -36,7 +36,7 @@ class snippetApi {
   //   )
   //   return res
   // }
-  static async GetContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
+  static async getContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
     const url = `/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=${pageIndex}&pageSize=${pageSize}`
     const res = await request(url, false)
     return res
@@ -46,7 +46,7 @@ class snippetApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetById(id: number, cache: boolean) {
+  static getById(id: number, cache: boolean) {
     return get(`/snippet/byid?id=${id}&cache=${cache}`, false)
   }
   /**
@@ -56,7 +56,7 @@ class snippetApi {
    * @param cache 缓存
    * @returns
    */
-  static GetType(identity: number, type: string, cache: boolean) {
+  static getType(identity: number, type: string, cache: boolean) {
     return get(`/article/type?identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 
@@ -66,7 +66,7 @@ class snippetApi {
    * @param name 查询参数
    * @param cache 缓存
    */
-  static GetStrSum(identity: number, name: string, cache: boolean): Promise<any> {
+  static getStrSum(identity: number, name: string, cache: boolean): Promise<any> {
     return get(`/snippet/strSum?identity=${identity}&name=${name}&cache=${cache}`, false)
   } ///snippet/strSum?identity=1&name=vue&cache=false
 
@@ -80,7 +80,7 @@ class snippetApi {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  static async GetPaging(
+  static async getPaging(
     identity: number,
     type: string | undefined,
     pageIndex: number,
@@ -93,7 +93,7 @@ class snippetApi {
       `/snippet/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
-    await tool.MomentTimeList(res)
+    await Tool.momentTimeList(res)
     return res
   }
 
@@ -110,7 +110,7 @@ class snippetApi {
    * @description: 新增数据
    * @param {any} entity
    */
-  static Add(entity: ISnippet) {
+  static add(entity: ISnippet) {
     return add('/snippet/add', entity)
   }
 
@@ -118,7 +118,7 @@ class snippetApi {
    * @description: 更新数据
    * @param {ISnippet} entity
    */
-  static Update(entity: ISnippet) {
+  static update(entity: ISnippet) {
     return update(`/snippet/edit`, entity)
   }
 
@@ -126,9 +126,7 @@ class snippetApi {
    * @description: 删除
    * @param {number} id
    */
-  static Del(id: number) {
+  static del(id: number) {
     return del(`/snippet/del?id=${id}`, false)
   }
 }
-
-export { snippetApi }

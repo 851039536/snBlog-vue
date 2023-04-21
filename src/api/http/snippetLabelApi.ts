@@ -1,16 +1,16 @@
 import { get, add, update, del } from '@/utils/http/funApi'
-import { ISnippetLabel } from '../data/model/snippetLabelMode'
+import { ISnippetLabel } from '../data/model/SnippetLabelMode'
 
-class snippetLabelApi {
+export class SnippetLabelApi {
   /**
    * @description: 查询总数
    * @param {boolean} cache 缓存
    */
-  static GetSum(cache: boolean) {
+  static getSum(cache: boolean) {
     return get(`/snippetLabel/sum?cache=${cache}`)
   }
 
-  static GetAll(cache: boolean) {
+  static getAll(cache: boolean) {
     return get(`/snippetLabel/all?cache=${cache}`)
   }
 
@@ -19,7 +19,7 @@ class snippetLabelApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetById(id: number, cache: boolean) {
+  static getById(id: number, cache: boolean) {
     return get(`/snippetLabel/byId?id=${id}&cache=${cache}`, false)
   }
 
@@ -30,7 +30,7 @@ class snippetLabelApi {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  static async GetFy(pageIndex: number, pagesize: number, isDesc: boolean, cache: boolean) {
+  static async getPaging(pageIndex: number, pagesize: number, isDesc: boolean, cache: boolean) {
     const res = await get(
       `/snippetLabel/paging?pageIndex=${pageIndex}&pageSize=${pagesize}&isDesc=${isDesc}&cache=${cache}`,
       false
@@ -42,7 +42,7 @@ class snippetLabelApi {
    * @description: 新增数据
    * @param {any} entity
    */
-  static Add(entity: ISnippetLabel) {
+  static add(entity: ISnippetLabel) {
     return add('/snippetLabel/add', entity)
   }
 
@@ -50,7 +50,7 @@ class snippetLabelApi {
    * @description: 更新数据
    * @param {IntArticle} entity
    */
-  static Update(entity: ISnippetLabel) {
+  static update(entity: ISnippetLabel) {
     return update(`/snippetLabel/update`, entity)
   }
 
@@ -58,9 +58,7 @@ class snippetLabelApi {
    * @description: 删除
    * @param {number} id
    */
-  static Del(id: number) {
+  static del(id: number) {
     return del(`/snippetLabel/del?id=${id}`, false)
   }
 }
-
-export { snippetLabelApi }

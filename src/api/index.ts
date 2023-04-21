@@ -1,21 +1,21 @@
 import request from '@/utils/http/axios'
-import { articleApi } from './http/articleApi'
-import { articleTagApi } from './http/articleTagApi'
-import { articleTypeApi } from './http/articleTypeApi'
-import { userTalk } from './http/usertalk'
-import { setBlog } from './http/setBlog'
-import { leave } from './http/leave'
-import { navigationApi } from './http/navigation'
-import { one } from './http/one'
-import { videoApi } from './http/video'
-import { userApi } from './http/user'
-import { listContent } from './http/listContent'
-import { interfaceApi } from './http/interfaceApi'
-import { snippetApi } from './http/snippetApi'
-import { snippetTagApi } from './http/snippetTagApi'
-import { snippetTypeApi } from './http/snippetTypeApi'
-import { snippetLabelApi } from './http/snippetLabelApi'
-import { commonApi } from './http/commonApi'
+import { ArticleApi } from './http/ArticleApi'
+import { ArticleTagApi } from './http/ArticleTagApi'
+import { ArticleTypeApi } from './http/ArticleTypeApi'
+import { UserTalkApi } from './http/UserTalkApi'
+import { SetBlogApi } from './http/SetBlogApi'
+import { LeaveApi } from './http/LeaveApi'
+import { NavigationApi } from './http/NavigationApi'
+import { OneApi } from './http/OneApi'
+import { VideoApi } from './http/VideoApi'
+import { UserApi } from './http/UserApi'
+import { ListContentApi } from './http/ListContentApi'
+import { InterfaceApi } from './http/InterfaceApi'
+import { SnippetApi } from './http/SnippetApi'
+import { SnippetTagApi } from './http/SnippetTagApi'
+import { SnippetTypeApi } from './http/SnippetTypeApi'
+import { SnippetLabelApi } from './http/SnippetLabelApi'
+import { CommonApi } from './http/CommonApi'
 
 /**
  * @description: 空函数查token权限
@@ -33,22 +33,22 @@ function TOKEN() {
 }
 
 export {
-  articleApi,
-  articleTagApi,
-  articleTypeApi,
-  userTalk,
-  setBlog,
-  leave,
-  navigationApi,
-  one,
-  videoApi,
-  userApi,
-  listContent,
+  ArticleApi,
+  ArticleTagApi,
+  ArticleTypeApi,
+  UserTalkApi,
+  SetBlogApi,
+  LeaveApi,
+  NavigationApi,
+  OneApi,
+  VideoApi,
+  UserApi,
+  ListContentApi,
   TOKEN,
-  interfaceApi,
-  snippetApi,
-  snippetTagApi,
-  snippetTypeApi,
-  snippetLabelApi,
-  commonApi
+  InterfaceApi,
+  SnippetApi,
+  SnippetTypeApi,
+  SnippetTagApi,
+  CommonApi,
+  SnippetLabelApi
 }

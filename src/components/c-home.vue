@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { hHead, hSide } from '@/hooks/data'
-import { routers } from '@h/routers'
+import { hHead, hSide } from '@/hooks/CommonData'
+import { routers } from '@/hooks/Routers'
 
 hHead.value = false
 hSide.value = false

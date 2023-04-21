@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { videoApi } from '@/api'
+import { VideoApi } from '@/api'
 
 const state = ref(0)
 interface ResData {
@@ -16,20 +16,20 @@ const route = useRoute()
 const resId = reactive({
   id: route.query.id
 })
-videoApi.GetSumAsync(0, '0', true).then((res: any) => {
+VideoApi.getSum(0, '0', true).then((res: any) => {
   state.value = res.data
 })
 
 const videos = async (vid: number) => {
-  await videoApi.GetByIdAsync(vid, true).then((res: any) => {
+  await VideoApi.getById(vid, true).then((res: any) => {
     resData.URL = res.data.url
   })
 }
 const GetApi = async () => {
-  await videoApi.GetTypeAsync(1, resData.typeName, true).then((res: any) => {
+  await VideoApi.getType(1, resData.typeName, true).then((res: any) => {
     resData.resultData = res.data
   })
-  await videoApi.GetByIdAsync(resId.id, true).then((res: any) => {
+  await VideoApi.getById(resId.id, true).then((res: any) => {
     resData.URL = res.data.url
   })
 }

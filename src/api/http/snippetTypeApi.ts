@@ -1,5 +1,5 @@
 import { get, add, update, del } from '@/utils/http/funApi'
-import { ISnippetType } from '../data/model/snippetTypeMode'
+import { ISnippetType } from '../data/model/SnippetTypeMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',
 //   SUM = '/api/v1/article/count/',
@@ -9,16 +9,16 @@ import { ISnippetType } from '../data/model/snippetTypeMode'
 //   UPDATE = '/api/v1/article',
 //   DELETE = '/api/v1/article/'
 // }
-class snippetTypeApi {
+export class SnippetTypeApi {
   /**
    * @description: 查询总数
    * @param {boolean} cache 缓存
    */
-  static GetSum(cache: boolean) {
+  static getSum(cache: boolean) {
     return get(`/snippetType/sum?cache=${cache}`)
   }
 
-  static GetAll(cache: boolean) {
+  static getAll(cache: boolean) {
     return get(`/snippetType/all?cache=${cache}`)
   }
 
@@ -27,7 +27,7 @@ class snippetTypeApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static GetById(id: number, cache: boolean) {
+  static getById(id: number, cache: boolean) {
     return get(`/snippetType/byId?id=${id}&cache=${cache}`, false)
   }
 
@@ -38,7 +38,7 @@ class snippetTypeApi {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  static async GetFy(pageIndex: number, pagesize: number, isDesc: boolean, cache: boolean) {
+  static async getPaging(pageIndex: number, pagesize: number, isDesc: boolean, cache: boolean) {
     const res = await get(
       `/snippetType/paging?pageIndex=${pageIndex}&pageSize=${pagesize}&isDesc=${isDesc}&cache=${cache}`,
       false
@@ -50,7 +50,7 @@ class snippetTypeApi {
    * @description: 新增数据
    * @param {any} entity
    */
-  static Add(entity: ISnippetType) {
+  static add(entity: ISnippetType) {
     return add('/snippetType/add', entity)
   }
 
@@ -58,7 +58,7 @@ class snippetTypeApi {
    * @description: 更新数据
    * @param {IntArticle} entity
    */
-  static Update(entity: ISnippetType) {
+  static update(entity: ISnippetType) {
     return update(`/snippetType/update`, entity)
   }
 
@@ -66,9 +66,7 @@ class snippetTypeApi {
    * @description: 删除
    * @param {number} id
    */
-  static Del(id: number) {
+  static del(id: number) {
     return del(`/snippetType/del?id=${id}`, false)
   }
 }
-
-export { snippetTypeApi }

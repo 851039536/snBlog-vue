@@ -1,6 +1,3 @@
-/**
- * @description: IVideo
- */
 export interface IVideo {
   id: number
   name: string

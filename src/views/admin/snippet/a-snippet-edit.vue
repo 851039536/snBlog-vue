@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { snippetApi, snippetLabelApi, snippetTagApi, snippetTypeApi } from '@/api'
-import { snippetForm } from '@/api/data/model/snippetMode'
-import { getUserId } from '@/hooks/commonly'
-import { debounce } from '@/utils/common/dethrottle'
+import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
+import { snippetForm } from '@/api/data/model/SnippetMode'
+import { getUserId } from '@/hooks/Commonly'
+import { debounce } from '@/utils/common/Dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { rSnippetLabel, rSnippetTag, rSnippetType } from './data'
 const reload: any = inject('reload')
 const add = debounce(async () => {
   snippetForm.userId = getUserId()
-  await snippetApi.Update(snippetForm).then(r => {
+  await SnippetApi.update(snippetForm).then(r => {
     if (r.data) {
       reload()
       message.success(aData.SUCCESS)
@@ -20,7 +20,7 @@ const add = debounce(async () => {
 }, 1000)
 onMounted(async () => {
   await axios
-    .all([await snippetTagApi.GetAll(false), await snippetTypeApi.GetAll(false), await snippetLabelApi.GetAll(false)])
+    .all([await SnippetTagApi.getAll(false), await SnippetTypeApi.getAll(false), await SnippetLabelApi.getAll(false)])
     .then(
       axios.spread((tag: any, type: any, label: any) => {
         rSnippetTag.value = tag.data

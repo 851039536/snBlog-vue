@@ -1,6 +1,6 @@
-import { get, add, update, del, pot } from '@/utils/http/funApi'
+import { pot } from '@/utils/http/funApi'
 
-class commonApi {
+export class CommonApi {
   /**
    * @description: sql备份
    */
@@ -8,5 +8,3 @@ class commonApi {
     return pot(`/angleSharp/SqlBackups?path=null`)
   }
 }
-
-export { commonApi }

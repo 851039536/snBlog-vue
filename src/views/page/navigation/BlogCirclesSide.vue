@@ -29,14 +29,14 @@
 </template>
 
 <script lang="ts" setup>
-import { INav } from '@/api/data/interData'
-import { navigationApi } from '@/api/index'
+import { INav } from '@/api/data/InterData'
+import { NavigationApi } from '@/api/index'
 
 const rNav = ref([] as INav[])
 const rCount = ref(0)
 onMounted(async () => {
-  rNav.value = await (await navigationApi.GetPaging(1, '博客圈', 1, 18, 'id', true, true)).data
-  rCount.value = await (await navigationApi.GetCount(1, '博客圈', true)).data
+  rNav.value = await (await NavigationApi.getPaging(1, '博客圈', 1, 18, 'id', true, true)).data
+  rCount.value = await (await NavigationApi.getCount(1, '博客圈', true)).data
 })
 </script>
 <style lang="scss" scoped>

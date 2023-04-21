@@ -4,8 +4,8 @@ import { columns, rSnippetLabel, rSnippetTag, rSnippetType } from './data'
 import { snippetApi, snippetLabelApi, snippetTagApi, snippetTypeApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
-import { tool } from '@/utils/common/tool'
-import { clearSnippet, snippetForm } from '@/api/data/model/snippetMode'
+import { tool } from '@/utils/common/Tool'
+import { clearSnippet, snippetForm } from '@/api/data/model/SnippetMode'
 
 const reload: any = inject('reload')
 const del = async (data: any) => {
@@ -65,7 +65,7 @@ async function search(name: any) {
     return
   }
   await snippetApi.GetContains(0, aData.NULL, name, false, 1, 999).then(async res => {
-    await tool.MomentTimeList(res)
+    await tool.momentTimeList(res)
     rNav.value = res.data
   })
 }
@@ -73,7 +73,7 @@ async function search(name: any) {
 async function GetApi() {
   await QPaging(0, tagStr.value)
   await axios
-    .all([await snippetTagApi.GetAll(false), await snippetTypeApi.GetAll(false), await snippetLabelApi.GetAll(false)])
+    .all([await snippetTagApi.getAll(false), await snippetTypeApi.getAll(false), await snippetLabelApi.GetAll(false)])
     .then(
       axios.spread((tag: any, type: any, label: any) => {
         rSnippetTag.value = tag.data

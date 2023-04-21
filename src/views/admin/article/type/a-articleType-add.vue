@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { articleTypeApi } from '@/api'
-import { articleTypeForm } from '@/api/data/model/articleTypeModel'
+import { ArticleTypeApi } from '@/api'
+import { articleTypeForm } from '@/api/data/model/ArticleTypeModel'
 import { message } from 'ant-design-vue'
 import { aData } from '../../data'
 import { addVisible } from './data'
 const reload: any = inject('reload')
 const update = async () => {
-  await articleTypeApi.Add(articleTypeForm).then(r => {
+  await ArticleTypeApi.add(articleTypeForm).then(r => {
     if (r.data) {
       reload()
       addVisible.value = false

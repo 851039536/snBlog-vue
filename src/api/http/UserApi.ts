@@ -1,31 +1,31 @@
 import { get, add, update, del } from '@/utils/http/funApi'
-import { IUser } from '../data/model/userModel'
+import { IUser } from '../data/model/UserModel'
 
 enum API {
   LOGIN = '/user/login?user='
 }
-export class userApi {
-  static GetByIdAsync(id: number) {
+export class UserApi {
+  static getById(id: number) {
     return get(`/user/byid?id=${id}&cache=false`)
   }
 
-  static Login(user: string, pwd: string) {
+  static login(user: string, pwd: string) {
     return get(`${API.LOGIN}${user}&pwd=${pwd}`)
   }
-  static GetPaging(pageIndex: number, pageSize: number) {
+  static getPaging(pageIndex: number, pageSize: number) {
     return get(`/user/paging?pageIndex=${pageIndex}&pageSize=${pageSize}`)
   }
 
-  static Contains(name: string) {
+  static contains(name: string) {
     return get(`/user/contains?name=${name}&cache=false`)
   }
-  static Add(entity: IUser) {
+  static add(entity: IUser) {
     return add(`/user/add`, entity)
   }
-  static Update(entity: IUser) {
+  static update(entity: IUser) {
     return update(`/user/update`, entity)
   }
-  static Del(id: number) {
+  static del(id: number) {
     return del(`/user/del?id=${id}`)
   }
 }

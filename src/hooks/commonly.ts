@@ -1,6 +1,6 @@
 import { rRouter } from '@/router/data'
 import { storage } from '@/utils/storage/storage'
-import { routers } from './routers'
+import { routers } from './Routers'
 
 /**
  * 用户信息
@@ -14,7 +14,7 @@ export enum hUser {
 /**
  * 清除用户storage信息
  */
-export const ClearUser = () => {
+export const clearUser = () => {
   storage.remove(hUser.ROLE)
   storage.remove(hUser.ID)
   storage.remove(hUser.NAME)

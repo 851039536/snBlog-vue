@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { ClearUser, hUser } from '@/hooks/commonly'
+import { clearUser, hUser } from '@/hooks/Commonly'
 import { storage } from '@/utils/storage/storage'
 import { routers } from '@/hooks/routers'
 import { rRouter } from '@/router/data'
 import uservg from '@assets/svg/components/user.svg?component'
-import { hHead, hLogin, sideIndex } from '@/hooks/data'
-import { interfaceApi, userApi } from '@/api'
+import { hHead, hLogin, sideIndex } from '@/hooks/CommonData'
+import { InterfaceApi, UserApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { useAppStore } from '@/store/pinia'
 const rName = ref('')
@@ -34,7 +34,7 @@ async function onChange(id: number) {
       await routers(rRouter.articleTable)
       break
     case 2:
-      ClearUser()
+      clearUser()
       location.reload()
       break
     case 3:
@@ -45,14 +45,14 @@ async function onChange(id: number) {
   }
 }
 function login() {
-  userApi.Login(rName.value, pwd.value).then(r => {
+  UserApi.login(rName.value, pwd.value).then(r => {
     if (['用户或密码错误', '用户密码不能为空'].includes(r.data)) {
       // Show error message to user
       message.error(r.data)
       return
     }
     rData.value = r.data.split(',')
-    ClearUser()
+    clearUser()
     storage.set(hUser.ROLE, rData.value[0]) // 角色名
     storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
     storage.set(hUser.ID, rData.value[2]) // 用户主键
@@ -65,7 +65,7 @@ function login() {
 
 onMounted(async () => {
   // get the conditions from the API
-  const conditions = await interfaceApi.GetCondition(0, storage.get(hUser.NAME), 'header', false)
+  const conditions = await InterfaceApi.getCondition(0, storage.get(hUser.NAME), 'header', false)
   // get the data from the conditions
   const data = await conditions.data
   // put the data into the return object

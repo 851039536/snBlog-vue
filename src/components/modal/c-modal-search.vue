@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { hSearch } from '@/hooks/data'
+import { hSearch } from '@/hooks/CommonData'
 const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
 </script>
 <template>

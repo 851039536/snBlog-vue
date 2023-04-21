@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { navigationApi } from '@/api'
+import { NavigationApi } from '@/api'
 import { routers, go, winUrl } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/data'
-import { navForm } from '@/api/data/model/navModel'
+import { navForm } from '@/api/data/model/NavModel'
 
 const route = useRoute()
 const Rid = reactive({
@@ -13,7 +13,7 @@ const Rid = reactive({
 })
 const rType: any = ref([])
 const update = async () => {
-  await navigationApi.UpdateAsync(navForm).then(() => {
+  await NavigationApi.update(navForm).then(() => {
     message.info(aData.SUCCESS)
     routers(rRouter.navTable)
   })
@@ -25,11 +25,11 @@ function GetTypeId(id: number) {
 onMounted(async () => {
   navName.name = '内容分享'
   navName.name2 = '编辑内容'
-  await navigationApi.GetNavTypeAll().then(res => {
+  await NavigationApi.getNavTypeAll().then(res => {
     rType.value = res.data
   })
 
-  await navigationApi.GetByIdAsync(Rid.id).then(res => {
+  await NavigationApi.getByIdAsync(Rid.id).then(res => {
     navForm.id = res.data.id
     navForm.title = res.data.title
     navForm.describe = res.data.describe

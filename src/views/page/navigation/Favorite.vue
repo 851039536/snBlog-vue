@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { navigationApi } from '@/api'
+import { NavigationApi } from '@/api'
 import { winUrl } from '@/hooks/routers'
 import { aData } from '@/views/admin/data'
-import { INav } from '@/api/data/interData'
+import { INav } from '@/api/data/InterData'
 
 const rData: any = reactive({
   page: 1,
@@ -17,14 +17,14 @@ const rnavTable = ref([] as INav[])
 const rNav = ref([] as INav[])
 async function currentchange(val: number) {
   rData.current = val
-  rNav.value = await (await navigationApi.GetPaging(1, rData.name, val, rData.pagesize, 'id', true, true)).data
+  rNav.value = await (await NavigationApi.getPaging(1, rData.name, val, rData.pagesize, 'id', true, true)).data
 }
 
 async function GetApi(name: string) {
   rData.current = 1
   rData.name = name
-  rData.count = await (await navigationApi.GetCount(1, rData.name, true)).data
-  rNav.value = await (await navigationApi.GetPaging(1, name, rData.page, rData.pagesize, 'id', true, true)).data
+  rData.count = await (await NavigationApi.getCount(1, rData.name, true)).data
+  rNav.value = await (await NavigationApi.getPaging(1, name, rData.page, rData.pagesize, 'id', true, true)).data
 }
 
 async function clkApi(name: string) {
@@ -33,8 +33,8 @@ async function clkApi(name: string) {
 onMounted(async () => {
   await GetApi('文档')
   //读取侧边栏信息
-  rnavCount.value = await (await navigationApi.GetCount(0, aData.NULL, true)).data
-  rnavTable.value = await (await navigationApi.GetNavTypeAll(true)).data
+  rnavCount.value = await (await NavigationApi.getCount(0, aData.NULL, true)).data
+  rnavTable.value = await (await NavigationApi.getNavTypeAll(true)).data
 })
 </script>
 

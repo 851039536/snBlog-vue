@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { articleApi, articleTypeApi, articleTagApi } from '@/api'
+import { ArticleApi, ArticleTypeApi, ArticleTagApi } from '@/api'
 import { rTag, rType } from './data'
 import { routers, go } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/data'
-import { articleForm } from '@/api/data/model/artileModel'
+import { articleForm } from '@/api/data/model/ArtileModel'
 
 const route = useRoute()
 const rid: any = ref(route.query.id)
 
 const update = async () => {
-  await articleApi.Update(articleForm).then(r => {
+  await ArticleApi.update(articleForm).then(r => {
     if (r.data) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
@@ -23,7 +23,7 @@ const update = async () => {
 onMounted(async () => {
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
-  await axios.all([articleTagApi.GetAll(), articleTypeApi.GetAll(), articleApi.GetById(rid.value)]).then(
+  await axios.all([ArticleTagApi.getAll(), ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
     axios.spread((tag: any, type: any, article) => {
       rTag.value = tag
       rType.value = type

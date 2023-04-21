@@ -6,7 +6,7 @@ function useRandom() {
    * @param counts 循环次数
    * @returns
    */
-  function Random(minNum: number, maxNum: number, counts: number) {
+  function random(minNum: number, maxNum: number, counts: number) {
     let i = 0
     let count
     do {
@@ -18,7 +18,7 @@ function useRandom() {
   }
 
   return {
-    Random
+    random
   }
 }
 

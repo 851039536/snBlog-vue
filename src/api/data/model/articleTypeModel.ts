@@ -1,7 +1,3 @@
-/**
- * @description:IArticleType
- */
-
 export interface IArticleType {
   id: number
   name: string
@@ -12,7 +8,7 @@ export const articleTypeForm: IArticleType = reactive({
   name: '',
   description: ''
 })
-export const ClearArticleType = () => {
+export const clearArticleType = () => {
   articleTypeForm.id = 0
   articleTypeForm.name = ''
   articleTypeForm.description = ''

@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { addVisible, columns, editVisible } from './data'
-import { articleTypeApi } from '@/api'
+import { ArticleTypeApi } from '@/api'
 import { aData, aCancel } from '../../data'
 import { navName } from '../../utils/data'
-import { articleTypeForm, ClearArticleType } from '@/api/data/model/articleTypeModel'
+import { articleTypeForm, clearArticleType } from '@/api/data/model/ArticleTypeModel'
 
 const reload: any = inject('reload')
 const rArticleType = ref()
 
 const del = async (id: number) => {
-  await articleTypeApi.Del(id).then(r => {
+  await ArticleTypeApi.del(id).then(r => {
     if (r.data) {
       reload()
       message.success(aData.SUCCESS)
@@ -18,7 +18,7 @@ const del = async (id: number) => {
   })
 }
 const edit = async (id: number) => {
-  await articleTypeApi.GetById(id).then(r => {
+  await ArticleTypeApi.getById(id).then(r => {
     articleTypeForm.id = r.data.id
     articleTypeForm.name = r.data.name
     articleTypeForm.description = r.data.description
@@ -26,12 +26,12 @@ const edit = async (id: number) => {
   editVisible.value = true
 }
 const add = () => {
-  ClearArticleType()
+  clearArticleType()
   addVisible.value = true
 }
 
 onMounted(async () => {
-  rArticleType.value = (await articleTypeApi.GetAll()).data
+  rArticleType.value = (await ArticleTypeApi.getAll()).data
   navName.name = '文章分类'
   navName.name2 = '分类列表'
 })
