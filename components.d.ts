@@ -76,6 +76,7 @@ declare module '@vue/runtime-core' {
     Favorite: typeof import('./src/views/page/navigation/Favorite.vue')['default']
     Index: typeof import('./src/views/page/article/Index.vue')['default']
     InterfaceTable: typeof import('./src/views/admin/set/InterfaceTable.vue')['default']
+    Kuaijie: typeof import('./src/views/page/article/components/content/kuaijie.vue')['default']
     Leave: typeof import('./src/views/page/leave/Leave.vue')['default']
     ListContent: typeof import('./src/views/page/listContent/ListContent.vue')['default']
     Login: typeof import('./src/views/admin/login/Login.vue')['default']

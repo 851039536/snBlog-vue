@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
-import request from '@/utils/http/axios'
+import request from '@/api/http/axios'
 
 /**
  * reqeust method types

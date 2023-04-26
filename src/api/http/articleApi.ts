@@ -1,7 +1,7 @@
-import request from '@/utils/http/axios'
+import request from '@/api/http/axios'
 import { IArticle } from '@/api/data/InterData'
 import { Tool } from '@/utils/common/Tool'
-import { get, add, update, del } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/api/http/funApi'
 
 export class ArticleApi {
   /**

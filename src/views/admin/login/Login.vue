@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue/es/components'
 import { useAppStore } from '@/store/pinia'
-import { routers } from '@/hooks/routers'
+import { routers } from '@/utils/route'
 import { UserApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
-import { hUser, isToken, clearUser } from '@/hooks/Commonly'
-import { rRouter } from '@/router/data'
-import { hHead, hSide } from '@/hooks/CommonData'
+import { userInfo, isToken, removeUserStorage } from '@/utils/user/UserInfo'
+import { rRouter } from '@/router/RouterInfo'
+import { headVisible, sideVisible } from '@/utils/common/IdentityData'
 
 const store = useAppStore()
 const state = reactive({
@@ -21,19 +21,19 @@ function login() {
       return
     }
     rData.value = res.data.split(',')
-    clearUser()
-    storage.set(hUser.ROLE, rData.value[0]) // 角色名
-    storage.set(hUser.ID, rData.value[2]) // 用户主键
-    storage.set(hUser.NAME, rData.value[3]) // 用户名
-    storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
-    store.roles = storage.get(hUser.ROLE)
+    removeUserStorage()
+    storage.set(userInfo.ROLE, rData.value[0]) // 角色名
+    storage.set(userInfo.ID, rData.value[2]) // 用户主键
+    storage.set(userInfo.NAME, rData.value[3]) // 用户名
+    storage.set(userInfo.TOKEN, `Bearer ${rData.value[1]}`) // token
+    store.roles = storage.get(userInfo.ROLE)
     message.success('登录成功')
     routers(rRouter.articleTable)
   })
 }
 onMounted(async () => {
-  hHead.value = false
-  hSide.value = false
+  headVisible.value = false
+  sideVisible.value = false
   await isToken()
 })
 </script>

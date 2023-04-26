@@ -1,6 +1,6 @@
-export const rSnippetTag: any = ref([])
-export const rSnippetType: any = ref([])
-export const rSnippetLabel: any = ref([])
+export const snippetTagData: any = ref([])
+export const snippetTypeData: any = ref([])
+export const snippetLabelData: any = ref([])
 
 const columns: any = [
   {

@@ -1,4 +1,4 @@
-import request from '@/utils/http/axios'
+import request from '@/api/http/axios'
 import { ArticleApi } from './http/ArticleApi'
 import { ArticleTagApi } from './http/ArticleTagApi'
 import { ArticleTypeApi } from './http/ArticleTypeApi'

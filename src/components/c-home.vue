@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { hHead, hSide } from '@/hooks/CommonData'
-import { routers } from '@/hooks/Routers'
+import { headVisible, sideVisible } from '@/utils/common/IdentityData'
+import { routers } from '@/utils/route'
 
-hHead.value = false
-hSide.value = false
+headVisible.value = false
+sideVisible.value = false
 </script>
 
 <template>

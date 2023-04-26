@@ -174,9 +174,34 @@ $text-height: 9%;
   }
 }
 
-// @layer {
+@font-face {
+  /* stylelint-disable-next-line string-quotes */
+  font-family: PuHuiTiBASE;
+  /* stylelint-disable-next-line string-quotes */
+  src: url('/src/assets/fonts/PuHuiTi_55.ttf');
+}
+
+@font-face {
+  /* stylelint-disable-next-line string-quotes */
+  font-family: PuHuiTiXL;
+  /* stylelint-disable-next-line string-quotes */
+  src: url('/src/assets/fonts/PuHuiTi_65.ttf');
+}
+
+@font-face {
+  /* stylelint-disable-next-line string-quotes */
+  font-family: PuHuiTiSM;
+  /* stylelint-disable-next-line string-quotes */
+  src: url('/src/assets/fonts/PuHuiTi_45.ttf');
+}
+
+// @layer base {
+//   // html {
+//   //   @apply antialiased;
+//   // }
 //   body {
-//     // font-family: 'Times New Roman', Georgia, serif;
+//     /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+//     font-family: PuHuiTi;
 //   }
 // }
 

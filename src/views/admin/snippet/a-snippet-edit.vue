@@ -1,53 +1,50 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { getUserId } from '@/hooks/Commonly'
-import { debounce } from '@/utils/common/Dethrottle'
+import { getUserId } from '@/utils/user/UserInfo'
+import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
-import { rSnippetLabel, rSnippetTag, rSnippetType } from './data'
-const reload: any = inject('reload')
-const add = debounce(async () => {
+import { snippetLabelData, snippetTagData, snippetTypeData } from './data'
+// const reload: any = inject('reload')
+const update = debounce(async () => {
   snippetForm.userId = getUserId()
-  await SnippetApi.update(snippetForm).then(r => {
-    if (r.data) {
-      reload()
-      message.success(aData.SUCCESS)
-    } else {
-      message.warning(aData.FAIL)
-    }
-  })
+  const res = await SnippetApi.update(snippetForm)
+  if (res.data) {
+    // reload()
+    return message.success(aData.SUCCESS)
+  }
+  message.warning(aData.FAIL)
 }, 1000)
 onMounted(async () => {
-  await axios
-    .all([await SnippetTagApi.getAll(false), await SnippetTypeApi.getAll(false), await SnippetLabelApi.getAll(false)])
-    .then(
-      axios.spread((tag: any, type: any, label: any) => {
-        rSnippetTag.value = tag.data
-        rSnippetType.value = type.data
-        rSnippetLabel.value = label.data
-      })
-    )
+  const [tag, type, label] = await axios.all([
+    await SnippetTagApi.getAll(false),
+    await SnippetTypeApi.getAll(false),
+    await SnippetLabelApi.getAll(false)
+  ])
+  snippetTagData.value = tag.data
+  snippetTypeData.value = type.data
+  snippetLabelData.value = label.data
 })
 </script>
 <template>
-  <div class="w1000px h700px">
+  <div class="w1300px h750px">
     <div class="mb-1">
       <input v-model="snippetForm.name" />
     </div>
-    <div class="mb-1">
+    <div class="mb-1 text-base">
       <select v-model="snippetForm.typeId" class="w-30 h-32px border-gray-400 rounded mr-2">
-        <option v-for="res in rSnippetType" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
+        <option v-for="res in snippetTypeData" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
           {{ res.name }}
         </option>
       </select>
       <select v-model="snippetForm.labelId" class="w-30 h-32px border-gray-400 rounded mr-2">
-        <option v-for="res in rSnippetLabel" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
+        <option v-for="res in snippetLabelData" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
           {{ res.name }}
         </option>
       </select>
       <select v-model="snippetForm.tagId" class="w-30 h-32px border-gray-400 rounded mr-2">
-        <option v-for="res in rSnippetTag" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
+        <option v-for="res in snippetTagData" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
           {{ res.name }}
         </option>
       </select>
@@ -59,7 +56,7 @@ onMounted(async () => {
         height="610px"></v-md-editor>
     </div>
     <div class="mt-1 mx-1">
-      <a-button @click="add">更新</a-button>
+      <a-button @click="update">更新</a-button>
     </div>
   </div>
 </template>

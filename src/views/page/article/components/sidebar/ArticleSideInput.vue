@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api'
-import { hSearch } from '@/hooks/CommonData'
+import { searchVisible } from '@/utils/common/IdentityData'
 import { rArticle, rSearchName } from '../../data'
 async function search() {
   rArticle.value = await (await ArticleApi.getContains(0, 'null', rSearchName.value, false)).data
 }
 async function onSearch() {
   if (rSearchName.value === '') {
-    hSearch.value = false
+    searchVisible.value = false
     return
   }
-  hSearch.value = true //显示元素内容
+  searchVisible.value = true //显示元素内容
   await search()
 }
 </script>

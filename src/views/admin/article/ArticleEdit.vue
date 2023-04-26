@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTypeApi, ArticleTagApi } from '@/api'
 import { rTag, rType } from './data'
-import { routers, go } from '@/hooks/routers'
+import { routers, go } from '@/utils/route'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/data'

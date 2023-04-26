@@ -1,4 +1,4 @@
-import { get, add, update, del } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/api/http/funApi'
 import { IArticleType } from '../data/InterData'
 export class ArticleTypeApi {
   static getById(id: number, cache = false) {

@@ -33,10 +33,7 @@ defineProps({
   overflow: auto;
   background-color: rgb(0 0 0 / 15%);
 
-  @apply (
-    rounded,
-    @apply
-  );
+  @apply rounded;
 }
 
 .modal-content {
@@ -47,19 +44,13 @@ defineProps({
   background: #fff;
   transform: translate(-50%, -50%);
 
-  @apply (
-    rounded,
-    @apply
-  );
+  @apply rounded;
 
   .model-title {
     height: 32px;
     text-align: center;
 
-    @apply (
-      text-lg,
-      @apply -cool-gray-600
-    );
+    @apply text-cool-gray-600 text-lg;
   }
 
   .model-body {

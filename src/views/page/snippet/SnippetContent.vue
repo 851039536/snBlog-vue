@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetTagApi, SnippetTypeApi, TOKEN } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { isUserId } from '@/hooks/Commonly'
-import { debounce } from '@/utils/common/Dethrottle'
+import { isUserId } from '@/utils/user/UserInfo'
+import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 // JS
 import { ref, nextTick } from 'vue'
@@ -153,58 +153,71 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w65% m-auto">
-    <a-radio-group v-model:value="radioValue" @change="RadioFun">
-      <a-radio value="ALL">默认</a-radio>
-      <a-radio value="title">标题</a-radio>
-      <a-radio value="text">内容</a-radio>
-      <a-radio value="type">分类</a-radio>
-      <a-radio value="tag">标签</a-radio>
-    </a-radio-group>
-    <button @click="onScroll('top')">顶部</button>
-    <button @click="onScroll('bottom')">底部</button>
-    <select v-model="selectValue" class="w-30 h-32px rounded text-base">
-      <option class="bg-blue-50 rounded">ALL</option>
-      <option v-for="res in rSnippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
-        {{ res.name }}
-      </option>
-    </select>
+  <div class="sn-content">
+    <div class="w65% m-auto">
+      <a-radio-group v-model:value="radioValue" @change="RadioFun">
+        <a-radio value="ALL">默认</a-radio>
+        <a-radio value="title">标题</a-radio>
+        <a-radio value="text">内容</a-radio>
+        <a-radio value="type">分类</a-radio>
+        <a-radio value="tag">标签</a-radio>
+      </a-radio-group>
+      <button
+        class="rounded-sm border-none px-2 mr-1 bg-white hover:bg-blue-400 hover:text-light-50"
+        @click="onScroll('top')">
+        顶部
+      </button>
+      <button
+        class="rounded-sm border-none px-2 mr-1 bg-white hover:bg-blue-400 hover:text-light-50"
+        @click="onScroll('bottom')">
+        底部
+      </button>
+      <select v-model="selectValue" class="w-30 h-32px rounded text-base">
+        <option class="bg-blue-50 rounded">ALL</option>
+        <option v-for="res in rSnippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
+          {{ res.name }}
+        </option>
+      </select>
 
-    <input v-model="rName" type="text" class="mt-2" @input="QSnippet()" />
-  </div>
-
-  <div class="bor"></div>
-
-  <!-- ref标识 -->
-  <div ref="scrollContainer" class="w-full modal-cont overflow-auto scroll-smooth" @scroll="handleScroll">
-    <div class="test">
-      <div v-for="(item, index) in rSnippet" :key="index" class="item">
-        <c-highlightText
-          :h-text="rName"
-          color="red"
-          :text="item.name"
-          class="text-xl font-semibold text-center bg-green-300 mx-8 rounded"></c-highlightText>
-        <div class="mx-8 py-1">
-          <span mr-2 ml-1 class="bg-emerald-200 p-1px rounded">{{ item.type.name }}</span>
-          <span mr-2 ml-1 class="bg-yellow-100 p-1px rounded">{{ item.label.name }}</span>
-          <span mr-2 class="bg-blue-100 p-1px rounded">{{ item.tag.name }}</span>
-          <span mr-2 class="bg-rose-100 p-1px rounded">{{ item.user.nickname }}</span>
-          <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
-        </div>
-        <v-md-editor v-model="item.text" mode="preview"></v-md-editor>
-      </div>
+      <input v-model="rName" type="text" class="mt-2" @input="QSnippet()" />
     </div>
-    <div class="absolute top-0 left-0 text-cool-gray-600 text-sm bg-yellow-100 p-3 rounded">{{ rCharSun }}字</div>
-  </div>
 
-  <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
-    <template #snippetEditModel>
+    <div class="bor"></div>
+
+    <!-- ref标识 -->
+    <div ref="scrollContainer" class="w-full modal-cont overflow-auto scroll-smooth" @scroll="handleScroll">
+      <div class="test">
+        <div v-for="(item, index) in rSnippet" :key="index" class="item">
+          <c-highlightText
+            :h-text="rName"
+            color="red"
+            :text="item.name"
+            class="text-xl font-semibold text-center bg-green-300 mx-8 rounded"></c-highlightText>
+          <div class="mx-8 py-1">
+            <span mr-2 ml-1 class="bg-emerald-200 p-1px rounded">{{ item.type.name }}</span>
+            <span mr-2 ml-1 class="bg-yellow-100 p-1px rounded">{{ item.label.name }}</span>
+            <span mr-2 class="bg-blue-100 p-1px rounded">{{ item.tag.name }}</span>
+            <span mr-2 class="bg-rose-100 p-1px rounded">{{ item.user.nickname }}</span>
+            <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
+          </div>
+          <v-md-editor v-model="item.text" mode="preview"></v-md-editor>
+        </div>
+      </div>
+      <div class="absolute top-0 left-0 text-cool-gray-600 text-sm bg-yellow-100 p-3 rounded">{{ rCharSun }}字</div>
+    </div>
+
+    <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
       <SnippetEdit></SnippetEdit>
-    </template>
-  </c-modal-dialog>
+    </c-modal-dialog>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.sn-content {
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: PuHuiTiBASE;
+}
+
 .bor {
   @apply mt-3;
 

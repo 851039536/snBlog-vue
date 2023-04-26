@@ -57,8 +57,8 @@ function winUrl(url: string) {
 /**
  *页面刷新
  */
-function reloads() {
+function reload() {
   return window.location.reload()
 }
 
-export { routers, routerId, winUrl, go, resolve, reloads }
+export { routers, routerId, winUrl, go, resolve, reload }

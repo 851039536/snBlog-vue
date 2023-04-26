@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { routerId } from '@/hooks/routers'
+import { routerId } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { ArticleApi } from '@/api'
-import { hHead, hSide } from '@/hooks/CommonData'
+import { headVisible, sideVisible } from '@/utils/common/IdentityData'
 import { useWindowScroll } from '@vueuse/core'
 const { y } = useWindowScroll()
 
@@ -48,8 +48,8 @@ watch(
   { deep: true }
 )
 onMounted(async () => {
-  hSide.value = true
-  hHead.value = true
+  sideVisible.value = true
+  headVisible.value = true
   await axios.all([await GetSum(0, aData.NULL), await QPaging()])
   window.onresize = function () {
     console.log('宽度', document.documentElement.clientWidth)

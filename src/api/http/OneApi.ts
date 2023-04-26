@@ -1,4 +1,4 @@
-import request from '@/utils/http/axios'
+import request from '@/api/http/axios'
 
 export class OneApi {
   /**

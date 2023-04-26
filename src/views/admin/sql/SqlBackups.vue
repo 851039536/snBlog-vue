@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { commonApi } from '@/api'
+import { CommonApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { navName } from '../utils/data'
 
 const SqlBackups = async () => {
-  await commonApi.SqlBackups().then(r => {
+  await CommonApi.SqlBackups().then(r => {
     if (r.status === 200) {
       message.success(aData.SUCCESS)
     }

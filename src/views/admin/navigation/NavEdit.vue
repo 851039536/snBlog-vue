@@ -4,7 +4,7 @@ import { NavigationApi } from '@/api'
 import { routers, go, winUrl } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { aData } from '../data'
-import { rRouter } from '@/router/data'
+import { rRouter } from '@/router/RouterInfo'
 import { navForm } from '@/api/data/model/NavModel'
 
 const route = useRoute()

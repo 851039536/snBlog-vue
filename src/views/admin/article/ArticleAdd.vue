@@ -2,19 +2,19 @@
 import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
-import { routers, go } from '@/hooks/routers'
+import { routers, go } from '@/utils/route'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 import { articleForm, clearArticle } from '@/api/data/model/ArtileModel'
-import { hUser } from '@/hooks/Commonly'
-import { rRouter } from '@/router/data'
+import { userInfo } from '@/utils/user/UserInfo'
+import { rRouter } from '@/router/RouterInfo'
 import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
 const { random } = useRandom()
 const reload: any = inject('reload')
 const tagName = ref('选择')
 const add = async () => {
-  articleForm.userId = storage.get(hUser.ID)
+  articleForm.userId = storage.get(userInfo.ID)
   articleForm.img = `blog/${random(1, 20, 2)}.jpg`
   await ArticleApi.add(articleForm).then(r => {
     if (r.data) {

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api/index'
 import { Tool } from '@/utils/common/Tool'
-import { debounce } from '@/utils/common/Dethrottle'
+import { debounce } from '@/utils/dethrottle'
 import { articleForm } from '@/api/data/model/ArtileModel'
 
 const md = defineAsyncComponent(() => {

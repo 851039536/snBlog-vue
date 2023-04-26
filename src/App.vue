@@ -23,6 +23,8 @@
 @include scroll;
 
 #app {
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: PuHuiTiBASE;
   background: #f3f7fd;
 
   @apply absolute w-full;

@@ -1,5 +1,5 @@
 import { IInterface } from '../data/InterData'
-import { get, add, update, del } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/api/http/funApi'
 
 export class InterfaceApi {
   /**

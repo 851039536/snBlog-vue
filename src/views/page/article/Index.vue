@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
-import { hSearch } from '@/hooks/CommonData'
+import { searchVisible } from '@/utils/common/IdentityData'
 
 const ArSideInput = defineAsyncComponent(() => {
   return import('./components/sidebar/ArticleSideInput.vue')
@@ -24,7 +24,7 @@ const rNavData = ref([]) // array of links
 /** 通告信息 */
 const annunciate = ref('')
 onMounted(async () => {
-  hSearch.value = false //
+  searchVisible.value = false //
   annunciate.value = await (await UserTalkApi.getUserTalkFirst()).data
   rNavData.value = await (await NavigationApi.getTypeAsync(1, '常用工具', true)).data
   articleTime.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
@@ -94,7 +94,7 @@ onMounted(async () => {
     </c-right-sidebar>
 
     <div id="search"></div>
-    <c-modal-search @close-model="hSearch = false">
+    <c-modal-search @close-model="searchVisible = false">
       <ArSideSearch></ArSideSearch>
     </c-modal-search>
   </div>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { debounce } from '@/utils/common/Dethrottle'
+import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 
 const rSnippetTag: any = ref([])
@@ -24,7 +24,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="w1000px h700px">
+  <div class="w1100px h720px">
     <div class="mb-1">
       <input v-model="snippetForm.name" />
     </div>

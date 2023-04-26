@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { INav } from '@/api/data/InterData'
-import { winUrl } from '@/hooks/routers'
+import { winUrl } from '@/utils/route'
 
 defineProps({
   rData: {

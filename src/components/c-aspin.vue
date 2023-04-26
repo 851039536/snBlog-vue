@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { aspShow } from '@/hooks/CommonData'
-aspShow.value = true
+import { loadingVisible } from '@/utils/common/IdentityData'
+loadingVisible.value = true
 </script>
 <template>
   <!-- <div v-show="aspShow" class="spinner">
     <div class="double-bounce1"></div>
     <div class="double-bounce2"></div>
   </div> -->
-  <div v-show="aspShow" class="spinner">
+  <div v-show="loadingVisible" class="spinner">
     <div class="cube1"></div>
     <div class="cube2"></div>
   </div>

@@ -1,4 +1,4 @@
-import { get, add, update, del } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/api/http/funApi'
 import { ISnippetLabel } from '../data/model/SnippetLabelMode'
 
 export class SnippetLabelApi {

@@ -1,32 +1,31 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, rSnippetLabel, rSnippetTag, rSnippetType } from './data'
-import { snippetApi, snippetLabelApi, snippetTagApi, snippetTypeApi } from '@/api'
+import { columns, snippetLabelData, snippetTagData, snippetTypeData } from './data'
+import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
-import { tool } from '@/utils/common/Tool'
+import { Tool } from '@/utils/common/Tool'
 import { clearSnippet, snippetForm } from '@/api/data/model/SnippetMode'
 
 const reload: any = inject('reload')
 const del = async (data: any) => {
-  await snippetApi.Del(data.id).then(r => {
-    if (r.data) {
-      reload()
-      message.success(aData.SUCCESS)
-      return
-    }
-    message.success(aData.FAIL)
-  })
+  const res = await SnippetApi.del(data.id)
+  if (res.data) {
+    reload()
+    message.success(aData.SUCCESS)
+    return
+  }
+  message.success(aData.FAIL)
 }
 const addVisible = ref(false)
 const edVisible = ref(false)
-const rNav: any = ref([])
+const snippetData: any = ref([])
 const tagStr = ref<string>('ALL')
 const typeStr = ref<string>('ALL')
 const LabelStr = ref<string>('ALL')
 
 const edit = async (id: number) => {
-  await snippetApi.GetById(id, false).then(r => {
+  await SnippetApi.getById(id, false).then(r => {
     snippetForm.id = r.data.id
     snippetForm.name = r.data.name
     snippetForm.text = r.data.text
@@ -49,9 +48,8 @@ const add = () => {
  * @param {number} name 查询参数(多条件以','分割)
  */
 const QPaging = async (identity: number, name: string) => {
-  await snippetApi.GetPaging(identity, name, 1, 9000, 'id', true, false).then(res => {
-    rNav.value = res.data
-  })
+  const res = await SnippetApi.getPaging(identity, name, 1, 9000, 'id', true, false)
+  snippetData.value = res.data
 }
 
 const QSearch = async (name: string, identity: number) => {
@@ -64,29 +62,23 @@ async function search(name: any) {
   if (name === '') {
     return
   }
-  await snippetApi.GetContains(0, aData.NULL, name, false, 1, 999).then(async res => {
-    await tool.momentTimeList(res)
-    rNav.value = res.data
-  })
-}
-
-async function GetApi() {
-  await QPaging(0, tagStr.value)
-  await axios
-    .all([await snippetTagApi.getAll(false), await snippetTypeApi.getAll(false), await snippetLabelApi.GetAll(false)])
-    .then(
-      axios.spread((tag: any, type: any, label: any) => {
-        rSnippetTag.value = tag.data
-        rSnippetType.value = type.data
-        rSnippetLabel.value = label.data
-      })
-    )
-  navName.name = '代码片段'
-  navName.name2 = '片段列表'
+  const res = await SnippetApi.getContains(0, aData.NULL, name, false, 1, 999)
+  await Tool.momentTimeList(res)
+  snippetData.value = res.data
 }
 
 onMounted(async () => {
-  await GetApi()
+  await QPaging(0, tagStr.value)
+  const [tag, type, label] = await axios.all([
+    await SnippetTagApi.getAll(false),
+    await SnippetTypeApi.getAll(false),
+    await SnippetLabelApi.getAll(false)
+  ])
+  snippetTagData.value = tag.data
+  snippetTypeData.value = type.data
+  snippetLabelData.value = label.data
+  navName.name = '代码片段'
+  navName.name2 = '片段列表'
 })
 </script>
 <template>
@@ -96,19 +88,19 @@ onMounted(async () => {
       <a-button @click="reload()">刷新</a-button>
       <a-select v-model:value="tagStr" style="width: 120px" @change="QSearch(tagStr, 2)">
         <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in rSnippetTag" :key="r.id" :value="r.name">
+        <a-select-option v-for="r in snippetTagData" :key="r.id" :value="r.name">
           {{ r.name }}
         </a-select-option>
       </a-select>
       <a-select v-model:value="typeStr" style="width: 120px" @change="QSearch(typeStr, 1)">
         <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in rSnippetType" :key="r.id" :value="r.name">
+        <a-select-option v-for="r in snippetTypeData" :key="r.id" :value="r.name">
           {{ r.name }}
         </a-select-option>
       </a-select>
       <a-select v-model:value="LabelStr" style="width: 120px" @change="QSearch(LabelStr, 4)">
         <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in rSnippetLabel" :key="r.id" :value="r.name">
+        <a-select-option v-for="r in snippetLabelData" :key="r.id" :value="r.name">
           {{ r.name }}
         </a-select-option>
       </a-select>
@@ -127,7 +119,7 @@ onMounted(async () => {
     :bordered="true"
     :columns="columns"
     row-key="id"
-    :data-source="rNav"
+    :data-source="snippetData"
     :pagination="{ pageSize: 15 }"
     :scroll="{ x: 1280, y: 500 }">
     <template #bodyCell="{ column, record }">

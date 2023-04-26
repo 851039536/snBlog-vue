@@ -1,8 +1,23 @@
 {
-  "extends": [
-    "development"
-  ],
+  "extends": ["development"],
   "hints": {
-    "typescript-config/consistent-casing": "off"
-  }
+    "typescript-config/consistent-casing": "off",
+    "detect-css-reflows/composite": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": ["@layer"]
+      }
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_chr <= 111",
+    "not chrome <= 111",
+    "not edge <= 111",
+    "not ios_saf <= 14.8",
+    "not opera <= 95",
+    "not samsung <= 20"
+  ]
 }

@@ -1,4 +1,4 @@
-import { get, add, update, del } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/api/http/funApi'
 import { ISnippetType } from '../data/model/SnippetTypeMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',

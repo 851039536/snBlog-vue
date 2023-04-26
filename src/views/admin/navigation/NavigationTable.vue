@@ -2,9 +2,9 @@
 import { message } from 'ant-design-vue'
 import { columns } from './data'
 import { NavigationApi } from '@/api'
-import { routers, routerId, winUrl } from '@/hooks/Routers'
+import { routers, routerId, winUrl } from '@/utils/route'
 import { aData, aCancel } from '../data'
-import { rRouter } from '@/router/data'
+import { rRouter } from '@/router/RouterInfo'
 import { navName } from '../utils/data'
 import { Tool } from '@/utils/common/Tool'
 

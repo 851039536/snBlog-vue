@@ -6,16 +6,16 @@ import { aData } from '../data'
 import { routers } from '@/hooks/routers'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
-import { hUser } from '@/hooks/Commonly'
+import { userInfo } from '@/utils/user/UserInfo'
 import { clearNav, navForm } from '@/api/data/model/NavModel'
-import { rRouter } from '@/router/data'
+import { rRouter } from '@/router/RouterInfo'
 
 function GetTypeId(id: number) {
   navForm.typeId = id
 }
 
 const rType: any = ref([])
-const uid: any = ref(storage.get(hUser.ID))
+const uid: any = ref(storage.get(userInfo.ID))
 const add = async () => {
   navForm.userId = uid.value
   await NavigationApi.add(navForm).then(() => {

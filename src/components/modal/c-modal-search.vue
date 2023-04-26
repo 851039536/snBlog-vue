@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { hSearch } from '@/hooks/CommonData'
+import { searchVisible } from '@/utils/common/IdentityData'
 const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
 </script>
 <template>
-  <teleport v-if="hSearch" to="#search">
+  <teleport v-if="searchVisible" to="#search">
     <div class="model-bg">
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>

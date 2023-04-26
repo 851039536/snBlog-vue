@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { InterfaceApi } from '@/api'
-import { hUser } from '@/hooks/Commonly'
-import { hSide, sideIndex } from '@/hooks/CommonData'
-import { routers } from '@/hooks/routers'
+import { userInfo } from '@/utils/user/UserInfo'
+import { sideVisible, sideIndex } from '@/utils/common/IdentityData'
+import { routers } from '@/utils/route'
 import { storage } from '@/utils/storage/storage'
 import user2 from '@assets/svg/components/user2.svg?component'
 
@@ -16,12 +16,12 @@ function getTopic(index: number) {
   sideIndex.value = index
 }
 onMounted(async () => {
-  rData.value = await (await InterfaceApi.getCondition(0, storage.get(hUser.NAME), 'sidebar', true)).data
+  rData.value = await (await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'sidebar', true)).data
   getTopic(sideIndex.value)
 })
 </script>
 <template>
-  <div v-show="hSide" class="lside">
+  <div v-show="sideVisible" class="lside">
     <div
       v-for="(r, index) in rData"
       :key="index"
@@ -41,14 +41,17 @@ onMounted(async () => {
         {{ r.name }}
       </div>
     </div>
-    <div v-show="storage.get(hUser.NAME) === hUser.NAME" bg-gray-200 text-lg>
+    <div v-show="storage.get(userInfo.NAME) === userInfo.NAME" bg-gray-200 text-lg>
       <div flex m-auto w-17 cursor-pointer hover:text-cool-gray-50>
         <div i-fxemoji-bolt h-5 w-5 mt-5px mr-1></div>
         登录
       </div>
     </div>
 
-    <div v-show="storage.get(hUser.NAME) !== hUser.NAME" text-sm class="absolute bottom-1 bg-slate-400 h-110px w-full">
+    <div
+      v-show="storage.get(userInfo.NAME) !== userInfo.NAME"
+      text-sm
+      class="absolute bottom-1 bg-slate-400 h-110px w-full">
       <div text-center class="text-lg bg-slate-500 text-cool-gray-50">
         <span @click="CliAbout()">关于我</span>
       </div>

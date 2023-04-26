@@ -1,6 +1,6 @@
-import request from '@/utils/http/axios'
+import request from '@/api/http/axios'
 import { Tool } from '@/utils/common/Tool'
-import { get, add, update, del } from '@/utils/http/funApi'
+import { get, add, update, del } from '@/api/http/funApi'
 import { ISnippet } from '../data/model/SnippetMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',

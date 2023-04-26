@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { clearUser, hUser } from '@/hooks/Commonly'
+import { removeUserStorage, userInfo } from '@/utils/user/UserInfo'
 import { storage } from '@/utils/storage/storage'
-import { routers } from '@/hooks/routers'
-import { rRouter } from '@/router/data'
+import { routers } from '@/utils/route'
+import { rRouter } from '@/router/RouterInfo'
 import uservg from '@assets/svg/components/user.svg?component'
-import { hHead, hLogin, sideIndex } from '@/hooks/CommonData'
+import { headVisible, loginVisible, sideIndex } from '@/utils/common/IdentityData'
 import { InterfaceApi, UserApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { useAppStore } from '@/store/pinia'
@@ -34,11 +34,11 @@ async function onChange(id: number) {
       await routers(rRouter.articleTable)
       break
     case 2:
-      clearUser()
+      removeUserStorage()
       location.reload()
       break
     case 3:
-      hLogin.value = true
+      loginVisible.value = true
       break
     default:
       break
@@ -52,28 +52,25 @@ function login() {
       return
     }
     rData.value = r.data.split(',')
-    clearUser()
-    storage.set(hUser.ROLE, rData.value[0]) // 角色名
-    storage.set(hUser.TOKEN, `Bearer ${rData.value[1]}`) // token
-    storage.set(hUser.ID, rData.value[2]) // 用户主键
-    storage.set(hUser.NAME, rData.value[3]) // 用户名
+    removeUserStorage()
+    storage.set(userInfo.ROLE, rData.value[0]) // 角色名
+    storage.set(userInfo.TOKEN, `Bearer ${rData.value[1]}`) // token
+    storage.set(userInfo.ID, rData.value[2]) // 用户主键
+    storage.set(userInfo.NAME, rData.value[3]) // 用户名
 
-    store.roles = storage.get(hUser.ROLE)
+    store.roles = storage.get(userInfo.ROLE)
     location.reload()
   })
 }
 
 onMounted(async () => {
-  // get the conditions from the API
-  const conditions = await InterfaceApi.getCondition(0, storage.get(hUser.NAME), 'header', false)
-  // get the data from the conditions
+  const conditions = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'header', false)
   const data = await conditions.data
-  // put the data into the return object
   rData.value = data
 })
 </script>
 <template>
-  <nav v-show="hHead" class="head">
+  <nav v-show="headVisible" class="head">
     <div class="h-cont">
       <div class="h-cont-l">
         <div>
@@ -100,7 +97,7 @@ onMounted(async () => {
       </div>
       <div class="head-cont-r">
         <div class="head-r-div">
-          <span v-if="storage.get(hUser.NAME) === hUser.NAME" v-once @click="onChange(3)">登录</span>
+          <span v-if="storage.get(userInfo.NAME) === userInfo.NAME" v-once @click="onChange(3)">登录</span>
           <div v-else>
             <a-popover placement="bottomRight">
               <template #content>
@@ -124,7 +121,7 @@ onMounted(async () => {
     </div>
   </nav>
 
-  <c-modal-dialog :visible="hLogin" title="Login" @close-model="hLogin = false">
+  <c-modal-dialog :visible="loginVisible" title="Login" @close-model="loginVisible = false">
     <form class="login">
       <p>用户登录</p>
       <input v-model="rName" class="login-put" type="text" placeholder="用户名" autocomplete="off" />
@@ -164,7 +161,7 @@ onMounted(async () => {
 
 .btn {
   @apply text-2xl p-2 mt-4 rounded shadow-sm;
-  @apply cursor-pointer  hover:bg-slate-500 hover:text-white;
+  @apply cursor-pointer  hover:bg-gray-200 hover:text-white;
 }
 
 input {

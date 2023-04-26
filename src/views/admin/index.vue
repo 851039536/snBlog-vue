@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { routers, winUrl } from '@/hooks/routers'
+import { routers, winUrl } from '@/utils/route'
 import { navName } from './utils/data'
-import { isToken, clearUser } from '@/hooks/Commonly'
-import { rRouter } from '@/router/data'
+import { isToken, removeUserStorage } from '@/utils/user/UserInfo'
+import { rRouter } from '@/router/RouterInfo'
 import uservg from '@assets/svg/components/user.svg?component'
-import { hHead, hSide } from '@/hooks/CommonData'
+import { headVisible, sideVisible } from '@/utils/common/IdentityData'
 import { TOKEN } from '@/api'
 
 function clear() {
-  clearUser()
+  removeUserStorage()
   isToken()
 }
 const handleClick = (e: any) => {
@@ -52,8 +52,8 @@ provide('reload', reload)
 
 onMounted(async () => {
   await TOKEN()
-  hHead.value = false
-  hSide.value = false
+  headVisible.value = false
+  sideVisible.value = false
 })
 </script>
 <template>
@@ -159,5 +159,7 @@ onMounted(async () => {
 .admin {
   @apply h-full w-full z-10 fixed;
   @apply bg-gray-100;
+
+  // font-family: PuHuiTiBASE;
 }
 </style>

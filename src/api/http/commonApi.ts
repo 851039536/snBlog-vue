@@ -1,4 +1,4 @@
-import { pot } from '@/utils/http/funApi'
+import { pot } from '@/api/http/funApi'
 
 export class CommonApi {
   /**

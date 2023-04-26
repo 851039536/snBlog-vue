@@ -1,11 +1,11 @@
 import { rRouter } from '@/router/data'
 import { storage } from '@/utils/storage/storage'
-import { routers } from './Routers'
+import { routers } from '../route'
 
 /**
  * 用户信息
  */
-export enum hUser {
+export enum userInfo {
   ROLE = 'role',
   TOKEN = 'token',
   ID = 'id',
@@ -14,18 +14,18 @@ export enum hUser {
 /**
  * 清除用户storage信息
  */
-export const clearUser = () => {
-  storage.remove(hUser.ROLE)
-  storage.remove(hUser.ID)
-  storage.remove(hUser.NAME)
-  storage.remove(hUser.TOKEN)
+export const removeUserStorage = () => {
+  storage.remove(userInfo.ROLE)
+  storage.remove(userInfo.ID)
+  storage.remove(userInfo.NAME)
+  storage.remove(userInfo.TOKEN)
 }
 
 /**
  * 判断token是否存在否则跳转登录界面
  */
 export const isToken = async () => {
-  if (storage.get(hUser.TOKEN) === hUser.TOKEN) {
+  if (storage.get(userInfo.TOKEN) === userInfo.TOKEN) {
     await routers(rRouter.Login)
   } else {
     await routers(rRouter.articleTable)
@@ -37,7 +37,7 @@ export const isToken = async () => {
  * @returns bool
  */
 export const isUserId = (uid: number) => {
-  if (Number(storage.get(hUser.ID)) === uid) return true
+  if (Number(storage.get(userInfo.ID)) === uid) return true
   return false
 }
 
@@ -46,5 +46,5 @@ export const isUserId = (uid: number) => {
  * @returns id
  */
 export const getUserId = () => {
-  return Number(storage.get(hUser.ID))
+  return Number(storage.get(userInfo.ID))
 }

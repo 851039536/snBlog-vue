@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArticleApi } from '@/api/index'
-import { hSide } from '@/hooks/CommonData'
+import { sideVisible } from '@/utils/common/IdentityData'
 
 const route = useRoute()
 const state: any = reactive({
@@ -31,7 +31,7 @@ function handleAnchorClick(anchor: any) {
 }
 
 onMounted(async () => {
-  hSide.value = false
+  sideVisible.value = false
   await GetAll()
   const anchors = proxy.$refs.preview.$el.querySelectorAll('h1,h2,h3,h4,h5,h6')
   const titles = Array.from(anchors).filter((title: any) => {

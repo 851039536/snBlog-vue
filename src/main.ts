@@ -7,7 +7,7 @@ import 'nprogress/nprogress.css'
 import 'uno.css'
 
 // 引入全局自定义指令
-import directive from '@/utils/common/directive'
+import directive from '@/hooks/directive/directive'
 
 import lazyPlugin from 'vue3-lazy'
 import infiniteScroll from 'vue3-infinite-scroll-better'

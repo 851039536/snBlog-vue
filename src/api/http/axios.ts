@@ -2,10 +2,10 @@
 import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
-import { aspShow } from '@/hooks/CommonData'
-import { storage } from '../storage/storage'
+import { loadingVisible } from '@/utils/common/IdentityData'
+import { storage } from '../../utils/storage/storage'
 import { removePending, addPending } from './pending'
-import { clearUser } from '@/hooks/Commonly'
+import { removeUserStorage } from '@/utils/user/UserInfo'
 
 const obj = reactive({
   urls: import.meta.env.VITE_API_DOMAIN
@@ -45,7 +45,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
         req.headers.Authorization = storage.get('token') as string
       }
       // 请求之前发送loading
-      aspShow.value = true
+      loadingVisible.value = true
 
       return req
     },
@@ -61,7 +61,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
       // 请求之后关闭loading
       // aspShow.value = false
       setTimeout(function () {
-        aspShow.value = false
+        loadingVisible.value = false
       }, 400)
       if (res.status === 200 || res.status === 204) {
         return Promise.resolve(res)
@@ -71,7 +71,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
     (error: any) => {
       // console.log('%c [ error ]', 'font-size:13px; background:pink; color:#bf2c9f;', error)
 
-      aspShow.value = false
+      loadingVisible.value = false
       if (error.response.status) {
         switch (error.response.status) {
           case 400:
@@ -79,7 +79,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
             break
           case 401: // 重定向
             message.error(`token:登录失效==>${error.response.status}:${'token'}`)
-            clearUser()
+            removeUserStorage()
             router.replace({
               path: '/Login'
             })
@@ -112,7 +112,7 @@ function myAxios(axiosConfig: any, customOptions: any) {
             message.error(`网关超时==>${error.response.status}`)
             break
           default:
-            aspShow.value = false
+            loadingVisible.value = false
             message.error(`其他错误错误==>${error.response.status}`)
         }
         return Promise.reject(error.response)
