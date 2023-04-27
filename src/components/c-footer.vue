@@ -9,9 +9,9 @@
         <div>antd</div>
         <div>icones</div>
       </template>
-      <!-- <template #title>
+      <template #title>
         <span>Title</span>
-      </template> -->
+      </template>
       <div i-fxemoji-endwithleftwardsarrow w-6 h-6></div>
     </a-popover>
   </div>

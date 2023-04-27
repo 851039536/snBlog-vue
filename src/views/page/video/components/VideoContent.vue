@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { routerId } from '@/hooks/routers'
+import { routerId } from '@/utils/route'
 import { state } from '../data/data'
 import { method } from '../data/index'
 

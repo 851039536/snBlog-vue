@@ -2,38 +2,45 @@
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
 import { searchVisible } from '@/utils/common/IdentityData'
 
-const ArSideInput = defineAsyncComponent(() => {
-  return import('./components/sidebar/ArticleSideInput.vue')
+// 定义异步组件函数
+const AsyncComponent = (name: any) => {
+  return defineAsyncComponent(() => {
+    return import(`./components/${name}`)
+  })
+}
+
+// 定义异步组件
+const ArticleSideInputModule = AsyncComponent(`sidebar/ArticleSideInput.vue`)
+const ArticleSideSearchModule = AsyncComponent('sidebar/ArticleSideSearch')
+const ArticleSideAnnunciateModule = AsyncComponent('sidebar/ArticleSideAnnunciate')
+// const statisticsModule = AsyncComponent('/src/components/c-statistics.vue')
+const statisticsModule = defineAsyncComponent(() => {
+  return import('/src/components/c-statistics.vue')
 })
-const ArSideSearch = defineAsyncComponent(() => {
-  return import('./components/sidebar/ArticleSideSearch.vue')
-})
-const ArAnnunciate = defineAsyncComponent(() => {
-  return import('./components/sidebar/Annunciate.vue')
-})
-// Define an asynchronous component.
-const statistics = defineAsyncComponent(() => {
-  // Return a Promise for the asynchronous component.
-  return import('@/components/c-statistics.vue')
-})
-const articleTime = ref() // time of the last article
-const articleCount = ref('') // number of articles
-const textCount = ref('') // number of words in the articles
-const readCount = ref('') // number of words read
-const rNavData = ref([]) // array of links
+const time = ref() // time of the last article
+const articleSum = ref('') // number of articles
+const textSum = ref('') // number of words in the articles
+const readSum = ref('') // number of words read
+const navData = ref([]) // array of links
 /** 通告信息 */
 const annunciate = ref('')
 onMounted(async () => {
-  searchVisible.value = false //
-  annunciate.value = await (await UserTalkApi.getUserTalkFirst()).data
-  rNavData.value = await (await NavigationApi.getTypeAsync(1, '常用工具', true)).data
-  articleTime.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
-  articleCount.value = await (await ArticleApi.getSum()).data
-  articleCount.value = String(articleCount.value)
-  textCount.value = await (await ArticleApi.getStrSum(0, 1)).data
-  textCount.value = String(textCount.value)
-  readCount.value = await (await ArticleApi.getStrSum(0, 2)).data
-  readCount.value = String(readCount.value)
+  searchVisible.value = false // 搜索框是否显示
+
+  const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
+    UserTalkApi.getUserTalkFirst(),
+    NavigationApi.getTypeAsync(1, '常用工具', true),
+    ArticleApi.getPaging(0, 'null', 1, 1),
+    ArticleApi.getSum(),
+    ArticleApi.getStrSum(0, 1),
+    ArticleApi.getStrSum(0, 2)
+  ])
+  annunciate.value = annunciates.data // 公告
+  navData.value = navDatas.data // 右侧导航
+  time.value = times.data[0].timeCreate // 本站已运行时间
+  articleSum.value = String(articleSums.data) // 文章总数
+  textSum.value = String(textSums.data) // 字数总数
+  readSum.value = String(readSums.data) // 阅读总数
 })
 </script>
 <template>
@@ -46,56 +53,27 @@ onMounted(async () => {
     </router-view>
     <!-- 侧边栏 -->
     <c-right-sidebar>
-      <c-sidebar-container>
-        <div class="h-30px text-base text-cool-gray-500 cursor-pointer">
-          <!-- <div class="float-left">创作中心</div> -->
-          <div class="float-right hover:text-blue-400">管理 ></div>
-        </div>
-        <div class="bor flex justify-center items-center my-2 cursor-pointer">
-          <div class="mx-3 hover:text-blue-400 text-gray-600">
-            <div i-flat-color-icons-about w-7 h-7 m-auto></div>
-            快捷发文
-          </div>
-          <div class="mx-3 hover:text-blue-400 text-gray-600">
-            <div i-flat-color-icons-file w-7 h-7 m-auto></div>
-            写文章
-          </div>
-          <div class="mx-3 hover:text-blue-400 text-gray-600">
-            <div i-flat-color-icons-sports-mode w-7 h-7 m-auto></div>
-            发动态
-          </div>
-          <div class="mx-3 hover:text-blue-400 text-gray-600">
-            <div i-flat-color-icons-wikipedia w-7 h-7 m-auto></div>
-            发代码
-          </div>
-        </div>
-        <div class="flex justify-center items-center my-1 pb-2">
-          <div class="mx-1">发布 0</div>
-          <div class="mx-1">草稿 0</div>
-          <div class="mx-1">待审核 0</div>
-          <div class="mx-1">收藏 0</div>
-        </div>
-      </c-sidebar-container>
+      <ArticleSideManager></ArticleSideManager>
       <CTime></CTime>
-      <ArSideInput></ArSideInput>
+      <ArticleSideInputModule></ArticleSideInputModule>
 
-      <ArAnnunciate :name="annunciate"></ArAnnunciate>
-      <Tool :r-data="rNavData" name="常用工具"></Tool>
-      <statistics
+      <ArticleSideAnnunciateModule :name="annunciate"></ArticleSideAnnunciateModule>
+      <ArticleSideTool :r-data="navData" name="常用工具"></ArticleSideTool>
+      <statisticsModule
         title="站点统计"
         title1="文章数量"
         title2="总字符数"
         title3="热度"
         title4="最近更新"
-        :res1="articleCount"
-        :res2="textCount"
-        :res3="readCount"
-        :res4="articleTime"></statistics>
+        :res1="articleSum"
+        :res2="textSum"
+        :res3="readSum"
+        :res4="time"></statisticsModule>
     </c-right-sidebar>
 
     <div id="search"></div>
     <c-modal-search @close-model="searchVisible = false">
-      <ArSideSearch></ArSideSearch>
+      <ArticleSideSearchModule></ArticleSideSearchModule>
     </c-modal-search>
   </div>
 </template>

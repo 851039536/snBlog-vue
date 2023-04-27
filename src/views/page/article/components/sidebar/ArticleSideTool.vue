@@ -20,7 +20,7 @@ defineProps({
 })
 </script>
 <template>
-  <c-sidebar-container>
+  <c-right-sidebar-container>
     <div class="tool-name">
       <div i-flat-color-icons-edit-image w-5 h-5 mr-1></div>
       <div>{{ name }}</div>
@@ -30,7 +30,7 @@ defineProps({
         {{ r.title }}
       </span>
     </div>
-  </c-sidebar-container>
+  </c-right-sidebar-container>
 </template>
 
 <style lang="scss">
@@ -42,7 +42,7 @@ defineProps({
 
 .tool-text {
   @apply flex justify-center items-center m-3px p-3px;
-  @apply cursor-default text-base text-center;
-  @apply rounded bg-blue-100 hover:text-white hover:bg-blue-500;
+  @apply cursor-pointer text-sm text-center;
+  @apply rounded bg-blue-50 hover:text-white hover:bg-blue-500;
 }
 </style>

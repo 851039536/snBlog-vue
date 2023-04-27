@@ -15,6 +15,6 @@
 }
 
 .modal-content {
-  @apply h-full w-full;
+  @apply h-full w-full  p-1px;
 }
 </style>

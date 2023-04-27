@@ -11,7 +11,7 @@
 
 <style lang="scss" scoped>
 .side-container {
-  @apply rounded shadow-sm my-4px;
-  @apply bg-white;
+  @apply my-3px m-auto py-3px;
+  @apply rounded shadow-sm bg-white;
 }
 </style>

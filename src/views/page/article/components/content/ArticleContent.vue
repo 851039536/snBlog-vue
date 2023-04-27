@@ -4,8 +4,8 @@ import { Tool } from '@/utils/common/Tool'
 import { debounce } from '@/utils/dethrottle'
 import { articleForm } from '@/api/data/model/ArtileModel'
 
-const md = defineAsyncComponent(() => {
-  return import('@/views/page/article/components/content/mdContent.vue')
+const ArticleMdContentModule = defineAsyncComponent(() => {
+  return import('@/views/page/article/components/content/ArticleMdContent.vue')
 })
 const route = useRoute()
 const router = useRouter()
@@ -16,29 +16,28 @@ const labelName = ref('')
 const sortName = ref('')
 const spinning = ref(true)
 
-const UpGive = debounce(() => {
+const upGive = debounce(() => {
   articleForm.give += 1
   ArticleApi.updatePortion(articleForm, 'Give')
 }, 1000)
 
-async function UpRead(data: any) {
+async function upRead(data: any) {
   if (data === null) return
   data.read += 1
   await ArticleApi.updatePortion(data, 'Read')
 }
 onMounted(async () => {
-  await ArticleApi.getById(aid.id).then((data: any) => {
-    const rData = data.data
-    UpRead(rData)
-    articleForm.name = rData.name
-    articleForm.text = rData.text
-    articleForm.give = rData.give
-    articleForm.read = rData.read
-    articleForm.timeCreate = rData.timeCreate
-    labelName.value = rData.tag.name
-    sortName.value = rData.type.name
-    spinning.value = false
-  })
+  const data = await ArticleApi.getById(aid.id)
+  const rData = data.data
+  upRead(rData)
+  articleForm.name = rData.name
+  articleForm.text = rData.text
+  articleForm.give = rData.give
+  articleForm.read = rData.read
+  articleForm.timeCreate = rData.timeCreate
+  labelName.value = rData.tag.name
+  sortName.value = rData.type.name
+  spinning.value = false
   Tool.backTop()
 })
 </script>
@@ -60,13 +59,13 @@ onMounted(async () => {
         <span class="mr-1">收藏</span>
       </div>
     </div>
-    <md :loading="spinning" :result="articleForm.text"></md>
+    <ArticleMdContentModule :loading="spinning" :result="articleForm.text"></ArticleMdContentModule>
     <div class="icont-ft">
       <div class="icont-ft-title">
         <p>本文链接：原创文章转载请注明</p>
       </div>
       <div class="icont-cont">
-        <div class="flex" @click="UpGive">
+        <div class="flex items-center" @click="upGive">
           <div i-fxemoji-beating-heart h-5 w-5></div>
           {{ articleForm.give }}
         </div>
@@ -83,24 +82,25 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .article-content {
-  @apply bg-white;
+  @apply bg-white rounded;
 
   .icont-ft {
     .icont-ft-title {
-      @apply p-1;
+      @apply p-1 text-base;
 
       p {
-        border-bottom: 1.5px dashed #afa6a6;
+        border-bottom: 1.2px dashed #afa6a6;
 
-        @apply font-light m-1 text-sm py-1 pb-2;
+        @apply font-light m-1 py-1 pb-2;
       }
     }
 
     .icont-cont {
-      @apply flex mb-150 p-2 text-sm text-cool-gray-500;
+      @apply flex mb-150 p-2 text-base text-cool-gray-600;
 
       div {
         @apply mx-1 cursor-pointer rounded;
+        @apply hover:text-red-400;
       }
     }
   }

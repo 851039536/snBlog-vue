@@ -25,15 +25,21 @@ const onScroll3 = (type: number) => {
       <v-md-preview :text="blog" model="preview" />
     </div>
   </div>
-  <div fixed class="right-80 bottom-5 cursor-pointer z-1">
-    <button p-1 @click="onScroll('top')">顶部</button>
-    <button p-1 @click="onScroll('bottom')">底部</button>
-    <button p-1 @click="onScroll2(200)">下滑</button>
-    <button p-1 @click="onScroll3(200)">上划</button>
+  <div fixed class="btn">
+    <button @click="onScroll('top')">顶部</button>
+    <button @click="onScroll('bottom')">底部</button>
+    <button @click="onScroll2(200)">下滑</button>
+    <button @click="onScroll3(200)">上划</button>
   </div>
 </template>
 
 <style lang="scss" scoped>
+// .v-md-editor-preview,
+// .github-markdown-body,
+// p {
+//   @apply bg-emerald-300 text-xs;
+// }
+
 .cont {
   @apply flex flex-nowrap;
   @apply rounded h-840px shadow mt-1;
@@ -43,6 +49,16 @@ const onScroll3 = (type: number) => {
     @apply mt-1 w-[75%] overflow-auto;
 
     scroll-behavior: smooth;
+  }
+}
+
+.btn {
+  @apply right-75 bottom-1 cursor-pointer z-1;
+
+  button {
+    @apply bg-white border-none px-3 mr-1px py-1;
+    @apply rounded shadow;
+    @apply hover:text-red-500;
   }
 }
 </style>

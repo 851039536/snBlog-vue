@@ -23,33 +23,19 @@ defineProps({
 
 <style lang="scss" scoped>
 .model-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0 0 0 / 15%);
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: PuHuiTiBASE;
 
-  @apply rounded;
+  @apply fixed top-0 right-0 bottom-0 left-0 z-100 h-full;
+  @apply overflow-auto bg-black/10 rounded;
 }
 
 .modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
-  background: #fff;
-  transform: translate(-50%, -50%);
-
-  @apply rounded;
+  @apply absolute top-1/2 left-1/2 z-100 bg-white;
+  @apply transform -translate-x-1/2 -translate-y-1/2 rounded;
 
   .model-title {
-    height: 32px;
-    text-align: center;
-
+    @apply h-8 text-center;
     @apply text-cool-gray-600 text-lg;
   }
 
@@ -58,14 +44,9 @@ defineProps({
   }
 
   .close {
-    position: absolute;
-    top: 3px;
-    right: 10px;
-    padding: 2px;
-    border: none;
-    cursor: pointer;
-
-    @apply bg-white;
+    @apply absolute top-0px right-0 px-3;
+    @apply border-none cursor-pointer bg-emerald-50;
+    @apply hover:text-red-400;
   }
 }
 </style>

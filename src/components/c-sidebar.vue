@@ -95,11 +95,13 @@ onMounted(async () => {
 
 <style lang="scss">
 .lside {
+  // font-family: PuHuiTiBASE;
+
   @apply h-[91%] top-[9%] left-[12%] w-195px fixed;
   @apply bg-white rounded shadow;
 
   .lside-list {
-    @apply text-cool-gray-600 text-center text-lg;
+    @apply text-center text-lg;
     @apply cursor-pointer transition duration-500 hover:bg-blue-400 rounded;
 
     div {

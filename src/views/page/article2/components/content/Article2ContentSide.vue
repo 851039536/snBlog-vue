@@ -25,7 +25,6 @@ const GetApi = async (id: number) => {
         <span>赞 {{ r.give }}</span>
         <span>{{ r.timeCreate.substring(0, 10) }}</span>
         <span>编辑</span>
-        <span>收藏</span>
       </div>
     </div>
   </div>
@@ -33,13 +32,16 @@ const GetApi = async (id: number) => {
 
 <style lang="scss" scoped>
 .side {
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: PuHuiTiXL;
+
   @apply cursor-pointer shadow w-[25%] overflow-auto;
 
   .side-col {
     @apply m-1 shadow p-1;
 
     .side-col-title {
-      @apply p-1 text-base;
+      @apply p-1 text-sm;
       @apply bg-blue-50 rounded;
       @apply hover:text-blue-400;
     }

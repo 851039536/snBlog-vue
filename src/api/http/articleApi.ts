@@ -3,6 +3,11 @@ import { IArticle } from '@/api/data/InterData'
 import { Tool } from '@/utils/common/Tool'
 import { get, add, update, del } from '@/api/http/funApi'
 
+enum api {
+  sum = '/article/sum?',
+  contains = '/article/contains?'
+}
+
 export class ArticleApi {
   /**
    * @description: 查询总数
@@ -11,7 +16,7 @@ export class ArticleApi {
    * @param {boolean} cache 缓存
    */
   static getSum(identity = 0, type = 'null', cache = true) {
-    const url = `/article/sum?identity=${identity}&type=${type}&cache=${cache}`
+    const url = `${api.sum}identity=${identity}&type=${type}&cache=${cache}`
     return get(url, false)
   }
 
@@ -23,9 +28,11 @@ export class ArticleApi {
    * @param cache 缓存
    */
   static async getContains(identity = 0, type = 'null', name = '', cache = true) {
-    const data = await request(`/article/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+    const data = await request(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
     Tool.momentTimeList(data)
     return data
+
+    // /article/contains?identity=0&type=null&name=c&cache=false
   }
 
   /**

@@ -22,7 +22,7 @@ defineProps({
 </script>
 
 <template>
-  <!-- <div class="stn">
+  <c-right-sidebar-container>
     <div class="stn-title">
       <div i-fxemoji-smallsmile w-32px h-24px></div>
       <div>{{ title }}</div>
@@ -45,32 +45,7 @@ defineProps({
         <div class="cont-frame-text">{{ res4 }}</div>
       </div>
     </div>
-  </div> -->
-
-  <c-sidebar-container>
-    <div class="stn-title">
-      <div i-fxemoji-smallsmile w-32px h-24px></div>
-      <div>{{ title }}</div>
-    </div>
-    <div class="stn-cont">
-      <div class="cont-frame">
-        <div class="cont-frame-title">{{ title1 }}:</div>
-        <div class="cont-frame-text">{{ res1 }} 篇</div>
-      </div>
-      <div class="cont-frame">
-        <div class="cont-frame-title">{{ title2 }}:</div>
-        <div class="cont-frame-text">{{ res2 }} 字</div>
-      </div>
-      <div class="cont-frame">
-        <div class="cont-frame-title">{{ title3 }}:</div>
-        <div class="cont-frame-text">{{ res3 }} ℃</div>
-      </div>
-      <div class="cont-frame">
-        <div class="cont-frame-title">{{ title4 }}:</div>
-        <div class="cont-frame-text">{{ res4 }}</div>
-      </div>
-    </div>
-  </c-sidebar-container>
+  </c-right-sidebar-container>
 </template>
 
 <style lang="scss" scoped>

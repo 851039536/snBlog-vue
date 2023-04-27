@@ -9,11 +9,11 @@ VideoApi.getSum(0, '0', true).then((res: any) => {
 
 <template>
   <c-right-sidebar>
-    <c-sidebar-container>
+    <c-right-sidebar-container>
       <div class="side-title">燃向视频收集</div>
-    </c-sidebar-container>
+    </c-right-sidebar-container>
 
-    <c-sidebar-container>
+    <c-right-sidebar-container>
       <div class="side-list">
         <div class="flex items-center">
           <div i-fxemoji-shavedice w-5 h-5 mr-1></div>
@@ -24,7 +24,7 @@ VideoApi.getSum(0, '0', true).then((res: any) => {
           <div>{{ sum }}篇</div>
         </div>
       </div>
-    </c-sidebar-container>
+    </c-right-sidebar-container>
   </c-right-sidebar>
 </template>
 

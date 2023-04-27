@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api'
-import { winUrl } from '@/hooks/routers'
-import { rArticle, rSearchName } from '../../data'
+import { winUrl } from '@/utils/route'
+import { rArticle, searchName } from '../../data'
 
 //自定义函数，父组件可以触发
 async function search() {
-  rArticle.value = await (await ArticleApi.getContains(0, 'null', rSearchName.value)).data
+  rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value)).data
 }
 </script>
 <template>
   <div class="m-1">
     <input
-      v-model="rSearchName"
+      v-model="searchName"
       v-focus
       class="rounded h-10 w-full text-xl outline-none border-0 bg-gray-200"
       placeholder="搜索..."

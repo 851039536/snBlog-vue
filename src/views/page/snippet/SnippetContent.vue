@@ -25,7 +25,6 @@ const handleScroll = async () => {
     const isAtBottom = containerEl.scrollHeight - containerEl.scrollTop === containerEl.clientHeight
     console.log(isAtBottom + containerEl.clientHeight)
     if (isAtBottom && containerEl.clientHeight > 300) {
-      console.log('%c [  ]-29', 'font-size:13px; background:pink; color:#bf2c9f;', '调用GetAll')
       pageSize.value += 5
       await ScrollSnippet()
     }

@@ -17,31 +17,17 @@ const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事
 
 <style lang="scss" scoped>
 .model-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  overflow: auto;
-  background-color: #00000010;
+  @apply fixed top-0 right-0 bottom-0 left-0 z-100 h-full;
+  @apply overflow-auto bg-black/10 rounded;
 }
 
 .modal-content {
-  position: absolute;
-  top: 46%;
-  left: 50%;
-  z-index: 100;
-  background: #fff;
-  transform: translate(-50%, -50%);
-
-  @apply h-750px rounded shadow;
+  @apply absolute top-[46%] left-1/2 z-100 h-750px;
+  @apply transform -translate-x-1/2 -translate-y-1/2 rounded;
+  @apply bg-white rounded shadow;
 
   .model-body {
-    width: 650px;
-    padding: 25px;
-
-    @apply h-650px;
+    @apply w-650px h-650px p-6;
   }
 
   .model-body::-webkit-scrollbar {
@@ -49,14 +35,9 @@ const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事
   }
 
   .close {
-    position: absolute;
-    top: 3px;
-    right: 10px;
-    padding: 2px;
-    border: none;
-    cursor: pointer;
-
-    @apply bg-white;
+    @apply absolute top-0px right-0 px-3;
+    @apply border-none cursor-pointer bg-emerald-50;
+    @apply hover:text-red-400;
   }
 }
 </style>

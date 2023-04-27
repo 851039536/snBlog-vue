@@ -6,8 +6,8 @@ import { headVisible, sideVisible } from '@/utils/common/IdentityData'
 import { useWindowScroll } from '@vueuse/core'
 const { y } = useWindowScroll()
 
-const rArticle: any = ref([])
-const state = reactive({
+const articleData: any = ref([])
+const paging = reactive({
   page: 1,
   pagesize: 6,
   count: 0,
@@ -16,18 +16,20 @@ const state = reactive({
   current: 1
 })
 
-async function GetSum(identity: number, type: string) {
-  state.count = await (await ArticleApi.getSum(identity, type)).data
+async function getSum(identity: number, type: string) {
+  paging.count = await (await ArticleApi.getSum(identity, type)).data
 }
 async function QPaging() {
-  rArticle.value = await (await ArticleApi.getPaging(state.identity, state.typeStr, state.current, state.pagesize)).data
+  articleData.value = await (
+    await ArticleApi.getPaging(paging.identity, paging.typeStr, paging.current, paging.pagesize)
+  ).data
 }
 
 function QImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
 const scDisabled = computed(() => {
-  return rArticle.value.length <= state.count
+  return articleData.value.length <= paging.count
 })
 const cheight = ref(50)
 
@@ -40,7 +42,7 @@ watch(
       if (y.value > cheight.value) {
         console.log('触发加载')
         cheight.value += 400
-        state.pagesize += 3
+        paging.pagesize += 3
         await QPaging()
       }
     }
@@ -50,7 +52,7 @@ watch(
 onMounted(async () => {
   sideVisible.value = true
   headVisible.value = true
-  await axios.all([await GetSum(0, aData.NULL), await QPaging()])
+  await axios.all([await getSum(0, aData.NULL), await QPaging()])
   window.onresize = function () {
     console.log('宽度', document.documentElement.clientWidth)
     console.log('高度', document.documentElement.clientHeight)
@@ -65,7 +67,7 @@ onMounted(async () => {
       <div class="p-1 hover:text-blue-400">最新</div>
       <div class="p-1 hover:text-blue-400">最新</div>
     </div>
-    <div v-for="r in rArticle" :key="r.id" class="blog">
+    <div v-for="r in articleData" :key="r.id" class="blog">
       <div class="blog-cont">
         <div class="blog-cont-img">
           <img v-lazy="QImageUrl(r.img)" />
@@ -129,9 +131,5 @@ onMounted(async () => {
       }
     }
   }
-}
-
-.blog-page {
-  @apply bg-white mt-1 shadow w-full py-5;
 }
 </style>

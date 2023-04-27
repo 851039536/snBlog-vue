@@ -35,9 +35,9 @@ onMounted(() => {
 })
 </script>
 <template>
-  <c-sidebar-container>
+  <c-right-sidebar-container>
     <div class="sidelb-name">
-      <div i-flat-color-icons-radar-plot h-22px w-32px></div>
+      <div i-flat-color-icons-radar-plot h-5 w-32px></div>
       {{ name }}
     </div>
     <div v-for="r in rData" :key="r.id" class="inline-flex" @click="getTopic(r.id)">
@@ -45,7 +45,7 @@ onMounted(() => {
         {{ r.name }}
       </div>
     </div>
-  </c-sidebar-container>
+  </c-right-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
@@ -55,12 +55,12 @@ onMounted(() => {
 }
 
 .sidelb-col {
-  @apply flex-1 m-1 text-sm text-center p-1;
+  @apply flex-1 m-1 text-sm px-1 py-1px text-center;
   @apply rounded bg-gray-100 shadow-2xl cursor-pointer;
   @apply hover:bg-blue-400 hover:text-white;
 }
 
 .sidelb-col.active {
-  @apply text-cool-gray-50 bg-blue-400;
+  @apply text-cool-gray-50 bg-blue-500;
 }
 </style>

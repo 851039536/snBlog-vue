@@ -173,7 +173,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         charset: true, // 避免出现: build时的 @charset 必须在第一行的警告
-        additionalData: '@import "./src/design/methodCss.scss";' // 添加公共样式
+        additionalData: '@import "./src/design/common.scss";' // 添加公共样式
       },
       less: {
         javascriptEnabled: true

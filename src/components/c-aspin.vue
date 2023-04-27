@@ -3,10 +3,6 @@ import { loadingVisible } from '@/utils/common/IdentityData'
 loadingVisible.value = true
 </script>
 <template>
-  <!-- <div v-show="aspShow" class="spinner">
-    <div class="double-bounce1"></div>
-    <div class="double-bounce2"></div>
-  </div> -->
   <div v-show="loadingVisible" class="spinner">
     <div class="cube1"></div>
     <div class="cube2"></div>
@@ -24,20 +20,14 @@ section {
 }
 
 .spinner {
-  width: 20px;
-  height: 20px;
-
   @apply top-0 left-0 bottom-0 right-0 m-auto z-3000 fixed;
+  @apply w-5 h-5;
 }
 
 .cube1,
 .cube2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 13px;
-  height: 13px;
-  background-color: rgb(172 154 154);
+  @apply absolute top-0 left-0 w-3 h-3 bg-blue-300;
+
   animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 

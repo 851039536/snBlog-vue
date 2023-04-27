@@ -44,14 +44,14 @@ const routes: RouteRecordRaw[] = [
         path: 'content',
         name: 'content',
         component: () => {
-          return import('@/views/page/article/components/ArticleContent.vue')
+          return import('@/views/page/article/components/content/ArticleContent.vue')
         }
       },
       {
         path: 'column',
         name: 'column',
         component: () => {
-          return import('@/views/page/article/components/ArticleColumn.vue')
+          return import('@/views/page/article/components/column/ArticleColumn.vue')
         }
       },
       {

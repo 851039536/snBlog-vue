@@ -14,7 +14,7 @@ function routers(path: string) {
 }
 
 /**
- * @description: 路由跳转{id}
+ * @description: 跳转到指定的路由
  * @param {string} path
  * @param {number} id
  */

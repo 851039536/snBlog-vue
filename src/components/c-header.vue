@@ -137,9 +137,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .login {
-  text-align: center;
-
-  @apply w-400px;
+  @apply w-400px text-center;
 
   p {
     @apply text-2xl;
@@ -147,15 +145,7 @@ onMounted(async () => {
 }
 
 .login-put {
-  width: 100%;
-  height: 48px;
-  margin-bottom: 10px;
-  font-size: 22px;
-  background-color: #fff;
-  border: none;
-  border-bottom: 2px solid rgb(95 90 90);
-  outline: none;
-
+  @apply w-full h-12 mb-10px text-xl bg-white border-b-2 border-gray-300;
   @apply cursor-pointer;
 }
 
@@ -166,19 +156,17 @@ onMounted(async () => {
 
 input {
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  padding: 0;
   padding: 10px 15px;
   border: 1.2px solid #c0c4cc;
   border-radius: 5px;
-  outline-style: none;
 
   &:focus {
     border-color: #f07b00;
     outline: 0;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%), #f07b00;
+    box-shadow: inset 0 1px 1px rgb(218 150 150 / 7.5%), #f07b00;
   }
+
+  @apply w-full h-full;
 }
 
 .head {

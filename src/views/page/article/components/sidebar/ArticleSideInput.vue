@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api'
 import { searchVisible } from '@/utils/common/IdentityData'
-import { rArticle, rSearchName } from '../../data'
+import { rArticle, searchName } from '../../data'
 async function search() {
-  rArticle.value = await (await ArticleApi.getContains(0, 'null', rSearchName.value, false)).data
+  rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value, false)).data
 }
 async function onSearch() {
-  if (rSearchName.value === '') {
+  if (searchName.value === '') {
     searchVisible.value = false
     return
   }
@@ -15,16 +15,16 @@ async function onSearch() {
 }
 </script>
 <template>
-  <c-sidebar-container>
+  <c-right-sidebar-container>
     <div class="side-input">
       <a-input-search
-        v-model:value="rSearchName"
+        v-model:value="searchName"
         placeholder="内容搜索"
         style="width: 100%"
         @search="onSearch()"
         @change="onSearch()" />
     </div>
-  </c-sidebar-container>
+  </c-right-sidebar-container>
 </template>
 
 <style lang="scss" scoped>

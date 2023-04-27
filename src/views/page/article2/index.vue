@@ -3,17 +3,21 @@ import { ArticleApi, ArticleTagApi } from '@/api'
 const articleCount = ref('')
 const textCount = ref('')
 const readCount = ref('')
-const articleStr = ref('')
+const time = ref('')
 const rTag = ref([])
 onMounted(async () => {
-  rTag.value = await (await ArticleTagApi.getAll(true)).data
-  articleCount.value = await (await ArticleApi.getSum()).data
-  articleCount.value = String(articleCount.value)
-  textCount.value = await (await ArticleApi.getStrSum(0, 1)).data
-  textCount.value = String(textCount.value)
-  readCount.value = await (await ArticleApi.getStrSum(0, 2)).data
-  readCount.value = String(readCount.value)
-  articleStr.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
+  time.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
+
+  const [tags, articleSums, textSums, readSums] = await axios.all([
+    ArticleTagApi.getAll(true),
+    ArticleApi.getSum(),
+    ArticleApi.getStrSum(0, 1),
+    ArticleApi.getStrSum(0, 2)
+  ])
+  rTag.value = tags.data // 文章总数
+  articleCount.value = String(articleSums.data) // 文章总数
+  textCount.value = String(textSums.data) // 字数总数
+  readCount.value = String(readSums.data) // 阅读总数
 })
 </script>
 <template>
@@ -32,13 +36,16 @@ onMounted(async () => {
         :res1="articleCount"
         :res2="textCount"
         :res3="readCount"
-        :res4="articleStr.substring(0, 10)"></c-statistics>
+        :res4="time.substring(0, 10)"></c-statistics>
     </c-right-sidebar>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .index {
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  // font-family: PuHuiTiXL;
+
   @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
   @apply bg-white;
 }
