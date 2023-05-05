@@ -22,7 +22,7 @@ defineProps({
 <template>
   <c-right-sidebar-container>
     <div class="tool-name">
-      <div i-flat-color-icons-edit-image w-5 h-5 mr-1></div>
+      <div i-flat-color-icons-edit-image mr-1 h-5 w-5></div>
       <div>{{ name }}</div>
     </div>
     <div v-for="r in rData" :key="r.id" class="inline-flex">

@@ -8,7 +8,7 @@ import { blog } from '../data'
  */
 const sideIndex = ref(0)
 const emit = defineEmits(['refresh'])
-const GetApi = async (id: number) => {
+const getApi = async (id: number) => {
   emit('refresh', 123) // onScroll('top')
   sideIndex.value = id
   blog.value = await (await ArticleApi.getById(id)).data.text
@@ -17,7 +17,7 @@ const GetApi = async (id: number) => {
 <template>
   <div class="side">
     <div v-for="r in rArticle" :key="r.id" class="side-col">
-      <div v-debounce:200="() => GetApi(r.id)" class="side-col-title" :class="sideIndex == r.id ? 'active' : ''">
+      <div v-debounce:200="() => getApi(r.id)" class="side-col-title" :class="sideIndex == r.id ? 'active' : ''">
         <span>{{ r.name }}</span>
       </div>
       <div class="side-col-txt">

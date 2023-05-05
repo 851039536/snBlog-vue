@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { blog } from './data'
+import { blog } from '../data'
 const xxxRef = ref()
 const onScroll = (type: string) => {
   nextTick(() => {
@@ -20,8 +20,8 @@ const onScroll3 = (type: number) => {
 </script>
 <template>
   <div class="cont">
-    <Article2ContentSide @refresh="onScroll('top')"></Article2ContentSide>
-    <div ref="xxxRef" class="cont-txt">
+    <Article2RightSidebar @refresh="onScroll('top')"></Article2RightSidebar>
+    <div ref="xxxRef" class="cont-txt scrollbar-w-2 scrollbar">
       <v-md-preview :text="blog" model="preview" />
     </div>
   </div>
@@ -33,12 +33,9 @@ const onScroll3 = (type: number) => {
   </div>
 </template>
 
-<style lang="scss" scoped>
-// .v-md-editor-preview,
-// .github-markdown-body,
-// p {
-//   @apply bg-emerald-300 text-xs;
-// }
+<style lang="scss">
+/* stylelint-disable-next-line string-quotes */
+@import '../../../../../design/md_sm';
 
 .cont {
   @apply flex flex-nowrap;
@@ -48,7 +45,7 @@ const onScroll3 = (type: number) => {
   .cont-txt {
     @apply mt-1 w-[75%] overflow-auto;
 
-    scroll-behavior: smooth;
+    // @apply scrollbar scrollbar-w-2;
   }
 }
 

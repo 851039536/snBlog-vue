@@ -48,5 +48,5 @@ function eacapeReg(val: string): string {
 </script>
 
 <template>
-  <div v-html="brightenKeyword(hText, text, color)"></div>
+  <div v-dompurify-html="brightenKeyword(hText, text, color)"></div>
 </template>

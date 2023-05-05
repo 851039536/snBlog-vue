@@ -5,7 +5,7 @@
     <div class="book-main">
       <BookBar></BookBar>
       <BookFilm></BookFilm>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+      <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-3">
         <div class="book-film-text">
           <div class="book-img">
             <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
@@ -77,7 +77,7 @@
 
 <style lang="scss" scoped>
 .book {
-  @apply s-hw fixed;
+  @apply fixed;
 
   .book-main {
     @apply h-[90%] mt-[4.5%] ml-[22%] w-[47%];

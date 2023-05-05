@@ -104,8 +104,8 @@ onMounted(async () => {
           <span>{{ record.user.name }}</span>
         </template>
         <template v-if="column.dataIndex === 'identity'">
-          <span v-if="record.identity == 0" class="text-red-600 text-xl">x</span>
-          <span v-if="record.identity == 1" class="text-green-600 text-xl">√</span>
+          <span v-if="record.identity == 0" class="text-xl text-red-600">x</span>
+          <span v-if="record.identity == 1" class="text-xl text-green-600">√</span>
         </template>
         <template v-if="column.dataIndex === 'edit'">
           <a @click="edit(record.id)">修改</a>
@@ -190,8 +190,8 @@ onMounted(async () => {
         </a-select>
       </div>
     </div>
-    <div class="absolute right-15 bottom-2"><a-button :disabled="addDisabled" @click="Add">添加</a-button></div>
-    <div class="absolute right-32 bottom-2"><a-button :disabled="upDisabled" @click="update">更新</a-button></div>
+    <div class="absolute bottom-2 right-15"><a-button :disabled="addDisabled" @click="Add">添加</a-button></div>
+    <div class="absolute bottom-2 right-32"><a-button :disabled="upDisabled" @click="update">更新</a-button></div>
   </c-modal-dialog>
 </template>
 

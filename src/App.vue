@@ -20,6 +20,9 @@
 <script lang="ts" setup></script>
 
 <style lang="scss">
+/* 默认导入md的样式 */
+/* stylelint-disable-next-line string-quotes */
+@import './design/md_sm';
 @include scroll;
 
 #app {

@@ -153,7 +153,7 @@ onMounted(async () => {
 
 <template>
   <div class="sn-content">
-    <div class="w65% m-auto">
+    <div class="m-auto w65%">
       <a-radio-group v-model:value="radioValue" @change="RadioFun">
         <a-radio value="ALL">默认</a-radio>
         <a-radio value="title">标题</a-radio>
@@ -162,17 +162,17 @@ onMounted(async () => {
         <a-radio value="tag">标签</a-radio>
       </a-radio-group>
       <button
-        class="rounded-sm border-none px-2 mr-1 bg-white hover:bg-blue-400 hover:text-light-50"
+        class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
         @click="onScroll('top')">
         顶部
       </button>
       <button
-        class="rounded-sm border-none px-2 mr-1 bg-white hover:bg-blue-400 hover:text-light-50"
+        class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
         @click="onScroll('bottom')">
         底部
       </button>
-      <select v-model="selectValue" class="w-30 h-32px rounded text-base">
-        <option class="bg-blue-50 rounded">ALL</option>
+      <select v-model="selectValue" class="h-32px w-30 rounded text-base">
+        <option class="rounded bg-blue-50">ALL</option>
         <option v-for="res in rSnippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
           {{ res.name }}
         </option>
@@ -184,25 +184,25 @@ onMounted(async () => {
     <div class="bor"></div>
 
     <!-- ref标识 -->
-    <div ref="scrollContainer" class="w-full modal-cont overflow-auto scroll-smooth" @scroll="handleScroll">
+    <div ref="scrollContainer" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
       <div class="test">
         <div v-for="(item, index) in rSnippet" :key="index" class="item">
           <c-highlightText
             :h-text="rName"
             color="red"
             :text="item.name"
-            class="text-xl font-semibold text-center bg-green-300 mx-8 rounded"></c-highlightText>
+            class="mx-8 rounded bg-green-300 text-center text-xl font-semibold"></c-highlightText>
           <div class="mx-8 py-1">
-            <span mr-2 ml-1 class="bg-emerald-200 p-1px rounded">{{ item.type.name }}</span>
-            <span mr-2 ml-1 class="bg-yellow-100 p-1px rounded">{{ item.label.name }}</span>
-            <span mr-2 class="bg-blue-100 p-1px rounded">{{ item.tag.name }}</span>
-            <span mr-2 class="bg-rose-100 p-1px rounded">{{ item.user.nickname }}</span>
+            <span ml-1 mr-2 class="rounded bg-emerald-200 p-1px">{{ item.type.name }}</span>
+            <span ml-1 mr-2 class="rounded bg-yellow-100 p-1px">{{ item.label.name }}</span>
+            <span mr-2 class="rounded bg-blue-100 p-1px">{{ item.tag.name }}</span>
+            <span mr-2 class="rounded bg-rose-100 p-1px">{{ item.user.nickname }}</span>
             <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
           </div>
           <v-md-editor v-model="item.text" mode="preview"></v-md-editor>
         </div>
       </div>
-      <div class="absolute top-0 left-0 text-cool-gray-600 text-sm bg-yellow-100 p-3 rounded">{{ rCharSun }}字</div>
+      <div class="absolute left-0 top-0 rounded bg-yellow-100 p-3 text-sm text-cool-gray-600">{{ rCharSun }}字</div>
     </div>
 
     <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">

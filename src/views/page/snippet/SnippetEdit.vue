@@ -24,23 +24,23 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="w1100px h720px">
+  <div class="h720px w1100px">
     <div class="mb-1">
       <input v-model="snippetForm.name" />
     </div>
     <div class="mb-1">
-      <select v-model="snippetForm.typeId" class="w-30 h-32px border-gray-400 rounded mr-2">
-        <option v-for="res in rSnippetType" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
+      <select v-model="snippetForm.typeId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="res in rSnippetType" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>
-      <select v-model="snippetForm.labelId" class="w-30 h-32px border-gray-400 rounded mr-2">
-        <option v-for="res in rSnippetLabel" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
+      <select v-model="snippetForm.labelId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="res in rSnippetLabel" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>
-      <select v-model="snippetForm.tagId" class="w-30 h-32px border-gray-400 rounded mr-2">
-        <option v-for="res in rSnippetTag" :key="res.id" :value="res.id" class="bg-blue-50 rounded">
+      <select v-model="snippetForm.tagId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="res in rSnippetTag" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>
@@ -51,7 +51,7 @@ onMounted(async () => {
         left-toolbar="undo redo | emoji | clear | h | code"
         height="610px"></v-md-editor>
     </div>
-    <div class="mt-1 mx-1">
+    <div class="mx-1 mt-1">
       <a-button @click="update">更新</a-button>
     </div>
   </div>

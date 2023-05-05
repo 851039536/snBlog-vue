@@ -59,18 +59,18 @@ onMounted(async () => {
 <template>
   <div class="admin">
     <a-layout>
-      <div class="bg-white h-70px mb-1">
-        <div class="float-left h-full flex justify-center items-center">
-          <div class="text-3xl ml-4">控制台</div>
+      <div class="mb-1 h-70px bg-white">
+        <div class="float-left h-full flex items-center justify-center">
+          <div class="ml-4 text-3xl">控制台</div>
         </div>
-        <div class="h-full float-right flex justify-center items-center">
+        <div class="float-right h-full flex items-center justify-center">
           <div class="mr-4">
             <a-popover placement="bottomRight">
               <template #content>
-                <div class="text-center mb-1 cursor-pointer hover:text-blue-400" @click="winUrl('/article/column')">
+                <div class="mb-1 cursor-pointer text-center hover:text-blue-400" @click="winUrl('/article/column')">
                   主页
                 </div>
-                <div class="text-center cursor-pointer hover:text-blue-400" @click="clear()">退出登录</div>
+                <div class="cursor-pointer text-center hover:text-blue-400" @click="clear()">退出登录</div>
               </template>
               <!-- <template #title>
                 <div class="flex">
@@ -93,7 +93,7 @@ onMounted(async () => {
               <a-sub-menu key="sub1">
                 <template #title>
                   <div flex class="items-center">
-                    <div i-fxemoji-bluebook h-5 w-5 mr-2></div>
+                    <div i-fxemoji-bluebook mr-2 h-5 w-5></div>
                     <span>文章展示</span>
                   </div>
                 </template>

@@ -27,12 +27,12 @@ onMounted(async () => {
             <div class="md:w-2/3">
               <input
                 id="inline-full-name"
-                class="rounded bg-gray-200 border-2 border-gray-200 leading-tight w-full py-2 px-4 text-gray-700 appearance-none focus:bg-white focus:outline-none focus:border-purple-500"
+                class="w-full appearance-none border-2 border-gray-200 rounded bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                 type="text"
                 value="666666666666！" />
             </div>
             <button
-              class="rounded font-bold bg-purple-500 shadow text-white py-2 px-3 hover:bg-purple-400 focus:outline-none focus:shadow-outline"
+              class="focus:shadow-outline rounded bg-purple-500 px-3 py-2 font-bold text-white shadow hover:bg-purple-400 focus:outline-none"
               type="button">
               Up
             </button>
@@ -54,7 +54,7 @@ onMounted(async () => {
 
     .bubble-bgwall {
       @apply overflow-hidden relative;
-      @apply m-auto s-hw;
+      @apply m-auto;
 
       // max-width: 1200px;
 

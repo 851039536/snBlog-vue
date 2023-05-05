@@ -16,14 +16,14 @@ const update = async () => {
 }
 </script>
 <template>
-  <div class="w-280px h-120px relative">
+  <div class="relative h-120px w-280px">
     <div>
       <a-input v-model:value="articleTagForm.name" type="text" prefix="标题:" />
     </div>
     <div class="mt-2">
       <a-input v-model:value="articleTagForm.description" type="text" prefix="描述:" />
     </div>
-    <div class="mt-2 absolute bottom-0 right-0">
+    <div class="absolute bottom-0 right-0 mt-2">
       <a-button @click="update">更新</a-button>
     </div>
   </div>

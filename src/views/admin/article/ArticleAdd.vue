@@ -55,7 +55,7 @@ onMounted(async () => {
       <a-textarea v-model:value="articleForm.sketch" />
     </div>
 
-    <div class="flex m-auto px-2 mb-2">
+    <div class="m-auto mb-2 flex px-2">
       <div class="ml-2">
         标签
         <a-select v-model:value="articleForm.tagId" style="width: 120px" placeholder="请选择">

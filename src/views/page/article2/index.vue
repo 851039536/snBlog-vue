@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ArticleApi, ArticleTagApi } from '@/api'
+import { blog } from './components/data'
 const articleCount = ref('')
 const textCount = ref('')
 const readCount = ref('')
@@ -18,6 +19,8 @@ onMounted(async () => {
   articleCount.value = String(articleSums.data) // 文章总数
   textCount.value = String(textSums.data) // 字数总数
   readCount.value = String(readSums.data) // 阅读总数
+
+  blog.value = await (await ArticleApi.getById(392)).data.text
 })
 </script>
 <template>
@@ -26,7 +29,7 @@ onMounted(async () => {
     <Article2Content></Article2Content>
     <c-right-sidebar>
       <CTime></CTime>
-      <Article2SideLb :r-data="rTag" name="标签"></Article2SideLb>
+      <Article2SidebarTag :r-data="rTag" name="标签"></Article2SidebarTag>
       <c-statistics
         title="站点统计"
         title1="文章数量"

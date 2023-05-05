@@ -45,8 +45,8 @@ onMounted(async () => {
 <template>
   <div class="article-content">
     <div class="text-center">
-      <div class="text-2xl p-3 font-semibold">
-        <div i-flat-color-icons-previous mt-1 class="cursor-pointer float-left" @click="router.back()"></div>
+      <div class="p-3 text-2xl font-semibold">
+        <div i-flat-color-icons-previous mt-1 class="float-left cursor-pointer" @click="router.back()"></div>
         <div class="">{{ articleForm.name }}</div>
       </div>
       <div class="pt-1 text-sm text-cool-gray-500">

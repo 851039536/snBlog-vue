@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { NavigationApi } from '@/api'
-import { winUrl } from '@/hooks/routers'
+import { winUrl } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { INav } from '@/api/data/InterData'
 
-const rData: any = reactive({
+const rData = reactive({
   page: 1,
   pagesize: 21,
   count: 0,
@@ -12,7 +12,7 @@ const rData: any = reactive({
   current: 1
 })
 
-const rnavCount = ref(0)
+const sum = ref(0)
 const rnavTable = ref([] as INav[])
 const rNav = ref([] as INav[])
 async function currentchange(val: number) {
@@ -33,7 +33,7 @@ async function clkApi(name: string) {
 onMounted(async () => {
   await GetApi('文档')
   //读取侧边栏信息
-  rnavCount.value = await (await NavigationApi.getCount(0, aData.NULL, true)).data
+  sum.value = await (await NavigationApi.getCount(0, aData.NULL, true)).data
   rnavTable.value = await (await NavigationApi.getNavTypeAll(true)).data
 })
 </script>
@@ -41,8 +41,8 @@ onMounted(async () => {
 <template>
   <section>
     <div class="fa-main">
-      <div class="mx-3 text-base flex items-center">
-        <div i-flat-color-icons-doughnut-chart w-5 h-5 mr-1></div>
+      <div class="mx-3 flex items-center text-base">
+        <div i-flat-color-icons-doughnut-chart mr-1 h-5 w-5></div>
         网站导航
       </div>
       <div class="fa-cont">
@@ -64,16 +64,15 @@ onMounted(async () => {
           @change="currentchange" />
       </div>
     </div>
-    <!-- 右侧边栏 -->
     <div class="faside">
       <div class="faside-describe">
-        <p class>网站收集</p>
+        <p>网站收集</p>
       </div>
       <div class="onecategory">
         <div class="onecategory-name">列表</div>
-        <div v-for="result in rnavTable" :key="result.id" class="inline-flex">
-          <div class="flex-1 m-1 text-base text-center p-1 rounded hover:bg-blue-400">
-            <span @click="clkApi(result.title)">{{ result.title }}</span>
+        <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
+          <div class="flex-1 rounded p-1 text-center text-base m-1 hover:bg-blue-400">
+            <span @click="clkApi(r.title)">{{ r.title }}</span>
           </div>
         </div>
       </div>
@@ -81,7 +80,7 @@ onMounted(async () => {
         <div class="faside-f-title">站点信息</div>
         <div class="faside-f-cont">
           <div class="faside-f-cont-name">内容数量:</div>
-          <div class="faside-f-cont-text">{{ rnavCount }}篇</div>
+          <div class="faside-f-cont-text">{{ sum }}篇</div>
         </div>
       </div>
     </div>
@@ -89,81 +88,81 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.fa-main {
-  @apply relative;
-  @apply mt-[4.3%] ml-[22%] w-[47%];
+// .fa-main {
+//   @apply relative;
+//   @apply mt-[4.3%] ml-[22%] w-[47%];
 
-  .fa-cont {
-    @apply h-full w-full;
-    @apply grid grid-cols-3;
+//   .fa-cont {
+//     @apply h-full w-full;
+//     @apply grid grid-cols-3;
 
-    .fa-cont-list {
-      @include w-h(98%, 96px);
-      @apply m-auto mt-6px;
-      @apply rounded bg-white shadow-sm;
+//     .fa-cont-list {
+//       @include w-h(98%, 96px);
+//       @apply m-auto mt-6px;
+//       @apply rounded bg-white shadow-sm;
 
-      .fa-cont-list1 {
-        @apply cursor-pointer text-lg font-medium py-1 mx-3 hover:text-blue-400;
-        @include line-numbers(1);
-      }
+//       .fa-cont-list1 {
+//         @apply cursor-pointer text-lg font-medium py-1 mx-3 hover:text-blue-400;
+//         @include line-numbers(1);
+//       }
 
-      .fa-cont-list2 {
-        @apply mx-3 text-cool-gray-500;
-        @include line-numbers(2);
-      }
-    }
-  }
+//       .fa-cont-list2 {
+//         @apply mx-3 text-cool-gray-500;
+//         @include line-numbers(2);
+//       }
+//     }
+//   }
 
-  .fa-page {
-    @apply bg-white shadow p-2 m-2 mb-50;
-  }
-}
+//   .fa-page {
+//     @apply bg-white shadow p-2 m-2 mb-50;
+//   }
+// }
 
-.faside {
-  @apply fixed;
-  @apply h-[90%] top-[9%] right-[12%] w-[18%];
+// .faside {
+//   @apply fixed;
+//   @apply h-[90%] top-[9%] right-[12%] w-[18%];
 
-  .faside-describe {
-    @apply m-auto mb-2 w-[97%] bg-white;
-    @apply rounded shadow text-center;
+//   .faside-describe {
+//     @apply m-auto mb-2 w-[97%] bg-white;
+//     @apply rounded shadow text-center;
 
-    p {
-      @apply m-1 text-base py-4 px-2;
-    }
-  }
+//     p {
+//       @apply m-1 text-base py-4 px-2;
+//     }
+//   }
 
-  .faside-footer {
-    @apply m-auto mb-2 p-1 w-[97%] bg-white;
-    @apply rounded cursor-pointer shadow;
+//   .faside-footer {
+//     @apply m-auto mb-2 p-1 w-[97%] bg-white;
+//     @apply rounded cursor-pointer shadow;
 
-    .faside-f-title {
-      @apply m-1 text-base p-1;
-      @apply cursor-pointer font-semibold bg-emerald-300;
-    }
+//     .faside-f-title {
+//       @apply m-1 text-base p-1;
+//       @apply cursor-pointer font-semibold bg-emerald-300;
+//     }
 
-    .faside-f-cont {
-      @apply m-2 text-sm flex;
+//     .faside-f-cont {
+//       @apply m-2 text-sm flex;
 
-      .faside-f-cont-name {
-        @apply p-1 w-[35%];
-      }
+//       .faside-f-cont-name {
+//         @apply p-1 w-[35%];
+//       }
 
-      .faside-f-cont-text {
-        @apply p-1 w-[40%];
-      }
-    }
-  }
+//       .faside-f-cont-text {
+//         @apply p-1 w-[40%];
+//       }
+//     }
+//   }
 
-  .onecategory {
-    @apply m-auto mb-2 p-1 w-[97%];
-    @apply bg-white rounded cursor-pointer;
+//   .onecategory {
+//     @apply m-auto mb-2 p-1 w-[97%];
+//     @apply bg-white rounded cursor-pointer;
 
-    .onecategory-name {
-      @apply m-1 text-base p-1;
-      @apply font-semibold bg-blue-300;
-    }
-  }
-}
+//     .onecategory-name {
+//       @apply m-1 text-base p-1;
+//       @apply font-semibold bg-blue-300;
+//     }
+//   }
+// }
 
 // @screen <xp {
 //   .favorite {

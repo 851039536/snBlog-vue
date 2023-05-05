@@ -24,7 +24,7 @@ defineProps({
 <template>
   <c-right-sidebar-container>
     <div class="stn-title">
-      <div i-fxemoji-smallsmile w-32px h-24px></div>
+      <div i-fxemoji-smallsmile h-24px w-32px></div>
       <div>{{ title }}</div>
     </div>
     <div class="stn-cont">

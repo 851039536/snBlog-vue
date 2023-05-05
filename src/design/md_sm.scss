@@ -1,0 +1,30 @@
+/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
+.v-md-editor-preview {
+  .github-markdown-body {
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+    font-family: PuHuiTiBASE;
+
+    p {
+      @apply text-sm text-gray-600 mb-2;
+    }
+
+    div {
+      @apply text-sm;
+    }
+
+    pre {
+      @apply mb-2;
+    }
+
+    h3 {
+      // @apply text-gray-600 my-3 mt-5;
+    }
+
+    /**
+      //代码块字体
+     */
+    code {
+      @apply rounded-sm;
+    }
+  }
+}

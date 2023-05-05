@@ -48,7 +48,7 @@
           </span>
         </div>
       </div>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4">
+      <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-3">
         <div class="photo-img">
           <img src="https://cdn.share-man.com/mailImage/e8f1120dfaca01d78bc90f0c71e3736e.jpeg" alt="test" />
 
@@ -154,17 +154,6 @@
     }
   }
 }
-
-// html {
-//   width: 100%;
-//   height: 100%;
-// }
-
-// body {
-//   margin: 0;
-//   padding: 0;
-//   background-color: hsl(0deg 0% 0%);
-// }
 
 .bigbox {
   position: relative;

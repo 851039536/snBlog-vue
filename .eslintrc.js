@@ -14,7 +14,8 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'plugin:vue/vue3-recommended', // 让 eslint 识别 vue 文件
     'plugin:prettier/recommended',
-    'prettier' // eslint-config-prettier 的缩写
+    'prettier', // eslint-config-prettier 的缩写
+    '@unocss'
   ],
 
   // 解析器选项

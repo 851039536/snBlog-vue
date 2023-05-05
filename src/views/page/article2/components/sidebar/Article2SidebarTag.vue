@@ -29,9 +29,9 @@ function getTopic(index: number) {
 async function GetApi(name: string) {
   rArticle.value = await (await ArticleApi.getType(2, name)).data
 }
-onMounted(() => {
+onMounted(async () => {
   getTopic(sideIndex.value)
-  // await GetApi('Markdown')
+  await GetApi('语法')
 })
 </script>
 <template>
@@ -40,9 +40,9 @@ onMounted(() => {
       <div i-flat-color-icons-radar-plot h-5 w-32px></div>
       {{ name }}
     </div>
-    <div v-for="r in rData" :key="r.id" class="inline-flex" @click="getTopic(r.id)">
-      <div v-debounce:200="() => GetApi(r.name)" class="sidelb-col" :class="sideIndex == r.id ? 'active' : ''">
-        {{ r.name }}
+    <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id)">
+      <div v-debounce:200="() => GetApi(res.name)" class="sidelb-col" :class="sideIndex == res.id ? 'active' : ''">
+        {{ res.name }}
       </div>
     </div>
   </c-right-sidebar-container>

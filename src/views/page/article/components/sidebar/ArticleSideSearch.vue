@@ -13,7 +13,7 @@ async function search() {
     <input
       v-model="searchName"
       v-focus
-      class="rounded h-10 w-full text-xl outline-none border-0 bg-gray-200"
+      class="h-10 w-full border-0 rounded bg-gray-200 text-xl outline-none"
       placeholder="搜索..."
       @input="search()" />
   </div>
@@ -21,8 +21,8 @@ async function search() {
     <div
       v-for="res in rArticle"
       :key="res.id"
-      class="bg-slate-50 p-2 m-1 rounded hover:bg-blue-400 hover:text-white shadow-sm">
-      <div class="text-lg flex items-center">
+      class="rounded bg-slate-50 p-2 shadow-sm m-1 hover:bg-blue-400 hover:text-white">
+      <div class="flex items-center text-lg">
         <div i-fxemoji-lightbulb h-5 w-6></div>
         <div class="cursor-pointer font-medium" @click="winUrl(`/c-mdContent?id=${res.id}`)">{{ res.name }}</div>
       </div>

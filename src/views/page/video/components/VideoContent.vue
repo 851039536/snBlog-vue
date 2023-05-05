@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="vicont">
+  <div class="videos">
     <div class="vicont-cont">
       <div v-for="r in rData" :key="r.id" class="vicont-cont-list">
         <div class="vicont-2-1-1">
@@ -43,7 +43,7 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.vicont {
+.videos {
   @apply h-[100%] mt-[4.5%] ml-[22%] w-[49.5%];
 
   .vicont-cont {
@@ -51,7 +51,7 @@ defineProps({
     @apply w-full;
 
     .vicont-cont-list {
-      @apply h-[92%] mt-2 w-[98%];
+      @apply h-[80%] mt-2 w-[80%];
       @apply rounded m-auto shadow bg-white;
 
       .vicont-2-1-1 {

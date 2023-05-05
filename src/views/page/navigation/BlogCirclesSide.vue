@@ -20,7 +20,7 @@
         <div class="side-f-content">
           <div class="flex">
             <div class="side-f-content-name">博客:</div>
-            <div class="side-f-content-text">{{ rCount }}位</div>
+            <div class="side-f-content-text">{{ sum }}位</div>
           </div>
         </div>
       </div>
@@ -33,10 +33,10 @@ import { INav } from '@/api/data/InterData'
 import { NavigationApi } from '@/api/index'
 
 const rNav = ref([] as INav[])
-const rCount = ref(0)
+const sum = ref(0)
 onMounted(async () => {
   rNav.value = await (await NavigationApi.getPaging(1, '博客圈', 1, 18, 'id', true, true)).data
-  rCount.value = await (await NavigationApi.getCount(1, '博客圈', true)).data
+  sum.value = await (await NavigationApi.getCount(1, '博客圈', true)).data
 })
 </script>
 <style lang="scss" scoped>

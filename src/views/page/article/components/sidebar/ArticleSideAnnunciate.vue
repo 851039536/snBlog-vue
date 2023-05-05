@@ -9,7 +9,7 @@ defineProps({
 <template>
   <c-right-sidebar-container>
     <div flex py-3px text-base>
-      <div i-flat-color-icons-advertising text-size-25px ml-1 mr-1></div>
+      <div i-flat-color-icons-advertising ml-1 mr-1 text-size-25px></div>
       <span>公告</span>
     </div>
     <div class="desc-cont">{{ name }}</div>

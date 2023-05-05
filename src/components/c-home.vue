@@ -10,17 +10,17 @@ sideVisible.value = false
   <div class="home">
     <div class="home-cont">
       <div class="text-[3rem] text-gray-700">SN BLOG</div>
-      <div class="mt-4 text-lg text-center">
+      <div class="mt-4 text-center text-lg">
         <div>一位热爱生活、全栈开发者,</div>
         <div>表面腼腆,内心奔放。</div>
         <div>建站缘由 搭建一个属于自己的世界。</div>
         <div>基于windiCSS,vue3+ts,NetApi 开发,建站初衷是想学习记录生活。</div>
       </div>
-      <div class="mt-5 text-lg mb-5 animate-bounce">
+      <div class="mb-5 mt-5 animate-bounce text-lg">
         <a class="btn" @click="routers('/article/column')">Go-></a>
       </div>
 
-      <div class="flex p-4 rounded">
+      <div class="flex rounded p-4">
         <div class="m-2">
           <svg t="1666248855271" class="icon" viewBox="0 0 1024 1024" version="1.1" p-id="2370" width="45" height="45">
             <path
@@ -79,7 +79,7 @@ sideVisible.value = false
         </div>
       </div>
 
-      <div class="text-lg mt-5">
+      <div class="mt-5 text-lg">
         <p>
           SN © 2021.Rights Reserved.
           <a href="https://beian.miit.gov.cn/">粤ICP备19130826号-1</a>

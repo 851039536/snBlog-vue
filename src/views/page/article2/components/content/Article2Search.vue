@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api'
 import { throttle } from '@/utils/dethrottle'
-import { rArticle } from '../data'
+import { rArticle } from '../../data'
 
 const search = (name: string) => {
   throttle(async () => {

@@ -1,36 +1,37 @@
 <script lang="ts" setup>
 import { NavigationApi } from '@/api'
 import { IFy, INav } from '@/api/data/InterData'
-import { winUrl } from '@/hooks/routers'
+import { winUrl } from '@/utils/route'
 
-const rData: IFy = reactive({
+const paging: IFy = reactive({
   page: 1,
   pagesize: 18,
   count: 0,
   current: 1
 })
-
 const rNav = ref([] as INav[])
 const rTitle = ref('博客圈')
 async function currentchange(val: number) {
-  rData.current = val
-  rNav.value = await (await NavigationApi.getPaging(1, rTitle.value, val, rData.pagesize, 'id', true, true)).data
+  paging.current = val
+  rNav.value = await (await NavigationApi.getPaging(1, rTitle.value, val, paging.pagesize, 'id', true, true)).data
 }
 
 onMounted(async () => {
-  rNav.value = await (await NavigationApi.getPaging(1, rTitle.value, rData.page, rData.pagesize, 'id', true, true)).data
-  rData.count = await (await NavigationApi.getCount(1, rTitle.value, true)).data
+  rNav.value = await (
+    await NavigationApi.getPaging(1, rTitle.value, paging.page, paging.pagesize, 'id', true, true)
+  ).data
+  paging.count = await (await NavigationApi.getCount(1, rTitle.value, true)).data
 })
 </script>
 <template>
   <div class="circles">
     <blog-circles-side></blog-circles-side>
     <div class="circles-main">
-      <div class="mx-3 text-base flex items-center">
-        <div i-flat-color-icons-idea w-5 h-5 mr-1></div>
+      <div class="mx-3 flex items-center text-base">
+        <div i-flat-color-icons-idea mr-1 h-5 w-5></div>
         博客导航
       </div>
-      <div class="grid circles-content sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xp:grid-cols-3 2xl:grid-cols-3">
+      <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
         <div v-for="res in rNav" :key="res.id" class="circles-1">
           <div class="circles-1-1">
             <img v-lazy="res.img" onerror="this.style.display='none'" />
@@ -50,8 +51,8 @@ onMounted(async () => {
       <div class="circles-page">
         <a-pagination
           size="small"
-          :total="rData.count"
-          :page-size="rData.pagesize"
+          :total="paging.count"
+          :page-size="paging.pagesize"
           show-quick-jumper
           @change="currentchange" />
       </div>

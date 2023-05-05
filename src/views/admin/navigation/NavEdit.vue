@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { NavigationApi } from '@/api'
-import { routers, go, winUrl } from '@/hooks/routers'
+import { routers, go, winUrl } from '@/utils/route'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/RouterInfo'
@@ -50,7 +50,7 @@ onMounted(async () => {
       描述:
       <a-textarea v-model:value="navForm.describe" show-count :maxlength="100" />
     </div>
-    <div class="p-2 flex">
+    <div class="flex p-2">
       <div>
         <a-select v-model:value="navForm.typeId" style="width: 120px">
           <a-select-option v-for="item in rType" :key="item.id" :label="item.id" :value="item.id">
@@ -59,7 +59,7 @@ onMounted(async () => {
         </a-select>
       </div>
 
-      <div class="bg-yellow-50 w-600px flex flex-wrap ml-2 rounded cursor-pointer">
+      <div class="ml-2 w-600px flex flex-wrap cursor-pointer rounded bg-yellow-50">
         <template v-for="item in rType" :key="item.id">
           <div class="m-1 hover:text-blue-400" @click="GetTypeId(item.id)">
             {{ item.title }}

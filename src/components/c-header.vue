@@ -101,12 +101,12 @@ onMounted(async () => {
           <div v-else>
             <a-popover placement="bottomRight">
               <template #content>
-                <div class="text-center mb-1 cursor-pointer hover:text-blue-400" @click="onChange(1)">后台管理</div>
-                <div class="text-center cursor-pointer hover:text-blue-400" @click="onChange(2)">退出登录</div>
+                <div class="mb-1 cursor-pointer text-center hover:text-blue-400" @click="onChange(1)">后台管理</div>
+                <div class="cursor-pointer text-center hover:text-blue-400" @click="onChange(2)">退出登录</div>
               </template>
               <template #title>
                 <div class="flex">
-                  <div class="mt-11px mr-2"><uservg></uservg></div>
+                  <div class="mr-2 mt-11px"><uservg></uservg></div>
                   <div class="m-1">
                     <div>少年</div>
                     <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>

@@ -2,18 +2,22 @@
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
 import { searchVisible } from '@/utils/common/IdentityData'
 
+//使用glob导入实例
+// const modules = import.meta.glob('./components/sidebar/*.vue')
+// const loadView = (view: string) => {
+//   return modules[`./components/sidebar/${view}.vue`]
+// }
 // 定义异步组件函数
 const AsyncComponent = (name: any) => {
   return defineAsyncComponent(() => {
-    return import(`./components/${name}`)
+    return import(/* @vite-ignore */ `./components/sidebar/${name}.vue`)
   })
 }
 
 // 定义异步组件
-const ArticleSideInputModule = AsyncComponent(`sidebar/ArticleSideInput.vue`)
-const ArticleSideSearchModule = AsyncComponent('sidebar/ArticleSideSearch')
-const ArticleSideAnnunciateModule = AsyncComponent('sidebar/ArticleSideAnnunciate')
-// const statisticsModule = AsyncComponent('/src/components/c-statistics.vue')
+const ArticleSideInputModule = AsyncComponent(`ArticleSideInput`)
+const ArticleSideSearchModule = AsyncComponent(`ArticleSideSearch`)
+const ArticleSideAnnunciateModule = AsyncComponent(`ArticleSideAnnunciate`)
 const statisticsModule = defineAsyncComponent(() => {
   return import('/src/components/c-statistics.vue')
 })

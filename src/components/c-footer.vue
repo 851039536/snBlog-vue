@@ -12,7 +12,7 @@
       <template #title>
         <span>Title</span>
       </template>
-      <div i-fxemoji-endwithleftwardsarrow w-6 h-6></div>
+      <div i-fxemoji-endwithleftwardsarrow h-6 w-6></div>
     </a-popover>
   </div>
 </template>

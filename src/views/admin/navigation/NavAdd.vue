@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { go, reloads } from '@/hooks/routers'
 import { NavigationApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
-import { routers } from '@/hooks/routers'
+import { routers, go, reload } from '@/utils/route'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 import { userInfo } from '@/utils/user/UserInfo'
@@ -50,7 +49,7 @@ onMounted(async () => {
         </a-select>
       </div>
 
-      <div class="bg-yellow-50 w-600px flex flex-wrap ml-2 rounded cursor-pointer">
+      <div class="ml-2 w-600px flex flex-wrap cursor-pointer rounded bg-yellow-50">
         <template v-for="item in rType" :key="item.id">
           <div class="m-1 hover:text-blue-400" @click="GetTypeId(item.id)">
             {{ item.title }}
@@ -67,7 +66,7 @@ onMounted(async () => {
     <div class="p-2">
       <a-button type="primary" @click="add">添加</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
-      <a-button style="margin-left: 10px" @click="reloads">刷新</a-button>
+      <a-button style="margin-left: 10px" @click="reload">刷新</a-button>
     </div>
   </div>
 </template>

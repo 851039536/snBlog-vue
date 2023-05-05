@@ -31,7 +31,7 @@ onMounted(async () => {
     <div class="list-cont-title">
       <p>最新内容 / 总 计 10</p>
     </div>
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+    <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-4">
       <div class="list-cont-div">
         <div class="list-cont-text">
           <div class="list-cont-t-title">

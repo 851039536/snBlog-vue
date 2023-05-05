@@ -95,8 +95,8 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/Favorite',
-    name: 'Favorite',
+    path: '/favorite',
+    name: 'favorite',
     meta: {
       keepAlive: false
     },

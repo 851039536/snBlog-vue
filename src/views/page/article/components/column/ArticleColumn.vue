@@ -62,7 +62,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="bg-white rounded-lg cursor-pointer flex">
+    <div class="flex cursor-pointer rounded-lg bg-white">
       <div class="p-1 hover:text-blue-400">热门</div>
       <div class="p-1 hover:text-blue-400">最新</div>
       <div class="p-1 hover:text-blue-400">最新</div>
@@ -88,7 +88,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div v-if="scDisabled" class="text-center mt-2 mb-10 m-1 text-cool-gray-400">数据加载完毕 ^</div>
+    <div v-if="scDisabled" class="mb-10 mt-2 text-center text-cool-gray-400 m-1">数据加载完毕 ^</div>
   </section>
 </template>
 
