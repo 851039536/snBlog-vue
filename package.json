@@ -1,6 +1,6 @@
 {
   "name": "sn-blog",
-  "version": "3.0.1-0",
+  "version": "3.0.1-1",
   "scripts": {
     "dev": "vite --host",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
