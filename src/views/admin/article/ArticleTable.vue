@@ -6,8 +6,8 @@ import { routers, routerId } from '@/utils/route'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 import { aData, aCancel } from '../data'
-import { rRouter } from '@/router/RouterInfo'
-import { userInfo } from '@/utils/user/UserInfo'
+import { rRouter } from '@/router/route-Info'
+import { userInfo } from '@/utils/user/user-info'
 
 const reload: any = inject('reload')
 const rArticle = ref()

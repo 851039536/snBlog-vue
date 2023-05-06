@@ -1,15 +1,16 @@
+@charset "UTF-8";
 /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
 .v-md-editor-preview {
-  .github-markdown-body {
-    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-    font-family: PuHuiTiBASE;
+  /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+  :deep(.github-markdown-body) {
+    font-family: PuHuiTiXL, monospace;
 
     p {
-      @apply text-sm text-gray-600 mb-2;
+      @apply text-base text-gray-700 mb-2;
     }
 
     div {
-      @apply text-sm;
+      @apply text-base;
     }
 
     pre {

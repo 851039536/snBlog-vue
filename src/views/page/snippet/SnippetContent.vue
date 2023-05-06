@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetTagApi, SnippetTypeApi, TOKEN } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { isUserId } from '@/utils/user/UserInfo'
+import { isUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 // JS
@@ -84,9 +84,6 @@ const GetSnippet = async () => {
       return null
   }
 }
-// This code debounces the call to GetSnippet() until there has been no
-// scrolling for 600 milliseconds. This is to prevent the function from being
-// called multiple times while scrolling.
 const ScrollSnippet = debounce(async () => {
   await GetSnippet()
 }, 600)
@@ -187,11 +184,11 @@ onMounted(async () => {
     <div ref="scrollContainer" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
       <div class="test">
         <div v-for="(item, index) in rSnippet" :key="index" class="item">
-          <c-highlightText
+          <custom-highlight-text
             :h-text="rName"
             color="red"
             :text="item.name"
-            class="mx-8 rounded bg-green-300 text-center text-xl font-semibold"></c-highlightText>
+            class="mx-8 rounded bg-green-300 text-center text-xl"></custom-highlight-text>
           <div class="mx-8 py-1">
             <span ml-1 mr-2 class="rounded bg-emerald-200 p-1px">{{ item.type.name }}</span>
             <span ml-1 mr-2 class="rounded bg-yellow-100 p-1px">{{ item.label.name }}</span>
@@ -205,6 +202,7 @@ onMounted(async () => {
       <div class="absolute left-0 top-0 rounded bg-yellow-100 p-3 text-sm text-cool-gray-600">{{ rCharSun }}字</div>
     </div>
 
+    <!-- 编辑模块 -->
     <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
       <SnippetEdit></SnippetEdit>
     </c-modal-dialog>
@@ -213,8 +211,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .sn-content {
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  font-family: PuHuiTiBASE;
+  font-family: PuHuiTiXL, monospace;
 }
 
 .bor {

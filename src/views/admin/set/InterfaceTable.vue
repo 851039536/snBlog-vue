@@ -6,7 +6,7 @@ import { navName } from '../utils/data'
 import { useData } from '../data'
 import { clearInterface, interfaceForm } from '@/api/data/model/IntInterfaceModel'
 import { storage } from '@/utils/storage/storage'
-import { userInfo } from '@/utils/user/UserInfo'
+import { userInfo } from '@/utils/user/user-info'
 import type { SelectProps } from 'ant-design-vue'
 const { cancel, data } = useData()
 const rData = ref([])

@@ -4,9 +4,9 @@ import { useAppStore } from '@/store/pinia'
 import { routers } from '@/utils/route'
 import { UserApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
-import { userInfo, isToken, removeUserStorage } from '@/utils/user/UserInfo'
-import { rRouter } from '@/router/RouterInfo'
-import { headVisible, sideVisible } from '@/utils/common/IdentityData'
+import { userInfo, isToken, removeUserStorage } from '@/utils/user/user-info'
+import { rRouter } from '@/router/route-Info'
+import { headVisible, sideVisible } from '@/utils/common/visible-data'
 
 const store = useAppStore()
 const state = reactive({

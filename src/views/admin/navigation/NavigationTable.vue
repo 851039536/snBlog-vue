@@ -4,9 +4,9 @@ import { columns } from './data'
 import { NavigationApi } from '@/api'
 import { routers, routerId, winUrl } from '@/utils/route'
 import { aData, aCancel } from '../data'
-import { rRouter } from '@/router/RouterInfo'
+import { rRouter } from '@/router/route-Info'
 import { navName } from '../utils/data'
-import { Tool } from '@/utils/common/Tool'
+import { Tool } from '@/utils/common/common-tool'
 
 const reload: any = inject('reload')
 const del = async (data: any) => {

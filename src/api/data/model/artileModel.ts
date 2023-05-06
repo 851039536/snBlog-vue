@@ -12,6 +12,9 @@ export interface IArticle {
   userId: number | string
   timeCreate: any
   timeModified: any
+  tag?: any
+  type?: any
+  user?: any
 }
 
 export const articleForm: IArticle = reactive({

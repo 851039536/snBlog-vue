@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { getUserId } from '@/utils/user/UserInfo'
+import { getUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'

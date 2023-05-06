@@ -17,16 +17,16 @@ const routes: RouteRecordRaw[] = [
     // component: Home
 
     path: '/',
-    name: 'Homes',
+    name: 'homes',
     component: () => {
-      return import('@/components/c-home.vue')
+      return import('@/components/MyHome.vue')
     }
   },
   {
-    path: '/Home',
-    name: 'Home',
+    path: '/home',
+    name: 'home',
     component: () => {
-      return import('@/components/c-home.vue')
+      return import('@/components/MyHome.vue')
     }
   },
   {
@@ -171,7 +171,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/components/c-mdContent.vue')
+      return import('@/components/MyMarkdownContent.vue')
     }
   },
   // ------------------------------------------------------------------------------admin---------------------------------------------------

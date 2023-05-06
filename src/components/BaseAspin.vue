@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { loadingVisible } from '@/utils/common/IdentityData'
+import { loadingVisible } from '@/utils/common/visible-data'
 loadingVisible.value = true
 </script>
 <template>

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { removeUserStorage, userInfo } from '@/utils/user/UserInfo'
+import { removeUserStorage, userInfo } from '@/utils/user/user-info'
 import { storage } from '@/utils/storage/storage'
 import { routers } from '@/utils/route'
-import { rRouter } from '@/router/RouterInfo'
+import { rRouter } from '@/router/route-Info'
 import uservg from '@assets/svg/components/user.svg?component'
-import { headVisible, loginVisible, sideIndex } from '@/utils/common/IdentityData'
+import { headVisible, loginVisible, sideIndex } from '@/utils/common/visible-data'
 import { InterfaceApi, UserApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { useAppStore } from '@/store/pinia'

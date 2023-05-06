@@ -4,7 +4,7 @@ import { columns, snippetLabelData, snippetTagData, snippetTypeData } from './da
 import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
-import { Tool } from '@/utils/common/Tool'
+import { Tool } from '@/utils/common/common-tool'
 import { clearSnippet, snippetForm } from '@/api/data/model/SnippetMode'
 
 const reload: any = inject('reload')

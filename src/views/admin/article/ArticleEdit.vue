@@ -5,7 +5,7 @@ import { rTag, rType } from './data'
 import { routers, go } from '@/utils/route'
 import { navName } from '../utils/data'
 import { aData } from '../data'
-import { rRouter } from '@/router/RouterInfo'
+import { rRouter } from '@/router/route-Info'
 import { articleForm } from '@/api/data/model/ArtileModel'
 
 const route = useRoute()

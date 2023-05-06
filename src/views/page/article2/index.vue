@@ -26,30 +26,26 @@ onMounted(async () => {
 <template>
   <div class="index">
     <Article2Search></Article2Search>
-    <Article2Content></Article2Content>
+    <article2-content></article2-content>
     <c-right-sidebar>
-      <CTime></CTime>
-      <Article2SidebarTag :r-data="rTag" name="标签"></Article2SidebarTag>
-      <c-statistics
+      <base-time></base-time>
+      <article2-sidebar-tag :r-data="rTag" name="标签"></article2-sidebar-tag>
+      <custom-count
         title="站点统计"
-        title1="文章数量"
-        title2="总字符数"
-        title3="热度"
-        title4="最近更新"
-        :res1="articleCount"
-        :res2="textCount"
-        :res3="readCount"
-        :res4="time.substring(0, 10)"></c-statistics>
+        sum-title="文章数量"
+        character-title="总字符数"
+        heat-title="热度"
+        time-title="最近更新"
+        :sum="articleCount"
+        :character="textCount"
+        :heat="readCount"
+        :time="time.substring(0, 10)"></custom-count>
     </c-right-sidebar>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .index {
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  // font-family: PuHuiTiXL;
-
-  @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
   @apply bg-white;
 }
 </style>

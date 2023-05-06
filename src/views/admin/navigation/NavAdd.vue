@@ -5,9 +5,9 @@ import { aData } from '../data'
 import { routers, go, reload } from '@/utils/route'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
-import { userInfo } from '@/utils/user/UserInfo'
+import { userInfo } from '@/utils/user/user-info'
 import { clearNav, navForm } from '@/api/data/model/NavModel'
-import { rRouter } from '@/router/RouterInfo'
+import { rRouter } from '@/router/route-Info'
 
 function GetTypeId(id: number) {
   navForm.typeId = id

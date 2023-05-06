@@ -22,6 +22,7 @@ module.exports = {
     // 'scss/at-rule-no-unknown': null,
     'scss/operator-no-unspaced': null,
     'no-descending-specificity': null,
+    'string-quotes': 'single', // 字符串使用单引号
     // 'at-rule-name-case': 'lower', // 指定@规则名的大小写,
     // 'shorthand-property-no-redundant-values': true, // 简写属性
     'declaration-block-trailing-semicolon': null,

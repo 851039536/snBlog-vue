@@ -1,7 +1,7 @@
 export interface IArticleType {
-  id: number
-  name: string
-  description: string
+  id?: number
+  name?: string
+  description?: string
 }
 export const articleTypeForm: IArticleType = reactive({
   id: 0,

@@ -1,12 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
-import { searchVisible } from '@/utils/common/IdentityData'
+import { searchVisible } from '@/utils/common/visible-data'
 
-//使用glob导入实例
-// const modules = import.meta.glob('./components/sidebar/*.vue')
-// const loadView = (view: string) => {
-//   return modules[`./components/sidebar/${view}.vue`]
-// }
 // 定义异步组件函数
 const AsyncComponent = (name: any) => {
   return defineAsyncComponent(() => {
@@ -19,7 +14,7 @@ const ArticleSideInputModule = AsyncComponent(`ArticleSideInput`)
 const ArticleSideSearchModule = AsyncComponent(`ArticleSideSearch`)
 const ArticleSideAnnunciateModule = AsyncComponent(`ArticleSideAnnunciate`)
 const statisticsModule = defineAsyncComponent(() => {
-  return import('/src/components/c-statistics.vue')
+  return import('/src/components/CustomCount.vue')
 })
 const time = ref() // time of the last article
 const articleSum = ref('') // number of articles
@@ -49,30 +44,32 @@ onMounted(async () => {
 </script>
 <template>
   <div class="blog">
-    <c-back-top></c-back-top>
+    <base-top></base-top>
+
     <router-view v-slot="{ Component }">
-      <transition name="fade" :duration="500">
+      <transition name="fade" :duration="300">
         <component :is="Component" />
       </transition>
     </router-view>
+
     <!-- 侧边栏 -->
     <c-right-sidebar>
       <ArticleSideManager></ArticleSideManager>
-      <CTime></CTime>
+      <base-time></base-time>
       <ArticleSideInputModule></ArticleSideInputModule>
 
       <ArticleSideAnnunciateModule :name="annunciate"></ArticleSideAnnunciateModule>
       <ArticleSideTool :r-data="navData" name="常用工具"></ArticleSideTool>
       <statisticsModule
         title="站点统计"
-        title1="文章数量"
-        title2="总字符数"
-        title3="热度"
-        title4="最近更新"
-        :res1="articleSum"
-        :res2="textSum"
-        :res3="readSum"
-        :res4="time"></statisticsModule>
+        sum-title="文章数量"
+        character-title="总字符数"
+        heat-title="热度"
+        time-title="最近更新"
+        :sum="articleSum"
+        :character="textSum"
+        :heat="readSum"
+        :time="time"></statisticsModule>
     </c-right-sidebar>
 
     <div id="search"></div>
@@ -83,7 +80,7 @@ onMounted(async () => {
 </template>
 <style lang="scss" scoped>
 .blog {
-  --at-apply: h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
+  // --at-apply: h-[92%] mt-[4.6%] ml-[22%] w-[49.5%];
 }
 
 @media screen and (max-width: 768px) {

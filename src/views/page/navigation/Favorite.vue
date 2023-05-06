@@ -11,7 +11,6 @@ const rData = reactive({
   name: '',
   current: 1
 })
-
 const sum = ref(0)
 const rnavTable = ref([] as INav[])
 const rNav = ref([] as INav[])
@@ -64,6 +63,7 @@ onMounted(async () => {
           @change="currentchange" />
       </div>
     </div>
+
     <div class="faside">
       <div class="faside-describe">
         <p>网站收集</p>
@@ -88,98 +88,99 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-// .fa-main {
-//   @apply relative;
-//   @apply mt-[4.3%] ml-[22%] w-[47%];
+.fa-main {
+  // @apply relative;
 
-//   .fa-cont {
-//     @apply h-full w-full;
-//     @apply grid grid-cols-3;
+  // @apply mt-[4.3%] ml-[22%] w-[47%];
 
-//     .fa-cont-list {
-//       @include w-h(98%, 96px);
-//       @apply m-auto mt-6px;
-//       @apply rounded bg-white shadow-sm;
+  .fa-cont {
+    @apply h-full w-full;
+    @apply grid grid-cols-3;
 
-//       .fa-cont-list1 {
-//         @apply cursor-pointer text-lg font-medium py-1 mx-3 hover:text-blue-400;
-//         @include line-numbers(1);
-//       }
+    .fa-cont-list {
+      @include w-h(98%, 96px);
+      @apply m-auto mt-6px;
+      @apply rounded bg-white shadow-sm;
 
-//       .fa-cont-list2 {
-//         @apply mx-3 text-cool-gray-500;
-//         @include line-numbers(2);
-//       }
-//     }
-//   }
+      .fa-cont-list1 {
+        @apply cursor-pointer text-lg font-medium py-1 mx-3 hover:text-blue-400;
+        @include line-numbers(1);
+      }
 
-//   .fa-page {
-//     @apply bg-white shadow p-2 m-2 mb-50;
-//   }
-// }
+      .fa-cont-list2 {
+        @apply mx-3 text-cool-gray-500;
+        @include line-numbers(2);
+      }
+    }
+  }
 
-// .faside {
-//   @apply fixed;
-//   @apply h-[90%] top-[9%] right-[12%] w-[18%];
+  .fa-page {
+    @apply bg-white shadow p-2 m-2 mb-50;
+  }
+}
 
-//   .faside-describe {
-//     @apply m-auto mb-2 w-[97%] bg-white;
-//     @apply rounded shadow text-center;
+.faside {
+  @apply fixed;
+  @apply h-[90%] top-[9%] right-[12%] w-[18%];
 
-//     p {
-//       @apply m-1 text-base py-4 px-2;
-//     }
-//   }
+  .faside-describe {
+    @apply m-auto mb-2 w-[97%] bg-white;
+    @apply rounded shadow text-center;
 
-//   .faside-footer {
-//     @apply m-auto mb-2 p-1 w-[97%] bg-white;
-//     @apply rounded cursor-pointer shadow;
+    p {
+      @apply m-1 text-base py-4 px-2;
+    }
+  }
 
-//     .faside-f-title {
-//       @apply m-1 text-base p-1;
-//       @apply cursor-pointer font-semibold bg-emerald-300;
-//     }
+  .faside-footer {
+    @apply m-auto mb-2 p-1 w-[97%] bg-white;
+    @apply rounded cursor-pointer shadow;
 
-//     .faside-f-cont {
-//       @apply m-2 text-sm flex;
+    .faside-f-title {
+      @apply m-1 text-base p-1;
+      @apply cursor-pointer font-semibold bg-emerald-300;
+    }
 
-//       .faside-f-cont-name {
-//         @apply p-1 w-[35%];
-//       }
+    .faside-f-cont {
+      @apply m-2 text-sm flex;
 
-//       .faside-f-cont-text {
-//         @apply p-1 w-[40%];
-//       }
-//     }
-//   }
+      .faside-f-cont-name {
+        @apply p-1 w-[35%];
+      }
 
-//   .onecategory {
-//     @apply m-auto mb-2 p-1 w-[97%];
-//     @apply bg-white rounded cursor-pointer;
+      .faside-f-cont-text {
+        @apply p-1 w-[40%];
+      }
+    }
+  }
 
-//     .onecategory-name {
-//       @apply m-1 text-base p-1;
-//       @apply font-semibold bg-blue-300;
-//     }
-//   }
-// }
+  .onecategory {
+    @apply m-auto mb-2 p-1 w-[97%];
+    @apply bg-white rounded cursor-pointer;
 
-// @screen <xp {
-//   .favorite {
-//     .fa-main {
-//       @apply fixed;
-//       @apply h-[83%] mt-[6.3%];
+    .onecategory-name {
+      @apply m-1 text-base p-1;
+      @apply font-semibold bg-blue-300;
+    }
+  }
+}
 
-//       .fa-cont {
-//         .fa-cont-list {
-//           @include w-h(31%, 140px);
-//         }
-//       }
-//     }
-//   }
+@screen <xp {
+  .favorite {
+    .fa-main {
+      @apply fixed;
+      @apply h-[83%] mt-[6.3%];
 
-//   .fav-sidebar {
-//     @apply top-[11%];
-//   }
-// }
+      .fa-cont {
+        .fa-cont-list {
+          @include w-h(31%, 140px);
+        }
+      }
+    }
+  }
+
+  .fav-sidebar {
+    @apply top-[11%];
+  }
+}
 </style>

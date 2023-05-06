@@ -1,14 +1,4 @@
-$w: 47%;
-$ml: 26%;
-$back-sidebar: #fffffe;
-$back-headers: #fffffe;
-
-// 侧边栏偏移值
-$sidebar-r-t: 60px;
-$sidebar-r-b: 3%;
-$sidebar-r-l: 3%;
-$sidebar-r-r: 3%;
-$text-height: 9%;
+@charset "UTF-8";
 
 // 渐变色文字
 @mixin gradient-text() {
@@ -117,6 +107,38 @@ $text-height: 9%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* 大于1366 小于1536 */
+@mixin media-2xl {
+  @media screen and (min-width: 1366px) and (max-width: 1536px) {
+    @content;
+    @apply bg-emerald-500;
+  }
+}
+
+/* 大于1200 小于1366 */
+@mixin media-xl {
+  @media screen and (min-width: 1200px) and (max-width: 1366px) {
+    @content;
+    @apply bg-yellow-500;
+  }
+}
+
+/* 大于992 小于1200 */
+@mixin media-lg {
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    @content;
+    @apply bg-blue-500;
+  }
+}
+
+/* 大于768 小于992 */
+@mixin media-base {
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    @content;
+    @apply bg-red-500;
+  }
 }
 
 /* 全局动画过度 */

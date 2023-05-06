@@ -2,10 +2,10 @@
 import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
-import { loadingVisible } from '@/utils/common/IdentityData'
+import { loadingVisible } from '@/utils/common/visible-data'
 import { storage } from '../../utils/storage/storage'
 import { removePending, addPending } from './pending'
-import { removeUserStorage } from '@/utils/user/UserInfo'
+import { removeUserStorage } from '@/utils/user/user-info'
 
 const obj = reactive({
   urls: import.meta.env.VITE_API_DOMAIN

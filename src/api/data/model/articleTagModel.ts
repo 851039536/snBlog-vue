@@ -3,9 +3,9 @@
  * 定义了名为 `IArticleTag` 的接口，这个接口有3个属性：`id`、`name` 和 `description`。每个属性都指定了其对应的类型（数字类型和字符串类型）。
  */
 export interface IArticleTag {
-  id: number
-  name: string
-  description: string
+  id?: number
+  name?: string
+  description?: string
 }
 
 /**

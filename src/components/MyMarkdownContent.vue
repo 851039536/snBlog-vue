@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArticleApi } from '@/api/index'
-import { sideVisible } from '@/utils/common/IdentityData'
+import { sideVisible } from '@/utils/common/visible-data'
 
 const route = useRoute()
 const state: any = reactive({
@@ -59,7 +59,7 @@ onMounted(async () => {
 </script>
 <template>
   <div m-auto w="[78%]">
-    <c-back-top />
+    <base-top />
     <div class="md-content">
       <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.name" />
       <v-md-preview ref="preview" :text="state.blog.text" />
@@ -73,7 +73,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import "../design/md_base";
+@import '../design/md-base';
 
 .md-content {
   @apply bg-white mt-20 mb-800px ml-[3%] w-[75%];

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { routers, winUrl } from '@/utils/route'
 import { navName } from './utils/data'
-import { isToken, removeUserStorage } from '@/utils/user/UserInfo'
-import { rRouter } from '@/router/RouterInfo'
+import { isToken, removeUserStorage } from '@/utils/user/user-info'
+import { rRouter } from '@/router/route-Info'
 import uservg from '@assets/svg/components/user.svg?component'
-import { headVisible, sideVisible } from '@/utils/common/IdentityData'
+import { headVisible, sideVisible } from '@/utils/common/visible-data'
 import { TOKEN } from '@/api'
 
 function clear() {
@@ -157,7 +157,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .admin {
-  @apply h-full w-full z-10 fixed;
+  @apply h-full w-full z-10 fixed top-0 left-0;
   @apply bg-gray-100;
 
   // font-family: PuHuiTiBASE;

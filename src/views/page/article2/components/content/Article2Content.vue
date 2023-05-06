@@ -34,8 +34,7 @@ const onScroll3 = (type: number) => {
 </template>
 
 <style lang="scss">
-/* stylelint-disable-next-line string-quotes */
-@import '../../../../../design/md_sm';
+@import '../../../../../design/md-sm';
 
 .cont {
   @apply flex flex-nowrap;

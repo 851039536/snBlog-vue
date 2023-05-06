@@ -1,6 +1,6 @@
 import request from '@/api/http/axios'
 import { IArticle } from '@/api/data/InterData'
-import { Tool } from '@/utils/common/Tool'
+import { Tool } from '@/utils/common/common-tool'
 import { get, add, update, del } from '@/api/http/funApi'
 
 enum api {

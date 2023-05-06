@@ -44,7 +44,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .videos {
-  @apply h-[100%] mt-[4.5%] ml-[22%] w-[49.5%];
+  // @apply h-[100%] mt-[4.5%] ml-[22%] w-[49.5%];
 
   .vicont-cont {
     @apply grid grid-cols-3;

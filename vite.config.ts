@@ -10,7 +10,7 @@ import { injectHtml } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
-import { ViteTips } from 'vite-plugin-tips'
+// import { ViteTips } from 'vite-plugin-tips'
 import svgLoader from 'vite-svg-loader'
 // Unocss 插件
 import Unocss from 'unocss/vite'
@@ -22,8 +22,7 @@ export default defineConfig({
       reactivityTransform: true //主要是这个开启，ref
     }),
     svgLoader(),
-    ViteTips(), // 服务器状态提示
-    // VitePWA(),
+    // ViteTips(), // 服务器状态提示
     tsconfigPaths(),
     injectHtml({
       injectData: {
@@ -113,8 +112,7 @@ export default defineConfig({
     open: false, // 设置服务启动时是否自动打开浏览器
     cors: true, // 允许跨域,默认启用并允许任何源
     strictPort: false, //设为true时端口被占用则直接退出，不会尝试下一个可用端口
-    // force: true, //是否强制依赖预构建
-    hmr: false, //禁用或配置 HMR 连接
+    hmr: true, //禁用或配置 HMR 连接 热更新
     // proxy: {
     //   '/api': {
     //     target: 'http://localhost:8088/',
@@ -132,13 +130,13 @@ export default defineConfig({
   },
   //强制预构建插件包
   optimizeDeps: {
-    force: true, // true 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
+    force: false, // true 可以强制依赖预构建，而忽略之前已经缓存过的、已经优化过的依赖。
     //检测需要预构建的依赖项
     entries: [],
     // 默认情况下，不在 node_modules 中的，链接的包不会预构建
-    include: ['axios', 'pinia', 'ant-design-vue', '@kangc/v-md-editor'],
+    include: ['axios', 'pinia', 'ant-design-vue', '@kangc/v-md-editor']
     //排除 被监听的包必须被排除在优化之外，以便它能出现在依赖关系图中并触发热更新。
-    exclude: ['xxx']
+    // exclude: ['xxx']
   },
   // 传递给 chockidar 的文件系统监视器选项
 

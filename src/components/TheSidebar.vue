@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { InterfaceApi } from '@/api'
-import { userInfo } from '@/utils/user/UserInfo'
-import { sideVisible, sideIndex } from '@/utils/common/IdentityData'
+import { userInfo } from '@/utils/user/user-info'
+import { sideVisible, sideIndex } from '@/utils/common/visible-data'
 import { routers } from '@/utils/route'
 import { storage } from '@/utils/storage/storage'
 
@@ -74,10 +74,25 @@ onMounted(async () => {
 
 <style lang="scss">
 .lside {
-  // font-family: PuHuiTiBASE;
-
-  @apply h-[91%] top-[9%] left-[12%] w-195px fixed;
+  @apply h-[90%] w-220px fixed;
   @apply bg-white rounded shadow;
+  @apply top-[8.9%] left-[11%];
+
+  @include media-2xl {
+    @apply top-[9.8%] left-[7%] w-214px;
+  }
+
+  @include media-xl {
+    @apply top-[9.1%] left-[6%] w-206px;
+  }
+
+  @include media-lg {
+    @apply top-[9.1%] left-[5.5%] w-180px;
+  }
+
+  @include media-base {
+    display: none;
+  }
 
   .lside-list {
     @apply text-center text-lg;
@@ -90,24 +105,6 @@ onMounted(async () => {
 
   .lside-list.active {
     @apply text-cool-gray-50 bg-blue-400;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .lside {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .lside {
-    @apply top-[10.9%] left-[7%];
-  }
-}
-
-@media screen and (min-width: 1536px) {
-  .lside {
-    @apply top-[8.9%] left-[11%];
   }
 }
 </style>

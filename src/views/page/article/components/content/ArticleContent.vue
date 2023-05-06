@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api/index'
-import { Tool } from '@/utils/common/Tool'
+import { Tool } from '@/utils/common/common-tool'
 import { debounce } from '@/utils/dethrottle'
 import { articleForm } from '@/api/data/model/ArtileModel'
 
-const ArticleMdContentModule = defineAsyncComponent(() => {
-  return import('@/views/page/article/components/content/ArticleMdContent.vue')
+const ArticleContentMdModule = defineAsyncComponent(() => {
+  return import('@/views/page/article/components/content/ArticleContentMd.vue')
 })
 const route = useRoute()
 const router = useRouter()
@@ -59,7 +59,7 @@ onMounted(async () => {
         <span class="mr-1">收藏</span>
       </div>
     </div>
-    <ArticleMdContentModule :loading="spinning" :result="articleForm.text"></ArticleMdContentModule>
+    <ArticleContentMdModule :loading="spinning" :result="articleForm.text"></ArticleContentMdModule>
     <div class="icont-ft">
       <div class="icont-ft-title">
         <p>本文链接：原创文章转载请注明</p>

@@ -1,4 +1,4 @@
-import { rRouter } from '@/router/RouterInfo'
+import { rRouter } from '@/router/route-info'
 import { storage } from '@/utils/storage/storage'
 import { routers } from '../route'
 

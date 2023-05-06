@@ -14,35 +14,33 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
+const emit = defineEmits(['close-model'])
 defineProps({
-  // eslint-disable-next-line vue/require-default-prop
-  title: String, // 标题
-  visible: Boolean // 模态框状态
+  title: {
+    // 标题
+    type: String,
+    require: true,
+    default: '标题'
+  },
+  visible: {
+    // 模态框状态
+    type: Boolean,
+    require: true,
+    default: false
+  }
 })
 </script>
 
 <style lang="scss" scoped>
 .model-bg {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  height: 100%;
-  overflow: auto;
-  background-color: #00000010;
+  @apply fixed top-0 right-0 bottom-0 left-0 z-100 h-full;
+  @apply overflow-auto bg-black/10 rounded;
 }
 
 .modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
-  width: 90%;
+  @apply absolute top-[50%] left-[50%] w-[90%] z-100 bg-white;
+
   min-height: 800px;
-  background: #fff;
   transform: translate(-50%, -50%);
 
   @apply rounded shadow;
@@ -52,14 +50,7 @@ defineProps({
   }
 
   .close {
-    position: absolute;
-    top: 3px;
-    right: 10px;
-    padding: 2px;
-    border: none;
-    cursor: pointer;
-
-    @apply bg-white;
+    @apply w-6 absolute top-0 right-0 p-2px border-none cursor-pointer bg-white;
   }
 }
 </style>

@@ -27,7 +27,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .one {
-  @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
+  // @apply h-[92%] mt-[4.6%] ml-[22%] w-[49.5%] relative;
 
   .one-cont {
     @apply rounded shadow overflow-auto;

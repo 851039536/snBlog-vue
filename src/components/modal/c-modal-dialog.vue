@@ -15,16 +15,22 @@
 <script setup lang="ts">
 const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
 defineProps({
-  // eslint-disable-next-line vue/require-default-prop
-  title: String, // 标题
-  visible: Boolean // 模态框状态
+  title: {
+    type: String,
+    require: true,
+    default: '标题'
+  },
+  visible: {
+    type: Boolean,
+    require: true,
+    default: false
+  }
 })
 </script>
 
 <style lang="scss" scoped>
 .model-bg {
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  font-family: PuHuiTiBASE;
+  font-family: PuHuiTiBASE, monospace;
 
   @apply fixed top-0 right-0 bottom-0 left-0 z-100 h-full;
   @apply overflow-auto bg-black/10 rounded;

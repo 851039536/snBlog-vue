@@ -62,10 +62,10 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .circles {
-  @apply relative;
+  // @apply relative;
 
   .circles-main {
-    @apply mt-[4.3%] ml-[22%] w-[47%];
+    // @apply mt-[4.3%] ml-[22%] w-[47%];
 
     // @apply rounded-sm shadow;
 
