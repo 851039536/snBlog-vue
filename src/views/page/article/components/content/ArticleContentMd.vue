@@ -15,9 +15,6 @@ onBeforeUpdate(() => {
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable-next-line string-quotes */
-// @import '../../../../../design/md-sm';
-
 div {
   @apply bg-white;
 }

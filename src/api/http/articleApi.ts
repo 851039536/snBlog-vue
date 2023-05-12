@@ -1,4 +1,3 @@
-import request from '@/api/http/axios'
 import { IArticle } from '@/api/data/InterData'
 import { Tool } from '@/utils/common/common-tool'
 import { get, add, update, del } from '@/api/http/funApi'
@@ -28,11 +27,9 @@ export class ArticleApi {
    * @param cache 缓存
    */
   static async getContains(identity = 0, type = 'null', name = '', cache = true) {
-    const data = await request(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-    Tool.momentTimeList(data)
+    const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, true)
+    Tool.momentTimeList(data.data)
     return data
-
-    // /article/contains?identity=0&type=null&name=c&cache=false
   }
 
   /**
@@ -41,7 +38,7 @@ export class ArticleApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache = false) {
-    return get(`/article/byid?id=${id}&cache=${cache}`, false)
+    return get(`/article/byid?id=${id}&cache=${cache}`, false, true)
   }
   /**
    * 条件查询 GetTypeAsync
@@ -88,7 +85,7 @@ export class ArticleApi {
       `/article/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
-    await Tool.momentTimeList(data)
+    await Tool.momentTimeList(data.data)
     return data
   }
 

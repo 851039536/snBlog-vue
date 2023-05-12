@@ -9,9 +9,9 @@ import { blog } from '../data'
 const sideIndex = ref(0)
 const emit = defineEmits(['refresh'])
 const getApi = async (id: number) => {
-  emit('refresh', 123) // onScroll('top')
+  emit('refresh', 123)
   sideIndex.value = id
-  blog.value = await (await ArticleApi.getById(id)).data.text
+  blog.value = await (await ArticleApi.getById(id)).data.data.text
 }
 </script>
 <template>
@@ -32,16 +32,13 @@ const getApi = async (id: number) => {
 
 <style lang="scss" scoped>
 .side {
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  font-family: PuHuiTiXL;
-
   @apply cursor-pointer shadow w-[25%] overflow-auto;
 
   .side-col {
     @apply m-1 shadow p-1;
 
     .side-col-title {
-      @apply p-1 text-sm;
+      @apply p-1 text-base;
       @apply bg-blue-50 rounded;
       @apply hover:text-blue-400;
     }

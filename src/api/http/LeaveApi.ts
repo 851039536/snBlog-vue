@@ -1,15 +1,7 @@
-import request from '@/api/http/axios'
+import { get } from './funApi'
 
 export class LeaveApi {
   static getAll(): Promise<any> {
-    return request(
-      {
-        url: '/api/Snleave/GetAllAsync',
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get('/api/Snleave/GetAllAsync')
   }
 }

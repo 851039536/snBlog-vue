@@ -38,7 +38,7 @@ export class SnippetApi {
   // }
   static async getContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
     const url = `/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=${pageIndex}&pageSize=${pageSize}`
-    const res = await request(url, false)
+    const res = await request(url, false, false)
     return res
   }
   /**

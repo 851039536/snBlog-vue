@@ -9,13 +9,6 @@ defineProps({
     default: () => {
       return []
     }
-  },
-  name: {
-    type: String,
-    required: true,
-    default: () => {
-      return ''
-    }
   }
 })
 /**
@@ -26,22 +19,40 @@ function getTopic(index: number) {
   sideIndex.value = index
 }
 
-async function GetApi(name: string) {
-  rArticle.value = await (await ArticleApi.getType(2, name)).data
+async function getApi(name: string) {
+  rArticle.value = await (await ArticleApi.getType(2, name)).data.data
 }
 onMounted(async () => {
   getTopic(sideIndex.value)
-  await GetApi('语法')
+  await getApi('语法')
 })
 </script>
 <template>
   <c-right-sidebar-container>
     <div class="sidelb-name">
-      <div i-flat-color-icons-radar-plot h-5 w-32px></div>
-      {{ name }}
+      <div i-fxemoji-label h-5 w-32px></div>
+      标签
     </div>
-    <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id)">
-      <div v-debounce:200="() => GetApi(res.name)" class="sidelb-col" :class="sideIndex == res.id ? 'active' : ''">
+    <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
+      <div
+        v-debounce:200="() => getApi(res.name as string)"
+        class="sidelb-col"
+        :class="sideIndex == res.id ? 'active' : ''">
+        {{ res.name }}
+      </div>
+    </div>
+  </c-right-sidebar-container>
+
+  <c-right-sidebar-container>
+    <div class="sidelb-name">
+      <div i-fxemoji-waving h-5 w-32px></div>
+      分类
+    </div>
+    <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
+      <div
+        v-debounce:200="() => getApi(res.name as string)"
+        class="sidelb-col"
+        :class="sideIndex == res.id ? 'active' : ''">
         {{ res.name }}
       </div>
     </div>

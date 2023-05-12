@@ -9,6 +9,5 @@
 </template>
 
 <style lang="scss" scoped>
-/* stylelint-disable-next-line string-quotes */
 @import '../index';
 </style>

@@ -30,7 +30,7 @@ onMounted(async () => {
       <div v-if="r.identity" class="flex" @click="routers(r.path)">
         <div v-if="r.path == '/article/column'" class="i-fxemoji-linksymbol" />
         <div v-if="r.path == '/qarticle'" i-flat-color-icons-reddit />
-        <div v-if="r.path == '/one'" i-fxemoji-dog></div>
+        <div v-if="r.path == '/diary'" i-fxemoji-dog></div>
         <div v-if="r.path == '/video'" i-flat-color-icons-headset></div>
         <div v-if="r.path == '/favorite'" i-fxemoji-wiredkeyboard></div>
         <div v-if="r.path == '/BlogCircles'" i-fxemoji-cyclone></div>

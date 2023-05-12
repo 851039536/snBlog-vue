@@ -18,9 +18,11 @@ export enum REQUEST_METHODS {
 /**
  * get request
  * @param url request path
- * @param params query params?
+ * @param params  request query params
+ * @param loading  request loading
+ * @returns  Promise
  */
-export async function get(url: string, params?: any) {
+export async function get(url: string, params?: any, loading?: boolean) {
   const result = await request(
     {
       url,
@@ -28,14 +30,17 @@ export async function get(url: string, params?: any) {
       params
     },
     {
-      qiXiao_cancel: false
+      cancel_request: false
+    },
+    {
+      loading
     }
   )
   return result
 }
 
 export function gets<T = any>(config: AxiosRequestConfig) {
-  return request(config, false).then(res => {
+  return request(config, false, true).then(res => {
     return (res.data.data || res.data) as T
   })
 }
@@ -45,7 +50,7 @@ export function gets<T = any>(config: AxiosRequestConfig) {
  * @param url request path
  * @param data request body params
  */
-export function add(url: string, data: any) {
+export function add(url: string, data: any, loading?: boolean) {
   return request(
     {
       url,
@@ -53,19 +58,25 @@ export function add(url: string, data: any) {
       data
     },
     {
-      qiXiao_cancel: false
+      cancel_request: false
+    },
+    {
+      loading
     }
   )
 }
 
-export function pot(url: string) {
+export function pot(url: string, loading?: boolean) {
   return request(
     {
       url,
       method: REQUEST_METHODS.POST
     },
     {
-      qiXiao_cancel: false
+      cancel_request: false
+    },
+    {
+      loading
     }
   )
 }
@@ -75,7 +86,7 @@ export function pot(url: string) {
  * @param url request path
  * @param data request body params
  */
-export function update(url: string, data: any) {
+export function update(url: string, data: any, loading?: boolean) {
   return request(
     {
       url,
@@ -83,12 +94,15 @@ export function update(url: string, data: any) {
       data
     },
     {
-      qiXiao_cancel: false
+      cancel_request: false
+    },
+    {
+      loading
     }
   )
 }
 
-export function uppost(url: string, data: any) {
+export function uppost(url: string, data: any, loading?: boolean) {
   return request(
     {
       url,
@@ -96,7 +110,10 @@ export function uppost(url: string, data: any) {
       data
     },
     {
-      qiXiao_cancel: false
+      cancel_request: false
+    },
+    {
+      loading
     }
   )
 }
@@ -106,7 +123,7 @@ export function uppost(url: string, data: any) {
  * @param url request path
  * @param data request body params
  */
-export function del(url: string, data?: any) {
+export function del(url: string, data?: any, loading?: boolean) {
   return request(
     {
       url,
@@ -114,7 +131,10 @@ export function del(url: string, data?: any) {
       data
     },
     {
-      qiXiao_cancel: false
+      cancel_request: false
+    },
+    {
+      loading
     }
   )
 }

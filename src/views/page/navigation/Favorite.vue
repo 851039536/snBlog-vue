@@ -89,10 +89,6 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .fa-main {
-  // @apply relative;
-
-  // @apply mt-[4.3%] ml-[22%] w-[47%];
-
   .fa-cont {
     @apply h-full w-full;
     @apply grid grid-cols-3;
@@ -165,22 +161,22 @@ onMounted(async () => {
   }
 }
 
-@screen <xp {
-  .favorite {
-    .fa-main {
-      @apply fixed;
-      @apply h-[83%] mt-[6.3%];
+// @screen <xp {
+//   .favorite {
+//     .fa-main {
+//       @apply fixed;
+//       @apply h-[83%] mt-[6.3%];
 
-      .fa-cont {
-        .fa-cont-list {
-          @include w-h(31%, 140px);
-        }
-      }
-    }
-  }
+//       .fa-cont {
+//         .fa-cont-list {
+//           @include w-h(31%, 140px);
+//         }
+//       }
+//     }
+//   }
 
-  .fav-sidebar {
-    @apply top-[11%];
-  }
-}
+//   .fav-sidebar {
+//     @apply top-[11%];
+//   }
+// }
 </style>

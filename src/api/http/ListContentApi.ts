@@ -1,15 +1,7 @@
-import request from '@/api/http/axios'
+import { get } from './funApi'
 
 export class ListContentApi {
   static cnblogs() {
-    return request(
-      {
-        url: '/api/AngleSharp/Cnblogs',
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get('/api/AngleSharp/Cnblogs', false, true)
   }
 }

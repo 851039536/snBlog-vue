@@ -135,13 +135,13 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/one',
-    name: 'one',
+    path: '/diary',
+    name: 'diary',
     meta: {
       keepAlive: false
     },
     component: () => {
-      return import('@/views/page/one/index.vue')
+      return import('@/views/page/diary/index.vue')
     }
   },
   {

@@ -1,15 +1,7 @@
-import request from '@/api/http/axios'
+import { get } from './funApi'
 
 export class SetBlogApi {
   static getById(id: number, cache: boolean) {
-    return request(
-      {
-        url: `/api/SnSetBlog/GetByIdAsync?id=${id}&cache=${cache}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get(`/api/SnSetBlog/GetByIdAsync?id=${id}&cache=${cache}`, false, true)
   }
 }

@@ -7,7 +7,7 @@ const searchName = ref('')
 const search = () => {
   throttle(async () => {
     if (searchName.value === '') return
-    rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value)).data
+    rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value)).data.data
   }, 300)()
 }
 </script>

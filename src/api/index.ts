@@ -6,7 +6,7 @@ import { UserTalkApi } from './http/UserTalkApi'
 import { SetBlogApi } from './http/SetBlogApi'
 import { LeaveApi } from './http/LeaveApi'
 import { NavigationApi } from './http/NavigationApi'
-import { OneApi } from './http/OneApi'
+import { DiaryApi } from './http/DiaryApi'
 import { VideoApi } from './http/VideoApi'
 import { UserApi } from './http/UserApi'
 import { ListContentApi } from './http/ListContentApi'
@@ -28,6 +28,9 @@ function TOKEN() {
     },
     {
       qiXiao_cancel: false
+    },
+    {
+      loading: false
     }
   )
 }
@@ -40,7 +43,7 @@ export {
   SetBlogApi,
   LeaveApi,
   NavigationApi,
-  OneApi,
+  DiaryApi,
   VideoApi,
   UserApi,
   ListContentApi,

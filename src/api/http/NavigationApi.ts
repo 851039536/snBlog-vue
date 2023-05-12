@@ -1,5 +1,6 @@
 import request from '@/api/http/axios'
 import { INav } from '@/api/data/InterData'
+import { get } from './funApi'
 
 export class NavigationApi {
   /**
@@ -10,15 +11,16 @@ export class NavigationApi {
    * @returns
    */
   static getCount(identity: number, type: string, chche: boolean) {
-    return request(
-      {
-        url: `/api/SnNavigation/GetSunAsync?identity=${identity}&type=${type}&cache=${chche}`,
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    // return request(
+    //   {
+    //     url: `/api/SnNavigation/GetSunAsync?identity=${identity}&type=${type}&cache=${chche}`,
+    //     method: 'get'
+    //   },
+    //   {
+    //     qiXiao_cancel: false
+    //   }
+    // )
+    return get(`/api/SnNavigation/GetSunAsync?identity=${identity}&type=${type}&cache=${chche}`, false)
   }
 
   /**
@@ -36,6 +38,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -54,6 +59,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -71,6 +79,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -101,6 +112,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -118,6 +132,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -135,6 +152,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -152,6 +172,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }
@@ -169,6 +192,9 @@ export class NavigationApi {
       },
       {
         qiXiao_cancel: false
+      },
+      {
+        loading: false
       }
     )
   }

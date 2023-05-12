@@ -34,8 +34,6 @@ const onScroll3 = (type: number) => {
 </template>
 
 <style lang="scss">
-@import '../../../../../design/md-sm';
-
 .cont {
   @apply flex flex-nowrap;
   @apply rounded h-840px shadow mt-1;
@@ -43,8 +41,6 @@ const onScroll3 = (type: number) => {
   // 内容
   .cont-txt {
     @apply mt-1 w-[75%] overflow-auto;
-
-    // @apply scrollbar scrollbar-w-2;
   }
 }
 

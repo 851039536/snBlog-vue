@@ -58,10 +58,10 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div m-auto w="[78%]">
+  <div m-auto>
     <base-top />
     <div class="md-content">
-      <a-page-header style="border: 1px solid rgb(235 237 240)" :title="state.blog.name" />
+      <div class="py-2 text-center text-2xl">{{ state.blog.name }}</div>
       <v-md-preview ref="preview" :text="state.blog.text" />
     </div>
     <div class="md-sidebar">
@@ -76,7 +76,7 @@ onMounted(async () => {
 @import '../design/md-base';
 
 .md-content {
-  @apply bg-white mt-20 mb-800px ml-[3%] w-[75%];
+  @apply bg-white mt-20 mb-800px ml-[3%];
 }
 
 .md-sidebar {

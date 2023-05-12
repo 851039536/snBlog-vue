@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { OneApi } from '@/api/index'
+import { DiaryApi } from '@/api/index'
 
 const state: any = reactive({
   resultOneType: [],
@@ -9,10 +9,10 @@ const state: any = reactive({
 })
 
 const GetApi = async () => {
-  await OneApi.getOneTypeAll().then((res: any) => {
+  await DiaryApi.getOneTypeAll().then((res: any) => {
     state.resultOneType = res.data
   })
-  await OneApi.getPaging(0, '0', 1, 10, 'read', true, true).then((res: any) => {
+  await DiaryApi.getPaging(0, '0', 1, 10, 'read', true, true).then((res: any) => {
     state.resultOne = res.data
   })
 }

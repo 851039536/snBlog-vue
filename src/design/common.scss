@@ -197,51 +197,26 @@
 }
 
 @font-face {
-  /* stylelint-disable-next-line string-quotes */
   font-family: PuHuiTiBASE;
-  /* stylelint-disable-next-line string-quotes */
   src: url('/src/assets/fonts/PuHuiTi_55.ttf');
 }
 
 @font-face {
-  /* stylelint-disable-next-line string-quotes */
   font-family: PuHuiTiXL;
-  /* stylelint-disable-next-line string-quotes */
   src: url('/src/assets/fonts/PuHuiTi_65.ttf');
 }
 
 @font-face {
-  /* stylelint-disable-next-line string-quotes */
   font-family: PuHuiTiSM;
-  /* stylelint-disable-next-line string-quotes */
   src: url('/src/assets/fonts/PuHuiTi_45.ttf');
 }
 
-@layer {
-  // html {
-  //   @apply antialiased;
-  // }
-  body {
-    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-    // font-family: PuHuiTiBASE;
-  }
+body {
+  font-family: PuHuiTiBASE, monospace;
 }
-
-// 屏幕宽度大于px时启用工具
-// @screen sm {
-// }
-
-// @screen md {
-// }
 
 @screen lg {
   .sbootom {
     @apply hidden;
   }
 }
-
-// @screen xl {
-// }
-
-// @screen 2xl {
-// }

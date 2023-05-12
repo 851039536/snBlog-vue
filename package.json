@@ -3,8 +3,8 @@
   "version": "3.0.1-alpha.2",
   "scripts": {
     "dev": "vite --host",
-    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
-    "prettier": "prettier --write .",
+    "lint": "eslint src --fix --ext .ts,.vue,.js",
+    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "tsc-build": "vue-tsc --noEmit && vite build",
     "build:dev": "vite build --mode development",
     "build:pro": "vite build --mode production",

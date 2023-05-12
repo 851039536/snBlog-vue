@@ -9,7 +9,7 @@ const { y } = useWindowScroll()
 
 async function getSum(identity: number, type: string) {
   const count = await ArticleApi.getSum(identity, type)
-  paging.count = count.data
+  paging.count = count.data.data
 }
 async function QPaging() {
   const data = await ArticleApi.getPaging(
@@ -19,7 +19,7 @@ async function QPaging() {
     paging.pagesize,
     paging.typeStr
   )
-  articleData.value = data.data
+  articleData.value = data.data.data
 }
 
 function QImageUrl(name: string) {

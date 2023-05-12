@@ -34,6 +34,7 @@ import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css'
 import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index'
 import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css'
+
 VueMarkdownEditor.use(githubTheme, {
   Hljs: hljs
 })
@@ -46,7 +47,6 @@ VMdPreview.use(createLineNumbertPlugin())
 VMdPreview.use(createCopyCodePlugin())
 
 VueMarkdownEditor.use(createEmojiPlugin())
-
 //  end v-md
 
 // use

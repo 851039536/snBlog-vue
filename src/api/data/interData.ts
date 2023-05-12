@@ -3,7 +3,7 @@ import { IArticle } from './model/ArtileModel'
 import { IVideo } from './model/VideoModel'
 import { ITag } from './model/TagModel'
 import { IArticleTag } from './model/ArticleTagModel'
-import { IOneType } from './model/OneModel'
+import { IOneType } from './model/DiaryModel'
 import { IArticleType } from './model/ArticleTypeModel'
 import { INav } from './model/NavModel'
 import { IInterface } from './model/IntInterfaceModel'
@@ -37,11 +37,11 @@ interface IntOne {
   timeModified: any
 }
 
-interface IFy {
-  page: number
-  pagesize: number
-  count: number
-  current: number
+interface IPaging {
+  page?: number
+  pagesize?: number
+  count?: number
+  current?: number
 }
 // 导出所有模块
-export { IArticleTag, INav, IntOne, IOneType, IArticle, IVideo, ITag, IArticleType, IFy, IInterface }
+export { IArticleTag, INav, IntOne, IOneType, IArticle, IVideo, ITag, IArticleType, IPaging, IInterface }

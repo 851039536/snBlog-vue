@@ -52,7 +52,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .list-cont {
-  @apply mt-[4.6%] ml-[22%] w-[65%] mb-70;
+  @apply mb-70;
   @apply rounded-md shadow bg-white;
 
   .list-cont-title {

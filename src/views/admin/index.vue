@@ -159,7 +159,5 @@ onMounted(async () => {
 .admin {
   @apply h-full w-full z-10 fixed top-0 left-0;
   @apply bg-gray-100;
-
-  // font-family: PuHuiTiBASE;
 }
 </style>

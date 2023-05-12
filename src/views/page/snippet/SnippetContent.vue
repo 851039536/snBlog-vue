@@ -211,7 +211,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .sn-content {
-  font-family: PuHuiTiXL, monospace;
+  // font-family: PuHuiTiXL, monospace;
 }
 
 .bor {

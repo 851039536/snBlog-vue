@@ -27,7 +27,6 @@
 @include scroll;
 
 #app {
-  font-family: PuHuiTiBASE, monospace;
   background: #f3f7fd;
 
   @apply w-full absolute;

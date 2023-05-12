@@ -7,20 +7,20 @@ const readCount = ref('')
 const time = ref('')
 const rTag = ref([])
 onMounted(async () => {
-  time.value = await (await ArticleApi.getPaging(0, 'null', 1, 1)).data[0].timeCreate
-
-  const [tags, articleSums, textSums, readSums] = await axios.all([
+  const [tags, articleSums, textSums, readSums, times, blogs] = await axios.all([
     ArticleTagApi.getAll(true),
     ArticleApi.getSum(),
     ArticleApi.getStrSum(0, 1),
-    ArticleApi.getStrSum(0, 2)
+    ArticleApi.getStrSum(0, 2),
+    ArticleApi.getPaging(0, 'null', 1, 1),
+    ArticleApi.getById(392)
   ])
   rTag.value = tags.data // 文章总数
-  articleCount.value = String(articleSums.data) // 文章总数
-  textCount.value = String(textSums.data) // 字数总数
-  readCount.value = String(readSums.data) // 阅读总数
-
-  blog.value = await (await ArticleApi.getById(392)).data.text
+  articleCount.value = String(articleSums.data.data) // 文章总数
+  textCount.value = String(textSums.data.data) // 字数总数
+  readCount.value = String(readSums.data.data) // 阅读总数
+  time.value = times.data.data[0].timeCreate
+  blog.value = blogs.data.data.text
 })
 </script>
 <template>
@@ -29,7 +29,7 @@ onMounted(async () => {
     <article2-content></article2-content>
     <c-right-sidebar>
       <base-time></base-time>
-      <article2-sidebar-tag :r-data="rTag" name="标签"></article2-sidebar-tag>
+      <article2-sidebar-tag :r-data="rTag"></article2-sidebar-tag>
       <custom-count
         title="站点统计"
         sum-title="文章数量"

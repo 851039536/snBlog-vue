@@ -79,10 +79,6 @@ onMounted(async () => {
   </div>
 </template>
 <style lang="scss" scoped>
-.blog {
-  // --at-apply: h-[92%] mt-[4.6%] ml-[22%] w-[49.5%];
-}
-
 @media screen and (max-width: 768px) {
   .blog {
     --at-apply: mt-[19%] ml-0 w-full;

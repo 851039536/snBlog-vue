@@ -1,4 +1,3 @@
-import request from '@/api/http/axios'
 import { get } from '@/api/http/funApi'
 
 export class VideoApi {
@@ -23,15 +22,7 @@ export class VideoApi {
   }
 
   static gestTest() {
-    return request(
-      {
-        url: '/api/SnVideoType/AsyGestTest',
-        method: 'get'
-      },
-      {
-        qiXiao_cancel: false
-      }
-    )
+    return get('/api/SnVideoType/AsyGestTest')
   }
 
   /**

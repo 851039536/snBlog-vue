@@ -1,24 +1,26 @@
 <script lang="ts" setup>
 import { NavigationApi } from '@/api'
-import { IFy, INav } from '@/api/data/InterData'
+import { IPaging, INav } from '@/api/data/InterData'
 import { winUrl } from '@/utils/route'
 
-const paging: IFy = reactive({
+const paging: IPaging = reactive({
   page: 1,
   pagesize: 18,
   count: 0,
   current: 1
 })
-const rNav = ref([] as INav[])
+const navData = ref([] as INav[])
 const rTitle = ref('博客圈')
 async function currentchange(val: number) {
   paging.current = val
-  rNav.value = await (await NavigationApi.getPaging(1, rTitle.value, val, paging.pagesize, 'id', true, true)).data
+  navData.value = await (
+    await NavigationApi.getPaging(1, rTitle.value, val, paging.pagesize as number, 'id', true, true)
+  ).data
 }
 
 onMounted(async () => {
-  rNav.value = await (
-    await NavigationApi.getPaging(1, rTitle.value, paging.page, paging.pagesize, 'id', true, true)
+  navData.value = await (
+    await NavigationApi.getPaging(1, rTitle.value, paging.page as number, paging.pagesize as number, 'id', true, true)
   ).data
   paging.count = await (await NavigationApi.getCount(1, rTitle.value, true)).data
 })
@@ -32,7 +34,7 @@ onMounted(async () => {
         博客导航
       </div>
       <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-        <div v-for="res in rNav" :key="res.id" class="circles-1">
+        <div v-for="res in navData" :key="res.id" class="circles-1">
           <div class="circles-1-1">
             <img v-lazy="res.img" onerror="this.style.display='none'" />
             <!-- <img v-lazy="getImageUrl(res.img)" /> -->
@@ -62,13 +64,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .circles {
-  // @apply relative;
-
   .circles-main {
-    // @apply mt-[4.3%] ml-[22%] w-[47%];
-
-    // @apply rounded-sm shadow;
-
     // 导航窗体小
     .circles-1 {
       @include w-h(98%, 110px);

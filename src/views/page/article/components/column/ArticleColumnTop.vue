@@ -11,7 +11,7 @@ const clickType = async (name: string) => {
     paging.pagesize,
     paging.typeStr
   )
-  articleData.value = data.data
+  articleData.value = data.data.data
 }
 </script>
 <template>
@@ -20,7 +20,6 @@ const clickType = async (name: string) => {
     <div @click="clickType('id')">最新</div>
   </div>
 </template>
-
 <style lang="scss" scoped>
 .article-column-top {
   // @apply top-0px left-0 z-100 absolute ml-[24%] mt-[4.6%] w-[47%];

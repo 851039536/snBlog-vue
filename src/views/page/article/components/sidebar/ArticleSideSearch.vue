@@ -10,7 +10,7 @@ async function search() {
     return
   }
   const data = await ArticleApi.getContains(0, 'null', searchName.value)
-  rArticle.value = data.data
+  rArticle.value = data.data.data
 }
 </script>
 <template>
