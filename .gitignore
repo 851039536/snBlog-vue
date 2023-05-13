@@ -3,3 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+/src/assets/fonts/PuHuiTi_55.ttf
+/src/assets/fonts/PuHuiTi_65.ttf
+/src/assets/fonts/PuHuiTi_75.ttf
+/src/assets/fonts/PuHuiTi_45.ttf
