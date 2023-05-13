@@ -76,7 +76,7 @@ onMounted(async () => {
 .lside {
   @apply h-[90%] w-220px fixed;
   @apply bg-white rounded shadow;
-  @apply top-[8.9%] left-[11%];
+  @apply top-[8.9%] left-[10%];
 
   @include media-2xl {
     @apply top-[9.8%] left-[7%] w-214px;

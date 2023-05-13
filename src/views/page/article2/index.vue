@@ -8,14 +8,15 @@ const time = ref('')
 const rTag = ref([])
 onMounted(async () => {
   const [tags, articleSums, textSums, readSums, times, blogs] = await axios.all([
-    ArticleTagApi.getAll(true),
+    ArticleTagApi.getPaging(1, 100),
     ArticleApi.getSum(),
     ArticleApi.getStrSum(0, 1),
     ArticleApi.getStrSum(0, 2),
     ArticleApi.getPaging(0, 'null', 1, 1),
     ArticleApi.getById(392)
   ])
-  rTag.value = tags.data // 文章总数
+  rTag.value = tags.data.data // 文章总数
+  console.log('[ tags ]-19', tags.data)
   articleCount.value = String(articleSums.data.data) // 文章总数
   textCount.value = String(textSums.data.data) // 字数总数
   readCount.value = String(readSums.data.data) // 阅读总数

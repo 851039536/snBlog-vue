@@ -89,6 +89,7 @@ declare module '@vue/runtime-core' {
     CustomCount: typeof import('./src/components/CustomCount.vue')['default']
     CustomHighlightText: typeof import('./src/components/CustomHighlightText.vue')['default']
     Diary: typeof import('./src/views/page/diary/index.vue')['default']
+    DiarySidebar: typeof import('./src/views/page/diary/components/sidebar/DiarySidebar.vue')['default']
     Favorite: typeof import('./src/views/page/navigation/Favorite.vue')['default']
     Index: typeof import('./src/views/page/article/Index.vue')['default']
     InterfaceTable: typeof import('./src/views/admin/set/InterfaceTable.vue')['default']

@@ -26,16 +26,16 @@ updateTime()
 <template>
   <c-right-sidebar-container>
     <div class="time">
-      <div i-fxemoji-alarmclock mr-1></div>
+      <!-- <div i-fxemoji-alarmclock mr-1></div> -->
       <span>{{ state.date }}</span>
-      <span>{{ state.time }}</span>
+      <span class="font-bold">{{ state.time }}</span>
     </div>
   </c-right-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
 .time {
-  @apply text-lg p-1;
+  @apply text-xl p-1 py-3;
   @apply flex items-center justify-center;
 }
 </style>

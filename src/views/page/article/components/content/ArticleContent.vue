@@ -28,15 +28,15 @@ async function upRead(data: any) {
 }
 onMounted(async () => {
   const data = await ArticleApi.getById(aid.id)
-  const rData = data.data
-  upRead(rData)
-  articleForm.name = rData.name
-  articleForm.text = rData.text
-  articleForm.give = rData.give
-  articleForm.read = rData.read
-  articleForm.timeCreate = rData.timeCreate
-  labelName.value = rData.tag.name
-  sortName.value = rData.type.name
+  const entity = data.data.data
+  upRead(entity)
+  articleForm.name = entity.name
+  articleForm.text = entity.text
+  articleForm.give = entity.give
+  articleForm.read = entity.read
+  articleForm.timeCreate = entity.timeCreate
+  labelName.value = entity.tag.name
+  sortName.value = entity.type.name
   spinning.value = false
   Tool.backTop()
 })

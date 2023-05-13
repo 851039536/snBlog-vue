@@ -7,6 +7,7 @@ import { SetBlogApi } from './http/SetBlogApi'
 import { LeaveApi } from './http/LeaveApi'
 import { NavigationApi } from './http/NavigationApi'
 import { DiaryApi } from './http/DiaryApi'
+import { DiaryTypeApi } from './http/DiaryTypeApi'
 import { VideoApi } from './http/VideoApi'
 import { UserApi } from './http/UserApi'
 import { ListContentApi } from './http/ListContentApi'
@@ -44,6 +45,7 @@ export {
   LeaveApi,
   NavigationApi,
   DiaryApi,
+  DiaryTypeApi,
   VideoApi,
   UserApi,
   ListContentApi,

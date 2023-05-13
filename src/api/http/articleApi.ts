@@ -4,7 +4,8 @@ import { get, add, update, del } from '@/api/http/funApi'
 
 enum api {
   sum = '/article/sum?',
-  contains = '/article/contains?'
+  contains = '/article/contains?',
+  byid = '/article/byid?'
 }
 
 export class ArticleApi {
@@ -38,10 +39,10 @@ export class ArticleApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache = false) {
-    return get(`/article/byid?id=${id}&cache=${cache}`, false, true)
+    return get(`${api.byid}id=${id}&cache=${cache}`, false, true)
   }
   /**
-   * 条件查询 GetTypeAsync
+   * 条件查询
    * @param identity 分类:1 || 标签:2
    * @param type 查询条件
    * @param cache 缓存

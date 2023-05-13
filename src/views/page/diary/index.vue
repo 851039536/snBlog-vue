@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { method, state } from './data/index'
+import { method, state } from './index'
 
 onMounted(async () => {
   await method.Count()
@@ -8,9 +8,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="one">
-    <OneSidebar></OneSidebar>
-    <div class="one-cont">
+  <div class="diary">
+    <diary-sidebar></diary-sidebar>
+    <div class="diary-cont">
       <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
       <OneContent :result-data="state.rData"></OneContent>
       <div class="paging">
@@ -26,8 +26,8 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.one {
-  .one-cont {
+.diary {
+  .diary-cont {
     @apply rounded shadow overflow-auto;
 
     .paging {

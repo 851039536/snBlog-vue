@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DiaryApi } from '@/api/index'
+import { DiaryTypeApi, DiaryApi } from '@/api/index'
 
 const state: any = reactive({
   resultOneType: [],
@@ -8,17 +8,13 @@ const state: any = reactive({
   text: []
 })
 
-const GetApi = async () => {
-  await DiaryApi.getOneTypeAll().then((res: any) => {
+onMounted(async () => {
+  await DiaryTypeApi.getAll().then((res: any) => {
     state.resultOneType = res.data
   })
   await DiaryApi.getPaging(0, '0', 1, 10, 'read', true, true).then((res: any) => {
     state.resultOne = res.data
   })
-}
-
-onMounted(async () => {
-  await GetApi()
 })
 </script>
 
@@ -40,9 +36,4 @@ onMounted(async () => {
     @apply cursor-pointer m-1 text-base py-4 px-2;
   }
 }
-
-//   .one-side {
-//     @apply top-[11%];
-//   }
-// }
 </style>
