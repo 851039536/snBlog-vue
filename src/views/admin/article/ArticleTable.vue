@@ -23,15 +23,15 @@ const del = async (data: any) => {
   })
 }
 const QPaging = async (identity: number, name: string, order = true) => {
-  rArticle.value = await (await ArticleApi.getPaging(identity, name, 1, 9000, 'id', order, false)).data
+  rArticle.value = await (await ArticleApi.getPaging(identity, name, 1, 9000, 'id', order, false)).data.data
 }
 async function QContains(name: string) {
   if (name === '' && tagSrt.value === 'ALL') return QPaging(3, userName.value)
   if (tagSrt.value === 'ALL') {
-    rArticle.value = await (await ArticleApi.getContains(0, '0', name)).data
+    rArticle.value = await (await ArticleApi.getContains(0, '0', name)).data.data
     return
   }
-  rArticle.value = await (await ArticleApi.getContains(2, tagSrt.value, name)).data
+  rArticle.value = await (await ArticleApi.getContains(2, tagSrt.value, name)).data.data
 }
 async function STag() {
   if (tagSrt.value === 'ALL') {
@@ -52,9 +52,9 @@ async function ordering() {
 
 onMounted(async () => {
   userName.value = storage.get(userInfo.NAME)
-  await axios.all([await ArticleTagApi.getAll(), await QPaging(3, userName.value)]).then(
+  await axios.all([await ArticleTagApi.getPaging(1, 100), await QPaging(3, userName.value)]).then(
     axios.spread((tag: any) => {
-      rTag.value = tag.data
+      rTag.value = tag.data.data
     })
   )
   navName.name = '文章展示'

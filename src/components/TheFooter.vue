@@ -1,20 +1,26 @@
 <script lang="ts" setup></script>
 <template>
   <div class="fixed bottom-[50%] left-0 rounded">
-    <a-popover placement="left">
-      <template #content>
-        <div>furion</div>
-        <div>windicss</div>
-        <div>unocss</div>
-        <div>antd</div>
-        <div>icones</div>
-      </template>
-      <template #title>
-        <span>Title</span>
-      </template>
-      <div i-fxemoji-endwithleftwardsarrow h-6 w-6></div>
-    </a-popover>
+    <div class="test">
+      <div i-fxemoji-downpointingredtriangle></div>
+      <div class="test-cont">
+        <div>博客园</div>
+        <div>Gitee</div>
+        <div>Github</div>
+      </div>
+    </div>
   </div>
 </template>
 
-<!-- <style lang="scss" scoped></style> -->
+<style lang="scss" scoped>
+.test:hover {
+  .test-cont {
+    display: inline;
+  }
+}
+
+/* 隐藏焦点状态 */
+.test-cont {
+  display: none;
+}
+</style>

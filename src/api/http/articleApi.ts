@@ -5,7 +5,10 @@ import { get, add, update, del } from '@/api/http/funApi'
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
-  byid = '/article/byid?'
+  byid = '/article/byid?',
+  type = '/article/type?',
+  strSum = '/article/strSum?',
+  paging = '/article/paging?'
 }
 
 export class ArticleApi {
@@ -41,6 +44,7 @@ export class ArticleApi {
   static getById(id: number, cache = false) {
     return get(`${api.byid}id=${id}&cache=${cache}`, false, true)
   }
+
   /**
    * 条件查询
    * @param identity 分类:1 || 标签:2
@@ -49,7 +53,7 @@ export class ArticleApi {
    * @returns
    */
   static getType(identity: number, type = 'null', cache = true) {
-    return get(`/article/type?identity=${identity}&type=${type}&cache=${cache}`, false)
+    return get(`${api.type}identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 
   /**
@@ -60,7 +64,7 @@ export class ArticleApi {
    * @param cache 缓存
    */
   static getStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
-    return get(`/article/strSum?identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+    return get(`${api.strSum}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
   }
 
   /**
@@ -83,7 +87,7 @@ export class ArticleApi {
     cache = true
   ) {
     const data = await get(
-      `/article/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+      `${api.paging}identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
     await Tool.momentTimeList(data.data)
@@ -100,7 +104,7 @@ export class ArticleApi {
   }
 
   /**
-   * @description: 新增数据
+   * @description: 新增
    * @param {IArticle} entity
    */
   static add(entity: IArticle) {
@@ -108,11 +112,11 @@ export class ArticleApi {
   }
 
   /**
-   * @description: 更新数据
+   * @description: 更新
    * @param {IntArticle} entity
    */
   static update(entity: IArticle) {
-    return update(`/article/edit`, entity)
+    return update(`/article/update`, entity)
   }
 
   /**
