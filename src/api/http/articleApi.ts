@@ -5,7 +5,7 @@ import { get, add, update, del } from '@/api/http/funApi'
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
-  byid = '/article/byid?',
+  bid = '/article/byid?',
   type = '/article/type?',
   strSum = '/article/strSum?',
   paging = '/article/paging?'
@@ -42,7 +42,7 @@ export class ArticleApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache = false) {
-    return get(`${api.byid}id=${id}&cache=${cache}`, false, true)
+    return get(`${api.bid}id=${id}&cache=${cache}`, false, true)
   }
 
   /**
@@ -71,7 +71,7 @@ export class ArticleApi {
    * @description: 分页查询
    * @param {number} identity 所有:0|分类:1|标签:2|用户:3|标签+用户:4
    * @param {number} type 查询参数(多条件以','分割)
-   * @param {number} pagesize 当前页码
+   * @param {number} pageSize 当前页码
    * @param {number} pageIndex 每页记录条数
    * @param {string} ordering 排序规则 data:时间|read:阅读|give:点赞|id:主键
    * @param {boolean} isDesc 排序
@@ -81,13 +81,13 @@ export class ArticleApi {
     identity = 0,
     type = 'null',
     pageIndex = 1,
-    pagesize = 6,
+    pageSize = 6,
     ordering = 'id',
     isDesc = true,
     cache = true
   ) {
     const data = await get(
-      `${api.paging}identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pagesize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
+      `${api.paging}identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
     await Tool.momentTimeList(data.data)
@@ -113,7 +113,7 @@ export class ArticleApi {
 
   /**
    * @description: 更新
-   * @param {IntArticle} entity
+   * @param {IArticle} entity
    */
   static update(entity: IArticle) {
     return update(`/article/update`, entity)

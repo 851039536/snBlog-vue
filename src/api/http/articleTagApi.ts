@@ -17,8 +17,8 @@ export class ArticleTagApi {
     return get(url, false)
   }
 
-  static getPaging(pageIndex = 1, pagesize = 6, isDesc = true, cache = true) {
-    const url = `/articleTag/paging?pageIndex=${pageIndex}&pageSize=${pagesize}&isDesc=${isDesc}&cache=${cache}`
+  static getPaging(pageIndex = 1, pageSize = 6, isDesc = true, cache = true) {
+    const url = `/articleTag/paging?pageIndex=${pageIndex}&pageSize=${pageSize}&isDesc=${isDesc}&cache=${cache}`
     return get(url, false, true)
   }
 
