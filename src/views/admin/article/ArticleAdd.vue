@@ -30,7 +30,7 @@ const test = (data: any) => {
 
 onMounted(async () => {
   clearArticle()
-  axios.all([await ArticleTypeApi.getAll(), await ArticleTagApi.getAll()]).then(
+  axios.all([await ArticleTypeApi.getAll(), await ArticleTagApi.getPaging(1, 900)]).then(
     axios.spread((sort: any, label: any) => {
       rType.value = sort
       rTag.value = label

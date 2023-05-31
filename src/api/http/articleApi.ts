@@ -5,7 +5,7 @@ import { get, add, update, del } from '@/api/http/funApi'
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
-  bid = '/article/byid?',
+  bid = '/article/bid?',
   type = '/article/type?',
   strSum = '/article/strSum?',
   paging = '/article/paging?'

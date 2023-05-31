@@ -31,7 +31,7 @@ const add = () => {
 }
 
 onMounted(async () => {
-  rArticleType.value = (await ArticleTagApi.getAll()).data
+  rArticleType.value = (await ArticleTagApi.getPaging(1, 100)).data
   navName.name = '文章标签'
   navName.name2 = '标签列表'
 })

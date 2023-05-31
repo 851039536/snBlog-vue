@@ -23,7 +23,8 @@ const update = async () => {
 onMounted(async () => {
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
-  await axios.all([ArticleTagApi.getAll(), ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
+  await axios.all([ArticleTagApi.getPaging(1, 100),
+    ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
     axios.spread((tag: any, type: any, article) => {
       rTag.value = tag
       rType.value = type

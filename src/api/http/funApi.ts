@@ -49,6 +49,7 @@ export function gets<T = any>(config: AxiosRequestConfig) {
  * post request
  * @param url request path
  * @param data request body params
+ * @param loading
  */
 export function add(url: string, data: any, loading?: boolean) {
   return request(

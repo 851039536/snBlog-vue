@@ -5,7 +5,7 @@ import { ISnippet } from '../data/model/SnippetMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',
 //   SUM = '/api/v1/article/count/',
-//   BYID = '/api/v1/article/by-id/',
+//   BID = '/api/v1/article/by-id/',
 //   CONTAINS = '/api/v1/article/contains/',
 //   ADD = '/api/v1/article',
 //   UPDATE = '/api/v1/article',
@@ -47,7 +47,7 @@ export class SnippetApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache: boolean) {
-    return get(`/snippet/byid?id=${id}&cache=${cache}`, false)
+    return get(`/snippet/bid?id=${id}&cache=${cache}`, false)
   }
   /**
    * 条件查询 GetTypeAsync

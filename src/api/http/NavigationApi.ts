@@ -141,7 +141,7 @@ export class NavigationApi {
 
   /**
    * @description: 更新数据
-   * @param {IntArticle} resultData
+   * @param {INav} resultData
    */
   static update(resultData: INav) {
     return request(

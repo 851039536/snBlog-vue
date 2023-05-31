@@ -4,7 +4,7 @@ import { IArticleTag } from '../data/InterData'
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
-  byid = '/articleTag/byId?'
+  bid = '/articleTag/byId?'
 }
 export class ArticleTagApi {
   /**
@@ -13,7 +13,7 @@ export class ArticleTagApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache = false) {
-    const url = `${api.byid}id=${id}&cache=${cache}`
+    const url = `${api.bid}id=${id}&cache=${cache}`
     return get(url, false)
   }
 

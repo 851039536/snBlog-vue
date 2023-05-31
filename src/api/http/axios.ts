@@ -3,7 +3,7 @@ import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
 import { loadingVisible } from '@/utils/common/visible-data'
-import { storage } from '../../utils/storage/storage'
+import { storage } from '@/utils/storage/storage'
 import { removePending, addPending } from './pending'
 import { removeUserStorage } from '@/utils/user/user-info'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
@@ -15,7 +15,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 // 允许跨域
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
-function myAxios(axiosConfig: AxiosRequestConfig, customOptions: any, loadings: any): Promise<AxiosResponse<any>> {
+function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<AxiosResponse> {
   const { timeout = 8000 } = customOptions
   const service = axios.create({
     baseURL: apiUrl, // 设置统一的请求前缀
