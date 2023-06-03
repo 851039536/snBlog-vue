@@ -19,7 +19,7 @@ defineProps({
       <div class="ocont-list-cont">
         <p class="ocont-list-cont-title">
           <span @click="method.setModal1Visible(true, res.id)">
-            {{ res.title }}
+            {{ res.name }}
           </span>
         </p>
         <p class="ocont-list-cont-text">{{ res.text }}</p>

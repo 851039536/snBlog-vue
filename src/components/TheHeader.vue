@@ -65,7 +65,7 @@ function login() {
 
 onMounted(async () => {
   const conditions = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'header', false)
-  const data = await conditions.data
+  const data = await conditions.data.data
   rData.value = data
 })
 </script>

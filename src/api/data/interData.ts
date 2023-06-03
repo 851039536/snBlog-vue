@@ -11,7 +11,7 @@ import { IInterface } from './model/IntInterfaceModel'
 // 导出所需的接口
 export interface IntTalk {
   id: number
-  title: string
+  name: string
   describe: string
   text: string
   read: number
@@ -25,7 +25,7 @@ export interface IntTalk {
 
 interface IntOne {
   id: number
-  title: string
+  name: string
   text: string
   img: string
   typeId: number

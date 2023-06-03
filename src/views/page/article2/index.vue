@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi, ArticleTagApi } from '@/api'
 import { blog } from './components/data'
+
 const articleCount = ref('')
 const textCount = ref('')
 const readCount = ref('')
@@ -8,7 +9,7 @@ const time = ref('')
 const rTag = ref([])
 onMounted(async () => {
   const [tags, articleSums, textSums, readSums, times, blogs] = await axios.all([
-    ArticleTagApi.getPaging(1, 100),
+    ArticleTagApi.getPaging(1, 100, true, false),
     ArticleApi.getSum(),
     ArticleApi.getStrSum(0, 1),
     ArticleApi.getStrSum(0, 2),
@@ -16,7 +17,6 @@ onMounted(async () => {
     ArticleApi.getById(392)
   ])
   rTag.value = tags.data.data // 文章总数
-  console.log('[ tags ]-19', tags.data)
   articleCount.value = String(articleSums.data.data) // 文章总数
   textCount.value = String(textSums.data.data) // 字数总数
   readCount.value = String(readSums.data.data) // 阅读总数

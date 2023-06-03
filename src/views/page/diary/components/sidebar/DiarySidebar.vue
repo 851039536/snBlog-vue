@@ -2,32 +2,33 @@
 import { DiaryTypeApi, DiaryApi } from '@/api/index'
 
 const state: any = reactive({
-  resultOneType: [],
+  diaryType: [],
   resultOne: [],
   modal2Visible: false,
   text: []
 })
 
 onMounted(async () => {
-  await DiaryTypeApi.getAll().then((res: any) => {
-    state.resultOneType = res.data
-  })
-  await DiaryApi.getPaging(0, '0', 1, 10, 'read', true, true).then((res: any) => {
-    state.resultOne = res.data
-  })
+  const dataType = await DiaryTypeApi.getPaging(1, 100, true, false)
+  state.diaryType = dataType.data.data
+
+  const data = await DiaryApi.getPaging(0, '0', 1, 10, 'read', true, false)
+  console.log('[ data ]-16', data)
+  state.resultOne = data.data.data
+  console.log('[ state.resultOne ]-17', state.resultOne)
 })
 </script>
 
 <template>
-  <div class="sdie">
+  <div class="diary-sidebar">
     <div>内容来源于网络</div>
     <OneSidetype title="舔狗好评" :result-data="state.resultOne"></OneSidetype>
-    <OneCategory :result="state.resultOneType"></OneCategory>
+    <OneCategory :result="state.diaryType"></OneCategory>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.sdie {
+.diary-sidebar {
   @apply h-[91%] ml-3 top-[8.7%] right-[11%] w-[17%] fixed;
 
   div {

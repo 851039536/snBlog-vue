@@ -95,7 +95,7 @@ defineProps({
         </div>
       </div>
       <div v-for="res in resultData" :key="res.id" class="osidetype-cont">
-        <span @click="method.setModal1Visible(true, res.id)">{{ res.title }}</span>
+        <span @click="method.setModal1Visible(true, res.id)">{{ res.name }}</span>
       </div>
     </div>
     <div>

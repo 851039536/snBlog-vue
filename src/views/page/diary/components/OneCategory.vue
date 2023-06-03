@@ -31,7 +31,7 @@ defineProps({
     </div>
     <div v-for="res in result" :key="res.id" class="inline-flex">
       <div class="flex-1 px-1 hover:text-blue-400">
-        {{ res.title }}
+        {{ res.name }}
       </div>
     </div>
   </div>

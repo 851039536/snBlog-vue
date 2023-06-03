@@ -1,4 +1,7 @@
+<!--suppress VueUnrecognizedDirective -->
 <script lang="ts" setup>
+// 侧边栏
+
 import { ArticleApi } from '@/api'
 import { rArticle } from '../../data'
 
@@ -11,19 +14,23 @@ const emit = defineEmits(['refresh'])
 const getApi = async (id: number) => {
   emit('refresh', 123)
   sideIndex.value = id
-  blog.value = await (await ArticleApi.getById(id)).data.data.text
+
+  const data = await ArticleApi.getById(id)
+  blog.value = data.data.data.text
 }
 </script>
 <template>
-  <div class="side">
-    <div v-for="r in rArticle" :key="r.id" class="side-col">
-      <div v-debounce:200="() => getApi(r.id)" class="side-col-title" :class="sideIndex == r.id ? 'active' : ''">
-        <span>{{ r.name }}</span>
+  <div class="article2-right-sidebar">
+    <div v-for="ret in rArticle" :key="ret.id" class="side-col">
+      <div v-debounce:200="() => getApi(ret.id)" class="side-col-title" :class="sideIndex == ret.id ? 'active' : ''">
+        <span>{{ ret.name }}</span>
       </div>
       <div class="side-col-txt">
-        <span>{{ r.read }}℃</span>
-        <span>赞 {{ r.give }}</span>
-        <span>{{ r.timeCreate.substring(0, 10) }}</span>
+        <span>{{ ret.read }}℃</span>
+        <!--suppress TypeScriptUnresolvedReference -->
+        <span>赞 {{ ret.give }}</span>
+        <!--suppress TypeScriptUnresolvedReference -->
+        <span>{{ ret.timeCreate.substring(0, 10) }}</span>
         <span>编辑</span>
       </div>
     </div>
@@ -31,7 +38,7 @@ const getApi = async (id: number) => {
 </template>
 
 <style lang="scss" scoped>
-.side {
+.article2-right-sidebar {
   @apply cursor-pointer shadow w-[25%] overflow-auto;
 
   .side-col {

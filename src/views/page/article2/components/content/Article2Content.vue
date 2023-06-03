@@ -1,28 +1,28 @@
 <script lang="ts" setup>
 import { blog } from '../data'
-const xxxRef = ref()
+const scrollRef = ref()
 const onScroll = (type: string) => {
   nextTick(() => {
-    const distance = type === 'top' ? 0 : xxxRef.value.scrollHeight
-    xxxRef.value.scrollTop = distance
+    const distance = type === 'top' ? 0 : scrollRef.value.scrollHeight
+    scrollRef.value.scrollTop = distance
   })
 }
 const onScroll2 = (type: number) => {
   nextTick(() => {
-    xxxRef.value.scrollTop += type
+    scrollRef.value.scrollTop += type
   })
 }
 const onScroll3 = (type: number) => {
   nextTick(() => {
-    xxxRef.value.scrollTop -= type
+    scrollRef.value.scrollTop -= type
   })
 }
 </script>
 <template>
   <div class="cont">
     <Article2RightSidebar @refresh="onScroll('top')"></Article2RightSidebar>
-    <div ref="xxxRef" class="cont-txt scrollbar-w-2 scrollbar">
-      <v-md-preview :text="blog" model="preview" />
+    <div ref="scrollRef" class="cont-txt scrollbar-w-2 scrollbar">
+      <v-md-preview :text="blog" model="preview"></v-md-preview>
     </div>
   </div>
   <div fixed class="btn">

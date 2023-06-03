@@ -2,13 +2,13 @@ import { AxiosRequestConfig } from 'axios'
 import request from '@/api/http/axios'
 
 /**
- * reqeust method types
+ * request method types
  */
 export enum REQUEST_METHODS {
   GET = 'GET',
   PUT = 'PUT',
   UPDATE = 'PUT',
-  UPPOST = 'POST',
+  upPost = 'POST',
   POST = 'POST',
   ADD = 'POST',
   DELETE = 'DELETE',
@@ -86,6 +86,7 @@ export function pot(url: string, loading?: boolean) {
  * put request
  * @param url request path
  * @param data request body params
+ * @param loading
  */
 export function update(url: string, data: any, loading?: boolean) {
   return request(
@@ -103,11 +104,11 @@ export function update(url: string, data: any, loading?: boolean) {
   )
 }
 
-export function uppost(url: string, data: any, loading?: boolean) {
+export function upPost(url: string, data: any, loading?: boolean) {
   return request(
     {
       url,
-      method: REQUEST_METHODS.UPPOST,
+      method: REQUEST_METHODS.upPost,
       data
     },
     {
@@ -123,6 +124,7 @@ export function uppost(url: string, data: any, loading?: boolean) {
  * delete request
  * @param url request path
  * @param data request body params
+ * @param loading
  */
 export function del(url: string, data?: any, loading?: boolean) {
   return request(

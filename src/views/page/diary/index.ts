@@ -25,7 +25,7 @@ class method {
 
   static async currentchange(val: number) {
     state.page = val
-    await DiaryApi.getPaging(0, '0', state.page, state.pagesize, 'id', true, true).then((res: any) => {
+    await DiaryApi.getPaging(0, '0', state.page, state.pagesize, 'id', true, false).then((res: any) => {
       state.rData = res.data
     })
   }
@@ -37,7 +37,7 @@ class method {
   }
 
   static async getOne() {
-    await DiaryApi.getPaging(0, '0', state.page, state.pagesize, 'id', true, true).then((res: any) => {
+    await DiaryApi.getPaging(0, '0', state.page, state.pagesize, 'id', true, false).then((res: any) => {
       state.rData = res.data
     })
     await DiaryApi.getPaging(0, '0', 1, 1, 'id', true, true).then((res: any) => {

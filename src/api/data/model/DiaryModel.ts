@@ -1,9 +1,9 @@
 export interface IOneType {
   id: number
-  title: string
+  name: string
 }
 
 export const oneForm: IOneType = reactive({
   id: 0,
-  title: ''
+  name: ''
 })

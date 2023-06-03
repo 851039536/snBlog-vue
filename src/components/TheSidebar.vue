@@ -11,22 +11,30 @@ const isVisible: any = ref(false)
 const cliAbout = () => {
   isVisible.value = true
 }
+/**
+ * @description: 侧边栏点击事件
+ * @param {number} index
+ * @return {*}
+ */
 function getTopic(index: number) {
   sideIndex.value = index
 }
 onMounted(async () => {
-  rData.value = await (await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'sidebar', true)).data
+  //条件查询列表
+  const data = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'sidebar', true)
+  rData.value = data.data.data
+
   getTopic(sideIndex.value)
 })
 </script>
 <template>
-  <div v-show="sideVisible" class="lside">
+  <div v-show="sideVisible" class="side">
     <div
       v-for="(r, index) in rData"
       :key="index"
-      class="lside-list"
+      class="side-list"
       :class="sideIndex == index ? 'active' : ''"
-      @click="getTopic(index)">
+      @click="getTopic(<number>index)">
       <div v-if="r.identity" class="flex" @click="routers(r.path)">
         <div v-if="r.path == '/article/column'" class="i-fxemoji-linksymbol" />
         <div v-if="r.path == '/qarticle'" i-flat-color-icons-reddit />
@@ -73,7 +81,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss">
-.lside {
+.side {
   @apply h-[90%] w-220px fixed;
   @apply bg-white rounded shadow;
   @apply top-[8.9%] left-[10%];
@@ -94,7 +102,7 @@ onMounted(async () => {
     display: none;
   }
 
-  .lside-list {
+  .side-list {
     @apply text-center text-lg;
     @apply cursor-pointer transition duration-500 hover:bg-blue-400 rounded;
 
@@ -103,7 +111,7 @@ onMounted(async () => {
     }
   }
 
-  .lside-list.active {
+  .side-list.active {
     @apply text-cool-gray-50 bg-blue-400;
   }
 }

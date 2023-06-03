@@ -19,39 +19,45 @@ function getTopic(index: number) {
   sideIndex.value = index
 }
 
-async function getApi(name: string) {
-  rArticle.value = await (await ArticleApi.getType(2, name)).data.data
+/**
+ * 按条件获取文章
+ * @param name
+ */
+async function getCondition(name: string) {
+  const data = await ArticleApi.getType(2, name)
+  rArticle.value = data.data.data
 }
 onMounted(async () => {
   getTopic(sideIndex.value)
-  await getApi('语法')
+  await getCondition('语法')
 })
 </script>
 <template>
   <c-right-sidebar-container>
-    <div class="sidelb-name">
+    <div class="article2-sidebar-tag-name">
       <div i-fxemoji-label h-5 w-32px></div>
       标签
     </div>
-    <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
+    <div v-for="ret in rData" :key="ret.id" class="inline-flex" @click="getTopic(ret.id as number)">
+      <!--suppress VueUnrecognizedDirective -->
       <div
-        v-debounce:200="() => getApi(res.name as string)"
-        class="sidelb-col"
-        :class="sideIndex == res.id ? 'active' : ''">
-        {{ res.name }}
+        v-debounce:200="() => getCondition(ret.name as string)"
+        class="article2-sidebar-tag-col"
+        :class="sideIndex == ret.id ? 'active' : ''">
+        {{ ret.name }}
       </div>
     </div>
   </c-right-sidebar-container>
 
   <c-right-sidebar-container>
-    <div class="sidelb-name">
+    <div class="article2-sidebar-tag-name">
       <div i-fxemoji-waving h-5 w-32px></div>
       分类
     </div>
     <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
       <div
-        v-debounce:200="() => getApi(res.name as string)"
-        class="sidelb-col"
+        v-debounce:200="() => getCondition(res.name as string)"
+        class="article2-sidebar-tag-col"
         :class="sideIndex == res.id ? 'active' : ''">
         {{ res.name }}
       </div>
@@ -60,18 +66,18 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.sidelb-name {
+.article2-sidebar-tag-name {
   @apply flex items-center;
   @apply text-base py-1;
 }
 
-.sidelb-col {
+.article2-sidebar-tag-col {
   @apply flex-1 m-1 text-sm px-1 py-1px text-center;
   @apply rounded bg-gray-100 shadow-2xl cursor-pointer;
   @apply hover:bg-blue-400 hover:text-white;
 }
 
-.sidelb-col.active {
+.article2-sidebar-tag-col.active {
   @apply text-cool-gray-50 bg-blue-500;
 }
 </style>

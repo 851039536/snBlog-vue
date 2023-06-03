@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { headVisible, sideVisible } from '@/utils/common/visible-data'
+import { headVisible, loadingVisible, sideVisible } from '@/utils/common/visible-data'
 import { routers } from '@/utils/route'
 
 headVisible.value = false
 sideVisible.value = false
+loadingVisible.value = false
 </script>
 
 <template>
