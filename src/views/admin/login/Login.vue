@@ -13,19 +13,15 @@ const state = reactive({
   name: '',
   pwd: ''
 })
-const rData = ref([])
 function login() {
   UserApi.login(state.name, state.pwd).then(res => {
-    if (['用户或密码错误', '用户密码不能为空'].includes(res.data)) {
-      message.error(res.data)
-      return
-    }
-    rData.value = res.data.split(',')
+    const ret = res.data
     removeUserStorage()
-    storage.set(userInfo.ROLE, rData.value[0]) // 角色名
-    storage.set(userInfo.ID, rData.value[2]) // 用户主键
-    storage.set(userInfo.NAME, rData.value[3]) // 用户名
-    storage.set(userInfo.TOKEN, `Bearer ${rData.value[1]}`) // token
+    storage.set(userInfo.ROLE, ret.nickname) // 角色名
+    storage.set(userInfo.TOKEN, `Bearer ${ret.token}`) // token
+    storage.set(userInfo.ID, ret.id) // 用户主键
+    storage.set(userInfo.NAME, ret.name) // 用户名
+
     store.roles = storage.get(userInfo.ROLE)
     message.success('登录成功')
     routers(rRouter.articleTable)

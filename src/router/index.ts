@@ -125,16 +125,6 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/Leave',
-    name: 'Leave',
-    meta: {
-      keepAlive: false
-    },
-    component: () => {
-      return import('@/views/page/leave/Leave.vue')
-    }
-  },
-  {
     path: '/diary',
     name: 'diary',
     meta: {

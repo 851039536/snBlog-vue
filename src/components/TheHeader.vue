@@ -6,7 +6,6 @@ import { rRouter } from '@/router/route-Info'
 import uservg from '@assets/svg/components/user.svg?component'
 import { headVisible, loginVisible, sideIndex } from '@/utils/common/visible-data'
 import { InterfaceApi, UserApi } from '@/api'
-import { message } from 'ant-design-vue'
 import { useAppStore } from '@/store/pinia'
 const rName = ref('')
 const pwd = ref('')
@@ -46,17 +45,13 @@ async function onChange(id: number) {
 }
 function login() {
   UserApi.login(rName.value, pwd.value).then(r => {
-    if (['用户或密码错误', '用户密码不能为空'].includes(r.data)) {
-      // Show error message to user
-      message.error(r.data)
-      return
-    }
-    rData.value = r.data.split(',')
+    const ret = r.data
+
     removeUserStorage()
-    storage.set(userInfo.ROLE, rData.value[0]) // 角色名
-    storage.set(userInfo.TOKEN, `Bearer ${rData.value[1]}`) // token
-    storage.set(userInfo.ID, rData.value[2]) // 用户主键
-    storage.set(userInfo.NAME, rData.value[3]) // 用户名
+    storage.set(userInfo.ROLE, ret.nickname) // 角色名
+    storage.set(userInfo.TOKEN, `Bearer ${ret.token}`) // token
+    storage.set(userInfo.ID, ret.id) // 用户主键
+    storage.set(userInfo.NAME, ret.name) // 用户名
 
     store.roles = storage.get(userInfo.ROLE)
     location.reload()
