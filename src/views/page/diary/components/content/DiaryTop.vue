@@ -28,7 +28,7 @@ defineProps({
     </div>
     <div class="otop-cont">
       <div class="otop-cont-title">
-        <span class="">舔王:{{ title }}</span>
+        <span class="">{{ title }}</span>
       </div>
       <div class="otop-cont-give">
         <div>{{ text }}</div>
@@ -45,7 +45,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .otop {
-  @apply h-410px w-full flex bg-white;
+  @apply h-400px w-full flex bg-white;
 
   .otop-img {
     @apply w-[45%] mx-1;

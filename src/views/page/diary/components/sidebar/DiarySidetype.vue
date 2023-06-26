@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { IntOne } from '@/api/data/InterData'
-import { method, state } from '../index'
+import { method, state } from '../../index'
 
 defineProps({
   resultData: {
@@ -22,15 +22,7 @@ defineProps({
   <section>
     <div class="osidetype">
       <div class="osidetype-title flex">
-        <svg
-          t="1665649051937"
-          class="icon"
-          viewBox="0 0 1024 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          p-id="4668"
-          width="34"
-          height="24">
+        <svg t="1665649051937" class="icon" viewBox="0 0 1024 1024" version="1.1" p-id="4668" width="34" height="24">
           <path
             d="M343.1424 145.28512C438.91712 131.71712 497.2544 124.928 518.12352 124.928c20.8896 0 79.2064 6.78912 174.98112 20.35712 111.104 15.74912 193.66912 110.85824 193.65888 223.05792V542.72c0 203.59168-165.04832 368.64-368.64 368.64s-368.64-165.04832-368.64-368.64V368.34304c0-112.19968 82.56512-207.3088 193.65888-223.05792z"
             fill="#FADCB3"

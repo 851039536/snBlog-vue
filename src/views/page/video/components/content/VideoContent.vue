@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { routerId } from '@/utils/route'
-import { state } from '../data/data'
-import { method } from '../data/index'
+import { state } from '../../data/data'
+import { method } from '../../data/index'
 
 defineProps({
   rData: {
@@ -44,18 +44,18 @@ defineProps({
 
 <style lang="scss" scoped>
 .videos {
-  // @apply h-[100%] mt-[4.5%] ml-[22%] w-[49.5%];
+  @apply bg-white;
 
   .vicont-cont {
-    @apply grid grid-cols-3;
+    @apply grid grid-cols-4;
     @apply w-full;
 
     .vicont-cont-list {
-      @apply h-[80%] mt-2 w-[80%];
+      @apply h-[95%] mt-2 w-[90%];
       @apply rounded m-auto shadow bg-white;
 
       .vicont-2-1-1 {
-        height: 70%;
+        height: 68%;
 
         img {
           @apply h-full w-full;
@@ -70,7 +70,7 @@ defineProps({
 
       .vicont2-1-3 {
         span {
-          @apply mx-1 p-1 rounded;
+          @apply text-sm mx-2px px-2px rounded;
           @apply bg-red-100 hover:text-blue-400 cursor-pointer;
         }
       }

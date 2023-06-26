@@ -3,7 +3,7 @@ import { method, state } from './index'
 
 onMounted(async () => {
   await method.Count()
-  await method.getOne()
+  await method.getPagingDiary()
 })
 </script>
 
@@ -11,8 +11,8 @@ onMounted(async () => {
   <div class="diary">
     <diary-sidebar></diary-sidebar>
     <div class="diary-cont">
-      <OneTop :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></OneTop>
-      <OneContent :result-data="state.rData"></OneContent>
+      <diary-top :title="state.dataOne.title" :text="state.dataOne.text" :read="state.dataOne.read"></diary-top>
+      <diary-content :result-data="state.rData"></diary-content>
       <div class="paging">
         <a-pagination
           size="small"

@@ -8,7 +8,7 @@
       <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-3">
         <div class="book-film-text">
           <div class="book-img">
-            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
+            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" alt="" />
           </div>
           <div class="book-film-title">小说家</div>
           <div class="book-film-type">
@@ -77,10 +77,8 @@
 
 <style lang="scss" scoped>
 .book {
-  @apply fixed;
-
   .book-main {
-    // @apply h-[90%] mt-[4.5%] ml-[22%] w-[47%];
+    @apply w-full;
     @apply rounded shadow overflow-auto;
 
     .book-film-text {

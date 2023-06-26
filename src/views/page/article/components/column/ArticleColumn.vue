@@ -60,7 +60,7 @@ onMounted(async () => {
     <div v-for="r in articleData" :key="r.id" class="article-column">
       <div class="content">
         <div class="cont-img">
-          <img v-lazy="QImageUrl(r.img)" />
+          <img v-lazy="QImageUrl(r.img)" alt="" />
         </div>
         <div class="content-frame">
           <div class="content-div-frame-1" @click="routerId('/article/content', r.id)">

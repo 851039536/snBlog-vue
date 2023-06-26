@@ -8,7 +8,7 @@ interface State {
 const state: State = reactive({
   rData: [],
   page: 1,
-  pagesize: 6,
+  pagesize: 12,
   count: 0,
   current: 1
 })

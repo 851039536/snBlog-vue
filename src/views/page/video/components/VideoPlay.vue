@@ -20,10 +20,10 @@ const resId = reactive({
 
 const GetApi = async () => {
   await VideoApi.getType(1, resData.typeName, true).then((res: any) => {
-    resData.resultData = res.data
+    resData.resultData = res.data.data
   })
   await VideoApi.getById(resId.id, true).then((res: any) => {
-    resData.URL = res.data.url
+    resData.URL = res.data.data.url
   })
 }
 
@@ -50,8 +50,6 @@ GetApi()
 
 <style lang="scss" scoped>
 .vplay {
-  @apply h-[100%] mt-[4.6%] ml-[22%] w-[49.5%];
-
   .vplay-if {
     @apply bg-white w-full h-full;
 

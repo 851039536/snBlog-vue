@@ -3,7 +3,7 @@ import { VideoApi } from '@/api'
 
 const sum = ref(0)
 VideoApi.getSum(0, '0', true).then((res: any) => {
-  sum.value = res.data
+  sum.value = res.data.data
 })
 </script>
 

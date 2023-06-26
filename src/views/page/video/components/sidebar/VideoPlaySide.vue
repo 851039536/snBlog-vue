@@ -17,20 +17,20 @@ const resId = reactive({
   id: route.query.id
 })
 VideoApi.getSum(0, '0', true).then((res: any) => {
-  state.value = res.data
+  state.value = res.data.data
 })
 
 const videos = async (vid: number) => {
   await VideoApi.getById(vid, true).then((res: any) => {
-    resData.URL = res.data.url
+    resData.URL = res.data.data.url
   })
 }
 const GetApi = async () => {
   await VideoApi.getType(1, resData.typeName, true).then((res: any) => {
-    resData.resultData = res.data
+    resData.resultData = res.data.data
   })
   await VideoApi.getById(resId.id, true).then((res: any) => {
-    resData.URL = res.data.url
+    resData.URL = res.data.data.url
   })
 }
 

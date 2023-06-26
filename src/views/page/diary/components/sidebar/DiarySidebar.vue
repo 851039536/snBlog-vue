@@ -22,8 +22,8 @@ onMounted(async () => {
 <template>
   <div class="diary-sidebar">
     <div>内容来源于网络</div>
-    <OneSidetype title="舔狗好评" :result-data="state.resultOne"></OneSidetype>
-    <OneCategory :result="state.diaryType"></OneCategory>
+    <diary-sidetype title="舔狗好评" :result-data="state.resultOne"></diary-sidetype>
+    <diary-category :result="state.diaryType"></diary-category>
   </div>
 </template>
 
