@@ -6,7 +6,7 @@ import { INav } from '@/api/data/InterData'
 
 const rData = reactive({
   page: 1,
-  pagesize: 21,
+  pagesize: 32,
   count: 0,
   name: '',
   current: 1
@@ -39,12 +39,8 @@ onMounted(async () => {
 
 <template>
   <section>
-    <div class="fa-main">
-      <div class="mx-3 flex items-center text-base">
-        <div i-flat-color-icons-doughnut-chart mr-1 h-5 w-5></div>
-        网站导航
-      </div>
-      <div class="fa-cont">
+    <div class="favorite">
+      <div class="favorite-content">
         <div v-for="r in rNav" :key="r.id" class="fa-cont-list">
           <div class="fa-cont-list1">
             <div @click="winUrl(r.url)">{{ r.title }}</div>
@@ -53,7 +49,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="fa-page">
+      <div class="favorite-paging">
         <a-pagination
           size="small"
           :total="rData.count"
@@ -64,100 +60,91 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div class="faside">
-      <div class="faside-describe">
-        <p>网站收集</p>
-      </div>
-      <div class="onecategory">
-        <div class="onecategory-name">列表</div>
-        <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
-          <div class="flex-1 rounded p-1 text-center text-base m-1 hover:bg-blue-400">
-            <span @click="clkApi(r.title)">{{ r.title }}</span>
+    <c-right-sidebar>
+      <c-right-sidebar-container>
+        <div class="favorite-describe">网站收集</div>
+      </c-right-sidebar-container>
+
+      <c-right-sidebar-container>
+        <div class="favorite-onecategory">
+          <div class="onecategory-name">列表</div>
+          <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
+            <div class="m-3px flex rounded p-3px text-center hover:bg-blue-400">
+              <span @click="clkApi(r.title)">{{ r.title }}</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="faside-footer">
-        <div class="faside-f-title">站点信息</div>
-        <div class="faside-f-cont">
-          <div class="faside-f-cont-name">内容数量:</div>
-          <div class="faside-f-cont-text">{{ sum }}篇</div>
+      </c-right-sidebar-container>
+
+      <c-right-sidebar-container>
+        <div class="footer-title">站点信息</div>
+        <div class="footer-content">
+          <div class="footer-content-name">内容数量:</div>
+          <div class="footer-content-text">{{ sum }}篇</div>
         </div>
-      </div>
-    </div>
+      </c-right-sidebar-container>
+    </c-right-sidebar>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.fa-main {
-  .fa-cont {
+.favorite {
+  @apply bg-white;
+
+  .favorite-content {
     @apply h-full w-full;
-    @apply grid grid-cols-3;
+    @apply grid grid-cols-4;
 
     .fa-cont-list {
-      @include w-h(98%, 96px);
-      @apply m-auto mt-6px;
-      @apply rounded bg-white shadow-sm;
+      @include w-h(92%, 96px);
+      @apply m-auto mt-8px;
+      @apply rounded bg-blue-50 shadow-sm;
 
       .fa-cont-list1 {
-        @apply cursor-pointer text-lg font-medium py-1 mx-3 hover:text-blue-400;
+        @apply bg-blue-200 mt-1 rounded pl-1;
+        @apply cursor-pointer text-lg mx-2 hover:text-blue-400;
         @include line-numbers(1);
       }
 
       .fa-cont-list2 {
-        @apply mx-3 text-cool-gray-500;
+        @apply mx-3 text-cool-gray-600;
         @include line-numbers(2);
       }
     }
   }
 
-  .fa-page {
-    @apply bg-white shadow p-2 m-2 mb-50;
+  .favorite-paging {
+    @apply p-2 m-2 mb-50;
   }
 }
 
-.faside {
-  @apply fixed;
-  @apply h-[90%] top-[9%] right-[12%] w-[18%];
+.favorite-describe {
+  @apply text-center text-base p-3;
+}
 
-  .faside-describe {
-    @apply m-auto mb-2 w-[97%] bg-white;
-    @apply rounded shadow text-center;
+.footer-title {
+  @apply text-base px-1;
+  @apply cursor-pointer font-semibold bg-emerald-300;
+}
 
-    p {
-      @apply m-1 text-base py-4 px-2;
-    }
+.footer-content {
+  @apply my-7px text-sm flex;
+
+  .footer-content-name {
+    @apply py-1 w-[35%];
   }
 
-  .faside-footer {
-    @apply m-auto mb-2 p-1 w-[97%] bg-white;
-    @apply rounded cursor-pointer shadow;
-
-    .faside-f-title {
-      @apply m-1 text-base p-1;
-      @apply cursor-pointer font-semibold bg-emerald-300;
-    }
-
-    .faside-f-cont {
-      @apply m-2 text-sm flex;
-
-      .faside-f-cont-name {
-        @apply p-1 w-[35%];
-      }
-
-      .faside-f-cont-text {
-        @apply p-1 w-[40%];
-      }
-    }
+  .footer-content-text {
+    @apply py-1 w-[40%];
   }
+}
 
-  .onecategory {
-    @apply m-auto mb-2 p-1 w-[97%];
-    @apply bg-white rounded cursor-pointer;
+.favorite-onecategory {
+  @apply bg-white rounded cursor-pointer;
 
-    .onecategory-name {
-      @apply m-1 text-base p-1;
-      @apply font-semibold bg-blue-300;
-    }
+  .onecategory-name {
+    @apply text-base px-2;
+    @apply font-semibold bg-blue-300;
   }
 }
 

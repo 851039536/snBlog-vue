@@ -1,6 +1,6 @@
 <template>
   <teleport to="body">
-    <div v-if="visible" class="model-bg">
+    <div v-if="visible" class="model-bg fade-in">
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>
         <div class="model-title">{{ title }}</div>
