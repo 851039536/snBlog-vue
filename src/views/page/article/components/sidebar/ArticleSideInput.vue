@@ -12,30 +12,58 @@ function onSearch() {
 </script>
 <template>
   <c-right-sidebar-container>
-    <div class="side-input">
-      <input v-model="searchName" type="text" @input="onSearch()" />
+    <div class="article-side-input">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+        </g>
+      </svg>
+      <input v-model="searchName" placeholder="Search" type="search" class="input" @input="onSearch()" />
     </div>
   </c-right-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
-.side-input {
-  @apply p-2;
+.article-side-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  line-height: 28px;
 
-  input {
-    @apply border-gray-500 w-full;
+  @apply border-gray-500 max-w-full text-base;
 
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    outline-style: none;
+  .input {
+    width: 100%;
+    height: 40px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    color: #0d0c22;
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s ease;
   }
 
-  input:focus {
-    border-color: #66afe9;
-    outline: 0;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%), 0 0 8px rgb(102 175 233 / 60%);
+  .input::placeholder {
+    color: #9e9ea7;
+  }
+
+  .input:focus,
+  input:hover {
+    background-color: #fff;
+    border-color: rgb(234 76 137 / 40%);
+    outline: none;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+  }
+
+  .icon {
+    position: absolute;
+    left: 1rem;
+    width: 1rem;
+    height: 1rem;
+    fill: #9e9ea7;
   }
 }
 </style>

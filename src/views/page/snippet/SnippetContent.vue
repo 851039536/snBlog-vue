@@ -4,6 +4,9 @@ import { snippetForm } from '@/api/data/model/SnippetMode'
 import { isUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
+import { MdPreview } from 'md-editor-v3'
+import 'md-editor-v3/lib/preview.css'
+const id = 'preview-only'
 // JS
 import { ref, nextTick } from 'vue'
 // 创建节点 ref
@@ -129,21 +132,21 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
-  await SnippetApi.getById(id, false).then((r: any) => {
-    snippetForm.id = r.data.id
-    snippetForm.name = r.data.name
-    snippetForm.text = r.data.text
-    snippetForm.tagId = r.data.tag.id
-    snippetForm.typeId = r.data.type.id
-    snippetForm.userId = r.data.user.id
-    snippetForm.labelId = r.data.label.id
-  })
+  const ret = await SnippetApi.getById(id, false)
+  console.log('[ ret ]-136', ret.data)
+  snippetForm.id = ret.data.id
+  snippetForm.name = ret.data.name
+  snippetForm.text = ret.data.text
+  snippetForm.tagId = ret.data.tag.id
+  snippetForm.typeId = ret.data.type.id
+  snippetForm.userId = ret.data.user.id
+  snippetForm.labelId = ret.data.label.id
   visible.value = true
 }
 
 onMounted(async () => {
   await SnippetApi.getStrSum(0, 'null', true).then(r => {
-    rCharSun.value = r.data
+    rCharSun.value = r.data.data
   })
 })
 </script>
@@ -196,7 +199,7 @@ onMounted(async () => {
             <span mr-2 class="rounded bg-rose-100 p-1px">{{ item.user.nickname }}</span>
             <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
           </div>
-          <v-md-editor v-model="item.text" mode="preview"></v-md-editor>
+          <MdPreview :show-code-row-number="true" :editor-id="id" :model-value="item.text" />
         </div>
       </div>
       <div class="absolute left-0 top-0 rounded bg-yellow-100 p-3 text-sm text-cool-gray-600">{{ rCharSun }}字</div>
@@ -217,7 +220,7 @@ onMounted(async () => {
 .bor {
   @apply mt-3;
 
-  border-bottom: 1.8px solid #d8dce4;
+  border-bottom: 1.8px solid #a0a3aa;
 }
 
 .test {

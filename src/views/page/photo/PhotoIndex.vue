@@ -116,7 +116,6 @@
 
 <style lang="scss" scoped>
 .photo {
-  @apply h-[80%] mt-[4.6%] ml-[22%] w-[65%];
   @apply rounded-md shadow bg-white;
 
   .photo-title {

@@ -84,8 +84,10 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .article-column {
+  @apply mt-1;
+
   .content {
-    @apply flex h-155px mt-2 w-full;
+    @apply flex h-155px w-full mb-7px;
     @apply bg-white rounded-lg shadow-sm;
 
     .cont-img {

@@ -18,12 +18,6 @@ export const articleTagForm: IArticleTag = reactive({
   description: ''
 })
 
-// export const clearArticleTag = (): void => {
-//   articleTagForm.id = 0
-//   articleTagForm.name = ''
-//   articleTagForm.description = ''
-// }
-
 /**
  * 定义箭头函数 clearArticleTag()，将 articleTagForm 变量的3个属性设置为空字符串或零，从而帮助我们清除引用的对象中存储的数据。
  */

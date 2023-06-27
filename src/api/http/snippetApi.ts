@@ -47,7 +47,7 @@ export class SnippetApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache: boolean) {
-    return get(`/snippet/bid?id=${id}&cache=${cache}`, false)
+    return get(`/snippet/byid?id=${id}&cache=${cache}`, false)
   }
   /**
    * 条件查询 GetTypeAsync
