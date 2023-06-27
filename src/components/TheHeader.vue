@@ -3,13 +3,9 @@ import { removeUserStorage, userInfo } from '@/utils/user/user-info'
 import { storage } from '@/utils/storage/storage'
 import { routers } from '@/utils/route'
 import { rRouter } from '@/router/route-Info'
-import uservg from '@assets/svg/components/user.svg?component'
+import userSvg from '@assets/svg/components/user.svg?component'
 import { headVisible, loginVisible, sideIndex } from '@/utils/common/visible-data'
-import { InterfaceApi, UserApi } from '@/api'
-import { useAppStore } from '@/store/pinia'
-const rName = ref('')
-const pwd = ref('')
-const store = useAppStore()
+import { InterfaceApi } from '@/api'
 const rData: any = ref([])
 const isVisible = ref(false)
 
@@ -20,6 +16,9 @@ async function skip(path: string) {
       isVisible.value = true
       break
     case 'home':
+      await routers(path)
+      break
+    case '/Photo':
       await routers(path)
       break
     default:
@@ -42,20 +41,6 @@ async function onChange(id: number) {
     default:
       break
   }
-}
-function login() {
-  UserApi.login(rName.value, pwd.value).then(r => {
-    const ret = r.data
-
-    removeUserStorage()
-    storage.set(userInfo.ROLE, ret.nickname) // 角色名
-    storage.set(userInfo.TOKEN, `Bearer ${ret.token}`) // token
-    storage.set(userInfo.ID, ret.id) // 用户主键
-    storage.set(userInfo.NAME, ret.name) // 用户名
-
-    store.roles = storage.get(userInfo.ROLE)
-    location.reload()
-  })
 }
 
 onMounted(async () => {
@@ -101,14 +86,14 @@ onMounted(async () => {
               </template>
               <template #title>
                 <div class="flex">
-                  <div class="mr-2 mt-11px"><uservg></uservg></div>
+                  <div class="mr-2 mt-11px"><user-svg></user-svg></div>
                   <div class="m-1">
                     <div>少年</div>
                     <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
                   </div>
                 </div>
               </template>
-              <uservg></uservg>
+              <user-svg></user-svg>
             </a-popover>
           </div>
         </div>
@@ -116,39 +101,14 @@ onMounted(async () => {
     </div>
   </nav>
 
-  <c-modal-dialog :visible="loginVisible" title="Login" @close-model="loginVisible = false">
-    <form class="login">
-      <p>用户登录</p>
-      <input v-model="rName" class="login-put" type="text" placeholder="用户名" autocomplete="off" />
-      <input v-model="pwd" autocomplete="off" class="login-put" type="password" placeholder="密码" />
-      <div class="btn" @click="login">登 录</div>
-    </form>
-  </c-modal-dialog>
+  <base-login></base-login>
 
   <modal-snippet :visible="isVisible" @close-model="isVisible = false">
-    <SnippetContent></SnippetContent>
+    <snippet-content></snippet-content>
   </modal-snippet>
 </template>
 
 <style lang="scss" scoped>
-.login {
-  @apply w-400px text-center;
-
-  p {
-    @apply text-2xl;
-  }
-}
-
-.login-put {
-  @apply w-full h-12 mb-10px text-xl bg-white border-b-2 border-gray-300;
-  @apply cursor-pointer;
-}
-
-.btn {
-  @apply text-2xl p-2 mt-4 rounded shadow-sm;
-  @apply cursor-pointer  hover:bg-gray-200 hover:text-white;
-}
-
 input {
   box-sizing: border-box;
   padding: 10px 15px;
@@ -200,17 +160,6 @@ input {
     }
   }
 }
-
-// @screen <lg {
-// .head {
-//   @apply w-full left-0;
-
-//   .h-cont .h-cont-l {
-//     @apply w-[75%];
-//   }
-// }
-
-// }
 
 @media screen and (max-width: 768px) {
   .head {

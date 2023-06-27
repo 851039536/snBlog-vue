@@ -27,7 +27,8 @@
 @include scroll;
 
 #app {
-  background: #f3f7fd;
+  background-color: #e5e5f7;
+  background-image: repeating-linear-gradient(to right, #bdbedb, #9b9baa 0.4px, #e5e5f7 0.4px, #e5e5f7);
 
   @apply w-full absolute;
 

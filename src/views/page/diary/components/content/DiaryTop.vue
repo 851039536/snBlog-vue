@@ -24,7 +24,7 @@ defineProps({
 <template>
   <div class="otop">
     <div class="otop-img">
-      <img src="@/assets/img/tg.jpg" />
+      <img src="@/assets/img/tg.jpg" alt="无" />
     </div>
     <div class="otop-cont">
       <div class="otop-cont-title">

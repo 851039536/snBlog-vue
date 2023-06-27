@@ -63,6 +63,7 @@ declare module '@vue/runtime-core' {
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     Baseaspin: typeof import('./src/components/Baseaspin.vue')['default']
     BaseAspin: typeof import('./src/components/BaseAspin.vue')['default']
+    BaseLogin: typeof import('./src/components/header/BaseLogin.vue')['default']
     BaseTime: typeof import('./src/components/BaseTime.vue')['default']
     BaseTop: typeof import('./src/components/BaseTop.vue')['default']
     BlogCircles: typeof import('./src/views/page/navigation/BlogCircles.vue')['default']
