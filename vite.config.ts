@@ -10,7 +10,6 @@ import { injectHtml } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
-// import { ViteTips } from 'vite-plugin-tips'
 import svgLoader from 'vite-svg-loader'
 // Unocss 插件
 import Unocss from 'unocss/vite'
@@ -134,7 +133,7 @@ export default defineConfig({
     //检测需要预构建的依赖项
     entries: [],
     // 默认情况下，不在 node_modules 中的，链接的包不会预构建
-    include: ['axios', 'pinia', 'ant-design-vue', '@kangc/v-md-editor']
+    include: ['axios', 'pinia', 'ant-design-vue']
     //排除 被监听的包必须被排除在优化之外，以便它能出现在依赖关系图中并触发热更新。
     // exclude: ['xxx']
   },
@@ -163,7 +162,7 @@ export default defineConfig({
   //打包配置
   build: {
     //浏览器兼容性  "esnext"|"modules" 默认为 'esnext'
-    target: 'esnext', // 支持es6文件
+    target: 'modules', // 支持es6文件
     //指定输出路径 默认为 'dist'
     outDir: 'dist',
     //  // boolean | 'terser' | 'esbuild'

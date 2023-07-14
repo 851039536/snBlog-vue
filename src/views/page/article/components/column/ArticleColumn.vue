@@ -3,9 +3,9 @@ import { routerId } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { ArticleApi } from '@/api'
 import { headVisible, sideVisible } from '@/utils/common/visible-data'
-import { useWindowScroll } from '@vueuse/core'
 import { articleData, paging } from '.'
-const { y } = useWindowScroll()
+
+const xxxRef: any = ref(0)
 
 async function getSum(identity: number, type: string) {
   const count = await ArticleApi.getSum(identity, type)
@@ -25,37 +25,46 @@ async function QPaging() {
 function QImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
-const scDisabled = computed(() => {
-  return articleData.value.length <= paging.count
-})
 
-const cheight = ref(50)
+const cheight = ref(8)
 
-watch(
-  () => {
-    return [y]
-  },
-  async () => {
-    if (scDisabled.value) {
-      if (y.value > cheight.value) {
-        console.log('触发加载')
-        cheight.value += 400
-        paging.pagesize += 3
-        await QPaging()
-      }
-    }
-  },
-  { deep: true }
-)
 onMounted(async () => {
   sideVisible.value = true
   headVisible.value = true
   await axios.all([await getSum(0, aData.NULL), await QPaging()])
 })
+async function scrollEvent() {
+  console.log(xxxRef.value.scrollTop)
+  if (xxxRef.value.scrollTop) {
+    if (xxxRef.value.scrollTop > cheight.value) {
+      console.log('触发加载')
+      cheight.value += 400
+      paging.pagesize += 3
+      await QPaging()
+    }
+  }
+}
+
+const onScroll = (type: string) => {
+  nextTick(() => {
+    const distance = type === 'top' ? 0 : xxxRef.value.scrollHeight
+    xxxRef.value.scrollTop = distance
+  })
+}
+const onScroll2 = (type: number) => {
+  nextTick(() => {
+    xxxRef.value.scrollTop += type
+  })
+}
+const onScroll3 = (type: number) => {
+  nextTick(() => {
+    xxxRef.value.scrollTop -= type
+  })
+}
 </script>
 
 <template>
-  <section>
+  <section ref="xxxRef" class="test1 h-[92.78vh] overflow-y-scroll" @scroll="scrollEvent">
     <article-column-top></article-column-top>
     <div v-for="r in articleData" :key="r.id" class="article-column">
       <div class="content">
@@ -78,16 +87,37 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div v-if="scDisabled" text="cool-gray-400 center" class="mb-10 mt-2 m-1">数据加载完毕 ^</div>
+    <div text="cool-gray-400 center" class="mb-20 mt-2 m-1">数据加载完毕 ^</div>
+    ,
+    <div fixed class="btn">
+      <button @click="onScroll('top')">顶部</button>
+      <button @click="onScroll('bottom')">底部</button>
+      <button @click="onScroll2(400)">下滑</button>
+      <button @click="onScroll3(400)">上划</button>
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
+.test1 {
+  scroll-behavior: smooth;
+}
+
+.btn {
+  @apply right-75 bottom-1 cursor-pointer z-1;
+
+  button {
+    @apply bg-white border-none px-3 mr-1px py-1;
+    @apply rounded shadow;
+    @apply hover:text-red-500;
+  }
+}
+
 .article-column {
   @apply mt-1;
 
   .content {
-    @apply flex h-155px w-full mb-7px;
+    @apply flex h-155px w-full mb-6px;
     @apply bg-white rounded-lg shadow-sm;
 
     .cont-img {

@@ -15,11 +15,6 @@ const clickType = async (name: string) => {
 }
 </script>
 <template>
-  <!-- <div class="article-column-top">
-    <div @click="clickType('read')">热门</div>
-    <div @click="clickType('id')">最新</div>
-  </div> -->
-
   <div class="my-dict">
     <div>
       <label>
@@ -38,15 +33,6 @@ const clickType = async (name: string) => {
   </div>
 </template>
 <style lang="scss" scoped>
-.article-column-top {
-  // @apply top-0px left-0 z-100 absolute ml-[24%] mt-[4.6%] w-[47%];
-  @apply flex cursor-pointer rounded-md bg-white border-emerald-200;
-
-  div {
-    @apply p-1 hover:text-blue-400;
-  }
-}
-
 :focus {
   border-color: #2260ff;
   outline: 0;
@@ -57,7 +43,6 @@ const clickType = async (name: string) => {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 0.5rem;
 
   @apply bg-white py-2 rounded-lg;
 }

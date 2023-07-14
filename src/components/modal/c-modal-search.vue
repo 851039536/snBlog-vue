@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { searchVisible } from '@/utils/common/visible-data'
-const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
+const emit = defineEmits(['close-model'])
 </script>
 <template>
   <teleport v-if="searchVisible" to="#search">

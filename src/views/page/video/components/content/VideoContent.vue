@@ -44,14 +44,13 @@ defineProps({
 
 <style lang="scss" scoped>
 .videos {
-  @apply bg-white;
+  @apply bg-white mt-1 rounded;
 
   .vicont-cont {
     @apply grid grid-cols-4;
-    @apply w-full;
 
     .vicont-cont-list {
-      @apply h-[95%] mt-2 w-[90%];
+      @apply h-[90%] mt-1 w-[90%];
       @apply rounded m-auto shadow bg-white;
 
       .vicont-2-1-1 {

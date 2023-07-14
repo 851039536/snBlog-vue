@@ -53,7 +53,7 @@ defineProps({
   @apply grid grid-cols-3;
 
   .ocont-list {
-    @apply m-auto h-140px mt-1 w-[97%] bg-white;
+    @apply m-auto  mt-1 w-[97%] bg-white;
     @apply rounded cursor-pointer shadow;
 
     .ocont-list-cont {

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { MdEditor } from 'md-editor-v3'
 import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
@@ -17,9 +18,11 @@ const add = async () => {
   articleForm.userId = storage.get(userInfo.ID)
   articleForm.img = `blog/${random(1, 20, 2)}.jpg`
   await ArticleApi.add(articleForm).then(r => {
-    if (r.data) {
+    if (r.data.statusCode === 200) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
+    } else {
+      message.warning(aData.FAIL)
     }
   })
 }
@@ -32,8 +35,8 @@ onMounted(async () => {
   clearArticle()
   axios.all([await ArticleTypeApi.getAll(), await ArticleTagApi.getPaging(1, 900)]).then(
     axios.spread((sort: any, label: any) => {
-      rType.value = sort
-      rTag.value = label
+      rType.value = sort.data
+      rTag.value = label.data
     })
   )
   navName.name = '文章展示'
@@ -79,7 +82,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="px-2">
-      <v-md-editor v-model="articleForm.text" height="440px"></v-md-editor>
+      <MdEditor v-model="articleForm.text" />
     </div>
   </div>
 </template>

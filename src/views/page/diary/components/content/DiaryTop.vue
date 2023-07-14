@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DiaryApi, DiaryTypeApi } from '@/api'
+
 defineProps({
   title: {
     type: String,
@@ -19,12 +21,29 @@ defineProps({
     }
   }
 })
+
+const state: any = reactive({
+  diaryType: [],
+  resultOne: [],
+  modal2Visible: false,
+  text: []
+})
+
+onMounted(async () => {
+  const dataType = await DiaryTypeApi.getPaging(1, 100, true, false)
+  state.diaryType = dataType.data.data
+
+  const data = await DiaryApi.getPaging(0, '0', 1, 9, 'read', true, false)
+  console.log('[ data ]-16', data)
+  state.resultOne = data.data.data
+  console.log('[ state.resultOne ]-17', state.resultOne)
+})
 </script>
 
 <template>
   <div class="otop">
     <div class="otop-img">
-      <img src="@/assets/img/tg.jpg" alt="无" />
+      <diary-sidetype title="热热热!" :result-data="state.resultOne"></diary-sidetype>
     </div>
     <div class="otop-cont">
       <div class="otop-cont-title">
@@ -39,16 +58,17 @@ defineProps({
           <span class="bg-red-100">日记</span>
         </div>
       </div>
+      <diary-category :result="state.diaryType"></diary-category>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .otop {
-  @apply h-400px w-full flex bg-white;
+  @apply h-340px w-full flex bg-white mt-1 rounded;
 
   .otop-img {
-    @apply w-[45%] mx-1;
+    @apply w-[42%] mx-1;
 
     img {
       @apply h-full w-full rounded;

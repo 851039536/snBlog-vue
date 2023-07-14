@@ -7,14 +7,14 @@ method.currentchange(1)
 
 <template>
   <div class="video">
-    <video-sidebar></video-sidebar>
+    <!-- <video-sidebar></video-sidebar> -->
     <video-content :r-data="state.rData"></video-content>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .video {
-  @apply w-full relative h-[92%];
+  // @apply h-[92.78vh];
 }
 
 // @screen xp {

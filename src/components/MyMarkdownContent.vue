@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArticleApi } from '@/api/index'
-import { sideVisible } from '@/utils/common/visible-data'
+import { sideVisible, rightVisible } from '@/utils/common/visible-data'
 
 import { MdPreview, MdCatalog } from 'md-editor-v3'
 import 'md-editor-v3/lib/preview.css'
@@ -24,11 +24,12 @@ const GetAll = async () => {
 
 onMounted(async () => {
   sideVisible.value = false
+  rightVisible.value = false
   await GetAll()
 })
 </script>
 <template>
-  <div m-auto>
+  <div>
     <base-top />
     <div class="md-content">
       <div class="py-2 text-center text-2xl">{{ state.blog.name }}</div>
@@ -46,7 +47,7 @@ onMounted(async () => {
 @import '../design/md-base';
 
 .md-content {
-  @apply bg-white mt-20 mb-800px ml-[3%];
+  @apply bg-white  mt-3 rounded w-[75%];
 }
 
 .md-sidebar {

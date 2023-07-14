@@ -109,23 +109,8 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-input {
-  box-sizing: border-box;
-  padding: 10px 15px;
-  border: 1.2px solid #c0c4cc;
-  border-radius: 5px;
-
-  &:focus {
-    border-color: #f07b00;
-    outline: 0;
-    box-shadow: inset 0 1px 1px rgb(218 150 150 / 7.5%), #f07b00;
-  }
-
-  @apply w-full h-full;
-}
-
 .head {
-  @apply flex h-71px w-full top-0 left-0 z-50 fixed;
+  @apply flex h-7vh w-full top-0 left-0 z-50 relative;
   @apply bg-white shadow-sm px-3;
 
   .h-cont {

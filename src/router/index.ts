@@ -33,7 +33,7 @@ const routes: RouteRecordRaw[] = [
     path: '/article',
     name: 'article',
     meta: {
-      keepAlive: true
+      keepAlive: false
     },
     component: () => {
       return import('@/views/page/article/Index.vue')

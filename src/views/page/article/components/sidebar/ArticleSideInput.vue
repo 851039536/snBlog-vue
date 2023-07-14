@@ -40,8 +40,8 @@ function onSearch() {
     padding-left: 2.5rem;
     color: #0d0c22;
     line-height: 28px;
-    border: 2px solid transparent;
-    border-radius: 8px;
+    border: 1px solid transparent;
+    border-radius: 3px;
     outline: none;
     transition: 0.3s ease;
   }
@@ -53,9 +53,9 @@ function onSearch() {
   .input:focus,
   input:hover {
     background-color: #fff;
-    border-color: rgb(234 76 137 / 40%);
+    border-color: rgb(211 209 210 / 40%);
     outline: none;
-    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    box-shadow: 0 0 0 2px rgb(194 176 183 / 10%);
   }
 
   .icon {
@@ -63,7 +63,7 @@ function onSearch() {
     left: 1rem;
     width: 1rem;
     height: 1rem;
-    fill: #9e9ea7;
+    fill: #8d8d94;
   }
 }
 </style>

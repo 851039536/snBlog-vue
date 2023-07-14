@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
+import { MdEditor } from 'md-editor-v3'
 import { ArticleApi, ArticleTypeApi, ArticleTagApi } from '@/api'
 import { rTag, rType } from './data'
 import { routers, go } from '@/utils/route'
@@ -23,22 +24,21 @@ const update = async () => {
 onMounted(async () => {
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
-  await axios.all([ArticleTagApi.getPaging(1, 100),
-    ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
+  await axios.all([ArticleTagApi.getPaging(1, 100), ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
     axios.spread((tag: any, type: any, article) => {
-      rTag.value = tag
-      rType.value = type
-      articleForm.id = article.data.id
-      articleForm.commentId = article.data.commentId
-      articleForm.give = article.data.give
-      articleForm.tagId = article.data.tagId
-      articleForm.read = article.data.read
-      articleForm.typeId = article.data.typeId
-      articleForm.text = article.data.text
-      articleForm.name = article.data.name
-      articleForm.sketch = article.data.sketch
-      articleForm.img = article.data.img
-      articleForm.userId = article.data.userId
+      rTag.value = tag.data
+      rType.value = type.data
+      articleForm.id = article.data.data.id
+      articleForm.commentId = article.data.data.commentId
+      articleForm.give = article.data.data.give
+      articleForm.tagId = article.data.data.tagId
+      articleForm.read = article.data.data.read
+      articleForm.typeId = article.data.data.typeId
+      articleForm.text = article.data.data.text
+      articleForm.name = article.data.data.name
+      articleForm.sketch = article.data.data.sketch
+      articleForm.img = article.data.data.img
+      articleForm.userId = article.data.data.userId
     })
   )
 })
@@ -75,10 +75,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="mt-1 px-2">
-      <v-md-editor
-        v-model="articleForm.text"
-        left-toolbar="undo redo | emoji | clear | h | code"
-        height="440px"></v-md-editor>
+      <MdEditor v-model="articleForm.text" />
     </div>
   </div>
 </template>

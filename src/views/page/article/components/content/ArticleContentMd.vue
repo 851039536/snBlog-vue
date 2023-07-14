@@ -1,21 +1,17 @@
 <script setup lang="ts">
+import { MdPreview } from 'md-editor-v3'
+
 // v-model 不能直接修改
 const props = defineProps<{
   result: String
 }>()
 
-const result = ref(props.result)
+const ret: any = ref(props.result)
 // 在更新之前赋值
 onBeforeUpdate(() => {
-  result.value = props.result
+  ret.value = props.result
 })
 </script>
 <template>
-  <v-md-editor v-model="result" mode="preview"></v-md-editor>
+  <MdPreview editor-id="preview-only" :model-value="ret" preview-theme="github" code-theme="gradient" />
 </template>
-
-<style lang="scss" scoped>
-div {
-  @apply bg-white;
-}
-</style>

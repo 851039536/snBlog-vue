@@ -4,6 +4,7 @@ import { userInfo } from '@/utils/user/user-info'
 import { sideVisible, sideIndex } from '@/utils/common/visible-data'
 import { routers } from '@/utils/route'
 import { storage } from '@/utils/storage/storage'
+import { rightVisible } from '@/utils/common/visible-data'
 
 const rData: any = ref([])
 const isVisible: any = ref(false)
@@ -18,6 +19,50 @@ const cliAbout = () => {
  */
 function getTopic(index: number) {
   sideIndex.value = index
+}
+
+const skip = (path: string) => {
+  switch (path) {
+    case '/article/column':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/qarticle':
+      rightVisible.value = false
+      routers(path)
+      break
+    case '/diary':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/video':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/favorite':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/BlogCircles':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/book':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/ListContent':
+      rightVisible.value = true
+      routers(path)
+      break
+    case '/Login':
+      rightVisible.value = true
+      routers(path)
+      break
+
+    default:
+      break
+  }
 }
 onMounted(async () => {
   //条件查询列表
@@ -35,17 +80,17 @@ onMounted(async () => {
       class="side-list"
       :class="sideIndex == index ? 'active' : ''"
       @click="getTopic(<number>index)">
-      <div v-if="r.identity" class="flex" @click="routers(r.path)">
-        <div v-if="r.path == '/article/column'" class="i-fxemoji-linksymbol" />
-        <div v-if="r.path == '/qarticle'" i-flat-color-icons-reddit />
-        <div v-if="r.path == '/diary'" i-fxemoji-dog></div>
-        <div v-if="r.path == '/video'" i-flat-color-icons-headset></div>
-        <div v-if="r.path == '/favorite'" i-fxemoji-wiredkeyboard></div>
-        <div v-if="r.path == '/BlogCircles'" i-fxemoji-cyclone></div>
-        <div v-if="r.path == '/book'" i-fxemoji-notebookdecorativecover></div>
-        <div v-if="r.path == '/ListContent'" i-fxemoji-onebuttonmouse></div>
-        <div v-if="r.path == '/Login'" i-fxemoji-maximize></div>
-        {{ r.name }}
+      <div v-if="r.identity" class="flex items-center" @click="skip(r.path)">
+        <div v-if="r.path == '/article/column'" i-typcn-home h-6 w-6 />
+        <div v-if="r.path == '/qarticle'" i-typcn-book h-6 w-6 />
+        <div v-if="r.path == '/diary'" i-typcn-document h-6 w-6></div>
+        <div v-if="r.path == '/video'" i-typcn-headphones h-6 w-6></div>
+        <div v-if="r.path == '/favorite'" i-typcn-flash-outline h-6 w-6></div>
+        <div v-if="r.path == '/BlogCircles'" i-typcn-flag h-6 w-6></div>
+        <div v-if="r.path == '/book'" i-typcn-bookmark h-6 w-6></div>
+        <div v-if="r.path == '/ListContent'" i-typcn-refresh-outline h-6 w-6></div>
+        <div v-if="r.path == '/Login'" i-typcn-arrow-right-outline h-6 w-6></div>
+        <div>{{ r.name }}</div>
       </div>
     </div>
     <div v-show="storage.get(userInfo.NAME) === userInfo.NAME" bg-gray-200 text-lg>
@@ -82,37 +127,24 @@ onMounted(async () => {
 
 <style lang="scss">
 .side {
-  @apply h-[90%] w-220px fixed;
-  @apply bg-white rounded shadow;
-  @apply top-[8.9%] left-[10%];
-
-  @include media-2xl {
-    @apply top-[9.8%] left-[7%] w-214px;
-  }
-
-  @include media-xl {
-    @apply top-[9.1%] left-[6%] w-206px;
-  }
-
-  @include media-lg {
-    @apply top-[9.1%] left-[5.5%] w-180px;
-  }
+  @apply h-92vh;
+  @apply bg-white rounded shadow relative pt-5 mt-1;
 
   @include media-base {
     display: none;
   }
 
   .side-list {
-    @apply text-center text-lg;
-    @apply cursor-pointer transition duration-500 hover:bg-blue-400 rounded;
+    @apply text-center text-base  w-[72%] m-auto;
+    @apply cursor-pointer transition duration-500 hover:bg-gray-200 rounded;
 
     div {
-      @apply m-1 py-1 justify-center items-center;
+      @apply my-6px ml-1  justify-start;
     }
   }
 
   .side-list.active {
-    @apply text-cool-gray-50 bg-blue-400;
+    @apply text-cool-gray-50 bg-blue-500;
   }
 }
 </style>

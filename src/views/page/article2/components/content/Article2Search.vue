@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
+import { ArticleApi, ArticleTypeApi } from '@/api'
 import { throttle } from '@/utils/dethrottle'
 import { rArticle } from '../../data'
 
@@ -10,16 +10,25 @@ const search = () => {
     rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value)).data.data
   }, 300)()
 }
+
+const rTag = ref([])
+onMounted(async () => {
+  let tags: any = await ArticleTypeApi.getAll(true)
+  rTag.value = tags.data.data
+})
 </script>
 <template>
   <div class="search">
-    <input v-model="searchName" placeholder="标题搜索" type="text" @input="search()" />
+    <div class="mt-1 w-[40%]">
+      <input v-model="searchName" placeholder="标题搜索" type="text" @input="search()" />
+    </div>
+    <article2-sidebar-tag :r-data="rTag"></article2-sidebar-tag>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .search {
-  @apply p-1 shadow rounded;
+  @apply pt-1 px-1;
 
   input {
     @apply border-gray-500 w-full;
@@ -27,7 +36,7 @@ const search = () => {
     padding: 6px;
     font-size: 14px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
     outline-style: none;
   }
 

@@ -24,18 +24,11 @@ export class SnippetApi {
 
   /**
    * 模糊查询
-   * @param identity 所有:0|分类:1|标签:2|用户名:3
+   * @param identity   所有:0|分类:1|标签:2|用户名:3|内容:4|标题:5</param>
    * @param type 查询条件
    * @param name 查询字段
    * @param cache 缓存
    */
-  // static async GetContains(identity: number, type: string, name: string, cache = true) {
-  //   const res = await request(
-  //     `/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=1&pageSize=10`,
-  //     false
-  //   )
-  //   return res
-  // }
   static async getContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
     const url = `/snippet/contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=${pageIndex}&pageSize=${pageSize}`
     const res = await request(url, false, false)

@@ -3,6 +3,7 @@ import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/ap
 import { snippetForm } from '@/api/data/model/SnippetMode'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
+import { MdEditor } from 'md-editor-v3'
 
 const rSnippetTag: any = ref([])
 const rSnippetType: any = ref([])
@@ -18,9 +19,9 @@ const update = debounce(async () => {
   })
 }, 1000)
 onMounted(async () => {
-  rSnippetTag.value = await (await SnippetTagApi.getAll(true)).data
-  rSnippetType.value = await (await SnippetTypeApi.getAll(true)).data
-  rSnippetLabel.value = await (await SnippetLabelApi.getAll(true)).data
+  rSnippetTag.value = await (await SnippetTagApi.getAll(true)).data.data
+  rSnippetType.value = await (await SnippetTypeApi.getAll(true)).data.data
+  rSnippetLabel.value = await (await SnippetLabelApi.getAll(true)).data.data
 })
 </script>
 <template>
@@ -46,10 +47,7 @@ onMounted(async () => {
       </select>
     </div>
     <div class="mt-2">
-      <v-md-editor
-        v-model="snippetForm.text"
-        left-toolbar="undo redo | emoji | clear | h | code"
-        height="610px"></v-md-editor>
+      <MdEditor v-model="snippetForm.text" />
     </div>
     <div class="mx-1 mt-1">
       <a-button @click="update">更新</a-button>

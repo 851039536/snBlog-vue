@@ -82,7 +82,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .article-content {
-  @apply bg-white rounded;
+  @apply bg-white rounded  h-[92.78vh] overflow-y-scroll;
 
   .icont-ft {
     .icont-ft-title {

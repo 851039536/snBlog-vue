@@ -28,10 +28,8 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .diary {
   .diary-cont {
-    @apply rounded shadow overflow-auto;
-
     .paging {
-      @apply rounded-none p-2 shadow mt-2 bg-white;
+      @apply p-2  mt-2;
     }
   }
 }

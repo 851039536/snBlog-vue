@@ -5,13 +5,12 @@ import { getUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
+import { MdEditor } from 'md-editor-v3'
 import { snippetLabelData, snippetTagData, snippetTypeData } from './data'
-// const reload: any = inject('reload')
 const update = debounce(async () => {
   snippetForm.userId = getUserId()
   const res = await SnippetApi.update(snippetForm)
   if (res.data) {
-    // reload()
     return message.success(aData.SUCCESS)
   }
   message.warning(aData.FAIL)
@@ -22,9 +21,9 @@ onMounted(async () => {
     await SnippetTypeApi.getAll(false),
     await SnippetLabelApi.getAll(false)
   ])
-  snippetTagData.value = tag.data
-  snippetTypeData.value = type.data
-  snippetLabelData.value = label.data
+  snippetTagData.value = tag.data.data
+  snippetTypeData.value = type.data.data
+  snippetLabelData.value = label.data.data
 })
 </script>
 <template>
@@ -50,10 +49,7 @@ onMounted(async () => {
       </select>
     </div>
     <div class="mt-2">
-      <v-md-editor
-        v-model="snippetForm.text"
-        left-toolbar="undo redo | emoji | clear | h | code"
-        height="610px"></v-md-editor>
+      <MdEditor v-model="snippetForm.text" />
     </div>
     <div class="mx-1 mt-1">
       <a-button @click="update">更新</a-button>

@@ -1,10 +1,6 @@
-<!--suppress VueUnrecognizedDirective -->
 <script lang="ts" setup>
-// 侧边栏
-
 import { ArticleApi } from '@/api'
 import { rArticle } from '../../data'
-
 import { blog } from '../data'
 /**
  * 选中后变色并且效果不消失
@@ -27,9 +23,7 @@ const getApi = async (id: number) => {
       </div>
       <div class="side-col-txt">
         <span>{{ ret.read }}℃</span>
-        <!--suppress TypeScriptUnresolvedReference -->
         <span>赞 {{ ret.give }}</span>
-        <!--suppress TypeScriptUnresolvedReference -->
         <span>{{ ret.timeCreate.substring(0, 10) }}</span>
         <span>编辑</span>
       </div>
@@ -39,7 +33,7 @@ const getApi = async (id: number) => {
 
 <style lang="scss" scoped>
 .article2-right-sidebar {
-  @apply cursor-pointer shadow w-[25%] overflow-auto;
+  @apply cursor-pointer shadow w-[24%] overflow-y-scroll;
 
   .side-col {
     @apply m-1 shadow p-1;
@@ -47,15 +41,15 @@ const getApi = async (id: number) => {
     .side-col-title {
       @apply p-1 text-base;
       @apply bg-blue-50 rounded;
-      @apply hover:text-blue-400;
+      @apply hover:text-blue-500;
     }
 
     .side-col-title.active {
-      @apply bg-blue-400 text-cool-gray-50;
+      @apply bg-blue-500 text-cool-gray-50;
     }
 
     .side-col-txt {
-      @apply text-cool-gray-500 text-sm mt-1;
+      @apply text-cool-gray-600 text-sm mt-1;
 
       span {
         @apply ml-1 rounded;

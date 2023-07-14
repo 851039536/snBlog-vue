@@ -68,7 +68,7 @@ const GetSnippet = async () => {
       rSnippet.value = await (await SnippetApi.getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'title':
-      rSnippet.value = await (await SnippetApi.getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await SnippetApi.getContains(5, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'type':
       rSnippet.value = await (
@@ -97,7 +97,7 @@ const RadioFun = async () => {
   switch (radioValue.value) {
     case 'tag':
       rName.value = ''
-      rSnippetTag.value = await SnippetTagApi.getAll(true)
+      rSnippetTag.value = await (await SnippetTagApi.getAll(true)).data
       if (rSnippetTag.value === null) {
         rSnippetTag.value = []
       } else {
@@ -107,7 +107,7 @@ const RadioFun = async () => {
 
     case 'type':
       rName.value = ''
-      rSnippetTag.value = await SnippetTypeApi.getAll(true)
+      rSnippetTag.value = await (await SnippetTypeApi.getAll(true)).data
       if (rSnippetTag.value === null) {
         rSnippetTag.value = []
       } else {
@@ -125,15 +125,13 @@ const RadioFun = async () => {
  * @param {number} id 主键id
  * @return {*}
  */
-
 const cliEdit = async (id: number, uid: number): Promise<any> => {
   await TOKEN()
   if (!isUserId(uid)) {
     message.error('无权限!')
     return
   }
-  const ret = await SnippetApi.getById(id, false)
-  console.log('[ ret ]-136', ret.data)
+  const ret = await (await SnippetApi.getById(id, false)).data
   snippetForm.id = ret.data.id
   snippetForm.name = ret.data.name
   snippetForm.text = ret.data.text
@@ -146,14 +144,14 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
 
 onMounted(async () => {
   await SnippetApi.getStrSum(0, 'null', true).then(r => {
-    rCharSun.value = r.data.data
+    rCharSun.value = r.data
   })
 })
 </script>
 
 <template>
   <div class="sn-content">
-    <div class="m-auto w65%">
+    <div class="m-auto w65% text-base">
       <a-radio-group v-model:value="radioValue" @change="RadioFun">
         <a-radio value="ALL">默认</a-radio>
         <a-radio value="title">标题</a-radio>
@@ -191,18 +189,23 @@ onMounted(async () => {
             :h-text="rName"
             color="red"
             :text="item.name"
-            class="mx-8 rounded bg-green-300 text-center text-xl"></custom-highlight-text>
-          <div class="mx-8 py-1">
-            <span ml-1 mr-2 class="rounded bg-emerald-200 p-1px">{{ item.type.name }}</span>
-            <span ml-1 mr-2 class="rounded bg-yellow-100 p-1px">{{ item.label.name }}</span>
-            <span mr-2 class="rounded bg-blue-100 p-1px">{{ item.tag.name }}</span>
-            <span mr-2 class="rounded bg-rose-100 p-1px">{{ item.user.nickname }}</span>
+            class="mx-6 text-2xl font-medium"></custom-highlight-text>
+          <div class="ml-5 pt-1 text-base">
+            <span ml-1 mr-1>{{ item.type.name }}</span>
+            <span mr-1>{{ item.label.name }}</span>
+            <span mr-1>{{ item.tag.name }}</span>
+            <span mr-1>{{ item.user.nickname }}</span>
             <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
           </div>
-          <MdPreview :show-code-row-number="true" :editor-id="id" :model-value="item.text" />
+          <MdPreview
+            :show-code-row-number="true"
+            :editor-id="id"
+            :model-value="item.text"
+            preview-theme="github"
+            code-theme="github" />
         </div>
       </div>
-      <div class="absolute left-0 top-0 rounded bg-yellow-100 p-3 text-sm text-cool-gray-600">{{ rCharSun }}字</div>
+      <div class="absolute left-0 top-0 rounded bg-green-50 p-2 text-cool-gray-700">已生成 ：{{ rCharSun }}字</div>
     </div>
 
     <!-- 编辑模块 -->
@@ -213,10 +216,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.sn-content {
-  // font-family: PuHuiTiXL, monospace;
-}
-
 .bor {
   @apply mt-3;
 

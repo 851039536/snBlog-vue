@@ -22,7 +22,7 @@ defineProps({
 <template>
   <c-right-sidebar-container>
     <div class="tool-name">
-      <div i-flat-color-icons-edit-image mr-1 h-5 w-5></div>
+      <div i-typcn-spanner-outline mr-1 h-6 w-6></div>
       <div>{{ name }}</div>
     </div>
     <div v-for="r in rData" :key="r.id" class="inline-flex">
@@ -41,8 +41,8 @@ defineProps({
 }
 
 .tool-text {
-  @apply flex justify-center items-center m-3px p-3px;
+  @apply flex justify-center items-center m-2px p-2px;
   @apply cursor-pointer text-sm text-center;
-  @apply rounded bg-violet-50 hover:text-white hover:bg-blue-500;
+  @apply rounded  hover:text-white hover:bg-blue-500;
 }
 </style>

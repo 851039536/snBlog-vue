@@ -11,7 +11,7 @@
 
 <style lang="scss" scoped>
 .model-side {
-  @apply h-[92%] top-[8.4%] right-[10.5%] w-[16.5%] fixed;
+  // @apply h-[92%] top-[8.4%] right-[10.5%] w-[16.5%];
 }
 
 .modal-content {

@@ -18,3 +18,7 @@ export const headVisible = ref(true)
  *  是否显示侧边栏
  */
 export const sideVisible = ref(true)
+/**
+ *  是否显示
+ */
+export const rightVisible = ref(true)

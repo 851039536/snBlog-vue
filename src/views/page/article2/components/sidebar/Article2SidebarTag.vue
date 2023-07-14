@@ -24,36 +24,16 @@ function getTopic(index: number) {
  * @param name
  */
 async function getCondition(name: string) {
-  const data = await ArticleApi.getType(2, name)
+  const data = await ArticleApi.getType(1, name)
   rArticle.value = data.data.data
 }
 onMounted(async () => {
   getTopic(sideIndex.value)
-  await getCondition('语法')
+  await getCondition('markdown')
 })
 </script>
 <template>
   <c-right-sidebar-container>
-    <div class="article2-sidebar-tag-name">
-      <div i-fxemoji-label h-5 w-32px></div>
-      标签
-    </div>
-    <div v-for="ret in rData" :key="ret.id" class="inline-flex" @click="getTopic(ret.id as number)">
-      <!--suppress VueUnrecognizedDirective -->
-      <div
-        v-debounce:200="() => getCondition(ret.name as string)"
-        class="article2-sidebar-tag-col"
-        :class="sideIndex == ret.id ? 'active' : ''">
-        {{ ret.name }}
-      </div>
-    </div>
-  </c-right-sidebar-container>
-
-  <c-right-sidebar-container>
-    <div class="article2-sidebar-tag-name">
-      <div i-fxemoji-waving h-5 w-32px></div>
-      分类
-    </div>
     <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
       <div
         v-debounce:200="() => getCondition(res.name as string)"
@@ -66,14 +46,9 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.article2-sidebar-tag-name {
-  @apply flex items-center;
-  @apply text-base py-1;
-}
-
 .article2-sidebar-tag-col {
-  @apply flex-1 m-1 text-sm px-1 py-1px text-center;
-  @apply rounded bg-gray-100 shadow-2xl cursor-pointer;
+  @apply flex-1 mr-2 text-sm px-1 py-3px;
+  @apply rounded bg-gray-100  cursor-pointer;
   @apply hover:bg-blue-400 hover:text-white;
 }
 
