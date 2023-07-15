@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { InterfaceApi } from '@/api'
 import { userInfo } from '@/utils/user/user-info'
-import { sideVisible, sideIndex } from '@/utils/common/visible-data'
+import { sideIndex } from '@/utils/common/visible-data'
 import { routers } from '@/utils/route'
 import { storage } from '@/utils/storage/storage'
-import { rightVisible } from '@/utils/common/visible-data'
-
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
+function setRightVisible(visible: boolean) {
+  uiSettings.uiRightVisible = visible
+}
 const rData: any = ref([])
 const isVisible: any = ref(false)
 
@@ -24,39 +27,39 @@ function getTopic(index: number) {
 const skip = (path: string) => {
   switch (path) {
     case '/article/column':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/qarticle':
-      rightVisible.value = false
+      setRightVisible(false)
       routers(path)
       break
     case '/diary':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/video':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/favorite':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/BlogCircles':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/book':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/ListContent':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
     case '/Login':
-      rightVisible.value = true
+      setRightVisible(true)
       routers(path)
       break
 
@@ -73,7 +76,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div v-show="sideVisible" class="side">
+  <div v-show="uiSettings.uiLeftVisible" class="side">
     <div
       v-for="(r, index) in rData"
       :key="index"

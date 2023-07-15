@@ -76,7 +76,6 @@ declare module '@vue/runtime-core' {
     Diary: typeof import('./src/views/page/diary/index.vue')['default']
     DiaryCategory: typeof import('./src/views/page/diary/components/sidebar/DiaryCategory.vue')['default']
     DiaryContent: typeof import('./src/views/page/diary/components/content/DiaryContent.vue')['default']
-    DiarySidebar: typeof import('./src/views/page/diary/components/sidebar/DiarySidebar.vue')['default']
     DiarySidetype: typeof import('./src/views/page/diary/components/sidebar/DiarySidetype.vue')['default']
     DiaryTop: typeof import('./src/views/page/diary/components/content/DiaryTop.vue')['default']
     Favorite: typeof import('./src/views/page/navigation/Favorite.vue')['default']

@@ -38,7 +38,6 @@ const handleScroll = async () => {
 watchEffect(() => {
   handleScroll()
 })
-watchEffect
 const rName = ref('')
 const rCharSun = ref('')
 const rSnippet: any = ref([])

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArticleApi } from '@/api/index'
-import { sideVisible, rightVisible } from '@/utils/common/visible-data'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 
 import { MdPreview, MdCatalog } from 'md-editor-v3'
 import 'md-editor-v3/lib/preview.css'
@@ -23,8 +24,8 @@ const GetAll = async () => {
 }
 
 onMounted(async () => {
-  sideVisible.value = false
-  rightVisible.value = false
+  uiSettings.uiLeftVisible = false
+  uiSettings.uiRightVisible = false
   await GetAll()
 })
 </script>

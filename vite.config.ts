@@ -99,7 +99,8 @@ export default defineConfig({
       '@vi': resolve('./src/views'),
       '@api': resolve('./src/api'),
       '@h': resolve('./src/hooks'),
-      '@assets': resolve('./src/assets')
+      '@assets': resolve('./src/assets'),
+      '@store': resolve('./src/store')
     }
   },
 

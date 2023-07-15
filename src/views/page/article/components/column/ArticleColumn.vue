@@ -2,7 +2,8 @@
 import { routerId } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { ArticleApi } from '@/api'
-import { headVisible, sideVisible } from '@/utils/common/visible-data'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 import { articleData, paging } from '.'
 
 const xxxRef: any = ref(0)
@@ -29,8 +30,8 @@ function QImageUrl(name: string) {
 const cheight = ref(8)
 
 onMounted(async () => {
-  sideVisible.value = true
-  headVisible.value = true
+  uiSettings.uiLeftVisible = true
+  uiSettings.uiHeadVisible = true
   await axios.all([await getSum(0, aData.NULL), await QPaging()])
 })
 async function scrollEvent() {

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { loadingVisible } from '@/utils/common/visible-data'
-loadingVisible.value = true
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
+uiSettings.uiLoadingVisible = false
 </script>
 <template>
-  <div v-show="loadingVisible" class="spinner">
+  <div v-show="uiSettings.uiLoadingVisible" class="spinner">
     <div class="cube1"></div>
     <div class="cube2"></div>
   </div>

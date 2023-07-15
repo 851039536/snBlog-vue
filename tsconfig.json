@@ -108,7 +108,8 @@
       "@api/*": ["./src/api/*"],
       "@vi/*": ["./src/views/*"],
       "@h/*": ["./src/hooks/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@store/*": ["./src/store/*"]
     }
   },
 

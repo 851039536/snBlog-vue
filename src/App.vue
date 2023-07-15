@@ -21,7 +21,7 @@
       </div>
 
       <!-- Right sidebar -->
-      <nav v-if="rightVisible" class="app-grail-right">
+      <nav v-if="uiSettings.uiRightVisible" class="app-grail-right">
         <!-- 侧边栏 -->
         <c-right-sidebar>
           <ArticleSideInputModule></ArticleSideInputModule>
@@ -55,8 +55,9 @@
 </template>
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
-import { rightVisible, searchVisible } from '@/utils/common/visible-data'
-
+import { searchVisible } from '@/utils/common/visible-data'
+import { useUiSetStore } from '@/store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 // 定义异步组件函数
 const AsyncComponent = (name: any) => {
   return defineAsyncComponent(() => {

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue/es/components'
-import { useAppStore } from '@/store/pinia'
 import { routers } from '@/utils/route'
 import { UserApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
 import { userInfo, isToken, removeUserStorage } from '@/utils/user/user-info'
 import { rRouter } from '@/router/route-Info'
-import { headVisible, sideVisible } from '@/utils/common/visible-data'
-
-const store = useAppStore()
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 const state = reactive({
   name: '',
   pwd: ''
@@ -21,15 +19,13 @@ function login() {
     storage.set(userInfo.TOKEN, `Bearer ${ret.token}`) // token
     storage.set(userInfo.ID, ret.id) // 用户主键
     storage.set(userInfo.NAME, ret.name) // 用户名
-
-    store.roles = storage.get(userInfo.ROLE)
     message.success('登录成功')
     routers(rRouter.articleTable)
   })
 }
 onMounted(async () => {
-  headVisible.value = false
-  sideVisible.value = false
+  uiSettings.uiHeadVisible = false
+  uiSettings.uiLeftVisible = false
   await isToken()
 })
 </script>

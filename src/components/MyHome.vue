@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { headVisible, loadingVisible, sideVisible } from '@/utils/common/visible-data'
 import { routers } from '@/utils/route'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 
-headVisible.value = false
-sideVisible.value = false
-loadingVisible.value = false
+uiSettings.uiHeadVisible = false
+uiSettings.uiLoadingVisible = false
 </script>
 
 <template>

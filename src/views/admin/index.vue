@@ -4,7 +4,8 @@ import { navName } from './utils/data'
 import { isToken, removeUserStorage } from '@/utils/user/user-info'
 import { rRouter } from '@/router/route-Info'
 import uservg from '@assets/svg/components/user.svg?component'
-import { headVisible, sideVisible } from '@/utils/common/visible-data'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 import { TOKEN } from '@/api'
 
 function clear() {
@@ -52,8 +53,8 @@ provide('reload', reload)
 
 onMounted(async () => {
   await TOKEN()
-  headVisible.value = false
-  sideVisible.value = false
+  uiSettings.uiHeadVisible = false
+  uiSettings.uiLeftVisible = false
 })
 </script>
 <template>

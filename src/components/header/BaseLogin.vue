@@ -5,8 +5,6 @@ import { UserApi } from '@/api'
 import { storage } from '@/utils/storage/storage'
 const userName = ref('')
 const userPwd = ref('')
-const store = useAppStore()
-import { useAppStore } from '@/store/pinia'
 
 function login() {
   UserApi.login(userName.value, userPwd.value).then(r => {
@@ -18,7 +16,6 @@ function login() {
     storage.set(userInfo.ID, ret.id) // 用户主键
     storage.set(userInfo.NAME, ret.name) // 用户名
 
-    store.roles = storage.get(userInfo.ROLE)
     location.reload()
   })
 }

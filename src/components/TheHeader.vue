@@ -4,8 +4,10 @@ import { storage } from '@/utils/storage/storage'
 import { routers } from '@/utils/route'
 import { rRouter } from '@/router/route-Info'
 import userSvg from '@assets/svg/components/user.svg?component'
-import { headVisible, loginVisible, sideIndex } from '@/utils/common/visible-data'
+import { loginVisible, sideIndex } from '@/utils/common/visible-data'
 import { InterfaceApi } from '@/api'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 const rData: any = ref([])
 const isVisible = ref(false)
 
@@ -50,7 +52,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav v-show="headVisible" class="head">
+  <nav v-show="uiSettings.uiHeadVisible" class="head">
     <div class="h-cont">
       <div class="h-cont-l">
         <div>
