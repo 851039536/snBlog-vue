@@ -2909,8 +2909,8 @@ eslint-config-prettier@^8.3.0:
 
 eslint-config-vue-global-api@0.4.1:
   version "0.4.1"
-  resolved "https://registry.nlark.com/eslint-config-vue-global-api/download/eslint-config-vue-global-api-0.4.1.tgz"
-  integrity sha1-9zW4thvZSUgTFgTA8+Squlgkk6U=
+  resolved "https://registry.yarnpkg.com/eslint-config-vue-global-api/-/eslint-config-vue-global-api-0.4.1.tgz#f735b8b61bd94948131604c0f3e4aaba582493a5"
+  integrity sha512-mJTiKBGLe1FXmEifYzCQzUTBpFv8OtfYzP6PAOuVRf+3hkGLMeiDh4bVzZEaJfdExtc8mPw9vp35YSLhwTselQ==
 
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"
@@ -6962,11 +6962,6 @@ vite-plugin-style-import@^1.4.0:
     fs-extra "^10.0.0"
     magic-string "^0.25.7"
 
-vite-plugin-tips@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/vite-plugin-tips/-/vite-plugin-tips-2.1.0.tgz"
-  integrity sha512-3REhZT6keCdqroYC9tUwHf2vrQzAoF1YT9mLr8xbJ7S904DX0NKzpK1JtYUacs83x+B+6W3yjX+CKG4/766JWA==
-
 vite-svg-loader@^3.6.0:
   version "3.6.0"
   resolved "https://registry.npmjs.org/vite-svg-loader/-/vite-svg-loader-3.6.0.tgz"
@@ -6996,9 +6991,14 @@ vite@4.4.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-demi@*, vue-demi@^0.14.0, vue-demi@latest:
+vue-demi@*, vue-demi@^0.14.0:
   version "0.14.5"
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.5.tgz"
+  integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
+
+vue-demi@latest:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.5.tgz#676d0463d1a1266d5ab5cba932e043d8f5f2fbd9"
   integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
 
 vue-dompurify-html@^4.0.0:
@@ -7024,8 +7024,8 @@ vue-eslint-parser@^9.0.1:
 
 vue-global-api@^0.4.1:
   version "0.4.1"
-  resolved "https://registry.nlark.com/vue-global-api/download/vue-global-api-0.4.1.tgz"
-  integrity sha1-smaAIA6E2WgphtAli4JrUazQdTE=
+  resolved "https://registry.yarnpkg.com/vue-global-api/-/vue-global-api-0.4.1.tgz#b26680200e84d9682986d0258b826b51acd07531"
+  integrity sha512-283vpYOhVHJCpMkjNVEwZdgaAb+Y93zFaXGAWTI378MLoNuwQydjD/BAy1e81QYEmyA+JbxqcmMZVWcM9rbriw==
   dependencies:
     eslint-config-vue-global-api "0.4.1"
     vue-demi latest

@@ -4,7 +4,6 @@ import { resolve } from 'path'
 import Components from 'unplugin-vue-components/vite' // 针对 Vue 的按需组件自动导入
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import eslintPlugin from 'vite-plugin-eslint'
-// import { VitePWA } from 'vite-plugin-pwa'
 import viteCompression from 'vite-plugin-compression' // 打包压缩
 import { injectHtml } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -21,7 +20,6 @@ export default defineConfig({
       reactivityTransform: true //主要是这个开启，ref
     }),
     svgLoader(),
-    // ViteTips(), // 服务器状态提示
     tsconfigPaths(),
     injectHtml({
       injectData: {
@@ -73,7 +71,8 @@ export default defineConfig({
     }),
     eslintPlugin({
       cache: false, // 关闭缓存
-      include: ['src/**/*.vue', 'src/**/*.ts'] // 检查的文件
+      include: ['src/**/*.vue', 'src/**/*.ts'], // 检查匹配的文件
+      exclude: ['**/node_modules/**'] // 排除检查的文件
     })
   ],
   //静态资源服务的文件夹
