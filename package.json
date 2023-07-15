@@ -83,5 +83,9 @@
     "vite-plugin-style-import": "^1.4.0",
     "vite-svg-loader": "^3.6.0",
     "vue-global-api": "^0.4.1"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://gitee.com/kaiouyang-sn/vite-blog-s.git",
+  "author": "sn <843766158@qq.com>",
+  "license": "MIT"
 }
