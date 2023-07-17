@@ -3,6 +3,11 @@ import { NavigationApi } from '@/api'
 import { IPaging, INav } from '@/api/data/InterData'
 import { winUrl } from '@/utils/route'
 
+const sum = ref(0)
+onMounted(async () => {
+  sum.value = await (await NavigationApi.getCount(1, '博客圈', true)).data
+})
+
 const paging: IPaging = reactive({
   page: 1,
   pagesize: 18,
@@ -26,13 +31,12 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <blog-circles-side></blog-circles-side>
   <div class="circles-main">
+    <div class="mx-5 rounded bg-white p-1 text-base">博客:{{ sum }}</div>
     <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       <div v-for="res in navData" :key="res.id" class="circles-1">
         <div class="circles-1-1">
-          <img v-lazy="res.img" onerror="this.style.display='none'" />
-          <!-- <img v-lazy="getImageUrl(res.img)" /> -->
+          <img v-lazy="res.img" onerror="this.style.display='none'" alt="err" />
         </div>
         <div class="circles-1-2">
           <div class="circles-1-2-1">
@@ -58,18 +62,19 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .circles-main {
+  @apply mt-1 bg-white rounded;
+
   // 导航窗体小
   .circles-1 {
-    @include w-h(95%, 110px);
-    @apply rounded m-1 shadow-sm hover: bg-gray-50;
+    @include w-h(90%, 120px);
+    @apply rounded m-auto mb-2 mt-1 shadow-sm hover: bg-gray-200;
 
     .circles-1-1 {
       @include w-h(40%, 99%);
-      @apply p-1 float-left;
+      @apply float-left;
 
       img {
         @include w-h(100%, 100%);
-        @apply rounded;
       }
     }
 
@@ -93,8 +98,7 @@ onMounted(async () => {
 
   .circles-content {
     @include w-h(100%, 100%);
-
-    overflow: auto;
+    @apply bg-gray-100;
   }
 
   .circles-content::-webkit-scrollbar {
@@ -102,7 +106,7 @@ onMounted(async () => {
   }
 
   .circles-page {
-    @apply bg-white  p-1 mx-2 mb-50;
+    @apply p-1 mx-2 mt-1;
   }
 }
 </style>

@@ -4,9 +4,9 @@ import { winUrl } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { INav } from '@/api/data/InterData'
 
-const rData = reactive({
+const paging = reactive({
   page: 1,
-  pagesize: 32,
+  pagesize: 28,
   count: 0,
   name: '',
   current: 1
@@ -15,15 +15,15 @@ const sum = ref(0)
 const rnavTable = ref([] as INav[])
 const rNav = ref([] as INav[])
 async function currentchange(val: number) {
-  rData.current = val
-  rNav.value = await (await NavigationApi.getPaging(1, rData.name, val, rData.pagesize, 'id', true, true)).data
+  paging.current = val
+  rNav.value = await (await NavigationApi.getPaging(1, paging.name, val, paging.pagesize, 'id', true, true)).data
 }
 
 async function GetApi(name: string) {
-  rData.current = 1
-  rData.name = name
-  rData.count = await (await NavigationApi.getCount(1, rData.name, true)).data
-  rNav.value = await (await NavigationApi.getPaging(1, name, rData.page, rData.pagesize, 'id', true, true)).data
+  paging.current = 1
+  paging.name = name
+  paging.count = await (await NavigationApi.getCount(1, paging.name, true)).data
+  rNav.value = await (await NavigationApi.getPaging(1, name, paging.page, paging.pagesize, 'id', true, true)).data
 }
 
 async function clkApi(name: string) {
@@ -40,6 +40,18 @@ onMounted(async () => {
 <template>
   <section>
     <div class="favorite">
+      <div class="relative flex">
+        <div class="favorite-onecategory">
+          <div class="onecategory-name">列表</div>
+          <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
+            <div class="flex rounded p-1px text-base m-1 hover:bg-blue-500">
+              <span @click="clkApi(r.title)">{{ r.title }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-content">{{ sum }}篇</div>
+      </div>
       <div class="favorite-content">
         <div v-for="r in rNav" :key="r.id" class="fa-cont-list">
           <div class="fa-cont-list1">
@@ -52,44 +64,19 @@ onMounted(async () => {
       <div class="favorite-paging">
         <a-pagination
           size="small"
-          :total="rData.count"
-          :page-size="rData.pagesize"
-          :current="rData.current"
+          :total="paging.count"
+          :page-size="paging.pagesize"
+          :current="paging.current"
           show-quick-jumper
           @change="currentchange" />
       </div>
     </div>
-
-    <c-right-sidebar>
-      <c-right-sidebar-container>
-        <div class="favorite-describe">网站收集</div>
-      </c-right-sidebar-container>
-
-      <c-right-sidebar-container>
-        <div class="favorite-onecategory">
-          <div class="onecategory-name">列表</div>
-          <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
-            <div class="m-3px flex rounded p-3px text-center hover:bg-blue-400">
-              <span @click="clkApi(r.title)">{{ r.title }}</span>
-            </div>
-          </div>
-        </div>
-      </c-right-sidebar-container>
-
-      <c-right-sidebar-container>
-        <div class="footer-title">站点信息</div>
-        <div class="footer-content">
-          <div class="footer-content-name">内容数量:</div>
-          <div class="footer-content-text">{{ sum }}篇</div>
-        </div>
-      </c-right-sidebar-container>
-    </c-right-sidebar>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .favorite {
-  @apply bg-white;
+  @apply bg-white mt-1;
 
   .favorite-content {
     @apply h-full w-full;
@@ -98,11 +85,11 @@ onMounted(async () => {
     .fa-cont-list {
       @include w-h(92%, 96px);
       @apply m-auto mt-8px;
-      @apply rounded bg-blue-50 shadow-sm;
+      @apply rounded  bg-red-50 shadow-sm;
 
       .fa-cont-list1 {
-        @apply bg-blue-200 mt-1 rounded pl-1;
-        @apply cursor-pointer text-lg mx-2 hover:text-blue-400;
+        @apply bg-white mt-1  pl-1;
+        @apply cursor-pointer text-lg  hover:text-blue-400;
         @include line-numbers(1);
       }
 
@@ -118,25 +105,8 @@ onMounted(async () => {
   }
 }
 
-.favorite-describe {
-  @apply text-center text-base p-3;
-}
-
-.footer-title {
-  @apply text-base px-1;
-  @apply cursor-pointer font-semibold bg-emerald-300;
-}
-
 .footer-content {
-  @apply my-7px text-sm flex;
-
-  .footer-content-name {
-    @apply py-1 w-[35%];
-  }
-
-  .footer-content-text {
-    @apply py-1 w-[40%];
-  }
+  @apply text-sm  absolute top-1 right-1;
 }
 
 .favorite-onecategory {
@@ -144,7 +114,7 @@ onMounted(async () => {
 
   .onecategory-name {
     @apply text-base px-2;
-    @apply font-semibold bg-blue-300;
+    @apply font-semibold;
   }
 }
 

@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite --host",
     "lint": "eslint src --fix --ext .ts,.vue,.js",
-    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
+    "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "tsc-build": "vue-tsc --noEmit && vite build",
     "build:dev": "vite build --mode development",
     "build:pro": "vite build --mode production",

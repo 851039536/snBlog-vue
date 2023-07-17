@@ -74,9 +74,9 @@ onMounted(async () => {
     await SnippetTypeApi.getAll(false),
     await SnippetLabelApi.getAll(false)
   ])
-  snippetTagData.value = tag.data
-  snippetTypeData.value = type.data
-  snippetLabelData.value = label.data
+  snippetTagData.value = tag.data.data
+  snippetTypeData.value = type.data.data
+  snippetLabelData.value = label.data.data
   navName.name = '代码片段'
   navName.name2 = '片段列表'
 })

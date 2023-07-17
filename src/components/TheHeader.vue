@@ -70,8 +70,6 @@ onMounted(async () => {
           </div>
           <div>
             <div @click="isVisible = true">code</div>
-          </div>
-          <div>
             <div class="mt-1" i-flat-color-icons-search h-6 w-6></div>
           </div>
         </div>

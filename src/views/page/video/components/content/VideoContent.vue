@@ -81,7 +81,7 @@ defineProps({
   }
 
   .vicont-paging {
-    @apply bg-white p-2  mb-2;
+    @apply bg-white p-1  mb-1;
   }
 }
 
