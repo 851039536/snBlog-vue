@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { blog } from '../data'
 import { MdPreview } from 'md-editor-v3'
+import { useThemeSetting } from '@store/modules/themeSetting'
 
+const theme = useThemeSetting()
 const scrollRef = ref()
 const id = 'preview-only2'
 const onScroll = (type: string) => {
@@ -37,7 +39,12 @@ const onGetCatalog = (list: any) => {
   <div class="cont">
     <Article2RightSidebar @refresh="onScroll('top')"></Article2RightSidebar>
     <div ref="scrollRef" class="cont-txt scrollbar-w-2 scrollbar">
-      <MdPreview :editor-id="id" :model-value="blog" @onGetCatalog="onGetCatalog" />
+      <MdPreview
+        :editor-id="id"
+        :model-value="blog"
+        :preview-theme="theme.previewTheme"
+        :code-theme="theme.codeTheme"
+        @onGetCatalog="onGetCatalog" />
     </div>
     <div class="ml-1 w-[16%] overflow-y-scroll p-1 text-base">
       <div v-for="(item, index) in side" :key="index">

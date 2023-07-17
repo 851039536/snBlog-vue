@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { MdPreview } from 'md-editor-v3'
+import { useThemeSetting } from '@store/modules/themeSetting'
 
+const theme = useThemeSetting()
 // v-model 不能直接修改
 const props = defineProps<{
   result: String
@@ -13,5 +15,9 @@ onBeforeUpdate(() => {
 })
 </script>
 <template>
-  <MdPreview editor-id="preview-only" :model-value="ret" preview-theme="github" code-theme="gradient" />
+  <MdPreview
+    editor-id="preview-only"
+    :model-value="ret"
+    :preview-theme="theme.previewTheme"
+    :code-theme="theme.codeTheme" />
 </template>

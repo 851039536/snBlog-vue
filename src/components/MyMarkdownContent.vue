@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ArticleApi } from '@/api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+import { useThemeSetting } from '@store/modules/themeSetting'
+
+const theme = useThemeSetting()
+const ui = useUiSetStore()
 
 import { MdPreview, MdCatalog } from 'md-editor-v3'
 import 'md-editor-v3/lib/preview.css'
@@ -24,8 +27,8 @@ const GetAll = async () => {
 }
 
 onMounted(async () => {
-  uiSettings.uiLeftVisible = false
-  uiSettings.uiRightVisible = false
+  ui.uiLeftVisible = false
+  ui.uiRightVisible = false
   await GetAll()
 })
 </script>
@@ -34,7 +37,12 @@ onMounted(async () => {
     <base-top />
     <div class="md-content">
       <div class="py-2 text-center text-2xl">{{ state.blog.name }}</div>
-      <MdPreview :show-code-row-number="true" :editor-id="id" :model-value="state.blog.text" />
+      <MdPreview
+        :show-code-row-number="true"
+        :editor-id="id"
+        :model-value="state.blog.text"
+        :preview-theme="theme.previewTheme"
+        :code-theme="theme.codeTheme" />
     </div>
     <div class="md-sidebar">
       <div class="md-sidebar-tag">

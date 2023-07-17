@@ -42,11 +42,11 @@ const skip = (path: string) => {
       routers(path)
       break
     case '/favorite':
-      setRightVisible(true)
+      setRightVisible(false)
       routers(path)
       break
     case '/BlogCircles':
-      setRightVisible(true)
+      setRightVisible(false)
       routers(path)
       break
     case '/book':

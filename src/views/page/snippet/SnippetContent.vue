@@ -5,7 +5,9 @@ import { isUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
-import 'md-editor-v3/lib/preview.css'
+import { useThemeSetting } from '@store/modules/themeSetting'
+
+const theme = useThemeSetting()
 const id = 'preview-only'
 // JS
 import { ref, nextTick } from 'vue'
@@ -200,8 +202,8 @@ onMounted(async () => {
             :show-code-row-number="true"
             :editor-id="id"
             :model-value="item.text"
-            preview-theme="github"
-            code-theme="github" />
+            :preview-theme="theme.previewTheme"
+            :code-theme="theme.codeTheme" />
         </div>
       </div>
       <div class="absolute left-0 top-0 rounded bg-green-50 p-2 text-cool-gray-700">已生成 ：{{ rCharSun }}字</div>

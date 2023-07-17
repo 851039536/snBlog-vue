@@ -4,7 +4,9 @@ import { snippetForm } from '@/api/data/model/SnippetMode'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
+import { useThemeSetting } from '@store/modules/themeSetting'
 
+const theme = useThemeSetting()
 const rSnippetTag: any = ref([])
 const rSnippetType: any = ref([])
 const rSnippetLabel: any = ref([])
@@ -47,7 +49,7 @@ onMounted(async () => {
       </select>
     </div>
     <div class="mt-2">
-      <MdEditor v-model="snippetForm.text" />
+      <MdEditor v-model="snippetForm.text" :preview-theme="theme.previewTheme" :code-theme="theme.codeTheme" />
     </div>
     <div class="mx-1 mt-1">
       <a-button @click="update">更新</a-button>
