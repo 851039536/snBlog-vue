@@ -8,6 +8,7 @@ import { storage } from '@/utils/storage/storage'
 import { removePending, addPending } from './pending'
 import { removeUserStorage } from '@/utils/user/user-info'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axiosRetry from 'axios-retry'
 
 // 全局配置
 const apiUrl = import.meta.env.VITE_API_DOMAIN
@@ -33,6 +34,17 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
   const loading = {
     loading: loadings.loading
   }
+
+  // 安装 retry 插件
+  // 当请求失败后，自动重新请求，只有3次失败后才真正失败
+  axiosRetry(service, {
+    retries: 3, // 设置自动发送请求次数
+    retryDelay: () => {
+      return 300
+    }, // 重新请求的间隔
+    shouldResetTimeout: true //  重置超时时间
+  })
+
   // 请求拦截器
   service.interceptors.request.use(
     (config: AxiosRequestConfig) => {
