@@ -42,7 +42,7 @@
         </c-right-sidebar>
 
         <div id="search"></div>
-        <c-modal-search @close-model="searchVisible = false">
+        <c-modal-search @close-model="uiSettings.uiSearchVisible = false">
           <ArticleSideSearchModule></ArticleSideSearchModule>
         </c-modal-search>
       </nav>
@@ -55,7 +55,6 @@
 </template>
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
-import { searchVisible } from '@/utils/common/visible-data'
 import { useUiSetStore } from '@/store/modules/uiSettings'
 const uiSettings = useUiSetStore()
 // 定义异步组件函数
@@ -80,7 +79,7 @@ const navData = ref([])
 /** 通告信息 */
 const annunciate = ref('')
 onMounted(async () => {
-  searchVisible.value = false // 搜索框是否显示
+  uiSettings.uiSearchVisible = false // 搜索框是否显示
 
   const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
     UserTalkApi.getUserTalkFirst(),

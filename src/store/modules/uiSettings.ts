@@ -9,7 +9,10 @@ export const useUiSetStore = defineStore('uiSet', {
       uiRightVisible: true,
       uiLeftVisible: true,
       uiHeadVisible: true,
-      uiLoadingVisible: false
+      uiLoadingVisible: false,
+      uiSearchVisible: false,
+      loginVisible: false,
+      sideIndex: -1 //选中后变色并且效果不消失
     }
   },
   persist: true //开启数据缓存

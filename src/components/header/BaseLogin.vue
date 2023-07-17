@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { loginVisible } from '@/utils/common/visible-data'
 import { removeUserStorage, userInfo } from '@/utils/user/user-info'
 import { UserApi } from '@/api'
 import { storage } from '@/utils/storage/storage'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
 const userName = ref('')
 const userPwd = ref('')
 
@@ -21,7 +22,7 @@ function login() {
 }
 </script>
 <template>
-  <c-modal-dialog :visible="loginVisible" title="Login" @close-model="loginVisible = false">
+  <c-modal-dialog :visible="ui.loginVisible" title="Login" @close-model="ui.loginVisible = false">
     <form class="base-login">
       <p class="form-title">博客登录</p>
       <div class="input-container">

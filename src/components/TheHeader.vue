@@ -4,15 +4,14 @@ import { storage } from '@/utils/storage/storage'
 import { routers } from '@/utils/route'
 import { rRouter } from '@/router/route-Info'
 import userSvg from '@assets/svg/components/user.svg?component'
-import { loginVisible, sideIndex } from '@/utils/common/visible-data'
 import { InterfaceApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+const ui = useUiSetStore()
 const rData: any = ref([])
 const isVisible = ref(false)
 
 async function skip(path: string) {
-  sideIndex.value = -1
+  ui.sideIndex = -1
   switch (path) {
     case 'code':
       isVisible.value = true
@@ -38,7 +37,7 @@ async function onChange(id: number) {
       location.reload()
       break
     case 3:
-      loginVisible.value = true
+      ui.loginVisible = true
       break
     default:
       break
@@ -52,7 +51,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav v-show="uiSettings.uiHeadVisible" class="head">
+  <nav v-show="ui.uiHeadVisible" class="head">
     <div class="h-cont">
       <div class="h-cont-l">
         <div>

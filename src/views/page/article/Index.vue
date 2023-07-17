@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
-import { searchVisible } from '@/utils/common/visible-data'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
 
 const time = ref()
 const articleSum = ref('')
@@ -11,7 +12,7 @@ const navData = ref([])
 const annunciate = ref('')
 // rightVisible.value = true
 onMounted(async () => {
-  searchVisible.value = false // 搜索框是否显示
+  ui.uiSearchVisible = false // 搜索框是否显示
 
   const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
     UserTalkApi.getUserTalkFirst(),

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { searchVisible } from '@/utils/common/visible-data'
+import { useUiSetStore } from '@/store/modules/uiSettings'
+const uiSettings = useUiSetStore()
 const emit = defineEmits(['close-model'])
 </script>
 <template>
-  <teleport v-if="searchVisible" to="#search">
+  <teleport v-if="uiSettings.uiSearchVisible" to="#search">
     <div class="model-bg">
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>

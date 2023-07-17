@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { searchVisible } from '@/utils/common/visible-data'
 import { searchName } from '../../data'
-
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
 function onSearch() {
   if (searchName.value === '') {
-    searchVisible.value = false
+    ui.uiSearchVisible = false
     return
   }
-  searchVisible.value = true //显示元素内容
+  ui.uiSearchVisible = true //显示元素内容
 }
 </script>
 <template>

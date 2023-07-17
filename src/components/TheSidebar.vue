@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 import { InterfaceApi } from '@/api'
 import { userInfo } from '@/utils/user/user-info'
-import { sideIndex } from '@/utils/common/visible-data'
 import { routers } from '@/utils/route'
 import { storage } from '@/utils/storage/storage'
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+const ui = useUiSetStore()
 function setRightVisible(visible: boolean) {
-  uiSettings.uiRightVisible = visible
+  ui.uiRightVisible = visible
 }
 const rData: any = ref([])
 const isVisible: any = ref(false)
@@ -21,7 +20,7 @@ const cliAbout = () => {
  * @return {*}
  */
 function getTopic(index: number) {
-  sideIndex.value = index
+  ui.sideIndex = index
 }
 
 const skip = (path: string) => {
@@ -72,16 +71,16 @@ onMounted(async () => {
   const data = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'sidebar', true)
   rData.value = data.data.data
 
-  getTopic(sideIndex.value)
+  getTopic(ui.sideIndex)
 })
 </script>
 <template>
-  <div v-show="uiSettings.uiLeftVisible" class="side">
+  <div v-show="ui.uiLeftVisible" class="side">
     <div
       v-for="(r, index) in rData"
       :key="index"
       class="side-list"
-      :class="sideIndex == index ? 'active' : ''"
+      :class="ui.sideIndex == index ? 'active' : ''"
       @click="getTopic(<number>index)">
       <div v-if="r.identity" class="flex items-center" @click="skip(r.path)">
         <div v-if="r.path == '/article/column'" i-typcn-home h-6 w-6 />

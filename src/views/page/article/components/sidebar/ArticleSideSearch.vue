@@ -6,7 +6,7 @@ import { rArticle, searchName } from '../../data'
 //自定义函数，父组件可以触发
 async function search() {
   if (searchName.value === '') {
-    // searchVisible.value = false
+    // ui.uiSearchVisible = false;
     return
   }
   const data = await ArticleApi.getContains(0, 'null', searchName.value)
