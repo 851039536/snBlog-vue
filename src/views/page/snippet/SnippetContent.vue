@@ -130,7 +130,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
-  const ret = await (await SnippetApi.getById(id, false)).data
+  const ret = await SnippetApi.getById(id, false)
   snippetForm.id = ret.data.id
   snippetForm.name = ret.data.name
   snippetForm.text = ret.data.text

@@ -27,7 +27,7 @@ function QImageUrl(name: string) {
   return new URL(`/src/assets/img/${name}`, import.meta.url).href
 }
 
-const cheight = ref(8)
+const cheight = ref(100)
 
 onMounted(async () => {
   uiSettings.uiLeftVisible = true
@@ -39,8 +39,8 @@ async function scrollEvent() {
   if (xxxRef.value.scrollTop) {
     if (xxxRef.value.scrollTop > cheight.value) {
       console.log('触发加载')
-      cheight.value += 400
-      paging.pagesize += 3
+      cheight.value += 300
+      paging.pagesize += 4
       await QPaging()
     }
   }
