@@ -12,8 +12,9 @@ export class UserApi {
   static login(user: string, pwd: string) {
     return get(`${API.LOGIN}${user}&pwd=${pwd}`)
   }
-  static getPaging(pageIndex: number, pageSize: number) {
-    return get(`/user/paging?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  static async getPaging(pageIndex: number, pageSize: number) {
+    const ret = await get(`/user/paging?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+    return ret
   }
 
   static contains(name: string) {

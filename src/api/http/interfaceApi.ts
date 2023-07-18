@@ -22,8 +22,9 @@ export class InterfaceApi {
    * @returns
    */
   static getPaging(identity: number, type: string, pageIndex: number, pageSize: number) {
+    ///Interface/paging?identity=2&type=kai&pageIndex=1&pageSize=10&isDesc=true&cache=false
     return get(
-      `/Interface/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=id&isDesc=true&cache=false`,
+      `/Interface/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&isDesc=true&cache=false`,
       false
     )
   }

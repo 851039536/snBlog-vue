@@ -51,17 +51,15 @@ const QPaging = async (identity: number, name: string) => {
   const res = await SnippetApi.getPaging(identity, name, 1, 9000, 'id', true, false)
   snippetData.value = res.data
 }
-
 const QSearch = async (name: string, identity: number) => {
   if (name === aData.ALL) {
     await QPaging(0, aData.NULL)
+    return
   }
   await QPaging(identity, name)
 }
 async function search(name: any) {
-  if (name === '') {
-    return
-  }
+  if (name === '') return
   const res = await SnippetApi.getContains(0, aData.NULL, name, false, 1, 999)
   await Tool.momentTimeList(res)
   snippetData.value = res.data

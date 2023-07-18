@@ -69,7 +69,7 @@ const options = ref<SelectProps['options']>([
   { value: 'header', label: 'header' }
 ])
 onMounted(async () => {
-  rData.value = await (await InterfaceApi.getPaging(2, storage.get(userInfo.NAME), 1, 100)).data
+  rData.value = await (await InterfaceApi.getPaging(2, storage.get(userInfo.NAME), 1, 10)).data.data
   navName.name = '页面设置'
   navName.name2 = '参数列表'
 })

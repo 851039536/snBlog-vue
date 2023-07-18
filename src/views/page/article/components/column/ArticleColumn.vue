@@ -3,10 +3,10 @@ import { routerId } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { ArticleApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+const ui = useUiSetStore()
 import { articleData, paging } from '.'
 
-const xxxRef: any = ref(0)
+const aRef: any = ref(0)
 
 async function getSum(identity: number, type: string) {
   const count = await ArticleApi.getSum(identity, type)
@@ -30,14 +30,16 @@ function QImageUrl(name: string) {
 const cheight = ref(100)
 
 onMounted(async () => {
-  uiSettings.uiLeftVisible = true
-  uiSettings.uiHeadVisible = true
+  ui.uiLeftVisible = true
+  ui.uiHeadVisible = true
   await axios.all([await getSum(0, aData.NULL), await QPaging()])
 })
+
 async function scrollEvent() {
-  console.log(xxxRef.value.scrollTop)
-  if (xxxRef.value.scrollTop) {
-    if (xxxRef.value.scrollTop > cheight.value) {
+  const scrollTop = aRef.value.scrollTop
+  console.log(scrollTop)
+  if (scrollTop) {
+    if (scrollTop > cheight.value) {
       console.log('触发加载')
       cheight.value += 300
       paging.pagesize += 4
@@ -47,25 +49,32 @@ async function scrollEvent() {
 }
 
 const onScroll = (type: string) => {
+  const distance = type === 'top' ? 0 : aRef.value.scrollHeight
   nextTick(() => {
-    const distance = type === 'top' ? 0 : xxxRef.value.scrollHeight
-    xxxRef.value.scrollTop = distance
+    aRef.value.scrollTop = distance
   })
 }
-const onScroll2 = (type: number) => {
-  nextTick(() => {
-    xxxRef.value.scrollTop += type
-  })
+const throttle = (fn: Function, delay: number) => {
+  let timer: any | null = null
+  return (...args: any[]) => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn(...args)
+        timer = null
+      }, delay)
+    }
+  }
 }
-const onScroll3 = (type: number) => {
-  nextTick(() => {
-    xxxRef.value.scrollTop -= type
-  })
-}
+const onScrollNext = throttle((type: number) => {
+  aRef.value.scrollTop += type
+}, 100)
+const onScrollUp = throttle((type: number) => {
+  aRef.value.scrollTop -= type
+}, 100)
 </script>
 
 <template>
-  <section ref="xxxRef" class="test1 h-[92.78vh] overflow-y-scroll" @scroll="scrollEvent">
+  <section ref="aRef" class="article-columns" @scroll="scrollEvent">
     <article-column-top></article-column-top>
     <div v-for="r in articleData" :key="r.id" class="article-column">
       <div class="content">
@@ -93,14 +102,16 @@ const onScroll3 = (type: number) => {
     <div fixed class="btn">
       <button @click="onScroll('top')">顶部</button>
       <button @click="onScroll('bottom')">底部</button>
-      <button @click="onScroll2(400)">下滑</button>
-      <button @click="onScroll3(400)">上划</button>
+      <button @click="onScrollNext(400)">下滑</button>
+      <button @click="onScrollUp(400)">上划</button>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.test1 {
+.article-columns {
+  @apply h-[92.78vh] overflow-y-scroll;
+
   scroll-behavior: smooth;
 }
 

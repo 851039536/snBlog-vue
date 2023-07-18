@@ -31,17 +31,17 @@ async function search(name: string) {
     }
   })
 }
-const edit = (id: number) => {
-  UserApi.getById(id).then(res => {
-    userForm.id = res.data.id
-    userForm.name = res.data.name
-    userForm.email = res.data.email
-    userForm.pwd = res.data.pwd
-    userForm.ip = res.data.ip
-    userForm.photo = res.data.photo
-    userForm.nickname = res.data.nickname
-    userForm.brief = res.data.brief
-  })
+const edit = async (id: number) => {
+  const res = await (await UserApi.getById(id)).data
+  console.log('[ res ]-36', res)
+  userForm.id = res.data.id
+  userForm.name = res.data.name
+  userForm.email = res.data.email
+  userForm.pwd = res.data.pwd
+  userForm.ip = res.data.ip
+  userForm.photo = res.data.photo
+  userForm.nickname = res.data.nickname
+  userForm.brief = res.data.brief
   editVisible.value = true
   upDisabled.value = false
   addDisabled.value = true
@@ -57,7 +57,8 @@ onMounted(async () => {
   navName.name = '用户管理'
   navName.name2 = '用户列表'
   await UserApi.getPaging(1, 1000).then(res => {
-    rUser.value = res.data.result
+    rUser.value = res.data
+    console.log('[ res.data ]-61', res.data.result)
     for (let index = 0; index < rUser.value.length; index++) {
       rUser.value[index].timeCreate = dayjs(rUser.value[index].timeCreate).format('YYYY-MM-DD')
       rUser.value[index].timeModified = dayjs(rUser.value[index].timeModified).format('YYYY-MM-DD-H:mm')

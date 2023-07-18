@@ -36,18 +36,18 @@ onMounted(async () => {
     </div>
     <div class="mb-1 text-base">
       <select v-model="snippetForm.typeId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="res in snippetTypeData" :key="res.id" :value="res.id" class="rounded bg-blue-50">
-          {{ res.name }}
+        <option v-for="ret in snippetTypeData" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+          {{ ret.name }}
         </option>
       </select>
       <select v-model="snippetForm.labelId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="res in snippetLabelData" :key="res.id" :value="res.id" class="rounded bg-blue-50">
-          {{ res.name }}
+        <option v-for="ret in snippetLabelData" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+          {{ ret.name }}
         </option>
       </select>
       <select v-model="snippetForm.tagId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="res in snippetTagData" :key="res.id" :value="res.id" class="rounded bg-blue-50">
-          {{ res.name }}
+        <option v-for="ret in snippetTagData" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+          {{ ret.name }}
         </option>
       </select>
     </div>
