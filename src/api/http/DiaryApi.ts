@@ -26,7 +26,7 @@ export class DiaryApi {
    */
   static async getContains(identity = 0, type = 'null', name = '', cache = true) {
     const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-    Tool.momentTimeList(data)
+    await Tool.momentTimeList(data)
     return data
   }
   static getById(id: number, cache = false) {

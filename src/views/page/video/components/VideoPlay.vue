@@ -35,14 +35,7 @@ GetApi()
     <video-play-side></video-play-side>
     <div class="vplay">
       <div class="vplay-if">
-        <iframe
-          id="ifs"
-          :src="resData.URL"
-          scrolling="no"
-          border="0"
-          frameborder="no"
-          framespacing="0"
-          allowfullscreen="true"></iframe>
+        <iframe id="ifs" :src="resData.URL" border="0" framespacing="0" allowfullscreen="true"></iframe>
       </div>
     </div>
   </section>

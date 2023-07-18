@@ -19,7 +19,7 @@ defineProps({
     <div class="vicont-cont">
       <div v-for="r in rData" :key="r.id" class="vicont-cont-list">
         <div class="vicont-2-1-1">
-          <img src="@/assets/img/hy.jpg" />
+          <img src="@/assets/img/hy.jpg" alt="" />
         </div>
         <div class="vicont-2-1-2">
           <p @click="routerId('/VideoPlay', r.id)">{{ r.name }}</p>

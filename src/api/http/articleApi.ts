@@ -32,7 +32,7 @@ export class ArticleApi {
    */
   static async getContains(identity = 0, type = 'null', name = '', cache = true) {
     const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, true)
-    Tool.momentTimeList(data.data)
+    await Tool.momentTimeList(data.data)
     return data
   }
 

@@ -11,40 +11,40 @@
       <div class="bigbox">
         <div class="box">
           <div class="bigfront">
-            <img src="src/assets/img/bb/1.jpg" class="bigpic" />
+            <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
           </div>
           <div class="bigback">
-            <img src="src/assets/img/bb/1.jpg" class="bigpic" />
+            <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
           </div>
           <div class="bigleft">
-            <img src="src/assets/img/bb/1.jpg" class="bigpic" />
+            <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
           </div>
           <div class="bigright">
-            <img src="src/assets/img/bb/1.jpg" class="bigpic" />
+            <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
           </div>
           <div class="bigtop">
-            <img src="src/assets/img/bb/1.jpg" class="bigpic" />
+            <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
           </div>
           <div class="bigbottom">
-            <img src="src/assets/img/bb/1.jpg" class="bigpic" />
+            <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
           </div>
           <span class="smallfront">
-            <img src="src/assets/img/bb/1.jpg" class="smallpic" />
+            <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
           <span class="smallback">
-            <img src="src/assets/img/bb/1.jpg" class="smallpic" />
+            <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
           <span class="smallleft">
-            <img src="src/assets/img/bb/1.jpg" class="smallpic" />
+            <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
           <span class="smallright">
-            <img src="src/assets/img/bb/1.jpg" class="smallpic" />
+            <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
           <span class="smalltop">
-            <img src="src/assets/img/bb/1.jpg" class="smallpic" />
+            <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
           <span class="smallbottom">
-            <img src="src/assets/img/bb/1.jpg" class="smallpic" />
+            <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
         </div>
       </div>
@@ -68,9 +68,7 @@
           </div>
         </div>
         <div class="photo-img">
-          <img
-            src="https://cdn.share-man.com/mailImage/751e475835955b416fc54978ca751bfb.jpeg"
-            onerror="this.style.display='none'" />
+          <img src="https://cdn.share-man.com/mailImage/751e475835955b416fc54978ca751bfb.jpeg" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -79,9 +77,7 @@
           </div>
         </div>
         <div class="photo-img">
-          <img
-            src="https://cdn.share-man.com/mailImage/1fa79317d3ec1b08758e6318f8776c38.jpeg"
-            onerror="this.style.display='none'" />
+          <img src="https://cdn.share-man.com/mailImage/1fa79317d3ec1b08758e6318f8776c38.jpeg" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -90,9 +86,7 @@
           </div>
         </div>
         <div class="photo-img">
-          <img
-            src="https://cdn.share-man.com/mailImage/73483879c650cc43d96038ce40938b0d.jpeg"
-            onerror="this.style.display='none'" />
+          <img src="https://cdn.share-man.com/mailImage/73483879c650cc43d96038ce40938b0d.jpeg" alt="" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
@@ -101,7 +95,7 @@
           </div>
         </div>
         <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/d4646c86453cd634d067a784b1890f66.jpeg" />
+          <img src="https://cdn.share-man.com/mailImage/d4646c86453cd634d067a784b1890f66.jpeg" alt="" />
 
           <div class="photo-text">
             <div>From 少年 To Jenny</div>

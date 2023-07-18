@@ -69,8 +69,7 @@ function login() {
 
 .input-container input {
   width: 300px;
-  padding: 1rem;
-  padding-right: 3rem;
+  padding: 1rem 3rem 1rem 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
   background-color: #fff;

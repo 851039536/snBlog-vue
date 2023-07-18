@@ -21,7 +21,7 @@
 
         <div class="book-film-text">
           <div class="book-img">
-            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
+            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" alt="" />
           </div>
           <div class="book-film-title">小说家</div>
           <div class="book-film-type">
@@ -34,7 +34,7 @@
 
         <div class="book-film-text">
           <div class="book-img">
-            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
+            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" alt="" />
           </div>
           <div class="book-film-title">小说家</div>
           <div class="book-film-type">
@@ -47,7 +47,7 @@
 
         <div class="book-film-text">
           <div class="book-img">
-            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
+            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" alt="" />
           </div>
           <div class="book-film-title">小说家</div>
           <div class="book-film-type">
@@ -60,7 +60,7 @@
 
         <div class="book-film-text">
           <div class="book-img">
-            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" />
+            <img src="https://cdn.share-man.com/image/movie/141ab7d2481a9985cac80b5a299ae4df.webp" alt="" />
           </div>
           <div class="book-film-title">小说家</div>
           <div class="book-film-type">
@@ -79,7 +79,7 @@
 .book {
   .book-main {
     @apply w-full;
-    @apply rounded shadow overflow-auto;
+    @apply rounded shadow;
 
     .book-film-text {
       @apply rounded m-1 shadow-xl mt-2 p-1;

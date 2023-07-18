@@ -65,7 +65,6 @@ input {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 0;
   padding: 10px 15px;
   border: 1.2px solid #c0c4cc;
   border-radius: 5px;

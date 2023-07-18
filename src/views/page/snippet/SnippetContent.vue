@@ -241,7 +241,6 @@ input {
   box-sizing: border-box;
   width: 65%;
   height: 100%;
-  padding: 0;
   padding: 10px 15px;
   border: 1.2px solid #c2d0ec;
   border-radius: 5px;

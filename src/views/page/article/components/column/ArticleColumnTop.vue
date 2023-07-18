@@ -78,10 +78,10 @@ label span {
 }
 
 label:first-child span {
-  border-radius: 0.375em 0 0 0 0.375em;
+  border-radius: 0.375em 0 0 0.375em;
 }
 
 label:last-child span {
-  border-radius: 0 0.375em 0 0.375em 0;
+  border-radius: 0 0.375em 0 0.375em;
 }
 </style>

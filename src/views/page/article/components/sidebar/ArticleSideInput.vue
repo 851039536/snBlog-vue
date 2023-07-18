@@ -36,8 +36,7 @@ function onSearch() {
   .input {
     width: 100%;
     height: 40px;
-    padding: 0 1rem;
-    padding-left: 2.5rem;
+    padding: 0 1rem 0 2.5rem;
     color: #0d0c22;
     line-height: 28px;
     border: 1px solid transparent;

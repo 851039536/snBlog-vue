@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArticleApi } from '@/api/index'
+import { ArticleApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useThemeSetting } from '@store/modules/themeSetting'
 

@@ -29,7 +29,7 @@ async function upRead(data: any) {
 onMounted(async () => {
   const data = await ArticleApi.getById(aid.id)
   const entity = data.data.data
-  upRead(entity)
+  await upRead(entity)
   articleForm.name = entity.name
   articleForm.text = entity.text
   articleForm.give = entity.give

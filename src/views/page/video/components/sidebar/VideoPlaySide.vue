@@ -42,7 +42,7 @@ GetApi()
     <div class="vplay-side">
       <div v-for="r in resData.resultData" :key="r.id" class="vplay-2-1">
         <div class="vplay-2-1-1">
-          <img src="@/assets/img/sp.png" />
+          <img src="@/assets/img/sp.png" alt="" />
         </div>
         <div class="vplay-2-1-2">
           <a @click="videos(r.id)">{{ r.name }}</a>

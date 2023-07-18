@@ -36,7 +36,7 @@ onMounted(async () => {
     <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       <div v-for="res in navData" :key="res.id" class="circles-1">
         <div class="circles-1-1">
-          <img v-lazy="res.img" onerror="this.style.display='none'" alt="err" />
+          <img v-lazy="res.img" alt="err" />
         </div>
         <div class="circles-1-2">
           <div class="circles-1-2-1">
