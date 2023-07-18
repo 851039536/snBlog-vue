@@ -22,7 +22,9 @@ async function currentchange(val: number) {
     await NavigationApi.getPaging(1, rTitle.value, val, paging.pagesize as number, 'id', true, true)
   ).data
 }
-
+function QImageUrl(name: string) {
+  return new URL(`/src/assets/img/navigation/${name}`, import.meta.url).href
+}
 onMounted(async () => {
   navData.value = await (
     await NavigationApi.getPaging(1, rTitle.value, paging.page as number, paging.pagesize as number, 'id', true, true)
@@ -31,19 +33,19 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="circles-main">
+  <div class="blog-circles">
     <div class="mx-5 rounded bg-white p-1 text-base">博客:{{ sum }}</div>
     <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-      <div v-for="res in navData" :key="res.id" class="circles-1">
+      <div v-for="ret in navData" :key="ret.id" class="circles-1">
         <div class="circles-1-1">
-          <img v-lazy="res.img" alt="err" />
+          <img v-lazy="QImageUrl(ret.img)" alt="err" />
         </div>
         <div class="circles-1-2">
           <div class="circles-1-2-1">
-            <span @click="winUrl(res.url)">{{ res.title }}</span>
+            <span @click="winUrl(ret.url)">{{ ret.title }}</span>
           </div>
           <div class="circles-1-2-2">
-            {{ res.describe }}
+            {{ ret.describe }}
           </div>
         </div>
       </div>
@@ -61,26 +63,27 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.circles-main {
+.blog-circles {
   @apply mt-1 bg-white rounded;
 
   // 导航窗体小
   .circles-1 {
     @include w-h(90%, 120px);
-    @apply rounded m-auto mb-2 mt-1 shadow-sm hover: bg-gray-200;
+    @apply m-auto mb-3 mt-6px shadow-sm;
 
     .circles-1-1 {
-      @include w-h(40%, 99%);
+      @include w-h(42%, 99%);
       @apply float-left;
 
       img {
         @include w-h(100%, 100%);
+        @apply rounded;
       }
     }
 
     .circles-1-2 {
       @apply float-right bg-white;
-      @include w-h(60%, 100%);
+      @include w-h(58%, 100%);
 
       .circles-1-2-1 {
         @apply text-lg p-1 font-medium m-1 cursor-pointer hover:text-blue-400;

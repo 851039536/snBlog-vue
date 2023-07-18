@@ -13,7 +13,6 @@ import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
 const { random } = useRandom()
 const reload: any = inject('reload')
-const tagName = ref('选择')
 const add = async () => {
   articleForm.userId = storage.get(userInfo.ID)
   articleForm.img = `blog/${random(1, 20, 2)}.jpg`
@@ -25,10 +24,6 @@ const add = async () => {
       message.warning(aData.FAIL)
     }
   })
-}
-const test = (data: any) => {
-  console.log('%c [ data ]-25', 'font-size:13px; background:pink; color:#bf2c9f;', data)
-  //
 }
 
 onMounted(async () => {
@@ -63,11 +58,6 @@ onMounted(async () => {
         标签
         <a-select v-model:value="articleForm.tagId" style="width: 120px" placeholder="请选择">
           <a-select-option v-for="r in rTag.data" :key="r.id" :label="r.id" :value="r.id">
-            {{ r.name }}
-          </a-select-option>
-        </a-select>
-        <a-select v-model:value="tagName" show-search placeholder="Select a person" style="width: 120px" @change="test">
-          <a-select-option v-for="r in rTag.data" :key="r.id" :label="r.name" :value="r.name">
             {{ r.name }}
           </a-select-option>
         </a-select>

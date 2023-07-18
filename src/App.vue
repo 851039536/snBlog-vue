@@ -82,12 +82,12 @@ onMounted(async () => {
   uiSettings.uiSearchVisible = false // 搜索框是否显示
 
   const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
-    UserTalkApi.getUserTalkFirst(),
-    NavigationApi.getTypeAsync(1, '常用工具', true),
-    ArticleApi.getPaging(0, 'null', 1, 1),
-    ArticleApi.getSum(),
-    ArticleApi.getStrSum(0, 1),
-    ArticleApi.getStrSum(0, 2)
+    await UserTalkApi.getUserTalkFirst(),
+    await NavigationApi.getTypeAsync(1, '常用工具', true),
+    await ArticleApi.getPaging(0, 'null', 1, 1),
+    await ArticleApi.getSum(),
+    await ArticleApi.getStrSum(0, 1),
+    await ArticleApi.getStrSum(0, 2)
   ])
 
   annunciate.value = annunciates.data // 公告

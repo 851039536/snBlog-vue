@@ -8,7 +8,7 @@ import { articleData, paging } from '.'
 
 const aRef: any = ref(0)
 
-async function getSum(identity: number, type: string) {
+async function QSum(identity: number, type: string) {
   const count = await ArticleApi.getSum(identity, type)
   paging.count = count.data.data
 }
@@ -32,7 +32,7 @@ const cheight = ref(100)
 onMounted(async () => {
   ui.uiLeftVisible = true
   ui.uiHeadVisible = true
-  await axios.all([await getSum(0, aData.NULL), await QPaging()])
+  await axios.all([await QSum(0, aData.NULL), await QPaging()])
 })
 
 async function scrollEvent() {
@@ -88,11 +88,11 @@ const onScrollUp = throttle((type: number) => {
           <div class="content-div-frame-2">{{ r.sketch }}</div>
           <div class="content-div-frame-3">
             <span class="bg-teal-200">{{ r.user.nickname }}</span>
-            <span class="bg-sky-100">{{ r.type.name }}</span>
-            <span class="bg-red-100">{{ r.tag.name }}</span>
-            <span class="bg-yellow-100">{{ r.read }} ℃</span>
-            <span class="bg-teal-100">赞 {{ r.give }}</span>
-            <span class="bg-red-50">{{ r.timeCreate.substring(0, 10) }}</span>
+            <span class="bg-sky-200">{{ r.type.name }}</span>
+            <span class="bg-red-200">{{ r.tag.name }}</span>
+            <span class="bg-yellow-200">{{ r.read }} ℃</span>
+            <span class="bg-teal-200">赞 {{ r.give }}</span>
+            <span class="bg-red-100">{{ r.timeCreate.substring(0, 10) }}</span>
           </div>
         </div>
       </div>
@@ -156,11 +156,11 @@ const onScrollUp = throttle((type: number) => {
       }
 
       .content-div-frame-3 {
-        @apply m-1 mt-2 px-1 text-cool-gray-500;
+        @apply m-1 mt-2 px-1 text-cool-gray-600;
 
         span {
-          @apply px-1 py-2px mx-2px cursor-pointer rounded;
-          @apply hover:bg-light-blue-100;
+          @apply px-1 py-2px mx-2px cursor-pointer rounded text-sm;
+          @apply hover:text-white hover:bg-blue-400;
         }
       }
     }

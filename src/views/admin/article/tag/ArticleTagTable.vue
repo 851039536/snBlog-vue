@@ -19,9 +19,9 @@ const del = async (id: number) => {
 }
 const edit = async (id: number) => {
   await ArticleTagApi.getById(id).then(r => {
-    articleTagForm.id = r.data.id
-    articleTagForm.name = r.data.name
-    articleTagForm.description = r.data.description
+    articleTagForm.id = r.data.data.id
+    articleTagForm.name = r.data.data.name
+    articleTagForm.description = r.data.data.description
   })
   editVisible.value = true
 }
@@ -31,7 +31,7 @@ const add = () => {
 }
 
 onMounted(async () => {
-  rArticleType.value = (await ArticleTagApi.getPaging(1, 100)).data
+  rArticleType.value = (await ArticleTagApi.getPaging(1, 100)).data.data
   navName.name = '文章标签'
   navName.name2 = '标签列表'
 })

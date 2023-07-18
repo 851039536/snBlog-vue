@@ -8,7 +8,8 @@ import { storage } from '@/utils/storage/storage'
 import { userInfo } from '@/utils/user/user-info'
 import { clearNav, navForm } from '@/api/data/model/NavModel'
 import { rRouter } from '@/router/route-Info'
-
+import useRandom from '@/hooks/useRandom'
+const { random } = useRandom()
 function GetTypeId(id: number) {
   navForm.typeId = id
 }
@@ -17,6 +18,7 @@ const rType: any = ref([])
 const uid: any = ref(storage.get(userInfo.ID))
 const add = async () => {
   navForm.userId = uid.value
+  navForm.img = `${random(1, 10, 2)}.jpg`
   await NavigationApi.add(navForm).then(() => {
     message.info(aData.SUCCESS)
     routers(rRouter.navTable)
@@ -57,9 +59,9 @@ onMounted(async () => {
         </template>
       </div>
     </div>
-    <div class="form-div">
+    <!-- <div class="form-div">
       <a-input v-model:value="navForm.img" prefix="图片链接:" />
-    </div>
+    </div> -->
     <div class="form-div">
       <a-input v-model:value="navForm.url" prefix="地址:" />
     </div>
