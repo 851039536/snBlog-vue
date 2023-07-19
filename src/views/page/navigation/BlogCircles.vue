@@ -22,8 +22,9 @@ async function currentchange(val: number) {
     await NavigationApi.getPaging(1, rTitle.value, val, paging.pagesize as number, 'id', true, true)
   ).data
 }
+
 function QImageUrl(name: string) {
-  return new URL(`/src/assets/img/navigation/${name}`, import.meta.url).href
+  return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/navigation/${name}`)
 }
 onMounted(async () => {
   navData.value = await (

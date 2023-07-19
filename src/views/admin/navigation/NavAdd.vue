@@ -18,7 +18,7 @@ const rType: any = ref([])
 const uid: any = ref(storage.get(userInfo.ID))
 const add = async () => {
   navForm.userId = uid.value
-  navForm.img = `${random(1, 10, 2)}.jpg`
+  navForm.img = `${random(1, 30, 3)}.jpg`
   await NavigationApi.add(navForm).then(() => {
     message.info(aData.SUCCESS)
     routers(rRouter.navTable)

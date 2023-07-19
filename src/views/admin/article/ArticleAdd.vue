@@ -15,7 +15,7 @@ const { random } = useRandom()
 const reload: any = inject('reload')
 const add = async () => {
   articleForm.userId = storage.get(userInfo.ID)
-  articleForm.img = `${random(1, 20, 2)}.jpg`
+  articleForm.img = `${random(1, 30, 3)}.jpg`
   await ArticleApi.add(articleForm).then(r => {
     if (r.data.statusCode === 200) {
       message.success(aData.SUCCESS)
