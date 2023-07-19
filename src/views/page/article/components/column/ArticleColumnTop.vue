@@ -29,6 +29,10 @@ const clickType = async (name: string) => {
         <input type="radio" name="radio" @click="clickType('give')" />
         <span>点赞</span>
       </label>
+      <label>
+        <input type="radio" name="radio" @click="clickType('技术教程')" />
+        <span>教程</span>
+      </label>
     </div>
   </div>
 </template>

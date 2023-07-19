@@ -137,7 +137,7 @@ button:hover::before {
 }
 
 .github {
-  background-color: rgb(105, 97, 97);
+  background-color: rgb(105 97 97);
 }
 
 .github svg {

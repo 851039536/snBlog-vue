@@ -54,23 +54,6 @@ const onScroll = (type: string) => {
     aRef.value.scrollTop = distance
   })
 }
-const throttle = (fn: Function, delay: number) => {
-  let timer: any | null = null
-  return (...args: any[]) => {
-    if (!timer) {
-      timer = setTimeout(() => {
-        fn(...args)
-        timer = null
-      }, delay)
-    }
-  }
-}
-const onScrollNext = throttle((type: number) => {
-  aRef.value.scrollTop += type
-}, 100)
-const onScrollUp = throttle((type: number) => {
-  aRef.value.scrollTop -= type
-}, 100)
 </script>
 
 <template>
@@ -98,12 +81,9 @@ const onScrollUp = throttle((type: number) => {
       </div>
     </div>
     <div text="cool-gray-400 center" class="mb-20 mt-2 m-1">数据加载完毕 ^</div>
-    ,
-    <div fixed class="btn">
-      <button @click="onScroll('top')">顶部</button>
-      <button @click="onScroll('bottom')">底部</button>
-      <button @click="onScrollNext(400)">下滑</button>
-      <button @click="onScrollUp(400)">上划</button>
+    <div class="btn">
+      <div i-typcn-arrow-sorted-up h-6 w-7 @click="onScroll('top')"></div>
+      <div i-typcn-arrow-sorted-down h-6 w-7 @click="onScroll('bottom')"></div>
     </div>
   </section>
 </template>
@@ -113,15 +93,13 @@ const onScrollUp = throttle((type: number) => {
   @apply h-[92.78vh] overflow-y-scroll;
 
   scroll-behavior: smooth;
-}
 
-.btn {
-  @apply right-75 bottom-1 cursor-pointer z-1;
+  .btn {
+    @apply absolute right-125 rounded bottom-[6%] cursor-pointer z-1 bg-white;
 
-  button {
-    @apply bg-white border-none px-3 mr-1px py-1;
-    @apply rounded shadow;
-    @apply hover:text-red-500;
+    div {
+      @apply mb-1px p-2px hover:text-blue-400;
+    }
   }
 }
 
