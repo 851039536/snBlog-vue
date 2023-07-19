@@ -24,7 +24,7 @@ async function QPaging() {
 }
 
 function QImageUrl(name: string) {
-  return new URL(`/src/assets/img/${name}`, import.meta.url).href
+  return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/article/${name}`)
 }
 
 const cheight = ref(100)
