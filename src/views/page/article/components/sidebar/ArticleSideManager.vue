@@ -1,25 +1,30 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
+const setVisible = () => {
+  ui.articleFastVisible = true
+}
+</script>
 <template>
   <c-right-sidebar-container>
     <div class="h-30px cursor-pointer text-base text-cool-gray-500">
-      <!-- <div class="float-left">创作中心</div> -->
       <div class="float-right hover:text-blue-500">管理</div>
     </div>
-    <div class="my1 flex cursor-pointer items-center justify-center">
+    <div class="mb-1 flex cursor-pointer items-center justify-center">
       <div class="mx-3 hover:text-blue-400">
-        <div i-flat-color-icons-about m-auto h-8 w-7></div>
+        <div i-bytesize-book m-auto h-7 w-26px @click="setVisible()"></div>
         快捷发文
       </div>
       <div class="mx-3 hover:text-blue-400">
-        <div i-flat-color-icons-file m-auto h-8 w-7></div>
+        <div i-bytesize-compose m-auto h-7 w-26px></div>
         写文章
       </div>
       <div class="mx-3 hover:text-blue-400">
-        <div i-flat-color-icons-sports-mode m-auto h-8 w-7></div>
+        <div i-bytesize-fire m-auto h-7 w-26px></div>
         发动态
       </div>
       <div class="mx-3 hover:text-blue-400">
-        <div i-flat-color-icons-wikipedia m-auto h-8 w-7></div>
+        <div i-bytesize-bookmark m-auto h-7 w-25px></div>
         发代码
       </div>
     </div>

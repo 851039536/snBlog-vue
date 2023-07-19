@@ -24,12 +24,12 @@
       <nav v-if="uiSettings.uiRightVisible" class="app-grail-right">
         <!-- 侧边栏 -->
         <c-right-sidebar>
-          <ArticleSideInputModule></ArticleSideInputModule>
-          <ArticleSideManager></ArticleSideManager>
+          <article-side-input-module></article-side-input-module>
+          <article-side-manager></article-side-manager>
 
-          <ArticleSideAnnunciateModule :name="annunciate"></ArticleSideAnnunciateModule>
-          <ArticleSideTool :r-data="navData" name="常用工具"></ArticleSideTool>
-          <statisticsModule
+          <article-side-annunciate-module :name="annunciate"></article-side-annunciate-module>
+          <article-side-tool :r-data="navData" name="常用工具"></article-side-tool>
+          <statistics-module
             title="站点统计"
             sum-title="文章数量"
             character-title="总字符数"
@@ -38,17 +38,18 @@
             :sum="articleSum"
             :character="textSum"
             :heat="readSum"
-            :time="time"></statisticsModule>
+            :time="time"></statistics-module>
         </c-right-sidebar>
 
         <div id="search"></div>
         <c-modal-search @close-model="uiSettings.uiSearchVisible = false">
-          <ArticleSideSearchModule></ArticleSideSearchModule>
+          <article-side-search-module></article-side-search-module>
         </c-modal-search>
       </nav>
     </main>
 
     <!-- <the-bootom></the-bootom> -->
+    <base-article-fast-send></base-article-fast-send>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
   </div>

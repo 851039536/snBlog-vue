@@ -62,13 +62,6 @@ const routes: RouteRecordRaw[] = [
         component: () => {
           return import('@/views/page/article/components/content/ArticleContent.vue')
         }
-      },
-      {
-        path: 'kk',
-        name: 'kk',
-        component: () => {
-          return import('@/views/page/article/components/content/kuaijie.vue')
-        }
       }
     ]
   },

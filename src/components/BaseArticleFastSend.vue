@@ -1,17 +1,20 @@
 <template>
-  <div class="post">
-    <h1>发布文章</h1>
-    <form @submit.prevent="createPost">
-      <label for="title">标题:</label>
-      <input id="title" v-model="title" type="text" />
-      <label for="content">内容:</label>
-      <textarea id="content" v-model="content"></textarea>
-      <button type="submit">发布文章</button>
-    </form>
-  </div>
+  <c-modal-dialog :visible="ui.articleFastVisible" title="快捷发文" @close-model="ui.articleFastVisible = false">
+    <div class="post">
+      <form @submit.prevent="createPost">
+        <label for="title">标题:</label>
+        <input id="title" v-model="title" type="text" />
+        <label for="content">内容:</label>
+        <textarea id="content" v-model="content"></textarea>
+        <button type="submit">发布文章</button>
+      </form>
+    </div>
+  </c-modal-dialog>
 </template>
 
 <script setup lang="ts">
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
 const title = ref('')
 const content = ref('')
 
@@ -24,31 +27,15 @@ function createPost() {
   title.value = ''
   content.value = ''
 }
-
-createPost
 </script>
 
-<style scoped>
-.post {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-}
-
-.post h1 {
-  font-weight: bold;
-  font-size: 28px;
-  text-align: center;
-}
-
+<style lang="scss" scoped>
 .post form label {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
-/* stylelint-disable-next-line string-quotes */
 .post form input[type='text'],
 .post form textarea {
   display: block;
@@ -60,7 +47,6 @@ createPost
   border-radius: 5px;
 }
 
-/* stylelint-disable-next-line string-quotes */
 .post form button[type='submit'] {
   display: block;
   margin: 0 auto;
@@ -74,7 +60,6 @@ createPost
   cursor: pointer;
 }
 
-/* stylelint-disable-next-line string-quotes */
 .post form button[type='submit']:hover {
   background-color: #3e8e41;
 }
