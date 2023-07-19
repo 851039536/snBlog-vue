@@ -12,20 +12,20 @@ const setVisible = () => {
     </div>
     <div class="mb-1 flex cursor-pointer items-center justify-center">
       <div class="mx-3 hover:text-blue-400">
-        <div i-bytesize-book m-auto h-7 w-26px @click="setVisible()"></div>
-        快捷发文
+        <div i-bytesize-book m-auto h-7 w-26px></div>
+        <span @click="setVisible()">快捷发文</span>
       </div>
       <div class="mx-3 hover:text-blue-400">
         <div i-bytesize-compose m-auto h-7 w-26px></div>
-        写文章
+        <span @click="setVisible()">写文章</span>
       </div>
       <div class="mx-3 hover:text-blue-400">
         <div i-bytesize-fire m-auto h-7 w-26px></div>
-        发动态
+        <span @click="setVisible()">发动态</span>
       </div>
       <div class="mx-3 hover:text-blue-400">
         <div i-bytesize-bookmark m-auto h-7 w-25px></div>
-        发代码
+        <span @click="setVisible()">发片段</span>
       </div>
     </div>
     <div class="mt-3 flex items-center justify-center pb-1 text-sm">

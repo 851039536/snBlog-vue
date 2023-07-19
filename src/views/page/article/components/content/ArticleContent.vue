@@ -45,8 +45,11 @@ onMounted(async () => {
 <template>
   <div class="article-content">
     <div class="text-center">
-      <div class="p-3 text-2xl font-semibold">
-        <div i-flat-color-icons-previous mt-1 class="float-left cursor-pointer" @click="router.back()"></div>
+      <div class="p-15px text-2xl font-semibold">
+        <div
+          i-bytesize-chevron-left
+          class="float-left mt-1 cursor-pointer hover:text-blue-500"
+          @click="router.back()"></div>
         <div class="">{{ articleForm.name }}</div>
       </div>
       <div class="pt-1 text-sm text-cool-gray-500">

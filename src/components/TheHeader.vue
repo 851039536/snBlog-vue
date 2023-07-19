@@ -63,9 +63,6 @@ onMounted(async () => {
             <div v-if="r.identity" @click="skip(r.path)">{{ r.name }}</div>
           </div>
           <div>
-            <div>导航</div>
-          </div>
-          <div>
             <div>圈子</div>
           </div>
           <div>

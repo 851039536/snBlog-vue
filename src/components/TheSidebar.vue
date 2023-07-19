@@ -4,6 +4,7 @@ import { userInfo } from '@/utils/user/user-info'
 import { routers } from '@/utils/route'
 import { storage } from '@/utils/storage/storage'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { message } from 'ant-design-vue'
 const ui = useUiSetStore()
 function setRightVisible(visible: boolean) {
   ui.uiRightVisible = visible
@@ -58,6 +59,7 @@ const skip = (path: string) => {
       routers(path)
       break
     case '/Login':
+      message.warn('即将跳转后台')
       setRightVisible(true)
       routers(path)
       break

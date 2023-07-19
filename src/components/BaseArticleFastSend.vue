@@ -32,7 +32,7 @@ function createPost() {
 <style lang="scss" scoped>
 .post form label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   font-size: 16px;
 }
 
@@ -40,7 +40,7 @@ function createPost() {
 .post form textarea {
   display: block;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -61,6 +61,6 @@ function createPost() {
 }
 
 .post form button[type='submit']:hover {
-  background-color: #3e8e41;
+  background-color: #64e068;
 }
 </style>
