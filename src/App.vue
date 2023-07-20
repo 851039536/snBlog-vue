@@ -61,7 +61,7 @@ const uiSettings = useUiSetStore()
 // 定义异步组件函数
 const AsyncComponent = (name: any) => {
   return defineAsyncComponent(() => {
-    return import(/* @vite-ignore */ `@vi/page/article/components/sidebar/${name}.vue`)
+    return import(/* @vite-ignore */ `@views/page/article/components/sidebar/${name}.vue`)
   })
 }
 

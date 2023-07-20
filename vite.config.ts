@@ -94,12 +94,13 @@ export default defineConfig({
     // 配置别名
     alias: {
       '@': resolve('./src'),
-      '@comp': resolve('./src/components'),
-      '@vi': resolve('./src/views'),
+      '@components': resolve('./src/components'),
+      '@views': resolve('./src/views'),
       '@api': resolve('./src/api'),
       '@hooks': resolve('./src/hooks'),
       '@assets': resolve('./src/assets'),
-      '@store': resolve('./src/store')
+      '@store': resolve('./src/store'),
+      '@router': resolve('./src/router')
     }
   },
 

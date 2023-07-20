@@ -104,12 +104,13 @@
     /* 用于设置模块名称到基于baseUrl的路径映射 */
     "paths": {
       "@/*": ["./src/*"],
-      "@comp/*": ["./src/components/*"],
+      "@components/*": ["./src/components/*"],
       "@api/*": ["./src/api/*"],
-      "@vi/*": ["./src/views/*"],
+      "@views/*": ["./src/views/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@assets/*": ["./src/assets/*"],
-      "@store/*": ["./src/store/*"]
+      "@store/*": ["./src/store/*"],
+      "@router/*": ["./src/router/*"]
     }
   },
 
