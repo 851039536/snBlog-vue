@@ -56,7 +56,9 @@
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useEventKey } from '@hooks/useEventKey'
 const ui = useUiSetStore()
+const { addKeydownCtrl_z } = useEventKey()
 // 定义异步组件函数
 const AsyncComponent = (name: any) => {
   return defineAsyncComponent(() => {
@@ -79,8 +81,9 @@ const navData = ref([])
 const annunciate = ref('')
 
 onMounted(async () => {
-  // 注册全局的键盘事件监听器
+  addKeydownCtrl_z()
 
+  // 注册全局的键盘事件监听器
   ui.uiSearchVisible = false // 搜索框是否显示
   ui.uiLeftVisible = false
   ui.uiRightVisible = false

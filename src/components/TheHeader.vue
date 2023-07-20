@@ -45,14 +45,15 @@ async function onChange(id: number) {
   }
 }
 const escKey = (e: any) => {
+  console.log('[  ]-49', e.key)
   //escape
-  if (e.keyCode === 27) {
-    document.removeEventListener('keyup', escKey)
+  if (e.key === 'Escape') {
+    window.removeEventListener('keyup', escKey)
     isVisible.value = false
   }
 }
 const snippetVisible = () => {
-  document.addEventListener('keyup', escKey)
+  window.addEventListener('keyup', escKey)
   isVisible.value = true
 }
 
