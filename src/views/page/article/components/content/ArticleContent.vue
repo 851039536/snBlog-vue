@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api/index'
+import { ArticleApi } from '@api/index'
 import { debounce } from '@/utils/dethrottle'
-import { articleForm } from '@/api/data/model/ArtileModel'
+import { articleForm } from '@api/data/model/ArtileModel'
 
 const ArticleContentMdModule = defineAsyncComponent(() => {
-  return import('@/views/page/article/components/content/ArticleContentMd.vue')
+  return import('@views/page/article/components/content/ArticleContentMd.vue')
 })
 const route = useRoute()
 const router = useRouter()

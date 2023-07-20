@@ -21,7 +21,7 @@
       </div>
 
       <!-- Right sidebar -->
-      <nav v-if="uiSettings.uiRightVisible" class="app-grail-right">
+      <nav v-if="ui.uiRightVisible" class="app-grail-right">
         <!-- 侧边栏 -->
         <c-right-sidebar>
           <article-side-input-module></article-side-input-module>
@@ -42,35 +42,33 @@
         </c-right-sidebar>
 
         <div id="search"></div>
-        <c-modal-search @close-model="uiSettings.uiSearchVisible = false">
+        <c-modal-search @close-model="ui.uiSearchVisible = false">
           <article-side-search-module></article-side-search-module>
         </c-modal-search>
       </nav>
     </main>
 
-    <!-- <the-bootom></the-bootom> -->
     <base-article-fast-send></base-article-fast-send>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
   </div>
 </template>
 <script lang="ts" setup>
-import { ArticleApi, NavigationApi, UserTalkApi } from '@/api'
-import { useUiSetStore } from '@/store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+import { ArticleApi, NavigationApi, UserTalkApi } from '@api/index'
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
 // 定义异步组件函数
 const AsyncComponent = (name: any) => {
   return defineAsyncComponent(() => {
     return import(/* @vite-ignore */ `@views/page/article/components/sidebar/${name}.vue`)
   })
 }
-
 // 定义异步组件
 const ArticleSideInputModule = AsyncComponent(`ArticleSideInput`)
 const ArticleSideSearchModule = AsyncComponent(`ArticleSideSearch`)
 const ArticleSideAnnunciateModule = AsyncComponent(`ArticleSideAnnunciate`)
 const statisticsModule = defineAsyncComponent(() => {
-  return import('/src/components/CustomCount.vue')
+  return import('@components/CustomCount.vue')
 })
 const time = ref()
 const articleSum = ref('')
@@ -80,7 +78,7 @@ const navData = ref([])
 /** 通告信息 */
 const annunciate = ref('')
 onMounted(async () => {
-  uiSettings.uiSearchVisible = false // 搜索框是否显示
+  ui.uiSearchVisible = false // 搜索框是否显示
 
   const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
     await UserTalkApi.getUserTalkFirst(),

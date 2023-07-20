@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { aData } from '@/views/admin/data'
+import { aData } from '@views/admin/data'
 import { ArticleApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 const { routerById } = useRouter()
 const ui = useUiSetStore()
-
 import { articleData, paging } from '.'
 
 const aRef: any = ref(0)

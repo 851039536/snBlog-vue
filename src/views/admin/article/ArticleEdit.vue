@@ -9,7 +9,6 @@ import { rRouter } from '@/router/route-Info'
 import { articleForm } from '@/api/data/model/ArtileModel'
 import { useRouter } from '@hooks/useRouter'
 const { routers, go } = useRouter()
-
 const route = useRoute()
 const rid: any = ref(route.query.id)
 

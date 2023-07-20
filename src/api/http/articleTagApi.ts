@@ -1,4 +1,4 @@
-import { get, add, update, del } from '@/api/http/funApi'
+import { get, add, update, del } from '@api/http/funApi'
 import { IArticleTag } from '../data/InterData'
 
 enum api {

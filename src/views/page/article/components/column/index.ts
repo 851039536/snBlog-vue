@@ -1,4 +1,4 @@
-import { IArticle } from '@/api/data/InterData'
+import { IArticle } from '@api/data/InterData'
 
 export const articleData = ref<IArticle[]>([])
 

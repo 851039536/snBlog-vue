@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { INav } from '@/api/data/InterData'
+import { INav } from '@api/data/InterData'
 import { useRouter } from '@hooks/useRouter'
 const { winUrl } = useRouter()
 
