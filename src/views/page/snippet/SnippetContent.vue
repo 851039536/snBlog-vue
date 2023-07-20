@@ -127,7 +127,6 @@ const RadioFun = async () => {
  * @return {*}
  */
 const cliEdit = async (id: number, uid: number): Promise<any> => {
-  await TOKEN()
   if (!isUserId(uid)) {
     message.error('无权限!')
     return

@@ -70,8 +70,8 @@ const skip = (path: string) => {
   }
 }
 onMounted(async () => {
-  //条件查询列表
-  const data = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'sidebar', true)
+  //条件查询列表storage.get(userInfo.NAME)
+  const data = await InterfaceApi.getCondition(0, 'kai', 'sidebar', true)
   rData.value = data.data.data
 
   getTopic(ui.sideIndex)
@@ -98,12 +98,12 @@ onMounted(async () => {
         <div>{{ r.name }}</div>
       </div>
     </div>
-    <div v-show="storage.get(userInfo.NAME) === userInfo.NAME" bg-gray-200 text-lg>
+    <!-- <div v-show="storage.get(userInfo.NAME) === userInfo.NAME" bg-gray-200 text-lg>
       <div m-auto w-17 flex cursor-pointer hover:text-cool-gray-50>
         <div i-fxemoji-bolt mr-1 mt-5px h-5 w-5></div>
         <div>登录</div>
       </div>
-    </div>
+    </div> -->
 
     <div
       v-show="storage.get(userInfo.NAME) !== userInfo.NAME"
