@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SnippetApi, SnippetTagApi, SnippetTypeApi, TOKEN } from '@/api'
+import { SnippetApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
 import { isUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
@@ -11,21 +11,21 @@ const theme = useThemeSetting()
 const id = 'preview-only'
 // JS
 import { ref, nextTick } from 'vue'
-// 创建节点 ref
-const scrollContainer = ref()
+// 创建节点
+const refScroll = ref()
 
 const onScroll = (type: any) => {
   //下一次 DOM 更新周期时再执行
   nextTick(() => {
     //根据 type 参数的值计算出要滚动到的位置  确保在模板中将其赋值给对应的 DOM 元素，如 <div ref="snippetRef"></div>。
-    const distance = type === 'top' ? 0 : scrollContainer.value.scrollHeight
-    scrollContainer.value.scrollTop = distance
+    const distance = type === 'top' ? 0 : refScroll.value.scrollHeight
+    refScroll.value.scrollTop = distance
   })
 }
 
 // 定义触发底部函数
 const handleScroll = async () => {
-  const containerEl = scrollContainer.value
+  const containerEl = refScroll.value
   if (containerEl) {
     const isAtBottom = containerEl.scrollHeight - containerEl.scrollTop === containerEl.clientHeight
     console.log(isAtBottom + containerEl.clientHeight)
@@ -182,7 +182,7 @@ onMounted(async () => {
     <div class="bor"></div>
 
     <!-- ref标识 -->
-    <div ref="scrollContainer" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
+    <div ref="refScroll" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
       <div class="test">
         <div v-for="(item, index) in rSnippet" :key="index" class="item">
           <custom-highlight-text
