@@ -44,6 +44,17 @@ async function onChange(id: number) {
       break
   }
 }
+const escKey = (e: any) => {
+  //escape
+  if (e.keyCode === 27) {
+    document.removeEventListener('keyup', escKey)
+    isVisible.value = false
+  }
+}
+const snippetVisible = () => {
+  document.addEventListener('keyup', escKey)
+  isVisible.value = true
+}
 
 onMounted(async () => {
   const conditions = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'header', false)
@@ -67,7 +78,7 @@ onMounted(async () => {
             <div>圈子</div>
           </div>
           <div>
-            <div @click="isVisible = true">code</div>
+            <div @click="snippetVisible()">code</div>
             <div class="mt-1" i-flat-color-icons-search h-6 w-6></div>
           </div>
         </div>

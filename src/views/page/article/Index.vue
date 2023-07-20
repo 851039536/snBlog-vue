@@ -13,7 +13,7 @@ const annunciate = ref('')
 // rightVisible.value = true
 onMounted(async () => {
   ui.uiSearchVisible = false // 搜索框是否显示
-
+  ui.uiRightVisible = true
   const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
     UserTalkApi.getUserTalkFirst(),
     NavigationApi.getTypeAsync(1, '常用工具', true),

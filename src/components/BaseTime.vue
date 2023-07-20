@@ -26,7 +26,6 @@ updateTime()
 <template>
   <c-right-sidebar-container>
     <div class="time">
-      <!-- <div i-fxemoji-alarmclock mr-1></div> -->
       <span>{{ state.date }}</span>
       <span class="font-bold">{{ state.time }}</span>
     </div>

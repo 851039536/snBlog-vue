@@ -1,5 +1,9 @@
 <script lang="ts" setup>
-// ...
+import { useUiSetStore } from '@store/modules/uiSettings'
+const ui = useUiSetStore()
+onMounted(() => {
+  ui.uiRightVisible = false
+})
 </script>
 <template>
   <div>
@@ -8,7 +12,7 @@
         <p>原来是你呀 / 总计 20</p>
       </div>
 
-      <div class="bigbox">
+      <!-- <div class="bigbox">
         <div class="box">
           <div class="bigfront">
             <img src="src/assets/img/bb/1.jpg" class="bigpic" alt="" />
@@ -47,7 +51,7 @@
             <img src="src/assets/img/bb/1.jpg" class="smallpic" alt="" />
           </span>
         </div>
-      </div>
+      </div> -->
       <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-3">
         <div class="photo-img">
           <img src="https://cdn.share-man.com/mailImage/e8f1120dfaca01d78bc90f0c71e3736e.jpeg" alt="test" />
@@ -59,8 +63,6 @@
           </div>
         </div>
         <div class="photo-img">
-          <!-- <img src="../../assets/img/bb/1.jpg" /> -->
-
           <div class="photo-text">
             <div>From 少年 To Jenny</div>
             <div>信件 / 永远年轻，永远热泪盈眶</div>
@@ -115,7 +117,7 @@
   .photo-title {
     @include underline;
 
-    margin-bottom: 6px;
+    margin-bottom: 2px;
 
     p {
       @apply font-medium m-2 text-lg py-2 px-1;
@@ -127,7 +129,7 @@
     @apply rounded-md shadow;
 
     img {
-      @include w-h(100%, 300px);
+      @include w-h(100%, 200px);
 
       padding: 5px;
       border: 1px solid #ddd;
@@ -136,8 +138,6 @@
 
     a {
       position: absolute;
-
-      // @include excursion(null, 3%, null, 3%);
     }
 
     .photo-text {

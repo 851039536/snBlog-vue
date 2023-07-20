@@ -77,9 +77,13 @@ const readSum = ref('')
 const navData = ref([])
 /** 通告信息 */
 const annunciate = ref('')
-onMounted(async () => {
-  ui.uiSearchVisible = false // 搜索框是否显示
 
+onMounted(async () => {
+  // 注册全局的键盘事件监听器
+
+  ui.uiSearchVisible = false // 搜索框是否显示
+  ui.uiLeftVisible = false
+  ui.uiRightVisible = false
   const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
     await UserTalkApi.getUserTalkFirst(),
     await NavigationApi.getTypeAsync(1, '常用工具', true),

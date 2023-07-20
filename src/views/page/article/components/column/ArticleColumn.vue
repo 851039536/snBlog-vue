@@ -38,7 +38,6 @@ onMounted(async () => {
 
 async function scrollEvent() {
   const scrollTop = aRef.value.scrollTop
-  console.log(scrollTop)
   if (scrollTop) {
     if (scrollTop > cheight.value) {
       console.log('触发加载')

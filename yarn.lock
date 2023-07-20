@@ -6787,9 +6787,9 @@ unocss-preset-scrollbar@^0.2.1:
   dependencies:
     "@unocss/preset-mini" "^0.31.13"
 
-unocss@^0.51.8:
+unocss@0.51.13:
   version "0.51.13"
-  resolved "https://registry.npmmirror.com/unocss/-/unocss-0.51.13.tgz"
+  resolved "https://registry.npmmirror.com/unocss/-/unocss-0.51.13.tgz#f41c0d186559f2375f319334f4811ed21b427b23"
   integrity sha512-EAhuQ97D7E+EsTdlCL+xoWEsvz46Se9ZAtHhJ+1W+DzMky9qrDLRyR8Caf2TPbz8dw/z0qYhoPr6/aJARG4r0g==
   dependencies:
     "@unocss/astro" "0.51.13"

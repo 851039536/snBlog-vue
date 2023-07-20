@@ -1,25 +1,16 @@
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
-uiSettings.uiLoadingVisible = false
+const ui = useUiSetStore()
+ui.uiLoadingVisible = false
 </script>
 <template>
-  <div v-show="uiSettings.uiLoadingVisible" class="spinner">
+  <div v-show="ui.uiLoadingVisible" class="spinner">
     <div class="cube1"></div>
     <div class="cube2"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-section {
-  @apply top-0 left-0 z-3000 fixed;
-  @apply h-full w-full;
-
-  div {
-    @apply top-5/10 left-5/10 absolute;
-  }
-}
-
 .spinner {
   @apply top-0 left-0 bottom-0 right-0 m-auto z-3000 fixed;
   @apply w-5 h-5;
