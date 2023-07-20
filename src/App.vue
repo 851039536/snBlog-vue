@@ -11,11 +11,11 @@
         <router-view v-slot="{ Component }">
           <transition name="fade" :duration="500">
             <keep-alive>
-              <component :is="Component" v-if="$route.meta.keepAlive" />
+              <component :is="Component" v-if="$route.meta.keepAlive" :key="$route.name" />
             </keep-alive>
           </transition>
           <transition name="fade" :duration="500">
-            <component :is="Component" v-if="!$route.meta.keepAlive" />
+            <component :is="Component" v-if="!$route.meta.keepAlive" :key="$route.name" />
           </transition>
         </router-view>
       </div>

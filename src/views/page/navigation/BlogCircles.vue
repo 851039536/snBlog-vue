@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { NavigationApi } from '@/api'
 import { IPaging, INav } from '@/api/data/InterData'
-import { winUrl } from '@/utils/route'
+import { useRouter } from '@hooks/useRouter'
+const { winUrl } = useRouter()
 
 const sum = ref(0)
 onMounted(async () => {

@@ -7,7 +7,6 @@ const theme = useThemeSetting()
 const ui = useUiSetStore()
 
 import { MdPreview, MdCatalog } from 'md-editor-v3'
-import 'md-editor-v3/lib/preview.css'
 
 const id = 'preview-only'
 const scrollElement = document.documentElement

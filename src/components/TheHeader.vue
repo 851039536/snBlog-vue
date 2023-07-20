@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { removeUserStorage, userInfo } from '@/utils/user/user-info'
 import { storage } from '@/utils/storage/storage'
-import { routers } from '@/utils/route'
+import { useRouter } from '@hooks/useRouter'
 import { rRouter } from '@/router/route-Info'
 import userSvg from '@assets/svg/components/user.svg?component'
 import { InterfaceApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
+const { routers } = useRouter()
 const ui = useUiSetStore()
 const rData: any = ref([])
 const isVisible = ref(false)

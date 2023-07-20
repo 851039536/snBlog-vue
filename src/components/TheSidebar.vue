@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { InterfaceApi } from '@/api'
 import { userInfo } from '@/utils/user/user-info'
-import { routers } from '@/utils/route'
+import { useRouter } from '@hooks/useRouter'
 import { storage } from '@/utils/storage/storage'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { message } from 'ant-design-vue'
+const { routers } = useRouter()
 const ui = useUiSetStore()
 function setRightVisible(visible: boolean) {
   ui.uiRightVisible = visible

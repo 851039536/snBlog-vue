@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { routers } from '@/utils/route'
+import { useRouter } from '@hooks/useRouter'
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+const { routers } = useRouter()
+const ui = useUiSetStore()
 
-uiSettings.uiHeadVisible = false
-uiSettings.uiLoadingVisible = false
+ui.uiHeadVisible = false
+ui.uiLoadingVisible = false
 </script>
 
 <template>

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue/es/components'
-import { routers } from '@/utils/route'
 import { UserApi } from '@/api/index'
 import { storage } from '@/utils/storage/storage'
 import { userInfo, isToken, removeUserStorage } from '@/utils/user/user-info'
 import { rRouter } from '@/router/route-Info'
 import { useUiSetStore } from '@store/modules/uiSettings'
-const uiSettings = useUiSetStore()
+import { useRouter } from '@hooks/useRouter'
+const { routers } = useRouter()
+const ui = useUiSetStore()
 const state = reactive({
   name: '',
   pwd: ''
@@ -24,8 +25,8 @@ function login() {
   })
 }
 onMounted(async () => {
-  uiSettings.uiHeadVisible = false
-  uiSettings.uiLeftVisible = false
+  ui.uiHeadVisible = false
+  ui.uiLeftVisible = false
   await isToken()
 })
 </script>

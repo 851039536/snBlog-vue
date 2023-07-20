@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { routerId } from '@/utils/route'
 import { state } from '../../data/data'
 import { method } from '../../data/index'
+import { useRouter } from '@hooks/useRouter'
+const { routerById } = useRouter()
 
 defineProps({
   rData: {
@@ -22,7 +23,7 @@ defineProps({
           <img src="@/assets/img/hy.jpg" alt="" />
         </div>
         <div class="vicont-2-1-2">
-          <p @click="routerId('/VideoPlay', r.id)">{{ r.name }}</p>
+          <p @click="routerById('/VideoPlay', r.id)">{{ r.name }}</p>
         </div>
         <div class="vicont2-1-3">
           <span>{{ r.user.nickname }}</span>

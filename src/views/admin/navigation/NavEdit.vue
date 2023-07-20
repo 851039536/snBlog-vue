@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { NavigationApi } from '@/api'
-import { routers, go, winUrl } from '@/utils/route'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/route-Info'
 import { navForm } from '@/api/data/model/NavModel'
+import { useRouter } from '@hooks/useRouter'
+const { routers, go, winUrl } = useRouter()
 
 const route = useRoute()
 const Rid = reactive({

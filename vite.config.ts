@@ -97,7 +97,7 @@ export default defineConfig({
       '@comp': resolve('./src/components'),
       '@vi': resolve('./src/views'),
       '@api': resolve('./src/api'),
-      '@h': resolve('./src/hooks'),
+      '@hooks': resolve('./src/hooks'),
       '@assets': resolve('./src/assets'),
       '@store': resolve('./src/store')
     }

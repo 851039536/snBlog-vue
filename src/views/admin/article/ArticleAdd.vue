@@ -3,7 +3,6 @@ import { MdEditor } from 'md-editor-v3'
 import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
-import { routers, go } from '@/utils/route'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 import { articleForm, clearArticle } from '@/api/data/model/ArtileModel'
@@ -11,6 +10,8 @@ import { userInfo } from '@/utils/user/user-info'
 import { rRouter } from '@/router/route-Info'
 import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
+import { useRouter } from '@hooks/useRouter'
+const { routers, go } = useRouter()
 const { random } = useRandom()
 const reload: any = inject('reload')
 const add = async () => {

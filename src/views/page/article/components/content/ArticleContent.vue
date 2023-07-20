@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api/index'
-import { Tool } from '@/utils/common/common-tool'
 import { debounce } from '@/utils/dethrottle'
 import { articleForm } from '@/api/data/model/ArtileModel'
 
@@ -38,7 +37,6 @@ onMounted(async () => {
   labelName.value = entity.tag.name
   sortName.value = entity.type.name
   spinning.value = false
-  Tool.backTop()
 })
 </script>
 

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { NavigationApi } from '@/api'
-import { winUrl } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { INav } from '@/api/data/InterData'
+import { useRouter } from '@hooks/useRouter'
+const { winUrl } = useRouter()
 
 const paging = reactive({
   page: 1,

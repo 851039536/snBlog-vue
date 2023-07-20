@@ -2,12 +2,13 @@
 import { message } from 'ant-design-vue'
 import { columns, rTag } from './data'
 import { ArticleApi, ArticleTagApi } from '@/api'
-import { routers, routerId } from '@/utils/route'
 import { navName } from '../utils/data'
 import { storage } from '@/utils/storage/storage'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/route-Info'
 import { userInfo } from '@/utils/user/user-info'
+import { useRouter } from '@hooks/useRouter'
+const { routerById, routers } = useRouter()
 
 const reload: any = inject('reload')
 const rArticle = ref()
@@ -104,7 +105,7 @@ onMounted(async () => {
             <span>{{ record.tag.name }}</span>
           </template>
           <template v-if="column.dataIndex === 'edit'">
-            <a type="primary" ghost @click="routerId(rRouter.articleEdit, record.id)">编辑</a>
+            <a type="primary" ghost @click="routerById(rRouter.articleEdit, record.id)">编辑</a>
           </template>
           <template v-if="column.dataIndex === 'del'">
             <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="del(record)" @cancel="aCancel">

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { routers, winUrl } from '@/utils/route'
 import { navName } from './utils/data'
 import { isToken, removeUserStorage } from '@/utils/user/user-info'
 import { rRouter } from '@/router/route-Info'
 import uservg from '@assets/svg/components/user.svg?component'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useRouter } from '@hooks/useRouter'
+const { routers, winUrl } = useRouter()
 const uiSettings = useUiSetStore()
 import { TOKEN } from '@/api'
 

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { routers } from '@/utils/route'
+import { useRouter } from '@hooks/useRouter'
+const { routers } = useRouter()
 
 const skip = (num: number) => {
   switch (num) {

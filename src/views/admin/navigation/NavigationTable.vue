@@ -2,11 +2,12 @@
 import { message } from 'ant-design-vue'
 import { columns } from './data'
 import { NavigationApi } from '@/api'
-import { routers, routerId, winUrl } from '@/utils/route'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/route-Info'
 import { navName } from '../utils/data'
 import { Tool } from '@/utils/common/common-tool'
+import { useRouter } from '@hooks/useRouter'
+const { routers, routerById, winUrl } = useRouter()
 
 const reload: any = inject('reload')
 const del = async (data: any) => {
@@ -99,7 +100,7 @@ onMounted(async () => {
         <span>{{ record.type.title }}</span>
       </template>
       <template v-if="column.dataIndex === 'edit'">
-        <a @click="routerId('/Admin-index/NavEdit', record.id)">修改</a>
+        <a @click="routerById('/Admin-index/NavEdit', record.id)">修改</a>
       </template>
       <template v-if="column.dataIndex === 'del'">
         <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="del(record)" @cancel="aCancel()">

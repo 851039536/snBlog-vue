@@ -3,11 +3,12 @@ import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { ArticleApi, ArticleTypeApi, ArticleTagApi } from '@/api'
 import { rTag, rType } from './data'
-import { routers, go } from '@/utils/route'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/route-Info'
 import { articleForm } from '@/api/data/model/ArtileModel'
+import { useRouter } from '@hooks/useRouter'
+const { routers, go } = useRouter()
 
 const route = useRoute()
 const rid: any = ref(route.query.id)

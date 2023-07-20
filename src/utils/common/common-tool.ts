@@ -5,21 +5,6 @@ import dayjs from 'dayjs'
  */
 class Tool {
   /**
-   * 回到顶部
-   */
-  static backTop() {
-    const timer = setInterval(() => {
-      const osTop = document.documentElement.scrollTop || document.body.scrollTop
-      const isPeed = Math.floor(-osTop / 5)
-      document.body.scrollTop = osTop + isPeed
-      document.documentElement.scrollTop = document.body.scrollTop
-      if (osTop === 0) {
-        clearInterval(timer)
-      }
-    }, 30)
-  }
-
-  /**
    * 日期格式化
    * @param time
    */

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api'
-import { winUrl } from '@/utils/route'
 import { rArticle, searchName } from '../../data'
+import { useRouter } from '@hooks/useRouter'
+const { winUrl } = useRouter()
 
 //自定义函数，父组件可以触发
 async function search() {
@@ -29,7 +30,7 @@ async function search() {
       class="rounded bg-slate-50 p-2 shadow-sm m-1 hover:bg-blue-400 hover:text-white">
       <div class="flex items-center text-lg">
         <div i-fxemoji-lightbulb h-5 w-6></div>
-        <div class="cursor-pointer font-medium" @click="winUrl(`/c-mdContent?id=${res.id}`)">{{ res.name }}</div>
+        <div class="cursor-pointer font-medium" @click="winUrl(`/myMarkdownContent?id=${res.id}`)">{{ res.name }}</div>
       </div>
       <div class="text-cool-gray-500">{{ res.sketch }}</div>
     </div>

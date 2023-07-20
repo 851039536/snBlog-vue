@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { routerId } from '@/utils/route'
 import { aData } from '@/views/admin/data'
 import { ArticleApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useRouter } from '@hooks/useRouter'
+const { routerById } = useRouter()
 const ui = useUiSetStore()
+
 import { articleData, paging } from '.'
 
 const aRef: any = ref(0)
@@ -48,8 +50,8 @@ async function scrollEvent() {
   }
 }
 
-const onScroll = (type: string) => {
-  const distance = type === 'top' ? 0 : aRef.value.scrollHeight
+const onScroll = (name: string) => {
+  const distance = name === 'top' ? 0 : aRef.value.scrollHeight
   nextTick(() => {
     aRef.value.scrollTop = distance
   })
@@ -65,7 +67,7 @@ const onScroll = (type: string) => {
           <img v-lazy="QImageUrl(r.img)" alt="" />
         </div>
         <div class="content-frame">
-          <div class="content-div-frame-1" @click="routerId('/article/content', r.id)">
+          <div class="content-div-frame-1" @click="routerById('/article/content', r.id)">
             {{ r.name }}
           </div>
           <div class="content-div-frame-2">{{ r.sketch }}</div>

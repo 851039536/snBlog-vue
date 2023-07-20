@@ -157,8 +157,8 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/c-mdContent',
-    name: 'c-mdContent',
+    path: '/myMarkdownContent',
+    name: 'myMarkdownContent',
     meta: {
       keepAlive: false
     },
@@ -310,6 +310,7 @@ const routes: RouteRecordRaw[] = [
   }
 ]
 
+//函数用于创建路由器实例，用于管理应用程序的路由。您可以使用该实例定义路由规则、导航和监听路由变化。
 // createWebHashHistory createWebHistory
 const router = createRouter({
   history: createWebHistory(), // HTML5模式

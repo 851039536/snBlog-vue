@@ -1,7 +1,7 @@
 import { rRouter } from '@/router/route-info'
 import { storage } from '@/utils/storage/storage'
-import { routers } from '../route'
-
+import { useRouter } from '@hooks/useRouter'
+const { routers } = useRouter()
 /**
  * 用户信息
  */
