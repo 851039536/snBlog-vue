@@ -53,6 +53,7 @@
     <the-footer></the-footer>
   </div>
 </template>
+
 <script lang="ts" setup>
 import { ArticleApi, NavigationApi, UserTalkApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'

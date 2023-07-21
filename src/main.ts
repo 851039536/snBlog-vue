@@ -9,6 +9,8 @@ import directive from '@/hooks/directive/directive' // 引入全局自定义指�
 import lazyPlugin from 'vue3-lazy'
 import infiniteScroll from 'vue3-infinite-scroll-better'
 import VueDOMPurifyHTML from 'vue-dompurify-html' //指令的“安全”替代品。该 HTML 代码是 在解释之前用 DOMPurify 进行消毒。v-html
+
+import VueCalendarHeatmap from 'vue3-calendar-heatmap'
 import store from '@/store'
 import App from './App.vue'
 const app = createApp(App)
@@ -20,6 +22,7 @@ app.use(lazyPlugin, {
   loading: getImageUrl('2.jpg'),
   error: getImageUrl('1.jpg')
 })
+app.use(VueCalendarHeatmap)
 app.use(infiniteScroll)
 app.use(VueDOMPurifyHTML)
 app.use(router)
