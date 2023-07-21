@@ -10,7 +10,8 @@
     "build:pro": "vite build --mode production",
     "serve": "vite --mode production",
     "lint:eslint": "eslint --ext .vue,.ts src/",
-    "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix"
+    "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix",
+    "git": "git add . && git cz"
   },
   "description": "vue is a JavaScript library for building user interfaces.",
   "dependencies": {
@@ -60,6 +61,7 @@
     "@unocss/preset-web-fonts": "^0.46.4",
     "@unocss/preset-wind": "^0.51.8",
     "@unocss/transformer-directives": "^0.46.4",
+    "commitizen": "^4.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.26.0",
