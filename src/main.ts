@@ -4,6 +4,7 @@ import 'nprogress/nprogress.css'
 import 'md-editor-v3/lib/preview.css'
 import 'md-editor-v3/lib/style.css'
 import 'uno.css'
+
 import router from './router/index'
 import directive from '@/hooks/directive/directive' // 引入全局自定义指令
 import lazyPlugin from 'vue3-lazy'

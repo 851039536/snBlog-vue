@@ -72,7 +72,7 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/views/page/heatmap/CalendarHeatmaps.vue')
+      return import('@/views/page/heatmap/CalendarHeatmapss.vue')
     }
   },
   {
