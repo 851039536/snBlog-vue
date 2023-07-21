@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\ch190006\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add cz-customizable
+  C:\Program Files\nodejs\node.exe C:\Users\ch190006\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add commitizen
 
 PATH: 
   C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Tools\jre1.8.0_271\bin;C:\Program Files (x86)\Tools\jdk-15.0.1\bin;C:\Program Files (x86)\Tools\Oracle_client\instantclient_12_2_x64;C:\Program Files (x86)\Tools\Oracle_client\instantclient_12_2_x86;C:\Program Files (x86)\CADSeePlus;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\CADSeePlus;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\MySQL\MySQL Server 5.1\bin;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files\nodejs\node_global;C:\Program Files\nodejs\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Git\cmd;C:\Users\ch190006\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Python27\;C:\Program Files\TortoiseGit\bin;C:\Users\ch190006\AppData\Local\Microsoft\WindowsApps;D:\software\Microsoft VS Code\bin;D:\software\MySQL\mysql-8.0.16-winx64\bin;C:\Users\ch190006\.dotnet\tools;C:\Users\ch190006\AppData\Roaming\npm
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'D:\sw\VUE\vue3\sn-blog-vue\node_modules\.bin\git-cz'
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\ch190006\AppData\Local\Yarn\Cache\v6\npm-stylelint-config-standard-26.0.0-integrity\node_modules\stylelint-config-standard\index.js' -> 'D:\sw\VUE\vue3\sn-blog-vue\node_modules\stylelint-config-standard-scss\node_modules\stylelint-config-standard\index.js'
 
 npm manifest: 
   {
@@ -32,7 +32,12 @@ npm manifest:
       "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix",
       "git": "git add . && git cz"
     },
-    "description": "vue is a JavaScript library for building user interfaces.",
+    "config": {
+      "commitizen": {
+        "path": "node_modules/cz-customizable"
+      }
+    },
+    "description": "snBlog vue3 vite3 unocss",
     "dependencies": {
       "@unocss/preset-icons": "0.46.5",
       "@unocss/preset-rem-to-px": "0.46.5",
@@ -80,7 +85,6 @@ npm manifest:
       "@unocss/preset-web-fonts": "^0.46.4",
       "@unocss/preset-wind": "^0.51.8",
       "@unocss/transformer-directives": "^0.46.4",
-      "commitizen": "^4.3.0",
       "eslint-config-airbnb-base": "^15.0.0",
       "eslint-config-prettier": "^8.3.0",
       "eslint-plugin-import": "^2.26.0",
