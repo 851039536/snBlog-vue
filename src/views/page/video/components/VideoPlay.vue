@@ -51,15 +51,4 @@ GetApi()
     }
   }
 }
-
-// @screen xp {
-//   .vplay-2 {
-//     @apply hidden;
-//   }
-
-//   .vplay .vplay-main .vplay-1 {
-//     width: 100%;
-//     height: 90%;
-//   }
-// }
 </style>

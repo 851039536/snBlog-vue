@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="videos">
+  <div class="video-content">
     <div class="vicont-cont">
       <div v-for="r in rData" :key="r.id" class="vicont-cont-list">
         <div class="vicont-2-1-1">
@@ -44,7 +44,7 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.videos {
+.video-content {
   @apply bg-white mt-1 rounded;
 
   .vicont-cont {

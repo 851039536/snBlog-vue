@@ -107,7 +107,7 @@ onMounted(async () => {
 
 <style lang="scss">
 /* 默认导入md的样式 */
-@import './design/md-sm';
+// @import './design/md-sm';
 @include scroll;
 
 #app {
