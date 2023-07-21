@@ -67,7 +67,6 @@ declare module '@vue/runtime-core' {
     BookFilm: typeof import('./src/views/page/book/components/BookFilm.vue')['default']
     BookIndex: typeof import('./src/views/page/book/BookIndex.vue')['default']
     CAboutMe: typeof import('./src/components/module/c-about-me.vue')['default']
-    CalendarHeatmap: typeof import('./src/views/page/heatmap/CalendarHeatmap.vue')['default']
     CalendarHeatmaps: typeof import('./src/views/page/heatmap/CalendarHeatmaps.vue')['default']
     CModalDialog: typeof import('./src/components/modal/c-modal-dialog.vue')['default']
     CModalSearch: typeof import('./src/components/modal/c-modal-search.vue')['default']
