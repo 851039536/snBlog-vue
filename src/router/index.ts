@@ -65,16 +65,7 @@ const routes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: '/CalendarHeatmaps',
-    name: 'CalendarHeatmaps',
-    meta: {
-      keepAlive: false
-    },
-    component: () => {
-      return import('@/views/page/heatmap/CalendarHeatmapss.vue')
-    }
-  },
+
   {
     path: '/qarticle',
     name: 'qarticle',

@@ -26,7 +26,6 @@
         <c-right-sidebar>
           <article-side-input-module></article-side-input-module>
           <article-side-manager></article-side-manager>
-
           <article-side-annunciate-module :name="annunciate"></article-side-annunciate-module>
           <article-side-tool :r-data="navData" name="常用工具"></article-side-tool>
           <statistics-module

@@ -1024,11 +1024,6 @@
   resolved "https://registry.npmmirror.com/@polka/url/-/url-1.0.0-next.21.tgz"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@popperjs/core@^2.9.0":
-  version "2.11.8"
-  resolved "https://registry.npmmirror.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
-  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
-
 "@rollup/pluginutils@^4.1.1", "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
   resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-4.2.1.tgz"
@@ -7151,13 +7146,6 @@ through@^2.3.6:
   resolved "https://registry.npmmirror.com/through/-/through-2.3.8.tgz"
   integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
 
-tippy.js@^6.3.7:
-  version "6.3.7"
-  resolved "https://registry.npmmirror.com/tippy.js/-/tippy.js-6.3.7.tgz#8ccfb651d642010ed9a32ff29b0e9e19c5b8c61c"
-  integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
-  dependencies:
-    "@popperjs/core" "^2.9.0"
-
 titleize@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/titleize/-/titleize-3.0.0.tgz"
@@ -7782,11 +7770,6 @@ vue-types@^3.0.0:
   integrity sha512-IwUC0Aq2zwaXqy74h4WCvFCUtoV0iSWr0snWnE9TnU18S66GAQyqQbRf2qfJtUuiFsBf6qp0MEwdonlwznlcrw==
   dependencies:
     is-plain-object "3.0.1"
-
-vue3-calendar-heatmap@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.npmmirror.com/vue3-calendar-heatmap/-/vue3-calendar-heatmap-2.0.5.tgz#775a8d4e9d7bc62f242d7d6f28a899a3fae2bb82"
-  integrity sha512-qvveNQlTS5Aw7AvRLs0zOyu3uP5iGJlXJAnkrkG2ElDdyQ8H1TJhQ8rL702CROjAg16ezIveUY10nCO7lqZ25w==
 
 vue3-infinite-scroll-better@^2.2.0:
   version "2.2.0"

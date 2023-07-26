@@ -1,9 +1,18 @@
 <script lang="ts" setup>
+import { ArticleApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
 const setVisible = () => {
   ui.articleFastVisible = true
 }
+
+const articleSum = ref('')
+onMounted(async () => {
+  // 注册全局的键盘事件监听器
+  const [articleSums] = await axios.all([await ArticleApi.getSum()])
+
+  articleSum.value = String(articleSums.data.data) // 文章总数
+})
 </script>
 <template>
   <c-right-sidebar-container>
@@ -29,10 +38,10 @@ const setVisible = () => {
       </div>
     </div>
     <div class="mt-3 flex items-center justify-center pb-1 text-sm">
-      <div class="mx-1">发布 0</div>
-      <div class="mx-1">草稿 0</div>
-      <div class="mx-1">待审核 0</div>
-      <div class="mx-1">收藏 0</div>
+      <div class="mx-1">文章 {{ articleSum }}</div>
+      <div class="mx-1">代码 323</div>
+      <div class="mx-1">书单 20</div>
+      <div class="mx-1">导航 123</div>
     </div>
   </c-right-sidebar-container>
 </template>
