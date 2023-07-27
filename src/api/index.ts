@@ -2,7 +2,6 @@ import request from '@/api/http/axios'
 import { ArticleApi } from './http/ArticleApi'
 import { ArticleTagApi } from './http/ArticleTagApi'
 import { ArticleTypeApi } from './http/ArticleTypeApi'
-import { UserTalkApi } from './http/UserTalkApi'
 import { SetBlogApi } from './http/SetBlogApi'
 import { LeaveApi } from './http/LeaveApi'
 import { NavigationApi } from './http/NavigationApi'
@@ -24,7 +23,7 @@ import { CommonApi } from './http/CommonApi'
 function TOKEN() {
   return request(
     {
-      url: '/angleSharp/TOKEN',
+      url: '/dataBase/token',
       method: 'get'
     },
     {
@@ -40,7 +39,6 @@ export {
   ArticleApi,
   ArticleTagApi,
   ArticleTypeApi,
-  UserTalkApi,
   SetBlogApi,
   LeaveApi,
   NavigationApi,

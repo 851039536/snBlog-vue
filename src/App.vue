@@ -54,9 +54,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ArticleApi, NavigationApi, UserTalkApi } from '@api/index'
+import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
+import { useUserTalk } from '@hooks/http/useUserTalk'
+const { GetUserTalkPaging } = useUserTalk()
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
 // 定义异步组件函数
@@ -85,23 +87,23 @@ onMounted(async () => {
 
   // 注册全局的键盘事件监听器
   ui.uiSearchVisible = false // 搜索框是否显示
-  ui.uiLeftVisible = false
+  // ui.uiLeftVisible = false
   ui.uiRightVisible = false
-  const [annunciates, navDatas, times, articleSums, textSums, readSums] = await axios.all([
-    await UserTalkApi.getUserTalkFirst(),
+  const [navDatas, times, articleSums, textSums, readSums, userTalks] = await axios.all([
     await NavigationApi.getTypeAsync(1, '常用工具', true),
     await ArticleApi.getPaging(0, 'null', 1, 1),
     await ArticleApi.getSum(),
     await ArticleApi.getStrSum(0, 1),
-    await ArticleApi.getStrSum(0, 2)
+    await ArticleApi.getStrSum(0, 2),
+    await GetUserTalkPaging(0, '1', 1, 1, 'data', false, false)
   ])
 
-  annunciate.value = annunciates.data // 公告
   navData.value = navDatas.data // 右侧导航
   time.value = times.data.data[0].timeCreate // 本站已运行时间
   articleSum.value = String(articleSums.data.data) // 文章总数
   textSum.value = String(textSums.data.data) // 字数总数
   readSum.value = String(readSums.data.data) // 阅读总数
+  annunciate.value = userTalks.data.data[0].text
 })
 </script>
 
