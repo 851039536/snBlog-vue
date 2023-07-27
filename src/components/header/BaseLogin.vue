@@ -1,22 +1,17 @@
 <script lang="ts" setup>
-import { removeUserStorage, userInfo } from '@/utils/user/user-info'
+// import { userInfo } from '@/utils/user/user-info'
+import { useUserInfo } from '@hooks/useUserInfo'
 import { UserApi } from '@/api'
-import { storage } from '@/utils/storage/storage'
+// import { storage } from '@/utils/storage/storage'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
 const userName = ref('')
 const userPwd = ref('')
-
+const { setUserInfo } = useUserInfo()
 function login() {
   UserApi.login(userName.value, userPwd.value).then(r => {
     const ret = r.data
-
-    removeUserStorage()
-    storage.set(userInfo.ROLE, ret.nickname) // 角色名
-    storage.set(userInfo.TOKEN, `Bearer ${ret.token}`) // token
-    storage.set(userInfo.ID, ret.id) // 用户主键
-    storage.set(userInfo.NAME, ret.name) // 用户名
-
+    setUserInfo(ret.nickname, ret.token, ret.id, ret.name)
     location.reload()
   })
 }

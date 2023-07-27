@@ -1,4 +1,4 @@
-import { get } from '@/api/http/funApi'
+import { get } from '@api/http/funApi'
 export function useUserTalk() {
   /**
    * @description: 分页查询

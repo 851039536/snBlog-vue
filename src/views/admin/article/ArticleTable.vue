@@ -3,11 +3,11 @@ import { message } from 'ant-design-vue'
 import { columns, rTag } from './data'
 import { ArticleApi, ArticleTagApi } from '@/api'
 import { navName } from '../utils/data'
-import { storage } from '@/utils/storage/storage'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/route-Info'
-import { userInfo } from '@/utils/user/user-info'
 import { useRouter } from '@hooks/useRouter'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { getUserName } = useUserInfo()
 const { routerById, routers } = useRouter()
 
 const reload: any = inject('reload')
@@ -52,7 +52,7 @@ async function ordering() {
 }
 
 onMounted(async () => {
-  userName.value = storage.get(userInfo.NAME)
+  userName.value = getUserName()
   await axios.all([await ArticleTagApi.getPaging(1, 100), await QPaging(3, userName.value)]).then(
     axios.spread((tag: any) => {
       rTag.value = tag.data.data

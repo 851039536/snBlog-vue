@@ -58,7 +58,10 @@ import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 import { useUserTalk } from '@hooks/http/useUserTalk'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { getUserName } = useUserInfo()
 const { GetUserTalkPaging } = useUserTalk()
+
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
 // 定义异步组件函数
@@ -95,7 +98,7 @@ onMounted(async () => {
     await ArticleApi.getSum(),
     await ArticleApi.getStrSum(0, 1),
     await ArticleApi.getStrSum(0, 2),
-    await GetUserTalkPaging(0, '1', 1, 1, 'data', false, false)
+    await GetUserTalkPaging(1, getUserName(), 1, 1, 'data', true, false)
   ])
 
   navData.value = navDatas.data // 右侧导航

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { isUserId } from '@/utils/user/user-info'
+import { useUserInfo } from '@hooks/useUserInfo'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-
+const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
 // JS

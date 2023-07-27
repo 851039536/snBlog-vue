@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import { removeUserStorage, userInfo } from '@/utils/user/user-info'
-import { storage } from '@/utils/storage/storage'
+// import { userInfo } from '@/utils/user/user-info'
+// import { storage } from '@/utils/storage/storage'
 import { useRouter } from '@hooks/useRouter'
+import { useUserInfo } from '@hooks/useUserInfo'
 import { rRouter } from '@/router/route-Info'
 import userSvg from '@assets/svg/components/user.svg?component'
 import { InterfaceApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const { routers } = useRouter()
+const { removeUserStorage, getUserName } = useUserInfo()
 const ui = useUiSetStore()
 const rData: any = ref([])
 const isVisible = ref(false)
@@ -45,7 +47,6 @@ async function onChange(id: number) {
   }
 }
 const escKey = (e: any) => {
-  console.log('[  ]-49', e.key)
   //escape
   if (e.key === 'Escape') {
     window.removeEventListener('keyup', escKey)
@@ -58,7 +59,7 @@ const snippetVisible = () => {
 }
 
 onMounted(async () => {
-  const conditions = await InterfaceApi.getCondition(0, storage.get(userInfo.NAME), 'header', false)
+  const conditions = await InterfaceApi.getCondition(0, getUserName(), 'header', false)
   const data = await conditions.data.data
   rData.value = data
 })
@@ -86,7 +87,7 @@ onMounted(async () => {
       </div>
       <div class="head-cont-r">
         <div class="head-r-div">
-          <span v-if="storage.get(userInfo.NAME) === userInfo.NAME" v-once @click="onChange(3)">登录</span>
+          <span v-if="getUserName() === 'name'" v-once @click="onChange(3)">登录</span>
           <div v-else>
             <a-popover placement="bottomRight">
               <template #content>

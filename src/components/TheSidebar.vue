@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { InterfaceApi } from '@/api'
-import { userInfo } from '@/utils/user/user-info'
+import { useUserInfo } from '@hooks/useUserInfo'
 import { useRouter } from '@hooks/useRouter'
-import { storage } from '@/utils/storage/storage'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { message } from 'ant-design-vue'
+const { getUserName } = useUserInfo()
 const { routers } = useRouter()
 const ui = useUiSetStore()
 function setRightVisible(visible: boolean) {
@@ -70,7 +70,6 @@ const skip = (path: string) => {
   }
 }
 onMounted(async () => {
-  //条件查询列表storage.get(userInfo.NAME)
   const data = await InterfaceApi.getCondition(0, 'kai', 'sidebar', true)
   rData.value = data.data.data
 
@@ -105,10 +104,7 @@ onMounted(async () => {
       </div>
     </div> -->
 
-    <div
-      v-show="storage.get(userInfo.NAME) !== userInfo.NAME"
-      text-sm
-      class="absolute bottom-1 h-110px w-full bg-slate-400">
+    <div v-show="getUserName() !== 'name'" text-sm class="absolute bottom-1 h-110px w-full bg-slate-400">
       <div text="center lg cool-gray-50" bg="slate-500">
         <span @click="cliAbout()">关于我</span>
       </div>

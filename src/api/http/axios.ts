@@ -6,9 +6,10 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 
 import { storage } from '@/utils/storage/storage'
 import { removePending, addPending } from './pending'
-import { removeUserStorage } from '@/utils/user/user-info'
+import { useUserInfo } from '@hooks/useUserInfo'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axiosRetry from 'axios-retry'
+const { removeUserStorage } = useUserInfo()
 
 // 全局配置
 const apiUrl = import.meta.env.VITE_API_DOMAIN

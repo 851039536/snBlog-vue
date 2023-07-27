@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { message } from 'ant-design-vue/es/components'
 import { UserApi } from '@/api/index'
-import { storage } from '@/utils/storage/storage'
-import { userInfo, isToken, removeUserStorage } from '@/utils/user/user-info'
+// import { storage } from '@/utils/storage/storage'
 import { rRouter } from '@/router/route-Info'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { isToken, setUserInfo } = useUserInfo()
 const { routers } = useRouter()
 const ui = useUiSetStore()
 const state = reactive({
@@ -15,11 +16,7 @@ const state = reactive({
 function login() {
   UserApi.login(state.name, state.pwd).then(res => {
     const ret = res.data
-    removeUserStorage()
-    storage.set(userInfo.ROLE, ret.nickname) // 角色名
-    storage.set(userInfo.TOKEN, `Bearer ${ret.token}`) // token
-    storage.set(userInfo.ID, ret.id) // 用户主键
-    storage.set(userInfo.NAME, ret.name) // 用户名
+    setUserInfo(ret.nickname, ret.token, ret.id, ret.name)
     message.success('登录成功')
     routers(rRouter.articleTable)
   })
