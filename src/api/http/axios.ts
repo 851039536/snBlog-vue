@@ -4,12 +4,14 @@ import { message } from 'ant-design-vue'
 import router from '@/router/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 
-import { storage } from '@/utils/storage/storage'
+// import { storage } from '@/utils/storage/storage'
+import { useStorage } from '@hooks/useStorage'
 import { removePending, addPending } from './pending'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axiosRetry from 'axios-retry'
 const { removeUserStorage } = useUserInfo()
+const { storage } = useStorage()
 
 // 全局配置
 const apiUrl = import.meta.env.VITE_API_DOMAIN

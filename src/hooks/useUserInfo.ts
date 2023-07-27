@@ -1,7 +1,8 @@
 import { rRouter } from '@/router/route-info'
-import { storage } from '@/utils/storage/storage'
+import { useStorage } from '@hooks/useStorage'
 import { useRouter } from '@hooks/useRouter'
 const { routers } = useRouter()
+const { storage } = useStorage()
 
 export function useUserInfo() {
   /**
