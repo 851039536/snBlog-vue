@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue/es/components'
 import { UserApi } from '@/api/index'
 // import { storage } from '@/utils/storage/storage'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
@@ -90,3 +90,4 @@ input {
   background-attachment: fixed;
 }
 </style>
+@/router/routerInfo

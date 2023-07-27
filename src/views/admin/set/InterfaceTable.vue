@@ -5,9 +5,9 @@ import { InterfaceApi } from '@/api'
 import { navName } from '../utils/data'
 import { useData } from '../data'
 import { clearInterface, interfaceForm } from '@/api/data/model/IntInterfaceModel'
-import { storage } from '@/utils/storage/storage'
-import { userInfo } from '@/utils/user/user-info'
 import type { SelectProps } from 'ant-design-vue'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { getUserId, getUserName } = useUserInfo()
 const { cancel, data } = useData()
 const rData = ref([])
 const visible = ref(false)
@@ -24,7 +24,7 @@ const del = async (entity: any) => {
   })
 }
 
-const uid: any = ref(storage.get(userInfo.ID))
+const uid: any = ref(getUserId())
 
 const Add = async () => {
   interfaceForm.userId = uid.value
@@ -60,16 +60,14 @@ const edit = async (id: number) => {
 }
 
 const handleChange = async () => {
-  rData.value = await (
-    await InterfaceApi.getPaging(3, `${storage.get(userInfo.NAME)},${selectValue.value}`, 1, 100)
-  ).data
+  rData.value = await (await InterfaceApi.getPaging(3, `${getUserName()},${selectValue.value}`, 1, 100)).data
 }
 const options = ref<SelectProps['options']>([
   { value: 'sidebar', label: 'sidebar' },
   { value: 'header', label: 'header' }
 ])
 onMounted(async () => {
-  rData.value = await (await InterfaceApi.getPaging(2, storage.get(userInfo.NAME), 1, 10)).data.data
+  rData.value = await (await InterfaceApi.getPaging(2, getUserName(), 1, 10)).data.data
   navName.name = '页面设置'
   navName.name2 = '参数列表'
 })

@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import { NavigationApi } from '@/api'
 import { navName } from '../utils/data'
 import { aData } from '../data'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import { navForm } from '@/api/data/model/NavModel'
 import { useRouter } from '@hooks/useRouter'
 const { routers, go, winUrl } = useRouter()
@@ -93,3 +93,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/router/routerInfo

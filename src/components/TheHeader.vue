@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-// import { userInfo } from '@/utils/user/user-info'
-// import { storage } from '@/utils/storage/storage'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import userSvg from '@assets/svg/components/user.svg?component'
 import { InterfaceApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
@@ -170,3 +168,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/router/routerInfo

@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import { columns } from './data'
 import { NavigationApi } from '@/api'
 import { aData, aCancel } from '../data'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import { navName } from '../utils/data'
 import { Tool } from '@/utils/common/common-tool'
 import { useRouter } from '@hooks/useRouter'
@@ -116,3 +116,4 @@ onMounted(async () => {
   @apply mb-2;
 }
 </style>
+@/router/routerInfo

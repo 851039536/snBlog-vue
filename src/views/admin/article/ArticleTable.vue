@@ -4,7 +4,7 @@ import { columns, rTag } from './data'
 import { ArticleApi, ArticleTagApi } from '@/api'
 import { navName } from '../utils/data'
 import { aData, aCancel } from '../data'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 const { getUserName } = useUserInfo()
@@ -39,6 +39,7 @@ async function STag() {
     await QPaging(3, userName.value)
     return
   }
+
   await QPaging(4, `${tagSrt.value},${userName.value}`)
 }
 async function ordering() {
@@ -117,3 +118,4 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+@/router/routerInfo

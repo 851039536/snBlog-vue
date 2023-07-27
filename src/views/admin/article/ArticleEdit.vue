@@ -5,7 +5,7 @@ import { ArticleApi, ArticleTypeApi, ArticleTagApi } from '@/api'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { aData } from '../data'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import { articleForm } from '@/api/data/model/ArtileModel'
 import { useRouter } from '@hooks/useRouter'
 const { routers, go } = useRouter()
@@ -79,3 +79,4 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+@/router/routerInfo

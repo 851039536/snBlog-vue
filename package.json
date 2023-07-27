@@ -2,16 +2,15 @@
   "name": "sn-blog",
   "version": "3.0.1-alpha.2",
   "scripts": {
+    "git": "git add . && git cz",
     "dev": "vite --host",
-    "lint": "eslint src --fix --ext .ts,.vue,.js",
+    "lint:eslint": "eslint src --fix --ext .ts,.vue,.js",
+    "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix",
     "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "tsc-build": "vue-tsc --noEmit && vite build",
     "build:dev": "vite build --mode development",
     "build:pro": "vite build --mode production",
-    "serve": "vite --mode production",
-    "lint:eslint": "eslint --ext .vue,.ts src/",
-    "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix",
-    "git": "git add . && git cz"
+    "serve": "vite --mode production"
   },
   "config": {
     "commitizen": {

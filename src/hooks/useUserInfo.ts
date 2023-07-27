@@ -1,4 +1,4 @@
-import { rRouter } from '@/router/route-info'
+import { rRouter } from '@/router/routerInfo'
 import { useStorage } from '@hooks/useStorage'
 import { useRouter } from '@hooks/useRouter'
 const { routers } = useRouter()

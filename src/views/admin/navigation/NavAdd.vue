@@ -3,12 +3,13 @@ import { NavigationApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { navName } from '../utils/data'
-import { storage } from '@/utils/storage/storage'
-import { userInfo } from '@/utils/user/user-info'
+
 import { clearNav, navForm } from '@/api/data/model/NavModel'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import useRandom from '@/hooks/useRandom'
 import { useRouter } from '@hooks/useRouter'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { getUserId } = useUserInfo()
 const { routers, go, reload } = useRouter()
 const { random } = useRandom()
 function GetTypeId(id: number) {
@@ -16,7 +17,7 @@ function GetTypeId(id: number) {
 }
 
 const rType: any = ref([])
-const uid: any = ref(storage.get(userInfo.ID))
+const uid: any = ref(getUserId())
 const add = async () => {
   navForm.userId = uid.value
   navForm.img = `${random(1, 30, 3)}.jpg`
@@ -83,3 +84,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/router/routerInfo

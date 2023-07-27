@@ -4,18 +4,19 @@ import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
-import { storage } from '@/utils/storage/storage'
 import { articleForm, clearArticle } from '@/api/data/model/ArtileModel'
-import { userInfo } from '@/utils/user/user-info'
-import { rRouter } from '@/router/route-Info'
+import { rRouter } from '@/router/routerInfo'
 import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
 import { useRouter } from '@hooks/useRouter'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { getUserId } = useUserInfo()
 const { routers, go } = useRouter()
+
 const { random } = useRandom()
 const reload: any = inject('reload')
 const add = async () => {
-  articleForm.userId = storage.get(userInfo.ID)
+  articleForm.userId = getUserId()
   articleForm.img = `${random(1, 30, 3)}.jpg`
   await ArticleApi.add(articleForm).then(r => {
     if (r.data.statusCode === 200) {
@@ -83,3 +84,4 @@ onMounted(async () => {
   @apply h-full w-full;
 }
 </style>
+@/router/routerInfo
