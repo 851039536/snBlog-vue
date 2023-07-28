@@ -6,7 +6,7 @@ import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { useSnippetApi } from '@hooks/http/useSnippetApi'
+import { useSnippetApi } from '@hooksHttp/index'
 const { getSnippetSum } = useSnippetApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()

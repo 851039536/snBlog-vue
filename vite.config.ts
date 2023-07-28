@@ -98,6 +98,7 @@ export default defineConfig({
       '@views': resolve('./src/views'),
       '@api': resolve('./src/api'),
       '@hooks': resolve('./src/hooks'),
+      '@hooksHttp': resolve('./src/hooks/http'),
       '@assets': resolve('./src/assets'),
       '@store': resolve('./src/store'),
       '@router': resolve('./src/router')

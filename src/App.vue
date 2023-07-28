@@ -57,10 +57,11 @@
 import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
-import { useUserTalkApi } from '@hooks/http/useUserTalkApi'
+import { useUserTalkApi, useThirdPartyApi } from '@hooksHttp/index'
 import { useUserInfo } from '@hooks/useUserInfo'
 const { getUserName } = useUserInfo()
 const { getUserTalkPaging } = useUserTalkApi()
+const { getZhiHuReSou } = useThirdPartyApi()
 
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
@@ -86,10 +87,11 @@ const navData = ref([])
 const annunciate = ref('')
 
 onMounted(async () => {
+  const res = await getZhiHuReSou()
+  console.log('[  ]-92', res)
   // 注册全局的键盘事件监听器
   addKeydownCtrl_z()
   ui.uiSearchVisible = false
-  // ui.uiRightVisible = false
   const [navDatas, times, articleSums, textSums, readSums, userTalks] = await axios.all([
     await NavigationApi.getTypeAsync(1, '常用工具', true),
     await ArticleApi.getPaging(0, 'null', 1, 1),

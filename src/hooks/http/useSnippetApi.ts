@@ -1,4 +1,5 @@
-import { get } from '@api/http/funApi'
+import { useApi } from '@hooksHttp/axios/useApi'
+const { get } = useApi()
 export function useSnippetApi() {
   /**
    * @description: 查询总数

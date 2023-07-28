@@ -108,6 +108,7 @@
       "@api/*": ["./src/api/*"],
       "@views/*": ["./src/views/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@hooksHttp/*": ["./src/hooks/http/*"],
       "@assets/*": ["./src/assets/*"],
       "@store/*": ["./src/store/*"],
       "@router/*": ["./src/router/*"]

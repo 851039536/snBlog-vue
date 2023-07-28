@@ -1,4 +1,5 @@
-import { get } from '@api/http/funApi'
+import { useApi } from '@hooksHttp/axios/useApi'
+const { get } = useApi()
 export function useUserTalkApi() {
   /**
    * @description: 分页查询
