@@ -7,7 +7,8 @@ import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useSnippetApi } from '@hooksHttp/index'
-const { getSnippetSum } = useSnippetApi()
+
+const { getSnippetSum, getSnippetContains } = useSnippetApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
@@ -69,23 +70,23 @@ const GetSnippet = async () => {
 
   switch (radioValue.value) {
     case 'ALL':
-      rSnippet.value = await (await SnippetApi.getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await getSnippetContains(0, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'title':
-      rSnippet.value = await (await SnippetApi.getContains(5, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await getSnippetContains(5, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'type':
       rSnippet.value = await (
-        await SnippetApi.getContains(1, selectValue.value, rName.value, false, 1, pageSize.value)
+        await getSnippetContains(1, selectValue.value, rName.value, false, 1, pageSize.value)
       ).data
       break
     case 'tag':
       rSnippet.value = await (
-        await SnippetApi.getContains(2, selectValue.value, rName.value, false, 1, pageSize.value)
+        await getSnippetContains(2, selectValue.value, rName.value, false, 1, pageSize.value)
       ).data
       break
     case 'text':
-      rSnippet.value = await (await SnippetApi.getContains(4, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await getSnippetContains(4, 'null', rName.value, false, 1, pageSize.value)).data
       break
     default:
       return null

@@ -5,8 +5,9 @@ import { NavigationApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { navName } from '../utils/data'
-import { Tool } from '@/utils/common/common-tool'
 import { useRouter } from '@hooks/useRouter'
+import { useMomentTime } from '@hooks/useMomentTime'
+const { momentTimeList } = useMomentTime()
 const { routers, routerById, winUrl } = useRouter()
 
 const reload: any = inject('reload')
@@ -23,7 +24,7 @@ const navStr = ref('ALL')
 
 const QPaging = async (identity = 0, name = '') => {
   await NavigationApi.getPaging(identity, name, 1, 1000, 'id', true, false).then(async res => {
-    await Tool.momentTimeList(res)
+    await momentTimeList(res)
     rNav.value = res.data
   })
 }
@@ -42,13 +43,13 @@ async function search(name: any) {
   }
   if (navStr.value === aData.ALL) {
     await NavigationApi.getContains(0, aData.NULL, name).then(async res => {
-      await Tool.momentTimeList(res)
+      await momentTimeList(res)
       rNav.value = res.data
     })
     return
   }
   await NavigationApi.getContains(1, navStr.value, name).then(async res => {
-    await Tool.momentTimeList(res)
+    await momentTimeList(res)
     rNav.value = res.data
   })
 }

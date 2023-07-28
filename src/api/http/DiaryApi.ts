@@ -1,5 +1,6 @@
 import { get, add, update, del } from '@/api/http/funApi'
-import { Tool } from '@/utils/common/common-tool'
+import { useMomentTime } from '@hooks/useMomentTime'
+const { momentTimeList } = useMomentTime()
 
 enum api {
   sum = '/diary/sum?',
@@ -26,7 +27,7 @@ export class DiaryApi {
    */
   static async getContains(identity = 0, type = 'null', name = '', cache = true) {
     const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-    await Tool.momentTimeList(data)
+    await momentTimeList(data)
     return data
   }
   static getById(id: number, cache = false) {

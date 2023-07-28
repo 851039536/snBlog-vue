@@ -60,12 +60,7 @@ import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 import { useThirdPartyApi } from '@hooksHttp/index'
-
-interface ReSou {
-  name: string
-  query: string
-  url: string
-}
+import { ReSou } from '@api/model/interfaces'
 
 const { getZhiHuReSou } = useThirdPartyApi()
 

@@ -1,7 +1,8 @@
 import { IArticle } from '@api/data/InterData'
-import { Tool } from '@/utils/common/common-tool'
-import { get, add, update, del } from '@api/http/funApi'
 
+import { get, add, update, del } from '@api/http/funApi'
+import { useMomentTime } from '@hooks/useMomentTime'
+const { momentTimeList } = useMomentTime()
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
@@ -32,7 +33,7 @@ export class ArticleApi {
    */
   static async getContains(identity = 0, type = 'null', name = '', cache = true) {
     const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, true)
-    await Tool.momentTimeList(data.data)
+    await momentTimeList(data.data)
     return data
   }
 
@@ -90,7 +91,7 @@ export class ArticleApi {
       `${api.paging}identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=${ordering}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
-    await Tool.momentTimeList(data.data)
+    await momentTimeList(data.data)
     return data
   }
 

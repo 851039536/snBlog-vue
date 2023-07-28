@@ -4,9 +4,12 @@ import { columns, snippetLabelData, snippetTagData, snippetTypeData } from './da
 import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
-import { Tool } from '@/utils/common/common-tool'
 import { clearSnippet, snippetForm } from '@/api/data/model/SnippetMode'
+import { useSnippetApi } from '@hooksHttp/index'
+import { useMomentTime } from '@hooks/useMomentTime'
+const { momentTimeList } = useMomentTime()
 
+const { getSnippetContains, getSnippetPaging } = useSnippetApi()
 const reload: any = inject('reload')
 const del = async (data: any) => {
   const res = await SnippetApi.del(data.id)
@@ -48,7 +51,7 @@ const add = () => {
  * @param {number} name 查询参数(多条件以','分割)
  */
 const QPaging = async (identity: number, name: string) => {
-  const res = await SnippetApi.getPaging(identity, name, 1, 9000, 'id', true, false)
+  const res = await getSnippetPaging(identity, name, 1, 9000, 'id', true, false)
   snippetData.value = res.data
 }
 const QSearch = async (name: string, identity: number) => {
@@ -60,8 +63,8 @@ const QSearch = async (name: string, identity: number) => {
 }
 async function search(name: any) {
   if (name === '') return
-  const res = await SnippetApi.getContains(0, aData.NULL, name, false, 1, 999)
-  await Tool.momentTimeList(res)
+  const res = await getSnippetContains(0, aData.NULL, name, false, 1, 999)
+  await momentTimeList(res)
   snippetData.value = res.data
 }
 
