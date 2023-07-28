@@ -60,7 +60,6 @@ import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 import { useThirdPartyApi } from '@hooksHttp/index'
-import { useUserInfo } from '@hooks/useUserInfo'
 
 interface ReSou {
   name: string
@@ -68,7 +67,6 @@ interface ReSou {
   url: string
 }
 
-const { getUserName } = useUserInfo()
 const { getZhiHuReSou } = useThirdPartyApi()
 
 const ui = useUiSetStore()
