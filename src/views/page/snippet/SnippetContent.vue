@@ -6,6 +6,8 @@ import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
+import { SnippetsApi } from '@hooks/http/SnippetApi'
+const { GetSum } = SnippetsApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
@@ -41,7 +43,8 @@ watchEffect(() => {
   handleScroll()
 })
 const rName = ref('')
-const rCharSun = ref('')
+const rCharSum = ref('')
+const sum = ref('')
 const rSnippet: any = ref([])
 const rSnippetTag: any = ref([])
 const radioValue = ref<string>('ALL')
@@ -143,9 +146,9 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
 }
 
 onMounted(async () => {
-  await SnippetApi.getStrSum(0, 'null', true).then(r => {
-    rCharSun.value = r.data
-  })
+  const [strSum, sums] = await axios.all([await SnippetApi.getStrSum(0, 'null', true), await GetSum(0, '', true)])
+  rCharSum.value = strSum.data
+  sum.value = sums.data
 })
 </script>
 
@@ -205,7 +208,10 @@ onMounted(async () => {
             :code-theme="theme.codeTheme" />
         </div>
       </div>
-      <div class="absolute left-0 top-0 rounded bg-green-50 p-2 text-cool-gray-700">已生成 ：{{ rCharSun }}字</div>
+      <div class="absolute left-0 top-0 rounded bg-green-100 p-2 text-cool-gray-700">
+        <div>已生成: {{ sum }} 个答案</div>
+        <div>已生成: {{ rCharSum }} 字符</div>
+      </div>
     </div>
 
     <!-- 编辑模块 -->

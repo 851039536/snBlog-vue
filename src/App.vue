@@ -57,10 +57,10 @@
 import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
-import { useUserTalk } from '@hooks/http/useUserTalk'
+import { useUserTalkApi } from '@hooks/http/useUserTalkApi'
 import { useUserInfo } from '@hooks/useUserInfo'
 const { getUserName } = useUserInfo()
-const { GetUserTalkPaging } = useUserTalk()
+const { GetUserTalkPaging } = useUserTalkApi()
 
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
@@ -86,11 +86,9 @@ const navData = ref([])
 const annunciate = ref('')
 
 onMounted(async () => {
-  addKeydownCtrl_z()
-
   // 注册全局的键盘事件监听器
-  ui.uiSearchVisible = false // 搜索框是否显示
-  // ui.uiLeftVisible = false
+  addKeydownCtrl_z()
+  ui.uiSearchVisible = false
   ui.uiRightVisible = false
   const [navDatas, times, articleSums, textSums, readSums, userTalks] = await axios.all([
     await NavigationApi.getTypeAsync(1, '常用工具', true),
@@ -178,3 +176,4 @@ onMounted(async () => {
   background: #8ba1b8 !important; // 自定义颜色
 }
 </style>
+@/hooks/http/useUserTalkApi

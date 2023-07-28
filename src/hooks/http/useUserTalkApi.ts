@@ -1,5 +1,5 @@
 import { get } from '@api/http/funApi'
-export function useUserTalk() {
+export function useUserTalkApi() {
   /**
    * @description: 分页查询
    * @param {number} identity 所有:0|用户:1

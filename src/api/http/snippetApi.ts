@@ -13,16 +13,6 @@ import { ISnippet } from '../data/model/SnippetMode'
 // }
 export class SnippetApi {
   /**
-   * @description: 查询总数
-   * @param {number} identity 所有:0|分类:1|标签:2|用户3
-   * @param {string} type 条件
-   * @param {boolean} cache 缓存
-   */
-  static GetSum(identity: number, type: string, cache: boolean) {
-    return get(`/article/sum?identity=${identity}&type=${type}&cache=${cache}`, false)
-  }
-
-  /**
    * 模糊查询
    * @param identity   所有:0|分类:1|标签:2|用户名:3|内容:4|标题:5</param>
    * @param type 查询条件
