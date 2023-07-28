@@ -7,21 +7,19 @@ const { routerById } = useRouter()
 const ui = useUiSetStore()
 import { articleData, paging } from '.'
 
-const aRef: any = ref(0)
-
 async function QSum(identity: number, type: string) {
   const count = await ArticleApi.getSum(identity, type)
   paging.count = count.data.data
 }
 async function QPaging() {
-  const data = await ArticleApi.getPaging(
+  const ret = await ArticleApi.getPaging(
     paging.identity,
     paging.typeStr,
     paging.current,
     paging.pagesize,
     paging.typeStr
   )
-  articleData.value = data.data.data
+  articleData.value = ret.data.data
 }
 
 function QImageUrl(name: string) {
@@ -35,12 +33,11 @@ onMounted(async () => {
   ui.uiHeadVisible = true
   await axios.all([await QSum(0, aData.NULL), await QPaging()])
 })
-
+const aRef: any = ref(0)
 async function scrollEvent() {
   const scrollTop = aRef.value.scrollTop
   if (scrollTop) {
     if (scrollTop > cheight.value) {
-      console.log('触发加载')
       cheight.value += 300
       paging.pagesize += 4
       await QPaging()
@@ -95,7 +92,7 @@ const onScroll = (name: string) => {
   scroll-behavior: smooth;
 
   .btn {
-    @apply absolute right-125 rounded bottom-[6%] cursor-pointer z-1 bg-white;
+    @apply absolute right-[10%] rounded bottom-[2%] cursor-pointer z-1 bg-white;
 
     div {
       @apply mb-1px p-2px hover:text-blue-400;

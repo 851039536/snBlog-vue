@@ -82,14 +82,14 @@ defineProps({
 
 .stn-cont {
   .cont-frame {
-    @apply flex mt-1 text-base justify-between;
+    @apply flex mt-1px text-base justify-between;
 
     .cont-frame-title {
-      @apply p-1;
+      @apply p-1px;
     }
 
     .cont-frame-text {
-      @apply p-1;
+      @apply p-1px;
     }
   }
 }

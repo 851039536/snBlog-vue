@@ -26,12 +26,8 @@
           <article-side-manager></article-side-manager>
           <article-side-input-module></article-side-input-module>
           <article-side-annunciate-module></article-side-annunciate-module>
+          <the-zhi-hu-re-sou></the-zhi-hu-re-sou>
           <article-side-tool :r-data="navData" name="常用工具"></article-side-tool>
-          <c-right-sidebar-container>
-            <div v-for="(item, index) in reSou" :key="index">
-              <div class="m-auto w-98%">{{ index }}.{{ item.name }}</div>
-            </div>
-          </c-right-sidebar-container>
           <statistics-module
             title="站点统计"
             sum-title="文章数量"
@@ -59,10 +55,6 @@
 import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
-import { useThirdPartyApi } from '@hooksHttp/index'
-import { ReSou } from '@api/model/interfaces'
-
-const { getZhiHuReSou } = useThirdPartyApi()
 
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
@@ -84,11 +76,8 @@ const articleSum = ref('')
 const textSum = ref('')
 const readSum = ref('')
 const navData = ref([])
-const reSou = ref([] as ReSou[])
 
 onMounted(async () => {
-  const res = await getZhiHuReSou()
-  reSou.value = res.data.list
   // 注册全局的键盘事件监听器
   addKeydownCtrl_z()
   ui.uiSearchVisible = false

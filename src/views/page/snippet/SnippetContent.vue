@@ -8,7 +8,7 @@ import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useSnippetApi } from '@hooksHttp/index'
 
-const { getSnippetSum, getSnippetContains } = useSnippetApi()
+const { getSnippetSum, getSnippetContains, getSnippetById } = useSnippetApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
@@ -135,7 +135,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
-  const ret = await SnippetApi.getById(id, false)
+  const ret = await getSnippetById(id, false)
   snippetForm.id = ret.data.id
   snippetForm.name = ret.data.name
   snippetForm.text = ret.data.text

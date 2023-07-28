@@ -100,6 +100,7 @@ declare module '@vue/runtime-core' {
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     TheSidebar: typeof import('./src/components/TheSidebar.vue')['default']
+    TheZhiHuReSou: typeof import('./src/components/sidebar/TheZhiHuReSou.vue')['default']
     UserEditModal: typeof import('./src/views/admin/user/UserEditModal.vue')['default']
     UserTable: typeof import('./src/views/admin/user/UserTable.vue')['default']
     Video: typeof import('./src/views/page/video/index.vue')['default']

@@ -3,14 +3,6 @@ import { ISnippet } from '../data/model/SnippetMode'
 
 export class SnippetApi {
   /**
-   * @description: 主键查询
-   * @param {number} id
-   * @param {boolean} cache
-   */
-  static getById(id: number, cache: boolean) {
-    return get(`/snippet/byid?id=${id}&cache=${cache}`, false)
-  }
-  /**
    * 条件查询 GetTypeAsync
    * @param identity 分类:1 || 标签:2
    * @param type 查询条件
@@ -29,7 +21,7 @@ export class SnippetApi {
    */
   static getStrSum(identity: number, name: string, cache: boolean): Promise<any> {
     return get(`/snippet/strSum?identity=${identity}&name=${name}&cache=${cache}`, false)
-  } ///snippet/strSum?identity=1&name=vue&cache=false
+  }
 
   /**
    * @description: 新增数据

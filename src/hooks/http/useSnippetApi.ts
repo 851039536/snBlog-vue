@@ -8,6 +8,15 @@ enum Api {
 }
 export function useSnippetApi() {
   /**
+   * @description: 主键查询
+   * @param {number} id
+   * @param {boolean} cache
+   */
+  async function getSnippetById(id: number, cache: boolean) {
+    const ret = await get(`/snippet/byid?id=${id}&cache=${cache}`, false)
+    return ret
+  }
+  /**
    * @description: 查询总数
    * @param {number} identity 所有:0|分类:1|标签:2|用户3
    * @param {string} type 条件
@@ -69,6 +78,7 @@ export function useSnippetApi() {
   return {
     getSnippetSum,
     getSnippetContains,
-    getSnippetPaging
+    getSnippetPaging,
+    getSnippetById
   }
 }

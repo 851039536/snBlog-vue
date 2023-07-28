@@ -9,7 +9,7 @@ import { useSnippetApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
 
-const { getSnippetContains, getSnippetPaging } = useSnippetApi()
+const { getSnippetContains, getSnippetPaging, getSnippetById } = useSnippetApi()
 const reload: any = inject('reload')
 const del = async (data: any) => {
   const res = await SnippetApi.del(data.id)
@@ -28,7 +28,7 @@ const typeStr = ref<string>('ALL')
 const LabelStr = ref<string>('ALL')
 
 const edit = async (id: number) => {
-  await SnippetApi.getById(id, false).then(r => {
+  await getSnippetById(id, false).then(r => {
     snippetForm.id = r.data.id
     snippetForm.name = r.data.name
     snippetForm.text = r.data.text
