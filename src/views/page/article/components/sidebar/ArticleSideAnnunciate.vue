@@ -1,9 +1,13 @@
 <script lang="ts" setup>
-defineProps({
-  name: {
-    type: String,
-    required: true
-  }
+import { useUserTalkApi } from '@/hooks/http'
+import { useUserInfo } from '@/hooks/useUserInfo'
+
+const text = ref()
+const { getUserName } = useUserInfo()
+const { getUserTalkPaging } = useUserTalkApi()
+onMounted(async () => {
+  const name = await getUserTalkPaging(1, getUserName(), 1, 1, 'data', true, false)
+  text.value = name.data.data[0].text
 })
 </script>
 <template>
@@ -12,7 +16,7 @@ defineProps({
       <div i-typcn-spiral h-6 w-6></div>
       <span>公告</span>
     </div>
-    <div class="desc-cont">{{ name }}</div>
+    <div class="desc-cont">{{ text }}</div>
   </c-right-sidebar-container>
 </template>
 

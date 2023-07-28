@@ -22,12 +22,16 @@
 
       <!-- Right sidebar -->
       <nav v-if="ui.uiRightVisible" class="app-grail-right">
-        <!-- 侧边栏 -->
         <c-right-sidebar>
-          <article-side-input-module></article-side-input-module>
           <article-side-manager></article-side-manager>
-          <article-side-annunciate-module :name="annunciate"></article-side-annunciate-module>
+          <article-side-input-module></article-side-input-module>
+          <article-side-annunciate-module></article-side-annunciate-module>
           <article-side-tool :r-data="navData" name="常用工具"></article-side-tool>
+          <c-right-sidebar-container>
+            <div v-for="(item, index) in reSou" :key="index">
+              <div class="m-auto w-98%">{{ index }}.{{ item.name }}</div>
+            </div>
+          </c-right-sidebar-container>
           <statistics-module
             title="站点统计"
             sum-title="文章数量"
@@ -39,14 +43,12 @@
             :heat="readSum"
             :time="time"></statistics-module>
         </c-right-sidebar>
-
-        <div id="search"></div>
-        <c-modal-search @close-model="ui.uiSearchVisible = false">
-          <article-side-search-module></article-side-search-module>
-        </c-modal-search>
       </nav>
     </main>
-
+    <div id="search"></div>
+    <c-modal-search @close-model="ui.uiSearchVisible = false">
+      <article-side-search-module></article-side-search-module>
+    </c-modal-search>
     <base-article-fast-send></base-article-fast-send>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
@@ -57,10 +59,16 @@
 import { ArticleApi, NavigationApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
-import { useUserTalkApi, useThirdPartyApi } from '@hooksHttp/index'
+import { useThirdPartyApi } from '@hooksHttp/index'
 import { useUserInfo } from '@hooks/useUserInfo'
+
+interface ReSou {
+  name: string
+  query: string
+  url: string
+}
+
 const { getUserName } = useUserInfo()
-const { getUserTalkPaging } = useUserTalkApi()
 const { getZhiHuReSou } = useThirdPartyApi()
 
 const ui = useUiSetStore()
@@ -83,22 +91,20 @@ const articleSum = ref('')
 const textSum = ref('')
 const readSum = ref('')
 const navData = ref([])
-/** 通告信息 */
-const annunciate = ref('')
+const reSou = ref([] as ReSou[])
 
 onMounted(async () => {
   const res = await getZhiHuReSou()
-  console.log('[  ]-92', res)
+  reSou.value = res.data.list
   // 注册全局的键盘事件监听器
   addKeydownCtrl_z()
   ui.uiSearchVisible = false
-  const [navDatas, times, articleSums, textSums, readSums, userTalks] = await axios.all([
+  const [navDatas, times, articleSums, textSums, readSums] = await axios.all([
     await NavigationApi.getTypeAsync(1, '常用工具', true),
     await ArticleApi.getPaging(0, 'null', 1, 1),
     await ArticleApi.getSum(),
     await ArticleApi.getStrSum(0, 1),
-    await ArticleApi.getStrSum(0, 2),
-    await getUserTalkPaging(1, getUserName(), 1, 1, 'data', true, false)
+    await ArticleApi.getStrSum(0, 2)
   ])
 
   navData.value = navDatas.data // 右侧导航
@@ -106,7 +112,6 @@ onMounted(async () => {
   articleSum.value = String(articleSums.data.data) // 文章总数
   textSum.value = String(textSums.data.data) // 字数总数
   readSum.value = String(readSums.data.data) // 阅读总数
-  annunciate.value = userTalks.data.data[0].text
 })
 </script>
 
