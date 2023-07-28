@@ -10,7 +10,7 @@ export function useUserTalkApi() {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  async function GetUserTalkPaging(
+  async function getUserTalkPaging(
     identity = 0,
     type = 'null',
     pageIndex = 1,
@@ -28,6 +28,6 @@ export function useUserTalkApi() {
   }
 
   return {
-    GetUserTalkPaging
+    getUserTalkPaging
   }
 }

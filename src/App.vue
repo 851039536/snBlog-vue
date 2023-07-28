@@ -60,7 +60,7 @@ import { useEventKey } from '@hooks/useEventKey'
 import { useUserTalkApi } from '@hooks/http/useUserTalkApi'
 import { useUserInfo } from '@hooks/useUserInfo'
 const { getUserName } = useUserInfo()
-const { GetUserTalkPaging } = useUserTalkApi()
+const { getUserTalkPaging } = useUserTalkApi()
 
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
@@ -89,14 +89,14 @@ onMounted(async () => {
   // 注册全局的键盘事件监听器
   addKeydownCtrl_z()
   ui.uiSearchVisible = false
-  ui.uiRightVisible = false
+  // ui.uiRightVisible = false
   const [navDatas, times, articleSums, textSums, readSums, userTalks] = await axios.all([
     await NavigationApi.getTypeAsync(1, '常用工具', true),
     await ArticleApi.getPaging(0, 'null', 1, 1),
     await ArticleApi.getSum(),
     await ArticleApi.getStrSum(0, 1),
     await ArticleApi.getStrSum(0, 2),
-    await GetUserTalkPaging(1, getUserName(), 1, 1, 'data', true, false)
+    await getUserTalkPaging(1, getUserName(), 1, 1, 'data', true, false)
   ])
 
   navData.value = navDatas.data // 右侧导航

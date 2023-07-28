@@ -6,8 +6,8 @@ import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { SnippetsApi } from '@hooks/http/SnippetApi'
-const { GetSum } = SnippetsApi()
+import { useSnippetApi } from '@hooks/http/useSnippetApi'
+const { getSnippetSum } = useSnippetApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
@@ -146,7 +146,10 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
 }
 
 onMounted(async () => {
-  const [strSum, sums] = await axios.all([await SnippetApi.getStrSum(0, 'null', true), await GetSum(0, '', true)])
+  const [strSum, sums] = await axios.all([
+    await SnippetApi.getStrSum(0, 'null', true),
+    await getSnippetSum(0, '', true)
+  ])
   rCharSum.value = strSum.data
   sum.value = sums.data
 })
@@ -272,3 +275,4 @@ input {
   }
 }
 </style>
+@/hooks/http/useSnippetApi
