@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-// import { userInfo } from '@/utils/user/user-info'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { UserApi } from '@/api'
-// import { storage } from '@/utils/storage/storage'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
 const userName = ref('')
@@ -46,7 +44,7 @@ function login() {
 .form-title {
   color: #000;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.65rem;
   line-height: 1.75rem;
   text-align: center;
 }
@@ -65,7 +63,7 @@ function login() {
 .input-container input {
   width: 300px;
   padding: 1rem 3rem 1rem 1rem;
-  font-size: 0.875rem;
+  font-size: 1.1rem;
   line-height: 1.25rem;
   background-color: #fff;
   border-radius: 0.5rem;

@@ -69,7 +69,7 @@ const ArticleSideInputModule = AsyncComponent(`ArticleSideInput`)
 const ArticleSideSearchModule = AsyncComponent(`ArticleSideSearch`)
 const ArticleSideAnnunciateModule = AsyncComponent(`ArticleSideAnnunciate`)
 const statisticsModule = defineAsyncComponent(() => {
-  return import('@components/CustomCount.vue')
+  return import('@components/custom/CustomCount.vue')
 })
 const time = ref()
 const articleSum = ref('')

@@ -52,7 +52,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '../design/md-base';
+// @import '../../design/md-base';
 
 .md-content {
   @apply bg-white  mt-3 rounded w-[75%];

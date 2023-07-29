@@ -164,10 +164,9 @@ const routes: RouteRecordRaw[] = [
       keepAlive: false
     },
     component: () => {
-      return import('@/components/MyMarkdownContent.vue')
+      return import('@/components/the/TheMdContent.vue')
     }
   },
-  // ------------------------------------------------------------------------------admin---------------------------------------------------
   // ------------------------------------------------------------------------------admin---------------------------------------------------
   {
     path: '/Login',

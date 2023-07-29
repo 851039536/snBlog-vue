@@ -97,12 +97,6 @@ onMounted(async () => {
         <div>{{ r.name }}</div>
       </div>
     </div>
-    <!-- <div v-show="storage.get(userInfo.NAME) === userInfo.NAME" bg-gray-200 text-lg>
-      <div m-auto w-17 flex cursor-pointer hover:text-cool-gray-50>
-        <div i-fxemoji-bolt mr-1 mt-5px h-5 w-5></div>
-        <div>登录</div>
-      </div>
-    </div> -->
 
     <div v-show="getUserName() !== 'name'" text-sm class="absolute bottom-1 h-110px w-full bg-slate-400">
       <div text="center lg cool-gray-50" bg="slate-500">
@@ -123,7 +117,7 @@ onMounted(async () => {
     </div>
   </div>
 
-  <c-about-me :visible="isVisible" @close-model="isVisible = false"></c-about-me>
+  <the-sidebar-about :visible="isVisible" @close-model="isVisible = false"></the-sidebar-about>
 </template>
 
 <style lang="scss">

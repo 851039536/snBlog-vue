@@ -1,18 +1,3 @@
-<template>
-  <teleport to="body">
-    <!-- fade-in -->
-    <div v-if="visible" class="model-bg">
-      <div class="modal-content">
-        <button class="close" @click="emit('close-model')">X</button>
-        <div class="model-title">{{ title }}</div>
-        <div class="model-body relative">
-          <slot></slot>
-        </div>
-      </div>
-    </div>
-  </teleport>
-</template>
-
 <script setup lang="ts">
 const emit = defineEmits(['close-model']) // 使用 emit需要把自定义的事件在defineEmits定义，要不会有警告
 defineProps({
@@ -28,6 +13,21 @@ defineProps({
   }
 })
 </script>
+
+<template>
+  <teleport to="body">
+    <!-- fade-in -->
+    <div v-if="visible" class="model-bg">
+      <div class="modal-content">
+        <button class="close" @click="emit('close-model')">X</button>
+        <div class="model-title">{{ title }}</div>
+        <div class="model-body relative">
+          <slot></slot>
+        </div>
+      </div>
+    </div>
+  </teleport>
+</template>
 
 <style lang="scss" scoped>
 .model-bg {
