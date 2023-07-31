@@ -1,4 +1,4 @@
-import { IArticle } from '@api/data/InterData'
+import { Article } from '@hooks/interface/Article'
 
 import { get, add, update, del } from '@api/http/funApi'
 import { useMomentTime } from '@hooks/useMomentTime'
@@ -108,7 +108,7 @@ export class ArticleApi {
    * @description: 新增
    * @param {IArticle} entity
    */
-  static add(entity: IArticle) {
+  static add(entity: Article) {
     return add('/article/add', entity)
   }
 
@@ -116,7 +116,7 @@ export class ArticleApi {
    * @description: 更新
    * @param {IArticle} entity
    */
-  static update(entity: IArticle) {
+  static update(entity: Article) {
     return update(`/article/update`, entity)
   }
 

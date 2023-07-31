@@ -6,14 +6,14 @@ import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/routerInfo'
-import { articleForm } from '@/api/data/model/ArtileModel'
+import { article } from '@hooks/interface/Article'
 import { useRouter } from '@hooks/useRouter'
 const { routers, go } = useRouter()
 const route = useRoute()
 const rid: any = ref(route.query.id)
 
 const update = async () => {
-  await ArticleApi.update(articleForm).then(r => {
+  await ArticleApi.update(article).then(r => {
     if (r.data) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
@@ -25,20 +25,20 @@ onMounted(async () => {
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
   await axios.all([ArticleTagApi.getPaging(1, 100), ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
-    axios.spread((tag: any, type: any, article) => {
+    axios.spread((tag: any, type: any, articles) => {
       rTag.value = tag.data
       rType.value = type.data
-      articleForm.id = article.data.data.id
-      articleForm.commentId = article.data.data.commentId
-      articleForm.give = article.data.data.give
-      articleForm.tagId = article.data.data.tagId
-      articleForm.read = article.data.data.read
-      articleForm.typeId = article.data.data.typeId
-      articleForm.text = article.data.data.text
-      articleForm.name = article.data.data.name
-      articleForm.sketch = article.data.data.sketch
-      articleForm.img = article.data.data.img
-      articleForm.userId = article.data.data.userId
+      article.id = articles.data.data.id
+      article.commentId = articles.data.data.commentId
+      article.give = articles.data.data.give
+      article.tagId = articles.data.data.tagId
+      article.read = articles.data.data.read
+      article.typeId = articles.data.data.typeId
+      article.text = articles.data.data.text
+      article.name = articles.data.data.name
+      article.sketch = articles.data.data.sketch
+      article.img = articles.data.data.img
+      article.userId = articles.data.data.userId
     })
   )
 })
@@ -51,15 +51,15 @@ onMounted(async () => {
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
     </div>
     <div class="mt-2 px-2">
-      <a-input v-model:value="articleForm.name" prefix="标题:" />
+      <a-input v-model:value="article.name" prefix="标题:" />
     </div>
     <div class="mt-2 px-2">
-      <a-textarea v-model:value="articleForm.sketch" />
+      <a-textarea v-model:value="article.sketch" />
     </div>
     <div class="m-auto flex p-2">
       <div class="ml-2">
         标签
-        <a-select v-model:value="articleForm.tagId" style="width: 120px" placeholder="请选择">
+        <a-select v-model:value="article.tagId" style="width: 120px" placeholder="请选择">
           <a-select-option v-for="r in rTag.data" :key="r.id" :label="r.id" :value="r.id">
             {{ r.name }}
           </a-select-option>
@@ -67,7 +67,7 @@ onMounted(async () => {
       </div>
       <div class="ml-2">
         类别
-        <a-select v-model:value="articleForm.typeId" style="width: 120px" placeholder="请选择">
+        <a-select v-model:value="article.typeId" style="width: 120px" placeholder="请选择">
           <a-select-option v-for="r in rType.data" :key="r.id" :label="r.id" :value="r.id">
             {{ r.name }}
           </a-select-option>
@@ -75,8 +75,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="mt-1 px-2">
-      <MdEditor v-model="articleForm.text" />
+      <MdEditor v-model="article.text" />
     </div>
   </div>
 </template>
-@/router/routerInfo

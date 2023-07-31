@@ -1,5 +1,4 @@
 // 引入所需的 model
-import { IArticle } from './model/ArtileModel'
 import { IVideo } from './model/VideoModel'
 import { ITag } from './model/TagModel'
 import { IArticleTag } from './model/ArticleTagModel'
@@ -44,4 +43,4 @@ interface IPaging {
   current?: number
 }
 // 导出所有模块
-export { IArticleTag, INav, IntOne, IOneType, IArticle, IVideo, ITag, IArticleType, IPaging, IInterface }
+export { IArticleTag, INav, IntOne, IOneType, IVideo, ITag, IArticleType, IPaging, IInterface }

@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
-import { articleForm, clearArticle } from '@/api/data/model/ArtileModel'
+import { article, removeArticle } from '@hooks/interface/Article'
 import { rRouter } from '@/router/routerInfo'
 import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
@@ -15,10 +15,13 @@ const { routers, go } = useRouter()
 
 const { random } = useRandom()
 const reload: any = inject('reload')
+
+// const article = ref([] as Article)
 const add = async () => {
-  articleForm.userId = getUserId()
-  articleForm.img = `${random(1, 30, 3)}.jpg`
-  await ArticleApi.add(articleForm).then(r => {
+  article.userId = getUserId() as number
+  article.img = `${random(1, 30, 3)}.jpg`
+
+  await ArticleApi.add(article).then(r => {
     if (r.data.statusCode === 200) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
@@ -29,7 +32,7 @@ const add = async () => {
 }
 
 onMounted(async () => {
-  clearArticle()
+  removeArticle()
   axios.all([await ArticleTypeApi.getAll(), await ArticleTagApi.getPaging(1, 900)]).then(
     axios.spread((sort: any, label: any) => {
       rType.value = sort.data
@@ -49,16 +52,16 @@ onMounted(async () => {
       <a-button style="margin-left: 10px" @click="reload">刷新</a-button>
     </div>
     <div class="mt-2 px-2">
-      <a-input v-model:value="articleForm.name" prefix="标题:" />
+      <a-input v-model:value="article.name" prefix="标题:" />
     </div>
     <div class="mt-1 p-2">
-      <a-textarea v-model:value="articleForm.sketch" />
+      <a-textarea v-model:value="article.sketch" />
     </div>
 
     <div class="m-auto mb-2 flex px-2">
       <div class="ml-2">
         标签
-        <a-select v-model:value="articleForm.tagId" style="width: 120px" placeholder="请选择">
+        <a-select v-model:value="article.tagId" style="width: 120px" placeholder="请选择">
           <a-select-option v-for="r in rTag.data" :key="r.id" :label="r.id" :value="r.id">
             {{ r.name }}
           </a-select-option>
@@ -66,7 +69,7 @@ onMounted(async () => {
       </div>
       <div class="ml-2">
         类别
-        <a-select v-model:value="articleForm.typeId" style="width: 120px" placeholder="请选择">
+        <a-select v-model:value="article.typeId" style="width: 120px" placeholder="请选择">
           <a-select-option v-for="r in rType.data" :key="r.id" :label="r.id" :value="r.id">
             {{ r.name }}
           </a-select-option>
@@ -74,7 +77,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="px-2">
-      <MdEditor v-model="articleForm.text" />
+      <MdEditor v-model="article.text" />
     </div>
   </div>
 </template>
@@ -84,4 +87,3 @@ onMounted(async () => {
   @apply h-full w-full;
 }
 </style>
-@/router/routerInfo

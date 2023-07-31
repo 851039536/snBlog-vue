@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@api/index'
 import { debounce } from '@/utils/dethrottle'
-import { articleForm } from '@api/data/model/ArtileModel'
+import { article } from '@hooks/interface/Article'
 
 const ArticleContentMdModule = defineAsyncComponent(() => {
   return import('@views/page/article/components/content/ArticleContentMd.vue')
@@ -16,8 +16,8 @@ const sortName = ref('')
 const spinning = ref(true)
 
 const upGive = debounce(() => {
-  articleForm.give += 1
-  ArticleApi.updatePortion(articleForm, 'Give')
+  article.give += 1
+  ArticleApi.updatePortion(article, 'Give')
 }, 1000)
 
 async function upRead(data: any) {
@@ -27,15 +27,15 @@ async function upRead(data: any) {
 }
 onMounted(async () => {
   const data = await ArticleApi.getById(aid.id)
-  const entity = data.data.data
-  await upRead(entity)
-  articleForm.name = entity.name
-  articleForm.text = entity.text
-  articleForm.give = entity.give
-  articleForm.read = entity.read
-  articleForm.timeCreate = entity.timeCreate
-  labelName.value = entity.tag.name
-  sortName.value = entity.type.name
+  const ret = data.data.data
+  await upRead(ret)
+  article.name = ret.name
+  article.text = ret.text
+  article.give = ret.give
+  article.read = ret.read
+  article.timeCreate = ret.timeCreate
+  labelName.value = ret.tag.name
+  sortName.value = ret.type.name
   spinning.value = false
 })
 </script>
@@ -48,19 +48,19 @@ onMounted(async () => {
           i-bytesize-chevron-left
           class="float-left mt-1 cursor-pointer hover:text-blue-500"
           @click="router.back()"></div>
-        <div class="">{{ articleForm.name }}</div>
+        <div class="">{{ article.name }}</div>
       </div>
       <div class="pt-1 text-sm text-cool-gray-500">
         <span class="mr-2">{{ sortName }}</span>
         <span class="mr-2">{{ labelName }}</span>
-        <span class="mr-2">{{ articleForm.read }} ℃</span>
-        <span class="mr-2">赞 {{ articleForm.give }}</span>
-        <span class="mr-2">{{ articleForm.timeCreate.substring(0, 10) }}</span>
+        <span class="mr-2">{{ article.read }} ℃</span>
+        <span class="mr-2">赞 {{ article.give }}</span>
+        <span class="mr-2">{{ article.timeCreate.substring(0, 10) }}</span>
         <span class="mr-2">编辑</span>
         <span class="mr-1">收藏</span>
       </div>
     </div>
-    <ArticleContentMdModule :loading="spinning" :result="articleForm.text"></ArticleContentMdModule>
+    <ArticleContentMdModule :loading="spinning" :result="article.text"></ArticleContentMdModule>
     <div class="icont-ft">
       <div class="icont-ft-title">
         <p>本文链接：原创文章转载请注明</p>
@@ -68,10 +68,10 @@ onMounted(async () => {
       <div class="icont-cont">
         <div class="flex items-center" @click="upGive">
           <div i-fxemoji-beating-heart h-5 w-5></div>
-          {{ articleForm.give }}
+          {{ article.give }}
         </div>
 
-        <div>{{ articleForm.read }} ℃</div>
+        <div>{{ article.read }} ℃</div>
         <div>{{ sortName }}</div>
         <div>
           {{ labelName }}
