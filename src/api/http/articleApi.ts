@@ -1,4 +1,4 @@
-import { Article } from '@hooks/interface/Article'
+import { Article } from '@/hooks/http/model/Article'
 
 import { get, add, update, del } from '@api/http/funApi'
 import { useMomentTime } from '@hooks/useMomentTime'

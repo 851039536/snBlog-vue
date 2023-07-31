@@ -4,7 +4,7 @@ import { message } from 'ant-design-vue'
 import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
-import { article, removeArticle } from '@hooks/interface/Article'
+import { article, removeArticle } from '@hooksHttp/model/Article'
 import { rRouter } from '@/router/routerInfo'
 import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
@@ -87,3 +87,4 @@ onMounted(async () => {
   @apply h-full w-full;
 }
 </style>
+@/hooks/model/Article @/hooks/http/model/Article

@@ -27,7 +27,3 @@ export const clearSnippet = () => {
   snippetForm.tagId = 0
   snippetForm.labelId = 0
 }
-// const state = reactive(clearArticle)
-// const resetState = () => {
-//   Object.assign(state, clearArticle())
-// }

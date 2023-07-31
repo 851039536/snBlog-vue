@@ -6,7 +6,7 @@ import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/routerInfo'
-import { article } from '@hooks/interface/Article'
+import { article } from '@hooksHttp/model/Article'
 import { useRouter } from '@hooks/useRouter'
 const { routers, go } = useRouter()
 const route = useRoute()
@@ -79,3 +79,4 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+@/hooks/model/Article @/hooks/http/model/Article

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@api/index'
 import { debounce } from '@/utils/dethrottle'
-import { article } from '@hooks/interface/Article'
+import { article } from '@hooksHttp/model/Article'
 
 const ArticleContentMdModule = defineAsyncComponent(() => {
   return import('@views/page/article/components/content/ArticleContentMd.vue')
@@ -107,3 +107,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/hooks/model/Article @/hooks/http/model/Article
