@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from 'axios'
 import { useAxios } from '@hooksHttp/axios/useAxios'
+
 const { thirdAxios } = useAxios()
 export function useThirdApi() {
   /**
@@ -23,8 +24,8 @@ export function useThirdApi() {
    * @param loading  request loading
    * @returns  Promise
    */
-  async function get(url: string, params?: any, loading?: boolean) {
-    const ret = await thirdAxios(
+  function get(url: string, params?: any, loading?: boolean) {
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.GET,
@@ -37,10 +38,9 @@ export function useThirdApi() {
         loading
       }
     )
-    return ret
   }
 
-  function gets<T = any>(config: AxiosRequestConfig) {
+  function gets<T = any>(config: AxiosRequestConfig): Promise<T> {
     return thirdAxios(config, false, true).then(res => {
       return (res.data.data || res.data) as T
     })

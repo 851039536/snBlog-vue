@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ArticleApi, NavigationApi } from '@api/index'
+import { ArticleApi, NavigationApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 

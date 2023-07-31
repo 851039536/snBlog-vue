@@ -10,7 +10,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
 import svgLoader from 'vite-svg-loader'
-// Unocss 插件
 import Unocss from 'unocss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 export default defineConfig({
@@ -60,7 +59,6 @@ export default defineConfig({
     styleImport({
       resolves: [AndDesignVueResolve()]
     }),
-    // WindiCSS(),
     // gzip压缩 生产环境生成 .gz 文件
     viteCompression({
       verbose: true, // 是否在控制台输出压缩结果

@@ -8,8 +8,7 @@ const scrollRef = ref()
 const id = 'preview-only2'
 const onScroll = (type: string) => {
   nextTick(() => {
-    const distance = type === 'top' ? 0 : scrollRef.value.scrollHeight
-    scrollRef.value.scrollTop = distance
+    scrollRef.value.scrollTop = type === 'top' ? 0 : scrollRef.value.scrollHeight
   })
 }
 const onScroll2 = (type: number) => {
@@ -31,7 +30,7 @@ const onScroll3 = (type: number) => {
 }
 const side = ref()
 const onGetCatalog = (list: any) => {
-  console.log('[ state.catalogList = list; ]-28', list)
+  // console.log('[ state.catalogList = list; ]-28', list)
   side.value = list
 }
 </script>

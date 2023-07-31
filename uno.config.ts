@@ -1,14 +1,14 @@
 // uno.config.ts
 import {
   defineConfig,
-  presetAttributify, // Unocss 属性模式预设
+  presetAttributify, //属性模式预设
   presetIcons,
   presetTypography,
-  presetUno, // Unocss 默认预设
+  presetUno, //默认预设
   presetWebFonts, //网页字体预设
-  transformerDirectives, // Unocss 指令转换插件
-  transformerVariantGroup, //unocss-preset-scrollbar变体
-  presetWind //  Tailwind / Windi CSS 紧凑预设
+  transformerDirectives, //指令转换插件
+  transformerVariantGroup, //变体
+  presetWind //  Tailwind  紧凑预设
 } from 'unocss'
 import { presetScrollbar } from 'unocss-preset-scrollbar' //滚动条
 export default defineConfig({
