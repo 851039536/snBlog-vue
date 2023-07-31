@@ -84,8 +84,7 @@ onMounted(async () => {
     @apply grid grid-cols-4;
 
     .fa-cont-list {
-      @include w-h(92%, 96px);
-      @apply m-auto mt-8px;
+      @apply m-auto mt-8px w-[92%] h-96px;
       @apply rounded  bg-red-50 shadow-sm;
 
       .fa-cont-list1 {
@@ -118,23 +117,4 @@ onMounted(async () => {
     @apply font-semibold;
   }
 }
-
-// @screen <xp {
-//   .favorite {
-//     .fa-main {
-//       @apply fixed;
-//       @apply h-[83%] mt-[6.3%];
-
-//       .fa-cont {
-//         .fa-cont-list {
-//           @include w-h(31%, 140px);
-//         }
-//       }
-//     }
-//   }
-
-//   .fav-sidebar {
-//     @apply top-[11%];
-//   }
-// }
 </style>

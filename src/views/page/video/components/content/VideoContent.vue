@@ -85,10 +85,4 @@ defineProps({
     @apply bg-white p-1  mb-1;
   }
 }
-
-// @screen <xp {
-//   .vcontent {
-//     @apply mt-[6.3%];
-//   }
-// }
 </style>

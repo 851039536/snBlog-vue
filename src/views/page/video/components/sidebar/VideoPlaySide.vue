@@ -63,14 +63,13 @@ GetApi()
     @apply cursor-pointer w-[97%] h-full overflow-auto;
 
     .vplay-2-1 {
-      @include w-h(100%, 295px);
-      @apply shadow mb-1;
+      @apply shadow mb-1 w-full h-295px;
 
       .vplay-2-1-1 {
         height: 65%;
 
         img {
-          @include w-h(100%, 185px);
+          @apply w-full h-185px;
         }
       }
 
@@ -89,10 +88,4 @@ GetApi()
     }
   }
 }
-
-// @screen <xp {
-//   .vside {
-//     @apply top-[11%];
-//   }
-// }
 </style>

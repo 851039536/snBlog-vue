@@ -7,7 +7,6 @@ const { winUrl } = useRouter()
 //自定义函数，父组件可以触发
 async function search() {
   if (searchName.value === '') {
-    // ui.uiSearchVisible = false;
     return
   }
   const data = await ArticleApi.getContains(0, 'null', searchName.value)

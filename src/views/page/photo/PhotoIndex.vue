@@ -129,7 +129,7 @@ onMounted(() => {
     @apply rounded-md shadow;
 
     img {
-      @include w-h(100%, 200px);
+      @apply w-full h-200px;
 
       padding: 5px;
       border: 1px solid #ddd;

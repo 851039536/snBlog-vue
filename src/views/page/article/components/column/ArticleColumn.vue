@@ -121,7 +121,7 @@ const onScroll = (name: string) => {
       .content-div-frame-1 {
         @apply cursor-pointer m-1 text-xl font-medium px-1;
         @apply rounded transition duration-800 hover:text-blue-400;
-        @include line-one;
+        @include truncation;
       }
 
       .content-div-frame-2 {

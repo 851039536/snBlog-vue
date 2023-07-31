@@ -36,7 +36,7 @@ import { useEventKey } from '@hooks/useEventKey'
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
 
-onMounted(async () => {
+onMounted(() => {
   // 注册全局的键盘事件监听器
   addKeydownCtrl_z()
   ui.uiSearchVisible = false

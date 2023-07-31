@@ -5,31 +5,17 @@
   border-bottom: 1px dashed #f1f1f1;
 }
 
-// 宽高
-@mixin w-h($w: 100%, $h: 100%) {
-  width: $w;
-  height: $h;
-}
-
-/**
- * @description: 图片模糊
-/ **/
-@mixin img-dim {
-  transform: scale(1.1);
-  filter: blur(1px);
-}
-
 /**
  * @description: 单行截断
  */
-@mixin line-one {
+@mixin truncation {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 // 2行数
-@mixin line-number {
+@mixin truncation2 {
   /* 有些示例里需要定义该属性，实际可省略 */
   /* stylelint-disable-next-line value-no-vendor-prefix */
   display: -webkit-box;

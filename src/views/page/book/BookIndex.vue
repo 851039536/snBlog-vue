@@ -82,15 +82,13 @@
     @apply rounded shadow;
 
     .book-film-text {
-      @apply rounded m-1 shadow-xl mt-2 p-1;
-      @include w-h(95%, 370px);
+      @apply w-[95%] h-370px rounded m-1 shadow-xl mt-2 p-1;
 
       .book-img {
-        @include w-h(100%, 220px);
+        @apply w-full h-220px;
 
         img {
-          @include w-h(100%, 100%);
-          @apply rounded-sm;
+          @apply rounded-sm w-full h-full;
         }
       }
 
@@ -108,12 +106,4 @@
     }
   }
 }
-
-// @screen <xp {
-//   .book {
-//     .book-main {
-//       @apply h-[88%] mt-[6.3%];
-//     }
-//   }
-// }
 </style>

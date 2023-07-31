@@ -70,22 +70,18 @@ onMounted(async () => {
 
   // 导航窗体小
   .circles-1 {
-    @include w-h(90%, 120px);
-    @apply m-auto mb-3 mt-6px shadow-sm;
+    @apply m-auto mb-3 mt-6px shadow-sm w-[90%] h-120px;
 
     .circles-1-1 {
-      @include w-h(42%, 99%);
-      @apply float-left;
+      @apply float-left w-[42%] h-[99%];
 
       img {
-        @include w-h(100%, 100%);
-        @apply rounded;
+        @apply rounded w-full h-full;
       }
     }
 
     .circles-1-2 {
-      @apply float-right bg-white;
-      @include w-h(58%, 100%);
+      @apply float-right bg-white w-[58%] h-full;
 
       .circles-1-2-1 {
         @apply text-lg p-1 font-medium m-1 cursor-pointer hover:text-blue-400;
@@ -102,8 +98,7 @@ onMounted(async () => {
   }
 
   .circles-content {
-    @include w-h(100%, 100%);
-    @apply bg-gray-100;
+    @apply bg-gray-100 w-full h-full;
   }
 
   .circles-content::-webkit-scrollbar {

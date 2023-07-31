@@ -93,6 +93,7 @@ declare module '@vue/runtime-core' {
     PhotoIndex: typeof import('./src/views/page/photo/PhotoIndex.vue')['default']
     RightSidebarAnnunciate: typeof import('./src/components/sidebar/RightSidebarAnnunciate.vue')['default']
     RightSidebarManager: typeof import('./src/components/sidebar/RightSidebarManager.vue')['default']
+    RightSidebarReSou: typeof import('./src/components/sidebar/RightSidebarReSou.vue')['default']
     RightSidebarSearch: typeof import('./src/components/sidebar/RightSidebarSearch.vue')['default']
     RightSidebarSearchDetail: typeof import('./src/components/sidebar/RightSidebarSearchDetail.vue')['default']
     RightSidebarStatistics: typeof import('./src/components/sidebar/RightSidebarStatistics.vue')['default']

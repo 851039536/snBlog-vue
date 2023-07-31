@@ -1,9 +1,7 @@
 .book {
-  @apply fixed;
-  @include w-h(100%, 100%);
+  @apply fixed w-full h-full;
 
   .book-main {
-    // @include initialize($w, 89%, 4.5%, null, $ml, null, #ffffff);
     @apply rounded-sm shadow-sm overflow-auto;
 
     .book-bar {
@@ -28,14 +26,13 @@
 
     .book-film-text {
       @apply rounded-sm m-1 shadow-xl mt-2 p-1;
-      @include w-h(95%, 370px);
+      @apply w-full h-370px;
 
       .book-img {
-        @include w-h(100%, 220px);
+        @apply w-full h-220px;
 
         img {
-          @include w-h(100%, 100%);
-          @apply rounded-sm;
+          @apply rounded-sm w-full h-full;
         }
       }
 

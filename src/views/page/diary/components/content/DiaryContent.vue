@@ -62,7 +62,7 @@ defineProps({
       .ocont-list-cont-title {
         @apply h-[20%] m-1 text-lg px-1;
         @apply rounded bg-blue-100 hover:bg-blue-300 hover:text-white;
-        @include line-one;
+        @include truncation;
       }
 
       .ocont-list-cont-text {

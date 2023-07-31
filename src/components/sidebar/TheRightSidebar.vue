@@ -28,12 +28,12 @@ onMounted(async () => {
 <template>
   <div v-if="ui.uiRightVisible" class="app-grail-right">
     <c-right-sidebar>
-      <RightSidebarManager></RightSidebarManager>
-      <RightSidebarSearch></RightSidebarSearch>
-      <RightSidebarAnnunciate></RightSidebarAnnunciate>
-      <the-zhi-hu-re-sou></the-zhi-hu-re-sou>
-      <RightSidebarTool :r-data="navData" name="常用工具"></RightSidebarTool>
-      <RightSidebarStatistics
+      <right-sidebar-manager></right-sidebar-manager>
+      <right-sidebar-search></right-sidebar-search>
+      <right-sidebar-annunciate></right-sidebar-annunciate>
+      <right-sidebar-re-sou></right-sidebar-re-sou>
+      <right-sidebar-tool :r-data="navData" name="常用工具"></right-sidebar-tool>
+      <right-sidebar-statistics
         title="站点统计"
         sum-title="文章数量"
         character-title="总字符数"
@@ -42,12 +42,12 @@ onMounted(async () => {
         :sum="articleSum"
         :character="textSum"
         :heat="readSum"
-        :time="time"></RightSidebarStatistics>
+        :time="time"></right-sidebar-statistics>
     </c-right-sidebar>
 
     <div id="search"></div>
     <c-modal-search @close-model="ui.uiSearchVisible = false">
-      <RightSidebarSearchDetail></RightSidebarSearchDetail>
+      <right-sidebar-search-detail></right-sidebar-search-detail>
     </c-modal-search>
   </div>
 </template>

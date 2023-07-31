@@ -1,10 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createRouter, createWebHistory, RouteRecordRaw, _RouteRecordBase } from 'vue-router'
 import NProgress from 'nprogress'
-// import Home from '@/components/general/SHome.vue'
 
 declare module 'vue-router' {
-  // eslint-disable-next-line no-shadow
   interface _RouteRecordBase {
     hidden?: boolean | string | number
   }
