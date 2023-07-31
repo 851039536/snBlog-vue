@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@/api'
-import { rArticle, searchName } from '../../data'
+import { rArticle, searchName } from './data'
 import { useRouter } from '@hooks/useRouter'
 const { winUrl } = useRouter()
 

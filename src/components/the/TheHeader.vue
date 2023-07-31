@@ -166,4 +166,3 @@ onMounted(async () => {
   }
 }
 </style>
-@/router/routerInfo

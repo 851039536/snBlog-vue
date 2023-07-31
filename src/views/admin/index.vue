@@ -76,15 +76,6 @@ onMounted(async () => {
                 </div>
                 <div class="cursor-pointer text-center hover:text-blue-400" @click="clear()">退出登录</div>
               </template>
-              <!-- <template #title>
-                <div class="flex">
-                  <div class="mt-11px mr-2"><uservg></uservg></div>
-                  <div class="m-1">
-                    <div>少年</div>
-                    <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
-                  </div>
-                </div>
-              </template> -->
               <uservg></uservg>
             </a-popover>
           </div>
@@ -165,4 +156,3 @@ onMounted(async () => {
   @apply bg-gray-100;
 }
 </style>
-@/router/routerInfo

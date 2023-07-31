@@ -21,30 +21,8 @@
       </div>
 
       <!-- Right sidebar -->
-      <nav v-if="ui.uiRightVisible" class="app-grail-right">
-        <c-right-sidebar>
-          <article-side-manager></article-side-manager>
-          <article-side-input-module></article-side-input-module>
-          <article-side-annunciate-module></article-side-annunciate-module>
-          <the-zhi-hu-re-sou></the-zhi-hu-re-sou>
-          <article-side-tool :r-data="navData" name="常用工具"></article-side-tool>
-          <statistics-module
-            title="站点统计"
-            sum-title="文章数量"
-            character-title="总字符数"
-            heat-title="热度"
-            time-title="最近更新"
-            :sum="articleSum"
-            :character="textSum"
-            :heat="readSum"
-            :time="time"></statistics-module>
-        </c-right-sidebar>
-      </nav>
+      <the-right-sidebar></the-right-sidebar>
     </main>
-    <div id="search"></div>
-    <c-modal-search @close-model="ui.uiSearchVisible = false">
-      <article-side-search-module></article-side-search-module>
-    </c-modal-search>
     <base-login></base-login>
     <base-article-fast-send></base-article-fast-send>
     <base-aspin></base-aspin>
@@ -53,48 +31,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ArticleApi, NavigationApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
-
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
-// 定义异步组件函数
-const AsyncComponent = (name: any) => {
-  return defineAsyncComponent(() => {
-    return import(/* @vite-ignore */ `@views/page/article/components/sidebar/${name}.vue`)
-  })
-}
-// 定义异步组件
-const ArticleSideInputModule = AsyncComponent(`ArticleSideInput`)
-const ArticleSideSearchModule = AsyncComponent(`ArticleSideSearch`)
-const ArticleSideAnnunciateModule = AsyncComponent(`ArticleSideAnnunciate`)
-const statisticsModule = defineAsyncComponent(() => {
-  return import('@components/custom/CustomCount.vue')
-})
-const time = ref()
-const articleSum = ref('')
-const textSum = ref('')
-const readSum = ref('')
-const navData = ref([])
 
 onMounted(async () => {
   // 注册全局的键盘事件监听器
   addKeydownCtrl_z()
   ui.uiSearchVisible = false
-  const [navDatas, times, articleSums, textSums, readSums] = await axios.all([
-    await NavigationApi.getTypeAsync(1, '常用工具', true),
-    await ArticleApi.getPaging(0, 'null', 1, 1),
-    await ArticleApi.getSum(),
-    await ArticleApi.getStrSum(0, 1),
-    await ArticleApi.getStrSum(0, 2)
-  ])
-
-  navData.value = navDatas.data // 右侧导航
-  time.value = times.data.data[0].timeCreate // 本站已运行时间
-  articleSum.value = String(articleSums.data.data) // 文章总数
-  textSum.value = String(textSums.data.data) // 字数总数
-  readSum.value = String(readSums.data.data) // 阅读总数
 })
 </script>
 
@@ -166,4 +111,3 @@ onMounted(async () => {
   background: #8ba1b8 !important; // 自定义颜色
 }
 </style>
-@/hooks/http/useUserTalkApi

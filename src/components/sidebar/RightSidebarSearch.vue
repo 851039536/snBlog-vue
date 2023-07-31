@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { searchName } from '../../data'
+import { searchName } from './data'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
 function onSearch() {

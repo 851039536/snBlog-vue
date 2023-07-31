@@ -118,4 +118,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-@/router/routerInfo
