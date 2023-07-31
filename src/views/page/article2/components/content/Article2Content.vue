@@ -43,7 +43,7 @@ const onGetCatalog = (list: any) => {
         :model-value="blog"
         :preview-theme="theme.previewTheme"
         :code-theme="theme.codeTheme"
-        @onGetCatalog="onGetCatalog" />
+        @on-get-catalog="onGetCatalog" />
     </div>
     <div class="ml-1 w-[16%] overflow-y-scroll p-1 text-base">
       <div v-for="(item, index) in side" :key="index">

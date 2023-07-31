@@ -55,6 +55,7 @@ provide('reload', reload)
 
 onMounted(async () => {
   await TOKEN()
+  uiSettings.loginVisible = false
   uiSettings.uiHeadVisible = false
   uiSettings.uiLeftVisible = false
 })

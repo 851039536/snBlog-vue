@@ -3,6 +3,7 @@ import { useUserInfo } from '@hooks/useUserInfo'
 import { UserApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
+
 const userName = ref('')
 const userPwd = ref('')
 const { setUserInfo } = useUserInfo()
@@ -10,6 +11,7 @@ function login() {
   UserApi.login(userName.value, userPwd.value).then(r => {
     const ret = r.data
     setUserInfo(ret.nickname, ret.token, ret.id, ret.name)
+    ui.loginVisible = false
     location.reload()
   })
 }

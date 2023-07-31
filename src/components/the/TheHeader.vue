@@ -109,8 +109,6 @@ onMounted(async () => {
     </div>
   </nav>
 
-  <base-login></base-login>
-
   <modal-snippet :visible="isVisible" @close-model="isVisible = false">
     <snippet-content></snippet-content>
   </modal-snippet>

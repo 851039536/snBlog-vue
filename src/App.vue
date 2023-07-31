@@ -45,6 +45,7 @@
     <c-modal-search @close-model="ui.uiSearchVisible = false">
       <article-side-search-module></article-side-search-module>
     </c-modal-search>
+    <base-login></base-login>
     <base-article-fast-send></base-article-fast-send>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
