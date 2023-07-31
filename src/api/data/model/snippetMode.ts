@@ -4,7 +4,7 @@ export interface ISnippet {
   text: string
   typeId: number
   tagId: number
-  userId: number
+  userId: number | string
   labelId: number
 }
 

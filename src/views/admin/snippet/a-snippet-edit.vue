@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
 import { snippetForm } from '@/api/data/model/SnippetMode'
-import { getUserId } from '@/utils/user/user-info'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { MdEditor } from 'md-editor-v3'
 import { snippetLabelData, snippetTagData, snippetTypeData } from './data'
+import { useUserInfo } from '@hooks/useUserInfo'
+const { getUserId } = useUserInfo()
 const update = debounce(async () => {
   snippetForm.userId = getUserId()
   const res = await SnippetApi.update(snippetForm)

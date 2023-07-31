@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory, RouteRecordRaw, _RouteRecordBase } from 'vue-router'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import NProgress from 'nprogress'
 
 declare module 'vue-router' {

@@ -85,7 +85,7 @@ onMounted(async () => {
 
       .circles-1-2-1 {
         @apply text-lg p-1 font-medium m-1 cursor-pointer hover:text-blue-400;
-        @include line-one;
+        @include truncation;
       }
 
       .circles-1-2-2 {

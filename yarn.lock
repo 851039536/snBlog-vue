@@ -1714,21 +1714,6 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.3.0-beta.3.tgz"
   integrity sha512-st1SnB/Bkbb9TsieeI4TRX9TqHYIR5wvIma3ZtEben55EYSWa1q5u2BhTNgABSdH+rv3Xwfrvpwh5PmCw6Y53g==
 
-"@vueuse/core@^7.7.1":
-  version "7.7.1"
-  resolved "https://registry.npmjs.org/@vueuse/core/-/core-7.7.1.tgz"
-  integrity sha512-PRRgbATMpoeUmkCEBtUeJgOwtew8s+4UsEd+Pm7MhkjL2ihCNrSqxNVtM6NFE4uP2sWnkGcZpCjPuNSxowJ1Ow==
-  dependencies:
-    "@vueuse/shared" "7.7.1"
-    vue-demi "*"
-
-"@vueuse/shared@7.7.1":
-  version "7.7.1"
-  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-7.7.1.tgz"
-  integrity sha512-rN2qd22AUl7VdBxihagWyhUNHCyVk9IpvBTTfHoLH9G7rGE552X1f+zeCfehuno0zXif13jPw+icW/wn2a0rnQ==
-  dependencies:
-    vue-demi "*"
-
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.nlark.com/acorn-jsx/download/acorn-jsx-5.3.2.tgz?cache=0&sync_timestamp=1625793240297&other_urls=https%3A%2F%2Fregistry.nlark.com%2Facorn-jsx%2Fdownload%2Facorn-jsx-5.3.2.tgz"
@@ -7706,7 +7691,7 @@ vite@4.4.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-demi@*, vue-demi@>=0.14.5, vue-demi@^0.14.0, vue-demi@latest:
+vue-demi@>=0.14.5, vue-demi@^0.14.0, vue-demi@latest:
   version "0.14.5"
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.5.tgz"
   integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
