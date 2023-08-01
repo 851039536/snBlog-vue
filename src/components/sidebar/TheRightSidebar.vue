@@ -54,5 +54,3 @@ onMounted(async () => {
     </c-modal-search>
   </div>
 </template>
-
-<!-- <style lang="scss" scoped></style> -->

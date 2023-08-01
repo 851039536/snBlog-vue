@@ -12,7 +12,7 @@ export const useUiSetStore = defineStore('uiSet', {
       uiLoadingVisible: false,
       uiSearchVisible: false,
       loginVisible: false,
-      articleFastVisible: false,
+      rightSidebarFastSend: false,
       sideIndex: -1 //选中后变色并且效果不消失
     }
   },

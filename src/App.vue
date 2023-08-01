@@ -26,7 +26,6 @@
       </div>
     </main>
     <base-login></base-login>
-    <base-article-fast-send></base-article-fast-send>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
   </div>
@@ -35,10 +34,8 @@
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
-// import { useUtil } from '@hooks/useUtil'
 const ui = useUiSetStore()
 const { addKeydownCtrl_z } = useEventKey()
-// const { hasClass } = useUtil()
 
 onMounted(() => {
   // 注册全局的键盘事件监听器

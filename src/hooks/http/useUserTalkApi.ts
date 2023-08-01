@@ -1,5 +1,5 @@
 import { useApi } from '@hooksHttp/axios/useApi'
-const { get } = useApi()
+const { get, add } = useApi()
 export function useUserTalkApi() {
   /**
    * @description: 分页查询
@@ -28,7 +28,12 @@ export function useUserTalkApi() {
     return ret
   }
 
+  function addUserTalk(params: any) {
+    return add('/userTalk/add', params)
+  }
+
   return {
-    getUserTalkPaging
+    getUserTalkPaging,
+    addUserTalk
   }
 }

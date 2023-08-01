@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// import { ArticleApi } from '@/api'
 import { searchName } from './data'
 import { useRouter } from '@hooks/useRouter'
 
@@ -26,7 +25,7 @@ async function search() {
       placeholder="搜索..."
       @input="search()" />
   </div>
-  <ul class="h-full cursor-pointer list-none overflow-auto p-0">
+  <ul class="h-full cursor-pointer list-none overflow-auto p-0 pb-130">
     <li
       v-for="ret in article"
       :key="ret.id"
@@ -39,5 +38,3 @@ async function search() {
     </li>
   </ul>
 </template>
-
-<!-- <style lang="scss" scoped></style> -->

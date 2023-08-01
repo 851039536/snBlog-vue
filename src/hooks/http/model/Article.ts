@@ -28,7 +28,7 @@ export interface User {
   nickname: string
 }
 
-export let article: Article = reactive({
+export const article: Article = reactive({
   id: 0,
   name: '',
   sketch: '',
