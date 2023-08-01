@@ -29,7 +29,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div v-if="ui.uiRightVisible">
+  <div>
     <c-right-sidebar>
       <right-sidebar-manager></right-sidebar-manager>
       <right-sidebar-search></right-sidebar-search>

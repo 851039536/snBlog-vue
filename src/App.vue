@@ -21,7 +21,7 @@
       </div>
 
       <!-- Right sidebar -->
-      <div class="app-grail-right">
+      <div v-if="ui.uiRightVisible" class="app-grail-right">
         <the-right-sidebar></the-right-sidebar>
       </div>
     </main>
@@ -79,7 +79,7 @@ onMounted(() => {
       width: 21%;
 
       @apply overflow-y-auto;
-      @apply ml-1 h-[92.78vh];
+      @apply ml-1;
     }
 
     .app-grail-right::-webkit-scrollbar {
