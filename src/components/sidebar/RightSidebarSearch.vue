@@ -1,13 +1,24 @@
 <script lang="ts" setup>
 import { searchName } from './data'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useEventKey } from '@hooks/useEventKey'
+const { addKeyup, removeKeyup } = useEventKey()
 const ui = useUiSetStore()
-function onSearch() {
-  if (searchName.value === '') {
+
+const removeEscape = (e: any) => {
+  if (e.key === 'Escape') {
+    removeKeyup(removeEscape)
     ui.uiSearchVisible = false
+    searchName.value = ''
+  }
+}
+function onSearch() {
+  //searchName判断只执行一次
+  if (searchName.value.length >= 2) {
     return
   }
-  ui.uiSearchVisible = true //显示元素内容
+  addKeyup(removeEscape)
+  ui.uiSearchVisible = true
 }
 </script>
 <template>

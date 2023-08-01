@@ -313,14 +313,13 @@ const router = createRouter({
 
 // 跳转前触发，可在执行 next 方法前做一些身份登录验证的逻辑。
 router.beforeEach((_to, _from, next) => {
-  console.log('[ _to ]-316', _to)
   NProgress.start()
 
-  //_to.path判断是否匹配/Admin-index
-
+  //跳转后台页面判断是否登录
   if (_to.path.includes('/Admin-index')) {
     if (!isUserLogin()) return next({ path: '/Login' })
   }
+  //跳转登录页面判断是否登录
   if (_to.path === '/Login') {
     if (isUserLogin()) return next({ path: '/Admin-index/ArticleTable' })
   }

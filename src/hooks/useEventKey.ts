@@ -22,5 +22,13 @@ export function useEventKey() {
     document.removeEventListener('keydown', KeydownCtrl_z)
   }
 
-  return { addKeydownCtrl_z, removeKeydownCtrl_z }
+  const addKeyup = (funs: any) => {
+    window.addEventListener('keyup', funs)
+  }
+
+  const removeKeyup = (funs: any) => {
+    window.removeEventListener('keyup', funs)
+  }
+
+  return { addKeydownCtrl_z, removeKeydownCtrl_z, addKeyup, removeKeyup }
 }

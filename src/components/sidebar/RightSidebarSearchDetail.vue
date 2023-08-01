@@ -1,16 +1,20 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
-import { rArticle, searchName } from './data'
+// import { ArticleApi } from '@/api'
+import { searchName } from './data'
 import { useRouter } from '@hooks/useRouter'
-const { winUrl } = useRouter()
 
+import { Article } from '@/hooks/http/model/Article'
+import { useArticleApi } from '@hooksHttp/index'
+const { getArticleContains } = useArticleApi()
+const { winUrl } = useRouter()
+const article = ref([] as Article[])
 //自定义函数，父组件可以触发
 async function search() {
   if (searchName.value === '') {
     return
   }
-  const data = await ArticleApi.getContains(0, 'null', searchName.value)
-  rArticle.value = data.data.data
+  const ret = await getArticleContains(0, 'null', searchName.value)
+  article.value = ret.data.data
 }
 </script>
 <template>
@@ -22,18 +26,18 @@ async function search() {
       placeholder="搜索..."
       @input="search()" />
   </div>
-  <div class="h-full overflow-auto">
-    <div
-      v-for="res in rArticle"
-      :key="res.id"
+  <ul class="h-full cursor-pointer list-none overflow-auto p-0">
+    <li
+      v-for="ret in article"
+      :key="ret.id"
       class="rounded bg-slate-50 p-2 shadow-sm m-1 hover:bg-blue-400 hover:text-white">
       <div class="flex items-center text-lg">
-        <div i-fxemoji-lightbulb h-5 w-6></div>
-        <div class="cursor-pointer font-medium" @click="winUrl(`/myMarkdownContent?id=${res.id}`)">{{ res.name }}</div>
+        <div i-typcn-bookmark h-5 w-6></div>
+        <div class="font-medium" @click="winUrl(`/myMarkdownContent?id=${ret.id}`)">{{ ret.name }}</div>
       </div>
-      <div class="text-cool-gray-500">{{ res.sketch }}</div>
-    </div>
-  </div>
+      <div class="px-2 text-cool-gray-600">{{ ret.sketch }}</div>
+    </li>
+  </ul>
 </template>
 
 <!-- <style lang="scss" scoped></style> -->

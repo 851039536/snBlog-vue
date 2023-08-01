@@ -1,17 +1,19 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@api/index'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useArticleApi, useSnippetApi } from '@hooksHttp/index'
+const { getArticleSum } = useArticleApi()
+const { getSnippetSum } = useSnippetApi()
 const ui = useUiSetStore()
 const setVisible = () => {
   ui.articleFastVisible = true
 }
 
 const articleSum = ref('')
+const snippetSum = ref('')
 onMounted(async () => {
-  // 注册全局的键盘事件监听器
-  const [articleSums] = await axios.all([await ArticleApi.getSum()])
-
-  articleSum.value = String(articleSums.data.data) // 文章总数
+  const [articleSums, snippetSums] = await axios.all([await getArticleSum(), await getSnippetSum(0, '0', false)])
+  articleSum.value = articleSums.data.data as string
+  snippetSum.value = snippetSums.data
 })
 </script>
 <template>
@@ -38,10 +40,10 @@ onMounted(async () => {
       </div>
     </div>
     <div class="mt-3 flex items-center justify-center pb-1 text-sm">
-      <div class="mx-1">文章 {{ articleSum }}</div>
-      <div class="mx-1">代码 323</div>
-      <div class="mx-1">书单 20</div>
-      <div class="mx-1">导航 123</div>
+      <div class="mx-3px">文章{{ articleSum }}</div>
+      <div class="mx-3px">代码{{ snippetSum }}</div>
+      <div class="mx-3px">书单0</div>
+      <div class="mx-3px">导航1232</div>
     </div>
   </c-right-sidebar-container>
 </template>

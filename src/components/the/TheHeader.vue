@@ -44,15 +44,15 @@ async function onChange(id: number) {
       break
   }
 }
-const escKey = (e: any) => {
+const removeEscKey = (e: any) => {
   //escape
   if (e.key === 'Escape') {
-    window.removeEventListener('keyup', escKey)
+    window.removeEventListener('keyup', removeEscKey)
     isVisible.value = false
   }
 }
-const snippetVisible = () => {
-  window.addEventListener('keyup', escKey)
+const addSnippet = () => {
+  window.addEventListener('keyup', removeEscKey)
   isVisible.value = true
 }
 
@@ -78,7 +78,7 @@ onMounted(async () => {
             <div>圈子</div>
           </div>
           <div>
-            <div @click="snippetVisible()">code</div>
+            <div @click="addSnippet()">code</div>
             <div class="mt-1" i-flat-color-icons-search h-6 w-6></div>
           </div>
         </div>

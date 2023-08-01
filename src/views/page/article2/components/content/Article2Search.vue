@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-import { ArticleApi, ArticleTypeApi } from '@/api'
+import { ArticleTypeApi } from '@/api'
 import { throttle } from '@/utils/dethrottle'
 import { rArticle } from '../../data'
+import { useArticleApi } from '@hooksHttp/index'
+const { getArticleContains } = useArticleApi()
 
 const searchName = ref('')
 const search = () => {
   throttle(async () => {
     if (searchName.value === '') return
-    rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value)).data.data
+    rArticle.value = await (await getArticleContains(0, 'null', searchName.value)).data.data
   }, 300)()
 }
 

@@ -7,6 +7,8 @@ import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
+import { useArticleApi } from '@hooksHttp/index'
+const { getArticleContains } = useArticleApi()
 const { getUserName } = useUserInfo()
 const { routerById, routers } = useRouter()
 
@@ -29,10 +31,10 @@ const QPaging = async (identity: number, name: string, order = true) => {
 async function QContains(name: string) {
   if (name === '' && tagSrt.value === 'ALL') return QPaging(3, userName.value)
   if (tagSrt.value === 'ALL') {
-    rArticle.value = await (await ArticleApi.getContains(0, '0', name)).data.data
+    rArticle.value = await (await getArticleContains(0, '0', name)).data.data
     return
   }
-  rArticle.value = await (await ArticleApi.getContains(2, tagSrt.value, name)).data.data
+  rArticle.value = await (await getArticleContains(2, tagSrt.value, name)).data.data
 }
 async function STag() {
   if (tagSrt.value === 'ALL') {
