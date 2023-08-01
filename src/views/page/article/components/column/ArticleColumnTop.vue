@@ -13,6 +13,12 @@ const clickType = async (name: string) => {
   )
   articleData.value = data.data.data
 }
+
+const getCourse = async (name: string) => {
+  paging.typeStr = name
+  const data = await ArticleApi.getPaging(1, paging.typeStr, paging.current, paging.pagesize, paging.typeStr)
+  articleData.value = data.data.data
+}
 </script>
 <template>
   <div class="my-dict">
@@ -30,7 +36,7 @@ const clickType = async (name: string) => {
         <span>点赞</span>
       </label>
       <label>
-        <input type="radio" name="radio" @click="clickType('技术教程')" />
+        <input type="radio" name="radio" @click="getCourse('教程')" />
         <span>教程</span>
       </label>
     </div>
