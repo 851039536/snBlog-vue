@@ -12,8 +12,8 @@ const reload: any = inject('reload')
 const { getUserId } = useUserInfo()
 const add = debounce(async () => {
   snippetForm.userId = getUserId()
-  const res = await SnippetApi.add(snippetForm)
-  if (res.data) {
+  const ret = await SnippetApi.add(snippetForm)
+  if (ret.data) {
     reload()
     return message.success(aData.SUCCESS)
   }
