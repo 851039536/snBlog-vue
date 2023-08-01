@@ -23,10 +23,9 @@ export interface Tag {
 }
 
 export interface User {
-  id?: number
-  ip?: null
-  name?: string
-  nickname?: string
+  id: number
+  name: string
+  nickname: string
 }
 
 export let article: Article = reactive({

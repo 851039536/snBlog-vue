@@ -22,10 +22,17 @@ export function useEventKey() {
     document.removeEventListener('keydown', KeydownCtrl_z)
   }
 
+  /**
+   * @description: 添加keyup事件
+   * @param {any} funs
+   */
   const addKeyup = (funs: any) => {
     window.addEventListener('keyup', funs)
   }
-
+  /**
+   * @description: 删除keyup事件
+   * @param {any} funs
+   */
   const removeKeyup = (funs: any) => {
     window.removeEventListener('keyup', funs)
   }

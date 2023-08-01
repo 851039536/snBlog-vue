@@ -21,7 +21,9 @@
       </div>
 
       <!-- Right sidebar -->
-      <the-right-sidebar></the-right-sidebar>
+      <div class="app-grail-right">
+        <the-right-sidebar></the-right-sidebar>
+      </div>
     </main>
     <base-login></base-login>
     <base-article-fast-send></base-article-fast-send>
@@ -46,8 +48,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-/* 默认导入md的样式 */
-// @import './design/md-sm';
 @include scroll;
 
 #app {
@@ -78,7 +78,12 @@ onMounted(() => {
     .app-grail-right {
       width: 21%;
 
-      @apply ml-1;
+      @apply overflow-y-auto;
+      @apply ml-1 h-[92.78vh];
+    }
+
+    .app-grail-right::-webkit-scrollbar {
+      display: none;
     }
   }
 

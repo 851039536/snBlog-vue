@@ -69,9 +69,9 @@ const onScroll = (name: string) => {
           </div>
           <div class="content-div-frame-2">{{ r.sketch }}</div>
           <div class="content-div-frame-3">
-            <span class="bg-teal-200">{{ r.user.nickname }}</span>
-            <span class="bg-sky-200">{{ r.type.name }}</span>
-            <span class="bg-red-200">{{ r.tag.name }}</span>
+            <span class="bg-teal-200">{{ r.user!.nickname }}</span>
+            <span class="bg-sky-200">{{ r.type!.name }}</span>
+            <span class="bg-red-200">{{ r.tag!.name }}</span>
             <span class="bg-yellow-200">{{ r.read }} ℃</span>
             <span class="bg-teal-200">赞 {{ r.give }}</span>
             <span class="bg-red-100">{{ r.timeCreate.substring(0, 10) }}</span>

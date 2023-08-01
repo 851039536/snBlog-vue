@@ -1,3 +1,3 @@
-import { IArticle } from '@/api/data/InterData'
+import { Article } from '@hooksHttp/model/Article'
 
-export const rArticle = ref([] as IArticle[])
+export const rArticle = ref([] as Article[])

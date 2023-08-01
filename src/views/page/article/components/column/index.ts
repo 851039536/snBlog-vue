@@ -1,6 +1,6 @@
-import { IArticle } from '@api/data/InterData'
+import { Article } from '@hooksHttp/model/Article'
 
-export const articleData = ref<IArticle[]>([])
+export const articleData = ref<Article[]>([])
 
 export const paging = reactive({
   page: 1,
