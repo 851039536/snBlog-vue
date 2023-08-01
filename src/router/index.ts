@@ -1,7 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import NProgress from 'nprogress'
-
+import { useUserInfo } from '@hooks/useUserInfo'
+const { isUserLogin } = useUserInfo()
 declare module 'vue-router' {
   interface _RouteRecordBase {
     hidden?: boolean | string | number
@@ -9,11 +10,6 @@ declare module 'vue-router' {
 }
 const routes: RouteRecordRaw[] = [
   {
-    // path: '/',
-    // redirect: '/Home',
-    // name: 'Homes',
-    // component: Home
-
     path: '/',
     name: 'homes',
     meta: {
@@ -314,9 +310,20 @@ const router = createRouter({
   history: createWebHistory(), // HTML5模式
   routes
 })
-// 页面切换之前取消上一个路由中未完成的请求
+
+// 跳转前触发，可在执行 next 方法前做一些身份登录验证的逻辑。
 router.beforeEach((_to, _from, next) => {
+  console.log('[ _to ]-316', _to)
   NProgress.start()
+
+  //_to.path判断是否匹配/Admin-index
+
+  if (_to.path.includes('/Admin-index')) {
+    if (!isUserLogin()) return next({ path: '/Login' })
+  }
+  if (_to.path === '/Login') {
+    if (isUserLogin()) return next({ path: '/Admin-index/ArticleTable' })
+  }
   next()
 })
 router.afterEach(() => {

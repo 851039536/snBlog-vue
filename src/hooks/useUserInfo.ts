@@ -15,14 +15,13 @@ export function useUserInfo() {
     storage.remove(userInfo.TOKEN)
   }
   /**
-   * 判断token是否存在否则跳转登录界面
+   * 判断token是否存在
    */
-  const isToken = async () => {
+  const isAdminToken = () => {
     if (storage.get(userInfo.TOKEN) === userInfo.TOKEN) {
-      await routers(rRouter.Login)
-    } else {
-      await routers(rRouter.articleTable)
+      return false
     }
+    return true
   }
 
   /**
@@ -33,6 +32,16 @@ export function useUserInfo() {
   const isUserId = (uid: number) => {
     if (Number(storage.get(userInfo.ID)) === uid) return true
     return false
+  }
+
+  /**
+   * 判断用户是否登录
+   */
+  const isUserLogin = () => {
+    if (storage.get(userInfo.NAME) === userInfo.NAME) {
+      return false
+    }
+    return true
   }
 
   /**
@@ -77,11 +86,12 @@ export function useUserInfo() {
   }
   return {
     removeUserStorage,
-    isToken,
     isUserId,
     getUserId,
     getUserName,
     userInfo,
-    setUserInfo
+    setUserInfo,
+    isUserLogin,
+    isAdminToken
   }
 }

@@ -17,24 +17,6 @@ import { SnippetTypeApi } from './http/SnippetTypeApi'
 import { SnippetLabelApi } from './http/SnippetLabelApi'
 import { CommonApi } from './http/CommonApi'
 
-/**
- * @description: 空函数查token权限
- */
-function TOKEN() {
-  return request(
-    {
-      url: '/dataBase/token',
-      method: 'get'
-    },
-    {
-      qiXiao_cancel: false
-    },
-    {
-      loading: false
-    }
-  )
-}
-
 export {
   ArticleApi,
   ArticleTagApi,
@@ -47,7 +29,6 @@ export {
   VideoApi,
   UserApi,
   ListContentApi,
-  TOKEN,
   InterfaceApi,
   SnippetApi,
   SnippetTypeApi,

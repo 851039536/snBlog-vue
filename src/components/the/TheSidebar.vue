@@ -3,7 +3,6 @@ import { InterfaceApi } from '@/api'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { message } from 'ant-design-vue'
 const { getUserName } = useUserInfo()
 const { routers } = useRouter()
 const ui = useUiSetStore()
@@ -59,8 +58,7 @@ const skip = (path: string) => {
       setRightVisible(true)
       routers(path)
       break
-    case '/Login':
-      message.warn('即将跳转后台')
+    case '/Admin-index/ArticleTable':
       setRightVisible(true)
       routers(path)
       break
@@ -93,7 +91,7 @@ onMounted(async () => {
         <div v-if="r.path == '/BlogCircles'" i-typcn-flag h-6 w-6></div>
         <div v-if="r.path == '/book'" i-typcn-bookmark h-6 w-6></div>
         <div v-if="r.path == '/ListContent'" i-typcn-refresh-outline h-6 w-6></div>
-        <div v-if="r.path == '/Login'" i-typcn-arrow-right-outline h-6 w-6></div>
+        <div v-if="r.path == '/Admin-index/ArticleTable'" i-typcn-arrow-right-outline h-6 w-6></div>
         <div>{{ r.name }}</div>
       </div>
     </div>

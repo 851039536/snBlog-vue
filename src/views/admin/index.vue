@@ -6,13 +6,11 @@ import uservg from '@assets/svg/components/user.svg?component'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 const { routers, winUrl } = useRouter()
-const { removeUserStorage, isToken } = useUserInfo()
+const { removeUserStorage } = useUserInfo()
 const uiSettings = useUiSetStore()
-import { TOKEN } from '@/api'
-
 function clear() {
   removeUserStorage()
-  isToken()
+  location.reload()
 }
 const handleClick = (e: any) => {
   switch (e.key) {
@@ -53,8 +51,7 @@ function reload() {
 }
 provide('reload', reload)
 
-onMounted(async () => {
-  await TOKEN()
+onMounted(() => {
   uiSettings.loginVisible = false
   uiSettings.uiHeadVisible = false
   uiSettings.uiLeftVisible = false
