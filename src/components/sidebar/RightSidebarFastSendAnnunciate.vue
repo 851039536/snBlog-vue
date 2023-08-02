@@ -7,6 +7,7 @@ import { message } from 'ant-design-vue'
 import { ident } from './data'
 const { getUserId } = useUserInfo()
 const { addUserTalk } = useUserTalkApi()
+//
 const ui = useUiSetStore()
 async function createPost() {
   if (ident.value === 1) {

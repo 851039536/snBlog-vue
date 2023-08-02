@@ -14,11 +14,13 @@ const snippetLabel: any = ref([])
 const createPost = debounce(async () => {
   snippet.userId = getUserId() as number
   const ret = await SnippetApi.add(snippet)
-  if (ret.data) {
+  if (ret.data.statusCode === 200) {
     removeSnippet()
-    return message.success('发布成功')
+    return message.success(ret.data.message)
   }
-  message.warning('发布失败')
+  if (ret.data.statusCode === 404) {
+    message.warning(ret.data.message)
+  }
 }, 800)
 onMounted(async () => {
   const [tag, type, label] = await axios.all([

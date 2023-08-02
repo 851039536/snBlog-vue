@@ -3,7 +3,6 @@ import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/ap
 import { snippetForm } from '@/api/data/model/SnippetMode'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
-import { aData } from '../data'
 import { MdEditor } from 'md-editor-v3'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { snippetLabelData, snippetTagData, snippetTypeData } from './data'
@@ -13,11 +12,13 @@ const { getUserId } = useUserInfo()
 const add = debounce(async () => {
   snippetForm.userId = getUserId()
   const ret = await SnippetApi.add(snippetForm)
-  if (ret.data) {
+  if (ret.data.statusCode === 200) {
     reload()
-    return message.success(aData.SUCCESS)
+    return message.success(ret.data.message)
   }
-  message.warning(aData.FAIL)
+  if (ret.data.statusCode === 404) {
+    message.warning(ret.data.message)
+  }
 }, 1000)
 onMounted(async () => {
   const [tag, type, label] = await axios.all([
