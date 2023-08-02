@@ -13,11 +13,11 @@ async function createPost() {
   if (ident.value === 1) {
     userTalk.userId = getUserId() as number
     const ret = await addUserTalk(userTalk)
-    if (ret.data.data) {
-      message.success('发布成功')
+    if (ret.data.statusCode === 200) {
+      message.success(ret.data.message)
       ui.rightSidebarFastSend = false
       location.reload()
-    } else message.error('发布失败')
+    } else message.error(ret.data.message)
   }
 }
 </script>
