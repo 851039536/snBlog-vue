@@ -5,7 +5,7 @@ const { routers } = useRouter()
 const ui = useUiSetStore()
 
 ui.uiHeadVisible = false
-ui.uiLoadingVisible = false
+ui.uiLoading = false
 </script>
 
 <template>

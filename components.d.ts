@@ -51,7 +51,6 @@ declare module '@vue/runtime-core' {
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
     ATable: typeof import('ant-design-vue/es')['Table']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
-    BaseArticleFastSend: typeof import('./src/components/sidebar/BaseArticleFastSend.vue')['default']
     BaseAspin: typeof import('./src/components/base/BaseAspin.vue')['default']
     BaseLogin: typeof import('./src/components/base/BaseLogin.vue')['default']
     BaseTime: typeof import('./src/components/base/BaseTime.vue')['default']

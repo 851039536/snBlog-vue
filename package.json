@@ -4,7 +4,7 @@
   "scripts": {
     "git": "git add . && git cz",
     "dev": "vite --host",
-    "lint:eslint": "eslint src --fix --ext .ts,.vue,.js",
+    "lint:eslint": "eslint --ext .vue,.ts src/",
     "lint:stylelint": "stylelint src/**/*.{vue,css,scss} --fix",
     "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "tsc-build": "vue-tsc --noEmit && vite build",

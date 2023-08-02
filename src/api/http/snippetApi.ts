@@ -28,7 +28,7 @@ export class SnippetApi {
    * @param {any} entity
    */
   static add(entity: ISnippet) {
-    return add('/snippet/add', entity, true, false)
+    return add('/snippet/add', entity, true)
   }
 
   /**
