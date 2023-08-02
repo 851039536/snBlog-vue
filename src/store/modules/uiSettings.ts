@@ -9,7 +9,7 @@ export const useUiSetStore = defineStore('uiSet', {
       uiRightVisible: true,
       uiLeftVisible: true,
       uiHeadVisible: true,
-      uiLoadingVisible: false,
+      uiLoading: false,
       uiSearchVisible: false,
       loginVisible: false,
       rightSidebarFastSend: false,

@@ -16,13 +16,10 @@ export function useAxios() {
   // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
   // 允许跨域
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
-  function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<AxiosResponse> {
-    // const { timeout = 8000 } = customOptions
+  function myAxios(axiosConfig: any, customOptions: any, load: any = false): Promise<AxiosResponse> {
     const service = axios.create({
-      // 设置统一的请求前缀
       baseURL: import.meta.env.VITE_API_DOMAIN,
       withCredentials: false,
-      // 设置统一的超时时长
       timeout: 10 * 1000, // 请求超时时间
       headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     })
@@ -34,8 +31,8 @@ export function useAxios() {
     }
 
     // 是否开启loading
-    const loading = {
-      loading: loadings.loading
+    const loadings = {
+      loading: load.loading
     }
 
     // 失败后，自动重新请求
@@ -51,6 +48,10 @@ export function useAxios() {
     // 这里可以设置token: config!.headers!.Authorization = token
     service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
+        // 请求之前发送loading
+        if (loadings.loading) {
+          ui.uiLoading = true
+        }
         const { method, data, headers } = config
         removePending(config)
         cancel.cancel_request && addPending(config)
@@ -64,10 +65,7 @@ export function useAxios() {
             headers.Authorization = storage.get('token') as string
           }
         }
-        // 请求之前发送loading
-        if (loading.loading) {
-          ui.uiLoadingVisible = true
-        }
+
         return config
       },
       error => {
@@ -83,9 +81,9 @@ export function useAxios() {
         // 在请求结束后，移除本次请求
         removePending(res)
         // 请求之后关闭loading
-        if (loading.loading) {
+        if (loadings.loading) {
           setTimeout(function () {
-            ui.uiLoadingVisible = false
+            ui.uiLoading = false
           }, 500)
         }
         // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
@@ -95,7 +93,7 @@ export function useAxios() {
         return Promise.reject(res)
       },
       error => {
-        ui.uiLoadingVisible = false
+        ui.uiLoading = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',
@@ -158,6 +156,9 @@ export function useAxios() {
 
     service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
+        if (loading.loading) {
+          ui.uiLoading = true
+        }
         const { method, data } = config
         removePending(config)
         cancel.cancel_request && addPending(config)
@@ -165,9 +166,7 @@ export function useAxios() {
         if (['post', 'put', 'delete'].includes(method as string)) {
           config.data = qs.parse(data)
         }
-        if (loading.loading) {
-          ui.uiLoadingVisible = true
-        }
+
         return config
       },
       error => {
@@ -181,7 +180,7 @@ export function useAxios() {
         removePending(res)
         if (loading.loading) {
           setTimeout(function () {
-            ui.uiLoadingVisible = false
+            ui.uiLoading = false
           }, 500)
         }
         if (res.status === 200 || res.data.statusCode === 200) {
@@ -190,7 +189,7 @@ export function useAxios() {
         return Promise.reject(res)
       },
       error => {
-        ui.uiLoadingVisible = false
+        ui.uiLoading = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',
