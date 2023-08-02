@@ -41,7 +41,7 @@ onMounted(async () => {
       <div class="mb-1 flex cursor-pointer items-center justify-center">
         <div class="mx-3 hover:text-blue-400" @click="setVisible(1)">
           <div i-bytesize-book m-auto h-7 w-26px></div>
-          <span>发公告</span>
+          <span>发动态</span>
         </div>
         <div class="mx-3 hover:text-blue-400" @click="setVisible(2)">
           <div i-bytesize-compose m-auto h-7 w-26px></div>
@@ -49,7 +49,7 @@ onMounted(async () => {
         </div>
         <div class="mx-3 hover:text-blue-400" @click="setVisible(3)">
           <div i-bytesize-fire m-auto h-7 w-26px></div>
-          <span>发动态</span>
+          <span>发日记</span>
         </div>
         <div class="mx-3 hover:text-blue-400" @click="setVisible(4)">
           <div i-bytesize-bookmark m-auto h-7 w-25px></div>

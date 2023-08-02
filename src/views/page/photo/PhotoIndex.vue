@@ -1,15 +1,31 @@
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { usePhotoGalleryApi } from '@hooksHttp/index'
+import { identity } from '.'
+const { getPhotoGalleryPaging } = usePhotoGalleryApi()
 const ui = useUiSetStore()
-onMounted(() => {
+const retData = ref()
+
+function QImageUrl(name: string) {
+  return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/article/${name}`)
+}
+onMounted(async () => {
   ui.uiRightVisible = false
+
+  const ret = await getPhotoGalleryPaging(0, '', 1, 10, 'id', true, false)
+  retData.value = ret.data.data
+  console.log('[ retData.value ]-12', retData.value)
 })
 </script>
 <template>
   <div>
     <div class="photo">
       <div class="photo-title">
-        <p>原来是你呀 / 总计 20</p>
+        <p>图册 / 总计 20</p>
+      </div>
+      <div class="photo-tab flex cursor-pointer bg-emerald-50">
+        <div px-1 py-2px text-base font-medium m-1 class="hover:text-blue-500" @click="identity = true">创建</div>
+        <div px-1 py-2px text-base font-medium m-1 class="hover:text-blue-500">加密</div>
       </div>
 
       <!-- <div class="bigbox">
@@ -53,74 +69,30 @@ onMounted(() => {
         </div>
       </div> -->
       <div class="grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-3">
-        <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/e8f1120dfaca01d78bc90f0c71e3736e.jpeg" alt="test" />
-
+        <div v-for="(item, index) in retData" :key="index" class="photo-img">
+          <img v-lazy="QImageUrl(item.img)" alt="" />
           <div class="photo-text">
-            <div>From 少年 To Jenny</div>
-            <div>信件 / 永远值得等待</div>
-            <div>2021-01-11</div>
-          </div>
-        </div>
-        <div class="photo-img">
-          <div class="photo-text">
-            <div>From 少年 To Jenny</div>
-            <div>信件 / 永远年轻，永远热泪盈眶</div>
-            <div>2021-04-27</div>
-          </div>
-        </div>
-        <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/751e475835955b416fc54978ca751bfb.jpeg" />
-
-          <div class="photo-text">
-            <div>From 少年 To Jenny</div>
-            <div>信件 / Test</div>
-            <div>2021-01-11</div>
-          </div>
-        </div>
-        <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/1fa79317d3ec1b08758e6318f8776c38.jpeg" />
-
-          <div class="photo-text">
-            <div>From 少年 To Jenny</div>
-            <div>信件 / Test</div>
-            <div>2021-01-11</div>
-          </div>
-        </div>
-        <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/73483879c650cc43d96038ce40938b0d.jpeg" alt="" />
-
-          <div class="photo-text">
-            <div>From 少年 To Jenny</div>
-            <div>信件 / Test</div>
-            <div>2021-01-11</div>
-          </div>
-        </div>
-        <div class="photo-img">
-          <img src="https://cdn.share-man.com/mailImage/d4646c86453cd634d067a784b1890f66.jpeg" alt="" />
-
-          <div class="photo-text">
-            <div>From 少年 To Jenny</div>
-            <div>信件 / 永远年轻，永远热泪盈眶</div>
-            <div>2021-01-11</div>
+            <div class="hover:text-blue-500">{{ item.name }}</div>
+            <div>{{ item.type.name }} / {{ item.tag }}</div>
+            <div>{{ item.timeCreate }}</div>
           </div>
         </div>
       </div>
     </div>
+
+    <PhotoAdd></PhotoAdd>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .photo {
-  @apply rounded-md shadow bg-white;
+  @apply rounded shadow bg-white h-[92vh];
 
   .photo-title {
     @include underline;
 
-    margin-bottom: 2px;
-
     p {
-      @apply font-medium m-2 text-lg py-2 px-1;
+      @apply font-medium m-1 text-lg py-2 px-1;
     }
   }
 
@@ -129,7 +101,7 @@ onMounted(() => {
     @apply rounded-md shadow;
 
     img {
-      @apply w-full h-200px;
+      @apply w-full h-198px;
 
       padding: 5px;
       border: 1px solid #ddd;
@@ -143,7 +115,7 @@ onMounted(() => {
     .photo-text {
       color: #5f6c7b;
 
-      @apply cursor-pointer text-base p-2 px-4 hover: text-red-300;
+      @apply cursor-pointer py-2 px-10px;
     }
   }
 }

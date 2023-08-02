@@ -75,22 +75,22 @@ export function useAxios() {
     )
     // 响应拦截器
     service.interceptors.response.use(
-      (res: AxiosResponse<any>) => {
+      (ret: AxiosResponse<any>) => {
         //挂载 不然报错
         ui = useUiSetStore()
         // 在请求结束后，移除本次请求
-        removePending(res)
+        removePending(ret)
         // 请求之后关闭loading
         if (loadings.loading) {
           setTimeout(function () {
             ui.uiLoading = false
-          }, 500)
+          }, 300)
         }
         // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
-        if (res.status === 200 || res.data.statusCode === 200) {
-          return Promise.resolve(res)
+        if (ret.status === 200 || ret.data.statusCode === 200) {
+          return Promise.resolve(ret)
         }
-        return Promise.reject(res)
+        return Promise.reject(ret)
       },
       error => {
         ui.uiLoading = false
@@ -175,18 +175,18 @@ export function useAxios() {
       }
     )
     service.interceptors.response.use(
-      (res: AxiosResponse<any>) => {
+      (ret: AxiosResponse<any>) => {
         ui = useUiSetStore()
-        removePending(res)
+        removePending(ret)
         if (loading.loading) {
           setTimeout(function () {
             ui.uiLoading = false
           }, 500)
         }
-        if (res.status === 200 || res.data.statusCode === 200) {
-          return Promise.resolve(res)
+        if (ret.status === 200 || ret.data.statusCode === 200) {
+          return Promise.resolve(ret)
         }
-        return Promise.reject(res)
+        return Promise.reject(ret)
       },
       error => {
         ui.uiLoading = false

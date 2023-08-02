@@ -79,6 +79,7 @@ declare module '@vue/runtime-core' {
     NavAdd: typeof import('./src/views/admin/navigation/NavAdd.vue')['default']
     NavEdit: typeof import('./src/views/admin/navigation/NavEdit.vue')['default']
     NavigationTable: typeof import('./src/views/admin/navigation/NavigationTable.vue')['default']
+    PhotoAdd: typeof import('./src/views/page/photo/components/PhotoAdd.vue')['default']
     PhotoIndex: typeof import('./src/views/page/photo/PhotoIndex.vue')['default']
     RightSidebarAnnunciate: typeof import('./src/components/sidebar/RightSidebarAnnunciate.vue')['default']
     RightSidebarFastSend: typeof import('./src/components/sidebar/RightSidebarFastSend.vue')['default']

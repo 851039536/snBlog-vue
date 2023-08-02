@@ -8,13 +8,13 @@ const sendTitle = ref('')
 onBeforeUpdate(() => {
   switch (ident.value) {
     case 1:
-      sendTitle.value = '发公告'
+      sendTitle.value = '发动态'
       break
     case 2:
       sendTitle.value = '发文章'
       break
     case 3:
-      sendTitle.value = '发动态'
+      sendTitle.value = '发日记'
       break
     case 4:
       sendTitle.value = '发片段'

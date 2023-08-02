@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { NavigationApi } from '@/api'
-import { aData } from '@/views/admin/data'
 import { INav } from '@/api/data/InterData'
 import { useRouter } from '@hooks/useRouter'
 const { winUrl } = useRouter()
@@ -12,7 +11,6 @@ const paging = reactive({
   name: '',
   current: 1
 })
-const sum = ref(0)
 const rnavTable = ref([] as INav[])
 const rNav = ref([] as INav[])
 async function currentchange(val: number) {
@@ -33,7 +31,6 @@ async function clkApi(name: string) {
 onMounted(async () => {
   await GetApi('文档')
   //读取侧边栏信息
-  sum.value = await (await NavigationApi.getCount(0, aData.NULL, true)).data
   rnavTable.value = await (await NavigationApi.getNavTypeAll(true)).data
 })
 </script>
@@ -43,22 +40,19 @@ onMounted(async () => {
     <div class="favorite">
       <div class="relative flex">
         <div class="favorite-onecategory">
-          <div class="onecategory-name">列表</div>
           <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
-            <div class="flex rounded p-1px text-base m-1 hover:bg-blue-500">
+            <div class="flex rounded px-2px py-1px m-1 hover:bg-blue-500">
               <span @click="clkApi(r.title)">{{ r.title }}</span>
             </div>
           </div>
         </div>
-
-        <div class="footer-content">{{ sum }}篇</div>
       </div>
       <div class="favorite-content">
-        <div v-for="r in rNav" :key="r.id" class="fa-cont-list">
+        <div v-for="ret in rNav" :key="ret.id" class="fa-cont-list">
           <div class="fa-cont-list1">
-            <div @click="winUrl(r.url)">{{ r.title }}</div>
+            <div @click="winUrl(ret.url)">{{ ret.title }}</div>
           </div>
-          <div class="fa-cont-list2">{{ r.describe }}</div>
+          <div class="fa-cont-list2">{{ ret.describe }}</div>
         </div>
       </div>
 
@@ -77,7 +71,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .favorite {
-  @apply bg-white mt-1;
+  @apply bg-gray-100 mt-1;
 
   .favorite-content {
     @apply h-full w-full;
@@ -85,7 +79,7 @@ onMounted(async () => {
 
     .fa-cont-list {
       @apply m-auto mt-8px w-[92%] h-96px;
-      @apply rounded  bg-red-50 shadow-sm;
+      @apply rounded  bg-red-200 shadow-sm;
 
       .fa-cont-list1 {
         @apply bg-white mt-1  pl-1;
@@ -111,10 +105,5 @@ onMounted(async () => {
 
 .favorite-onecategory {
   @apply bg-white rounded cursor-pointer;
-
-  .onecategory-name {
-    @apply text-base px-2;
-    @apply font-semibold;
-  }
 }
 </style>

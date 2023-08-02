@@ -16,6 +16,7 @@ async function createPost() {
     if (ret.data.statusCode === 200) {
       message.success(ret.data.message)
       ui.rightSidebarFastSend = false
+      userTalk.text = ''
       location.reload()
     } else message.error(ret.data.message)
   }

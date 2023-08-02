@@ -35,7 +35,7 @@ onMounted(async () => {
       <right-sidebar-search></right-sidebar-search>
       <right-sidebar-annunciate></right-sidebar-annunciate>
       <right-sidebar-re-sou></right-sidebar-re-sou>
-      <right-sidebar-tool :r-data="navData" name="常用工具"></right-sidebar-tool>
+      <right-sidebar-tool :r-data="navData"></right-sidebar-tool>
       <right-sidebar-statistics
         title="站点统计"
         sum-title="文章数量"
