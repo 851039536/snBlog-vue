@@ -1,7 +1,8 @@
 import { AxiosRequestConfig } from 'axios'
 import { useAxios } from '@hooksHttp/axios/useAxios'
-const { myAxios } = useAxios()
-export function useApi() {
+
+const { thirdAxios } = useAxios()
+export function useThirdRequest() {
   /**
    * 定义常用枚举
    */
@@ -17,14 +18,14 @@ export function useApi() {
   }
 
   /**
-   * get请求
-   * @param url 请求 path
-   * @param params  请求 query params
-   * @param loading  请求 loading
+   * get request
+   * @param url request path
+   * @param params  request query params
+   * @param loading  request loading
    * @returns  Promise
    */
-  async function get(url: string, params?: any, loading?: boolean) {
-    const ret = await myAxios(
+  function get(url: string, params?: any, loading?: boolean) {
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.GET,
@@ -37,23 +38,22 @@ export function useApi() {
         loading
       }
     )
-    return ret
   }
 
-  function gets<T = any>(config: AxiosRequestConfig) {
-    return myAxios(config, false, true).then(res => {
+  function gets<T = any>(config: AxiosRequestConfig): Promise<T> {
+    return thirdAxios(config, false, true).then(res => {
       return (res.data.data || res.data) as T
     })
   }
 
   /**
-   * post 请求
-   * @param url 请求 path
-   * @param data 请求 body params
+   * post request
+   * @param url request path
+   * @param data request body params
    * @param loading
    */
   function add(url: string, data: any, loading?: boolean) {
-    return myAxios(
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.ADD,
@@ -69,7 +69,7 @@ export function useApi() {
   }
 
   function pot(url: string, loading?: boolean) {
-    return myAxios(
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.POST
@@ -84,13 +84,13 @@ export function useApi() {
   }
 
   /**
-   * put 请求
-   * @param url 请求 path
-   * @param data 请求 body params
+   * put request
+   * @param url request path
+   * @param data request body params
    * @param loading
    */
   function update(url: string, data: any, loading?: boolean) {
-    return myAxios(
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.UPDATE,
@@ -106,7 +106,7 @@ export function useApi() {
   }
 
   function upPost(url: string, data: any, loading?: boolean) {
-    return myAxios(
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.upPost,
@@ -128,7 +128,7 @@ export function useApi() {
    * @param loading
    */
   function del(url: string, data?: any, loading?: boolean) {
-    return myAxios(
+    return thirdAxios(
       {
         url,
         method: REQUEST_METHODS.DELETE,

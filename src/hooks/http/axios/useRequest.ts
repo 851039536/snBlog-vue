@@ -1,8 +1,7 @@
 import { AxiosRequestConfig } from 'axios'
 import { useAxios } from '@hooksHttp/axios/useAxios'
-
-const { thirdAxios } = useAxios()
-export function useThirdApi() {
+const { myAxios } = useAxios()
+export function useRequest() {
   /**
    * 定义常用枚举
    */
@@ -18,14 +17,14 @@ export function useThirdApi() {
   }
 
   /**
-   * get request
-   * @param url request path
-   * @param params  request query params
-   * @param loading  request loading
+   * get请求
+   * @param url 请求 path
+   * @param params  请求 query params
+   * @param loading  请求 loading
    * @returns  Promise
    */
-  function get(url: string, params?: any, loading?: boolean) {
-    return thirdAxios(
+  async function get(url: string, params?: any, loading?: boolean) {
+    const ret = await myAxios(
       {
         url,
         method: REQUEST_METHODS.GET,
@@ -38,22 +37,23 @@ export function useThirdApi() {
         loading
       }
     )
+    return ret
   }
 
-  function gets<T = any>(config: AxiosRequestConfig): Promise<T> {
-    return thirdAxios(config, false, true).then(res => {
+  function gets<T = any>(config: AxiosRequestConfig) {
+    return myAxios(config, false, true).then(res => {
       return (res.data.data || res.data) as T
     })
   }
 
   /**
-   * post request
-   * @param url request path
-   * @param data request body params
+   * post 请求
+   * @param url 请求 path
+   * @param data 请求 body params
    * @param loading
    */
   function add(url: string, data: any, loading?: boolean) {
-    return thirdAxios(
+    return myAxios(
       {
         url,
         method: REQUEST_METHODS.ADD,
@@ -69,7 +69,7 @@ export function useThirdApi() {
   }
 
   function pot(url: string, loading?: boolean) {
-    return thirdAxios(
+    return myAxios(
       {
         url,
         method: REQUEST_METHODS.POST
@@ -84,13 +84,13 @@ export function useThirdApi() {
   }
 
   /**
-   * put request
-   * @param url request path
-   * @param data request body params
+   * put 请求
+   * @param url 请求 path
+   * @param data 请求 body params
    * @param loading
    */
   function update(url: string, data: any, loading?: boolean) {
-    return thirdAxios(
+    return myAxios(
       {
         url,
         method: REQUEST_METHODS.UPDATE,
@@ -106,7 +106,7 @@ export function useThirdApi() {
   }
 
   function upPost(url: string, data: any, loading?: boolean) {
-    return thirdAxios(
+    return myAxios(
       {
         url,
         method: REQUEST_METHODS.upPost,
@@ -128,7 +128,7 @@ export function useThirdApi() {
    * @param loading
    */
   function del(url: string, data?: any, loading?: boolean) {
-    return thirdAxios(
+    return myAxios(
       {
         url,
         method: REQUEST_METHODS.DELETE,

@@ -9,22 +9,22 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axiosRetry from 'axios-retry'
 const { removeUserStorage } = useUserInfo()
 const { storage } = useStorage()
-let uiSettings: any = ref()
+let ui: any = ref()
 
 export function useAxios() {
   // 全局配置
-  const myAxiosUrl = import.meta.env.VITE_API_DOMAIN
-  axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
+  // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
   // 允许跨域
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
   function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<AxiosResponse> {
-    const { timeout = 8000 } = customOptions
+    // const { timeout = 8000 } = customOptions
     const service = axios.create({
       // 设置统一的请求前缀
-      baseURL: myAxiosUrl,
+      baseURL: import.meta.env.VITE_API_DOMAIN,
       withCredentials: false,
       // 设置统一的超时时长
-      timeout
+      timeout: 10 * 1000, // 请求超时时间
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     })
 
     // 是否开启/取消重复请求
@@ -48,6 +48,7 @@ export function useAxios() {
     })
 
     // 请求拦截器
+    // 这里可以设置token: config!.headers!.Authorization = token
     service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         const { method, data, headers } = config
@@ -65,7 +66,7 @@ export function useAxios() {
         }
         // 请求之前发送loading
         if (loading.loading) {
-          uiSettings.uiLoadingVisible = true
+          ui.uiLoadingVisible = true
         }
         return config
       },
@@ -78,13 +79,13 @@ export function useAxios() {
     service.interceptors.response.use(
       (res: AxiosResponse<any>) => {
         //挂载 不然报错
-        uiSettings = useUiSetStore()
+        ui = useUiSetStore()
         // 在请求结束后，移除本次请求
         removePending(res)
         // 请求之后关闭loading
         if (loading.loading) {
           setTimeout(function () {
-            uiSettings.uiLoadingVisible = false
+            ui.uiLoadingVisible = false
           }, 500)
         }
         // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
@@ -94,7 +95,7 @@ export function useAxios() {
         return Promise.reject(res)
       },
       error => {
-        uiSettings.uiLoadingVisible = false
+        ui.uiLoadingVisible = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',
@@ -131,12 +132,12 @@ export function useAxios() {
   // 调用第三方
   // const thirdAxiosUrl = import.meta.env.VITE_API_DOMAIN
   function thirdAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<AxiosResponse> {
-    const { timeout = 8000 } = customOptions
     const service = axios.create({
       // 设置统一的请求前缀
       // baseURL: 'https://tenapi.cn/',
       withCredentials: false, // 默认的
-      timeout // 设置统一的超时时长
+      timeout: 10 * 1000, // 请求超时时间
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' }
     })
 
     const cancel = {
@@ -165,7 +166,7 @@ export function useAxios() {
           config.data = qs.parse(data)
         }
         if (loading.loading) {
-          uiSettings.uiLoadingVisible = true
+          ui.uiLoadingVisible = true
         }
         return config
       },
@@ -176,11 +177,11 @@ export function useAxios() {
     )
     service.interceptors.response.use(
       (res: AxiosResponse<any>) => {
-        uiSettings = useUiSetStore()
+        ui = useUiSetStore()
         removePending(res)
         if (loading.loading) {
           setTimeout(function () {
-            uiSettings.uiLoadingVisible = false
+            ui.uiLoadingVisible = false
           }, 500)
         }
         if (res.status === 200 || res.data.statusCode === 200) {
@@ -189,7 +190,7 @@ export function useAxios() {
         return Promise.reject(res)
       },
       error => {
-        uiSettings.uiLoadingVisible = false
+        ui.uiLoadingVisible = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',

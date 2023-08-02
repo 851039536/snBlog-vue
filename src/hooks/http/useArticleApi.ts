@@ -1,7 +1,7 @@
-import { useApi } from '@hooksHttp/axios/useApi'
+import { useRequest } from '@/hooks/http/axios/useRequest'
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
-const { get } = useApi()
+const { get } = useRequest()
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
