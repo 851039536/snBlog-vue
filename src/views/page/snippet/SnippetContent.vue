@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import { SnippetApi, SnippetTagApi, SnippetTypeApi } from '@/api'
-import { snippetForm } from '@/api/data/model/SnippetMode'
 import { useUserInfo } from '@hooks/useUserInfo'
+import { snippet } from '@hooksHttp/model/Snippet'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { useSnippetApi } from '@hooksHttp/index'
+import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooksHttp/index'
 
-const { getSnippetSum, getSnippetContains, getSnippetById } = useSnippetApi()
+const { getSnippetSum, getSnippetContains, getSnippetById, getStrSum } = useSnippetApi()
+const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
+const { getAll: getSnippetTagAll } = useSnippetTagApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
@@ -102,7 +103,7 @@ const RadioFun = async () => {
   switch (radioValue.value) {
     case 'tag':
       rName.value = ''
-      rSnippetTag.value = await (await SnippetTagApi.getAll(true)).data
+      rSnippetTag.value = await (await getSnippetTagAll(true)).data
       if (rSnippetTag.value === null) {
         rSnippetTag.value = []
       } else {
@@ -112,7 +113,7 @@ const RadioFun = async () => {
 
     case 'type':
       rName.value = ''
-      rSnippetTag.value = await (await SnippetTypeApi.getAll(true)).data
+      rSnippetTag.value = await (await getSnippetTypeAll(true)).data
       if (rSnippetTag.value === null) {
         rSnippetTag.value = []
       } else {
@@ -128,7 +129,6 @@ const RadioFun = async () => {
 /**
  * @description: 通过id获取snippet
  * @param {number} id 主键id
- * @return {*}
  */
 const cliEdit = async (id: number, uid: number): Promise<any> => {
   if (!isUserId(uid)) {
@@ -136,21 +136,18 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     return
   }
   const ret = await getSnippetById(id, false)
-  snippetForm.id = ret.data.id
-  snippetForm.name = ret.data.name
-  snippetForm.text = ret.data.text
-  snippetForm.tagId = ret.data.tag.id
-  snippetForm.typeId = ret.data.type.id
-  snippetForm.userId = ret.data.user.id
-  snippetForm.labelId = ret.data.label.id
+  snippet.id = ret.data.id
+  snippet.name = ret.data.name
+  snippet.text = ret.data.text
+  snippet.tagId = ret.data.tag.id
+  snippet.typeId = ret.data.type.id
+  snippet.userId = ret.data.user.id
+  snippet.typeSubId = ret.data.typeSub.id
   visible.value = true
 }
 
 onMounted(async () => {
-  const [strSum, sums] = await axios.all([
-    await SnippetApi.getStrSum(0, 'null', true),
-    await getSnippetSum(0, '', true)
-  ])
+  const [strSum, sums] = await axios.all([await getStrSum(0, 'null', true), await getSnippetSum(0, '', true)])
   rCharSum.value = strSum.data
   sum.value = sums.data
 })
@@ -199,7 +196,7 @@ onMounted(async () => {
             class="mx-6 text-2xl font-medium"></custom-highlight-text>
           <div class="ml-5 pt-1 text-base">
             <span ml-1 mr-1>{{ item.type.name }}</span>
-            <span mr-1>{{ item.label.name }}</span>
+            <span mr-1>{{ item.typeSub.name }}</span>
             <span mr-1>{{ item.tag.name }}</span>
             <span mr-1>{{ item.user.nickname }}</span>
             <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>

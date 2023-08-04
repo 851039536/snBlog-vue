@@ -3,4 +3,16 @@ import { useSnippetApi } from '@hooksHttp/useSnippetApi'
 import { useThirdPartyApi } from '@hooksHttp/useThirdPartyApi'
 import { useArticleApi } from '@hooksHttp/useArticleApi'
 import { usePhotoGalleryApi } from '@hooksHttp/usePhotoGalleryApi '
-export { useUserTalkApi, useSnippetApi, useThirdPartyApi, useArticleApi, usePhotoGalleryApi }
+import { useSnippetTypeApi } from '@hooksHttp/useSnippetTypeApi'
+import { useSnippetTagApi } from '@hooksHttp/useSnippetTagApi'
+import { useSnippetTypeSubApi } from '@hooksHttp/useSnippetTypeSubApi'
+export {
+  useUserTalkApi,
+  useSnippetApi,
+  useThirdPartyApi,
+  useArticleApi,
+  usePhotoGalleryApi,
+  useSnippetTypeApi,
+  useSnippetTagApi,
+  useSnippetTypeSubApi
+}

@@ -1,6 +1,6 @@
-export const snippetTagData: any = ref([])
-export const snippetTypeData: any = ref([])
-export const snippetLabelData: any = ref([])
+export const snippetTag: any = ref([])
+export const snippetType: any = ref([])
+export const snippetTypeSub: any = ref([])
 
 const columns: any = [
   {
@@ -29,7 +29,7 @@ const columns: any = [
   },
   {
     title: '子类别',
-    dataIndex: 'label',
+    dataIndex: 'typeSub',
     align: 'center',
     width: 60
   },

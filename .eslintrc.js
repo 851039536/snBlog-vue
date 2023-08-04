@@ -31,7 +31,7 @@ module.exports = {
     sourceType: 'module', // 设置为 "script" (默认)或"module"（如果你的代码是 ECMAScript 模块)
     ecmaFeature: {
       // 想使用额外的语言特性
-      jsx: false, // 启用jsx
+      jsx: true, // 启用jsx
       globalReturn: true, // 在全局作用域下使用return语句
       impliedStrict: true, // 启用全局strict mode
       experimentalObjectRestSpread: false

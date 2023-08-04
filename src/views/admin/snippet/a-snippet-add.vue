@@ -1,17 +1,22 @@
 <script lang="ts" setup>
-import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
-import { snippetForm } from '@/api/data/model/SnippetMode'
+import { SnippetApi } from '@/api'
+import { snippet } from '@hooksHttp/model/Snippet'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { snippetLabelData, snippetTagData, snippetTypeData } from './data'
+import { snippetTypeSub, snippetTag, snippetType } from './data'
+import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
+
+const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
+const { getAll: getSnippetTagAll } = useSnippetTagApi()
+const { getAll: getSnippetTypeSubAll } = useSnippetTypeSubApi()
 const reload: any = inject('reload')
 
 const { getUserId } = useUserInfo()
 const add = debounce(async () => {
-  snippetForm.userId = getUserId()
-  const ret = await SnippetApi.add(snippetForm)
+  snippet.userId = getUserId() as number
+  const ret = await SnippetApi.add(snippet)
   if (ret.data.statusCode === 200) {
     reload()
     return message.success(ret.data.message)
@@ -22,39 +27,39 @@ const add = debounce(async () => {
 }, 1000)
 onMounted(async () => {
   const [tag, type, label] = await axios.all([
-    await SnippetTagApi.getAll(false),
-    await SnippetTypeApi.getAll(false),
-    await SnippetLabelApi.getAll(false)
+    await getSnippetTagAll(false),
+    await getSnippetTypeAll(false),
+    await getSnippetTypeSubAll(false)
   ])
-  snippetTagData.value = tag.data.data
-  snippetTypeData.value = type.data.data
-  snippetLabelData.value = label.data.data
+  snippetTag.value = tag.data.data
+  snippetType.value = type.data.data
+  snippetTypeSub.value = label.data.data
 })
 </script>
 <template>
   <div class="h750px w1300px">
     <div class="mb-1">
-      <input v-model="snippetForm.name" />
+      <input v-model="snippet.name" />
     </div>
     <div class="mb-1 text-base">
-      <select v-model="snippetForm.typeId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="ret in snippetTypeData" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+      <select v-model="snippet.typeId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="ret in snippetType" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
           {{ ret.name }}
         </option>
       </select>
-      <select v-model="snippetForm.labelId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="ret in snippetLabelData" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+      <select v-model="snippet.typeSubId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="ret in snippetTypeSub" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
           {{ ret.name }}
         </option>
       </select>
-      <select v-model="snippetForm.tagId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="ret in snippetTagData" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+      <select v-model="snippet.tagId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="ret in snippetTag" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
           {{ ret.name }}
         </option>
       </select>
     </div>
     <div class="mt-2">
-      <MdEditor v-model="snippetForm.text" preview-theme="github" code-theme="github" />
+      <MdEditor v-model="snippet.text" preview-theme="github" code-theme="github" />
     </div>
     <div class="mx-1 mt-1">
       <a-button @click="add">新增</a-button>

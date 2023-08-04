@@ -48,6 +48,15 @@ export function useSnippetApi() {
   }
 
   /**
+   * 内容统计
+   * @param identity 所有:0|分类:1|标签:2|用户账号:3
+   * @param name 查询参数
+   * @param cache 缓存
+   */
+  function getStrSum(identity: number, name: string, cache: boolean): Promise<any> {
+    return get(`/snippet/strSum?identity=${identity}&name=${name}&cache=${cache}`, false)
+  }
+  /**
    * @description: 分页查询
    * @param {number} identity 所有:0|分类:1|标签:2|用户:3|子标签:4
    * @param {number} type 查询参数(多条件以','分割)
@@ -79,6 +88,7 @@ export function useSnippetApi() {
     getSnippetSum,
     getSnippetContains,
     getSnippetPaging,
+    getStrSum,
     getSnippetById
   }
 }

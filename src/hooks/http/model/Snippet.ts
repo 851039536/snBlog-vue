@@ -3,16 +3,19 @@ export interface Snippet {
   name: string
   text: string
   typeId: number
+  typeSubId: number
   tagId: number
   userId: number
-  labelId: number
-  label?: Label
-  tag?: Label
-  type?: Label
+  snippetVersionId: number
+  timeCreate: string
+  timeUpdate: string
+  tag?: Tag
+  type?: Tag
+  typeSub?: Tag
   user?: User
 }
 
-export interface Label {
+export interface Tag {
   id: number
   name: string
 }
@@ -30,15 +33,19 @@ export const snippet: Snippet = reactive({
   typeId: 1,
   tagId: 1,
   userId: 0,
-  labelId: 0
+  typeSubId: 7,
+  snippetVersionId: 0,
+  timeCreate: '2021-11-13T03:18:19.821Z',
+  timeUpdate: '2021-11-13T03:18:19.821Z'
 })
 
 export const removeSnippet = () => {
   snippet.id = 0
   snippet.name = ''
   snippet.text = ''
-  snippet.typeId = 0
+  snippet.typeId = 1
   snippet.userId = 0
-  snippet.tagId = 0
-  snippet.labelId = 0
+  snippet.tagId = 1
+  snippet.typeSubId = 7
+  snippet.snippetVersionId = 0
 }

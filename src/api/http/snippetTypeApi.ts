@@ -18,10 +18,6 @@ export class SnippetTypeApi {
     return get(`/snippetType/sum?cache=${cache}`)
   }
 
-  static getAll(cache: boolean) {
-    return get(`/snippetType/all?cache=${cache}`)
-  }
-
   /**
    * @description: 主键查询
    * @param {number} id

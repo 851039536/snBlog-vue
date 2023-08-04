@@ -7,11 +7,7 @@ export class SnippetLabelApi {
    * @param {boolean} cache 缓存
    */
   static getSum(cache: boolean) {
-    return get(`/snippetLabel/sum?cache=${cache}`)
-  }
-
-  static getAll(cache: boolean) {
-    return get(`/snippetLabel/all?cache=${cache}`)
+    return get(`/snippetTypeSub/sum?cache=${cache}`)
   }
 
   /**
@@ -20,7 +16,7 @@ export class SnippetLabelApi {
    * @param {boolean} cache
    */
   static getById(id: number, cache: boolean) {
-    return get(`/snippetLabel/byId?id=${id}&cache=${cache}`, false)
+    return get(`/snippetTypeSub/byId?id=${id}&cache=${cache}`, false)
   }
 
   /**
@@ -32,7 +28,7 @@ export class SnippetLabelApi {
    */
   static async getPaging(pageIndex: number, pagesize: number, isDesc: boolean, cache: boolean) {
     const res = await get(
-      `/snippetLabel/paging?pageIndex=${pageIndex}&pageSize=${pagesize}&isDesc=${isDesc}&cache=${cache}`,
+      `/snippetTypeSub/paging?pageIndex=${pageIndex}&pageSize=${pagesize}&isDesc=${isDesc}&cache=${cache}`,
       false
     )
     return res
@@ -43,7 +39,7 @@ export class SnippetLabelApi {
    * @param {any} entity
    */
   static add(entity: ISnippetLabel) {
-    return add('/snippetLabel/add', entity)
+    return add('/snippetTypeSub/add', entity)
   }
 
   /**
@@ -51,7 +47,7 @@ export class SnippetLabelApi {
    * @param {IntArticle} entity
    */
   static update(entity: ISnippetLabel) {
-    return update(`/snippetLabel/update`, entity)
+    return update(`/snippetTypeSub/update`, entity)
   }
 
   /**
@@ -59,6 +55,6 @@ export class SnippetLabelApi {
    * @param {number} id
    */
   static del(id: number) {
-    return del(`/snippetLabel/del?id=${id}`, false)
+    return del(`/snippetTypeSub/del?id=${id}`, false)
   }
 }

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { removeSnippet } from '@/hooks/http/model/Snippet'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { ident } from './data'
 const ui = useUiSetStore()
@@ -17,6 +18,7 @@ onBeforeUpdate(() => {
       sendTitle.value = '发日记'
       break
     case 4:
+      removeSnippet()
       sendTitle.value = '发片段'
       break
     default:

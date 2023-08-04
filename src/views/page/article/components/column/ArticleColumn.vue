@@ -4,10 +4,10 @@ import { ArticleApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 import { useArticleApi } from '@hooksHttp/index'
+import { articleData, paging } from './index'
 const { getArticleSum } = useArticleApi()
 const { routerById } = useRouter()
 const ui = useUiSetStore()
-import { articleData, paging } from '.'
 
 async function QSum(identity: number, type: string) {
   const count = await getArticleSum(identity, type)
@@ -54,7 +54,6 @@ const onScroll = (name: string) => {
   })
 }
 </script>
-
 <template>
   <section ref="aRef" class="article-columns" @scroll="scrollEvent">
     <article-column-top></article-column-top>

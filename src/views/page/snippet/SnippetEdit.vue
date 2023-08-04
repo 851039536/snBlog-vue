@@ -1,18 +1,21 @@
 <script lang="ts" setup>
-import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
-import { snippetForm } from '@/api/data/model/SnippetMode'
+import { SnippetApi, SnippetLabelApi } from '@/api'
+import { snippet } from '@hooksHttp/model/Snippet'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
+import { useSnippetTagApi, useSnippetTypeApi } from '@/hooks/http'
 
+const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
+const { getAll: getSnippetTagAll } = useSnippetTagApi()
 const theme = useThemeSetting()
 const rSnippetTag: any = ref([])
 const rSnippetType: any = ref([])
 const rSnippetLabel: any = ref([])
 
 const update = debounce(async () => {
-  await SnippetApi.update(snippetForm).then(r => {
+  await SnippetApi.update(snippet).then(r => {
     if (r.data) {
       message.success('更新成功')
     } else {
@@ -21,35 +24,35 @@ const update = debounce(async () => {
   })
 }, 1000)
 onMounted(async () => {
-  rSnippetTag.value = await (await SnippetTagApi.getAll(true)).data.data
-  rSnippetType.value = await (await SnippetTypeApi.getAll(true)).data.data
+  rSnippetTag.value = await (await getSnippetTagAll(true)).data.data
+  rSnippetType.value = await (await getSnippetTypeAll(true)).data.data
   rSnippetLabel.value = await (await SnippetLabelApi.getAll(true)).data.data
 })
 </script>
 <template>
   <div class="h720px w1100px">
     <div class="mb-1">
-      <input v-model="snippetForm.name" />
+      <input v-model="snippet.name" />
     </div>
     <div class="mb-1">
-      <select v-model="snippetForm.typeId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+      <select v-model="snippet.typeId" class="mr-2 h-32px w-30 border-gray-400 rounded">
         <option v-for="res in rSnippetType" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>
-      <select v-model="snippetForm.labelId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+      <select v-model="snippet.typeSubId" class="mr-2 h-32px w-30 border-gray-400 rounded">
         <option v-for="res in rSnippetLabel" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>
-      <select v-model="snippetForm.tagId" class="mr-2 h-32px w-30 border-gray-400 rounded">
+      <select v-model="snippet.tagId" class="mr-2 h-32px w-30 border-gray-400 rounded">
         <option v-for="res in rSnippetTag" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>
     </div>
     <div class="mt-2">
-      <MdEditor v-model="snippetForm.text" :preview-theme="theme.previewTheme" :code-theme="theme.codeTheme" />
+      <MdEditor v-model="snippet.text" :preview-theme="theme.previewTheme" :code-theme="theme.codeTheme" />
     </div>
     <div class="mx-1 mt-1">
       <a-button @click="update">更新</a-button>

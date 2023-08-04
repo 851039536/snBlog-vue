@@ -1,5 +1,4 @@
 import { get, add, update, del } from '@/api/http/funApi'
-import { ISnippet } from '../data/model/SnippetMode'
 
 export class SnippetApi {
   /**
@@ -25,17 +24,17 @@ export class SnippetApi {
 
   /**
    * @description: 新增数据
-   * @param {any} entity
+   * @param entity
    */
-  static add(entity: ISnippet) {
+  static add(entity: any) {
     return add('/snippet/add', entity, true)
   }
 
   /**
    * @description: 更新数据
-   * @param {ISnippet} entity
+   * @param {Snippet} entity
    */
-  static update(entity: ISnippet) {
+  static update(entity: any) {
     return update(`/snippet/edit`, entity)
   }
 

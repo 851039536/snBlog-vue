@@ -2,14 +2,18 @@
 import { ident } from './data'
 import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
 import { MdEditor } from 'md-editor-v3'
-import { SnippetApi, SnippetLabelApi, SnippetTagApi, SnippetTypeApi } from '@/api'
+import { SnippetApi } from '@/api'
 import { debounce } from '@/utils/dethrottle'
 import { useUserInfo } from '@/hooks/useUserInfo'
 import { message } from 'ant-design-vue'
+import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 const { getUserId } = useUserInfo()
+const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
+const { getAll: getSnippetTagAll } = useSnippetTagApi()
+const { getCondition: getSnippetTypeSubCondition } = useSnippetTypeSubApi()
 const snippetTag: any = ref([])
 const snippetType: any = ref([])
-const snippetLabel: any = ref([])
+const snippetTypeSub: any = ref([])
 
 const createPost = debounce(async () => {
   snippet.userId = getUserId() as number
@@ -22,15 +26,21 @@ const createPost = debounce(async () => {
     message.warning(ret.data.message)
   }
 }, 800)
+
+const getTypeSub = async () => {
+  const ret = await getSnippetTypeSubCondition(snippet.typeId)
+  snippetTypeSub.value = ret.data.data
+}
+
+const typeEvent = async (id: number) => {
+  snippet.typeId = id
+  console.log('[ snippet.typeId ]-37', snippet.typeId)
+  await getTypeSub()
+}
 onMounted(async () => {
-  const [tag, type, label] = await axios.all([
-    await SnippetTagApi.getAll(false),
-    await SnippetTypeApi.getAll(false),
-    await SnippetLabelApi.getAll(false)
-  ])
+  const [tag, type] = await axios.all([await getSnippetTagAll(false), await getSnippetTypeAll(false)])
   snippetTag.value = tag.data.data
   snippetType.value = type.data.data
-  snippetLabel.value = label.data.data
 })
 </script>
 <template>
@@ -40,14 +50,14 @@ onMounted(async () => {
         <div class="mb-1">
           <input v-model="snippet.name" class="h-full w-250px rounded py-1 text-base outline-none" />
 
-          <select v-model="snippet.typeId" class="mx-2 h-32px w-30 rounded">
+          <select v-model="snippet.typeId" class="mx-2 h-32px w-30 rounded" @change="getTypeSub()">
             <option v-for="ret in snippetType" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
               {{ ret.name }}
             </option>
           </select>
 
-          <select v-model="snippet.labelId" class="mr-2 h-32px w-30 rounded">
-            <option v-for="ret in snippetLabel" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
+          <select v-model="snippet.typeSubId" class="mr-2 h-32px w-30 rounded">
+            <option v-for="ret in snippetTypeSub" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
               {{ ret.name }}
             </option>
           </select>
@@ -61,14 +71,14 @@ onMounted(async () => {
           <div class="my-6px flex flex-wrap rounded shadow">
             <div class="p-1 pl-7px">分类:</div>
             <div v-for="ret in snippetType" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
-              <span @click="snippet.typeId = ret.id">{{ ret.name }}</span>
+              <span @click="typeEvent(ret.id)">{{ ret.name }}</span>
             </div>
           </div>
 
           <div class="my-6px flex flex-wrap rounded shadow">
-            <div class="p-1 pl-7px">label:</div>
-            <div v-for="ret in snippetLabel" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
-              <span @click="snippet.labelId = ret.id">{{ ret.name }}</span>
+            <div class="p-1 pl-7px">子分类:</div>
+            <div v-for="ret in snippetTypeSub" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+              <span @click="snippet.typeSubId = ret.id">{{ ret.name }}</span>
             </div>
           </div>
 
