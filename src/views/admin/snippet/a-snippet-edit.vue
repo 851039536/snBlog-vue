@@ -86,18 +86,13 @@ onMounted(async () => {
         @click="tagEvent()">
         更新
       </span>
-      <select v-if="tagName === '待分配'" v-model="tagName" class="mr-2 h-32px w-30 border-gray-400 rounded">
+      <select v-model="tagName" class="mr-2 h-32px w-30 border-gray-400 rounded">
         <option v-for="ret in snippetTag" :key="ret.id" :value="ret.name" class="rounded bg-blue-50">
           {{ ret.name }}
         </option>
       </select>
-      <input v-if="tagName === '待分配'" v-model="tagName" />
-      <span
-        v-if="tagName === '待分配'"
-        class="mx-1 cursor-pointer rounded bg-blue-400 p-1 px-2 shadow"
-        @click="updates()">
-        新增,待删除
-      </span>
+      <input v-model="tagName" />
+      <span class="mx-1 cursor-pointer rounded bg-blue-400 p-1 px-2 shadow" @click="updates()">新增,待删除</span>
     </div>
     <div class="my-6px flex flex-wrap rounded shadow">
       <div class="p-1 pl-7px font-semibold">子分类:</div>
