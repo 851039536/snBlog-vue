@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, snippetTypeSub, snippetTag, snippetType } from './data'
+import { columns, snippetTypeSub, snippetTag, snippetType, tagName } from './data'
 import { SnippetApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
@@ -8,8 +8,8 @@ import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
 import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
-const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
-const { getAll: getSnippetTagAll } = useSnippetTagApi()
+const { getAll: snippetTypeAll } = useSnippetTypeApi()
+const { getAll: snippetTagAll, getById: snippetTagById } = useSnippetTagApi()
 // const { getCondition: getSnippetTypeSubCondition } = useSnippetTypeSubApi()
 
 const { getSnippetContains, getSnippetPaging, getSnippetById } = useSnippetApi()
@@ -27,7 +27,6 @@ const addVisible = ref(false)
 const edVisible = ref(false)
 const snippetData: any = ref([])
 const tagStr = ref<string>('ALL')
-const typeStr = ref<string>('ALL')
 const LabelStr = ref<string>('ALL')
 
 const edit = async (id: number) => {
@@ -40,6 +39,9 @@ const edit = async (id: number) => {
     snippet.userId = r.data.user.id
     snippet.typeSubId = r.data.typeSub.id
   })
+
+  const name = await snippetTagById(snippet.tagId)
+  tagName.value = name.data.data.name
   edVisible.value = true
 }
 
@@ -73,7 +75,7 @@ async function search(name: any) {
 
 onMounted(async () => {
   await QPaging(0, tagStr.value)
-  const [tag, type] = await axios.all([await getSnippetTagAll(false), await getSnippetTypeAll(false)])
+  const [tag, type] = await axios.all([await snippetTagAll(false), await snippetTypeAll(false)])
   snippetTag.value = tag.data.data
   snippetType.value = type.data.data
   navName.name = '代码片段'
@@ -88,12 +90,6 @@ onMounted(async () => {
       <a-select v-model:value="tagStr" style="width: 120px" @change="QSearch(tagStr, 2)">
         <a-select-option value="ALL">ALL</a-select-option>
         <a-select-option v-for="r in snippetTag" :key="r.id" :value="r.name">
-          {{ r.name }}
-        </a-select-option>
-      </a-select>
-      <a-select v-model:value="typeStr" style="width: 120px" @change="QSearch(typeStr, 1)">
-        <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in snippetType" :key="r.id" :value="r.name">
           {{ r.name }}
         </a-select-option>
       </a-select>
@@ -112,6 +108,13 @@ onMounted(async () => {
         :not-found-content="null"
         @search="search"></a-select>
     </a-space>
+
+    <div class="my-6px flex flex-wrap rounded shadow">
+      <div class="p-1 pl-7px font-semibold">分类:</div>
+      <div v-for="ret in snippetType" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+        <span @click="QSearch(ret.name, 1)">{{ ret.name }}</span>
+      </div>
+    </div>
   </div>
   <a-table
     size="small"

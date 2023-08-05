@@ -1,17 +1,19 @@
 <script lang="ts" setup>
 import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
+import { snippetTag as tagMo } from '@hooksHttp/model/SnippetTag'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { MdEditor } from 'md-editor-v3'
-import { snippetTypeSub, snippetTag, snippetType } from './data'
+import { snippetTypeSub, snippetType, tagName, snippetTag } from './data'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useSnippetTypeSubApi, useSnippetTagApi } from '@/hooks/http'
 const { getUserId } = useUserInfo()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
-const { getById: snippetTagId } = useSnippetTagApi()
+const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
 const update = debounce(async () => {
+  console.log('[  ]-17', snippet)
   snippet.userId = getUserId() as number
   const ret = await SnippetApi.update(snippet)
   if (ret.data) {
@@ -24,25 +26,41 @@ const getTypeSub = async () => {
   const ret = await snippetTypeSubCondition(snippet.typeId)
   snippetTypeSub.value = ret.data.data
 }
-const tagName = ref('')
 
-const tagEvent = async (id: number) => {
-  snippet.tagId = id
-  const ret = await snippetTagId(id)
-  tagName.value = ret.data.data.name
+const tagEvent = async () => {
+  //更新标签内容
+  tagMo.id = snippet.tagId
+  tagMo.name = tagName.value
+  const ret = await upTag(tagMo)
+  console.log('[ ret ]-35', ret)
+  if (ret.data.statusCode === 200) message.success(ret.data.message)
 }
 
+const tagAccumulate = (name: string) => {
+  if (tagName.value !== '') {
+    tagName.value += `,${name}`
+    return
+  }
+  tagName.value += `${name}`
+}
+
+//更新完记得删除
+const updates = debounce(async () => {
+  tagMo.name = tagName.value
+  await addTag(tagMo)
+  const tid = await getByTitle(tagMo.name)
+
+  snippet.tagId = tid.data.data.id
+  snippet.userId = getUserId() as number
+  const ret = await SnippetApi.update(snippet)
+  if (ret.data) {
+    return message.success(aData.SUCCESS)
+  }
+  message.warning(aData.FAIL)
+}, 1000)
 onMounted(async () => {
   await getTypeSub()
 })
-
-// onUpdated(async () => {
-//   const [tag, type] = await axios.all([await getSnippetTagAll(false), await getSnippetTypeAll(false)])
-//   snippetTag.value = tag.data.data
-//   snippetType.value = type.data.data
-
-//   await getTypeSub()
-// })
 </script>
 <template>
   <div class="h750px w1300px">
@@ -60,7 +78,26 @@ onMounted(async () => {
           {{ ret.name }}
         </option>
       </select>
-      <input v-model="tagName" class="mr-2 h-32px w-100 border-gray-400 rounded" />
+
+      <input v-if="tagName !== '待分配'" v-model="tagName" class="mr-2 h-32px w-100 border-gray-400 rounded" />
+      <span
+        v-if="tagName !== '待分配'"
+        class="mr-1 cursor-pointer rounded bg-blue-400 p-1 px-2 shadow"
+        @click="tagEvent()">
+        更新
+      </span>
+      <select v-if="tagName === '待分配'" v-model="tagName" class="mr-2 h-32px w-30 border-gray-400 rounded">
+        <option v-for="ret in snippetTag" :key="ret.id" :value="ret.name" class="rounded bg-blue-50">
+          {{ ret.name }}
+        </option>
+      </select>
+      <input v-if="tagName === '待分配'" v-model="tagName" />
+      <span
+        v-if="tagName === '待分配'"
+        class="mx-1 cursor-pointer rounded bg-blue-400 p-1 px-2 shadow"
+        @click="updates()">
+        新增,待删除
+      </span>
     </div>
     <div class="my-6px flex flex-wrap rounded shadow">
       <div class="p-1 pl-7px font-semibold">子分类:</div>
@@ -70,9 +107,16 @@ onMounted(async () => {
     </div>
 
     <div class="my-6px flex flex-wrap rounded shadow">
-      <div class="p-1 pl-7px font-semibold">标签:</div>
-      <div v-for="ret in snippetTag" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
-        <span @click="tagEvent(ret.id)">{{ ret.name }}</span>
+      <div class="p-1 pl-7px font-semibold">常用标签:</div>
+
+      <div class="cursor-pointer p-1 pl-7px">
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('测试')">测试</span>
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('插件')">插件</span>
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('DOM')">DOM</span>
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('格式')">格式</span>
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('监听')">监听</span>
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('响应式')">响应式</span>
+        <span class="pr-1 hover:text-blue-500" @click="tagAccumulate('缓存')">缓存</span>
       </div>
     </div>
 

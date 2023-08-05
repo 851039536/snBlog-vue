@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ident } from './data'
 import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
+import { snippetTag } from '@hooksHttp/model/SnippetTag'
 import { MdEditor } from 'md-editor-v3'
 import { SnippetApi } from '@/api'
 import { debounce } from '@/utils/dethrottle'
@@ -9,11 +10,11 @@ import { message } from 'ant-design-vue'
 import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 const { getUserId } = useUserInfo()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
-const { getAll: getSnippetTagAll } = useSnippetTagApi()
+const { adds: addTag, getByTitle: getTagTitle } = useSnippetTagApi()
 const { getCondition: getSnippetTypeSubCondition } = useSnippetTypeSubApi()
-const snippetTag: any = ref([])
 const snippetType: any = ref([])
 const snippetTypeSub: any = ref([])
+const tagName: any = ref()
 
 const createPost = debounce(async () => {
   snippet.userId = getUserId() as number
@@ -34,12 +35,19 @@ const getTypeSub = async () => {
 
 const typeEvent = async (id: number) => {
   snippet.typeId = id
-  console.log('[ snippet.typeId ]-37', snippet.typeId)
   await getTypeSub()
 }
+
+const tagEvent = async () => {
+  snippetTag.name = tagName.value
+  await addTag(snippetTag)
+
+  const ret = await getTagTitle(tagName.value)
+  console.log('[ ret ]-47', ret.data.data.id)
+  snippet.tagId = ret.data.data.id
+}
 onMounted(async () => {
-  const [tag, type] = await axios.all([await getSnippetTagAll(false), await getSnippetTypeAll(false)])
-  snippetTag.value = tag.data.data
+  const [type] = await axios.all([await getSnippetTypeAll(false)])
   snippetType.value = type.data.data
 })
 </script>
@@ -61,11 +69,9 @@ onMounted(async () => {
               {{ ret.name }}
             </option>
           </select>
-          <select v-model="snippet.tagId" class="mr-2 h-32px w-30 rounded">
-            <option v-for="ret in snippetTag" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
-              {{ ret.name }}
-            </option>
-          </select>
+
+          <input v-model="tagName" class="mr-2 h-32px w-100 border-gray-400 rounded" />
+          <span class="cursor-pointer rounded bg-blue-400 p-1 px-2 shadow" @click="tagEvent()">ADD</span>
         </div>
         <div class="mb-1 text-base">
           <div class="my-6px flex flex-wrap rounded shadow">
@@ -84,8 +90,9 @@ onMounted(async () => {
 
           <div class="my-6px flex flex-wrap rounded shadow">
             <div class="p-1 pl-7px">标签:</div>
-            <div v-for="ret in snippetTag" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
-              <span @click="snippet.tagId = ret.id">{{ ret.name }}</span>
+            <div class="cursor-pointer p-1 pl-7px">
+              <span class="pr-1 hover:text-blue-500" @click="tagName = '测试'">测试</span>
+              <span class="pr-1 hover:text-blue-500" @click="tagName = '插件'">插件</span>
             </div>
           </div>
         </div>

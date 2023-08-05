@@ -51,14 +51,6 @@ export class SnippetTagApi {
   }
 
   /**
-   * @description: 更新数据
-   * @param {IntArticle} entity
-   */
-  static update(entity: ISnippetTag) {
-    return update(`/snippetTag/update`, entity)
-  }
-
-  /**
    * @description: 删除
    * @param {number} id
    */
