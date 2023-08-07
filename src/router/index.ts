@@ -8,33 +8,33 @@ declare module 'vue-router' {
     hidden?: boolean | string | number
   }
 }
+
+// 用对象字面量来存储懒加载组件的路径和对应的组件函数
+const asyncComponents = {
+  home: () => {
+    return import('@/components/MyHome.vue')
+  },
+  article: () => {
+    return import('@/views/page/article/Index.vue')
+  },
+  column: () => {
+    return import('@/views/page/article/components/column/ArticleColumn.vue')
+  }
+}
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'homes',
-    meta: {
-      keepAlive: true
-    },
-    component: () => {
-      return import('@/components/MyHome.vue')
-    }
-  },
-  {
-    path: '/home',
     name: 'home',
     meta: {
       keepAlive: true
     },
-    component: () => {
-      return import('@/components/MyHome.vue')
-    }
+    component: asyncComponents.home
   },
   {
     path: '/article',
     name: 'article',
-    component: () => {
-      return import('@/views/page/article/Index.vue')
-    },
+    component: asyncComponents.article,
     children: [
       // 添加子路由
       {
@@ -43,9 +43,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           keepAlive: true
         },
-        component: () => {
-          return import('@/views/page/article/components/column/ArticleColumn.vue')
-        }
+        component: asyncComponents.column
       },
       {
         path: 'content',

@@ -13,7 +13,7 @@ export function usePhotoGalleryApi() {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  async function getPhotoGalleryPaging(
+  async function getPaging(
     identity = 0,
     type = 'null',
     pageIndex = 1,
@@ -31,12 +31,12 @@ export function usePhotoGalleryApi() {
     return ret
   }
 
-  function addPhotoGallery(params: any) {
+  function adds(params: any) {
     return add('/photoGallery/add', params)
   }
 
   return {
-    getPhotoGalleryPaging,
-    addPhotoGallery
+    getPaging,
+    adds
   }
 }

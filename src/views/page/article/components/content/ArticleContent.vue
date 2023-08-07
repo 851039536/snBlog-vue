@@ -2,7 +2,8 @@
 import { ArticleApi } from '@api/index'
 import { debounce } from '@/utils/dethrottle'
 import { article } from '@hooksHttp/model/Article'
-
+import { useArticleApi } from '@/hooks/http'
+const { getById: getArticleById } = useArticleApi()
 const ArticleContentMdModule = defineAsyncComponent(() => {
   return import('@views/page/article/components/content/ArticleContentMd.vue')
 })
@@ -26,7 +27,7 @@ async function upRead(data: any) {
   await ArticleApi.updatePortion(data, 'Read')
 }
 onMounted(async () => {
-  const data = await ArticleApi.getById(aid.id)
+  const data = await getArticleById(aid.id)
   const ret = data.data.data
   await upRead(ret)
   article.name = ret.name

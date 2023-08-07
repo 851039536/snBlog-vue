@@ -1,7 +1,8 @@
 export const snippetTag: any = ref([])
 export const snippetType: any = ref([])
 export const snippetTypeSub: any = ref([])
-
+export const addVisible = ref(false)
+export const edVisible = ref(false)
 export const tagName = ref('')
 
 const columns: any = [

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
+import { useArticleApi } from '@/hooks/http'
 import { rArticle } from '../../data'
 import { blog } from '../data'
+const { getById } = useArticleApi()
 
 /**
  * 选中后变色并且效果不消失
@@ -12,7 +13,7 @@ const getApi = async (id: number) => {
   emit('refresh', 123)
   sideIndex.value = id
 
-  const data = await ArticleApi.getById(id)
+  const data = await getById(id)
   blog.value = data.data.data.text
 }
 </script>

@@ -12,7 +12,7 @@ export function useSnippetApi() {
    * @param {number} id
    * @param {boolean} cache
    */
-  async function getSnippetById(id: number, cache: boolean) {
+  async function getById(id: number, cache: boolean) {
     const ret = await get(`/snippet/byid?id=${id}&cache=${cache}`, false)
     return ret
   }
@@ -22,7 +22,7 @@ export function useSnippetApi() {
    * @param {string} type 条件
    * @param {boolean} cache 缓存
    */
-  async function getSnippetSum(identity: number, type: string, cache: boolean) {
+  async function getSum(identity: number, type: string, cache: boolean) {
     const ret = await get(`${Api.name}sum?identity=${identity}&type=${type}&cache=${cache}`, false)
     return ret
   }
@@ -34,14 +34,7 @@ export function useSnippetApi() {
    * @param name 查询字段
    * @param cache 缓存
    */
-  async function getSnippetContains(
-    identity: number,
-    type: string,
-    name: string,
-    cache = true,
-    pageIndex = 1,
-    pageSize = 2
-  ) {
+  async function getContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
     const url = `${Api.name}contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=${pageIndex}&pageSize=${pageSize}`
     const ret = await get(url, false, false)
     return ret
@@ -66,7 +59,7 @@ export function useSnippetApi() {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  async function getSnippetPaging(
+  async function getPaging(
     identity: number,
     type: string | undefined,
     pageIndex: number,
@@ -85,10 +78,10 @@ export function useSnippetApi() {
   }
 
   return {
-    getSnippetSum,
-    getSnippetContains,
-    getSnippetPaging,
+    getSum,
+    getContains,
+    getPaging,
     getStrSum,
-    getSnippetById
+    getById
   }
 }

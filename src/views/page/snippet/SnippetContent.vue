@@ -7,15 +7,14 @@ import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooksHttp/index'
 
-const { getSnippetSum, getSnippetContains, getSnippetById, getStrSum } = useSnippetApi()
+const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { getAll: getSnippetTagAll } = useSnippetTagApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const id = 'preview-only'
-// JS
+
 import { ref, nextTick } from 'vue'
-// 创建节点
 const refScroll = ref()
 
 const onScroll = (type: any) => {
@@ -71,23 +70,19 @@ const GetSnippet = async () => {
 
   switch (radioValue.value) {
     case 'ALL':
-      rSnippet.value = await (await getSnippetContains(0, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'title':
-      rSnippet.value = await (await getSnippetContains(5, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await getContains(5, 'null', rName.value, false, 1, pageSize.value)).data
       break
     case 'type':
-      rSnippet.value = await (
-        await getSnippetContains(1, selectValue.value, rName.value, false, 1, pageSize.value)
-      ).data
+      rSnippet.value = await (await getContains(1, selectValue.value, rName.value, false, 1, pageSize.value)).data
       break
     case 'tag':
-      rSnippet.value = await (
-        await getSnippetContains(2, selectValue.value, rName.value, false, 1, pageSize.value)
-      ).data
+      rSnippet.value = await (await getContains(2, selectValue.value, rName.value, false, 1, pageSize.value)).data
       break
     case 'text':
-      rSnippet.value = await (await getSnippetContains(4, 'null', rName.value, false, 1, pageSize.value)).data
+      rSnippet.value = await (await getContains(4, 'null', rName.value, false, 1, pageSize.value)).data
       break
     default:
       return null
@@ -135,7 +130,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
-  const ret = await getSnippetById(id, false)
+  const ret = await getById(id, false)
   snippet.id = ret.data.id
   snippet.name = ret.data.name
   snippet.text = ret.data.text
@@ -147,7 +142,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
 }
 
 onMounted(async () => {
-  const [strSum, sums] = await axios.all([await getStrSum(0, 'null', true), await getSnippetSum(0, '', true)])
+  const [strSum, sums] = await axios.all([await getStrSum(0, 'null', true), await getSum(0, '', true)])
   rCharSum.value = strSum.data
   sum.value = sums.data
 })

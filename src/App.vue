@@ -33,13 +33,13 @@
 
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { useEventKey } from '@hooks/useEventKey'
+// import { useEventKey } from '@hooks/useEventKey'
 const ui = useUiSetStore()
-const { addKeydownCtrl_z } = useEventKey()
+// const { addKeydownCtrl_z } = useEventKey()
 
 onMounted(() => {
   // 注册全局的键盘事件监听器
-  addKeydownCtrl_z()
+  // addKeydownCtrl_z()
   ui.uiSearchVisible = false
 })
 </script>

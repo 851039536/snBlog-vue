@@ -37,5 +37,13 @@ export function useEventKey() {
     window.removeEventListener('keyup', funs)
   }
 
+  //一个组合式函数也可以挂靠在所属组件的生命周期上
+  onMounted(() => {
+    // 注册全局的键盘事件监听器
+    addKeydownCtrl_z()
+  })
+  onUnmounted(() => {
+    return removeKeydownCtrl_z()
+  })
   return { addKeydownCtrl_z, removeKeydownCtrl_z, addKeyup, removeKeyup }
 }

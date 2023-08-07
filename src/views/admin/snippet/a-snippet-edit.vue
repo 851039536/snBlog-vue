@@ -6,17 +6,20 @@ import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { MdEditor } from 'md-editor-v3'
-import { snippetTypeSub, snippetType, tagName, snippetTag } from './data'
+import { snippetTypeSub, snippetType, tagName, snippetTag, edVisible } from './data'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useSnippetTypeSubApi, useSnippetTagApi } from '@/hooks/http'
 const { getUserId } = useUserInfo()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
 const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
+
+const reload: any = inject('reload')
 const update = debounce(async () => {
-  console.log('[  ]-17', snippet)
   snippet.userId = getUserId() as number
   const ret = await SnippetApi.update(snippet)
   if (ret.data) {
+    edVisible.value = false
+    reload()
     return message.success(aData.SUCCESS)
   }
   message.warning(aData.FAIL)
@@ -32,7 +35,6 @@ const tagEvent = async () => {
   tagMo.id = snippet.tagId
   tagMo.name = tagName.value
   const ret = await upTag(tagMo)
-  console.log('[ ret ]-35', ret)
   if (ret.data.statusCode === 200) message.success(ret.data.message)
 }
 
@@ -93,6 +95,13 @@ onMounted(async () => {
       </select>
       <input v-model="tagName" />
       <span class="mx-1 cursor-pointer rounded bg-blue-400 p-1 px-2 shadow" @click="updates()">新增,待删除</span>
+    </div>
+
+    <div class="my-6px flex flex-wrap rounded shadow">
+      <div class="p-1 pl-7px font-semibold">分类:</div>
+      <div v-for="ret in snippetType" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+        <span @click=";(snippet.typeId = ret.id), getTypeSub()">{{ ret.name }}</span>
+      </div>
     </div>
     <div class="my-6px flex flex-wrap rounded shadow">
       <div class="p-1 pl-7px font-semibold">子分类:</div>

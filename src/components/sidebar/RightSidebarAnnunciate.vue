@@ -4,9 +4,9 @@ import { useUserInfo } from '@/hooks/useUserInfo'
 
 const talk: any = ref([])
 const { getUserName } = useUserInfo()
-const { getUserTalkPaging } = useUserTalkApi()
+const { getPaging } = useUserTalkApi()
 onMounted(async () => {
-  const name = await getUserTalkPaging(1, getUserName(), 1, 1, 'data', true, false)
+  const name = await getPaging(1, getUserName(), 1, 1, 'data', true, false)
   talk.value = name.data.data[0]
 })
 </script>

@@ -30,7 +30,6 @@ const onScroll3 = (type: number) => {
 }
 const side = ref()
 const onGetCatalog = (list: any) => {
-  // console.log('[ state.catalogList = list; ]-28', list)
   side.value = list
 }
 </script>
@@ -76,7 +75,7 @@ const onGetCatalog = (list: any) => {
 }
 
 .btn {
-  @apply right-75 bottom-1 cursor-pointer z-1;
+  @apply right-5 bottom-1 cursor-pointer z-1;
 
   button {
     @apply bg-white border-none px-3 mr-1px py-1;

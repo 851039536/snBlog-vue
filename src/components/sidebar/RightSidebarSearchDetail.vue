@@ -4,7 +4,7 @@ import { useRouter } from '@hooks/useRouter'
 
 import { Article } from '@/hooks/http/model/Article'
 import { useArticleApi } from '@hooksHttp/index'
-const { getArticleContains } = useArticleApi()
+const { getContains } = useArticleApi()
 const { winUrl } = useRouter()
 const article = ref([] as Article[])
 //自定义函数，父组件可以触发
@@ -12,7 +12,7 @@ async function search() {
   if (searchName.value === '') {
     return
   }
-  const ret = await getArticleContains(0, 'null', searchName.value)
+  const ret = await getContains(0, 'null', searchName.value)
   article.value = ret.data.data
 }
 </script>

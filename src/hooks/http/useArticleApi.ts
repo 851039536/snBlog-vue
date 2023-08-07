@@ -17,7 +17,7 @@ export function useArticleApi() {
    * @param {string} type 条件
    * @param {boolean} cache 缓存
    */
-  async function getArticleSum(identity = 0, type = 'null', cache = true) {
+  async function getSum(identity = 0, type = 'null', cache = true) {
     const url = await get(`${api.sum}identity=${identity}&type=${type}&cache=${cache}`, false)
     return url
   }
@@ -29,14 +29,23 @@ export function useArticleApi() {
    * @param name 查询字段
    * @param cache 缓存
    */
-  async function getArticleContains(identity = 0, type = 'null', name = '', cache = true) {
+  async function getContains(identity = 0, type = 'null', name = '', cache = true) {
     const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, true)
     await momentTimeList(data.data)
     return data
   }
 
+  /**
+   * @description: 主键查询
+   * @param {number} id
+   * @param {boolean} cache
+   */
+  function getById(id: number, cache = false) {
+    return get(`${api.bid}id=${id}&cache=${cache}`, false, true)
+  }
   return {
-    getArticleSum,
-    getArticleContains
+    getSum,
+    getContains,
+    getById
   }
 }

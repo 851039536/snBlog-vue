@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-import { SnippetApi, SnippetLabelApi } from '@/api'
+import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
 import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { useSnippetTagApi, useSnippetTypeApi } from '@/hooks/http'
+import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 
-const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
-const { getAll: getSnippetTagAll } = useSnippetTagApi()
+const { getAll: snippetTypeAll } = useSnippetTypeApi()
+const { getAll: snippetTagAll } = useSnippetTagApi()
+const { getAll: snippetTypeSubAll } = useSnippetTypeSubApi()
 const theme = useThemeSetting()
 const rSnippetTag: any = ref([])
 const rSnippetType: any = ref([])
-const rSnippetLabel: any = ref([])
+const rSnippetTypeSub: any = ref([])
 
 const update = debounce(async () => {
   await SnippetApi.update(snippet).then(r => {
@@ -24,9 +25,9 @@ const update = debounce(async () => {
   })
 }, 1000)
 onMounted(async () => {
-  rSnippetTag.value = await (await getSnippetTagAll(true)).data.data
-  rSnippetType.value = await (await getSnippetTypeAll(true)).data.data
-  rSnippetLabel.value = await (await SnippetLabelApi.getAll(true)).data.data
+  rSnippetTag.value = await (await snippetTagAll(true)).data.data
+  rSnippetType.value = await (await snippetTypeAll(true)).data.data
+  rSnippetTypeSub.value = await (await snippetTypeSubAll(true)).data.data
 })
 </script>
 <template>
@@ -41,7 +42,7 @@ onMounted(async () => {
         </option>
       </select>
       <select v-model="snippet.typeSubId" class="mr-2 h-32px w-30 border-gray-400 rounded">
-        <option v-for="res in rSnippetLabel" :key="res.id" :value="res.id" class="rounded bg-blue-50">
+        <option v-for="res in rSnippetTypeSub" :key="res.id" :value="res.id" class="rounded bg-blue-50">
           {{ res.name }}
         </option>
       </select>

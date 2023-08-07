@@ -13,7 +13,7 @@ export function useUserTalkApi() {
    * @param {boolean} isDesc 排序
    * @param {boolean} cache 缓存
    */
-  async function getUserTalkPaging(
+  async function getPaging(
     identity = 0,
     type = 'null',
     pageIndex = 1,
@@ -31,12 +31,12 @@ export function useUserTalkApi() {
     return ret
   }
 
-  function addUserTalk(params: any) {
+  function adds(params: any) {
     return add('/userTalk/add', params)
   }
 
   return {
-    getUserTalkPaging,
-    addUserTalk
+    getPaging,
+    addUserTalk: adds
   }
 }

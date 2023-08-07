@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { columns, snippetTypeSub, snippetTag, snippetType, tagName } from './data'
+import { columns, snippetTypeSub, snippetTag, snippetType, tagName, addVisible, edVisible } from './data'
 import { SnippetApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
 import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
-import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi } from '@hooksHttp/index'
+import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
 const { getAll: snippetTagAll, getById: snippetTagById } = useSnippetTagApi()
-// const { getCondition: getSnippetTypeSubCondition } = useSnippetTypeSubApi()
+const { getAll: snippetSub } = useSnippetTypeSubApi()
 
-const { getSnippetContains, getSnippetPaging, getSnippetById } = useSnippetApi()
+const { getContains: snippetContains, getPaging: snippetPaging, getById: getSnippetById } = useSnippetApi()
 const reload: any = inject('reload')
 const del = async (data: any) => {
   const res = await SnippetApi.del(data.id)
@@ -23,11 +23,9 @@ const del = async (data: any) => {
   }
   message.success(aData.FAIL)
 }
-const addVisible = ref(false)
-const edVisible = ref(false)
+
 const snippetData: any = ref([])
 const tagStr = ref<string>('ALL')
-const LabelStr = ref<string>('ALL')
 
 const edit = async (id: number) => {
   await getSnippetById(id, false).then(r => {
@@ -56,7 +54,7 @@ const add = () => {
  * @param {number} name 查询参数(多条件以','分割)
  */
 const QPaging = async (identity: number, name: string) => {
-  const ret = await getSnippetPaging(identity, name, 1, 9000, 'id', true, false)
+  const ret = await snippetPaging(identity, name, 1, 9000, 'id', true, false)
   snippetData.value = ret.data
 }
 const QSearch = async (name: string, identity: number) => {
@@ -68,16 +66,21 @@ const QSearch = async (name: string, identity: number) => {
 }
 async function search(name: any) {
   if (name === '') return
-  const res = await getSnippetContains(0, aData.NULL, name, false, 1, 999)
+  const res = await snippetContains(0, aData.NULL, name, false, 1, 999)
   await momentTimeList(res)
   snippetData.value = res.data
 }
 
 onMounted(async () => {
   await QPaging(0, tagStr.value)
-  const [tag, type] = await axios.all([await snippetTagAll(false), await snippetTypeAll(false)])
+  const [tag, type, typeSubs] = await axios.all([
+    await snippetTagAll(false),
+    await snippetTypeAll(false),
+    await snippetSub(false)
+  ])
   snippetTag.value = tag.data.data
   snippetType.value = type.data.data
+  snippetTypeSub.value = typeSubs.data.data
   navName.name = '代码片段'
   navName.name2 = '片段列表'
 })
@@ -87,18 +90,7 @@ onMounted(async () => {
     <a-space>
       <a-button @click="add">添加</a-button>
       <a-button @click="reload()">刷新</a-button>
-      <a-select v-model:value="tagStr" style="width: 120px" @change="QSearch(tagStr, 2)">
-        <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in snippetTag" :key="r.id" :value="r.name">
-          {{ r.name }}
-        </a-select-option>
-      </a-select>
-      <a-select v-model:value="LabelStr" style="width: 120px" @change="QSearch(LabelStr, 4)">
-        <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in snippetTypeSub" :key="r.id" :value="r.name">
-          {{ r.name }}
-        </a-select-option>
-      </a-select>
+
       <a-select
         show-search
         placeholder="标题搜索"
@@ -115,7 +107,22 @@ onMounted(async () => {
         <span @click="QSearch(ret.name, 1)">{{ ret.name }}</span>
       </div>
     </div>
+
+    <div class="my-6px flex flex-wrap rounded shadow">
+      <div class="p-1 pl-7px font-semibold">子分类:</div>
+      <div v-for="ret in snippetTypeSub" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+        <span @click="QSearch(ret.name, 4)">{{ ret.name }}</span>
+      </div>
+    </div>
+
+    <!-- <div class="my-6px flex flex-wrap rounded shadow">
+      <div class="p-1 pl-7px font-semibold">标签:</div>
+      <div v-for="ret in snippetTag" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+        <span @click="QSearch(ret.name, 2)">{{ ret.name }}</span>
+      </div>
+    </div> -->
   </div>
+
   <a-table
     size="small"
     :bordered="true"

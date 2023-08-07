@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
+import { useArticleApi } from '@hooksHttp/useArticleApi'
 import { blog } from './components/data'
+const { getById } = useArticleApi()
 
 onMounted(async () => {
-  const [blogs] = await axios.all([ArticleApi.getById(392)])
+  const [blogs] = await axios.all([getById(392)])
   blog.value = blogs.data.data.text
 })
 </script>

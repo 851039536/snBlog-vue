@@ -5,12 +5,12 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 import { useArticleApi } from '@hooksHttp/index'
 import { articleData, paging } from './index'
-const { getArticleSum } = useArticleApi()
+const { getSum } = useArticleApi()
 const { routerById } = useRouter()
 const ui = useUiSetStore()
 
 async function QSum(identity: number, type: string) {
-  const count = await getArticleSum(identity, type)
+  const count = await getSum(identity, type)
   paging.count = count.data.data
 }
 async function QPaging() {

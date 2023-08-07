@@ -14,15 +14,6 @@ enum api {
 
 export class ArticleApi {
   /**
-   * @description: 主键查询
-   * @param {number} id
-   * @param {boolean} cache
-   */
-  static getById(id: number, cache = false) {
-    return get(`${api.bid}id=${id}&cache=${cache}`, false, true)
-  }
-
-  /**
    * 条件查询
    * @param identity 分类:1 || 标签:2
    * @param type 查询条件

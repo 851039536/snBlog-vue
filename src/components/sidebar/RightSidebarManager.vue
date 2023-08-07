@@ -6,8 +6,8 @@ import { ident } from './data'
 import { message } from 'ant-design-vue'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeyup, removeKeyup } = useEventKey()
-const { getArticleSum } = useArticleApi()
-const { getSnippetSum } = useSnippetApi()
+const { getSum: getArticleSum } = useArticleApi()
+const { getSum: getSnippetSum } = useSnippetApi()
 const { isUserLogin } = useUserInfo()
 const ui = useUiSetStore()
 const setVisible = (idents: number) => {

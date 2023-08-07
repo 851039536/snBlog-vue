@@ -2,7 +2,7 @@
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { usePhotoGalleryApi } from '@hooksHttp/index'
 import { identity } from '.'
-const { getPhotoGalleryPaging } = usePhotoGalleryApi()
+const { getPaging } = usePhotoGalleryApi()
 const ui = useUiSetStore()
 const retData = ref()
 
@@ -12,9 +12,8 @@ function QImageUrl(name: string) {
 onMounted(async () => {
   ui.uiRightVisible = false
 
-  const ret = await getPhotoGalleryPaging(0, '', 1, 10, 'id', true, false)
+  const ret = await getPaging(0, '', 1, 10, 'id', true, false)
   retData.value = ret.data.data
-  console.log('[ retData.value ]-12', retData.value)
 })
 </script>
 <template>
