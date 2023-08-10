@@ -15,8 +15,7 @@ const navData = ref([])
 onMounted(async () => {
   ui.uiSearchVisible = false
   const [navDatas, times, articleSums, textSums, readSums] = await axios.all([
-    // await NavigationApi.getTypeAsync(1, '常用工具', true),
-    await navigationPaging(1, '常用工具', 1, 100),
+    await navigationPaging(1, '常用工具', 1, 10),
     await ArticleApi.getPaging(0, 'null', 1, 1),
     await getSum(),
     await ArticleApi.getStrSum(0, 1),

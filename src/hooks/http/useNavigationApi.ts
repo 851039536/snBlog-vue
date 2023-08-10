@@ -30,7 +30,7 @@ export function useNavigationApi() {
    * @param cache 缓存
    */
   async function getContains(identity = 0, type = 'null', name = '', cache = true) {
-    const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, true)
+    const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, false)
     await momentTimeList(data.data)
     return data
   }
@@ -67,7 +67,7 @@ export function useNavigationApi() {
     const ret = await get(
       `/navigation/paging?identity=${identity}&type=${type}&pageIndex=${pageIndex}&pageSize=${pageSize}&ordering=id&isDesc=${isDesc}&cache=${cache}`,
       false,
-      true
+      false
     )
     await momentTimeList(ret.data)
 
