@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { NavigationApi } from '@/api'
-import { IPaging, INav } from '@/api/data/InterData'
+import { IPaging } from '@/api/data/InterData'
+import { useNavigationApi } from '@/hooks/http'
 import { useRouter } from '@hooks/useRouter'
 const { winUrl } = useRouter()
-
+const { getSum, getPaging } = useNavigationApi()
 const sum = ref(0)
 onMounted(async () => {
-  sum.value = await (await NavigationApi.getCount(1, '博客圈', true)).data
+  sum.value = await (await getSum(1, '博客圈', true)).data.data
 })
 
 const paging: IPaging = reactive({
@@ -15,30 +15,26 @@ const paging: IPaging = reactive({
   count: 0,
   current: 1
 })
-const navData = ref([] as INav[])
+const nData: any = ref([])
 const rTitle = ref('博客圈')
 async function currentchange(val: number) {
   paging.current = val
-  navData.value = await (
-    await NavigationApi.getPaging(1, rTitle.value, val, paging.pagesize as number, 'id', true, true)
-  ).data
+  nData.value = await (await getPaging(1, rTitle.value, val, paging.pagesize as number)).data.data
 }
 
 function QImageUrl(name: string) {
   return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/navigation/${name}`)
 }
 onMounted(async () => {
-  navData.value = await (
-    await NavigationApi.getPaging(1, rTitle.value, paging.page as number, paging.pagesize as number, 'id', true, true)
-  ).data
-  paging.count = await (await NavigationApi.getCount(1, rTitle.value, true)).data
+  nData.value = await (await getPaging(1, rTitle.value, paging.page as number, paging.pagesize as number)).data.data
+  paging.count = await (await getSum(1, rTitle.value, true)).data.data
 })
 </script>
 <template>
   <div class="blog-circles">
     <div class="mx-5 rounded bg-white p-1 text-base">博客:{{ sum }}</div>
     <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-      <div v-for="ret in navData" :key="ret.id" class="circles-1">
+      <div v-for="ret in nData" :key="ret.id" class="circles-1">
         <div class="circles-1-1">
           <img v-lazy="QImageUrl(ret.img)" alt="err" />
         </div>

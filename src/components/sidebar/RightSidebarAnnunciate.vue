@@ -17,20 +17,20 @@ onMounted(async () => {
       <span>一言</span>
     </div>
     <div class="desc-cont">{{ talk.text }}</div>
-    <div class="">
+    <div class="flex items-center text-cool-gray-600">
       <div i-typcn-heart-outline h4 w4></div>
+      <div class="mr-1">{{ talk.give }}</div>
       <div i-typcn-starburst-outline h4 w4></div>
+      <div class="mr-1">{{ talk.read }}</div>
       <div i-typcn-calendar h4 w4></div>
-      <span class="mr-1">{{ talk.give }}</span>
-      <span class="mr-1">{{ talk.give }}</span>
-      <span>{{ talk.timeCreate }}</span>
+      <div>{{ talk.timeCreate }}</div>
     </div>
   </c-right-sidebar-container>
 </template>
 
 <style lang="scss" scoped>
 .desc-cont {
-  @apply px-1 pb-4 break-words;
+  @apply px-1 pb-4 break-words mt-1;
   @apply bg-white text-sm text-cool-gray-600;
 }
 </style>

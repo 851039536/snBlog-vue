@@ -3,7 +3,6 @@ import { ArticleTagApi } from './http/ArticleTagApi'
 import { ArticleTypeApi } from './http/ArticleTypeApi'
 import { SetBlogApi } from './http/SetBlogApi'
 import { LeaveApi } from './http/LeaveApi'
-import { NavigationApi } from './http/NavigationApi'
 import { DiaryApi } from './http/DiaryApi'
 import { DiaryTypeApi } from './http/DiaryTypeApi'
 import { VideoApi } from './http/VideoApi'
@@ -22,7 +21,6 @@ export {
   ArticleTypeApi,
   SetBlogApi,
   LeaveApi,
-  NavigationApi,
   DiaryApi,
   DiaryTypeApi,
   VideoApi,

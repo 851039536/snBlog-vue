@@ -18,7 +18,6 @@ export class ArticleTagApi {
   }
 
   static getPaging(pageIndex = 1, pageSize = 6, isDesc = true, cache = false) {
-    //articleTag/paging?pageIndex=1&pageSize=10&isDesc=true&cache=false
     const url = `/articleTag/paging?pageIndex=${pageIndex}&pageSize=${pageSize}&isDesc=${isDesc}&cache=${cache}`
     return get(url, false, true)
   }

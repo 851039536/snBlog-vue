@@ -1,5 +1,4 @@
 import { get, add, update, del } from '@/api/http/funApi'
-import { ISnippetType } from '../data/model/SnippetTypeMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',
 //   SUM = '/api/v1/article/count/',
@@ -46,7 +45,7 @@ export class SnippetTypeApi {
    * @description: 新增数据
    * @param {any} entity
    */
-  static add(entity: ISnippetType) {
+  static add(entity: any) {
     return add('/snippetType/add', entity)
   }
 
@@ -54,7 +53,7 @@ export class SnippetTypeApi {
    * @description: 更新数据
    * @param {IntArticle} entity
    */
-  static update(entity: ISnippetType) {
+  static update(entity: any) {
     return update(`/snippetType/update`, entity)
   }
 

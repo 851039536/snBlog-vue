@@ -1,5 +1,4 @@
 import { get, add, del } from '@/api/http/funApi'
-import { ISnippetTag } from '../data/model/SnippetTagMode'
 // enum Api {
 //   FY = '/api/v1/article/fy/',
 //   SUM = '/api/v1/article/count/',
@@ -46,7 +45,7 @@ export class SnippetTagApi {
    * @description: 新增数据
    * @param {any} entity
    */
-  static add(entity: ISnippetTag) {
+  static add(entity: any) {
     return add('/snippetTag/add', entity)
   }
 

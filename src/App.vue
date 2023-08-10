@@ -10,12 +10,13 @@
       <div class="app-grail-middle">
         <router-view v-slot="{ Component }">
           <transition name="fade" :duration="500">
+            <!-- :key="$route.name"  -->
             <keep-alive>
-              <component :is="Component" v-if="$route.meta.keepAlive" :key="$route.name" />
+              <component :is="Component" v-if="$route.meta.keepAlive" />
             </keep-alive>
           </transition>
           <transition name="fade" :duration="500">
-            <component :is="Component" v-if="!$route.meta.keepAlive" :key="$route.name" />
+            <component :is="Component" v-if="!$route.meta.keepAlive" />
           </transition>
         </router-view>
       </div>
@@ -33,13 +34,8 @@
 
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
-// import { useEventKey } from '@hooks/useEventKey'
 const ui = useUiSetStore()
-// const { addKeydownCtrl_z } = useEventKey()
-
 onMounted(() => {
-  // 注册全局的键盘事件监听器
-  // addKeydownCtrl_z()
   ui.uiSearchVisible = false
 })
 </script>

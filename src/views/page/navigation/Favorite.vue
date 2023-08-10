@@ -1,37 +1,38 @@
 <script lang="ts" setup>
-import { NavigationApi } from '@/api'
-import { INav } from '@/api/data/InterData'
+import { useNavigationApi, useNavigationTypeApi } from '@/hooks/http'
 import { useRouter } from '@hooks/useRouter'
+import { Navigation } from '@hooks/http/model/Navigation'
 const { winUrl } = useRouter()
-
+const { getPaging: navigationPaging, getSum } = useNavigationApi()
+const { getAll: navigationType } = useNavigationTypeApi()
 const paging = reactive({
   page: 1,
-  pagesize: 28,
+  pagesize: 24,
   count: 0,
   name: '',
   current: 1
 })
-const rnavTable = ref([] as INav[])
-const rNav = ref([] as INav[])
+const rNavTable = ref([] as Navigation[])
+const rNav = ref([] as Navigation[])
 async function currentchange(val: number) {
   paging.current = val
-  rNav.value = await (await NavigationApi.getPaging(1, paging.name, val, paging.pagesize, 'id', true, true)).data
+  rNav.value = await (await navigationPaging(1, paging.name, val, paging.pagesize)).data.data
 }
 
 async function GetApi(name: string) {
   paging.current = 1
   paging.name = name
-  paging.count = await (await NavigationApi.getCount(1, paging.name, true)).data
-  rNav.value = await (await NavigationApi.getPaging(1, name, paging.page, paging.pagesize, 'id', true, true)).data
+  paging.count = await (await getSum(1, paging.name, true)).data.data
+  rNav.value = await (await navigationPaging(1, name, paging.page, paging.pagesize)).data.data
 }
 
 async function clkApi(name: string) {
   await GetApi(name)
 }
 onMounted(async () => {
-  await GetApi('文档')
+  await GetApi('常用工具')
   //读取侧边栏信息
-  rnavTable.value = await (await NavigationApi.getNavTypeAll(true)).data
+  rNavTable.value = await (await navigationType(true)).data.data
 })
 </script>
 
@@ -40,9 +41,9 @@ onMounted(async () => {
     <div class="favorite">
       <div class="relative flex">
         <div class="favorite-onecategory">
-          <div v-for="r in rnavTable" :key="r.id" class="inline-flex">
+          <div v-for="r in rNavTable" :key="r.id" class="inline-flex">
             <div class="flex rounded px-2px py-1px m-1 hover:bg-blue-500">
-              <span @click="clkApi(r.title)">{{ r.title }}</span>
+              <span @click="clkApi(r.name)">{{ r.name }}</span>
             </div>
           </div>
         </div>
@@ -50,7 +51,7 @@ onMounted(async () => {
       <div class="favorite-content">
         <div v-for="ret in rNav" :key="ret.id" class="fa-cont-list">
           <div class="fa-cont-list1">
-            <div @click="winUrl(ret.url)">{{ ret.title }}</div>
+            <div @click="winUrl(ret.url)">{{ ret.name }}</div>
           </div>
           <div class="fa-cont-list2">{{ ret.describe }}</div>
         </div>
@@ -78,18 +79,18 @@ onMounted(async () => {
     @apply grid grid-cols-4;
 
     .fa-cont-list {
-      @apply m-auto mt-8px w-[92%] h-96px;
-      @apply rounded  bg-red-200 shadow-sm;
+      @apply m-auto mt-8px w-[92%] h-120px;
+      @apply rounded shadow bg-white;
 
       .fa-cont-list1 {
-        @apply bg-white mt-1  pl-1;
+        @apply bg-blue-100  mb-1  p-1 rounded;
         @apply cursor-pointer text-lg  hover:text-blue-400;
         @include line-numbers(1);
       }
 
       .fa-cont-list2 {
         @apply mx-3 text-cool-gray-600;
-        @include line-numbers(2);
+        @include line-numbers(3);
       }
     }
   }
@@ -97,10 +98,6 @@ onMounted(async () => {
   .favorite-paging {
     @apply p-2 m-2 mb-50;
   }
-}
-
-.footer-content {
-  @apply text-sm  absolute top-1 right-1;
 }
 
 .favorite-onecategory {

@@ -5,14 +5,16 @@ import { rRouter } from '@/router/routerInfo'
 import uservg from '@assets/svg/components/user.svg?component'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
+import { useDataBaseApi } from '@/hooks/http/useDataBaseApi'
 const { routers, winUrl } = useRouter()
 const { removeUserStorage } = useUserInfo()
+const { isToken } = useDataBaseApi()
 const uiSettings = useUiSetStore()
 function clear() {
   removeUserStorage()
   location.reload()
 }
-const handleClick = (e: any) => {
+const pathClick = (e: any) => {
   switch (e.key) {
     case '1-1':
       routers(rRouter.articleTable)
@@ -52,9 +54,14 @@ function reload() {
 provide('reload', reload)
 
 onMounted(() => {
+  isToken()
   uiSettings.loginVisible = false
   uiSettings.uiHeadVisible = false
   uiSettings.uiLeftVisible = false
+})
+
+onUpdated(() => {
+  isToken()
 })
 </script>
 <template>
@@ -81,7 +88,7 @@ onMounted(() => {
       <a-layout>
         <div class="mt-1">
           <a-layout-sider breakpoint="xl" collapsed-width="0" width="230">
-            <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="handleClick">
+            <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="pathClick">
               <a-sub-menu key="sub1">
                 <template #title>
                   <div flex class="items-center">

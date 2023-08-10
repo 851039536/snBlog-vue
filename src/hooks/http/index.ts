@@ -6,6 +6,9 @@ import { usePhotoGalleryApi } from '@hooksHttp/usePhotoGalleryApi '
 import { useSnippetTypeApi } from '@hooksHttp/useSnippetTypeApi'
 import { useSnippetTagApi } from '@hooksHttp/useSnippetTagApi'
 import { useSnippetTypeSubApi } from '@hooksHttp/useSnippetTypeSubApi'
+import { useDataBaseApi } from '@hooksHttp/useDataBaseApi'
+import { useNavigationApi } from '@hooksHttp/useNavigationApi'
+import { useNavigationTypeApi } from '@hooksHttp/useNavigationTypeApi'
 export {
   useUserTalkApi,
   useSnippetApi,
@@ -14,5 +17,8 @@ export {
   usePhotoGalleryApi,
   useSnippetTypeApi,
   useSnippetTagApi,
-  useSnippetTypeSubApi
+  useSnippetTypeSubApi,
+  useNavigationApi,
+  useDataBaseApi,
+  useNavigationTypeApi
 }

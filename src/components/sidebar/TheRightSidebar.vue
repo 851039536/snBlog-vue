@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { ArticleApi, NavigationApi } from '@/api'
+import { ArticleApi } from '@/api'
 
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { useArticleApi } from '@hooksHttp/index'
+import { useArticleApi, useNavigationApi } from '@hooksHttp/index'
+const { getPaging: navigationPaging } = useNavigationApi()
 const { getSum } = useArticleApi()
 const ui = useUiSetStore()
 const time = ref()
@@ -14,14 +15,15 @@ const navData = ref([])
 onMounted(async () => {
   ui.uiSearchVisible = false
   const [navDatas, times, articleSums, textSums, readSums] = await axios.all([
-    await NavigationApi.getTypeAsync(1, '常用工具', true),
+    // await NavigationApi.getTypeAsync(1, '常用工具', true),
+    await navigationPaging(1, '常用工具', 1, 100),
     await ArticleApi.getPaging(0, 'null', 1, 1),
     await getSum(),
     await ArticleApi.getStrSum(0, 1),
     await ArticleApi.getStrSum(0, 2)
   ])
 
-  navData.value = navDatas.data // 右侧导航
+  navData.value = navDatas.data.data
   time.value = times.data.data[0].timeCreate // 本站已运行时间
   articleSum.value = String(articleSums.data.data) // 文章总数
   textSum.value = String(textSums.data.data) // 字数总数

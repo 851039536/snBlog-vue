@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { INav } from '@api/data/InterData'
 import { useRouter } from '@hooks/useRouter'
+import { Navigation } from '@hooksHttp/model/Navigation'
 const { winUrl } = useRouter()
 
 defineProps({
   rData: {
-    type: Array as () => INav[],
+    type: Array as () => Navigation[],
     required: true,
     default: () => {
       return []
@@ -21,7 +21,7 @@ defineProps({
     </div>
     <div v-for="r in rData" :key="r.id" class="inline-flex">
       <span class="tool-text" @click="winUrl(r.url)">
-        {{ r.title }}
+        {{ r.name }}
       </span>
     </div>
     <div class="absolute bottom-1 right-2 cursor-pointer hover:text-blue-500" i-typcn-arrow-right h6 w7></div>

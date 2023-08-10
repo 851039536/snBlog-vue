@@ -1,35 +1,33 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data'
-import { NavigationApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { navName } from '../utils/data'
 import { useRouter } from '@hooks/useRouter'
-import { useMomentTime } from '@hooks/useMomentTime'
-const { momentTimeList } = useMomentTime()
+import { useNavigationApi, useNavigationTypeApi } from '@hooks/http'
 const { routers, routerById, winUrl } = useRouter()
+const { getPaging, getContains, dels } = useNavigationApi()
+const { getAll } = useNavigationTypeApi()
 
 const reload: any = inject('reload')
 const del = async (data: any) => {
-  await NavigationApi.del(data.id).then(() => {
+  await dels(data.id).then(() => {
     message.success(aData.SUCCESS)
     reload()
   })
 }
 
 const rNav: any = ref([])
-const rnavType: any = ref([])
+const rNavType: any = ref([])
 const navStr = ref('ALL')
 
 const QPaging = async (identity = 0, name = '') => {
-  await NavigationApi.getPaging(identity, name, 1, 1000, 'id', true, false).then(async res => {
-    await momentTimeList(res)
-    rNav.value = res.data
-  })
+  const ret = await getPaging(identity, name, 1, 1000)
+  rNav.value = ret.data.data
 }
 
-async function SNav() {
+async function setNav() {
   if (navStr.value === aData.ALL) {
     await QPaging()
     return
@@ -38,25 +36,21 @@ async function SNav() {
 }
 
 async function search(name: any) {
-  if (name === '') {
-    return
-  }
+  if (name === '') return
+
   if (navStr.value === aData.ALL) {
-    await NavigationApi.getContains(0, aData.NULL, name).then(async res => {
-      await momentTimeList(res)
-      rNav.value = res.data
-    })
+    const ret = await getContains(0, aData.NULL, name)
+    rNav.value = ret.data.data
     return
   }
-  await NavigationApi.getContains(1, navStr.value, name).then(async res => {
-    await momentTimeList(res)
-    rNav.value = res.data
-  })
+  const ret = await getContains(1, navStr.value, name)
+  rNav.value = ret.data.data
 }
 
 onMounted(async () => {
   await QPaging()
-  rnavType.value = await (await NavigationApi.getNavTypeAll()).data
+  const ret = await getAll()
+  rNavType.value = ret.data.data
   navName.name = '内容分享'
   navName.name2 = '导航列表'
 })
@@ -66,10 +60,10 @@ onMounted(async () => {
     <a-space>
       <a-button @click="routers(rRouter.navAdd)">添加</a-button>
       <a-button @click="reload()">刷新</a-button>
-      <a-select v-model:value="navStr" style="width: 120px" @change="SNav()">
+      <a-select v-model:value="navStr" style="width: 120px" @change="setNav()">
         <a-select-option value="ALL">ALL</a-select-option>
-        <a-select-option v-for="r in rnavType" :key="r.id" :value="r.title">
-          {{ r.title }}
+        <a-select-option v-for="r in rNavType" :key="r.id" :value="r.name">
+          {{ r.name }}
         </a-select-option>
       </a-select>
       <a-select
@@ -98,7 +92,7 @@ onMounted(async () => {
         <a @click="winUrl(record.url)">前往</a>
       </template>
       <template v-if="column.dataIndex === 'type'">
-        <span>{{ record.type.title }}</span>
+        <span>{{ record.type.name }}</span>
       </template>
       <template v-if="column.dataIndex === 'edit'">
         <a @click="routerById('/Admin-index/NavEdit', record.id)">修改</a>
