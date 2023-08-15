@@ -29,6 +29,7 @@
     <base-login></base-login>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
+    <right-sidebar-search-detail></right-sidebar-search-detail>
   </div>
 </template>
 

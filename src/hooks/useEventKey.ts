@@ -18,10 +18,11 @@ export function useEventKey() {
       message.info('触发Ctrl+z')
     }
 
+    //message.info('触发Ctrl+f')
     if (e.ctrlKey && e.keyCode === 70) {
+      console.log('[  ]-24')
       // 阻止默认回车键行为
       e.preventDefault()
-      message.info('触发Ctrl+f')
       ui.searchArticle = true
       addKeyup(removeEscape)
     }

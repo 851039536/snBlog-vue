@@ -49,9 +49,9 @@ onMounted(async () => {
         :time="time"></right-sidebar-statistics>
     </c-right-sidebar>
 
-    <div id="search"></div>
+    <!-- <div id="search"></div>
     <c-modal-search @close-model="ui.searchArticle = false">
       <right-sidebar-search-detail></right-sidebar-search-detail>
-    </c-modal-search>
+    </c-modal-search> -->
   </div>
 </template>
