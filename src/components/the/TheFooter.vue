@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { useNavigationApi } from '@/hooks/http'
+import { useEventKey } from '@/hooks/useEventKey'
 import { useRouter } from '@/hooks/useRouter'
+const { addKeyup, removeKeyup } = useEventKey()
 
 const { getPaging: navigationPaging } = useNavigationApi()
 const { winUrl } = useRouter()
@@ -10,19 +12,24 @@ const nav = ref(false)
 const searchName = ref()
 const navTab = ref(['常用工具', '软件', '图标', '博客', '框架', 'gpt', '灵感'])
 
+const escape = (e: any) => {
+  if (e.key === 'Escape') {
+    removeKeyup(escape)
+    nav.value = false
+  }
+}
+
 function handleMouseOver() {
   // 鼠标进入<div>元素时执行的代码
-
   vi.value = true
   vi2.value = false
-  // 在这里可以设置相关的状态或执行其他操作
+  addKeyup(escape)
 }
 function handleMouseLeave() {
   // 鼠标离开<div>元素时执行的代码
 
   vi.value = false
   vi2.value = true
-  // 在这里可以设置相关的状态或执行其他操作
 }
 const nData: any = ref([])
 

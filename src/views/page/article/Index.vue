@@ -3,7 +3,7 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
 
 onMounted(() => {
-  ui.uiSearchVisible = false // 搜索框是否显示
+  ui.searchArticle = false // 搜索框是否显示
   ui.uiRightVisible = true
 })
 </script>

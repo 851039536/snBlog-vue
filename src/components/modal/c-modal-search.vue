@@ -4,7 +4,7 @@ const ui = useUiSetStore()
 const emit = defineEmits(['close-model'])
 </script>
 <template>
-  <teleport v-if="ui.uiSearchVisible" to="#search">
+  <teleport v-if="ui.searchArticle" to="#search">
     <div class="model-bg">
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>

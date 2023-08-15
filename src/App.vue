@@ -34,9 +34,12 @@
 
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useEventKey } from '@hooks/useEventKey'
+const { addKeydownCtrl } = useEventKey()
 const ui = useUiSetStore()
 onMounted(() => {
-  ui.uiSearchVisible = false
+  addKeydownCtrl()
+  ui.searchArticle = false
 })
 </script>
 

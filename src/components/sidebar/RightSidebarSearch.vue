@@ -8,17 +8,14 @@ const ui = useUiSetStore()
 const removeEscape = (e: any) => {
   if (e.key === 'Escape') {
     removeKeyup(removeEscape)
-    ui.uiSearchVisible = false
+    ui.searchArticle = false
     searchName.value = ''
   }
 }
 function onSearch() {
-  //searchName判断只执行一次
-  if (searchName.value.length >= 2) {
-    return
-  }
+  if (searchName.value.length >= 2) return
   addKeyup(removeEscape)
-  ui.uiSearchVisible = true
+  ui.searchArticle = true
 }
 </script>
 <template>

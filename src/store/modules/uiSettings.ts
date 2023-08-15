@@ -10,7 +10,7 @@ export const useUiSetStore = defineStore('uiSet', {
       uiLeftVisible: true,
       uiHeadVisible: true,
       uiLoading: false,
-      uiSearchVisible: false,
+      searchArticle: false,
       loginVisible: false,
       rightSidebarFastSend: false,
       sideIndex: -1 //选中后变色并且效果不消失

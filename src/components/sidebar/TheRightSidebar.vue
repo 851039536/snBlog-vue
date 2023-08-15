@@ -13,7 +13,7 @@ const readSum = ref('')
 const navData = ref([])
 
 onMounted(async () => {
-  ui.uiSearchVisible = false
+  ui.searchArticle = false
   const [navDatas, times, articleSums, textSums, readSums] = await axios.all([
     await navigationPaging(1, '常用工具', 1, 10),
     await ArticleApi.getPaging(0, 'null', 1, 1),
@@ -50,7 +50,7 @@ onMounted(async () => {
     </c-right-sidebar>
 
     <div id="search"></div>
-    <c-modal-search @close-model="ui.uiSearchVisible = false">
+    <c-modal-search @close-model="ui.searchArticle = false">
       <right-sidebar-search-detail></right-sidebar-search-detail>
     </c-modal-search>
   </div>
