@@ -2,20 +2,22 @@
 import { useNavigationApi } from '@/hooks/http'
 import { useEventKey } from '@/hooks/useEventKey'
 import { useRouter } from '@/hooks/useRouter'
+import { useUiSetStore } from '@store/modules/uiSettings'
 const { addKeyup, removeKeyup } = useEventKey()
+const ui = useUiSetStore()
 
 const { getPaging: navigationPaging } = useNavigationApi()
 const { winUrl } = useRouter()
 const vi = ref(false)
 const vi2 = ref(true)
-const nav = ref(false)
+
 const searchName = ref()
 const navTab = ref(['常用工具', '软件', '图标', '博客', '框架', 'gpt', '灵感'])
 
 const escape = (e: any) => {
   if (e.key === 'Escape') {
     removeKeyup(escape)
-    nav.value = false
+    ui.fTools = false
   }
 }
 
@@ -55,32 +57,39 @@ onMounted(async () => {
     <div class="test-cont">
       <div>Gitee</div>
       <div>Github</div>
-      <div @click="nav = true">工具</div>
+      <div @click="ui.fTools = true">工具</div>
     </div>
   </div>
 
-  <div v-if="nav" class="fo-nav">
-    <div class="absolute right-0 top-0 w-20px cursor-pointer bg-gray-100 px-1 text-center" @click="nav = false">x</div>
-    <input
-      v-model="searchName"
-      placeholder="Search"
-      type="search"
-      class="input mx-3 mt-6"
-      @input="handleMouseLeave()" />
+  <div v-if="ui.fTools" class="fo-nav flex">
+    <div class="w-1/3">
+      <div class="absolute right-0 top-0 w-20px cursor-pointer bg-gray-100 px-1 text-center" @click="ui.fTools = false">
+        x
+      </div>
+      <input
+        v-model="searchName"
+        v-focus
+        placeholder="Search"
+        type="search"
+        class="input mx-3 mt-6"
+        @input="handleMouseLeave()" />
 
-    <div class="mx-3 my-2 flex cursor-pointer text-base">
-      <div v-for="(item, index) in navTab" :key="index" class="mr-1 rounded bg-blue-300 px-1 shadow hover:text-white">
-        <span @click="filterNav(item)">{{ item }}</span>
+      <div class="mx-3 my-2 flex cursor-pointer text-base">
+        <div v-for="(item, index) in navTab" :key="index" class="mr-1 rounded bg-blue-300 px-1 shadow hover:text-white">
+          <span @click="filterNav(item)">{{ item }}</span>
+        </div>
+      </div>
+      <div class="mx-3 mt-1 flex flex-wrap">
+        <div
+          v-for="(item, index) in nData"
+          :key="index"
+          class="m-2px cursor-pointer rounded bg-teal-300 px-1 py-2px text-center text-base hover:text-white">
+          <span @click="winUrl(item.url)">{{ item.name }}</span>
+        </div>
       </div>
     </div>
-    <div class="mx-3 mt-1 flex flex-wrap">
-      <div
-        v-for="(item, index) in nData"
-        :key="index"
-        class="m-2px cursor-pointer rounded bg-teal-300 px-1 py-2px text-center text-base hover:text-white">
-        <span @click="winUrl(item.url)">{{ item.name }}</span>
-      </div>
-    </div>
+    <div class="w-1/3 bg-red-600"></div>
+    <div class="w-1/3 bg-yellow-400"></div>
   </div>
 </template>
 
@@ -94,7 +103,7 @@ onMounted(async () => {
 }
 
 .fo-nav {
-  @apply fixed bottom-0 right-0 z-10 h-95 w-160 rounded bg-white shadow-xl;
+  @apply fixed bottom-0 right-0 z-10 h-95 w-full rounded bg-white shadow-xl;
 
   border: 1.2px solid rgb(190 179 179); /* 设置边框样式 */
 }

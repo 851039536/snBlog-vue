@@ -5,6 +5,7 @@ import { debounce } from '@/utils/dethrottle'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
+import { useUiSetStore } from '@store/modules/uiSettings'
 import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooksHttp/index'
 
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
@@ -12,6 +13,7 @@ const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { getAll: getSnippetTagAll } = useSnippetTagApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
+const ui = useUiSetStore()
 const id = 'preview-only'
 
 import { ref, nextTick } from 'vue'
@@ -149,72 +151,74 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="sn-content">
-    <div class="m-auto w65% text-base">
-      <a-radio-group v-model:value="radioValue" @change="RadioFun">
-        <a-radio value="ALL">默认</a-radio>
-        <a-radio value="title">标题</a-radio>
-        <a-radio value="text">内容</a-radio>
-        <a-radio value="type">分类</a-radio>
-        <a-radio value="tag">标签</a-radio>
-      </a-radio-group>
-      <button
-        class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
-        @click="onScroll('top')">
-        顶部
-      </button>
-      <button
-        class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
-        @click="onScroll('bottom')">
-        底部
-      </button>
-      <select v-model="selectValue" class="h-32px w-30 rounded text-base">
-        <option class="rounded bg-blue-50">ALL</option>
-        <option v-for="res in rSnippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
-          {{ res.name }}
-        </option>
-      </select>
+  <modal-snippet :visible="ui.snippet" @close-model="ui.snippet = false">
+    <div class="sn-content">
+      <div class="m-auto w65% text-base">
+        <a-radio-group v-model:value="radioValue" @change="RadioFun">
+          <a-radio value="ALL">默认</a-radio>
+          <a-radio value="title">标题</a-radio>
+          <a-radio value="text">内容</a-radio>
+          <a-radio value="type">分类</a-radio>
+          <a-radio value="tag">标签</a-radio>
+        </a-radio-group>
+        <button
+          class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
+          @click="onScroll('top')">
+          顶部
+        </button>
+        <button
+          class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
+          @click="onScroll('bottom')">
+          底部
+        </button>
+        <select v-model="selectValue" class="h-32px w-30 rounded text-base">
+          <option class="rounded bg-blue-50">ALL</option>
+          <option v-for="res in rSnippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
+            {{ res.name }}
+          </option>
+        </select>
 
-      <input v-model="rName" type="text" class="mt-2" @input="QSnippet()" />
-    </div>
+        <input v-model="rName" v-focus type="text" class="mt-2" @input="QSnippet()" />
+      </div>
 
-    <div class="bor"></div>
+      <div class="bor"></div>
 
-    <!-- ref标识 -->
-    <div ref="refScroll" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
-      <div class="test">
-        <div v-for="(item, index) in rSnippet" :key="index" class="item">
-          <custom-highlight-text
-            :h-text="rName"
-            color="red"
-            :text="item.name"
-            class="mx-6 text-2xl font-medium"></custom-highlight-text>
-          <div class="ml-5 pt-1 text-base">
-            <span ml-1 mr-1>{{ item.type.name }}</span>
-            <span mr-1>{{ item.typeSub.name }}</span>
-            <span mr-1>{{ item.tag.name }}</span>
-            <span mr-1>{{ item.user.nickname }}</span>
-            <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
+      <!-- ref标识 -->
+      <div ref="refScroll" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
+        <div class="test">
+          <div v-for="(item, index) in rSnippet" :key="index" class="item">
+            <custom-highlight-text
+              :h-text="rName"
+              color="red"
+              :text="item.name"
+              class="mx-6 text-2xl font-medium"></custom-highlight-text>
+            <div class="ml-5 pt-1 text-base">
+              <span ml-1 mr-1>{{ item.type.name }}</span>
+              <span mr-1>{{ item.typeSub.name }}</span>
+              <span mr-1>{{ item.tag.name }}</span>
+              <span mr-1>{{ item.user.nickname }}</span>
+              <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
+            </div>
+            <MdPreview
+              :show-code-row-number="true"
+              :editor-id="id"
+              :model-value="item.text"
+              :preview-theme="theme.previewTheme"
+              :code-theme="theme.codeTheme" />
           </div>
-          <MdPreview
-            :show-code-row-number="true"
-            :editor-id="id"
-            :model-value="item.text"
-            :preview-theme="theme.previewTheme"
-            :code-theme="theme.codeTheme" />
+        </div>
+        <div class="absolute left-0 top-0 rounded bg-green-100 p-2 text-cool-gray-700">
+          <div>已生成: {{ sum }} 个答案</div>
+          <div>已生成: {{ rCharSum }} 字符</div>
         </div>
       </div>
-      <div class="absolute left-0 top-0 rounded bg-green-100 p-2 text-cool-gray-700">
-        <div>已生成: {{ sum }} 个答案</div>
-        <div>已生成: {{ rCharSum }} 字符</div>
-      </div>
-    </div>
 
-    <!-- 编辑模块 -->
-    <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
-      <SnippetEdit></SnippetEdit>
-    </c-modal-dialog>
-  </div>
+      <!-- 编辑模块 -->
+      <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
+        <SnippetEdit></SnippetEdit>
+      </c-modal-dialog>
+    </div>
+  </modal-snippet>
 </template>
 
 <style lang="scss" scoped>

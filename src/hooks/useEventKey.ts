@@ -9,7 +9,9 @@ export function useEventKey() {
   const removeEscape = (e: any) => {
     if (e.key === 'Escape') {
       removeKeyup(removeEscape)
+      ui.fTools = false
       ui.searchArticle = false
+      ui.snippet = false
     }
   }
   function keydownCtrl(e: any) {
@@ -20,25 +22,39 @@ export function useEventKey() {
 
     //message.info('触发Ctrl+f')
     if (e.ctrlKey && e.keyCode === 70) {
-      console.log('[  ]-24')
       // 阻止默认回车键行为
       e.preventDefault()
-      ui.searchArticle = true
-      addKeyup(removeEscape)
+
+      if (ui.searchArticle) {
+        ui.searchArticle = false
+      } else {
+        ui.searchArticle = true
+        addKeyup(removeEscape)
+      }
     }
 
     //判断触发ctrl+k
     if (e.ctrlKey && e.keyCode === 75) {
       // 阻止默认回车键行为
       e.preventDefault()
-      message.info('触发Ctrl+k')
+
+      if (ui.snippet) {
+        ui.snippet = false
+      } else {
+        ui.snippet = true
+        addKeyup(removeEscape)
+      }
     }
 
     //判断触发ctrl+b
     if (e.ctrlKey && e.keyCode === 66) {
-      // 阻止默认回车键行为
       e.preventDefault()
-      message.info('触发Ctrl+b')
+      if (ui.fTools) {
+        ui.fTools = false
+      } else {
+        ui.fTools = true
+        addKeyup(removeEscape)
+      }
     }
   }
 

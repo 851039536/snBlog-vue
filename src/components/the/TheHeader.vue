@@ -9,12 +9,11 @@ const { routers } = useRouter()
 const { removeUserStorage, getUserName } = useUserInfo()
 const ui = useUiSetStore()
 const rData: any = ref([])
-const isVisible = ref(false)
 
 async function skip(path: string) {
   switch (path) {
     case 'code':
-      isVisible.value = true
+      ui.snippet = true
       break
     case 'home':
       await routers(path)
@@ -47,12 +46,12 @@ const removeEscKey = (e: any) => {
   //escape
   if (e.key === 'Escape') {
     window.removeEventListener('keyup', removeEscKey)
-    isVisible.value = false
+    ui.snippet = false
   }
 }
 const addSnippet = () => {
   window.addEventListener('keyup', removeEscKey)
-  isVisible.value = true
+  ui.snippet = true
 }
 
 onMounted(async () => {
@@ -107,10 +106,6 @@ onMounted(async () => {
       </div>
     </div>
   </nav>
-
-  <modal-snippet :visible="isVisible" @close-model="isVisible = false">
-    <snippet-content></snippet-content>
-  </modal-snippet>
 </template>
 
 <style lang="scss" scoped>

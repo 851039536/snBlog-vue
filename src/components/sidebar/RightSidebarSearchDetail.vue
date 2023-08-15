@@ -33,10 +33,10 @@ async function search() {
       <li
         v-for="ret in article"
         :key="ret.id"
-        class="rounded bg-slate-50 p-2 shadow-sm m-1 hover:bg-blue-400 hover:text-white">
-        <div class="flex items-center text-lg">
+        class="rounded bg-slate-50 p-2 shadow-sm m-1 hover:bg-blue-500 hover:text-white hover:shadow">
+        <div class="flex items-center text-lg" @click="winUrl(`/myMarkdownContent?id=${ret.id}`)">
           <div i-typcn-bookmark h-5 w-6></div>
-          <div class="font-medium" @click="winUrl(`/myMarkdownContent?id=${ret.id}`)">{{ ret.name }}</div>
+          <div class="font-medium">{{ ret.name }}</div>
         </div>
         <div class="px-2 text-cool-gray-600">{{ ret.sketch }}</div>
       </li>

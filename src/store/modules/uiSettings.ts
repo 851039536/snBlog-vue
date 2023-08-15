@@ -13,7 +13,8 @@ export const useUiSetStore = defineStore('uiSet', {
       loading: false, //加载中
       searchArticle: false,
       loginUi: false, //登录弹窗
-      sideIndex: -1 //选中后变色并且效果不消失
+      fTools: false, //底部工具栏
+      snippet: false
     }
   },
   persist: {
