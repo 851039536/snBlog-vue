@@ -4,8 +4,8 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 const { routers } = useRouter()
 const ui = useUiSetStore()
 
-ui.uiHeadVisible = false
-ui.uiLoading = false
+ui.header = false
+ui.loading = false
 </script>
 
 <template>

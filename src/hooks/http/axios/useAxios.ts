@@ -50,7 +50,7 @@ export function useAxios() {
       (config: AxiosRequestConfig) => {
         // 请求之前发送loading
         if (loadings.loading) {
-          ui.uiLoading = true
+          ui.loading = true
         }
         const { method, data, headers } = config
         removePending(config)
@@ -83,7 +83,7 @@ export function useAxios() {
         // 请求之后关闭loading
         if (loadings.loading) {
           setTimeout(function () {
-            ui.uiLoading = false
+            ui.loading = false
           }, 300)
         }
         // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
@@ -93,7 +93,7 @@ export function useAxios() {
         return Promise.reject(ret)
       },
       error => {
-        ui.uiLoading = false
+        ui.loading = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',
@@ -157,7 +157,7 @@ export function useAxios() {
     service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         if (loading.loading) {
-          ui.uiLoading = true
+          ui.loading = true
         }
         const { method, data } = config
         removePending(config)
@@ -180,7 +180,7 @@ export function useAxios() {
         removePending(ret)
         if (loading.loading) {
           setTimeout(function () {
-            ui.uiLoading = false
+            ui.loading = false
           }, 500)
         }
         if (ret.status === 200 || ret.data.statusCode === 200) {
@@ -189,7 +189,7 @@ export function useAxios() {
         return Promise.reject(ret)
       },
       error => {
-        ui.uiLoading = false
+        ui.loading = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',

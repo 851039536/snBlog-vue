@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { IPaging } from '@/api/data/InterData'
 import { useNavigationApi } from '@/hooks/http'
+import { useUiSetStore } from '@/store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 const { winUrl } = useRouter()
 const { getSum, getPaging } = useNavigationApi()
+const ui = useUiSetStore()
 const sum = ref(0)
 onMounted(async () => {
   sum.value = await (await getSum(1, '博客圈', true)).data.data
@@ -26,6 +28,7 @@ function QImageUrl(name: string) {
   return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/navigation/${name}`)
 }
 onMounted(async () => {
+  ui.rightSidebar = false
   nData.value = await (await getPaging(1, rTitle.value, paging.page as number, paging.pagesize as number)).data.data
   paging.count = await (await getSum(1, rTitle.value, true)).data.data
 })

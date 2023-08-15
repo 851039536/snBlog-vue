@@ -1,9 +1,11 @@
 <script lang="ts" setup>
+import { useUiSetStore } from '@/store/modules/uiSettings'
 import { useArticleApi } from '@hooksHttp/useArticleApi'
 import { blog } from './components/data'
 const { getById } = useArticleApi()
-
+const ui = useUiSetStore()
 onMounted(async () => {
+  ui.rightSidebar = false
   const [blogs] = await axios.all([getById(392)])
   blog.value = blogs.data.data.text
 })

@@ -3,10 +3,10 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
 
 onMounted(() => {
-  ui.loginVisible = true
-  ui.uiHeadVisible = false
-  ui.uiLeftVisible = false
-  ui.uiRightVisible = false
+  ui.loginUi = true
+  ui.header = false
+  ui.leftSidebar = false
+  ui.rightSidebar = false
 })
 </script>
 <template>

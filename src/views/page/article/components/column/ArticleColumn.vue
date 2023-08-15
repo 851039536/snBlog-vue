@@ -31,8 +31,8 @@ function QImageUrl(name: string) {
 const cheight = ref(100)
 
 onMounted(async () => {
-  ui.uiLeftVisible = true
-  ui.uiHeadVisible = true
+  ui.leftSidebar = true
+  ui.header = true
   await axios.all([await QSum(0, aData.NULL), await QPaging()])
 })
 const aRef: any = ref(0)

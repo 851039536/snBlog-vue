@@ -6,19 +6,19 @@ import { defineStore } from 'pinia'
 export const useUiSetStore = defineStore('uiSet', {
   state: () => {
     return {
-      uiRightVisible: true,
-      uiLeftVisible: true,
-      uiHeadVisible: true,
-      uiLoading: false,
-      searchArticle: false,
-      loginVisible: false,
+      rightSidebar: true,
       rightSidebarFastSend: false,
+      leftSidebar: true,
+      header: true,
+      loading: false, //加载中
+      searchArticle: false,
+      loginUi: false, //登录弹窗
       sideIndex: -1 //选中后变色并且效果不消失
     }
   },
   persist: {
     // 在这里进行自定义配置
     key: 'uiSet', //将被持久化存储在 localStorage 中的 my-custom-key key 中
-    paths: ['uiRightVisible', 'uiHeadVisible'] // 未设置的不会被持久化。
+    paths: ['rightSidebar', 'header', 'sideIndex'] // 未设置的不会被持久化。
   }
 })

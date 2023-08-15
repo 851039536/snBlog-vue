@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
 const ui = useUiSetStore()
-ui.uiLoading = false
+ui.loading = false
 </script>
 <template>
-  <div v-show="ui.uiLoading" class="spinner">
+  <div v-show="ui.loading" class="spinner">
     <div class="cube1"></div>
     <div class="cube2"></div>
   </div>

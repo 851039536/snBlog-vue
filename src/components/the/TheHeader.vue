@@ -12,7 +12,6 @@ const rData: any = ref([])
 const isVisible = ref(false)
 
 async function skip(path: string) {
-  ui.sideIndex = -1
   switch (path) {
     case 'code':
       isVisible.value = true
@@ -38,7 +37,7 @@ async function onChange(id: number) {
       location.reload()
       break
     case 3:
-      ui.loginVisible = true
+      ui.loginUi = true
       break
     default:
       break
@@ -63,7 +62,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav v-show="ui.uiHeadVisible" class="head">
+  <nav v-show="ui.header" class="head">
     <div class="h-cont">
       <div class="h-cont-l">
         <div>

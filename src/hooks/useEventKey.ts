@@ -33,6 +33,13 @@ export function useEventKey() {
       e.preventDefault()
       message.info('触发Ctrl+k')
     }
+
+    //判断触发ctrl+b
+    if (e.ctrlKey && e.keyCode === 66) {
+      // 阻止默认回车键行为
+      e.preventDefault()
+      message.info('触发Ctrl+b')
+    }
   }
 
   /**

@@ -55,9 +55,9 @@ provide('reload', reload)
 
 onMounted(() => {
   isToken()
-  uiSettings.loginVisible = false
-  uiSettings.uiHeadVisible = false
-  uiSettings.uiLeftVisible = false
+  uiSettings.loginUi = false
+  uiSettings.header = false
+  uiSettings.leftSidebar = false
 })
 
 onUpdated(() => {

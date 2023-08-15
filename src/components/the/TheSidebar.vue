@@ -6,8 +6,8 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 const { getUserName } = useUserInfo()
 const { routers } = useRouter()
 const ui = useUiSetStore()
-function setRightVisible(visible: boolean) {
-  ui.uiRightVisible = visible
+function setRight(visible: boolean) {
+  ui.rightSidebar = visible
 }
 const rData: any = ref([])
 const isVisible: any = ref(false)
@@ -27,39 +27,36 @@ function getTopic(index: number) {
 const skip = (path: string) => {
   switch (path) {
     case '/article/column':
-      setRightVisible(true)
+      setRight(true)
       routers(path)
       break
     case '/qarticle':
-      setRightVisible(false)
       routers(path)
       break
     case '/diary':
-      setRightVisible(true)
+      setRight(true)
       routers(path)
       break
     case '/video':
-      setRightVisible(true)
+      setRight(true)
       routers(path)
       break
     case '/favorite':
-      setRightVisible(false)
       routers(path)
       break
     case '/BlogCircles':
-      setRightVisible(false)
       routers(path)
       break
     case '/book':
-      setRightVisible(true)
+      setRight(true)
       routers(path)
       break
     case '/ListContent':
-      setRightVisible(true)
+      setRight(true)
       routers(path)
       break
     case '/Admin-index/ArticleTable':
-      setRightVisible(true)
+      setRight(true)
       routers(path)
       break
 
@@ -75,7 +72,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div v-show="ui.uiLeftVisible" class="side">
+  <div v-show="ui.leftSidebar" class="side">
     <div
       v-for="(r, index) in rData"
       :key="index"

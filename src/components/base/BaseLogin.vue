@@ -11,13 +11,13 @@ function login() {
   UserApi.login(userName.value, userPwd.value).then(r => {
     const ret = r.data
     setUserInfo(ret.nickname, ret.token, ret.id, ret.name)
-    ui.loginVisible = false
+    ui.loginUi = false
     location.reload()
   })
 }
 </script>
 <template>
-  <c-modal-dialog :visible="ui.loginVisible" title="Login" @close-model="ui.loginVisible = false">
+  <c-modal-dialog :visible="ui.loginUi" title="Login" @close-model="ui.loginUi = false">
     <form class="base-login">
       <p class="form-title">博客登录</p>
       <div class="input-container">

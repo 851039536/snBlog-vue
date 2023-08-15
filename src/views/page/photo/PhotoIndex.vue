@@ -10,7 +10,7 @@ function QImageUrl(name: string) {
   return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/article/${name}`)
 }
 onMounted(async () => {
-  ui.uiRightVisible = false
+  ui.rightSidebar = false
 
   const ret = await getPaging(0, '', 1, 10, 'id', true, false)
   retData.value = ret.data.data

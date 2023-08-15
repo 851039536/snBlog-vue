@@ -22,7 +22,7 @@
       </div>
 
       <!-- Right sidebar -->
-      <div v-if="ui.uiRightVisible" class="app-grail-right">
+      <div v-if="ui.rightSidebar" class="app-grail-right">
         <the-right-sidebar></the-right-sidebar>
       </div>
     </main>
@@ -39,6 +39,7 @@ import { useEventKey } from '@hooks/useEventKey'
 const { addKeydownCtrl } = useEventKey()
 const ui = useUiSetStore()
 onMounted(() => {
+  //注册全局事件
   addKeydownCtrl()
   ui.searchArticle = false
 })

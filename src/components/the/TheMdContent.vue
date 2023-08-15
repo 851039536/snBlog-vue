@@ -26,8 +26,8 @@ const GetAll = async () => {
 }
 
 onMounted(async () => {
-  ui.uiLeftVisible = false
-  ui.uiRightVisible = false
+  ui.leftSidebar = false
+  ui.rightSidebar = false
   await GetAll()
 })
 </script>

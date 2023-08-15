@@ -2,7 +2,9 @@
 import { useNavigationApi, useNavigationTypeApi } from '@/hooks/http'
 import { useRouter } from '@hooks/useRouter'
 import { Navigation } from '@hooks/http/model/Navigation'
+import { useUiSetStore } from '@/store/modules/uiSettings'
 const { winUrl } = useRouter()
+const ui = useUiSetStore()
 const { getPaging: navigationPaging, getSum } = useNavigationApi()
 const { getAll: navigationType } = useNavigationTypeApi()
 const paging = reactive({
@@ -30,6 +32,7 @@ async function clkApi(name: string) {
   await GetApi(name)
 }
 onMounted(async () => {
+  ui.rightSidebar = false
   await GetApi('常用工具')
   //读取侧边栏信息
   rNavTable.value = await (await navigationType(true)).data.data

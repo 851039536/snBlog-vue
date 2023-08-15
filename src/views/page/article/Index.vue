@@ -4,7 +4,7 @@ const ui = useUiSetStore()
 
 onMounted(() => {
   ui.searchArticle = false // 搜索框是否显示
-  ui.uiRightVisible = true
+  ui.rightSidebar = true
 })
 </script>
 <template>
@@ -23,3 +23,4 @@ onMounted(() => {
   --at-apply: mt-1 h-full;
 }
 </style>
+rightSidebar
