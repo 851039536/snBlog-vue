@@ -5,7 +5,8 @@ const { routers } = useRouter()
 const ui = useUiSetStore()
 
 ui.header = false
-ui.loading = false
+ui.leftSidebar = false
+ui.rightSidebar = false
 </script>
 
 <template>

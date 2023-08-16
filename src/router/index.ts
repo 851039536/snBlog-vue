@@ -181,9 +181,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'ArticleTable',
         name: 'ArticleTable',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/article/ArticleTable.vue')
         }
@@ -192,7 +189,7 @@ const routes: RouteRecordRaw[] = [
         path: 'ArticleAdd',
         name: 'ArticleAdd',
         meta: {
-          keepAlive: true
+          keepAlive: false
         },
         component: () => {
           return import('@/views/admin/article/ArticleAdd.vue')
@@ -202,7 +199,7 @@ const routes: RouteRecordRaw[] = [
         path: 'ArticleEdit',
         name: 'ArticleEdit',
         meta: {
-          keepAlive: true
+          keepAlive: false
         },
         component: () => {
           return import('@/views/admin/article/ArticleEdit.vue')
@@ -211,9 +208,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'ArticleTypeTable',
         name: 'ArticleTypeTable',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/article/type/ArticleTypeTable.vue')
         }
@@ -221,9 +215,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'ArticleTagTable',
         name: 'ArticleTagTable',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/article/tag/ArticleTagTable.vue')
         }
@@ -231,9 +222,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'NavTable',
         name: 'NavTable',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/navigation/NavigationTable.vue')
         }
@@ -241,9 +229,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'NavEdit',
         name: 'NavEdit',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/navigation/NavEdit.vue')
         }
@@ -251,9 +236,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'NavAdd',
         name: 'NavAdd',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/navigation/NavAdd.vue')
         }
@@ -261,9 +243,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'PageSet',
         name: 'PageSet',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/set/InterfaceTable.vue')
         }
@@ -271,9 +250,6 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'SqlBackups',
         name: 'SqlBackups',
-        meta: {
-          keepAlive: true
-        },
         component: () => {
           return import('@/views/admin/sql/SqlBackups.vue')
         }
@@ -282,7 +258,7 @@ const routes: RouteRecordRaw[] = [
         path: 'userTable',
         name: 'userTable',
         meta: {
-          keepAlive: true
+          keepAlive: false
         },
         component: () => {
           return import('@/views/admin/user/UserTable.vue')
@@ -292,7 +268,7 @@ const routes: RouteRecordRaw[] = [
         path: 'snippetTable',
         name: 'snippetTable',
         meta: {
-          keepAlive: true
+          keepAlive: false
         },
         component: () => {
           return import('@/views/admin/snippet/SnippetTable.vue')

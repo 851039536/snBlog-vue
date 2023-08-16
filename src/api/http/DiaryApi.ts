@@ -31,7 +31,7 @@ export class DiaryApi {
     return data
   }
   static getById(id: number, cache = false) {
-    return get(`/diary/byid?id=${id}&cache=${cache}`)
+    return get(`/diary/bid?id=${id}&cache=${cache}`)
   }
 
   /**

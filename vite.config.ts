@@ -158,6 +158,9 @@ export default defineConfig({
     //若设置为 true 导入的json会被转为 export default JSON.parse("..") 会比转译成对象字面量性能更好
     stringify: false
   },
+
+  // root: 'src/packages/page',
+
   //打包配置
   build: {
     //浏览器兼容性  "esnext"|"modules" 默认为 'esnext'
@@ -196,6 +199,7 @@ export default defineConfig({
     //自定义底层的 Rollup 打包配置
     rollupOptions: {
       input: 'index.html', // 构建入口文件，默认为 'index.html'
+
       // 输出选项
       output: {
         format: 'esm', // 输出格式，默认为 'esm'
@@ -204,7 +208,6 @@ export default defineConfig({
         assetFileNames: 'static/[ext]/[name]-[hash].[ext]', // 静态资源文件名称，默认为 '[name].[hash].[ext]'
         inlineDynamicImports: false, // 是否内联动态导入，默认为 false
         manualChunks: id => {
-          // console.log('[ id ]-138', id)
           if (id.includes('node_modules')) {
             return 'vendor' //代码分割为第三方包
           }

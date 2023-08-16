@@ -10,17 +10,15 @@
       <div class="app-grail-middle">
         <router-view v-slot="{ Component }">
           <transition name="fade" :duration="500">
-            <!-- :key="$route.name"  -->
             <keep-alive>
-              <component :is="Component" v-if="$route.meta.keepAlive" />
+              <component :is="Component" v-if="$route.meta.keepAlive" :key="$route.name" />
             </keep-alive>
           </transition>
           <transition name="fade" :duration="500">
-            <component :is="Component" v-if="!$route.meta.keepAlive" />
+            <component :is="Component" v-if="!$route.meta.keepAlive" :key="$route.name" />
           </transition>
         </router-view>
       </div>
-
       <!-- Right sidebar -->
       <div v-if="ui.rightSidebar" class="app-grail-right">
         <the-right-sidebar></the-right-sidebar>
@@ -62,10 +60,30 @@ onMounted(() => {
 
     @apply w-[75%] h-[92.78vh] m-auto;
 
+    @include media-sm {
+      @apply w-full;
+    }
+
     .app-grail-left {
       width: 15%;
 
       @apply mr-2 relative left-1;
+
+      @include media-xl {
+        display: none;
+      }
+
+      @include media-lg {
+        display: none;
+      }
+
+      @include media-base {
+        display: none;
+      }
+
+      @include media-sm {
+        display: none;
+      }
     }
 
     .app-grail-middle {
@@ -79,32 +97,28 @@ onMounted(() => {
 
       @apply overflow-y-auto;
       @apply ml-1;
+
+      @include media-xl {
+        display: none;
+      }
+
+      @include media-lg {
+        display: none;
+      }
+
+      @include media-base {
+        display: none;
+      }
+
+      @include media-sm {
+        display: none;
+      }
     }
 
     .app-grail-right::-webkit-scrollbar {
       display: none;
     }
   }
-
-  // .app-body {
-  //   @apply ml-[24%] mt-[4.6%] w-[47%];
-
-  //   @include media-2xl {
-  //     @apply ml-[23.3%] mt-[6.5%];
-  //   }
-
-  //   @include media-xl {
-  //     @apply ml-[23.3%] mt-[6.5%];
-  //   }
-
-  //   @include media-lg {
-  //     @apply ml-[23.3%] mt-[7.5%];
-  //   }
-
-  //   @include media-base {
-  //     @apply ml-[23.3%] mt-[10%];
-  //   }
-  // }
 }
 
 #nprogress .bar {

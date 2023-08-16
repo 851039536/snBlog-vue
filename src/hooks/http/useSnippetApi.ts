@@ -13,7 +13,7 @@ export function useSnippetApi() {
    * @param {boolean} cache
    */
   async function getById(id: number, cache: boolean) {
-    const ret = await get(`/snippet/byid?id=${id}&cache=${cache}`, false)
+    const ret = await get(`/snippet/bid?id=${id}&cache=${cache}`, false)
     return ret
   }
   /**

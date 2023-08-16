@@ -53,47 +53,97 @@ onMounted(async () => {
     class="wipe-in-up fixed bottom-[45%] right-0 rounded"
     @mouseover="handleMouseOver"
     @click="vi = true"></div>
-  <div v-if="vi" class="fade-in fixed bottom-[40%] right-0 rounded" @mouseleave="handleMouseLeave">
+  <div v-if="vi" class="fixed bottom-[40%] right-0 rounded" @mouseleave="handleMouseLeave">
     <div class="test-cont">
-      <div>Gitee</div>
-      <div>Github</div>
+      <div>gitee</div>
+      <div>github</div>
       <div @click="ui.fTools = true">工具</div>
     </div>
   </div>
-
-  <div v-if="ui.fTools" class="fo-nav flex">
-    <div class="w-1/3">
-      <div class="absolute right-0 top-0 w-20px cursor-pointer bg-gray-100 px-1 text-center" @click="ui.fTools = false">
-        x
-      </div>
-      <input
-        v-model="searchName"
-        v-focus
-        placeholder="Search"
-        type="search"
-        class="input mx-3 mt-6"
-        @input="handleMouseLeave()" />
-
-      <div class="mx-3 my-2 flex cursor-pointer text-base">
-        <div v-for="(item, index) in navTab" :key="index" class="mr-1 rounded bg-blue-300 px-1 shadow hover:text-white">
-          <span @click="filterNav(item)">{{ item }}</span>
-        </div>
-      </div>
-      <div class="mx-3 mt-1 flex flex-wrap">
+  <transition name="slide-fade">
+    <div v-if="ui.fTools" class="fo-nav flex">
+      <div class="w-1/3">
         <div
-          v-for="(item, index) in nData"
-          :key="index"
-          class="m-2px cursor-pointer rounded bg-teal-300 px-1 py-2px text-center text-base hover:text-white">
-          <span @click="winUrl(item.url)">{{ item.name }}</span>
+          class="absolute right-0 top-0 w-20px cursor-pointer bg-gray-100 px-1 text-center"
+          @click="ui.fTools = false">
+          x
+        </div>
+        <input
+          v-model="searchName"
+          v-focus
+          placeholder="Search"
+          type="search"
+          class="input mx-3 mt-6"
+          @input="handleMouseLeave()" />
+
+        <div class="mx-3 my-2 flex cursor-pointer text-base">
+          <div
+            v-for="(item, index) in navTab"
+            :key="index"
+            class="mr-1 rounded bg-blue-300 px-1 shadow hover:text-white">
+            <span @click="filterNav(item)">{{ item }}</span>
+          </div>
+        </div>
+        <div class="mx-3 mt-1 flex flex-wrap">
+          <div
+            v-for="(item, index) in nData"
+            :key="index"
+            class="m-2px cursor-pointer rounded bg-teal-300 px-1 py-2px text-center text-base hover:text-white">
+            <span @click="winUrl(item.url)">{{ item.name }}</span>
+          </div>
         </div>
       </div>
+      <div class="w-1/3 flex flex-wrap">
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+      </div>
+      <div class="w-1/3 bg-yellow-400"></div>
     </div>
-    <div class="w-1/3 bg-red-600"></div>
-    <div class="w-1/3 bg-yellow-400"></div>
-  </div>
+  </transition>
 </template>
 
 <style lang="scss" scoped>
+/*
+  进入和离开动画可以使用不同
+  持续时间和速度曲线。
+*/
+.slide-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translatey(500px);
+  opacity: 1;
+}
+
 .test-cont {
   @apply w-16 bg-white rounded p-1 cursor-pointer;
 
@@ -104,7 +154,6 @@ onMounted(async () => {
 
 .fo-nav {
   @apply fixed bottom-0 right-0 z-10 h-95 w-full rounded bg-white shadow-xl;
-
   border: 1.2px solid rgb(190 179 179); /* 设置边框样式 */
 }
 

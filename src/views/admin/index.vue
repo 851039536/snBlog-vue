@@ -9,7 +9,7 @@ import { useDataBaseApi } from '@/hooks/http/useDataBaseApi'
 const { routers, winUrl } = useRouter()
 const { removeUserStorage } = useUserInfo()
 const { isToken } = useDataBaseApi()
-const uiSettings = useUiSetStore()
+const ui = useUiSetStore()
 function clear() {
   removeUserStorage()
   location.reload()
@@ -45,6 +45,7 @@ const pathClick = (e: any) => {
   }
 }
 const showRouter = ref(true)
+
 function reload() {
   showRouter.value = false
   nextTick(() => {
@@ -55,15 +56,17 @@ provide('reload', reload)
 
 onMounted(() => {
   isToken()
-  uiSettings.loginUi = false
-  uiSettings.header = false
-  uiSettings.leftSidebar = false
+  ui.loginUi = false
+  ui.header = false
+  ui.leftSidebar = false
+  ui.rightSidebar = false
 })
 
 onUpdated(() => {
   isToken()
 })
 </script>
+<!-- todo:跳转bug -->
 <template>
   <div class="admin">
     <a-layout>
@@ -156,7 +159,7 @@ onUpdated(() => {
 
 <style lang="scss" scoped>
 .admin {
-  @apply h-full w-full z-10 fixed top-0 left-0;
+  @apply h-full w-full  fixed top-0 left-0;
   @apply bg-gray-100;
 }
 </style>
