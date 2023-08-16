@@ -47,20 +47,22 @@ onMounted(async () => {
 <template>
   <div
     v-if="vi2"
-    i-typcn-th-large
+    i-bytesize-chevron-left
     h-5
     w-5
-    class="wipe-in-up fixed bottom-[45%] right-0 rounded"
+    class="fixed bottom-[45%] right-0 rounded"
     @mouseover="handleMouseOver"
     @click="vi = true"></div>
-  <div v-if="vi" class="fixed bottom-[40%] right-0 rounded" @mouseleave="handleMouseLeave">
-    <div class="test-cont">
-      <div>gitee</div>
-      <div>github</div>
-      <div @click="ui.fTools = true">工具</div>
+  <transition name="slidex-fade">
+    <div v-if="vi" class="fixed bottom-[40%] right-0 rounded" @mouseleave="handleMouseLeave">
+      <div class="test-cont">
+        <div>gitee</div>
+        <div>github</div>
+        <div @click="ui.fTools = true">工具</div>
+      </div>
     </div>
-  </div>
-  <transition name="slide-fade">
+  </transition>
+  <transition name="slidey-fade">
     <div v-if="ui.fTools" class="fo-nav flex">
       <div class="w-1/3">
         <div
@@ -126,24 +128,6 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-/*
-  进入和离开动画可以使用不同
-  持续时间和速度曲线。
-*/
-.slide-fade-enter-active {
-  transition: all 0.5s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translatey(500px);
-  opacity: 1;
-}
-
 .test-cont {
   @apply w-16 bg-white rounded p-1 cursor-pointer;
 

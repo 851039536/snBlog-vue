@@ -198,6 +198,39 @@
   animation: 2.5s cubic-bezier(.25, 1, .30, 1) square-out-center both;
 }
 
+
+/*
+  进入和离开动画可以使用不同
+  持续时间和速度曲线。
+*/
+.slidey-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slidey-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slidey-fade-enter-from,
+.slidey-fade-leave-to {
+  transform: translatey(500px);
+  opacity: 1;
+}
+
+.slidex-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slidex-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slidex-fade-enter-from,
+.slidex-fade-leave-to {
+  transform: translateX(100px);
+  opacity: 1;
+}
+
 @font-face {
   font-family: PuHuiTiBASE;
   src: url('/src/assets/fonts/55_Regular.ttf');
