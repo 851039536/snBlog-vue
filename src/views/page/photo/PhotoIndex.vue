@@ -7,7 +7,7 @@ const ui = useUiSetStore()
 const retData = ref()
 
 function QImageUrl(name: string) {
-  return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/article/${name}`)
+  return new URL(`http://kai.snblogs.cn/blog/article/${name}`)
 }
 onMounted(async () => {
   ui.rightSidebar = false

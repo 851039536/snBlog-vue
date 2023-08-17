@@ -8,6 +8,7 @@ const { getById } = useArticleApi()
  * 选中后变色并且效果不消失
  */
 const sideIndex = ref(0)
+const sideIndex2 = ref(false)
 const emit = defineEmits(['refresh'])
 const getApi = async (id: number) => {
   emit('refresh', 123)
@@ -18,19 +19,21 @@ const getApi = async (id: number) => {
 }
 </script>
 <template>
-  <div class="article2-right-sidebar">
-    <div v-for="ret in rArticle" :key="ret.id" class="side-col">
-      <div v-debounce:200="() => getApi(ret.id)" class="side-col-title" :class="sideIndex == ret.id ? 'active' : ''">
-        <span>{{ ret.name }}</span>
-      </div>
-      <div class="side-col-txt">
-        <span>{{ ret.read }}℃</span>
-        <span>赞 {{ ret.give }}</span>
-        <span>{{ ret.timeCreate.substring(0, 10) }}</span>
-        <span>编辑</span>
+  <transition name="slidey-fade">
+    <div class="article2-right-sidebar">
+      <div v-for="ret in rArticle" :key="ret.id" class="side-col">
+        <div v-debounce:200="() => getApi(ret.id)" class="side-col-title" :class="sideIndex == ret.id ? 'active' : ''">
+          <span>{{ ret.name }}</span>
+        </div>
+        <div class="side-col-txt">
+          <span>{{ ret.read }}℃</span>
+          <span>赞 {{ ret.give }}</span>
+          <span>{{ ret.timeCreate.substring(0, 10) }}</span>
+          <span>编辑</span>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <style lang="scss" scoped>

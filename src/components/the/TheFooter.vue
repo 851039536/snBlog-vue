@@ -82,17 +82,17 @@ onMounted(async () => {
           <div
             v-for="(item, index) in navTab"
             :key="index"
-            class="mr-1 rounded bg-blue-300 px-1 shadow hover:text-white">
+            class="mr-1 rounded bg-blue-400 px-1 shadow hover:text-white">
             <span @click="filterNav(item)">{{ item }}</span>
           </div>
         </div>
         <div class="mx-3 mt-1 flex flex-wrap">
-          <div
+          <button
             v-for="(item, index) in nData"
             :key="index"
-            class="m-2px cursor-pointer rounded bg-teal-300 px-1 py-2px text-center text-base hover:text-white">
+            class="m-2px cursor-pointer border rounded bg-white px-2 py-1 text-center text-base shadow hover:text-red">
             <span @click="winUrl(item.url)">{{ item.name }}</span>
-          </div>
+          </button>
         </div>
       </div>
       <div class="w-1/3 flex flex-wrap">

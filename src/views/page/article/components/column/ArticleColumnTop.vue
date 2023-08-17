@@ -54,7 +54,7 @@ const getCourse = async (name: string) => {
   flex-wrap: wrap;
   justify-content: center;
 
-  @apply bg-white py-2 rounded-lg;
+  @apply bg-white py-2 rounded-lg mx-2;
 }
 
 .my-dict input[type='radio'] {

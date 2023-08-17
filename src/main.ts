@@ -19,8 +19,8 @@ function getImageUrl(name: string) {
   return new URL(`/src/assets/img/blog/${name}`, import.meta.url).href
 }
 app.use(lazyPlugin, {
-  loading: getImageUrl('2.jpg'),
-  error: getImageUrl('1.jpg')
+  loading: getImageUrl('1.jpg'),
+  error: getImageUrl('2.jpg')
 })
 app.use(infiniteScroll)
 app.use(VueDOMPurifyHTML)

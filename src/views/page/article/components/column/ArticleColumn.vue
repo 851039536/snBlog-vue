@@ -25,7 +25,7 @@ async function QPaging() {
 }
 
 function QImageUrl(name: string) {
-  return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/article/${name}`)
+  return new URL(`http://kai.snblogs.cn/blog/article/${name}`)
 }
 
 const cheight = ref(100)
@@ -60,7 +60,7 @@ const onScroll = (name: string) => {
     <div v-for="r in articleData" :key="r.id" class="article-column">
       <div class="content">
         <div class="cont-img">
-          <img v-lazy="QImageUrl(r.img)" alt="" />
+          <img v-lazy="QImageUrl(r.img)" alt="test" />
         </div>
         <div class="content-frame">
           <div class="content-div-frame-1" @click="routerById('/article/content', r.id)">
@@ -88,10 +88,12 @@ const onScroll = (name: string) => {
 
 <style lang="scss" scoped>
 .article-columns {
-  @apply h-[92.78vh] overflow-y-scroll;
+  @apply h-[92.58vh] overflow-y-scroll;
 
   scroll-behavior: smooth;
-
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .btn {
     @apply absolute right-[10%] rounded bottom-[2%] cursor-pointer z-1 bg-white;
 
@@ -102,10 +104,10 @@ const onScroll = (name: string) => {
 }
 
 .article-column {
-  @apply mt-1;
+  @apply mt-1 mx-2;
 
   .content {
-    @apply flex h-155px w-full mb-6px;
+    @apply flex h-155px mb-2  m-a;
     @apply bg-white rounded-lg shadow-sm;
 
     .cont-img {

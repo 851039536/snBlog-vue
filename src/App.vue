@@ -9,12 +9,12 @@
       <!-- Main content -->
       <div class="app-grail-middle">
         <router-view v-slot="{ Component }">
-          <transition name="fade" :duration="500">
+          <transition name="fade">
             <keep-alive>
               <component :is="Component" v-if="$route.meta.keepAlive" :key="$route.name" />
             </keep-alive>
           </transition>
-          <transition name="fade" :duration="500">
+          <transition name="fade">
             <component :is="Component" v-if="!$route.meta.keepAlive" :key="$route.name" />
           </transition>
         </router-view>
@@ -50,15 +50,14 @@ onMounted(() => {
 #app {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5f7;
-  background-image: repeating-linear-gradient(to right, #bdbedb, #9b9baa 0.4px, #e5e5f7 0.4px, #e5e5f7);
+  background-color: #f5f6f7;
 
   .app-main {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
 
-    @apply w-[75%] h-[92.78vh] m-auto;
+    @apply w-[72%] h-[92.78vh] m-auto;
 
     @include media-sm {
       @apply w-full;

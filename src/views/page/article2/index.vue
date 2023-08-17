@@ -19,6 +19,6 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .index {
-  @apply bg-white mt-1 rounded h-[92.78vh];
+  @apply bg-white mt-1 rounded h-[92.58vh];
 }
 </style>

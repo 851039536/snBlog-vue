@@ -117,8 +117,8 @@ onMounted(async () => {
 
 <style lang="scss">
 .side {
-  @apply h-92vh;
-  @apply bg-white rounded shadow relative pt-5 mt-1;
+  @apply h-90vh;
+  @apply bg-white rounded  relative pt-5 mt-1;
 
   @include media-base {
     display: none;

@@ -2,7 +2,6 @@
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { rRouter } from '@/router/routerInfo'
-import userSvg from '@assets/svg/components/user.svg?component'
 import { InterfaceApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
 const { routers } = useRouter()
@@ -54,6 +53,21 @@ const addSnippet = () => {
   ui.snippet = true
 }
 
+// const userInfo = ref(false)
+
+// function handleMouseOver() {
+//   // 鼠标进入<div>元素时执行的代码
+//   // 在这里可以设置相关的状态或执行其他操作
+//   console.log('true')
+//   userInfo.value = true
+// }
+// function handleMouseLeave() {
+//   // 鼠标离开<div>元素时执行的代码
+//   // 在这里可以设置相关的状态或执行其他操作
+//   userInfo.value = false
+//   console.log('false')
+// }
+
 onMounted(async () => {
   const conditions = await InterfaceApi.getCondition(0, getUserName(), 'header', false)
   const data = await conditions.data.data
@@ -62,11 +76,11 @@ onMounted(async () => {
 </script>
 <template>
   <nav v-show="ui.header" class="head">
-    <div class="h-cont">
+    <div class="head-cont">
       <div class="h-cont-l">
         <div>
-          <div i-fxemoji-alien mx-1></div>
-          <span>SN BLOG</span>
+          <div i-fxemoji-sparkles mx-1></div>
+          <span>snBlog</span>
         </div>
         <div class="head-l-text">
           <div v-for="r in rData" :key="r.id">
@@ -77,13 +91,12 @@ onMounted(async () => {
           </div>
           <div>
             <div @click="addSnippet()">code</div>
-            <div class="mt-1" i-flat-color-icons-search h-6 w-6></div>
           </div>
         </div>
       </div>
       <div class="head-cont-r">
         <div class="head-r-div">
-          <span v-if="getUserName() === 'name'" v-once @click="onChange(3)">登录</span>
+          <span v-if="getUserName() === 'name'" v-once i-typcn-user-outline h-6 w-6 @click="onChange(3)"></span>
           <div v-else>
             <a-popover placement="bottomRight">
               <template #content>
@@ -92,15 +105,18 @@ onMounted(async () => {
               </template>
               <template #title>
                 <div class="flex">
-                  <div class="mr-2 mt-11px"><user-svg></user-svg></div>
+                  <div class="mr-2 mt-11px" i-typcn-user h-7 w-7></div>
                   <div class="m-1">
                     <div>少年</div>
                     <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
                   </div>
                 </div>
               </template>
-              <user-svg></user-svg>
+              <div i-typcn-user h-7 w-7></div>
             </a-popover>
+
+            <!--            <div i-typcn-user h-7 w-7 @mouseover="handleMouseOver" @mouseleave="handleMouseLeave"></div>-->
+            <!--            <div v-if="userInfo" class="bg-fuchsia-100">显示</div>-->
           </div>
         </div>
       </div>
@@ -111,9 +127,9 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .head {
   @apply flex h-7vh w-full top-0 left-0 z-50 relative;
-  @apply bg-white shadow-sm px-3;
+  @apply bg-white shadow-sm px-[8%];
 
-  .h-cont {
+  .head-cont {
     @apply w-full inline-flex;
 
     .h-cont-l {
@@ -127,7 +143,7 @@ onMounted(async () => {
         @apply flex m-1 p-1 items-center;
 
         div {
-          @apply cursor-pointer ml-1 text-xl hover:text-blue-400;
+          @apply cursor-pointer ml-3px text-lg hover:text-blue-500;
         }
       }
     }
@@ -150,7 +166,7 @@ onMounted(async () => {
   .head {
     @apply w-full left-0;
 
-    .h-cont .h-cont-l {
+    .head-cont .h-cont-l {
       @apply w-[75%];
 
       .head-l-text {

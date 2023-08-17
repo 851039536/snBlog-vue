@@ -25,7 +25,7 @@ async function currentchange(val: number) {
 }
 
 function QImageUrl(name: string) {
-  return new URL(`http://rxzvlzwfh.hn-bkt.clouddn.com/blog/navigation/${name}`)
+  return new URL(`http://kai.snblogs.cn/blog/navigation/${name}`)
 }
 onMounted(async () => {
   ui.rightSidebar = false
