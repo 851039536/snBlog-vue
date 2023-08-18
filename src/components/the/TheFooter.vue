@@ -138,6 +138,7 @@ onMounted(async () => {
 
 .fo-nav {
   @apply fixed bottom-0 right-0 z-10 h-95 w-full rounded bg-white shadow-xl;
+
   border: 1.2px solid rgb(190 179 179); /* 设置边框样式 */
 }
 

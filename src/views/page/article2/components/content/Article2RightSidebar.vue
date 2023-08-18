@@ -8,7 +8,7 @@ const { getById } = useArticleApi()
  * 选中后变色并且效果不消失
  */
 const sideIndex = ref(0)
-const sideIndex2 = ref(false)
+// const sideIndex2 = ref(false)
 const emit = defineEmits(['refresh'])
 const getApi = async (id: number) => {
   emit('refresh', 123)

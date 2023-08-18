@@ -1,5 +1,6 @@
 import { useRequest } from '@/hooks/http/axios/useRequest'
 import { useMomentTime } from '@hooks/useMomentTime'
+
 const { momentTimeList } = useMomentTime()
 const { get } = useRequest()
 enum api {
@@ -10,7 +11,18 @@ enum api {
   strSum = '/article/strSum?',
   paging = '/article/paging?'
 }
+
 export function useArticleApi() {
+  /**
+   * 内容统计
+   * @param identity 所有:0|分类:1|标签:2|用户:3
+   * @param type 内容:1|阅读:2|点赞:3
+   * @param name 查询参数
+   * @param cache 缓存
+   */
+  async function getStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
+    return get(`${api.strSum}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+  }
   /**
    * @description: 查询总数
    * @param {number} identity 所有:0|分类:1|标签:2|用户3
@@ -18,8 +30,18 @@ export function useArticleApi() {
    * @param {boolean} cache 缓存
    */
   async function getSum(identity = 0, type = 'null', cache = true) {
-    const url = await get(`${api.sum}identity=${identity}&type=${type}&cache=${cache}`, false)
-    return url
+    return get(`${api.sum}identity=${identity}&type=${type}&cache=${cache}`, false)
+  }
+
+  /**
+   * 条件查询
+   * @param identity 分类:1 || 标签:2
+   * @param type 查询条件
+   * @param cache 缓存
+   * @returns
+   */
+  async function getType(identity: number, type = 'null', cache = true) {
+    return get(`${api.type}identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 
   /**
@@ -46,6 +68,8 @@ export function useArticleApi() {
   return {
     getSum,
     getContains,
-    getById
+    getById,
+    getType,
+    getStrSum
   }
 }

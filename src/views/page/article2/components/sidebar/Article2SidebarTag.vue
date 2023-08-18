@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
 import { IArticleType } from '@/api/data/InterData'
+import { useArticleApi } from '@hooks/http'
 import { rArticle } from '../../data'
+
+const { getType } = useArticleApi()
 defineProps({
   rData: {
     type: Array as () => IArticleType[],
@@ -24,7 +26,7 @@ function getTopic(index: number) {
  * @param name
  */
 async function getCondition(name: string) {
-  const data = await ArticleApi.getType(1, name)
+  const data = await getType(1, name)
   rArticle.value = data.data.data
 }
 onMounted(async () => {

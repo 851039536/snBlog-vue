@@ -91,9 +91,11 @@ const onScroll = (name: string) => {
   @apply h-[92.58vh] overflow-y-scroll;
 
   scroll-behavior: smooth;
+
   &::-webkit-scrollbar {
     display: none;
   }
+
   .btn {
     @apply absolute right-[10%] rounded bottom-[2%] cursor-pointer z-1 bg-white;
 

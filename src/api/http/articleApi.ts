@@ -6,35 +6,11 @@ const { momentTimeList } = useMomentTime()
 enum api {
   sum = '/article/sum?',
   contains = '/article/contains?',
-  bid = '/article/bid?',
   type = '/article/type?',
-  strSum = '/article/strSum?',
   paging = '/article/paging?'
 }
 
 export class ArticleApi {
-  /**
-   * 条件查询
-   * @param identity 分类:1 || 标签:2
-   * @param type 查询条件
-   * @param cache 缓存
-   * @returns
-   */
-  static getType(identity: number, type = 'null', cache = true) {
-    return get(`${api.type}identity=${identity}&type=${type}&cache=${cache}`, false)
-  }
-
-  /**
-   * 内容统计
-   * @param identity 所有:0|分类:1|标签:2|用户:3
-   * @param type 内容:1|阅读:2|点赞:3
-   * @param name 查询参数
-   * @param cache 缓存
-   */
-  static getStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
-    return get(`${api.strSum}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-  }
-
   /**
    * @description: 分页查询
    * @param {number} identity 所有:0|分类:1|标签:2|用户:3|标签+用户:4
@@ -73,7 +49,7 @@ export class ArticleApi {
 
   /**
    * @description: 新增
-   * @param {IArticle} entity
+   * @param {any} entity
    */
   static add(entity: Article) {
     return add('/article/add', entity)
@@ -81,7 +57,7 @@ export class ArticleApi {
 
   /**
    * @description: 更新
-   * @param {IArticle} entity
+   * @param {any} entity
    */
   static update(entity: Article) {
     return update(`/article/update`, entity)
