@@ -6,7 +6,7 @@ import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooksHttp/index'
+import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooks/http'
 
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
@@ -68,7 +68,7 @@ const QSnippet = debounce(async () => {
 }, 600)
 
 const GetSnippet = async () => {
-  if (rName.value === undefined || rName.value === '' || isNumeric(rName.value)) return
+  if (rName.value === '' || isNumeric(rName.value)) return
 
   switch (radioValue.value) {
     case 'ALL':
@@ -192,12 +192,14 @@ onMounted(async () => {
               color="red"
               :text="item.name"
               class="mx-6 text-2xl font-medium"></custom-highlight-text>
-            <div class="ml-5 pt-1 text-base">
-              <span ml-1 mr-1>{{ item.type.name }}</span>
-              <span mr-1>{{ item.typeSub.name }}</span>
-              <span mr-1>{{ item.tag.name }}</span>
-              <span mr-1>{{ item.user.nickname }}</span>
-              <span class="cursor-pointer hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">编辑</span>
+            <div class="ml-5 pt-1 text-white">
+              <span ml-1 mr-1 rounded bg-blue-500 px-2px shadow>{{ item.type.name }}</span>
+              <span mr-1 rounded bg-yellow-500 px-2px shadow>{{ item.typeSub.name }}</span>
+              <span mr-1 rounded bg-green-500 px-2px shadow>{{ item.tag.name }}</span>
+              <span mr-1 rounded bg-red-400 px-2px shadow>{{ item.user.nickname }}</span>
+              <span class="cursor-pointer text-gray-800 hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">
+                编辑
+              </span>
             </div>
             <MdPreview
               :show-code-row-number="true"
@@ -207,9 +209,9 @@ onMounted(async () => {
               :code-theme="theme.codeTheme" />
           </div>
         </div>
-        <div class="absolute left-0 top-0 rounded bg-green-100 p-2 text-cool-gray-700">
-          <div>已生成: {{ sum }} 个答案</div>
-          <div>已生成: {{ rCharSum }} 字符</div>
+        <div class="absolute left-0 top-0 rounded bg-green-200 p-1 text-cool-gray-700">
+          <div>片段:{{ sum }}</div>
+          <div>字符:{{ rCharSum }}</div>
         </div>
       </div>
 

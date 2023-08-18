@@ -1,6 +1,4 @@
-import { Article } from '@/hooks/http/model/Article'
-
-import { get, add, update, del } from '@api/http/funApi'
+import { get, update } from '@api/http/funApi'
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
 enum api {
@@ -45,29 +43,5 @@ export class ArticleApi {
    */
   static updatePortion(entity: any, type: string): Promise<any> {
     return update(`/article/upPortion?type=${type}`, entity)
-  }
-
-  /**
-   * @description: 新增
-   * @param {any} entity
-   */
-  static add(entity: Article) {
-    return add('/article/add', entity)
-  }
-
-  /**
-   * @description: 更新
-   * @param {any} entity
-   */
-  static update(entity: Article) {
-    return update(`/article/update`, entity)
-  }
-
-  /**
-   * @description: 删除
-   * @param {number} id
-   */
-  static del(id: number) {
-    return del(`/article/del?id=${id}`, false)
   }
 }

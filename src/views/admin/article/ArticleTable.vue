@@ -8,7 +8,7 @@ import { rRouter } from '@/router/routerInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useArticleApi } from '@hooksHttp/index'
-const { getContains } = useArticleApi()
+const { getContains, dels } = useArticleApi()
 const { getUserName } = useUserInfo()
 const { routerById, routers } = useRouter()
 
@@ -18,7 +18,7 @@ const userName = ref('')
 const tagSrt = ref('ALL')
 const order = ref(false)
 const del = async (data: any) => {
-  await ArticleApi.del(data.id).then(r => {
+  await dels(data.id).then(r => {
     if (r.data) {
       reload()
       message.success(aData.SUCCESS)

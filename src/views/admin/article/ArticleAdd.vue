@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { MdEditor } from 'md-editor-v3'
 import { message } from 'ant-design-vue'
-import { ArticleApi, ArticleTagApi, ArticleTypeApi } from '@/api'
+import { ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { article, removeArticle } from '@hooksHttp/model/Article'
@@ -10,18 +10,19 @@ import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
+import { useArticleApi } from '@hooks/http'
+const { adds } = useArticleApi()
 const { getUserId } = useUserInfo()
 const { routers, go } = useRouter()
 
 const { random } = useRandom()
 const reload: any = inject('reload')
 
-// const article = ref([] as Article)
 const add = async () => {
   article.userId = getUserId() as number
   article.img = `${random(1, 30, 3)}.jpg`
 
-  await ArticleApi.add(article).then(r => {
+  await adds(article).then(r => {
     if (r.data.statusCode === 200) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)

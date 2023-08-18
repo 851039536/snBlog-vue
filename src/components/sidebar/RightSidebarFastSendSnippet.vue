@@ -40,10 +40,11 @@ const typeEvent = async (id: number) => {
 
 const tagEvent = async () => {
   snippetTag.name = tagName.value
-  await addTag(snippetTag)
-
+  const retAdd = await addTag(snippetTag)
+  if (retAdd.data.statusCode === 200) {
+    message.success(retAdd.data.message)
+  }
   const ret = await getTagTitle(tagName.value)
-  console.log('[ ret ]-47', ret.data.data.id)
   snippet.tagId = ret.data.data.id
 }
 onMounted(async () => {

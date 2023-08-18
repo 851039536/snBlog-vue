@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
-import { ArticleApi, ArticleTypeApi, ArticleTagApi } from '@/api'
+import { ArticleTypeApi, ArticleTagApi } from '@/api'
 import { useArticleApi } from '@hooksHttp/index'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
@@ -10,13 +10,13 @@ import { rRouter } from '@/router/routerInfo'
 import { article } from '@hooksHttp/model/Article'
 import { useRouter } from '@hooks/useRouter'
 const { routers, go } = useRouter()
-const { getById: getArticleById } = useArticleApi()
+const { getById: getArticleById, updates } = useArticleApi()
 const route = useRoute()
 const rid: any = ref(route.query.id)
 
 const update = async () => {
-  await ArticleApi.update(article).then(r => {
-    if (r.data) {
+  await updates(article).then(ret => {
+    if (ret.data) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
     }
