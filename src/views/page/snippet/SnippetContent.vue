@@ -125,6 +125,7 @@ const RadioFun = async () => {
 /**
  * @description: 通过id获取snippet
  * @param {number} id 主键id
+ * @param uid 当前用户id
  */
 const cliEdit = async (id: number, uid: number): Promise<any> => {
   if (!isUserId(uid)) {

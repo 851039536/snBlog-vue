@@ -2,11 +2,11 @@
 import { useUserInfo } from '@hooks/useUserInfo'
 import { UserApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
+const { setUserInfo } = useUserInfo()
 const ui = useUiSetStore()
-
 const userName = ref('')
 const userPwd = ref('')
-const { setUserInfo } = useUserInfo()
+
 function login() {
   UserApi.login(userName.value, userPwd.value).then(r => {
     const ret = r.data
@@ -17,9 +17,9 @@ function login() {
 }
 </script>
 <template>
-  <c-modal-dialog :visible="ui.loginUi" title="Login" @close-model="ui.loginUi = false">
+  <c-modal-dialog :visible="ui.loginUi" title="" @close-model="ui.loginUi = false">
     <form class="base-login">
-      <p class="form-title">博客登录</p>
+      <p class="form-title">snBlog</p>
       <div class="input-container">
         <input v-model="userName" type="text" placeholder="用户名" />
         <span></span>
@@ -27,7 +27,7 @@ function login() {
       <div class="input-container">
         <input v-model="userPwd" type="password" placeholder="密码" />
       </div>
-      <div class="submit" @click="login">Sign in</div>
+      <div class="submit cursor-pointer" @click="login">Sign in</div>
 
       <p class="signup-link">
         No account?

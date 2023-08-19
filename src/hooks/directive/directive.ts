@@ -10,10 +10,10 @@ export default (app: App<Element>) => {
       const eventType: string = Object.keys(binding.modifiers)[0] || 'click'
 
       el.addEventListener(eventType, () => {
-        const dealy: number = binding.arg ? parseInt(binding.arg) : 300
+        const deadly: number = binding.arg ? parseInt(binding.arg) : 300
         const fn: unknown = binding.value
 
-        if (isNaN(dealy)) {
+        if (isNaN(deadly)) {
           throw Error('v-debounce:arg必须为数字!')
         }
 
@@ -27,7 +27,7 @@ export default (app: App<Element>) => {
 
         debounceTimer = setTimeout(() => {
           fn()
-        }, dealy)
+        }, deadly)
       })
     }
   })
@@ -37,10 +37,10 @@ export default (app: App<Element>) => {
       const eventType: string = Object.keys(binding.modifiers)[0] || 'click'
 
       el.addEventListener(eventType, () => {
-        const dealy: number = binding.arg ? parseInt(binding.arg) : 300
+        const deadly: number = binding.arg ? parseInt(binding.arg) : 300
         const fn: unknown = binding.value
 
-        if (isNaN(dealy)) {
+        if (isNaN(deadly)) {
           throw Error('v-throttle:arg必须为数字!')
         }
 
@@ -55,7 +55,7 @@ export default (app: App<Element>) => {
         throttleTimer = setTimeout(() => {
           fn()
           throttleTimer = null
-        }, dealy)
+        }, deadly)
       })
     }
   })

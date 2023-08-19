@@ -20,7 +20,7 @@ const cliAbout = () => {
  * @param {number} index
  * @return {*}
  */
-function getTopic(index: number) {
+function getTopic(index: number): void {
   ui.sideIndex = index
 }
 
@@ -93,19 +93,19 @@ onMounted(async () => {
       </div>
     </div>
 
-    <div v-show="getUserName() !== 'name'" text-sm class="absolute bottom-1 h-110px w-full bg-slate-400">
-      <div text="center lg cool-gray-50" bg="slate-500">
+    <div class="side-ab">
+      <div v-show="getUserName() !== 'name'" text="center lg cool-gray-50" bg="slate-500">
         <span @click="cliAbout()">关于我</span>
       </div>
       <div class="mt-1 flex">
-        <div i-fxemoji-newmoonwithface h-25px w-25px></div>
-        <div i-fxemoji-fullmoonwithface h-25px w-25px></div>
-        <div i-fxemoji-medicalmask h-25px w-25px></div>
-        <div i-fxemoji-angry h-25px w-25px></div>
-        <div i-fxemoji-anguish h-25px w-25px></div>
-        <div i-fxemoji-relieved h-25px w-25px></div>
-        <div i-fxemoji-smiletongue h-25px w-25px></div>
-        <div i-fxemoji-sunglasses h-25px w-25px></div>
+        <div class="ab-svg" i-fxemoji-newmoonwithface></div>
+        <div class="ab-svg" i-fxemoji-fullmoonwithface></div>
+        <div class="ab-svg" i-fxemoji-medicalmask></div>
+        <div class="ab-svg" i-fxemoji-angry></div>
+        <div class="ab-svg" i-fxemoji-anguish></div>
+        <div class="ab-svg" i-fxemoji-relieved></div>
+        <div class="ab-svg" i-fxemoji-smiletongue></div>
+        <div class="ab-svg" i-fxemoji-sunglasses></div>
       </div>
       <div class="h-25px text-center text-cool-gray-50">SN © 2021.Rights Reserved.</div>
       <div class="h-25px text-center text-cool-gray-50">粤ICP备19130826号-1</div>
@@ -118,7 +118,7 @@ onMounted(async () => {
 <style lang="scss">
 .side {
   @apply h-90vh;
-  @apply bg-white rounded  relative pt-5 mt-1;
+  @apply bg-white rounded relative pt-5 mt-1;
 
   @include media-base {
     display: none;
@@ -135,6 +135,14 @@ onMounted(async () => {
 
   .side-list.active {
     @apply text-cool-gray-50 bg-blue-500;
+  }
+
+  .side-ab {
+    @apply absolute bottom-1 h-110px w-full rounded;
+    @apply bg-slate-400;
+    .ab-svg {
+      @apply h-6 w-6;
+    }
   }
 }
 </style>
