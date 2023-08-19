@@ -7,6 +7,7 @@ import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooks/http'
+import { Snippet } from '@hooks/http/model/Snippet'
 
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
@@ -15,10 +16,8 @@ const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const ui = useUiSetStore()
 const id = 'preview-only'
-
 import { ref, nextTick } from 'vue'
 const refScroll = ref()
-
 const onScroll = (type: any) => {
   //下一次 DOM 更新周期时再执行
   nextTick(() => {
@@ -48,7 +47,7 @@ watchEffect(() => {
 const rName = ref('')
 const rCharSum = ref('')
 const sum = ref('')
-const rSnippet: any = ref([])
+const rSnippet: any = ref([] as Snippet[])
 const rSnippetTag: any = ref([])
 const radioValue = ref<string>('ALL')
 const selectValue: any = ref('ALL')
@@ -178,11 +177,10 @@ onMounted(async () => {
           </option>
         </select>
 
-        <input v-model="rName" v-focus type="text" class="mt-2" @input="QSnippet()" />
+        <input v-model="rName" v-focus type="search" placeholder="Search" class="mt-2" @input="QSnippet()" />
       </div>
 
       <div class="bor"></div>
-
       <!-- ref标识 -->
       <div ref="refScroll" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
         <div class="test">
@@ -225,9 +223,9 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .bor {
-  @apply mt-3;
+  @apply py-2;
 
-  border-bottom: 1.8px solid #a0a3aa;
+  border-bottom: 0.5px solid #213547;
 }
 
 .test {
@@ -249,17 +247,11 @@ input {
   width: 65%;
   height: 100%;
   padding: 10px 15px;
-  border: 1.2px solid #c2d0ec;
+  border: 1.2px solid #242528;
   border-radius: 5px;
   outline-style: none;
 
   @apply text-base;
-
-  &:focus {
-    border-color: #eed3b6;
-    outline: 0;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 7.5%), #f07b00;
-  }
 }
 
 @media screen and (min-width: 1367px) {
