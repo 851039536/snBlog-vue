@@ -12,6 +12,8 @@ import styleImport, { AndDesignVueResolve } from 'vite-plugin-style-import'
 import svgLoader from 'vite-svg-loader'
 import Unocss from 'unocss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
+import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
+
 export default defineConfig({
   //配置需要使用的插件列表
   plugins: [
@@ -46,6 +48,7 @@ export default defineConfig({
       // 可以在这自定义自己的东西，比如接口api的引入，工具函数等等
       // see https://github.com/antfu/unplugin-auto-import/pull/23/
       resolvers: [
+        VueHooksPlusResolver()
         /* ... */
       ]
     }),

@@ -114,9 +114,6 @@ onMounted(async () => {
               </template>
               <div i-typcn-user h-7 w-7></div>
             </a-popover>
-
-            <!--            <div i-typcn-user h-7 w-7 @mouseover="handleMouseOver" @mouseleave="handleMouseLeave"></div>-->
-            <!--            <div v-if="userInfo" class="bg-fuchsia-100">显示</div>-->
           </div>
         </div>
       </div>

@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { IntOne } from '@/api/data/InterData'
 import { method, state } from '../../index'
 
 defineProps({
   resultData: {
-    type: Array as () => IntOne[],
+    type: Array as () => any,
     required: true,
     default: () => {
       return []

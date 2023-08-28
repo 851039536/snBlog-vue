@@ -12,9 +12,9 @@ import {
 } from 'unocss'
 import { presetScrollbar } from 'unocss-preset-scrollbar' //滚动条
 export default defineConfig({
-  shortcuts: [
-    // ...
-  ],
+  shortcuts: {
+    'wh-full': 'w-full h-full'
+  },
   theme: {
     colors: {
       // ...

@@ -44,7 +44,6 @@ ui.rightSidebar = false
 
 <style lang="scss" scoped>
 .my-home {
-  // 居中
   @apply top-1/2 left-1/2 fixed;
 
   transform: translate(-50%, -50%);

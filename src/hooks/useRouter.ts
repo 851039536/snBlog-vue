@@ -42,6 +42,16 @@ export function useRouter() {
   }
 
   /**
+   * 传值跳转新页面
+   * @param path 路径
+   * @param id 值
+   */
+  function resolveId(path: string, id: number) {
+    const { href } = resolve(path, id)
+    return winUrl(href)
+  }
+
+  /**
    * @description: 前进后退
    * @param {number} n n可为正数可为负数。正数返回上一个页面
    */
@@ -70,6 +80,7 @@ export function useRouter() {
     resolve,
     go,
     winUrl,
-    reload
+    reload,
+    resolveId
   }
 }
