@@ -6,24 +6,22 @@ import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { useSnippetApi, useSnippetTypeApi, useSnippetTagApi } from '@hooks/http'
+import { useSnippetApi, useSnippetTypeApi } from '@hooks/http'
 import { Snippet } from '@hooks/http/model/Snippet'
+import { nextTick, ref } from 'vue'
 
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
-const { getAll: getSnippetTagAll } = useSnippetTagApi()
 const { isUserId } = useUserInfo()
 const theme = useThemeSetting()
 const ui = useUiSetStore()
 const id = 'preview-only'
-import { ref, nextTick } from 'vue'
 const refScroll = ref()
 const onScroll = (type: any) => {
   //下一次 DOM 更新周期时再执行
   nextTick(() => {
     //根据 type 参数的值计算出要滚动到的位置  确保在模板中将其赋值给对应的 DOM 元素，如 <div ref="snippetRef"></div>。
-    const distance = type === 'top' ? 0 : refScroll.value.scrollHeight
-    refScroll.value.scrollTop = distance
+    refScroll.value.scrollTop = type === 'top' ? 0 : refScroll.value.scrollHeight
   })
 }
 
@@ -79,9 +77,6 @@ const GetSnippet = async () => {
     case 'type':
       rSnippet.value = await (await getContains(1, selectValue.value, rName.value, false, 1, pageSize.value)).data
       break
-    case 'tag':
-      rSnippet.value = await (await getContains(2, selectValue.value, rName.value, false, 1, pageSize.value)).data
-      break
     case 'text':
       rSnippet.value = await (await getContains(4, 'null', rName.value, false, 1, pageSize.value)).data
       break
@@ -97,16 +92,6 @@ const visible = ref(false)
 
 const RadioFun = async () => {
   switch (radioValue.value) {
-    case 'tag':
-      rName.value = ''
-      rSnippetTag.value = await (await getSnippetTagAll(true)).data
-      if (rSnippetTag.value === null) {
-        rSnippetTag.value = []
-      } else {
-        rSnippetTag.value = rSnippetTag.value.data
-      }
-      break
-
     case 'type':
       rName.value = ''
       rSnippetTag.value = await (await getSnippetTypeAll(true)).data
@@ -159,7 +144,6 @@ onMounted(async () => {
           <a-radio value="title">标题</a-radio>
           <a-radio value="text">内容</a-radio>
           <a-radio value="type">分类</a-radio>
-          <a-radio value="tag">标签</a-radio>
         </a-radio-group>
         <button
           class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"

@@ -5,21 +5,6 @@ import { IArticleTag } from './model/ArticleTagModel'
 import { IOneType } from './model/DiaryModel'
 import { IArticleType } from './model/ArticleTypeModel'
 import { IInterface } from './model/IntInterfaceModel'
-
-interface IntOne {
-  id: number
-  name: string
-  text: string
-  img: string
-  typeId: number
-  read: number
-  give: number
-  userId: number
-  commentId: number
-  timeCreate: any
-  timeModified: any
-}
-
 interface IPaging {
   page?: number
   pagesize?: number
@@ -27,4 +12,4 @@ interface IPaging {
   current?: number
 }
 // 导出所有模块
-export { IArticleTag, IntOne, IOneType, IVideo, ITag, IArticleType, IPaging, IInterface }
+export { IArticleTag, IOneType, IVideo, ITag, IArticleType, IPaging, IInterface }
