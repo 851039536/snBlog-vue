@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { useNavigationApi } from '@/hooks/http'
-import { useEventKey } from '@/hooks/useEventKey'
-import { useRouter } from '@/hooks/useRouter'
+import { useNavigationApi } from '@hooks/http'
+import { useEventKey } from '@hooks/useEventKey'
+import { useRouter } from '@hooks/useRouter'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { fConvert } from './index'
 const { addKeyup, removeKeyup } = useEventKey()
 const ui = useUiSetStore()
 
@@ -96,13 +97,11 @@ onMounted(async () => {
         </div>
       </div>
       <div class="w-1/3 flex flex-wrap">
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        <button
+          class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white"
+          @click="fConvert = true">
+          进制转换
+        </button>
         <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
         <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
         <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
@@ -125,6 +124,7 @@ onMounted(async () => {
       <div class="w-1/3 bg-yellow-400"></div>
     </div>
   </transition>
+  <footer-convert></footer-convert>
 </template>
 
 <style lang="scss" scoped>
@@ -137,7 +137,7 @@ onMounted(async () => {
 }
 
 .fo-nav {
-  @apply fixed bottom-0 right-0 z-10 h-95 w-full rounded bg-white shadow-xl;
+  @apply fixed bottom-0 right-0 z-10 h-40% w-full rounded bg-white shadow-xl;
 
   border: 1.2px solid rgb(190 179 179); /* 设置边框样式 */
 }
