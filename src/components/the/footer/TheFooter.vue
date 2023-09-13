@@ -39,6 +39,19 @@ const filterNav = async (name: string) => {
   nData.value = ret.data.data
 }
 
+const switchFun = (idex: number) => {
+  switch (idex) {
+    case 1:
+      ui.fToolsQR = false
+      ui.fToolsModal = true
+      break
+    case 2:
+      ui.fToolsModal = false
+      ui.fToolsQR = true
+      break
+  }
+}
+
 onMounted(async () => {
   await filterNav('常用工具')
 })
@@ -88,22 +101,23 @@ onMounted(async () => {
       </div>
       <div class="w-1/3 flex flex-wrap cursor-pointer text-base">
         <div
-          class="h-15 w-25 rounded bg-emerald-500 text-center m-1 hover:text-white"
+          class="h-15 w-25 rounded bg-emerald-300 text-center m-1 hover:text-white"
           style="line-height: 60px"
-          @click="ui.fToolsModal = true">
+          @click="switchFun(1)">
           进制转换
         </div>
         <div
-          class="h-15 w-25 rounded bg-emerald-500 text-center m-1 hover:text-white"
+          class="h-15 w-25 rounded bg-blue-300 text-center m-1 hover:text-white"
           style="line-height: 60px"
-          @click="ui.fToolsModal = true">
-          加解密
+          @click="switchFun(2)">
+          二维码
         </div>
       </div>
       <div class="w-1/3 bg-yellow-400"></div>
     </div>
   </transition>
   <footer-convert></footer-convert>
+  <footer-q-r></footer-q-r>
 </template>
 
 <style lang="scss" scoped>

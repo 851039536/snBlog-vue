@@ -2,10 +2,10 @@
   <footer-modal :visible="ui.fToolsModal">
     <div>
       <div class="mb-1">
-        <input v-model="name" class="w-150" placeholder="原始数据" />
+        <input v-model="name" type="text" class="w-150" placeholder="原始数据" />
       </div>
       <div>
-        <input v-model="nameRet" class="w-150" placeholder="转换后数据" />
+        <input v-model="nameRet" type="text" class="w-150" placeholder="转换后数据" />
       </div>
       <div class="m-2">
         <button class="mr-1" @click="hexToDecimal(name)">16转10</button>

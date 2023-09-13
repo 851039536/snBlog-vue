@@ -15,6 +15,7 @@ export const useUiSetStore = defineStore('uiSet', {
       loginUi: false, //登录弹窗
       fTools: false, //底部工具栏
       fToolsModal: false,
+      fToolsQR: false,
       snippet: false,
       sideIndex: -1
     }
