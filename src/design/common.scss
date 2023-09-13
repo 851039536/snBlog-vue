@@ -245,3 +245,35 @@
 body {
   font-family: PuHuiTiBASE, monospace;
 }
+
+input {
+  padding: 0 1rem 0 0.5rem;
+  height: 40px;
+  color: #0d0c22;
+  line-height: 28px;
+  border: 1px solid transparent;
+  border-color: rgb(128 121 124 / 40%);
+  border-radius: 3px;
+  outline: none;
+  transition: 0.3s ease;
+
+  @apply mx-2 text-base;
+}
+
+input::placeholder {
+  color: #9e9ea7;
+}
+
+input:focus,
+input:hover {
+  background-color: #fff;
+  border-color: rgb(128 121 124 / 40%);
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(194 176 183 / 10%);
+}
+
+button{
+  height: 40px;
+  border-color: rgb(128 121 124 / 40%);
+  @apply  cursor-pointer border rounded bg-gray-100 px-2 py-1 text-center text-base hover:text-blue-500;
+}

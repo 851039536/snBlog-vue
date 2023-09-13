@@ -37,8 +37,10 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeydownCtrl } = useEventKey()
 const ui = useUiSetStore()
+import { useTitle } from 'vue-hooks-plus'
+const title = ref('snBlog')
+useTitle(title)
 onMounted(() => {
-  //注册全局事件
   addKeydownCtrl()
   ui.searchArticle = false
 })

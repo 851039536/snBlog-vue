@@ -10,6 +10,7 @@ export function useEventKey() {
     if (e.key === 'Escape') {
       removeKeyup(removeEscape)
       ui.fTools = false
+      ui.fToolsModal = false
       ui.searchArticle = false
       ui.snippet = false
     }
@@ -51,6 +52,7 @@ export function useEventKey() {
       e.preventDefault()
       if (ui.fTools) {
         ui.fTools = false
+        ui.fToolsModal = false
       } else {
         ui.fTools = true
         addKeyup(removeEscape)

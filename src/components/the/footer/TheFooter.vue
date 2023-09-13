@@ -3,7 +3,6 @@ import { useNavigationApi } from '@hooks/http'
 import { useEventKey } from '@hooks/useEventKey'
 import { useRouter } from '@hooks/useRouter'
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { fConvert } from './index'
 const { addKeyup, removeKeyup } = useEventKey()
 const ui = useUiSetStore()
 
@@ -18,7 +17,6 @@ const navTab = ref(['常用工具', '软件', '图标', '博客', '框架', 'gpt
 const escape = (e: any) => {
   if (e.key === 'Escape') {
     removeKeyup(escape)
-    ui.fTools = false
   }
 }
 
@@ -66,11 +64,6 @@ onMounted(async () => {
   <transition name="slidey-fade">
     <div v-if="ui.fTools" class="fo-nav flex">
       <div class="w-1/3">
-        <div
-          class="absolute right-0 top-0 w-20px cursor-pointer bg-gray-100 px-1 text-center"
-          @click="ui.fTools = false">
-          x
-        </div>
         <input
           v-model="searchName"
           v-focus
@@ -88,38 +81,24 @@ onMounted(async () => {
           </div>
         </div>
         <div class="mx-3 mt-1 flex flex-wrap">
-          <button
-            v-for="(item, index) in nData"
-            :key="index"
-            class="m-2px cursor-pointer border rounded bg-white px-2 py-1 text-center text-base shadow hover:text-red">
+          <button v-for="(item, index) in nData" :key="index" class="m-2px hover:text-red">
             <span @click="winUrl(item.url)">{{ item.name }}</span>
           </button>
         </div>
       </div>
-      <div class="w-1/3 flex flex-wrap">
-        <button
-          class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white"
-          @click="fConvert = true">
+      <div class="w-1/3 flex flex-wrap cursor-pointer text-base">
+        <div
+          class="h-15 w-25 rounded bg-emerald-500 text-center m-1 hover:text-white"
+          style="line-height: 60px"
+          @click="ui.fToolsModal = true">
           进制转换
-        </button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
-        <button class="h-15 w-25 rounded border-none bg-emerald-500 text-base m-1 hover:text-white">进制转换</button>
+        </div>
+        <div
+          class="h-15 w-25 rounded bg-emerald-500 text-center m-1 hover:text-white"
+          style="line-height: 60px"
+          @click="ui.fToolsModal = true">
+          加解密
+        </div>
       </div>
       <div class="w-1/3 bg-yellow-400"></div>
     </div>
@@ -137,7 +116,7 @@ onMounted(async () => {
 }
 
 .fo-nav {
-  @apply fixed bottom-0 right-0 z-10 h-40% w-full rounded bg-white shadow-xl;
+  @apply fixed bottom-0 right-0 z-10 h-40% w-full bg-white;
 
   border: 1.2px solid rgb(190 179 179); /* 设置边框样式 */
 }
