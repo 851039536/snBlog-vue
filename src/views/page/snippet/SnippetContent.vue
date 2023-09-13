@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@hooks/useUserInfo'
 import { snippet } from '@hooksHttp/model/Snippet'
-import { debounce } from '@/utils/dethrottle'
+import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
@@ -13,6 +13,7 @@ import { nextTick, ref } from 'vue'
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { isUserId } = useUserInfo()
+const { debounce } = useDirective()
 const theme = useThemeSetting()
 const ui = useUiSetStore()
 const id = 'preview-only'

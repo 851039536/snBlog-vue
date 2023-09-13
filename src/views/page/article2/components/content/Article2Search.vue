@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { ArticleTypeApi } from '@/api'
-import { throttle } from '@/utils/dethrottle'
+import { useDirective } from '@hooks/useDirective'
 import { rArticle } from '../../data'
 import { useArticleApi } from '@hooksHttp/index'
 const { getContains } = useArticleApi()
+const { throttle } = useDirective()
 
 const searchName = ref('')
 const search = () => {

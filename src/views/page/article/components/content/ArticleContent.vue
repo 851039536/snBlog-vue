@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { ArticleApi } from '@api/index'
-import { debounce } from '@/utils/dethrottle'
+import { useDirective } from '@hooks/useDirective'
 import { article } from '@hooksHttp/model/Article'
 import { useArticleApi } from '@/hooks/http'
 const { getById: getArticleById } = useArticleApi()
+const { debounce } = useDirective()
 const ArticleContentMdModule = defineAsyncComponent(() => {
   return import('@views/page/article/components/content/ArticleContentMd.vue')
 })

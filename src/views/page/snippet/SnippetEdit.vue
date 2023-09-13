@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
-import { debounce } from '@/utils/dethrottle'
+import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
@@ -10,6 +10,7 @@ import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hoo
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
 const { getAll: snippetTagAll } = useSnippetTagApi()
 const { getAll: snippetTypeSubAll } = useSnippetTypeSubApi()
+const { debounce } = useDirective()
 const theme = useThemeSetting()
 const rSnippetTag: any = ref([])
 const rSnippetType: any = ref([])

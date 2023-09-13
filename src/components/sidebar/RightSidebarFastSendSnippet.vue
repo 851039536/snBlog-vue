@@ -4,11 +4,12 @@ import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
 import { snippetTag } from '@hooksHttp/model/SnippetTag'
 import { MdEditor } from 'md-editor-v3'
 import { SnippetApi } from '@/api'
-import { debounce } from '@/utils/dethrottle'
 import { useUserInfo } from '@/hooks/useUserInfo'
+import { useDirective } from '@/hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 const { getUserId } = useUserInfo()
+const { debounce } = useDirective()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { adds: addTag, getByTitle: getTagTitle } = useSnippetTagApi()
 const { getCondition: getSnippetTypeSubCondition } = useSnippetTypeSubApi()

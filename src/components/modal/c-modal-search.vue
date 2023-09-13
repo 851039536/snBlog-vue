@@ -28,7 +28,7 @@ const emit = defineEmits(['close-model'])
   @apply bg-white rounded shadow;
 
   .model-body {
-    @apply w-650px h-650px p-6;
+    @apply w-650px h-650px p-6 overflow-auto;
   }
 
   .model-body::-webkit-scrollbar {
@@ -36,9 +36,9 @@ const emit = defineEmits(['close-model'])
   }
 
   .close {
-    @apply absolute top-0px right-0 px-3;
-    @apply border-none cursor-pointer bg-emerald-50;
-    @apply hover:text-red-400;
+    @apply absolute top-0px right-0 px-2;
+    @apply border-none cursor-pointer;
+    @apply hover:text-red-400 bg-white;
   }
 }
 </style>

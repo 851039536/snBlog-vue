@@ -2,7 +2,7 @@
 import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
 import { snippetTag as tagMo } from '@hooksHttp/model/SnippetTag'
-import { debounce } from '@/utils/dethrottle'
+import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { MdEditor } from 'md-editor-v3'
@@ -10,6 +10,7 @@ import { snippetTypeSub, snippetType, tagName, snippetTag, edVisible } from './d
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useSnippetTypeSubApi, useSnippetTagApi } from '@/hooks/http'
 const { getUserId } = useUserInfo()
+const { debounce } = useDirective()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
 const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
-import { debounce } from '@/utils/dethrottle'
+import { useDirective } from '@/hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { useUserInfo } from '@hooks/useUserInfo'
@@ -12,8 +12,8 @@ const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { getAll: getSnippetTagAll } = useSnippetTagApi()
 const { getAll: getSnippetTypeSubAll } = useSnippetTypeSubApi()
 const reload: any = inject('reload')
-
 const { getUserId } = useUserInfo()
+const { debounce } = useDirective()
 const add = debounce(async () => {
   snippet.userId = getUserId() as number
   const ret = await SnippetApi.add(snippet)

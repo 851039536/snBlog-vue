@@ -23,10 +23,10 @@ onMounted(async () => {
   ])
 
   navData.value = navs.data.data
-  time.value = times.data.data[0].timeCreate // 本站已运行时间
-  articleSum.value = String(articleSums.data.data) // 文章总数
-  textSum.value = String(textSums.data.data) // 字数总数
-  readSum.value = String(readSums.data.data) // 阅读总数
+  time.value = times.data.data[0].timeCreate
+  articleSum.value = String(articleSums.data.data)
+  textSum.value = String(textSums.data.data)
+  readSum.value = String(readSums.data.data)
 })
 </script>
 <template>
@@ -48,5 +48,7 @@ onMounted(async () => {
         :heat="readSum"
         :time="time"></right-sidebar-statistics>
     </c-right-sidebar>
+
+    <right-sidebar-search-detail></right-sidebar-search-detail>
   </div>
 </template>
