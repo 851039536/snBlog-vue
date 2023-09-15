@@ -13,16 +13,20 @@ const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
 const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
-const { adds: addSnippetVersion } = useSnippetVersionApi()
+const { adds: addSnippetVersion, sum: snVerSum } = useSnippetVersionApi()
 const { upSnippet } = useSnippetPack()
 const reload: any = inject('reload')
 const update = debounce(async () => {
   snippet.userId = getUserId() as number
+
+  snippetVersion.name = snippet.name
+  snippetVersion.text = snippet.text
+  snippetVersion.snippetId = snippet.id
+  await addSnippetVersion(snippetVersion)
+
+  const sums = await snVerSum(1, snippet.id, false)
+  snippet.snippetVersionId = sums.data
   if (await upSnippet(snippet)) {
-    snippetVersion.name = snippet.name
-    snippetVersion.text = snippet.text
-    snippetVersion.snippetId = snippet.id
-    await addSnippetVersion(snippetVersion)
     edVisible.value = false
     reload()
   }

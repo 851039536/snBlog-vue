@@ -189,13 +189,15 @@ onMounted(async () => {
               :h-text="name"
               color="red"
               :text="item.name"
-              class="mx-6 text-2xl font-medium"></custom-highlight-text>
+              class="mx-5 text-2xl"></custom-highlight-text>
             <div class="ml-5 pt-1 text-white">
-              <span ml-1 mr-1 rounded bg-blue-500 px-2px shadow>{{ item.type.name }}</span>
-              <span mr-1 rounded bg-yellow-500 px-2px shadow>{{ item.typeSub.name }}</span>
-              <span mr-1 rounded bg-green-500 px-2px shadow>{{ item.tag.name }}</span>
-              <span mr-1 rounded bg-red-400 px-2px shadow>{{ item.user.nickname }}</span>
-              <span mr-1 rounded bg-green-600 px-2px shadow @click="cliDiff(item.id, item.user.id)">v0</span>
+              <span ml-1 mr-1 rounded bg-blue-600 px-2px shadow>{{ item.type.name }}</span>
+              <span mr-1 rounded bg-yellow-600 px-2px shadow>{{ item.typeSub.name }}</span>
+              <span mr-1 rounded bg-green-600 px-2px shadow>{{ item.tag.name }}</span>
+              <span mr-1 rounded bg-red-500 px-2px shadow>{{ item.user.nickname }}</span>
+              <span mr-1 cursor-pointer rounded bg-blue-700 px-2px shadow @click="cliDiff(item.id, item.user.id)">
+                v_{{ item.snippetVersionId }}
+              </span>
 
               <span class="cursor-pointer text-gray-800 hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">
                 编辑
