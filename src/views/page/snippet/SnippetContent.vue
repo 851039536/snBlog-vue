@@ -96,6 +96,7 @@ const scrollSnippet = debounce(async () => {
 }, 600)
 
 const visible = ref(false)
+const diffVisible = ref(false)
 
 const radioFuns = async () => {
   switch (radios.value) {
@@ -133,6 +134,22 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
   snippet.userId = ret.data.user.id
   snippet.typeSubId = ret.data.typeSub.id
   visible.value = true
+}
+
+const cliDiff = async (id: number, uid: number): Promise<any> => {
+  if (!isUserId(uid)) {
+    message.error('无权限!')
+    return
+  }
+  const ret = await getById(id, false)
+  snippet.id = ret.data.id
+  snippet.name = ret.data.name
+  snippet.text = ret.data.text
+  snippet.tagId = ret.data.tag.id
+  snippet.typeId = ret.data.type.id
+  snippet.userId = ret.data.user.id
+  snippet.typeSubId = ret.data.typeSub.id
+  diffVisible.value = true
 }
 
 onMounted(async () => {
@@ -178,6 +195,8 @@ onMounted(async () => {
               <span mr-1 rounded bg-yellow-500 px-2px shadow>{{ item.typeSub.name }}</span>
               <span mr-1 rounded bg-green-500 px-2px shadow>{{ item.tag.name }}</span>
               <span mr-1 rounded bg-red-400 px-2px shadow>{{ item.user.nickname }}</span>
+              <span mr-1 rounded bg-green-600 px-2px shadow @click="cliDiff(item.id, item.user.id)">v0</span>
+
               <span class="cursor-pointer text-gray-800 hover:text-blue-400" @click="cliEdit(item.id, item.user.id)">
                 编辑
               </span>
@@ -200,6 +219,10 @@ onMounted(async () => {
   <!-- 编辑模块 -->
   <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
     <SnippetEdit></SnippetEdit>
+  </c-modal-dialog>
+  <!-- 版本差异模块 -->
+  <c-modal-dialog :visible="diffVisible" title="codeDiff" @close-model="diffVisible = false">
+    <SnippetDiff></SnippetDiff>
   </c-modal-dialog>
 </template>
 

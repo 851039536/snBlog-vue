@@ -9,6 +9,7 @@ import { useSnippetTypeSubApi } from '@hooksHttp/useSnippetTypeSubApi'
 import { useDataBaseApi } from '@hooksHttp/useDataBaseApi'
 import { useNavigationApi } from '@hooksHttp/useNavigationApi'
 import { useNavigationTypeApi } from '@hooksHttp/useNavigationTypeApi'
+import { useSnippetVersionApi } from '@hooksHttp/useSnippetVersionApi'
 export {
   useUserTalkApi,
   useSnippetApi,
@@ -20,5 +21,6 @@ export {
   useSnippetTypeSubApi,
   useNavigationApi,
   useDataBaseApi,
-  useNavigationTypeApi
+  useNavigationTypeApi,
+  useSnippetVersionApi
 }

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { searchName } from './data'
+import { searchName } from './index'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeyup, removeKeyup } = useEventKey()
@@ -69,3 +69,4 @@ function onSearch() {
   }
 }
 </style>
+.

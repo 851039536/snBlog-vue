@@ -2,7 +2,7 @@
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useArticleApi, useSnippetApi } from '@hooksHttp/index'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { ident } from './data'
+import { ident } from './index'
 import { message } from 'ant-design-vue'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeyup, removeKeyup } = useEventKey()
@@ -68,3 +68,4 @@ onMounted(async () => {
 </template>
 
 <!-- <style lang="scss" scoped></style> -->
+.

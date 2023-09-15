@@ -1,23 +1,28 @@
 <script lang="ts" setup>
 import { snippet } from '@hooksHttp/model/Snippet'
+import { snippetVersion } from '@hooksHttp/model/SnippetVersion'
 import { snippetTag as tagMo } from '@hooksHttp/model/SnippetTag'
 import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
-import { aData } from '../data'
 import { MdEditor } from 'md-editor-v3'
 import { snippetTypeSub, snippetType, tagName, snippetTag, edVisible } from './data'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { useSnippetTypeSubApi, useSnippetTagApi } from '@/hooks/http'
+import { useSnippetTypeSubApi, useSnippetTagApi, useSnippetVersionApi } from '@/hooks/http'
 import { useSnippetPack } from '@hooksHttp/pack/useSnippetPack'
 const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
 const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
+const { adds: addSnippetVersion } = useSnippetVersionApi()
 const { upSnippet } = useSnippetPack()
 const reload: any = inject('reload')
 const update = debounce(async () => {
   snippet.userId = getUserId() as number
   if (await upSnippet(snippet)) {
+    snippetVersion.name = snippet.name
+    snippetVersion.text = snippet.text
+    snippetVersion.snippetId = snippet.id
+    await addSnippetVersion(snippetVersion)
     edVisible.value = false
     reload()
   }

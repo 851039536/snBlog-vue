@@ -109,7 +109,7 @@ const onScroll = (name: string) => {
   @apply mt-1 mx-2;
 
   .content {
-    @apply flex h-155px mb-2  m-a;
+    @apply flex h-155px mb-2 m-auto;
     @apply bg-white rounded-lg shadow-sm;
 
     .cont-img {

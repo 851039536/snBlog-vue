@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { removeSnippet } from '@/hooks/http/model/Snippet'
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { ident } from './data'
+import { ident } from './index'
 const ui = useUiSetStore()
 const sendTitle = ref('')
 
@@ -35,3 +35,4 @@ onBeforeUpdate(() => {
 </template>
 
 <!-- <style lang="scss" scoped></style> -->
+.

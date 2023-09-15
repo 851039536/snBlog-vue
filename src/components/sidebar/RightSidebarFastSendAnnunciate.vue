@@ -4,7 +4,7 @@ import { userTalk } from '@/hooks/http/model/UserTalk'
 import { useUserInfo } from '@/hooks/useUserInfo'
 import { useUiSetStore } from '@/store/modules/uiSettings'
 import { message } from 'ant-design-vue'
-import { ident } from './data'
+import { ident } from './index'
 const { getUserId } = useUserInfo()
 const { addUserTalk } = useUserTalkApi()
 //
@@ -77,3 +77,4 @@ async function createPost() {
   background-color: #3e95cf;
 }
 </style>
+.
