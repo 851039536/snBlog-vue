@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
 import { snippetTag as tagMo } from '@hooksHttp/model/SnippetTag'
 import { useDirective } from '@hooks/useDirective'
@@ -9,21 +8,19 @@ import { MdEditor } from 'md-editor-v3'
 import { snippetTypeSub, snippetType, tagName, snippetTag, edVisible } from './data'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useSnippetTypeSubApi, useSnippetTagApi } from '@/hooks/http'
+import { useSnippetPack } from '@hooksHttp/pack/useSnippetPack'
 const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
 const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
-
+const { upSnippet } = useSnippetPack()
 const reload: any = inject('reload')
 const update = debounce(async () => {
   snippet.userId = getUserId() as number
-  const ret = await SnippetApi.update(snippet)
-  if (ret.data) {
+  if (await upSnippet(snippet)) {
     edVisible.value = false
     reload()
-    return message.success(aData.SUCCESS)
   }
-  message.warning(aData.FAIL)
 }, 1000)
 
 const getTypeSub = async () => {
@@ -55,11 +52,7 @@ const updates = debounce(async () => {
 
   snippet.tagId = tid.data.data.id
   snippet.userId = getUserId() as number
-  const ret = await SnippetApi.update(snippet)
-  if (ret.data) {
-    return message.success(aData.SUCCESS)
-  }
-  message.warning(aData.FAIL)
+  await upSnippet(snippet)
 }, 1000)
 onMounted(async () => {
   await getTypeSub()

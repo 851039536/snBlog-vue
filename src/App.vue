@@ -27,7 +27,6 @@
     <base-login></base-login>
     <base-aspin></base-aspin>
     <the-footer></the-footer>
-
     <snippet-content></snippet-content>
   </div>
 </template>

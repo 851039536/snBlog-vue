@@ -1,7 +1,7 @@
 import { useRequest } from '@/hooks/http/axios/useRequest'
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
-const { get } = useRequest()
+const { get, update } = useRequest()
 
 enum Api {
   name = '/snippet/'
@@ -34,7 +34,7 @@ export function useSnippetApi() {
    * @param name 查询字段
    * @param cache 缓存
    */
-  async function getContains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
+  async function contains(identity: number, type: string, name: string, cache = true, pageIndex = 1, pageSize = 2) {
     const url = `${Api.name}contains?identity=${identity}&type=${type}&name=${name}&cache=${cache}&pageIndex=${pageIndex}&pageSize=${pageSize}`
     const ret = await get(url, false, false)
     return ret
@@ -77,11 +77,20 @@ export function useSnippetApi() {
     return ret
   }
 
+  /**
+   * @description: 更新
+   * @param {Snippet} entity
+   */
+  function up(entity: any) {
+    return update(`/snippet/edit`, entity)
+  }
+
   return {
     getSum,
-    getContains,
+    getContains: contains,
     getPaging,
     getStrSum,
-    getById
+    getById,
+    up
   }
 }

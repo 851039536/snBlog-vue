@@ -8,8 +8,8 @@ import { useThemeSetting } from '@store/modules/themeSetting'
 import { useUiSetStore } from '@store/modules/uiSettings'
 import { useSnippetApi, useSnippetTypeApi } from '@hooks/http'
 import { Snippet } from '@hooks/http/model/Snippet'
-import { nextTick, ref } from 'vue'
-
+import { useIndex } from './index'
+const { onScroll, refScroll } = useIndex()
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { isUserId } = useUserInfo()
@@ -17,14 +17,6 @@ const { debounce } = useDirective()
 const theme = useThemeSetting()
 const ui = useUiSetStore()
 const id = 'preview-only'
-const refScroll = ref()
-const onScroll = (type: any) => {
-  //下一次 DOM 更新周期时再执行
-  nextTick(() => {
-    //根据 type 参数的值计算出要滚动到的位置  确保在模板中将其赋值给对应的 DOM 元素，如 <div ref="snippetRef"></div>。
-    refScroll.value.scrollTop = type === 'top' ? 0 : refScroll.value.scrollHeight
-  })
-}
 
 // 定义触发底部函数
 const handleScroll = async () => {
@@ -34,7 +26,7 @@ const handleScroll = async () => {
     console.log(isAtBottom + containerEl.clientHeight)
     if (isAtBottom && containerEl.clientHeight > 300) {
       pageSize.value += 5
-      await ScrollSnippet()
+      await scrollSnippet()
     }
   }
 }
@@ -43,13 +35,13 @@ const handleScroll = async () => {
 watchEffect(() => {
   handleScroll()
 })
-const rName = ref('')
-const rCharSum = ref('')
+const name = ref('')
+const charSum = ref('')
 const sum = ref('')
 const rSnippet: any = ref([] as Snippet[])
-const rSnippetTag: any = ref([])
-const radioValue = ref<string>('ALL')
-const selectValue: any = ref('ALL')
+const snippetTag: any = ref([])
+const radios = ref<string>('ALL')
+const sltValue: any = ref('ALL')
 const pageSize: any = ref(2)
 
 /**
@@ -60,51 +52,65 @@ const isNumeric = (str: string) => {
   return /^\d+$/.test(str)
 }
 const QSnippet = debounce(async () => {
+  if (name.value === '') {
+    rSnippet.value = []
+    return
+  }
   pageSize.value = 5
-  await GetSnippet()
+  await getSnippet()
   onScroll('top')
 }, 600)
 
-const GetSnippet = async () => {
-  if (rName.value === '' || isNumeric(rName.value)) return
+const getSnippet = async () => {
+  if (name.value === '' || isNumeric(name.value)) return
 
-  switch (radioValue.value) {
+  switch (radios.value) {
     case 'ALL':
-      rSnippet.value = await (await getContains(0, 'null', rName.value, false, 1, pageSize.value)).data
+      await contains(0)
       break
     case 'title':
-      rSnippet.value = await (await getContains(5, 'null', rName.value, false, 1, pageSize.value)).data
+      await contains(5)
       break
     case 'type':
-      rSnippet.value = await (await getContains(1, selectValue.value, rName.value, false, 1, pageSize.value)).data
+      await contains(1, sltValue.value)
       break
     case 'text':
-      rSnippet.value = await (await getContains(4, 'null', rName.value, false, 1, pageSize.value)).data
+      await contains(4)
       break
     default:
-      return null
+      await contains(0)
+      break
   }
 }
-const ScrollSnippet = debounce(async () => {
-  await GetSnippet()
+
+const contains = async (idex: number, types = 'null') => {
+  const ret = await getContains(idex, types, name.value, false, 1, pageSize.value)
+  if (ret.status === 200) {
+    rSnippet.value = ret.data
+  } else {
+    message.info('无数据')
+  }
+}
+const scrollSnippet = debounce(async () => {
+  await getSnippet()
 }, 600)
 
 const visible = ref(false)
 
-const RadioFun = async () => {
-  switch (radioValue.value) {
+const radioFuns = async () => {
+  switch (radios.value) {
     case 'type':
-      rName.value = ''
-      rSnippetTag.value = await (await getSnippetTypeAll(true)).data
-      if (rSnippetTag.value === null) {
-        rSnippetTag.value = []
+      name.value = ''
+      snippetTag.value = await (await getSnippetTypeAll(true)).data
+      if (snippetTag.value === null) {
+        snippetTag.value = []
       } else {
-        rSnippetTag.value = rSnippetTag.value.data
+        snippetTag.value = snippetTag.value.data
       }
       break
 
     default:
-      rName.value = ''
+      name.value = ''
       break
   }
 }
@@ -131,48 +137,39 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
 
 onMounted(async () => {
   const [strSum, sums] = await axios.all([await getStrSum(0, 'null', true), await getSum(0, '', true)])
-  rCharSum.value = strSum.data
+  charSum.value = strSum.data
   sum.value = sums.data
 })
 </script>
 
 <template>
-  <modal-snippet :visible="ui.snippet" @close-model="ui.snippet = false">
+  <SnippetModal :visible="ui.snippet" @close-model="ui.snippet = false">
     <div class="sn-content">
       <div class="m-auto w65% text-base">
-        <a-radio-group v-model:value="radioValue" @change="RadioFun">
+        <a-radio-group v-model:value="radios" @change="radioFuns">
           <a-radio value="ALL">默认</a-radio>
           <a-radio value="title">标题</a-radio>
           <a-radio value="text">内容</a-radio>
           <a-radio value="type">分类</a-radio>
         </a-radio-group>
-        <button
-          class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
-          @click="onScroll('top')">
-          顶部
-        </button>
-        <button
-          class="mr-1 rounded-sm border-none bg-white px-2 hover:bg-blue-400 hover:text-light-50"
-          @click="onScroll('bottom')">
-          底部
-        </button>
-        <select v-model="selectValue" class="h-32px w-30 rounded text-base">
+        <button class="mr-1" @click="onScroll('top')">顶部</button>
+        <button class="mr-1" @click="onScroll('bottom')">底部</button>
+        <select v-model="sltValue" class="h-32px w-30 rounded text-base">
           <option class="rounded bg-blue-50">ALL</option>
-          <option v-for="res in rSnippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
+          <option v-for="res in snippetTag" :key="res.id" :value="res.name" class="bg-blue-50">
             {{ res.name }}
           </option>
         </select>
 
-        <input v-model="rName" v-focus type="search" placeholder="Search" class="mt-2" @input="QSnippet()" />
+        <input v-model="name" v-focus type="search" placeholder="Search" class="mt-2" @input="QSnippet()" />
       </div>
 
-      <div class="bor"></div>
       <!-- ref标识 -->
-      <div ref="refScroll" class="modal-cont w-full overflow-auto scroll-smooth" @scroll="handleScroll">
-        <div class="test">
+      <div ref="refScroll" class="modal-cont" @scroll="handleScroll">
+        <div class="cont-item">
           <div v-for="(item, index) in rSnippet" :key="index" class="item">
             <custom-highlight-text
-              :h-text="rName"
+              :h-text="name"
               color="red"
               :text="item.name"
               class="mx-6 text-2xl font-medium"></custom-highlight-text>
@@ -195,49 +192,38 @@ onMounted(async () => {
         </div>
         <div class="absolute left-0 top-0 rounded bg-green-200 p-1 text-cool-gray-700">
           <div>片段:{{ sum }}</div>
-          <div>字符:{{ rCharSum }}</div>
+          <div>字符:{{ charSum }}</div>
         </div>
       </div>
-
-      <!-- 编辑模块 -->
-      <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
-        <SnippetEdit></SnippetEdit>
-      </c-modal-dialog>
     </div>
-  </modal-snippet>
+  </SnippetModal>
+  <!-- 编辑模块 -->
+  <c-modal-dialog :visible="visible" title="code" @close-model="visible = false">
+    <SnippetEdit></SnippetEdit>
+  </c-modal-dialog>
 </template>
 
 <style lang="scss" scoped>
-.bor {
-  @apply py-2;
+.modal-cont {
+  @apply mt-4 w-full overflow-auto;
 
-  border-bottom: 0.5px solid #213547;
-}
+  .cont-item {
+    margin: 0 auto;
+    column-count: 2;
+    column-gap: 1px;
+    counter-reset: count;
 
-.test {
-  margin: 0 auto;
-  column-count: 2;
-  column-gap: 2px;
-  counter-reset: count;
+    @apply mt-5 bg-white;
 
-  @apply mt-5 bg-white;
-
-  .item {
-    page-break-inside: avoid;
-    -webkit-column-break-inside: avoid;
+    .item {
+      page-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
   }
 }
 
 input {
-  box-sizing: border-box;
   width: 65%;
-  height: 100%;
-  padding: 10px 15px;
-  border: 1.2px solid #242528;
-  border-radius: 5px;
-  outline-style: none;
-
-  @apply text-base;
 }
 
 @media screen and (min-width: 1367px) {

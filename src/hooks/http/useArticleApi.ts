@@ -31,7 +31,7 @@ export function useArticleApi() {
    * @param {string} type 条件
    * @param {boolean} cache 缓存
    */
-  async function getSum(identity = 0, type = 'null', cache = true) {
+  function getSum(identity = 0, type = 'null', cache = true) {
     return get(`${api.sum}identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 
@@ -42,7 +42,7 @@ export function useArticleApi() {
    * @param cache 缓存
    * @returns
    */
-  async function getType(identity: number, type = 'null', cache = true) {
+  function getType(identity: number, type = 'null', cache = true) {
     return get(`${api.type}identity=${identity}&type=${type}&cache=${cache}`, false)
   }
 

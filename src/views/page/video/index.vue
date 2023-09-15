@@ -16,21 +16,4 @@ method.currentchange(1)
 .video {
   // @apply h-[92.78vh];
 }
-
-// @screen xp {
-//   #svideo {
-//     .svideo_main {
-//       width: 100%;
-
-//       @apply m-0;
-
-//       .svideo_main_content {
-//         .svideo-2-1 {
-//           width: 97%;
-//           height: 65%;
-//         }
-//       }
-//     }
-//   }
-// }
 </style>

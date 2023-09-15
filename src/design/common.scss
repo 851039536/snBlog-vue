@@ -252,12 +252,12 @@ input {
   color: #0d0c22;
   line-height: 28px;
   border: 1px solid transparent;
-  border-color: rgb(128 121 124 / 40%);
+  border-color: rgb(128 121 124 / 70%);
   border-radius: 3px;
   outline: none;
   transition: 0.3s ease;
 
-  @apply mx-2 text-base;
+  @apply text-base;
 }
 
 input::placeholder {
@@ -267,7 +267,7 @@ input::placeholder {
 input:focus,
 input:hover {
   background-color: #fff;
-  border-color: rgb(128 121 124 / 40%);
+  border-color: rgb(128 121 124 / 60%);
   outline: none;
   box-shadow: 0 0 0 2px rgb(194 176 183 / 10%);
 }

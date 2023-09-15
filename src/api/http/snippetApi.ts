@@ -1,4 +1,4 @@
-import { get, add, update, del } from '@/api/http/funApi'
+import { get, add, del } from '@/api/http/funApi'
 
 export class SnippetApi {
   /**
@@ -28,14 +28,6 @@ export class SnippetApi {
    */
   static add(entity: any) {
     return add('/snippet/add', entity, true)
-  }
-
-  /**
-   * @description: 更新数据
-   * @param {Snippet} entity
-   */
-  static update(entity: any) {
-    return update(`/snippet/edit`, entity)
   }
 
   /**

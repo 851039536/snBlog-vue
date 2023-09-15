@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <Transition name="fade" :duration="150">
-      <div v-show="visible" class="model-bg">
+      <div v-if="visible" class="model-bg">
         <div class="modal-content">
           <button class="close" @click="emit('close-model')">X</button>
           <div class="model-body">
