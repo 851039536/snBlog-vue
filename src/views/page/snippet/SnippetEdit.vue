@@ -3,10 +3,12 @@ import { snippet } from '@hooksHttp/model/Snippet'
 import { useDirective } from '@hooks/useDirective'
 import { MdEditor } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
+import { useSnippetTypeApi, useSnippetTypeSubApi, useSnippetVersionApi } from '@/hooks/http'
 import { useSnippetPack } from '@/hooks/http/pack/useSnippetPack'
+import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
 
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
+const { adds: addSnippetVer, sum: snVerSum } = useSnippetVersionApi()
 const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
 const { upSnippet } = useSnippetPack()
 const { debounce } = useDirective()
@@ -15,6 +17,12 @@ const snippetType: any = ref([])
 const snippetTypeSub: any = ref([])
 
 const update = debounce(async () => {
+  //先存入旧版内容
+  await addSnippetVer(snippetVersion)
+  //更新片段之前,更新版本次数
+  const sums = await snVerSum(1, snippet.id, false)
+  snippet.snippetVersionId = sums.data
+  //更新片段
   await upSnippet(snippet)
 }, 600)
 const getTypeSub = async (id: number) => {
@@ -29,7 +37,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="h720px w1100px">
+  <div class="h-[80%] w1300px">
     <div class="mb-1">
       <input v-model="snippet.name" class="w-full" />
     </div>

@@ -39,6 +39,7 @@
     "qs": "^6.10.1",
     "typescript": "^4.8.2",
     "unplugin-vue-components": "0.22.12",
+    "v-code-diff": "^1.7.1",
     "vite": "4.4.3",
     "vite-plugin-compression": "^0.5.1",
     "vite-tsconfig-paths": "^3.3.17",

@@ -7,6 +7,7 @@ import { navName } from '../utils/data'
 import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
 import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
+import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
 const { momentTimeList } = useMomentTime()
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
 const { getAll: snippetTagAll, getById: snippetTagById } = useSnippetTagApi()
@@ -40,6 +41,11 @@ const edit = async (id: number) => {
 
   const name = await snippetTagById(snippet.tagId)
   tagName.value = name.data.data.name
+
+  //2.更新之前存入旧版内容
+  snippetVersion.name = snippet.name
+  snippetVersion.text = snippet.text
+  snippetVersion.snippetId = snippet.id
   edVisible.value = true
 }
 

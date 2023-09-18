@@ -1,11 +1,8 @@
 <script lang="ts" setup>
 import { snippet } from '@hooksHttp/model/Snippet'
 import { snippetVersion } from '@hooksHttp/model/SnippetVersion'
-import { MdPreview } from 'md-editor-v3'
-import { useThemeSetting } from '@store/modules/themeSetting'
 import { useSnippetVersionApi } from '@/hooks/http'
-const id = 'preview-only'
-const theme = useThemeSetting()
+import { CodeDiff } from 'v-code-diff'
 const { bySnId, byId: byIdSnVer } = useSnippetVersionApi()
 const snippetVer: any = ref()
 const verId = ref(0)
@@ -19,35 +16,28 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="h750px w1300px">
+  <div class="h-[80%] w1350px">
     <div class="text-2xl">
       {{ snippet.name }}
     </div>
     <div>
-      <select v-model="verId" class="h-32px w-20 rounded text-base" @change="name()">
-        <option v-for="ret in snippetVer" :key="ret.id" :value="ret.id" class="bg-blue-50">v_{{ ret.count }}</option>
+      <select
+        v-model="verId"
+        class="mt-2 h-32px w-15 rounded border-none bg-blue-400 pl-3 outline-none"
+        text="base white"
+        @change="name()">
+        <option v-for="ret in snippetVer" :key="ret.id" :value="ret.id">v{{ ret.count }}</option>
       </select>
     </div>
-    <div class="flex bg-emerald-100">
-      <div class="h720px w-5/10 overflow-auto m-1">
-        <div>新</div>
-        <MdPreview
-          :show-code-row-number="true"
-          :editor-id="id"
-          :model-value="snippet.text"
-          :preview-theme="theme.previewTheme"
-          :code-theme="theme.codeTheme" />
-      </div>
 
-      <div class="h720px w-5/10 overflow-auto m-1">
-        <div>旧</div>
-        <MdPreview
-          :show-code-row-number="true"
-          :editor-id="id"
-          :model-value="snippetVersion.text"
-          :preview-theme="theme.previewTheme"
-          :code-theme="theme.codeTheme" />
-      </div>
+    <div class="h760px flex">
+      <code-diff
+        :old-string="snippetVersion.text"
+        :new-string="snippet.text"
+        output-format="side-by-side"
+        :draw-file-list="true"
+        :context="10"
+        :render-nothing-when-empty="true" />
     </div>
   </div>
 </template>

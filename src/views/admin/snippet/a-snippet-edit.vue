@@ -19,9 +19,6 @@ const reload: any = inject('reload')
 const update = debounce(async () => {
   snippet.userId = getUserId() as number
 
-  snippetVersion.name = snippet.name
-  snippetVersion.text = snippet.text
-  snippetVersion.snippetId = snippet.id
   await addSnippetVersion(snippetVersion)
 
   const sums = await snVerSum(1, snippet.id, false)

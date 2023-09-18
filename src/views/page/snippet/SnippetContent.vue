@@ -9,6 +9,7 @@ import { useUiSetStore } from '@store/modules/uiSettings'
 import { useSnippetApi, useSnippetTypeApi } from '@hooks/http'
 import { Snippet } from '@hooks/http/model/Snippet'
 import { useIndex } from './index'
+import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
 const { onScroll, refScroll } = useIndex()
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
@@ -125,6 +126,8 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
+
+  //1.通过主键获取snippet内容
   const ret = await getById(id, false)
   snippet.id = ret.data.id
   snippet.name = ret.data.name
@@ -133,6 +136,11 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
   snippet.typeId = ret.data.type.id
   snippet.userId = ret.data.user.id
   snippet.typeSubId = ret.data.typeSub.id
+
+  //2.更新之前存入旧版内容
+  snippetVersion.name = snippet.name
+  snippetVersion.text = snippet.text
+  snippetVersion.snippetId = snippet.id
   visible.value = true
 }
 
@@ -145,6 +153,7 @@ const cliDiff = async (id: number, uid: number): Promise<any> => {
   snippet.id = ret.data.id
   snippet.name = ret.data.name
   snippet.text = ret.data.text
+  snippetVersion.text = ret.data.text
   snippet.tagId = ret.data.tag.id
   snippet.typeId = ret.data.type.id
   snippet.userId = ret.data.user.id
