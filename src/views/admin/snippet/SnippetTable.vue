@@ -120,13 +120,6 @@ onMounted(async () => {
         <span @click="QSearch(ret.name, 4)">{{ ret.name }}</span>
       </div>
     </div>
-
-    <!-- <div class="my-6px flex flex-wrap rounded shadow">
-      <div class="p-1 pl-7px font-semibold">标签:</div>
-      <div v-for="ret in snippetTag" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
-        <span @click="QSearch(ret.name, 2)">{{ ret.name }}</span>
-      </div>
-    </div> -->
   </div>
 
   <a-table

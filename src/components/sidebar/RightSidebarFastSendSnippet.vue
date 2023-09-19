@@ -39,15 +39,16 @@ const typeEvent = async (id: number) => {
   await getTypeSub()
 }
 
-const tagEvent = async () => {
+const tagEvent = debounce(async () => {
+  // 添加tag内容
   snippetTag.name = tagName.value
   const retAdd = await addTag(snippetTag)
-  if (retAdd.data.statusCode === 200) {
-    message.success(retAdd.data.message)
-  }
+  if (retAdd.data.statusCode === 200) message.success(retAdd.data.message)
+
+  //通过tag名称获取tag主键id
   const ret = await getTagTitle(tagName.value)
   snippet.tagId = ret.data.data.id
-}
+}, 800)
 onMounted(async () => {
   const [type] = await axios.all([await getSnippetTypeAll(false)])
   snippetType.value = type.data.data
@@ -73,7 +74,7 @@ onMounted(async () => {
           </select>
 
           <input v-model="tagName" class="mr-2 h-32px w-100 border-gray-400 rounded" />
-          <span class="cursor-pointer rounded bg-blue-400 p-1 px-2 shadow" @click="tagEvent()">ADD</span>
+          <span class="cursor-pointer rounded bg-blue-400 p-1 px-2 shadow" @click="tagEvent()">add</span>
         </div>
         <div class="mb-1 text-base">
           <div class="my-6px flex flex-wrap rounded shadow">
@@ -93,8 +94,11 @@ onMounted(async () => {
           <div class="my-6px flex flex-wrap rounded shadow">
             <div class="p-1 pl-7px">标签:</div>
             <div class="cursor-pointer p-1 pl-7px">
-              <span class="pr-1 hover:text-blue-500" @click="tagName = '测试'">测试</span>
-              <span class="pr-1 hover:text-blue-500" @click="tagName = '插件'">插件</span>
+              <span class="pr-1 hover:text-blue-500" @click="tagName = 'dom'">dom</span>
+              <span class="pr-1 hover:text-blue-500" @click="tagName = 'div'">div</span>
+              <span class="pr-1 hover:text-blue-500" @click="tagName = 'scroll'">scroll</span>
+              <span class="pr-1 hover:text-blue-500" @click="tagName = 'let'">let</span>
+              <span class="pr-1 hover:text-blue-500" @click="tagName = 'const'">const</span>
             </div>
           </div>
         </div>
