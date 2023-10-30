@@ -36,7 +36,3 @@ export const clearUser = () => {
   userForm.timeCreate = '2021-11-13T03:18:19.821Z'
   userForm.timeModified = '2021-11-13T03:18:19.821Z'
 }
-// const state = reactive(clearArticle)
-// const resetState = () => {
-//   Object.assign(state, clearArticle())
-// }
