@@ -33,6 +33,7 @@
 
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
+// import DevicePixelRatio from '@/libs/rem'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeydownCtrl } = useEventKey()
 const ui = useUiSetStore()
@@ -42,6 +43,8 @@ useTitle(title)
 onMounted(() => {
   addKeydownCtrl()
   ui.searchArticle = false
+
+  // new DevicePixelRatio().init()
 })
 </script>
 
@@ -49,8 +52,8 @@ onMounted(() => {
 @include scroll;
 
 #app {
-  display: flex;
-  flex-direction: column;
+  @apply h-full;
+
   background-color: #f5f6f7;
 
   .app-main {
@@ -58,7 +61,7 @@ onMounted(() => {
     flex-direction: row;
     flex-grow: 1;
 
-    @apply w-[72%] h-[92.78vh] m-auto;
+    @apply w-[72%] h-[92vh] m-auto;
 
     @include media-sm {
       @apply w-full;
@@ -89,7 +92,7 @@ onMounted(() => {
     .app-grail-middle {
       flex-grow: 1;
 
-      @apply h-[92.78vh] w-[40%];
+      @apply h-[100vh] w-[40%];
     }
 
     .app-grail-right {

@@ -20,7 +20,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .blog {
-  --at-apply: mt-1 h-full;
+  @apply mt-1;
 }
 </style>
 rightSidebar

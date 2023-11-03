@@ -242,13 +242,16 @@
   src: url('/src/assets/fonts/55_Bold.ttf');
 }
 
+html,
 body {
   font-family: PuHuiTiBASE, monospace;
+
+  @apply fixed;
 }
 
 input {
-  padding: 0 1rem 0 0.5rem;
   height: 40px;
+  padding: 0 1rem 0 0.5rem;
   color: #0d0c22;
   line-height: 28px;
   border: 1px solid transparent;
@@ -272,8 +275,9 @@ input:hover {
   box-shadow: 0 0 0 2px rgb(194 176 183 / 10%);
 }
 
-button{
+button {
   height: 40px;
   border-color: rgb(128 121 124 / 40%);
-  @apply  cursor-pointer border rounded bg-gray-100 px-2 py-1 text-center text-base hover:text-blue-500;
+
+  @apply cursor-pointer border rounded bg-gray-100 px-2 py-1 text-center text-base hover:text-blue-500;
 }

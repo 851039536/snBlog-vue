@@ -48,15 +48,15 @@ onMounted(async () => {
 <template>
   <div class="form">
     <div class="px-2">
-      <a-button type="primary" @click="add">添加</a-button>
+      <a-button @click="add">添加</a-button>
       <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
       <a-button style="margin-left: 10px" @click="reload">刷新</a-button>
     </div>
-    <div class="mt-2 px-2">
+    <div class="mt-2 w-200 px-2">
       <a-input v-model:value="article.name" prefix="标题:" />
     </div>
-    <div class="mt-1 p-2">
-      <a-textarea v-model:value="article.sketch" />
+    <div class="mt-1 w-300 p-2">
+      <a-textarea v-model:value="article.sketch" :rows="4" />
     </div>
 
     <div class="m-auto mb-2 flex px-2">
@@ -88,4 +88,3 @@ onMounted(async () => {
   @apply h-full w-full;
 }
 </style>
-@/hooks/model/Article @/hooks/http/model/Article

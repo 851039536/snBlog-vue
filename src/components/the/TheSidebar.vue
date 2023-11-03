@@ -117,7 +117,7 @@ onMounted(async () => {
 
 <style lang="scss">
 .side {
-  @apply h-90vh;
+  @apply h-93vh;
   @apply bg-white rounded relative pt-5 mt-1;
 
   @include media-base {
@@ -139,7 +139,8 @@ onMounted(async () => {
 
   .side-ab {
     @apply absolute bottom-1 h-110px w-full rounded;
-    @apply bg-slate-400;
+    @apply bg-gray-400;
+
     .ab-svg {
       @apply h-6 w-6;
     }
