@@ -125,11 +125,11 @@ onMounted(async () => {
   }
 
   .side-list {
-    @apply text-center text-base  w-[72%] m-auto;
+    @apply text-center text-base w-[72%] m-auto;
     @apply cursor-pointer transition duration-500 hover:bg-gray-200 rounded;
 
     div {
-      @apply my-6px ml-1  justify-start;
+      @apply my-6px ml-1 justify-start;
     }
   }
 

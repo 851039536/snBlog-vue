@@ -15,7 +15,7 @@ const asyncComponents = {
     return import('@/components/MyHome.vue')
   },
   article: () => {
-    return import('@/views/page/article/Index.vue')
+    return import('@views/page/article/index.vue')
   },
   articleColumn: () => {
     return import('@/views/page/article/components/column/ArticleColumn.vue')

@@ -1,1 +1,1 @@
-基于Vue3、Vite、TypeScript、Ant Design和Unocss的前端项目，旨在提供一种高效、灵活、可维护的开发体验。我采用了最新的Vue3框架，以及快速的Vite构建工具，使得项目的开发和部署都更加高效。同时，还使用了TypeScript语言，大大提高了代码的可读性和可维护性，让开发者更加容易地理解和修改代码。还采用了Ant Design和Unocss，这两个库提供了丰富的UI组件，可以大大提高开发效率。最后，我还使用了ESLint和Prettier，这两个工具可以帮助开发者规范代码，提高代码质量。   
+基于 Vue3、Vite、TypeScript、Ant Design 和 Unocss 的前端项目，旨在提供一种高效、灵活、可维护的开发体验。我采用了最新的 Vue3 框架，以及快速的 Vite 构建工具，使得项目的开发和部署都更加高效。同时，还使用了 TypeScript 语言，大大提高了代码的可读性和可维护性，让开发者更加容易地理解和修改代码。还采用了 Ant Design 和 Unocss，这两个库提供了丰富的 UI 组件，可以大大提高开发效率。最后，我还使用了 ESLint 和 Prettier，这两个工具可以帮助开发者规范代码，提高代码质量。

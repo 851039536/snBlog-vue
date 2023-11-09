@@ -1,6 +1,4 @@
 import { useRequest } from '@/hooks/http/axios/useRequest'
-import { useMomentTime } from '@hooks/useMomentTime'
-const { momentTimeList } = useMomentTime()
 const { add, get } = useRequest()
 
 export function useSnippetVersionApi() {

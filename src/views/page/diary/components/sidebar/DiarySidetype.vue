@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { IntOne } from '@/api/data/InterData'
+import { IOneType } from '@/api/data/model/DiaryModel'
 import { method, state } from '../../index'
 
 defineProps({
   resultData: {
-    type: Array as () => IntOne[],
+    type: Array as () => IOneType[],
     required: true,
     default: () => {
       return []

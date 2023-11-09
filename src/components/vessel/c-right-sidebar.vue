@@ -15,6 +15,6 @@
 }
 
 .modal-content {
-  @apply h-93vh w-full  p-1px;
+  @apply h-93vh w-full p-1px;
 }
 </style>
