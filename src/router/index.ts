@@ -17,8 +17,11 @@ const asyncComponents = {
   article: () => {
     return import('@/views/page/article/Index.vue')
   },
-  column: () => {
+  articleColumn: () => {
     return import('@/views/page/article/components/column/ArticleColumn.vue')
+  },
+  articleComponent: () => {
+    return import('@/views/page/article/components/content/ArticleContent.vue')
   }
 }
 
@@ -43,7 +46,7 @@ const routes: RouteRecordRaw[] = [
         meta: {
           keepAlive: true
         },
-        component: asyncComponents.column
+        component: asyncComponents.articleColumn
       },
       {
         path: 'content',
@@ -51,9 +54,10 @@ const routes: RouteRecordRaw[] = [
         meta: {
           keepAlive: false
         },
-        component: () => {
-          return import('@/views/page/article/components/content/ArticleContent.vue')
-        }
+        component: asyncComponents.articleComponent
+        // component: () => {
+        //   return import('@/views/page/article/components/content/ArticleContent.vue')
+        // }
       }
     ]
   },

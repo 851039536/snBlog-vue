@@ -94,5 +94,3 @@ function splitString(str: string) {
   return arr
 }
 </script>
-
-<style lang="scss" scoped></style>

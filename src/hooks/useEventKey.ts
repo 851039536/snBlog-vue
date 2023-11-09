@@ -70,7 +70,7 @@ export function useEventKey() {
   }
 
   /**
-   * 清除事件
+   * 清除组合事件
    */
   function removeKeydownCtrl() {
     document.removeEventListener('keydown', keydownCtrl)

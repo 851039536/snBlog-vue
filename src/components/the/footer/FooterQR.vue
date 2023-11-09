@@ -19,5 +19,3 @@ const payUrl = ref('')
     </div>
   </footer-modal>
 </template>
-
-<style scoped lang="scss"></style>

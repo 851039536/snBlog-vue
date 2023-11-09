@@ -25,7 +25,7 @@ defineProps({
 .model-bg {
   font-family: PuHuiTiBASE, monospace;
 
-  @apply fixed top-0 z-60 h-60% w-full;
+  @apply fixed top-0 z-60 h-[60%] w-full;
   @apply overflow-auto bg-white;
 }
 
