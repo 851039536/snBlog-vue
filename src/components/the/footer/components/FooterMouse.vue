@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useEventKey } from '@hooks/useEventKey'
-import { useUiSetStore } from '@store/modules/uiSettings'
-const ui = useUiSetStore()
+import { uiSettings } from '@store/modules/uiSettings'
+const ui = uiSettings()
 const { addKeyup, removeKeyup } = useEventKey()
 const over = ref(false)
 const leave = ref(true)

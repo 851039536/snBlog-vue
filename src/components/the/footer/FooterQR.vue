@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 
 import QrcodeVue from 'qrcode.vue'
-const ui = useUiSetStore()
+const ui = uiSettings()
 const payUrl = ref('')
 </script>
 

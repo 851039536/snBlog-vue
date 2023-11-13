@@ -2,9 +2,9 @@
 import { useNavigationApi, useNavigationTypeApi } from '@/hooks/http'
 import { useRouter } from '@hooks/useRouter'
 import { Navigation } from '@hooks/http/model/Navigation'
-import { useUiSetStore } from '@/store/modules/uiSettings'
+import { uiSettings } from '@/store/modules/uiSettings'
 const { winUrl } = useRouter()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const { getPaging: navigationPaging, getSum } = useNavigationApi()
 const { getAll: navigationType } = useNavigationTypeApi()
 const paging = reactive({

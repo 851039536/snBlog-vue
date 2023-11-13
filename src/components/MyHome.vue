@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useRouter } from '@hooks/useRouter'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 const { routers } = useRouter()
-const ui = useUiSetStore()
+const ui = uiSettings()
 
 ui.header = false
 ui.leftSidebar = false

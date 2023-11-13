@@ -20,8 +20,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
-const ui = useUiSetStore()
+import { uiSettings } from '@store/modules/uiSettings'
+const ui = uiSettings()
 const name = ref()
 const nameRet: any = ref()
 

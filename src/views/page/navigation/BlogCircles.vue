@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { IPaging } from '@/api/data/InterData'
 import { useNavigationApi } from '@/hooks/http'
-import { useUiSetStore } from '@/store/modules/uiSettings'
+import { uiSettings } from '@/store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 const { winUrl } = useRouter()
 const { getSum, getPaging } = useNavigationApi()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const sum = ref(0)
 onMounted(async () => {
   sum.value = await (await getSum(1, '博客圈', true)).data.data

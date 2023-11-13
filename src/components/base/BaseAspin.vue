@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
-const ui = useUiSetStore()
+import { uiSettings } from '@store/modules/uiSettings'
+const ui = uiSettings()
 ui.loading = false
 </script>
 <template>

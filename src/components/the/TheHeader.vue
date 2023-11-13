@@ -2,13 +2,13 @@
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { rRouter } from '@/router/routerInfo'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useApi } from '@/api/useApi'
 
 const { InterfaceApi } = useApi()
 const { routers } = useRouter()
 const { removeUserStorage, getUserName } = useUserInfo()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const rData: any = ref([])
 
 async function skip(path: string) {

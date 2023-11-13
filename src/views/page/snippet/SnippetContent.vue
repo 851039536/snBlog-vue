@@ -5,7 +5,7 @@ import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useSnippetApi, useSnippetTypeApi } from '@hooks/http'
 import { Snippet } from '@hooks/http/model/Snippet'
 import { useIndex } from './index'
@@ -16,7 +16,7 @@ const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { isUserId } = useUserInfo()
 const { debounce } = useDirective()
 const theme = useThemeSetting()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const id = 'preview-only'
 
 // 定义触发底部函数

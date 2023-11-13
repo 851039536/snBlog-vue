@@ -1,7 +1,7 @@
 import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useStorage } from '@hooks/useStorage'
 import { removePending, addPending } from './pending'
 import { useUserInfo } from '@hooks/useUserInfo'
@@ -77,7 +77,7 @@ export function useAxios() {
     service.interceptors.response.use(
       (ret: AxiosResponse<any>) => {
         //挂载 不然报错
-        ui = useUiSetStore()
+        ui = uiSettings()
         // 在请求结束后，移除本次请求
         removePending(ret)
         // 请求之后关闭loading
@@ -176,7 +176,7 @@ export function useAxios() {
     )
     service.interceptors.response.use(
       (ret: AxiosResponse<any>) => {
-        ui = useUiSetStore()
+        ui = uiSettings()
         removePending(ret)
         if (loading.loading) {
           setTimeout(function () {

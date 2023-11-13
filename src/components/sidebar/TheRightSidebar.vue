@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useNavigationApi } from '@hooks/http'
 import { useApi } from '@/api/useApi'
 
 const { ArticleApi } = useApi()
 const { getPaging: navigationPaging } = useNavigationApi()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const time = ref()
 const articleSum = ref('')
 const textSum = ref('')

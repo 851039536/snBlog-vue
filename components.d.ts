@@ -74,6 +74,7 @@ declare module '@vue/runtime-core' {
     FooterModal: typeof import('./src/components/the/footer/FooterModal.vue')['default']
     FooterMouse: typeof import('./src/components/the/footer/components/FooterMouse.vue')['default']
     FooterQR: typeof import('./src/components/the/footer/FooterQR.vue')['default']
+    Index: typeof import('./src/views/page/article/Index.vue')['default']
     InterfaceTable: typeof import('./src/views/admin/set/InterfaceTable.vue')['default']
     ListContent: typeof import('./src/views/page/listContent/ListContent.vue')['default']
     Login: typeof import('./src/views/admin/login/Login.vue')['default']

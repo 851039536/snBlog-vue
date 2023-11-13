@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { usePhotoGalleryApi } from '@hooksHttp/index'
 import { identity } from '.'
 const { getPaging } = usePhotoGalleryApi()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const retData = ref()
 
 function QImageUrl(name: string) {

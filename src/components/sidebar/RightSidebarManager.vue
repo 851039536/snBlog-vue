@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useSnippetApi } from '@hooksHttp/index'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { ident } from './index'
@@ -11,7 +11,7 @@ const { ArticleApi } = useApi()
 const { addKeyup, removeKeyup } = useEventKey()
 const { getSum: getSnippetSum } = useSnippetApi()
 const { isUserLogin } = useUserInfo()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const setVisible = (idents: number) => {
   if (!isUserLogin()) return message.warning('未登录')
   ident.value = idents

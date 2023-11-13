@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
-const ui = useUiSetStore()
+import { uiSettings } from '@store/modules/uiSettings'
+const ui = uiSettings()
 
 onMounted(() => {
   ui.searchArticle = false // 搜索框是否显示

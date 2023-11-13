@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useUiSetStore } from '@store/modules/uiSettings'
-const ui = useUiSetStore()
+import { uiSettings } from '@store/modules/uiSettings'
+const ui = uiSettings()
 
 onMounted(() => {
   ui.loginUi = true

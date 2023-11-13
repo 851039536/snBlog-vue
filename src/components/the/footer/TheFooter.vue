@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useNavigationApi } from '@hooks/http'
 import { useRouter } from '@hooks/useRouter'
-import { useUiSetStore } from '@store/modules/uiSettings'
-const ui = useUiSetStore()
+import { uiSettings } from '@store/modules/uiSettings'
+const ui = uiSettings()
 
 const { getPaging: navigationPaging } = useNavigationApi()
 const { winUrl } = useRouter()

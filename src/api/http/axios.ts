@@ -1,8 +1,7 @@
-// import axios from 'axios'
 import qs from 'qs'
 import { message } from 'ant-design-vue'
 import router from '@/router/index'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 
 import { useStorage } from '@hooks/useStorage'
 import { removePending, addPending } from './pending'
@@ -18,7 +17,7 @@ axios.defaults.withCredentials = false
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 // 允许跨域
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
-let uiSettings: any = ref()
+let uiSet: any = ref()
 function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<AxiosResponse> {
   const { timeout = 8000 } = customOptions
   const service = axios.create({
@@ -65,7 +64,7 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
       }
       // 请求之前发送loading
       if (loading.loading) {
-        uiSettings.uiLoadingVisible = true
+        uiSet.uiLoadingVisible = true
       }
       return config
     },
@@ -78,13 +77,13 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
   service.interceptors.response.use(
     (res: AxiosResponse<any>) => {
       //挂载 不然报错
-      uiSettings = useUiSetStore()
+      uiSet = uiSettings()
       // 在请求结束后，移除本次请求
       removePending(res)
       // 请求之后关闭loading
       if (loading.loading) {
         setTimeout(function () {
-          uiSettings.uiLoadingVisible = false
+          uiSet.uiLoadingVisible = false
         }, 500)
       }
       // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
@@ -94,7 +93,7 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
       return Promise.reject(res)
     },
     error => {
-      uiSettings.uiLoadingVisible = false
+      uiSet.uiLoadingVisible = false
 
       const statusTextMap: Record<number, string> = {
         400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',

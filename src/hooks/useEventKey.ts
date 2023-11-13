@@ -1,8 +1,8 @@
 import pinia from '@store/index'
 
-import { useUiSetStore } from '@/store/modules/uiSettings'
+import { uiSettings } from '@/store/modules/uiSettings'
 import { message } from 'ant-design-vue'
-const ui = useUiSetStore(pinia)
+const ui = uiSettings(pinia)
 
 //键盘事件
 export function useEventKey() {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useThemeSetting } from '@store/modules/themeSetting'
 
 const theme = useThemeSetting()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const { getById: getArticleById } = useArticleApi()
 import { MdPreview, MdCatalog } from 'md-editor-v3'
 import { useArticleApi } from '@/hooks/http'

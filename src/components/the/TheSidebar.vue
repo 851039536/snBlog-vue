@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useRouter } from '@hooks/useRouter'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useApi } from '@/api/useApi'
 
 const { InterfaceApi } = useApi()
 const { getUserName } = useUserInfo()
 const { routers } = useRouter()
-const ui = useUiSetStore()
+const ui = uiSettings()
 function setRight(visible: boolean) {
   ui.rightSidebar = visible
 }

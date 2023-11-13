@@ -2,13 +2,13 @@
 import { useUserTalkApi } from '@/hooks/http'
 import { userTalk } from '@/hooks/http/model/UserTalk'
 import { useUserInfo } from '@/hooks/useUserInfo'
-import { useUiSetStore } from '@/store/modules/uiSettings'
+import { uiSettings } from '@/store/modules/uiSettings'
 import { message } from 'ant-design-vue'
 import { ident } from './index'
 const { getUserId } = useUserInfo()
 const { addUserTalk } = useUserTalkApi()
 //
-const ui = useUiSetStore()
+const ui = uiSettings()
 async function createPost() {
   if (ident.value === 1) {
     userTalk.userId = getUserId() as number

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { removeSnippet } from '@/hooks/http/model/Snippet'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { ident } from './index'
-const ui = useUiSetStore()
+const ui = uiSettings()
 const sendTitle = ref('')
 
 //组件更新之前执行的函数。

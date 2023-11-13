@@ -32,11 +32,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 // import DevicePixelRatio from '@/libs/rem'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeydownCtrl } = useEventKey()
-const ui = useUiSetStore()
+const ui = uiSettings()
 import { useTitle } from 'vue-hooks-plus'
 const title = ref('snBlog')
 useTitle(title)

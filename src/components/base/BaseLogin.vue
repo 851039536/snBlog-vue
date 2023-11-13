@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@hooks/useUserInfo'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useApi } from '@/api/useApi'
 
 const { UserApi } = useApi()
 const { setUserInfo } = useUserInfo()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const userName = ref('')
 const userPwd = ref('')
 

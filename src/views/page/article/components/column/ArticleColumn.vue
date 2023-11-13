@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { aData } from '@views/admin/data'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 import { articleData, paging } from './index'
 import { useApi } from '@/api/useApi'
 
 const { ArticleApi } = useApi()
 const { routerById } = useRouter()
-const ui = useUiSetStore()
+const ui = uiSettings()
 
 async function QSum(identity: number, type: string) {
   const count = await ArticleApi.getSum(identity, type)

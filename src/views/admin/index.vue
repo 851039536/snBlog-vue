@@ -3,13 +3,13 @@ import { navName } from './utils/data'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { rRouter } from '@/router/routerInfo'
 import uservg from '@assets/svg/components/user.svg?component'
-import { useUiSetStore } from '@store/modules/uiSettings'
+import { uiSettings } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
 import { useDataBaseApi } from '@/hooks/http/useDataBaseApi'
 const { routers, winUrl } = useRouter()
 const { removeUserStorage } = useUserInfo()
 const { isToken } = useDataBaseApi()
-const ui = useUiSetStore()
+const ui = uiSettings()
 function clear() {
   removeUserStorage()
   location.reload()

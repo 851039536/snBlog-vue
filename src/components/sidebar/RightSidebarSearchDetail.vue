@@ -4,11 +4,11 @@ import { useRouter } from '@hooks/useRouter'
 import { Article } from '@/hooks/http/model/Article'
 import { useArticleApi } from '@hooksHttp/index'
 import { useDirective } from '@hooks/useDirective'
-import { useUiSetStore } from '@/store/modules/uiSettings'
+import { uiSettings } from '@/store/modules/uiSettings'
 
 const { getContains } = useArticleApi()
 const { debounce } = useDirective()
-const ui = useUiSetStore()
+const ui = uiSettings()
 const { winUrl } = useRouter()
 const article = ref([] as Article[])
 //自定义函数，父组件可以触发
