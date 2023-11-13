@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { InterfaceApi } from '@/api'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useApi } from '@/api/useApi'
+
+const { InterfaceApi } = useApi()
 const { getUserName } = useUserInfo()
 const { routers } = useRouter()
 const ui = useUiSetStore()

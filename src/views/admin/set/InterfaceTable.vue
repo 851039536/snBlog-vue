@@ -1,12 +1,14 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns } from './data'
-import { InterfaceApi } from '@/api'
 import { navName } from '../utils/data'
 import { useData } from '../data'
 import { clearInterface, interfaceForm } from '@/api/data/model/IntInterfaceModel'
 import type { SelectProps } from 'ant-design-vue'
 import { useUserInfo } from '@hooks/useUserInfo'
+import { useApi } from '@/api/useApi'
+
+const { InterfaceApi } = useApi()
 const { getUserId, getUserName } = useUserInfo()
 const { cancel, data } = useData()
 const rData = ref([])

@@ -1,4 +1,6 @@
-import { get, add, update, del } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, add, update, del } = useRequest()
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
 

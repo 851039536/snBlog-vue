@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { ArticleTypeApi } from '@/api'
 import { useDirective } from '@hooks/useDirective'
 import { rArticle } from '../../data'
 import { useArticleApi } from '@hooksHttp/index'
+import { useApi } from '@/api/useApi'
+
+const { ArticleTypeApi } = useApi()
 const { getContains } = useArticleApi()
 const { throttle } = useDirective()
 

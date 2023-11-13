@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { SnippetApi } from '@/api'
 import { snippet } from '@hooksHttp/model/Snippet'
 import { useDirective } from '@/hooks/useDirective'
 import { message } from 'ant-design-vue'
@@ -7,6 +6,9 @@ import { MdEditor } from 'md-editor-v3'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { snippetTypeSub, snippetTag, snippetType } from './data'
 import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
+import { useApi } from '@/api/useApi'
+
+const { SnippetApi } = useApi()
 
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { getAll: getSnippetTagAll } = useSnippetTagApi()

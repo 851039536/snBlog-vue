@@ -1,12 +1,14 @@
 <script lang="ts" setup>
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { useArticleApi, useSnippetApi } from '@hooksHttp/index'
+import { useSnippetApi } from '@hooksHttp/index'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { ident } from './index'
 import { message } from 'ant-design-vue'
 import { useEventKey } from '@hooks/useEventKey'
+import { useApi } from '@/api/useApi'
+
+const { ArticleApi } = useApi()
 const { addKeyup, removeKeyup } = useEventKey()
-const { getSum: getArticleSum } = useArticleApi()
 const { getSum: getSnippetSum } = useSnippetApi()
 const { isUserLogin } = useUserInfo()
 const ui = useUiSetStore()
@@ -27,7 +29,7 @@ const removeEscape = (e: any) => {
 const articleSum = ref('')
 const snippetSum = ref('')
 onMounted(async () => {
-  const [articleSums, snippetSums] = await axios.all([await getArticleSum(), await getSnippetSum(0, '0', false)])
+  const [articleSums, snippetSums] = await axios.all([await ArticleApi.getSum(), await getSnippetSum(0, '0', false)])
   articleSum.value = articleSums.data.data as string
   snippetSum.value = snippetSums.data
 })

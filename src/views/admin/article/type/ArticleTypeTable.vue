@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { addVisible, columns, editVisible } from './data'
-import { ArticleTypeApi } from '@/api'
 import { aData, aCancel } from '../../data'
 import { navName } from '../../utils/data'
 import { articleTypeForm, clearArticleType } from '@/api/data/model/ArticleTypeModel'
+import { useApi } from '@/api/useApi'
 
+const { ArticleTypeApi } = useApi()
 const reload: any = inject('reload')
 const rArticleType = ref()
 

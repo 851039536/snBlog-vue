@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { CommonApi } from '@/api'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { navName } from '../utils/data'
+import { useApi } from '@/api/useApi'
+
+const { CommonApi } = useApi()
 
 const SqlBackups = async () => {
   await CommonApi.SqlBackups().then(r => {

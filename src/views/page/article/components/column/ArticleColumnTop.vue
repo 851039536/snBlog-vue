@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
 import { articleData, paging } from '.'
+import { useApi } from '@/api/useApi'
 
+const { ArticleApi } = useApi()
 const clickType = async (name: string) => {
   paging.typeStr = name
   const data = await ArticleApi.getPaging(

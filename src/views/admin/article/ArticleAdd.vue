@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { MdEditor } from 'md-editor-v3'
 import { message } from 'ant-design-vue'
-import { ArticleTagApi, ArticleTypeApi } from '@/api'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { article, removeArticle } from '@hooksHttp/model/Article'
@@ -11,6 +10,9 @@ import useRandom from '@/hooks/useRandom'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useArticleApi } from '@hooks/http'
+import { useApi } from '@/api/useApi'
+
+const { ArticleTagApi, ArticleTypeApi } = useApi()
 const { adds } = useArticleApi()
 const { getUserId } = useUserInfo()
 const { routers, go } = useRouter()

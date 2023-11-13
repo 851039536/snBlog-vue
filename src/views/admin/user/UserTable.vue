@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, editVisible, addDisabled, upDisabled } from './data'
-import { UserApi } from '@/api'
 import { aCancel, aData } from '../data'
 import { navName } from '../utils/data'
 import dayjs from 'dayjs'
 import { clearUser, userForm } from '@/api/data/model/UserModel'
+import { useApi } from '@/api/useApi'
 
+const { UserApi } = useApi()
 const reload: any = inject('reload')
 const del = async (id: number) => {
   await UserApi.del(id).then(res => {

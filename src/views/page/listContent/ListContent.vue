@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
-import { ListContentApi } from '@/api'
-
+import { useApi } from '@/api/useApi'
+const { ListContentApi } = useApi()
 const state: any = reactive({
   listTitle: [],
   listHref: []

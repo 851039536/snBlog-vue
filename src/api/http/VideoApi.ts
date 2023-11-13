@@ -1,4 +1,6 @@
-import { get } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get } = useRequest()
 
 export class VideoApi {
   /**

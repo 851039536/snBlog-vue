@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { DiaryApi, DiaryTypeApi } from '@/api'
+import { useApi } from '@/api/useApi'
+
+const { DiaryApi, DiaryTypeApi } = useApi()
 
 defineProps({
   title: {

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { ArticleApi } from '@/api'
-
 import { useUiSetStore } from '@store/modules/uiSettings'
-import { useArticleApi, useNavigationApi } from '@hooks/http'
+import { useNavigationApi } from '@hooks/http'
+import { useApi } from '@/api/useApi'
+
+const { ArticleApi } = useApi()
 const { getPaging: navigationPaging } = useNavigationApi()
-const { getSum, getStrSum } = useArticleApi()
 const ui = useUiSetStore()
 const time = ref()
 const articleSum = ref('')
@@ -17,9 +17,9 @@ onMounted(async () => {
   const [navs, times, articleSums, textSums, readSums] = await axios.all([
     await navigationPaging(1, '常用工具', 1, 10),
     await ArticleApi.getPaging(0, 'null', 1, 1),
-    await getSum(),
-    await getStrSum(0, 1),
-    await getStrSum(0, 2)
+    await ArticleApi.getSum(),
+    await ArticleApi.getStrSum(0, 1),
+    await ArticleApi.getStrSum(0, 2)
   ])
 
   navData.value = navs.data.data

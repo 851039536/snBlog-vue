@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
-import { ArticleTypeApi, ArticleTagApi } from '@/api'
 import { useArticleApi } from '@hooksHttp/index'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
@@ -9,6 +8,9 @@ import { aData } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { article } from '@hooksHttp/model/Article'
 import { useRouter } from '@hooks/useRouter'
+import { useApi } from '@/api/useApi'
+
+const { ArticleTagApi, ArticleTypeApi } = useApi()
 const { routers, go } = useRouter()
 const { getById: getArticleById, updates } = useArticleApi()
 const route = useRoute()

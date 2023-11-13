@@ -1,13 +1,15 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, rTag } from './data'
-import { ArticleApi, ArticleTagApi } from '@/api'
 import { navName } from '../utils/data'
 import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useArticleApi } from '@hooksHttp/index'
+import { useApi } from '@/api/useApi'
+
+const { ArticleApi, ArticleTagApi } = useApi()
 const { getContains, dels } = useArticleApi()
 const { getUserName } = useUserInfo()
 const { routerById, routers } = useRouter()

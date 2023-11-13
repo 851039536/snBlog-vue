@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { ArticleTypeApi } from '@/api'
 import { articleTypeForm } from '@/api/data/model/ArticleTypeModel'
 import { message } from 'ant-design-vue'
 import { aData } from '../../data'
 import { editVisible } from './data'
+import { useApi } from '@/api/useApi'
+
+const { ArticleTypeApi } = useApi()
 const reload: any = inject('reload')
 const update = async () => {
   await ArticleTypeApi.update(articleTypeForm).then(r => {

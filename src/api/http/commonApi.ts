@@ -1,4 +1,6 @@
-import { pot } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { pot } = useRequest()
 
 export class CommonApi {
   /**

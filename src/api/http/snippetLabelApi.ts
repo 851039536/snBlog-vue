@@ -1,4 +1,6 @@
-import { get, add, update, del } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, add, update, del } = useRequest()
 import { ISnippetLabel } from '../data/model/SnippetLabelMode'
 
 export class SnippetLabelApi {

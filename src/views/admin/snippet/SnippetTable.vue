@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { columns, snippetTypeSub, snippetTag, snippetType, tagName, addVisible, edVisible } from './data'
-import { SnippetApi } from '@/api'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
 import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
 import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
 import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
+import { useApi } from '@/api/useApi'
+const { SnippetApi } = useApi()
 const { momentTimeList } = useMomentTime()
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
 const { getAll: snippetTagAll, getById: snippetTagById } = useSnippetTagApi()

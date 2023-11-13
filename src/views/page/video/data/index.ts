@@ -1,5 +1,7 @@
-import { VideoApi } from '@/api'
+import { useApi } from '@/api/useApi'
 import { state } from './data'
+
+const { VideoApi } = useApi()
 
 class method {
   static async currentchange(val: number) {

@@ -1,5 +1,7 @@
-import { get, add, update, del } from '@api/http/funApi'
 import { IArticleTag } from '../data/InterData'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, add, update, del } = useRequest()
 
 enum api {
   sum = '/article/sum?',

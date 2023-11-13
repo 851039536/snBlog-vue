@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { VideoApi } from '@/api'
+import { useApi } from '@/api/useApi'
 
+const { VideoApi } = useApi()
 const sum = ref(0)
 VideoApi.getSum(0, '0', true).then((res: any) => {
   sum.value = res.data.data

@@ -1,5 +1,7 @@
 import { IInterface } from '../data/InterData'
-import { get, add, update, del } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, add, update, del } = useRequest()
 
 export class InterfaceApi {
   /**

@@ -1,4 +1,6 @@
-import { get, add, update, del } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, add, update, del } = useRequest()
 import { IArticleType } from '../data/InterData'
 export class ArticleTypeApi {
   static getById(id: number, cache = false) {

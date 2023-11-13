@@ -1,6 +1,6 @@
+import { useApi } from '@/api/useApi'
 import { message } from 'ant-design-vue'
-import { DiaryApi } from '@/api/index'
-
+const { DiaryApi } = useApi()
 const state: any = reactive({
   rData: [],
   dataOne: [],

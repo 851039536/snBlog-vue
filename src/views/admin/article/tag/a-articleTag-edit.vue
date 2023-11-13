@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { ArticleTagApi } from '@/api'
 import { articleTagForm } from '@/api/data/model/ArticleTagModel'
 import { message } from 'ant-design-vue'
 import { aData } from '../../data'
 import { editVisible } from './data'
+import { useApi } from '@/api/useApi'
+
+const { ArticleTagApi } = useApi()
 const reload: any = inject('reload')
 const update = async () => {
   await ArticleTagApi.update(articleTagForm).then(r => {

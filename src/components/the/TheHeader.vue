@@ -2,8 +2,10 @@
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { rRouter } from '@/router/routerInfo'
-import { InterfaceApi } from '@/api'
 import { useUiSetStore } from '@store/modules/uiSettings'
+import { useApi } from '@/api/useApi'
+
+const { InterfaceApi } = useApi()
 const { routers } = useRouter()
 const { removeUserStorage, getUserName } = useUserInfo()
 const ui = useUiSetStore()

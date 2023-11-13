@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { VideoApi } from '@/api'
+import { useApi } from '@/api/useApi'
 
+const { VideoApi } = useApi()
 const state = ref(0)
 interface ResData {
   URL: string

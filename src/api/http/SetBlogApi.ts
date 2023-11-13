@@ -1,4 +1,6 @@
-import { get } from './funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get } = useRequest()
 
 export class SetBlogApi {
   static getById(id: number, cache: boolean) {

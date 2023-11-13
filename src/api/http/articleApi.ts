@@ -1,14 +1,45 @@
-import { get, update } from '@api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, update } = useRequest()
+
 import { useMomentTime } from '@hooks/useMomentTime'
 const { momentTimeList } = useMomentTime()
 enum api {
   sum = '/article/sum?',
+  strSum = '/article/strSum?',
   contains = '/article/contains?',
   type = '/article/type?',
   paging = '/article/paging?'
 }
 
 export class ArticleApi {
+  // 实例方法
+  myMethod(): void {
+    console.log('ces')
+  }
+
+  /**
+   * @description: 查询总数
+   * @param {number} identity 所有:0|分类:1|标签:2|用户3
+   * @param {string} type 条件
+   * @param {boolean} cache 缓存
+   */
+  static async getSum(identity = 0, type = 'null', cache = true) {
+    let res = await get(`${api.sum}identity=${identity}&type=${type}&cache=${cache}`, false)
+    return res
+  }
+
+  /**
+   * 内容统计
+   * @param identity 所有:0|分类:1|标签:2|用户:3
+   * @param type 内容:1|阅读:2|点赞:3
+   * @param name 查询参数
+   * @param cache 缓存
+   */
+  static async getStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
+    let res = await get(`${api.strSum}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
+    return res
+  }
   /**
    * @description: 分页查询
    * @param {number} identity 所有:0|分类:1|标签:2|用户:3|标签+用户:4

@@ -16,26 +16,6 @@ enum api {
 
 export function useArticleApi() {
   /**
-   * 内容统计
-   * @param identity 所有:0|分类:1|标签:2|用户:3
-   * @param type 内容:1|阅读:2|点赞:3
-   * @param name 查询参数
-   * @param cache 缓存
-   */
-  async function getStrSum(identity: number, type: number, name = 'null', cache = true): Promise<any> {
-    return get(`${api.strSum}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false)
-  }
-  /**
-   * @description: 查询总数
-   * @param {number} identity 所有:0|分类:1|标签:2|用户3
-   * @param {string} type 条件
-   * @param {boolean} cache 缓存
-   */
-  function getSum(identity = 0, type = 'null', cache = true) {
-    return get(`${api.sum}identity=${identity}&type=${type}&cache=${cache}`, false)
-  }
-
-  /**
    * 条件查询
    * @param identity 分类:1 || 标签:2
    * @param type 查询条件
@@ -92,11 +72,9 @@ export function useArticleApi() {
     return update(`/article/update`, entity)
   }
   return {
-    getSum,
     getContains,
     getById,
     getType,
-    getStrSum,
     dels,
     adds,
     updates

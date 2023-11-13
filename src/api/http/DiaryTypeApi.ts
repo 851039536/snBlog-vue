@@ -1,7 +1,8 @@
-import { get, add, update, del } from '@/api/http/funApi'
+import { useRequest } from '@hooks/http/axios/useRequest'
+
+const { get, add, update, del } = useRequest()
 
 export class DiaryTypeApi {
-  //const url = `/diaryType/paging?pageIndex=1&pageSize=10&isDesc=true&cache=false`
   static getPaging(pageIndex = 1, pageSize = 10, isDesc = true, cache = false) {
     const url = `/diaryType/paging?pageIndex=${pageIndex}&pageSize=${pageSize}&isDesc=${isDesc}&cache=${cache}`
     return get(url, false, true)
