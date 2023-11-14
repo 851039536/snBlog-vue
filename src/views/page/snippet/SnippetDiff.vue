@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { snippet } from '@hooksHttp/model/Snippet'
-import { snippetVersion } from '@hooksHttp/model/SnippetVersion'
+import { snippet } from '@api/model/Snippet'
+import { snippetVersion } from '@api/model/SnippetVersion'
 import { useSnippetVersionApi } from '@/hooks/http'
 import { CodeDiff } from 'v-code-diff'
 const { bySnId, byId: byIdSnVer } = useSnippetVersionApi()

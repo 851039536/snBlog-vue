@@ -4,7 +4,7 @@ import { columns, editVisible, addDisabled, upDisabled } from './data'
 import { aCancel, aData } from '../data'
 import { navName } from '../utils/data'
 import dayjs from 'dayjs'
-import { clearUser, userForm } from '@/api/data/model/UserModel'
+import { clearUser, userForm } from '@api/model/UserModel'
 import { useApi } from '@/api/useApi'
 
 const { UserApi } = useApi()
@@ -103,3 +103,4 @@ onMounted(async () => {
   </a-table>
   <user-edit-modal></user-edit-modal>
 </template>
+@/api/model/UserModel

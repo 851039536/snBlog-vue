@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import { columns } from './data'
 import { navName } from '../utils/data'
 import { useData } from '../data'
-import { clearInterface, interfaceForm } from '@/api/data/model/IntInterfaceModel'
+import { clearInterface, interfaceForm } from '@api/model/IntInterfaceModel'
 import type { SelectProps } from 'ant-design-vue'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { useApi } from '@/api/useApi'
@@ -208,3 +208,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/api/model/IntInterfaceModel

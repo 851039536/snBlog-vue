@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { removeSnippet } from '@/hooks/http/model/Snippet'
+import { removeSnippet } from '@api/model/Snippet'
 import { uiSettings } from '@store/modules/uiSettings'
 import { ident } from './index'
 const ui = uiSettings()
@@ -35,4 +35,3 @@ onBeforeUpdate(() => {
 </template>
 
 <!-- <style lang="scss" scoped></style> -->
-.

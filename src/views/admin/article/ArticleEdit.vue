@@ -6,7 +6,7 @@ import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { aData } from '../data'
 import { rRouter } from '@/router/routerInfo'
-import { article } from '@hooksHttp/model/Article'
+import { article } from '@api/model/Article'
 import { useRouter } from '@hooks/useRouter'
 import { useApi } from '@/api/useApi'
 
@@ -83,4 +83,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-@/hooks/model/Article @/hooks/http/model/Article

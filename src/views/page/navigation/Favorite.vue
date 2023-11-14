@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useNavigationApi, useNavigationTypeApi } from '@/hooks/http'
 import { useRouter } from '@hooks/useRouter'
-import { Navigation } from '@hooks/http/model/Navigation'
+import { Navigation } from '@api/model/Navigation'
 import { uiSettings } from '@/store/modules/uiSettings'
 const { winUrl } = useRouter()
 const ui = uiSettings()

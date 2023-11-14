@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { userForm } from '@/api/data/model/UserModel'
+import { userForm } from '@api/model/UserModel'
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { editVisible, addDisabled, upDisabled } from './data'
@@ -69,3 +69,4 @@ const Add = async () => {
   }
 }
 </style>
+@/api/model/UserModel

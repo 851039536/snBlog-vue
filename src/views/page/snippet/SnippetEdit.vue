@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { snippet } from '@hooksHttp/model/Snippet'
+import { snippet } from '@api/model/Snippet'
 import { useDirective } from '@hooks/useDirective'
 import { MdEditor } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { useSnippetTypeApi, useSnippetTypeSubApi, useSnippetVersionApi } from '@/hooks/http'
 import { useSnippetPack } from '@/hooks/http/pack/useSnippetPack'
-import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
+import { snippetVersion } from '@api/model/SnippetVersion'
 
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
 const { adds: addSnippetVer, sum: snVerSum } = useSnippetVersionApi()

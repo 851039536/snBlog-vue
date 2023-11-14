@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { IPaging } from '@/api/data/InterData'
+import { IPaging } from '@/api/model/InterData'
 import { useNavigationApi } from '@/hooks/http'
 import { uiSettings } from '@/store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
@@ -109,3 +109,4 @@ onMounted(async () => {
   }
 }
 </style>
+@/api/model/InterData

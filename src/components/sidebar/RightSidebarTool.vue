@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRouter } from '@hooks/useRouter'
-import { Navigation } from '@hooksHttp/model/Navigation'
+import { Navigation } from '@api/model/Navigation'
 const { winUrl } = useRouter()
 
 defineProps({

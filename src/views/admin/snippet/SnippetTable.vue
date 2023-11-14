@@ -3,10 +3,10 @@ import { message } from 'ant-design-vue'
 import { columns, snippetTypeSub, snippetTag, snippetType, tagName, addVisible, edVisible } from './data'
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
-import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
+import { snippet, removeSnippet } from '@api/model/Snippet'
 import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
-import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
+import { snippetVersion } from '@api/model/SnippetVersion'
 import { useApi } from '@/api/useApi'
 const { SnippetApi } = useApi()
 const { momentTimeList } = useMomentTime()

@@ -2,7 +2,7 @@
 import { message } from 'ant-design-vue'
 import { aData } from '../data'
 import { navName } from '../utils/data'
-import { removeNavigation, navigation } from '@hooksHttp/model/Navigation'
+import { removeNavigation, navigation } from '@api/model/Navigation'
 import { useNavigationTypeApi, useNavigationApi } from '@hooksHttp/index'
 import { rRouter } from '@/router/routerInfo'
 import useRandom from '@/hooks/useRandom'
@@ -83,4 +83,3 @@ onMounted(async () => {
   }
 }
 </style>
-@/router/routerInfo

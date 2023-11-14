@@ -1,4 +1,4 @@
-import { Article } from '@hooksHttp/model/Article'
+import { Article } from '@/api/model/Article'
 
 export const articleData = ref<Article[]>([])
 

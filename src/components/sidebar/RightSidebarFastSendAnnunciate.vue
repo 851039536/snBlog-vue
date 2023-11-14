@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useUserTalkApi } from '@/hooks/http'
-import { userTalk } from '@/hooks/http/model/UserTalk'
+import { userTalk } from '@api/model/UserTalk'
 import { useUserInfo } from '@/hooks/useUserInfo'
 import { uiSettings } from '@/store/modules/uiSettings'
 import { message } from 'ant-design-vue'
@@ -77,4 +77,3 @@ async function createPost() {
   background-color: #3e95cf;
 }
 </style>
-.

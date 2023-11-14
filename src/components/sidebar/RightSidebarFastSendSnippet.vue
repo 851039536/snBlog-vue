@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ident } from './index'
-import { snippet, removeSnippet } from '@hooksHttp/model/Snippet'
-import { snippetTag } from '@hooksHttp/model/SnippetTag'
+import { snippet, removeSnippet } from '@api/model/Snippet'
+import { snippetTag } from '@api/model/SnippetTag'
 import { MdEditor } from 'md-editor-v3'
 import { useUserInfo } from '@/hooks/useUserInfo'
 import { useDirective } from '@/hooks/useDirective'
@@ -131,4 +131,3 @@ onMounted(async () => {
   background-color: #3e95cf;
 }
 </style>
-.

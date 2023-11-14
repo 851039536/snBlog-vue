@@ -1,7 +1,7 @@
 import { useRequest } from '@hooks/http/axios/useRequest'
 
 const { get, add, update, del } = useRequest()
-import { IArticleType } from '../data/InterData'
+import { ArticleType } from '../model/InterData'
 export class ArticleTypeApi {
   static getById(id: number, cache = false) {
     return get(`/articleType/byId?id=${id}&cache=${cache}`, false)
@@ -15,7 +15,7 @@ export class ArticleTypeApi {
    * @description: 新增
    * @param {IArticleType} entity
    */
-  static add(entity: IArticleType) {
+  static add(entity: ArticleType) {
     return add('/articleType/add', entity)
   }
 
@@ -23,7 +23,7 @@ export class ArticleTypeApi {
    * @description: 更新
    * @param {IArticleType} entity
    */
-  static update(entity: IArticleType) {
+  static update(entity: ArticleType) {
     return update(`/articleType/update`, entity)
   }
 

@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import { addVisible, columns, editVisible } from './data'
 import { aData, aCancel } from '../../data'
 import { navName } from '../../utils/data'
-import { articleTagForm, clearArticleTag } from '@/api/data/model/ArticleTagModel'
+import { articleTag, clearArticleTag } from '@api/model/ArticleTag'
 import { useApi } from '@/api/useApi'
 
 const { ArticleTagApi } = useApi()
@@ -20,9 +20,9 @@ const del = async (id: number) => {
 }
 const edit = async (id: number) => {
   await ArticleTagApi.getById(id).then(r => {
-    articleTagForm.id = r.data.data.id
-    articleTagForm.name = r.data.data.name
-    articleTagForm.description = r.data.data.description
+    articleTag.id = r.data.data.id
+    articleTag.name = r.data.data.name
+    articleTag.description = r.data.data.description
   })
   editVisible.value = true
 }

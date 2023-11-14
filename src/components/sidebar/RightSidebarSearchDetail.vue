@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { searchName } from './index'
 import { useRouter } from '@hooks/useRouter'
-import { Article } from '@/hooks/http/model/Article'
+import { Article } from '@api/model/Article'
 import { useArticleApi } from '@hooksHttp/index'
 import { useDirective } from '@hooks/useDirective'
 import { uiSettings } from '@/store/modules/uiSettings'
@@ -49,4 +49,3 @@ const search = debounce(async () => {
     </c-modal-search>
   </div>
 </template>
-.

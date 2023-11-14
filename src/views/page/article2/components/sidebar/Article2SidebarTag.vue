@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { IArticleType } from '@/api/data/InterData'
+import { ArticleType } from '@/api/model/InterData'
 import { useArticleApi } from '@hooks/http'
 import { rArticle } from '../../data'
 
 const { getType } = useArticleApi()
 defineProps({
   rData: {
-    type: Array as () => IArticleType[],
+    type: Array as () => ArticleType[],
     required: true,
     default: () => {
       return []
@@ -58,3 +58,4 @@ onMounted(async () => {
   @apply text-cool-gray-50 bg-blue-500;
 }
 </style>
+@/api/model/InterData

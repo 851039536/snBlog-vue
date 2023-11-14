@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { snippet } from '@hooksHttp/model/Snippet'
+import { snippet } from '@api/model/Snippet'
 import { useDirective } from '@/hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'

@@ -3,7 +3,7 @@ import { message } from 'ant-design-vue'
 import { addVisible, columns, editVisible } from './data'
 import { aData, aCancel } from '../../data'
 import { navName } from '../../utils/data'
-import { articleTypeForm, clearArticleType } from '@/api/data/model/ArticleTypeModel'
+import { articleType, clearArticleType } from '@/api/model/ArticleType'
 import { useApi } from '@/api/useApi'
 
 const { ArticleTypeApi } = useApi()
@@ -20,9 +20,9 @@ const del = async (id: number) => {
 }
 const edit = async (id: number) => {
   await ArticleTypeApi.getById(id).then(r => {
-    articleTypeForm.id = r.data.id
-    articleTypeForm.name = r.data.name
-    articleTypeForm.description = r.data.description
+    articleType.id = r.data.id
+    articleType.name = r.data.name
+    articleType.description = r.data.description
   })
   editVisible.value = true
 }
@@ -75,3 +75,4 @@ onMounted(async () => {
     <a-articleType-add></a-articleType-add>
   </c-modal-dialog>
 </template>
+@/api/model/ArticleType

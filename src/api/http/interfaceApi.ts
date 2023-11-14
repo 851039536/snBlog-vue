@@ -1,4 +1,4 @@
-import { IInterface } from '../data/InterData'
+import { IInterface } from '../model/InterData'
 import { useRequest } from '@hooks/http/axios/useRequest'
 
 const { get, add, update, del } = useRequest()

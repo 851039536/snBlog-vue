@@ -1,6 +1,6 @@
 import { useRequest } from '@/hooks/http/axios/useRequest'
 import { useMomentTime } from '@hooks/useMomentTime'
-import { Article } from '@hooksHttp/model/Article'
+import { Article } from '@/api/model/Article'
 import { add, update } from '@api/http/funApi'
 
 const { momentTimeList } = useMomentTime()

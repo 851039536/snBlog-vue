@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { IOneType } from '@/api/data/model/DiaryModel'
+import { IOneType } from '@api/model/DiaryModel'
 import { method, state } from '../../index'
 
 defineProps({
@@ -63,3 +63,4 @@ defineProps({
   }
 }
 </style>
+@/api/model/DiaryModel

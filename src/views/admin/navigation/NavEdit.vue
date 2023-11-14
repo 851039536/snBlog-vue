@@ -5,7 +5,7 @@ import { aData } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useNavigationApi, useNavigationTypeApi } from '@hooks/http'
-import { navigation } from '@hooks/http/model/Navigation'
+import { navigation } from '@api/model/Navigation'
 const { routers, go, winUrl } = useRouter()
 const { getById, updates } = useNavigationApi()
 const { getAll } = useNavigationTypeApi()
@@ -95,4 +95,3 @@ onMounted(async () => {
   }
 }
 </style>
-@/router/routerInfo

@@ -1,15 +1,14 @@
 <script lang="ts" setup>
 import { useUserInfo } from '@hooks/useUserInfo'
-import { snippet } from '@hooksHttp/model/Snippet'
+import { snippet, Snippet } from '@api/model/Snippet'
 import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { uiSettings } from '@store/modules/uiSettings'
 import { useSnippetApi, useSnippetTypeApi } from '@hooks/http'
-import { Snippet } from '@hooks/http/model/Snippet'
 import { useIndex } from './index'
-import { snippetVersion } from '@/hooks/http/model/SnippetVersion'
+import { snippetVersion } from '@api/model/SnippetVersion'
 const { onScroll, refScroll } = useIndex()
 const { getSum, getContains, getById, getStrSum } = useSnippetApi()
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
@@ -272,3 +271,4 @@ input {
   }
 }
 </style>
+@/api/model/Snippet@/api/model/SnippetVersion

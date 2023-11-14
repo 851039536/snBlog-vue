@@ -1,4 +1,4 @@
-import { IArticleTag } from '../data/InterData'
+import { ArticleTag } from '../model/InterData'
 import { useRequest } from '@hooks/http/axios/useRequest'
 
 const { get, add, update, del } = useRequest()
@@ -29,12 +29,12 @@ export class ArticleTagApi {
     return get(url, false, true)
   }
 
-  static add(entity: IArticleTag) {
+  static add(entity: ArticleTag) {
     const url = '/articleTag/add'
     return add(url, entity)
   }
 
-  static update(entity: IArticleTag) {
+  static update(entity: ArticleTag) {
     const url = `/articleTag/update`
     return update(url, entity)
   }

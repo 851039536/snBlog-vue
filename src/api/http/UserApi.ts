@@ -1,7 +1,7 @@
 import { useRequest } from '@hooks/http/axios/useRequest'
 
 const { get, add, update, del } = useRequest()
-import { IUser } from '../data/model/UserModel'
+import { IUser } from '../model/UserModel'
 
 enum API {
   LOGIN = '/user/login?user='

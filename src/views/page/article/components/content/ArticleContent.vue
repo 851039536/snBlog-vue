@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useDirective } from '@hooks/useDirective'
-import { article } from '@hooksHttp/model/Article'
+import { article } from '@api/model/Article'
 import { useArticleApi } from '@/hooks/http'
 import { useApi } from '@/api/useApi'
 
@@ -111,4 +111,3 @@ onMounted(async () => {
   }
 }
 </style>
-@/hooks/model/Article @/hooks/http/model/Article

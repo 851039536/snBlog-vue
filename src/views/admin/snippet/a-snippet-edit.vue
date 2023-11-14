@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { snippet } from '@hooksHttp/model/Snippet'
-import { snippetVersion } from '@hooksHttp/model/SnippetVersion'
-import { snippetTag as tagMo } from '@hooksHttp/model/SnippetTag'
+import { snippet } from '@api/model/Snippet'
+import { snippetVersion } from '@api/model/SnippetVersion'
+import { snippetTag as tagMo } from '@api/model/SnippetTag'
 import { useDirective } from '@hooks/useDirective'
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'

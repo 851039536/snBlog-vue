@@ -1,7 +1,7 @@
 import { useRequest } from '@hooks/http/axios/useRequest'
 
 const { get, add, update, del } = useRequest()
-import { ISnippetLabel } from '../data/model/SnippetLabelMode'
+import { SnippetLabel } from '../model/SnippetLabel'
 
 export class SnippetLabelApi {
   /**
@@ -40,7 +40,7 @@ export class SnippetLabelApi {
    * @description: 新增数据
    * @param {any} entity
    */
-  static add(entity: ISnippetLabel) {
+  static add(entity: SnippetLabel) {
     return add('/snippetTypeSub/add', entity)
   }
 
@@ -48,7 +48,7 @@ export class SnippetLabelApi {
    * @description: 更新数据
    * @param {IntArticle} entity
    */
-  static update(entity: ISnippetLabel) {
+  static update(entity: SnippetLabel) {
     return update(`/snippetTypeSub/update`, entity)
   }
 
