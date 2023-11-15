@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import 'md-editor-v3/lib/preview.css'
-import 'md-editor-v3/lib/style.css'
+
 import 'uno.css'
 
 import router from './router/index'

@@ -2,7 +2,9 @@
 import { ident } from './index'
 import { snippet, removeSnippet } from '@api/model/Snippet'
 import { snippetTag } from '@api/model/SnippetTag'
+
 import { MdEditor } from 'md-editor-v3'
+import 'md-editor-v3/lib/style.css'
 import { useUserInfo } from '@/hooks/useUserInfo'
 import { useDirective } from '@/hooks/useDirective'
 import { message } from 'ant-design-vue'
