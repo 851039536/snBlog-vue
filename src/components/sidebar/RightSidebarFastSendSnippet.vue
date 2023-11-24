@@ -21,16 +21,24 @@ const snippetType: any = ref([])
 const snippetTypeSub: any = ref([])
 const tagName: any = ref()
 
-const createPost = debounce(async () => {
+const addPost = debounce(async () => {
+  // 先添加tag内容
+  snippetTag.name = tagName.value
+  const retAdd = await addTag(snippetTag)
+  if (retAdd.data.statusCode !== 200) return message.error(retAdd.data.message)
+
+  //通过tag名称获取tag主键id
+  const tag = await getTagTitle(tagName.value)
+  snippet.tagId = tag.data.data.id
+
   snippet.userId = getUserId() as number
+
   const ret = await SnippetApi.add(snippet)
   if (ret.data.statusCode === 200) {
     removeSnippet()
     return message.success(ret.data.message)
   }
-  if (ret.data.statusCode === 404) {
-    message.warning(ret.data.message)
-  }
+  return message.error(ret.data.message)
 }, 800)
 
 const getTypeSub = async () => {
@@ -43,16 +51,16 @@ const typeEvent = async (id: number) => {
   await getTypeSub()
 }
 
-const tagEvent = debounce(async () => {
-  // 添加tag内容
-  snippetTag.name = tagName.value
-  const retAdd = await addTag(snippetTag)
-  if (retAdd.data.statusCode === 200) message.success(retAdd.data.message)
+// const tagEvent = debounce(async () => {
+//   // 添加tag内容
+//   snippetTag.name = tagName.value
+//   const retAdd = await addTag(snippetTag)
+//   if (retAdd.data.statusCode === 200) message.success(retAdd.data.message)
 
-  //通过tag名称获取tag主键id
-  const ret = await getTagTitle(tagName.value)
-  snippet.tagId = ret.data.data.id
-}, 800)
+//   //通过tag名称获取tag主键id
+//   const ret = await getTagTitle(tagName.value)
+//   snippet.tagId = ret.data.data.id
+// }, 800)
 onMounted(async () => {
   const [type] = await axios.all([await getSnippetTypeAll(false)])
   snippetType.value = type.data.data
@@ -60,44 +68,46 @@ onMounted(async () => {
 </script>
 <template>
   <div class="post">
-    <form v-if="ident === 4" @submit.prevent="createPost">
-      <div class="h700px w1200px">
-        <div class="mb-1">
+    <form v-if="ident === 4" @submit.prevent="addPost">
+      <div class="h190 w300">
+        <div class="mb-1 text-lg">
+          标题:
           <input v-model="snippet.name" class="h-full w-250px rounded py-1 text-base outline-none" />
 
-          <select v-model="snippet.typeId" class="mx-2 h-32px w-30 rounded" @change="getTypeSub()">
+          <select v-model="snippet.typeId" class="mx-2 h9 w-32 rounded" @change="getTypeSub()">
             <option v-for="ret in snippetType" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
               {{ ret.name }}
             </option>
           </select>
 
-          <select v-model="snippet.typeSubId" class="mr-2 h-32px w-30 rounded">
+          <select v-model="snippet.typeSubId" class="mr-2 h9 w-32 rounded">
             <option v-for="ret in snippetTypeSub" :key="ret.id" :value="ret.id" class="rounded bg-blue-50">
               {{ ret.name }}
             </option>
           </select>
 
-          <input v-model="tagName" class="mr-2 h-32px w-100 border-gray-400 rounded" />
-          <span class="cursor-pointer rounded bg-blue-400 p-1 px-2 shadow" @click="tagEvent()">add</span>
+          标签:
+          <input v-model="tagName" class="mr-2 w-80 border-gray-400 rounded" />
+          <!-- <span class="cursor-pointer rounded bg-blue-400 p-2" @click="tagEvent()">add</span> -->
         </div>
         <div class="mb-1 text-base">
-          <div class="my-6px flex flex-wrap rounded shadow">
+          <div class="my-6px flex flex-wrap">
             <div class="p-1 pl-7px">分类:</div>
             <div v-for="ret in snippetType" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
               <span @click="typeEvent(ret.id)">{{ ret.name }}</span>
             </div>
           </div>
 
-          <div class="my-6px flex flex-wrap rounded shadow">
+          <div class="my-6px flex flex-wrap">
             <div class="p-1 pl-7px">子分类:</div>
             <div v-for="ret in snippetTypeSub" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
               <span @click="snippet.typeSubId = ret.id">{{ ret.name }}</span>
             </div>
           </div>
 
-          <div class="my-6px flex flex-wrap rounded shadow">
-            <div class="p-1 pl-7px">标签:</div>
-            <div class="cursor-pointer p-1 pl-7px">
+          <div class="my-6px flex flex-wrap">
+            <div class="p-1 pl-7px">自定义标签:</div>
+            <div class="cursor-pointer bg-red-100 p-1 pl-7px">
               <span class="pr-1 hover:text-blue-500" @click="tagName = 'dom'">dom</span>
               <span class="pr-1 hover:text-blue-500" @click="tagName = 'div'">div</span>
               <span class="pr-1 hover:text-blue-500" @click="tagName = 'scroll'">scroll</span>
@@ -106,7 +116,7 @@ onMounted(async () => {
             </div>
           </div>
         </div>
-        <div class="mt-2">
+        <div class="mt-3">
           <MdEditor v-model="snippet.text" preview-theme="github" code-theme="github" />
         </div>
       </div>
@@ -119,10 +129,10 @@ onMounted(async () => {
 .post form button[type='submit'] {
   display: block;
   margin: 0 auto;
-  padding: 5px 18px;
+  padding: 5px 44px;
   color: #fff;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 20px;
   background-color: #536cdd;
   border: none;
   border-radius: 5px;

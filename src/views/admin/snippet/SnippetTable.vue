@@ -72,10 +72,13 @@ const QSearch = async (name: string, identity: number) => {
   await QPaging(identity, name)
 }
 async function search(name: any) {
-  if (name === '') return
-  const res = await snippetContains(0, aData.NULL, name, false, 1, 999)
-  await momentTimeList(res)
-  snippetData.value = res.data
+  if (name === '') {
+    await QPaging(0, aData.NULL)
+    return
+  }
+  const ret = await snippetContains(5, aData.NULL, name, false, 1, 20)
+  await momentTimeList(ret)
+  snippetData.value = ret.data
 }
 
 onMounted(async () => {
