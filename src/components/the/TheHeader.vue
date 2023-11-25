@@ -55,21 +55,6 @@ const addSnippet = () => {
   ui.snippet = true
 }
 
-// const userInfo = ref(false)
-
-// function handleMouseOver() {
-//   // 鼠标进入<div>元素时执行的代码
-//   // 在这里可以设置相关的状态或执行其他操作
-//   console.log('true')
-//   userInfo.value = true
-// }
-// function handleMouseLeave() {
-//   // 鼠标离开<div>元素时执行的代码
-//   // 在这里可以设置相关的状态或执行其他操作
-//   userInfo.value = false
-//   console.log('false')
-// }
-
 onMounted(async () => {
   const conditions = await InterfaceApi.getCondition(0, getUserName(), 'header', false)
   const data = await conditions.data.data

@@ -12,8 +12,6 @@ const { storage } = useStorage()
 let ui: any = ref()
 
 export function useAxios() {
-  // 全局配置
-  // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
   // 允许跨域
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
   function myAxios(axiosConfig: any, customOptions: any, load: any = false): Promise<AxiosResponse> {

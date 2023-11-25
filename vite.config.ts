@@ -13,6 +13,7 @@ import svgLoader from 'vite-svg-loader'
 import Unocss from 'unocss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig({
   //配置需要使用的插件列表
@@ -20,6 +21,7 @@ export default defineConfig({
     vue({
       reactivityTransform: true //主要是这个开启，ref
     }),
+    vueJsx(),
     svgLoader(),
     tsconfigPaths(),
     injectHtml({

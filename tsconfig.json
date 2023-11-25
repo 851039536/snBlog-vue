@@ -124,6 +124,7 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
+    "src/**/*.jsx",
     "src/**/*.vue",
     "./components.d.ts",
     "./auto-imports.d.ts"

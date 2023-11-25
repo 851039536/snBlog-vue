@@ -23,15 +23,18 @@ module.exports = {
 
   // 解析器选项
   parser: 'vue-eslint-parser',
+
   // 插件
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   parserOptions: {
-    ecmaVersion: 10, // 指定 EsLint 支持 ECMAScript 6 的语法检测
+    ecmaVersion: 2020, // 指定 EsLint 支持 ECMAScript 6 的语法检测
     parser: '@typescript-eslint/parser',
+    // parser: 'babel-eslint',
     sourceType: 'module', // 设置为 "script" (默认)或"module"（如果你的代码是 ECMAScript 模块)
     ecmaFeature: {
       // 想使用额外的语言特性
       jsx: true, // 启用jsx
+      tsx: true,
       globalReturn: true, // 在全局作用域下使用return语句
       impliedStrict: true, // 启用全局strict mode
       experimentalObjectRestSpread: false

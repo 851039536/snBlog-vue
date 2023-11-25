@@ -64,6 +64,7 @@ declare module '@vue/runtime-core' {
     CRightSidebar: typeof import('./src/components/vessel/c-right-sidebar.vue')['default']
     CRightSidebarContainer: typeof import('./src/components/vessel/c-right-sidebar-container.vue')['default']
     CustomHighlightText: typeof import('./src/components/custom/CustomHighlightText.vue')['default']
+    Demo: typeof import('./src/views/admin/snippet/Demo.vue')['default']
     Diary: typeof import('./src/views/page/diary/index.vue')['default']
     DiaryCategory: typeof import('./src/views/page/diary/components/sidebar/DiaryCategory.vue')['default']
     DiaryContent: typeof import('./src/views/page/diary/components/content/DiaryContent.vue')['default']

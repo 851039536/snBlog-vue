@@ -37,7 +37,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="h-[80%] w1300px">
+  <div class="h-[80%] w320">
     <div class="mb-1">
       <input v-model="snippet.name" class="w-full" />
     </div>
