@@ -4,7 +4,7 @@ export const Demo = defineComponent({
     msg: {
       type: String,
       required: true,
-      default: 'hello wrold qwewa'
+      default: 'hello'
     }
   },
   setup(props) {
