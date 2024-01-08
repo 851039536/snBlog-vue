@@ -36,8 +36,6 @@
 }
 
 @mixin line-numbers($num) {
-  /* 有些示例里需要定义该属性，实际可省略 */
-
   /* stylelint-disable-next-line value-no-vendor-prefix */
   display: -webkit-box;
   overflow: hidden;

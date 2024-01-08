@@ -8,7 +8,6 @@ import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubAp
 import { useMomentTime } from '@hooks/useMomentTime'
 import { snippetVersion } from '@api/model/SnippetVersion'
 import { useApi } from '@/api/useApi'
-import { Demo } from './Demo'
 const { SnippetApi } = useApi()
 const { momentTimeList } = useMomentTime()
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
@@ -99,7 +98,6 @@ onMounted(async () => {
 
 <template>
   <div class="table">
-    <Demo msg="hello world"></Demo>
     <a-space>
       <a-button @click="add">添加</a-button>
       <a-button @click="reload()">刷新</a-button>
