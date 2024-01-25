@@ -1,18 +1,16 @@
 <script lang="ts" setup>
 import { useDirective } from '@hooks/useDirective'
 import { rArticle } from '../../data'
-import { useArticleApi } from '@hooksHttp/index'
 import { useApi } from '@/api/useApi'
 
-const { ArticleTypeApi } = useApi()
-const { getContains } = useArticleApi()
+const { ArticleTypeApi, ArticleApi } = useApi()
 const { throttle } = useDirective()
 
 const searchName = ref('')
 const search = () => {
   throttle(async () => {
     if (searchName.value === '') return
-    rArticle.value = await (await getContains(0, 'null', searchName.value)).data.data
+    rArticle.value = await (await ArticleApi.getContains(0, 'null', searchName.value)).data.data
   }, 300)()
 }
 

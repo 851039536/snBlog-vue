@@ -2,11 +2,11 @@
 import { searchName } from './index'
 import { useRouter } from '@hooks/useRouter'
 import { Article } from '@api/model/Article'
-import { useArticleApi } from '@hooksHttp/index'
 import { useDirective } from '@hooks/useDirective'
 import { uiSettings } from '@/store/modules/uiSettings'
+import { useApi } from '@api/useApi'
 
-const { getContains } = useArticleApi()
+const { ArticleApi } = useApi()
 const { debounce } = useDirective()
 const ui = uiSettings()
 const { winUrl } = useRouter()
@@ -17,7 +17,7 @@ const search = debounce(async () => {
     article.value = []
     return
   }
-  const ret = await getContains(0, 'null', searchName.value)
+  const ret = await ArticleApi.getContains(0, 'null', searchName.value)
   article.value = ret.data.data
 }, 500)
 </script>

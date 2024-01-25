@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { useThirdPartyApi } from '@hooksHttp/index'
+// import { useThirdPartyApi } from '@hooksHttp/index'
 import { useRouter } from '@hooks/useRouter'
 import { ReSou } from '@api/model/interfaces'
 
-const { getZhiHuReSou } = useThirdPartyApi()
+// const { getZhiHuReSou } = useThirdPartyApi()
 const { winUrl } = useRouter()
 const reSou = ref([] as ReSou[])
 onMounted(async () => {
-  const ret = await getZhiHuReSou()
-  reSou.value = ret.data.list
+  // const ret = await getZhiHuReSou()
+  // reSou.value = ret.data.list
 })
 </script>
 <template>

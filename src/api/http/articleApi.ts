@@ -13,11 +13,29 @@ enum api {
 }
 
 export class ArticleApi {
-  // 实例方法
-  myMethod(): void {
-    console.log('ces')
+  /**
+   * 模糊查询
+   * @param identity 所有:0|分类:1|标签:2|用户:3|标签+用户:4
+   * @param type 查询条件
+   * @param name 查询字段
+   * @param cache 缓存
+   */
+  static async getContains(identity = 0, type = 'null', name = '', cache = true) {
+    const data = await get(`${api.contains}identity=${identity}&type=${type}&name=${name}&cache=${cache}`, false, true)
+    await momentTimeList(data.data)
+    return data
   }
-
+  /**
+   * 条件查询
+   * @param identity 分类:1 || 标签:2
+   * @param type 查询条件
+   * @param cache 缓存
+   * @returns
+   */
+  static async getType(identity: number, type = 'null', cache = true) {
+    let ret = await get(`${api.type}identity=${identity}&type=${type}&cache=${cache}`, false)
+    return ret
+  }
   /**
    * @description: 查询总数
    * @param {number} identity 所有:0|分类:1|标签:2|用户3
