@@ -20,7 +20,7 @@ export class ArticleApi {
    * @param {number} id
    * @param {boolean} cache
    */
-  static async getById(id: number, cache = false) {
+  static async getById(id: number, cache = false): Promise<any> {
     const data = await get(`${api.bid}id=${id}&cache=${cache}`, false, true)
     return data
   }

@@ -95,6 +95,7 @@
     "unocss": "0.54.1",
     "unocss-preset-scrollbar": "^0.2.1",
     "unplugin-auto-import": "0.16.6",
+    "vite-plugin-enhance-log": "^0.5.2",
     "vite-plugin-html": "^2.1.1",
     "vite-plugin-style-import": "^1.4.0",
     "vite-svg-loader": "^3.6.0"

@@ -33,5 +33,3 @@ onBeforeUpdate(() => {
     <RightSidebarFastSendSnippet></RightSidebarFastSendSnippet>
   </c-modal-dialog>
 </template>
-
-<!-- <style lang="scss" scoped></style> -->

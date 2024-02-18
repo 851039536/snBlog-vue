@@ -14,12 +14,17 @@ import Unocss from 'unocss/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import EnhanceLog from 'vite-plugin-enhance-log'
 
 export default defineConfig({
   //配置需要使用的插件列表
   plugins: [
     vue({
-      reactivityTransform: true //主要是这个开启，ref
+      reactivityTransform: true //ref
+    }),
+    EnhanceLog({
+      splitBy: ';',
+      preTip: '🔥'
     }),
     vueJsx(),
     svgLoader(),

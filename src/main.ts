@@ -2,9 +2,7 @@ import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import 'md-editor-v3/lib/preview.css'
-
 import 'uno.css'
-
 import router from './router/index'
 import directive from '@/hooks/directive/directive' // 引入全局自定义指令
 import lazyPlugin from 'vue3-lazy'
@@ -14,7 +12,7 @@ import VueDOMPurifyHTML from 'vue-dompurify-html' //指令的“安全”替代�
 import Toast from './components/base/BaseMsg'
 // eslint-disable-next-line no-redeclare
 type Toast = {
-  show: <T>(str: string | number, time?: number) => void
+  show: (str: string | number, time?: number) => void
 }
 // 编写自定义插件的声明文件，防止报错，声明后也会有智能提示
 declare module '@vue/runtime-core' {

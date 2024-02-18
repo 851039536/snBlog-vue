@@ -19,9 +19,9 @@ onMounted(async () => {
     <div class="desc-cont">{{ talk.text }}</div>
     <div class="flex items-center text-cool-gray-600">
       <div i-typcn-heart-outline h4 w4></div>
-      <div class="mr-1">{{ talk.give }}</div>
+      <div class="mr-6px">{{ talk.give }}</div>
       <div i-typcn-starburst-outline h4 w4></div>
-      <div class="mr-1">{{ talk.read }}</div>
+      <div class="mr-6px">{{ talk.read }}</div>
       <div i-typcn-calendar h4 w4></div>
       <div>{{ talk.timeCreate }}</div>
     </div>
@@ -30,7 +30,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .desc-cont {
-  @apply px-1 pb-4 break-words mt-1;
+  @apply px-1 pb-2 break-words mt-1;
   @apply bg-white text-sm text-cool-gray-600;
 }
 </style>

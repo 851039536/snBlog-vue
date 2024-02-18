@@ -11,14 +11,8 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="index">
+  <div class="mt-1 h-[92.58vh] rounded bg-white">
     <Article2Search></Article2Search>
     <article2-content></article2-content>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.index {
-  @apply bg-white mt-1 rounded h-[92.58vh];
-}
-</style>
