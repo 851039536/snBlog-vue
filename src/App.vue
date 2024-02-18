@@ -32,8 +32,12 @@
 </template>
 
 <script lang="ts" setup>
+// 使用自定义的全局消息提示插件
+import useCurrentInstance from '@hooks/useCurrentInstance'
+const { proxy }: any = useCurrentInstance()
+proxy?.$toast.show('this is default message')
+
 import { uiSettings } from '@store/modules/uiSettings'
-// import DevicePixelRatio from '@/libs/rem'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeydownCtrl } = useEventKey()
 const ui = uiSettings()
@@ -43,8 +47,6 @@ useTitle(title)
 onMounted(() => {
   addKeydownCtrl()
   ui.searchArticle = false
-
-  // new DevicePixelRatio().init()
 })
 </script>
 
