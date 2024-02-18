@@ -9,11 +9,9 @@ import { aData } from '../data'
 import useRandom from '@/hooks/useRandom'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { useArticleApi } from '@hooks/http'
 import { useApi } from '@/api/useApi'
 
-const { ArticleTagApi, ArticleTypeApi } = useApi()
-const { adds } = useArticleApi()
+const { ArticleTagApi, ArticleTypeApi, ArticleApi } = useApi()
 const { getUserId } = useUserInfo()
 const { routers, go } = useRouter()
 
@@ -24,7 +22,7 @@ const add = async () => {
   article.userId = getUserId() as number
   article.img = `${random(1, 30, 3)}.jpg`
 
-  await adds(article).then(r => {
+  await ArticleApi.add(article).then(r => {
     if (r.data.statusCode === 200) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)

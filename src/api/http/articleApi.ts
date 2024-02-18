@@ -1,18 +1,29 @@
 import { useRequest } from '@hooks/http/axios/useRequest'
 
-const { get, update } = useRequest()
+const { get, update, del, add } = useRequest()
 
 import { useMomentTime } from '@hooks/useMomentTime'
+import { Article } from '../model/Article'
 const { momentTimeList } = useMomentTime()
 enum api {
   sum = '/article/sum?',
   strSum = '/article/strSum?',
   contains = '/article/contains?',
   type = '/article/type?',
-  paging = '/article/paging?'
+  paging = '/article/paging?',
+  bid = '/article/bid?'
 }
 
 export class ArticleApi {
+  /**
+   * @description: 主键查询
+   * @param {number} id
+   * @param {boolean} cache
+   */
+  static async getById(id: number, cache = false) {
+    const data = await get(`${api.bid}id=${id}&cache=${cache}`, false, true)
+    return data
+  }
   /**
    * 模糊查询
    * @param identity 所有:0|分类:1|标签:2|用户:3|标签+用户:4
@@ -90,7 +101,35 @@ export class ArticleApi {
    * @param {any} entity
    * @param {string} type
    */
-  static updatePortion(entity: any, type: string): Promise<any> {
-    return update(`/article/upPortion?type=${type}`, entity)
+  static async updatePortion(entity: any, type: string): Promise<any> {
+    const data = await update(`/article/upPortion?type=${type}`, entity)
+    return data
+  }
+
+  /**
+   * @description: 删除
+   * @param {number} id
+   */
+  static async delete(id: number) {
+    const data = await del(`/article/del?id=${id}`, false)
+    return data
+  }
+
+  /**
+   * @description: 新增
+   * @param {any} entity
+   */
+  static async add(entity: Article) {
+    const data = await add('/article/add', entity)
+    return data
+  }
+
+  /**
+   * @description: 更新
+   * @param {any} entity
+   */
+  static async update(entity: Article) {
+    const data = await update(`/article/update`, entity)
+    return data
   }
 }

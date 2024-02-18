@@ -185,6 +185,5 @@
   "consoleLog.Random Color": true,
   "commentTranslate.hover.variable": false,
   "github.copilot-labs.showBrushesLenses": false,
-  "github.copilot-labs.showTestGenerationLenses": true,
-  "editor.lightbulb.enabled": true
+  "github.copilot-labs.showTestGenerationLenses": true
 }

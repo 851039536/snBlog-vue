@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
-import { useArticleApi } from '@hooksHttp/index'
 import { rTag, rType } from './data'
 import { navName } from '../utils/data'
 import { aData } from '../data'
@@ -10,14 +9,13 @@ import { article } from '@api/model/Article'
 import { useRouter } from '@hooks/useRouter'
 import { useApi } from '@/api/useApi'
 
-const { ArticleTagApi, ArticleTypeApi } = useApi()
+const { ArticleTagApi, ArticleTypeApi, ArticleApi } = useApi()
 const { routers, go } = useRouter()
-const { getById: getArticleById, updates } = useArticleApi()
 const route = useRoute()
 const rid: any = ref(route.query.id)
 
 const update = async () => {
-  await updates(article).then(ret => {
+  await ArticleApi.update(article).then(ret => {
     if (ret.data) {
       message.success(aData.SUCCESS)
       routers(rRouter.articleTable)
@@ -28,7 +26,7 @@ const update = async () => {
 onMounted(async () => {
   navName.name = '文章展示'
   navName.name2 = '文章编辑'
-  await axios.all([ArticleTagApi.getPaging(1, 100), ArticleTypeApi.getAll(), getArticleById(rid.value)]).then(
+  await axios.all([ArticleTagApi.getPaging(1, 100), ArticleTypeApi.getAll(), ArticleApi.getById(rid.value)]).then(
     axios.spread((tag: any, type: any, articles) => {
       rTag.value = tag.data
       rType.value = type.data

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { uiSettings } from '@store/modules/uiSettings'
 import { useThemeSetting } from '@store/modules/themeSetting'
-
+import { useApi } from '@api/useApi'
+const { ArticleApi } = useApi()
 const theme = useThemeSetting()
 const ui = uiSettings()
-const { getById: getArticleById } = useArticleApi()
 import { MdPreview, MdCatalog } from 'md-editor-v3'
-import { useArticleApi } from '@/hooks/http'
 
 const id = 'preview-only'
 const scrollElement = document.documentElement
@@ -19,7 +18,7 @@ const state: any = reactive({
 })
 
 const GetAll = async () => {
-  await getArticleById(state.id).then((res: any) => {
+  await ArticleApi.getById(state.id).then((res: any) => {
     const { name, text } = res.data.data
     state.blog = { name, text }
   })

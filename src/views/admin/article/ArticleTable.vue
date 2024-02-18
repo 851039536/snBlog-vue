@@ -6,11 +6,9 @@ import { aData, aCancel } from '../data'
 import { rRouter } from '@/router/routerInfo'
 import { useRouter } from '@hooks/useRouter'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { useArticleApi } from '@hooksHttp/index'
 import { useApi } from '@/api/useApi'
 
 const { ArticleApi, ArticleTagApi } = useApi()
-const { dels } = useArticleApi()
 const { getUserName } = useUserInfo()
 const { routerById, routers } = useRouter()
 
@@ -20,7 +18,7 @@ const userName = ref('')
 const tagSrt = ref('ALL')
 const order = ref(false)
 const del = async (data: any) => {
-  await dels(data.id).then(r => {
+  await ArticleApi.delete(data.id).then(r => {
     if (r.data) {
       reload()
       message.success(aData.SUCCESS)

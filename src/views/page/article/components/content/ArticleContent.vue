@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import { useDirective } from '@hooks/useDirective'
 import { article } from '@api/model/Article'
-import { useArticleApi } from '@/hooks/http'
 import { useApi } from '@/api/useApi'
 
 const { ArticleApi } = useApi()
-const { getById: getArticleById } = useArticleApi()
 const { debounce } = useDirective()
 const ArticleContentMdModule = defineAsyncComponent(() => {
   return import('@views/page/article/components/content/ArticleContentMd.vue')
@@ -30,7 +28,7 @@ async function upRead(data: any) {
   await ArticleApi.updatePortion(data, 'Read')
 }
 onMounted(async () => {
-  const data = await getArticleById(aid.id)
+  const data = await ArticleApi.getById(aid.id)
   const ret = data.data.data
   await upRead(ret)
   article.name = ret.name
