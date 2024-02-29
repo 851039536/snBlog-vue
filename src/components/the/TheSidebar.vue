@@ -97,7 +97,7 @@ onMounted(async () => {
 
     <div class="side-ab">
       <div v-show="getUserName() !== 'name'" text="center lg cool-gray-50" bg="slate-500">
-        <span @click="cliAbout()">关于我</span>
+        <span @click="cliAbout()">关于我.</span>
       </div>
       <div class="mt-1 flex">
         <div class="ab-svg" i-fxemoji-newmoonwithface></div>
@@ -119,8 +119,8 @@ onMounted(async () => {
 
 <style lang="scss">
 .side {
-  @apply h-93vh;
-  @apply bg-white rounded relative pt-5 mt-1;
+  @apply h-80vh;
+  @apply bg-light-50 rounded relative pt-5 mt-1;
 
   @include media-base {
     display: none;

@@ -18,7 +18,7 @@ ui.rightSidebar = false
           <div>一位热爱生活、全栈开发者,</div>
           <div>表面腼腆,内心奔放。</div>
           <div>建站缘由 搭建一个属于自己的世界。</div>
-          <div>基于windiCSS,vue3+ts,NetApi 开发,建站初衷是想学习记录生活。</div>
+          <div>基于ASP.NET WebAPI,windiCSS,vue3+ts开发,建站初衷是想学习记录。</div>
         </div>
         <div class="mb-5 mt-5 text-lg">
           <button class="go" @click="routers('/article/column')">Go</button>

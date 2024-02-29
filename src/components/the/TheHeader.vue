@@ -44,7 +44,6 @@ async function onChange(id: number) {
   }
 }
 const removeEscKey = (e: any) => {
-  //escape
   if (e.key === 'Escape') {
     window.removeEventListener('keyup', removeEscKey)
     ui.snippet = false
@@ -111,7 +110,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .head {
   @apply flex h-7vh w-full top-0 left-0 z-50 relative;
-  @apply bg-white shadow-sm px-[8%];
+  @apply bg-light-50 shadow-sm px-[8%];
 
   .head-cont {
     @apply w-full inline-flex;

@@ -68,7 +68,8 @@ const onScroll = (name: string) => {
           </div>
           <div class="content-div-frame-2">{{ r.sketch }}</div>
           <div class="content-div-frame-3">
-            <span class="bg-teal-200">{{ r.user!.nickname }}</span>
+            <span class="bg-emerald-100">{{ r.user!.nickname }}</span>
+            <span class="text-gray-300">|</span>
             <span class="bg-sky-200">{{ r.type!.name }}</span>
             <span class="bg-red-200">{{ r.tag!.name }}</span>
             <span class="bg-yellow-200">{{ r.read }} ℃</span>
@@ -109,7 +110,7 @@ const onScroll = (name: string) => {
   @apply mt-1 mx-2;
 
   .content {
-    @apply flex h-155px mb-2 m-auto;
+    @apply flex h-145px mb-2px m-auto;
     @apply bg-white rounded-lg shadow-sm;
 
     .cont-img {
@@ -136,7 +137,7 @@ const onScroll = (name: string) => {
       }
 
       .content-div-frame-3 {
-        @apply m-1 mt-2 px-1 text-cool-gray-600;
+        @apply m-1 mt-2 px-1px text-cool-gray-600;
 
         span {
           @apply px-1 py-2px mx-2px cursor-pointer rounded text-sm;
