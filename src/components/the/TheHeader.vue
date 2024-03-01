@@ -6,7 +6,7 @@ import { uiSettings } from '@store/modules/uiSettings'
 import { useApi } from '@/api/useApi'
 
 const { InterfaceApi } = useApi()
-const { routers } = useRouter()
+const { routers, winUrl } = useRouter()
 const { removeUserStorage, getUserName } = useUserInfo()
 const ui = uiSettings()
 const rData: any = ref([])
@@ -27,10 +27,10 @@ async function skip(path: string) {
       break
   }
 }
-async function onChange(id: number) {
+function onChange(id: number) {
   switch (id) {
     case 1:
-      await routers(rRouter.articleTable)
+      winUrl(rRouter.articleTable)
       break
     case 2:
       removeUserStorage()

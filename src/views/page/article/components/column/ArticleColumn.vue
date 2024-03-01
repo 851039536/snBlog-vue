@@ -28,7 +28,7 @@ function QImageUrl(name: string) {
   return new URL(`http://kai.snblogs.cn/blog/article/${name}`)
 }
 
-const cheight = ref(100)
+const cheight = ref(60)
 
 onMounted(async () => {
   ui.leftSidebar = true
