@@ -49,6 +49,7 @@
     "vite": "^4.5.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-vue-devtools": "^7.0.16",
     "vite-tsconfig-paths": "^3.3.17",
     "vue": "^3.3.8",
     "vue-dompurify-html": "^4.0.0",

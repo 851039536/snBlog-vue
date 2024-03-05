@@ -15,10 +15,12 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import EnhanceLog from 'vite-plugin-enhance-log'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
   //配置需要使用的插件列表
   plugins: [
+    VueDevTools(),
     vue({
       reactivityTransform: true //ref
     }),

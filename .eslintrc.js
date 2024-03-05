@@ -41,6 +41,7 @@ module.exports = {
       // 启用实验性的object rest/spread properties支持
       // (不建议开启)
     }
+    // project: true
   },
 
   // 启用规则
