@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  mynginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mynginx:latest
+    ports:
+      - "8090:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html
+    restart: always
