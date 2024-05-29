@@ -36,7 +36,7 @@ defineProps({
         v-model:visible="state.modal2Visible"
         :title="state.text.oneTitle"
         centered
-        cancel-text="赞"
+        cancel-text="非常赞"
         :closable="false"
         ok-text="不了"
         @ok="state.modal2Visible = false">
@@ -56,7 +56,7 @@ defineProps({
   }
 
   .osidetype-cont {
-    @apply text-base p-1 pl-2 text-gray-600;
+    @apply text-base p-1 pl-2 text-gray-700;
     @apply hover:text-blue-400;
 
     border-bottom: 1.3px dashed #f1f1f1;

@@ -61,7 +61,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <nav v-show="ui.header" class="head">
+  <div v-show="ui.header" class="head">
     <div class="head-cont">
       <div class="h-cont-l">
         <div>
@@ -104,13 +104,17 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-  </nav>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .head {
-  @apply flex h-7vh w-full top-0 left-0 z-50 relative;
-  @apply bg-light-50 shadow-sm px-[8%];
+  background: rgb(255 255 255 / 100%);
+  box-shadow: inset 0 -1px 0 rgb(226 226 234 / 100%);
+  opacity: 1;
+
+  @apply flex h-7vh w-full left-0 z-50 relative;
+  @apply px-[8%];
 
   .head-cont {
     @apply w-full inline-flex;

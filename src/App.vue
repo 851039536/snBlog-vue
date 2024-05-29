@@ -56,7 +56,7 @@ onMounted(() => {
 #app {
   @apply h-full;
 
-  background-color: #f5f6f7;
+  background-color: rgb(245 245 245 / 100%);
 
   .app-main {
     display: flex;

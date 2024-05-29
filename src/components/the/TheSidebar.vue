@@ -119,7 +119,7 @@ onMounted(async () => {
 
 <style lang="scss">
 .side {
-  @apply h-80vh;
+  @apply h-92vh;
   @apply bg-light-50 rounded relative pt-5 mt-1;
 
   @include media-base {

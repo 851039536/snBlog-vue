@@ -53,12 +53,12 @@ onMounted(async () => {
       </div>
       <div class="otop-cont-give">
         <div>{{ text }}</div>
-        <div class="otop-cont-give2">
+        <!-- <div class="otop-cont-give2">
           <span class="bg-yellow-100">1C</span>
           <span class="bg-fuchsia-100">123</span>
           <span class="bg-cyan-100">日记</span>
           <span class="bg-red-100">日记</span>
-        </div>
+        </div> -->
       </div>
       <diary-category :result="state.diaryType"></diary-category>
     </div>
@@ -67,7 +67,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .otop {
-  @apply h-340px w-full flex bg-white mt-1 rounded;
+  @apply h-350px w-[99%] flex bg-white my-1 rounded ml-1;
 
   .otop-img {
     @apply w-[42%] mx-1;

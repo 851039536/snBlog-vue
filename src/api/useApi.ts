@@ -1,9 +1,11 @@
-import { ArticleApi } from './http/ArticleApi'
-import { ArticleTagApi } from './http/ArticleTagApi'
-import { ArticleTypeApi } from './http/ArticleTypeApi'
+//集中API
+
+import { ArticleApi } from './article/ArticleApi'
+import { ArticleTagApi } from './article/ArticleTagApi'
+import { ArticleTypeApi } from './article/ArticleTypeApi'
 import { CommonApi } from './http/CommonApi'
-import { DiaryApi } from './http/DiaryApi'
-import { DiaryTypeApi } from './http/DiaryTypeApi'
+import { DiaryApi } from './diary/DiaryApi'
+import { DiaryTypeApi } from './diary/DiaryTypeApi'
 import { InterfaceApi } from './http/InterfaceApi'
 import { SetBlogApi } from './http/SetBlogApi'
 import { SnippetApi } from './http/SnippetApi'

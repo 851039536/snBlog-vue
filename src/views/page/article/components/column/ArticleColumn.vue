@@ -67,14 +67,22 @@ const onScroll = (name: string) => {
             {{ r.name }}
           </div>
           <div class="content-div-frame-2">{{ r.sketch }}</div>
-          <div class="content-div-frame-3">
-            <span class="bg-emerald-100">{{ r.user!.nickname }}</span>
-            <span class="text-gray-300">|</span>
-            <span class="bg-sky-200">{{ r.type!.name }}</span>
-            <span class="bg-red-200">{{ r.tag!.name }}</span>
-            <span class="bg-yellow-200">{{ r.read }} ℃</span>
-            <span class="bg-teal-200">赞 {{ r.give }}</span>
-            <span class="bg-red-100">{{ r.timeCreate.substring(0, 10) }}</span>
+          <div class="content-div-frame-3 flex items-center">
+            <div class="i-typcn-user text-xl"></div>
+            <span class="pr-2">
+              {{ r.user!.nickname }}
+            </span>
+
+            <div class="i-typcn-flash text-xl"></div>
+            <span class="pr-2">{{ r.type!.name }}</span>
+            <div class="i-typcn-tag text-xl"></div>
+            <span class="pr-2">{{ r.tag!.name }}</span>
+            <div class="i-typcn-adjust-brightness text-xl"></div>
+            <span class="pr-2">{{ r.read }} ℃</span>
+            <div class="i-typcn-thumbs-up text-xl"></div>
+            <span class="pr-2">{{ r.give }}</span>
+            <div class="i-typcn-times text-xl"></div>
+            <span>{{ r.timeCreate.substring(0, 10) }}</span>
           </div>
         </div>
       </div>
@@ -101,7 +109,7 @@ const onScroll = (name: string) => {
     @apply absolute right-[10%] rounded bottom-[2%] cursor-pointer z-1 bg-white;
 
     div {
-      @apply mb-1px p-2px hover:text-blue-400;
+      @apply mb-1px p-2px hover:text-blue-600;
     }
   }
 }
@@ -110,7 +118,7 @@ const onScroll = (name: string) => {
   @apply mt-1 mx-2;
 
   .content {
-    @apply flex h-145px mb-2px m-auto;
+    @apply flex h-145px mb-2 m-auto;
     @apply bg-white rounded-lg shadow-sm;
 
     .cont-img {
@@ -126,22 +134,23 @@ const onScroll = (name: string) => {
 
       .content-div-frame-1 {
         @apply cursor-pointer m-1 text-xl font-medium px-1;
-        @apply rounded transition duration-800 hover:text-blue-400;
+        @apply rounded transition duration-300 hover:text-blue-600;
         @include truncation;
       }
 
       .content-div-frame-2 {
-        @apply h-[49%] m-1 px-2 mt-2;
-        @apply text-base text-cool-gray-500;
+        @apply h-[49%] m-1 px-2 mt-2  text-gray-600 font-light;
+
+        // @apply text-base;
         @include line-numbers(2);
       }
 
       .content-div-frame-3 {
-        @apply m-1 mt-2 px-1px text-cool-gray-600;
+        @apply m-1 mt-2 px-1px text-gray-600;
 
         span {
-          @apply px-1 py-2px mx-2px cursor-pointer rounded text-sm;
-          @apply hover:text-white hover:bg-blue-400;
+          @apply py-2px cursor-pointer rounded text-sm;
+          @apply hover:text-blue-500;
         }
       }
     }

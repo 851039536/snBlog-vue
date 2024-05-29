@@ -28,7 +28,7 @@ defineProps({
 .ocategory {
   width: 97%;
 
-  @apply cursor-pointer;
+  @apply cursor-pointer m-2;
   @apply bg-white rounded shadow;
 
   .ocategory-title {

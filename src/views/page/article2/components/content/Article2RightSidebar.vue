@@ -15,7 +15,7 @@ const getApi = async (id: number) => {
   emit('refresh', 123)
   sideIndex.value = id
 
-  const data = await ArticleApi.getById(id)
+  const data = await ArticleApi.getById(id, true)
   blog.value = data.data.data.text
 }
 </script>
@@ -27,11 +27,17 @@ const getApi = async (id: number) => {
           <span>{{ ret.name }}</span>
         </div>
         <div class="side-col-txt">
-          <span>{{ ret.read }}℃</span>
-          <span>赞 {{ ret.give }}</span>
+          <div class="i-typcn-user"></div>
+          <span class="pr-1">
+            {{ ret.user!.nickname }}
+          </span>
+
+          <div class="i-typcn-tag"></div>
+          <span class="pr-1">{{ ret.tag!.name }}</span>
+
           <span>{{ ret.timeCreate.substring(0, 10) }}</span>
-          <span>编辑</span>
         </div>
+        <div class="w-full border-gray-500 opacity-1"></div>
       </div>
     </div>
   </transition>
@@ -39,14 +45,13 @@ const getApi = async (id: number) => {
 
 <style lang="scss" scoped>
 .article2-right-sidebar {
-  @apply cursor-pointer shadow w-[24%] overflow-y-scroll;
+  @apply cursor-pointer  w-[24%] overflow-y-scroll;
 
   .side-col {
-    @apply m-1 shadow p-1;
+    @apply m-1 shadow-sm p-1 h-16 bg-white;
 
     .side-col-title {
-      @apply p-1 text-base;
-      @apply bg-blue-50 rounded;
+      @apply p-1 text-black;
       @apply hover:text-blue-500;
     }
 
@@ -55,10 +60,10 @@ const getApi = async (id: number) => {
     }
 
     .side-col-txt {
-      @apply text-cool-gray-600 text-sm mt-1;
+      @apply text-cool-gray-600 text-sm mt-1 flex items-center;
 
       span {
-        @apply ml-1 rounded;
+        @apply rounded;
       }
     }
   }

@@ -22,8 +22,8 @@ onMounted(async () => {
 </script>
 <template>
   <div class="search">
-    <div class="mt-1 w-[40%]">
-      <input v-model="searchName" placeholder="标题搜索" type="text" @input="search()" />
+    <div class="my-1 w-[30%] px-2">
+      <input v-model="searchName" placeholder="内容搜索.." type="text" @input="search()" />
     </div>
     <article2-sidebar-tag :r-data="rTag"></article2-sidebar-tag>
   </div>
@@ -34,7 +34,7 @@ onMounted(async () => {
   @apply pt-1 px-1;
 
   input {
-    @apply border-gray-500 w-full;
+    @apply border-gray-500 w-full h-9;
 
     padding: 6px;
     font-size: 14px;

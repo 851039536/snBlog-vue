@@ -39,8 +39,8 @@ onMounted(async () => {
   <c-right-sidebar-container>
     <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
       <div
-        v-debounce:200="() => getCondition(res.name as string)"
-        class="article2-sidebar-tag-col"
+        v-debounce:300="() => getCondition(res.name as string)"
+        class="tag-col"
         :class="sideIndex == res.id ? 'active' : ''">
         {{ res.name }}
       </div>
@@ -49,13 +49,13 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.article2-sidebar-tag-col {
-  @apply flex-1 mr-2 text-sm px-1 py-3px;
+.tag-col {
+  @apply flex-1 mr-2 my-1 text-sm px-1 py-3px;
   @apply rounded bg-gray-100  cursor-pointer;
-  @apply hover:bg-blue-400 hover:text-white;
+  @apply hover:bg-blue-600 hover:text-white;
 }
 
-.article2-sidebar-tag-col.active {
-  @apply text-cool-gray-50 bg-blue-500;
+.tag-col.active {
+  @apply text-cool-gray-50 bg-blue-600;
 }
 </style>

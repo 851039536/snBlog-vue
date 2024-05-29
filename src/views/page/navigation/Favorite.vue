@@ -45,7 +45,7 @@ onMounted(async () => {
       <div class="relative flex">
         <div class="favorite-onecategory">
           <div v-for="r in rNavTable" :key="r.id" class="inline-flex">
-            <div class="flex rounded px-2px py-1px m-1 hover:bg-blue-500">
+            <div class="flex rounded bg-gray-100 px-2px py-1px m-1 hover:text-blue-600">
               <span @click="clkApi(r.name)">{{ r.name }}</span>
             </div>
           </div>
@@ -87,7 +87,7 @@ onMounted(async () => {
 
       .fa-cont-list1 {
         @apply bg-blue-100  mb-1  p-1 rounded;
-        @apply cursor-pointer text-lg  hover:text-blue-400;
+        @apply cursor-pointer text-lg  hover:text-blue-600;
         @include line-numbers(1);
       }
 

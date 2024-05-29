@@ -44,9 +44,10 @@ const onGetCatalog = (list: any) => {
         :code-theme="theme.codeTheme"
         @on-get-catalog="onGetCatalog" />
     </div>
-    <div class="ml-1 w-[16%] overflow-y-scroll p-1 text-base">
+    <!-- 右侧侧边导航 -->
+    <div class="w-[16%] p-1">
       <div v-for="(item, index) in side" :key="index">
-        <div class="mt-1 cursor-pointer hover:text-blue-500" @click="scrollToTarget(item.text)">
+        <div class="cursor-pointer px-1 hover:text-blue-500" @click="scrollToTarget(item.text)">
           {{ item.text }}
         </div>
       </div>
@@ -64,11 +65,11 @@ const onGetCatalog = (list: any) => {
 <style lang="scss" scoped>
 .cont {
   @apply flex flex-nowrap;
-  @apply rounded h-83vh shadow mt-1;
+  @apply rounded h-83vh  mt-1;
 
   // 内容
   .cont-txt {
-    @apply mt-1 w-[78%] overflow-auto;
+    @apply py-2 mt-1 w-[78%] overflow-auto;
 
     scroll-behavior: smooth;
   }
