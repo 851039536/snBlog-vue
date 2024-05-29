@@ -11,6 +11,8 @@ import {
   presetWind //  Tailwind  紧凑预设
 } from 'unocss'
 import { presetScrollbar } from 'unocss-preset-scrollbar' //滚动条
+import presetChinese from 'unocss-preset-chinese'
+import { presetOnu } from 'onu-ui'
 export default defineConfig({
   shortcuts: {
     'wh-full': 'w-full h-full'
@@ -33,7 +35,11 @@ export default defineConfig({
     presetWind(),
     presetScrollbar({
       // config
-    })
+    }),
+    presetChinese({
+      chineseType: 'simplified' // 指定文本为简体中文
+    }),
+    presetOnu()
   ],
   //静态规则
   rules: [['m-1', { margin: '0.25rem' }]],

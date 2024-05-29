@@ -5,6 +5,7 @@
       <!-- Left sidebar -->
       <aside class="app-grail-left">
         <the-sidebar></the-sidebar>
+        <o-button>Default</o-button>
       </aside>
       <!-- Main content -->
       <div class="app-grail-middle">
