@@ -1,6 +1,6 @@
 import { useRequest } from '@/hooks/http/axios/useRequest'
-import { useMomentTime } from '@hooks/useMomentTime'
-const { momentTimeList } = useMomentTime()
+// import { useMomentTime } from '@hooks/useMomentTime'
+// const { momentTimeList } = useMomentTime()
 const { get, update } = useRequest()
 
 enum Api {
@@ -73,7 +73,7 @@ export function useSnippetApi() {
       false,
       false
     )
-    await momentTimeList(ret)
+    // await momentTimeList(ret)
     return ret
   }
 

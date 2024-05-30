@@ -24,17 +24,11 @@ async function createPost() {
 </script>
 <template>
   <div class="post w-500px">
+    <div mb="3" p="1" text="base">发点新鲜事</div>
     <form v-if="ident === 1" @submit.prevent="createPost">
       <textarea id="content" v-model="userTalk.text" rows="8"></textarea>
       <button type="submit">发布</button>
     </form>
-    <!-- <form v-if="ident === 2" @submit.prevent="createPost">
-      <label for="title">标题:</label>
-      <input id="title" v-model="title" type="text" />
-      <label for="content">内容:</label>
-      <textarea id="content" v-model="content" rows="10"></textarea>
-      <button type="submit">发布</button>
-    </form> -->
   </div>
 </template>
 

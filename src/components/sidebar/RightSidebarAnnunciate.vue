@@ -13,12 +13,12 @@ onMounted(async () => {
 </script>
 <template>
   <c-right-sidebar-container>
-    <div flex py-3px text-base>
+    <div flex py-1 text-base>
       <div i-typcn-spiral h-6 w-6></div>
       <span>一言</span>
     </div>
     <div class="desc-cont">{{ talk.text }}</div>
-    <div class="flex items-center text-cool-gray-600">
+    <div class="mb-2 flex items-center text-cool-gray-600">
       <div i-typcn-heart-outline></div>
       <div class="mr-6px">{{ talk.give }}</div>
       <div i-typcn-starburst-outline></div>

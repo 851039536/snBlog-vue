@@ -127,7 +127,7 @@ const cliEdit = async (id: number, uid: number): Promise<any> => {
   }
 
   //1.通过主键获取snippet内容
-  const ret = await getById(id, false)
+  const ret = await (await getById(id, false)).data
   snippet.id = ret.data.id
   snippet.name = ret.data.name
   snippet.text = ret.data.text
@@ -148,7 +148,7 @@ const cliDiff = async (id: number, uid: number): Promise<any> => {
     message.error('无权限!')
     return
   }
-  const ret = await getById(id, false)
+  const ret = await (await getById(id, false)).data
   snippet.id = ret.data.id
   snippet.name = ret.data.name
   snippet.text = ret.data.text
@@ -162,8 +162,8 @@ const cliDiff = async (id: number, uid: number): Promise<any> => {
 
 onMounted(async () => {
   const [strSum, sums] = await axios.all([await getStrSum(0, 'null', true), await getSum(0, '', true)])
-  charSum.value = strSum.data
-  sum.value = sums.data
+  charSum.value = strSum.data.data
+  sum.value = sums.data.data
 })
 </script>
 

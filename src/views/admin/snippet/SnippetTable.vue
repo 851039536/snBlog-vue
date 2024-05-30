@@ -29,7 +29,7 @@ const del = async (data: any) => {
 const snippetData: any = ref([])
 const tagStr = ref<string>('ALL')
 
-const edit = async (id: number) => {
+const update = async (id: number) => {
   await getSnippetById(id, false).then(r => {
     snippet.id = r.data.id
     snippet.name = r.data.name
@@ -62,7 +62,8 @@ const add = () => {
  */
 const QPaging = async (identity: number, name: string) => {
   const ret = await snippetPaging(identity, name, 1, 9000, 'id', true, false)
-  snippetData.value = ret.data
+  console.log('[ ret ]-65', ret)
+  snippetData.value = ret.data.data
 }
 const QSearch = async (name: string, identity: number) => {
   if (name === aData.ALL) {
@@ -149,7 +150,7 @@ onMounted(async () => {
         <span>{{ record.typeSub.name }}</span>
       </template>
       <template v-if="column.dataIndex === 'edit'">
-        <a @click="edit(record.id)">修改</a>
+        <a @click="update(record.id)">修改</a>
       </template>
       <template v-if="column.dataIndex === 'del'">
         <a-popconfirm title="确认删除?" ok-text="是" cancel-text="否" @confirm="del(record)" @cancel="aCancel()">
