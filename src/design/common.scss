@@ -273,9 +273,9 @@ input:hover {
   box-shadow: 0 0 0 2px rgb(194 176 183 / 10%);
 }
 
-button {
-  height: 40px;
-  border-color: rgb(128 121 124 / 40%);
+// button {
+//   height: 40px;
+//   border-color: rgb(128 121 124 / 40%);
 
-  @apply cursor-pointer border rounded bg-gray-100 px-2 py-1 text-center text-base hover:text-blue-500;
-}
+//   @apply cursor-pointer border rounded bg-gray-100 px-2 py-1 text-center text-base hover:text-blue-500;
+// }

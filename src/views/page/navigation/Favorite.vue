@@ -44,10 +44,11 @@ onMounted(async () => {
     <div class="favorite">
       <div class="relative flex">
         <div class="favorite-onecategory">
-          <div v-for="r in rNavTable" :key="r.id" class="inline-flex">
-            <div class="flex rounded bg-gray-100 px-2px py-1px m-1 hover:text-blue-600">
+          <div v-for="r in rNavTable" :key="r.id" class="inline-flex m-1">
+            <!-- <div class="flex rounded bg-gray-100 px-2px py-1px m-1 hover:text-blue-600">
               <span @click="clkApi(r.name)">{{ r.name }}</span>
-            </div>
+            </div> -->
+            <n-button size="small" @click="clkApi(r.name)">{{ r.name }}</n-button>
           </div>
         </div>
       </div>
@@ -104,6 +105,6 @@ onMounted(async () => {
 }
 
 .favorite-onecategory {
-  @apply bg-white rounded cursor-pointer;
+  @apply bg-white;
 }
 </style>

@@ -48,7 +48,8 @@ const getApi = async (id: number) => {
   @apply cursor-pointer  w-[24%] overflow-y-scroll;
 
   .side-col {
-    @apply m-1 shadow-sm p-1 h-16 bg-white;
+    @apply m-1 shadow-sm p-1 h-17 bg-white;
+    @apply hover:bg-gray-100;
 
     .side-col-title {
       @apply p-1 text-black;

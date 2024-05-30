@@ -32,18 +32,21 @@ async function getCondition(name: string) {
 }
 onMounted(async () => {
   getTopic(sideIndex.value)
-  await getCondition('markdown')
+  await getCondition('csharp')
 })
 </script>
 <template>
   <c-right-sidebar-container>
-    <div v-for="res in rData" :key="res.id" class="inline-flex" @click="getTopic(res.id as number)">
-      <div
+    <div v-for="res in rData" :key="res.id" class="m2px inline-flex" @click="getTopic(res.id as number)">
+      <!-- <div
         v-debounce:300="() => getCondition(res.name as string)"
         class="tag-col"
         :class="sideIndex == res.id ? 'active' : ''">
         {{ res.name }}
-      </div>
+      </div> -->
+      <n-button v-debounce:300="() => getCondition(res.name as string)" size="small">
+        {{ res.name }}
+      </n-button>
     </div>
   </c-right-sidebar-container>
 </template>

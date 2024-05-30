@@ -66,7 +66,7 @@ onMounted(async () => {
       <div class="h-cont-l">
         <div>
           <div i-fxemoji-sparkles mx-1></div>
-          <span>snBlog</span>
+          <span>snblog</span>
         </div>
         <div class="head-l-text">
           <div v-for="r in rData" :key="r.id">

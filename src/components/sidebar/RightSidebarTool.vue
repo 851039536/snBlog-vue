@@ -19,10 +19,10 @@ defineProps({
       <div i-typcn-spanner-outline mr-1 h-6 w-6></div>
       <div>常用工具</div>
     </div>
-    <div v-for="r in rData" :key="r.id" class="inline-flex">
-      <span class="tool-text" @click="winUrl(r.url)">
+    <div v-for="r in rData" :key="r.id" class="inline-flex" m-2px>
+      <n-button size="small" @click="winUrl(r.url)">
         {{ r.name }}
-      </span>
+      </n-button>
     </div>
     <div class="absolute bottom-1 right-2 cursor-pointer hover:text-blue-500" i-typcn-arrow-right h6 w7></div>
   </c-right-sidebar-container>

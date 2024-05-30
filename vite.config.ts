@@ -16,6 +16,7 @@ import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import EnhanceLog from 'vite-plugin-enhance-log'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   //配置需要使用的插件列表
@@ -46,6 +47,9 @@ export default defineConfig({
       // 自动导入vue3的hooks
       imports: [
         'vue',
+        {
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar']
+        },
         'vue-router',
         'pinia',
         {
@@ -65,7 +69,7 @@ export default defineConfig({
       // 针对 Vue 的按需组件自动导入
       dts: true, // ts支持
       dirs: ['src/components', 'src/views'], // 自定义路径按需导入
-      resolvers: [AntDesignVueResolver()] // antd直接使用组件,无需在任何地方导入组件
+      resolvers: [AntDesignVueResolver(), NaiveUiResolver()] // antd直接使用组件,无需在任何地方导入组件
     }),
     styleImport({
       resolves: [AndDesignVueResolve()]
