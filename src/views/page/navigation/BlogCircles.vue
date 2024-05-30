@@ -13,7 +13,7 @@ onMounted(async () => {
 
 const paging: IPaging = reactive({
   page: 1,
-  pagesize: 18,
+  pagesize: 24,
   count: 0,
   current: 1
 })
@@ -35,8 +35,8 @@ onMounted(async () => {
 </script>
 <template>
   <div class="blog-circles">
-    <div class="mx-5 rounded bg-white p-1 text-base">博客:{{ sum }}</div>
-    <div class="circles-content xp:grid-cols-3 grid 2xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+    <div class="mx-5 rounded bg-white p-1 text-base">博客总数 : {{ sum }}位</div>
+    <div class="circles-content xp:grid-cols-4 grid 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       <div v-for="ret in nData" :key="ret.id" class="circles-1">
         <div class="circles-1-1">
           <img v-lazy="QImageUrl(ret.img)" alt="err" />
@@ -65,22 +65,22 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .blog-circles {
-  @apply mt-1 bg-white rounded;
+  @apply m-1 bg-white;
 
   // 导航窗体小
   .circles-1 {
-    @apply m-auto mb-3 mt-6px shadow-sm w-[90%] h-120px;
+    @apply m-2 shadow-sm w-[95%] h-110px;
 
     .circles-1-1 {
-      @apply float-left w-[42%] h-[99%];
+      @apply float-left w-[45%] h-[99%];
 
       img {
-        @apply rounded w-full h-full;
+        @apply w-full h-full;
       }
     }
 
     .circles-1-2 {
-      @apply float-right bg-white w-[58%] h-full;
+      @apply float-right bg-white w-[55%] h-full;
 
       .circles-1-2-1 {
         @apply text-lg p-1 font-medium m-1 cursor-pointer hover:text-blue-400;

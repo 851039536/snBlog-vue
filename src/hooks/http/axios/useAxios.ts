@@ -78,7 +78,6 @@ export function useAxios() {
         ui.value = uiSettings()
         // 在请求结束后，移除本次请求
         removePending(ret)
-        // 请求之后关闭loading
         if (loadings.loading) {
           setTimeout(function () {
             ui.value.loading = false

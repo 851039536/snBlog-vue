@@ -70,7 +70,7 @@ onMounted(() => {
     }
 
     .app-grail-left {
-      width: 15%;
+      width: 14%;
 
       @apply mr-2 relative left-1;
 
@@ -98,7 +98,7 @@ onMounted(() => {
     }
 
     .app-grail-right {
-      width: 21%;
+      width: 22%;
 
       @apply overflow-y-auto;
       @apply ml-1;

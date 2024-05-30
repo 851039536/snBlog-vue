@@ -96,8 +96,13 @@ onMounted(async () => {
     </div>
 
     <div class="side-ab">
-      <div v-show="getUserName() !== 'name'" text="center lg cool-gray-50" bg="slate-500">
-        <span @click="cliAbout()">关于我.</span>
+      <div
+        v-show="getUserName() !== 'name'"
+        text="center lg cool-gray-50"
+        cursor="pointer"
+        bg="slate-400"
+        hover="text-blue-600">
+        <span @click="cliAbout()">关于我</span>
       </div>
       <div class="mt-1 flex">
         <div class="ab-svg" i-fxemoji-newmoonwithface></div>
@@ -119,7 +124,7 @@ onMounted(async () => {
 
 <style lang="scss">
 .side {
-  @apply h-92vh;
+  @apply h-80vh;
   @apply bg-light-50 rounded relative pt-5 mt-1;
 
   @include media-base {
@@ -127,7 +132,7 @@ onMounted(async () => {
   }
 
   .side-list {
-    @apply text-center text-base w-[72%] m-auto;
+    @apply text-center text-base w-[70%] m-auto;
     @apply cursor-pointer transition duration-500 hover:bg-gray-200 rounded;
 
     div {
@@ -141,7 +146,7 @@ onMounted(async () => {
 
   .side-ab {
     @apply absolute bottom-1 h-110px w-full rounded;
-    @apply bg-gray-400;
+    @apply bg-gray-500;
 
     .ab-svg {
       @apply h-6 w-6;

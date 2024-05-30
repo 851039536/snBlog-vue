@@ -44,10 +44,7 @@ onMounted(async () => {
     <div class="favorite">
       <div class="relative flex">
         <div class="favorite-onecategory">
-          <div v-for="r in rNavTable" :key="r.id" class="inline-flex m-1">
-            <!-- <div class="flex rounded bg-gray-100 px-2px py-1px m-1 hover:text-blue-600">
-              <span @click="clkApi(r.name)">{{ r.name }}</span>
-            </div> -->
+          <div v-for="r in rNavTable" :key="r.id" class="m-2px inline-flex">
             <n-button size="small" @click="clkApi(r.name)">{{ r.name }}</n-button>
           </div>
         </div>
@@ -80,20 +77,20 @@ onMounted(async () => {
 
   .favorite-content {
     @apply h-full w-full;
-    @apply grid grid-cols-4;
+    @apply grid grid-cols-5;
 
     .fa-cont-list {
-      @apply m-auto mt-8px w-[92%] h-120px;
-      @apply rounded shadow bg-white;
+      @apply m-auto mt-2 w-[92%] h-120px;
+      @apply rounded-md shadow-sm bg-white hover:bg-red-50;
 
       .fa-cont-list1 {
-        @apply bg-blue-100  mb-1  p-1 rounded;
-        @apply cursor-pointer text-lg  hover:text-blue-600;
+        @apply p-2 h-9;
+        @apply text-gray-900 cursor-pointer text-base  hover:text-blue-600;
         @include line-numbers(1);
       }
 
       .fa-cont-list2 {
-        @apply mx-3 text-cool-gray-600;
+        @apply text-sm p-2 h-72px bg-gray-50 mx-1;
         @include line-numbers(3);
       }
     }
@@ -105,6 +102,6 @@ onMounted(async () => {
 }
 
 .favorite-onecategory {
-  @apply bg-white;
+  @apply bg-white p-1 shadow-current rounded;
 }
 </style>

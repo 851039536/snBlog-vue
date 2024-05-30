@@ -4,9 +4,10 @@ import { useUserInfo } from '@/hooks/useUserInfo'
 
 const talk: any = ref([])
 const { getUserName } = useUserInfo()
+const userName = getUserName()
 const { getPaging } = useUserTalkApi()
 onMounted(async () => {
-  const name = await getPaging(1, getUserName(), 1, 1, 'data', true, false)
+  const name = await getPaging(1, userName, 1, 1, 'data', true, false)
   talk.value = name.data.data[0]
 })
 </script>
@@ -18,12 +19,12 @@ onMounted(async () => {
     </div>
     <div class="desc-cont">{{ talk.text }}</div>
     <div class="flex items-center text-cool-gray-600">
-      <div i-typcn-heart-outline h4 w4></div>
+      <div i-typcn-heart-outline></div>
       <div class="mr-6px">{{ talk.give }}</div>
-      <div i-typcn-starburst-outline h4 w4></div>
+      <div i-typcn-starburst-outline></div>
       <div class="mr-6px">{{ talk.read }}</div>
-      <div i-typcn-calendar h4 w4></div>
-      <div>{{ talk.timeCreate }}</div>
+      <div i-typcn-calendar></div>
+      <div>{{ talk.timeCreate?.substring(0, 10) }}</div>
     </div>
   </c-right-sidebar-container>
 </template>
