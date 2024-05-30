@@ -38,7 +38,6 @@
     "md-editor-v3": "^4.2.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "onu-ui": "^1.0.14-beta.2",
     "pinia": "2.1.4",
     "pinia-plugin-persistedstate": "^3.1.0",
     "postcss-px-to-viewport": "^1.1.1",

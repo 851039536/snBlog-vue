@@ -1219,25 +1219,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@onu-ui/components@1.0.14-beta.2":
-  version "1.0.14-beta.2"
-  resolved "https://registry.npmjs.org/@onu-ui/components/-/components-1.0.14-beta.2.tgz#d443b8508a855b741c8aec693055f82152b98dfc"
-  integrity sha512-kFCJEshxJjNs2NvfONlDfVOIOgKbX2hGNUXDs1lORQRlP110ZgJKZCI+9qLNHIPSWS+ifWL1gLwjWSpyp4/jTQ==
-  dependencies:
-    "@onu-ui/preset" "1.0.14-beta.2"
-    "@onu-ui/utils" "1.0.14-beta.2"
-    "@vueuse/core" "^9.1.0"
-
-"@onu-ui/preset@1.0.14-beta.2":
-  version "1.0.14-beta.2"
-  resolved "https://registry.npmjs.org/@onu-ui/preset/-/preset-1.0.14-beta.2.tgz#2769af3a8037c3d9ff54f3eaf445bdb0a6e20d9d"
-  integrity sha512-DxyN7+/hqoJuDv64TT+I1XII0QoCO/4wQoZsKeqgld7JGKv1ti3UlipXVhPWTDZE9g1ETyZPJW4oPgDX7z/a4A==
-
-"@onu-ui/utils@1.0.14-beta.2":
-  version "1.0.14-beta.2"
-  resolved "https://registry.npmjs.org/@onu-ui/utils/-/utils-1.0.14-beta.2.tgz#e1fc577617cafe837c6643cd7ef9c2f6d0c28b06"
-  integrity sha512-Ddu1TWt32y6oDngv7o6MUjclV9GHKJeOS26GzClQYi14UKBxNJOLIo3fhG9J/R7omRNZH9QOY81myrPeHLoU4w==
-
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
@@ -1411,11 +1392,6 @@
     "@types/node" "*"
     "@types/unist" "*"
     "@types/vfile-message" "*"
-
-"@types/web-bluetooth@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.npmjs.org/@types/web-bluetooth/-/web-bluetooth-0.0.16.tgz#1d12873a8e49567371f2a75fe3e7f7edca6662d8"
-  integrity sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==
 
 "@typescript-eslint/eslint-plugin@^6.12.0":
   version "6.21.0"
@@ -2129,28 +2105,6 @@
   version "3.4.27"
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.4.27.tgz#f05e3cd107d157354bb4ae7a7b5fc9cf73c63b50"
   integrity sha512-DL3NmY2OFlqmYYrzp39yi3LDkKxa5vZVwxWdQ3rG0ekuWscHraeIbnI8t+aZK7qhYqEqWKTUdijadunb9pnrgA==
-
-"@vueuse/core@^9.1.0":
-  version "9.13.0"
-  resolved "https://registry.npmjs.org/@vueuse/core/-/core-9.13.0.tgz#2f69e66d1905c1e4eebc249a01759cf88ea00cf4"
-  integrity sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.16"
-    "@vueuse/metadata" "9.13.0"
-    "@vueuse/shared" "9.13.0"
-    vue-demi "*"
-
-"@vueuse/metadata@9.13.0":
-  version "9.13.0"
-  resolved "https://registry.npmjs.org/@vueuse/metadata/-/metadata-9.13.0.tgz#bc25a6cdad1b1a93c36ce30191124da6520539ff"
-  integrity sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==
-
-"@vueuse/shared@9.13.0":
-  version "9.13.0"
-  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-9.13.0.tgz#089ff4cc4e2e7a4015e57a8f32e4b39d096353b9"
-  integrity sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==
-  dependencies:
-    vue-demi "*"
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -6384,13 +6338,6 @@ onetime@^6.0.0:
   dependencies:
     mimic-fn "^4.0.0"
 
-onu-ui@^1.0.14-beta.2:
-  version "1.0.14-beta.2"
-  resolved "https://registry.npmjs.org/onu-ui/-/onu-ui-1.0.14-beta.2.tgz#9ff026aca955fae152e2de43908739e3afa3eb0f"
-  integrity sha512-BfpznGkVkhXzCHNLsXugPbRJeUFThHd89cX5vqqLOy0YJ9dW96gRiXObfd24KZ3zzawlNbmoYB3nLTkt2EpZ2Q==
-  dependencies:
-    "@onu-ui/components" "1.0.14-beta.2"
-
 open@^10.1.0:
   version "10.1.0"
   resolved "https://registry.npmjs.org/open/-/open-10.1.0.tgz#a7795e6e5d519abe4286d9937bb24b51122598e1"
@@ -7625,6 +7572,7 @@ strict-uri-encode@^2.0.0:
   integrity sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -8783,7 +8731,7 @@ vite@4.5.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-demi@*, vue-demi@>=0.14.5, vue-demi@^0.14.0, vue-demi@^0.14.6, vue-demi@latest:
+vue-demi@>=0.14.5, vue-demi@^0.14.0, vue-demi@^0.14.6, vue-demi@latest:
   version "0.14.7"
   resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.7.tgz#8317536b3ef74c5b09f268f7782e70194567d8f2"
   integrity sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==
@@ -8962,6 +8910,7 @@ word-wrap@^1.0.3, word-wrap@^1.2.3, word-wrap@^1.2.5:
   integrity sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+  name wrap-ansi-cjs
   version "7.0.0"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

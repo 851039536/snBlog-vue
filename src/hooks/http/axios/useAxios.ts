@@ -48,7 +48,7 @@ export function useAxios() {
       (config: AxiosRequestConfig) => {
         // 请求之前发送loading
         if (loadings.loading) {
-          ui.loading = true
+          ui.value.loading = true
         }
         const { method, data, headers } = config
         removePending(config)
@@ -75,13 +75,13 @@ export function useAxios() {
     service.interceptors.response.use(
       (ret: AxiosResponse<any>) => {
         //挂载 不然报错
-        ui = uiSettings()
+        ui.value = uiSettings()
         // 在请求结束后，移除本次请求
         removePending(ret)
         // 请求之后关闭loading
         if (loadings.loading) {
           setTimeout(function () {
-            ui.loading = false
+            ui.value.loading = false
           }, 300)
         }
         // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
@@ -91,7 +91,7 @@ export function useAxios() {
         return Promise.reject(ret)
       },
       error => {
-        ui.loading = false
+        ui.value.loading = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',
@@ -155,7 +155,7 @@ export function useAxios() {
     service.interceptors.request.use(
       (config: AxiosRequestConfig) => {
         if (loading.loading) {
-          ui.loading = true
+          ui.value.loading = true
         }
         const { method, data } = config
         removePending(config)
@@ -174,11 +174,11 @@ export function useAxios() {
     )
     service.interceptors.response.use(
       (ret: AxiosResponse<any>) => {
-        ui = uiSettings()
+        ui.value = uiSettings()
         removePending(ret)
         if (loading.loading) {
           setTimeout(function () {
-            ui.loading = false
+            ui.value.loading = false
           }, 500)
         }
         if (ret.status === 200 || ret.data.statusCode === 200) {
@@ -187,7 +187,7 @@ export function useAxios() {
         return Promise.reject(ret)
       },
       error => {
-        ui.loading = false
+        ui.value.loading = false
 
         const statusTextMap: Record<number, string> = {
           400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',

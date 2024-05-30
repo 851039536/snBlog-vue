@@ -62,6 +62,7 @@ module.exports = {
     'vue/valid-v-bind': 'error',
     // 强制校验 v-cloak 指令
     'vue/valid-v-cloak': 'error',
+    'vue/custom-event-name-casing': 'error',
     // 强制校验 v-else-if 指令
     'vue/valid-v-else-if': 'error',
     // 强制校验 v-else 指令

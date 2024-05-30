@@ -2,9 +2,7 @@ import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import 'md-editor-v3/lib/preview.css'
-import OnuUI from 'onu-ui'
 import 'uno.css'
-import 'onu-ui/dist/style.css'
 import router from './router/index'
 import directive from '@/hooks/directive/directive' // 引入全局自定义指令
 import lazyPlugin from 'vue3-lazy'
@@ -35,7 +33,6 @@ app.use(lazyPlugin, {
   loading: getImageUrl('1.jpg'),
   error: getImageUrl('2.jpg')
 })
-app.use(OnuUI)
 app.use(infiniteScroll)
 app.use(VueDOMPurifyHTML)
 app.use(router)

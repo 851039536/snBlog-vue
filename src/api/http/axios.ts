@@ -64,7 +64,7 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
       }
       // 请求之前发送loading
       if (loading.loading) {
-        uiSet.uiLoadingVisible = true
+        uiSet.value.uiLoadingVisible = true
       }
       return config
     },
@@ -77,13 +77,13 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
   service.interceptors.response.use(
     (res: AxiosResponse<any>) => {
       //挂载 不然报错
-      uiSet = uiSettings()
+      uiSet.value = uiSettings()
       // 在请求结束后，移除本次请求
       removePending(res)
       // 请求之后关闭loading
       if (loading.loading) {
         setTimeout(function () {
-          uiSet.uiLoadingVisible = false
+          uiSet.value.uiLoadingVisible = false
         }, 500)
       }
       // 对响应数据进行处理，例如检查统一的字段（如 statusCode)
@@ -93,7 +93,7 @@ function myAxios(axiosConfig: any, customOptions: any, loadings: any): Promise<A
       return Promise.reject(res)
     },
     error => {
-      uiSet.uiLoadingVisible = false
+      uiSet.value.uiLoadingVisible = false
 
       const statusTextMap: Record<number, string> = {
         400: '发出的请求有错误，服务器没有进行新建或修改数据的操作',

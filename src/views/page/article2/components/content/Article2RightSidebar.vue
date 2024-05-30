@@ -20,27 +20,27 @@ const getApi = async (id: number) => {
 }
 </script>
 <template>
-  <transition name="slidey-fade">
-    <div class="article2-right-sidebar">
-      <div v-for="ret in rArticle" :key="ret.id" class="side-col">
-        <div v-debounce:200="() => getApi(ret.id)" class="side-col-title" :class="sideIndex == ret.id ? 'active' : ''">
-          <span>{{ ret.name }}</span>
-        </div>
-        <div class="side-col-txt">
-          <div class="i-typcn-user"></div>
-          <span class="pr-1">
-            {{ ret.user!.nickname }}
-          </span>
-
-          <div class="i-typcn-tag"></div>
-          <span class="pr-1">{{ ret.tag!.name }}</span>
-
-          <span>{{ ret.timeCreate.substring(0, 10) }}</span>
-        </div>
-        <div class="w-full border-gray-500 opacity-1"></div>
+  <!-- <transition name="slidey-fade"> -->
+  <div class="article2-right-sidebar">
+    <div v-for="ret in rArticle" :key="ret.id" class="side-col">
+      <div v-debounce:200="() => getApi(ret.id)" class="side-col-title" :class="sideIndex == ret.id ? 'active' : ''">
+        <span>{{ ret.name }}</span>
       </div>
+      <div class="side-col-txt">
+        <div class="i-typcn-user"></div>
+        <span class="pr-1">
+          {{ ret.user!.nickname }}
+        </span>
+
+        <div class="i-typcn-tag"></div>
+        <span class="pr-1">{{ ret.tag!.name }}</span>
+
+        <span>{{ ret.timeCreate.substring(0, 10) }}</span>
+      </div>
+      <div class="w-full border-gray-500 opacity-1"></div>
     </div>
-  </transition>
+  </div>
+  <!-- </transition> -->
 </template>
 
 <style lang="scss" scoped>
