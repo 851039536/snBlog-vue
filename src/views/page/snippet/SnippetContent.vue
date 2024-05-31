@@ -6,18 +6,16 @@ import { message } from 'ant-design-vue'
 import { MdPreview } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
 import { uiSettings } from '@store/modules/uiSettings'
-import { useSnippetTypeApi } from '@hooks/http'
 import { useIndex } from './index'
 import { snippetVersion } from '@api/model/SnippetVersion'
 import { useApi } from '@api/useApi'
 const { onScroll, refScroll } = useIndex()
 
-const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { isUserId } = useUserInfo()
 const { debounce } = useDirective()
 const theme = useThemeSetting()
 const ui = uiSettings()
-const { SnippetAPI } = useApi()
+const { SnippetAPI, SnippetTypeAPI } = useApi()
 const id = 'preview-only'
 
 // 定义触发底部函数
@@ -104,7 +102,7 @@ const radioFuns = async () => {
   switch (radios.value) {
     case 'type':
       name.value = ''
-      snippetTag.value = await (await getSnippetTypeAll(true)).data
+      snippetTag.value = await (await SnippetTypeAPI.getAll(true)).data
       if (snippetTag.value === null) {
         snippetTag.value = []
       } else {
@@ -152,6 +150,7 @@ const cliDiff = async (id: number, uid: number): Promise<any> => {
   }
   const ret = await (await SnippetAPI.getById(id, false)).data
   snippet.id = ret.data.id
+  console.log('[ snippet.id ]-153', snippet.id)
   snippet.name = ret.data.name
   snippet.text = ret.data.text
   snippetVersion.text = ret.data.text

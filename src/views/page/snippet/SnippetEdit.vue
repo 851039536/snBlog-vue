@@ -3,14 +3,10 @@ import { snippet } from '@api/model/Snippet'
 import { useDirective } from '@hooks/useDirective'
 import { MdEditor } from 'md-editor-v3'
 import { useThemeSetting } from '@store/modules/themeSetting'
-import { useSnippetTypeApi, useSnippetTypeSubApi, useSnippetVersionApi } from '@/hooks/http'
-import { useSnippetPack } from '@/hooks/http/pack/useSnippetPack'
 import { snippetVersion } from '@api/model/SnippetVersion'
-
-const { getAll: snippetTypeAll } = useSnippetTypeApi()
-const { adds: addSnippetVer, sum: snVerSum } = useSnippetVersionApi()
-const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
-const { upSnippet } = useSnippetPack()
+import { useApi } from '@api/useApi'
+import { message } from 'ant-design-vue'
+const { SnippetTypeAPI, SnippetTypeSubAPI, SnippetVersionAPI, SnippetAPI } = useApi()
 const { debounce } = useDirective()
 const theme = useThemeSetting()
 const snippetType: any = ref([])
@@ -18,21 +14,22 @@ const snippetTypeSub: any = ref([])
 
 const update = debounce(async () => {
   //先存入旧版内容
-  await addSnippetVer(snippetVersion)
+  await SnippetVersionAPI.add(snippetVersion)
   //更新片段之前,更新版本次数
-  const sums = await snVerSum(1, snippet.id, false)
-  snippet.snippetVersionId = sums.data
-  //更新片段
-  await upSnippet(snippet)
+  const sums = await SnippetVersionAPI.getSum(1, snippet.id, false)
+  snippet.snippetVersionId = sums.data.data
+  const response = await SnippetAPI.up(snippet)
+  if (response.data) {
+    message.success('更新成功')
+  }
 }, 600)
 const getTypeSub = async (id: number) => {
   snippet.typeId = id
-  const ret = await snippetTypeSubCondition(snippet.typeId)
-  console.log(ret.data.data)
+  const ret = await SnippetTypeSubAPI.getCondition(snippet.typeId)
   snippetTypeSub.value = ret.data.data
 }
 onMounted(async () => {
-  snippetType.value = await (await snippetTypeAll(true)).data.data
+  snippetType.value = await (await SnippetTypeAPI.getAll(true)).data.data
   await getTypeSub(snippet.typeId)
 })
 </script>

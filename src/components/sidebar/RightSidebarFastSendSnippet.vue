@@ -8,15 +8,11 @@ import 'md-editor-v3/lib/style.css'
 import { useUserInfo } from '@/hooks/useUserInfo'
 import { useDirective } from '@/hooks/useDirective'
 import { message } from 'ant-design-vue'
-import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 import { useApi } from '@/api/useApi'
 
-const { SnippetAPI } = useApi()
+const { SnippetAPI, SnippetTagAPI, SnippetTypeAPI, SnippetTypeSubAPI } = useApi()
 const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
-const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
-const { adds: addTag, getByTitle: getTagTitle } = useSnippetTagApi()
-const { getCondition: getSnippetTypeSubCondition } = useSnippetTypeSubApi()
 const snippetType: any = ref([])
 const snippetTypeSub: any = ref([])
 const tagName: any = ref()
@@ -24,11 +20,11 @@ const tagName: any = ref()
 const addPost = debounce(async () => {
   // 先添加tag内容
   snippetTag.name = tagName.value
-  const retAdd = await addTag(snippetTag)
+  const retAdd = await SnippetTagAPI.add(snippetTag)
   if (retAdd.data.statusCode !== 200) return message.error(retAdd.data.message)
 
   //通过tag名称获取tag主键id
-  const tag = await getTagTitle(tagName.value)
+  const tag = await SnippetTagAPI.getByTitle(tagName.value)
   snippet.tagId = tag.data.data.id
 
   snippet.userId = getUserId() as number
@@ -42,7 +38,7 @@ const addPost = debounce(async () => {
 }, 800)
 
 const getTypeSub = async () => {
-  const ret = await getSnippetTypeSubCondition(snippet.typeId)
+  const ret = await SnippetTypeSubAPI.getCondition(snippet.typeId)
   snippetTypeSub.value = ret.data.data
 }
 
@@ -51,18 +47,8 @@ const typeEvent = async (id: number) => {
   await getTypeSub()
 }
 
-// const tagEvent = debounce(async () => {
-//   // 添加tag内容
-//   snippetTag.name = tagName.value
-//   const retAdd = await addTag(snippetTag)
-//   if (retAdd.data.statusCode === 200) message.success(retAdd.data.message)
-
-//   //通过tag名称获取tag主键id
-//   const ret = await getTagTitle(tagName.value)
-//   snippet.tagId = ret.data.data.id
-// }, 800)
 onMounted(async () => {
-  const [type] = await axios.all([await getSnippetTypeAll(false)])
+  const [type] = await axios.all([await SnippetTypeAPI.getAll(false)])
   snippetType.value = type.data.data
 })
 </script>

@@ -2,22 +2,16 @@ import { useRequest } from '@hooks/http/axios/useRequest'
 
 const { get, add, update, del } = useRequest()
 
-export class SnippetTypeApi {
+export class SnippetTypeAPI {
+  static getAll(cache: boolean) {
+    return get(`/snippetType/all?cache=${cache}`)
+  }
   /**
    * @description: 查询总数
    * @param {boolean} cache 缓存
    */
   static getSum(cache: boolean) {
     return get(`/snippetType/sum?cache=${cache}`)
-  }
-
-  /**
-   * @description: 主键查询
-   * @param {number} id
-   * @param {boolean} cache
-   */
-  static getById(id: number, cache: boolean) {
-    return get(`/snippetType/byId?id=${id}&cache=${cache}`, false)
   }
 
   /**

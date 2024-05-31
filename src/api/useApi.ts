@@ -9,9 +9,11 @@ import { DiaryTypeApi } from './diary/DiaryTypeApi'
 import { InterfaceApi } from './http/InterfaceApi'
 import { SetBlogApi } from './http/SetBlogApi'
 import { SnippetAPI } from './snippet/SnippetAPI'
+import { SnippetVersionAPI } from './snippet/SnippetVersionAPI'
 import { SnippetLabelApi } from './http/SnippetLabelApi'
-import { SnippetTagApi } from './http/SnippetTagApi'
-import { SnippetTypeApi } from './http/SnippetTypeApi'
+import { SnippetTagAPI } from './snippet/SnippetTagAPI'
+import { SnippetTypeAPI } from './snippet/SnippetTypeAPI'
+import { SnippetTypeSubAPI } from './snippet/SnippetTypeSubAPI'
 import { UserApi } from './http/UserApi'
 import { VideoApi } from './http/VideoApi'
 import { ListContentApi } from './http/ListContentApi'
@@ -26,9 +28,11 @@ export function useApi() {
     InterfaceApi,
     SetBlogApi,
     SnippetAPI,
+    SnippetVersionAPI,
     SnippetLabelApi,
-    SnippetTagApi,
-    SnippetTypeApi,
+    SnippetTagAPI,
+    SnippetTypeAPI,
+    SnippetTypeSubAPI,
     UserApi,
     VideoApi,
     ListContentApi

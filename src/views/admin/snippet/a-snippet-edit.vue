@@ -7,30 +7,25 @@ import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { snippetTypeSub, snippetType, tagName, snippetTag, edVisible } from './data'
 import { useUserInfo } from '@hooks/useUserInfo'
-import { useSnippetTypeSubApi, useSnippetTagApi, useSnippetVersionApi } from '@/hooks/http'
-import { useSnippetPack } from '@hooksHttp/pack/useSnippetPack'
+import { useApi } from '@api/useApi'
+const { SnippetTagAPI, SnippetTypeSubAPI, SnippetVersionAPI, SnippetAPI } = useApi()
 const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
-const { getCondition: snippetTypeSubCondition } = useSnippetTypeSubApi()
-const { updates: upTag, adds: addTag, getByTitle } = useSnippetTagApi()
-const { adds: addSnippetVersion, sum: snVerSum } = useSnippetVersionApi()
-const { upSnippet } = useSnippetPack()
 const reload: any = inject('reload')
 const update = debounce(async () => {
   snippet.userId = getUserId() as number
-
-  await addSnippetVersion(snippetVersion)
-
-  const sums = await snVerSum(1, snippet.id, false)
-  snippet.snippetVersionId = sums.data
-  if (await upSnippet(snippet)) {
+  await SnippetVersionAPI.add(snippetVersion)
+  const sums = await SnippetVersionAPI.getSum(1, snippet.id, false)
+  snippet.snippetVersionId = sums.data.data
+  const snippets = await SnippetAPI.up(snippet)
+  if (snippets.status === 200) {
     edVisible.value = false
     reload()
   }
 }, 1000)
 
 const getTypeSub = async () => {
-  const ret = await snippetTypeSubCondition(snippet.typeId)
+  const ret = await SnippetTypeSubAPI.getCondition(snippet.typeId)
   snippetTypeSub.value = ret.data.data
 }
 
@@ -38,7 +33,7 @@ const tagEvent = async () => {
   //更新标签内容
   tagMo.id = snippet.tagId
   tagMo.name = tagName.value
-  const ret = await upTag(tagMo)
+  const ret = await SnippetTagAPI.update(tagMo)
   if (ret.data.statusCode === 200) message.success(ret.data.message)
 }
 
@@ -53,12 +48,12 @@ const tagAccumulate = (name: string) => {
 //更新完记得删除
 const updates = debounce(async () => {
   tagMo.name = tagName.value
-  await addTag(tagMo)
-  const tid = await getByTitle(tagMo.name)
+  await SnippetTagAPI.add(tagMo)
+  const tid = await SnippetTagAPI.getByTitle(tagMo.name)
 
   snippet.tagId = tid.data.data.id
   snippet.userId = getUserId() as number
-  await upSnippet(snippet)
+  SnippetAPI.up(snippet)
 }, 1000)
 onMounted(async () => {
   await getTypeSub()

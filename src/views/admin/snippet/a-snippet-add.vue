@@ -5,14 +5,10 @@ import { message } from 'ant-design-vue'
 import { MdEditor } from 'md-editor-v3'
 import { useUserInfo } from '@hooks/useUserInfo'
 import { snippetTypeSub, snippetTag, snippetType } from './data'
-import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 import { useApi } from '@/api/useApi'
 
-const { SnippetAPI } = useApi()
+const { SnippetAPI, SnippetTagAPI, SnippetTypeAPI, SnippetTypeSubAPI } = useApi()
 
-const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
-const { getAll: getSnippetTagAll } = useSnippetTagApi()
-const { getAll: getSnippetTypeSubAll } = useSnippetTypeSubApi()
 const reload: any = inject('reload')
 const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
@@ -29,9 +25,9 @@ const add = debounce(async () => {
 }, 1000)
 onMounted(async () => {
   const [tag, type, label] = await axios.all([
-    await getSnippetTagAll(false),
-    await getSnippetTypeAll(false),
-    await getSnippetTypeSubAll(false)
+    await SnippetTagAPI.getAll(false),
+    await SnippetTypeAPI.getAll(false),
+    await SnippetTypeSubAPI.getAll(false)
   ])
   snippetTag.value = tag.data.data
   snippetType.value = type.data.data

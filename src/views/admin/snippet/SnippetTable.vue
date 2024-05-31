@@ -4,15 +4,9 @@ import { columns, snippetTypeSub, snippetTag, snippetType, tagName, addVisible, 
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
 import { snippet, removeSnippet } from '@api/model/Snippet'
-import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
-import { useMomentTime } from '@hooks/useMomentTime'
 import { snippetVersion } from '@api/model/SnippetVersion'
 import { useApi } from '@/api/useApi'
-const { SnippetAPI } = useApi()
-const { momentTimeList } = useMomentTime()
-const { getAll: snippetTypeAll } = useSnippetTypeApi()
-const { getAll: snippetTagAll, getById: snippetTagById } = useSnippetTagApi()
-const { getAll: snippetSub } = useSnippetTypeSubApi()
+const { SnippetAPI, SnippetTagAPI, SnippetTypeAPI, SnippetTypeSubAPI } = useApi()
 
 const reload: any = inject('reload')
 const del = async (data: any) => {
@@ -37,7 +31,7 @@ const update = async (id: number) => {
   snippet.typeId = r.data.type.id
   snippet.userId = r.data.user.id
   snippet.typeSubId = r.data.typeSub.id
-  const name = await snippetTagById(snippet.tagId)
+  const name = await SnippetTagAPI.getById(snippet.tagId)
   tagName.value = name.data.data.name
 
   //2.更新之前存入旧版内容
@@ -59,7 +53,6 @@ const add = () => {
  */
 const QPaging = async (identity: number, name: string) => {
   const ret = await SnippetAPI.getPaging(identity, name, 1, 9000, 'id', true, false)
-  console.log('[ ret ]-65', ret)
   snippetData.value = ret.data.data
 }
 const QSearch = async (name: string, identity: number) => {
@@ -75,16 +68,15 @@ async function search(name: any) {
     return
   }
   const ret = await SnippetAPI.contains(5, aData.NULL, name, false, 1, 20)
-  await momentTimeList(ret)
-  snippetData.value = ret.data
+  snippetData.value = ret.data.data
 }
 
 onMounted(async () => {
   await QPaging(0, tagStr.value)
   const [tag, type, typeSubs] = await axios.all([
-    await snippetTagAll(false),
-    await snippetTypeAll(false),
-    await snippetSub(false)
+    await SnippetTagAPI.getAll(false),
+    await SnippetTypeAPI.getAll(false),
+    await SnippetTypeSubAPI.getAll(false)
   ])
   snippetTag.value = tag.data.data
   snippetType.value = type.data.data

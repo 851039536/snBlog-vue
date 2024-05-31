@@ -8649,7 +8649,7 @@ util-deprecate@^1.0.1, util-deprecate@^1.0.2:
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-v-code-diff@^1.7.1:
+v-code-diff@1.12.0:
   version "1.12.0"
   resolved "https://registry.npmjs.org/v-code-diff/-/v-code-diff-1.12.0.tgz#6c80b815c0c4aa6f322cbb4fecb12dee830115a5"
   integrity sha512-vvdCBG02mIIiW6Gx6jF119hzxELt+6TlJIwchglR1JYzboHePNxIkVBjR/aoAOVlsGa+5Vtb77cd/N84nrXWPA==

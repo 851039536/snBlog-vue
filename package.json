@@ -47,7 +47,7 @@
     "typescript": "^4.8.2",
     "unocss-preset-chinese": "^0.3.2",
     "unplugin-vue-components": "0.22.12",
-    "v-code-diff": "^1.7.1",
+    "v-code-diff": "1.12.0",
     "vite": "4.5.3",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint": "^1.8.1",
