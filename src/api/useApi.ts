@@ -8,7 +8,7 @@ import { DiaryApi } from './diary/DiaryApi'
 import { DiaryTypeApi } from './diary/DiaryTypeApi'
 import { InterfaceApi } from './http/InterfaceApi'
 import { SetBlogApi } from './http/SetBlogApi'
-import { SnippetApi } from './http/SnippetApi'
+import { SnippetAPI } from './snippet/SnippetAPI'
 import { SnippetLabelApi } from './http/SnippetLabelApi'
 import { SnippetTagApi } from './http/SnippetTagApi'
 import { SnippetTypeApi } from './http/SnippetTypeApi'
@@ -25,7 +25,7 @@ export function useApi() {
     DiaryTypeApi,
     InterfaceApi,
     SetBlogApi,
-    SnippetApi,
+    SnippetAPI,
     SnippetLabelApi,
     SnippetTagApi,
     SnippetTypeApi,

@@ -1,5 +1,4 @@
 import { useUserTalkApi } from '@hooksHttp/useUserTalkApi'
-import { useSnippetApi } from '@hooksHttp/useSnippetApi'
 import { usePhotoGalleryApi } from '@hooksHttp/usePhotoGalleryApi '
 import { useSnippetTypeApi } from '@hooksHttp/useSnippetTypeApi'
 import { useSnippetTagApi } from '@hooksHttp/useSnippetTagApi'
@@ -10,7 +9,6 @@ import { useNavigationTypeApi } from '@hooksHttp/useNavigationTypeApi'
 import { useSnippetVersionApi } from '@hooksHttp/useSnippetVersionApi'
 export {
   useUserTalkApi,
-  useSnippetApi,
   usePhotoGalleryApi,
   useSnippetTypeApi,
   useSnippetTagApi,

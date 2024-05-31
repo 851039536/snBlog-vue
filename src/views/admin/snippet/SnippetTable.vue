@@ -4,20 +4,19 @@ import { columns, snippetTypeSub, snippetTag, snippetType, tagName, addVisible, 
 import { aData, aCancel } from '../data'
 import { navName } from '../utils/data'
 import { snippet, removeSnippet } from '@api/model/Snippet'
-import { useSnippetApi, useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
+import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@hooksHttp/index'
 import { useMomentTime } from '@hooks/useMomentTime'
 import { snippetVersion } from '@api/model/SnippetVersion'
 import { useApi } from '@/api/useApi'
-const { SnippetApi } = useApi()
+const { SnippetAPI } = useApi()
 const { momentTimeList } = useMomentTime()
 const { getAll: snippetTypeAll } = useSnippetTypeApi()
 const { getAll: snippetTagAll, getById: snippetTagById } = useSnippetTagApi()
 const { getAll: snippetSub } = useSnippetTypeSubApi()
 
-const { getContains: snippetContains, getPaging: snippetPaging, getById: getSnippetById } = useSnippetApi()
 const reload: any = inject('reload')
 const del = async (data: any) => {
-  const res = await SnippetApi.del(data.id)
+  const res = await SnippetAPI.del(data.id)
   if (res.data) {
     reload()
     message.success(aData.SUCCESS)
@@ -30,16 +29,14 @@ const snippetData: any = ref([])
 const tagStr = ref<string>('ALL')
 
 const update = async (id: number) => {
-  await getSnippetById(id, false).then(r => {
-    snippet.id = r.data.id
-    snippet.name = r.data.name
-    snippet.text = r.data.text
-    snippet.tagId = r.data.tag.id
-    snippet.typeId = r.data.type.id
-    snippet.userId = r.data.user.id
-    snippet.typeSubId = r.data.typeSub.id
-  })
-
+  const r = await (await SnippetAPI.getById(id, false)).data
+  snippet.id = r.data.id
+  snippet.name = r.data.name
+  snippet.text = r.data.text
+  snippet.tagId = r.data.tag.id
+  snippet.typeId = r.data.type.id
+  snippet.userId = r.data.user.id
+  snippet.typeSubId = r.data.typeSub.id
   const name = await snippetTagById(snippet.tagId)
   tagName.value = name.data.data.name
 
@@ -61,7 +58,7 @@ const add = () => {
  * @param {number} name 查询参数(多条件以','分割)
  */
 const QPaging = async (identity: number, name: string) => {
-  const ret = await snippetPaging(identity, name, 1, 9000, 'id', true, false)
+  const ret = await SnippetAPI.getPaging(identity, name, 1, 9000, 'id', true, false)
   console.log('[ ret ]-65', ret)
   snippetData.value = ret.data.data
 }
@@ -77,7 +74,7 @@ async function search(name: any) {
     await QPaging(0, aData.NULL)
     return
   }
-  const ret = await snippetContains(5, aData.NULL, name, false, 1, 20)
+  const ret = await SnippetAPI.contains(5, aData.NULL, name, false, 1, 20)
   await momentTimeList(ret)
   snippetData.value = ret.data
 }

@@ -17,7 +17,6 @@ export function useEventKey() {
     }
   }
   function keydownCtrl(e: any) {
-    console.log('[ e ]-6', e)
     if (e.ctrlKey && e.keyCode === 90) {
       message.info('触发Ctrl+z')
     }

@@ -8,7 +8,7 @@ import { snippetTypeSub, snippetTag, snippetType } from './data'
 import { useSnippetTagApi, useSnippetTypeApi, useSnippetTypeSubApi } from '@/hooks/http'
 import { useApi } from '@/api/useApi'
 
-const { SnippetApi } = useApi()
+const { SnippetAPI } = useApi()
 
 const { getAll: getSnippetTypeAll } = useSnippetTypeApi()
 const { getAll: getSnippetTagAll } = useSnippetTagApi()
@@ -18,7 +18,7 @@ const { getUserId } = useUserInfo()
 const { debounce } = useDirective()
 const add = debounce(async () => {
   snippet.userId = getUserId() as number
-  const ret = await SnippetApi.add(snippet)
+  const ret = await SnippetAPI.add(snippet)
   if (ret.data.statusCode === 200) {
     reload()
     return message.success(ret.data.message)

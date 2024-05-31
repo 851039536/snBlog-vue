@@ -1,11 +1,11 @@
-import { useSnippetApi } from '@hooks/http'
+import { useApi } from '@api/useApi'
 import { message } from 'ant-design-vue'
 
-const { up } = useSnippetApi()
+const { SnippetAPI } = useApi()
 
 export function useSnippetPack() {
   const upSnippet = async (snippet: any) => {
-    const response = await up(snippet)
+    const response = await SnippetAPI.up(snippet)
     if (response.data) {
       message.success('更新成功')
       return true
