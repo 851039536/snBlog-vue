@@ -8,7 +8,9 @@ import { useApi } from '@/api/useApi'
 const { UserApi } = useApi()
 const reload: any = inject('reload')
 const Update = async () => {
+  console.log('[ userForm ]-12', userForm)
   await UserApi.update(userForm).then(ret => {
+    console.log('[ ret ]-12', ret.data)
     if (ret.data === 1) {
       reload()
       editVisible.value = false

@@ -4,18 +4,18 @@ const { get, add, update, del } = useRequest()
 import { IUser } from '../model/UserModel'
 
 enum API {
-  LOGIN = '/user/login?user='
+  LOGIN = '/user/login?userName='
 }
 export class UserApi {
-  static getById(id: number) {
-    return get(`/user/byid?id=${id}&cache=false`)
+  static getById(id: number, cache: boolean) {
+    return get(`/user/bid?id=${id}&cache=${cache}`)
   }
 
   static login(user: string, pwd: string) {
     return get(`${API.LOGIN}${user}&pwd=${pwd}`)
   }
-  static async getPaging(pageIndex: number, pageSize: number) {
-    const ret = await get(`/user/paging?pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  static async getPaging(pageIndex: number, pageSize: number, isDesc: boolean, cache: boolean) {
+    const ret = await get(`/user/paging?pageIndex=${pageIndex}&pageSize=${pageSize}&isDesc=${isDesc}&cache=${cache}`)
     return ret
   }
 

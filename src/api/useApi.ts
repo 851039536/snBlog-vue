@@ -14,7 +14,7 @@ import { SnippetLabelApi } from './http/SnippetLabelApi'
 import { SnippetTagAPI } from './snippet/SnippetTagAPI'
 import { SnippetTypeAPI } from './snippet/SnippetTypeAPI'
 import { SnippetTypeSubAPI } from './snippet/SnippetTypeSubAPI'
-import { UserApi } from './http/UserApi'
+import { UserApi } from './user/UserApi'
 import { VideoApi } from './http/VideoApi'
 import { ListContentApi } from './http/ListContentApi'
 export function useApi() {

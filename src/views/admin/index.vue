@@ -5,10 +5,8 @@ import { rRouter } from '@/router/routerInfo'
 import uservg from '@assets/svg/components/user.svg?component'
 import { uiSettings } from '@store/modules/uiSettings'
 import { useRouter } from '@hooks/useRouter'
-import { useDataBaseApi } from '@/hooks/http/useDataBaseApi'
 const { routers, winUrl } = useRouter()
 const { removeUserStorage } = useUserInfo()
-const { isToken } = useDataBaseApi()
 const ui = uiSettings()
 function clear() {
   removeUserStorage()
@@ -55,7 +53,7 @@ function reload() {
 provide('reload', reload)
 
 onMounted(() => {
-  isToken()
+  // if (!isUserLogin) return
   ui.loginUi = false
   ui.header = false
   ui.leftSidebar = false
@@ -63,7 +61,7 @@ onMounted(() => {
 })
 
 onUpdated(() => {
-  isToken()
+  // if (!isUserLogin) return
 })
 </script>
 <!-- todo:跳转bug -->

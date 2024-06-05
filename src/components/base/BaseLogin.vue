@@ -9,13 +9,13 @@ const ui = uiSettings()
 const userName = ref('')
 const userPwd = ref('')
 
-function login() {
-  UserApi.login(userName.value, userPwd.value).then(r => {
-    const ret = r.data
-    setUserInfo(ret.nickname, ret.token, ret.id, ret.name)
-    ui.loginUi = false
-    location.reload()
-  })
+async function login() {
+  const user = await UserApi.login(userName.value, userPwd.value)
+  const ret = user.data.data
+  console.log('[ ret ]-15', ret)
+  setUserInfo(ret.nickname, ret.token, ret.id, ret.name)
+  ui.loginUi = false
+  location.reload()
 }
 </script>
 <template>
