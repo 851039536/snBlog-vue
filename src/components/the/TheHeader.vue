@@ -82,7 +82,7 @@ onMounted(async () => {
       </div>
       <div class="head-cont-r">
         <div class="head-r-div">
-          <span v-if="getUserName() === 'name'" v-once i-typcn-user-outline h-6 w-6 @click="onChange(3)"></span>
+          <span v-if="getUserName() === 'name'" v-once i-typcn-user-outline text-2xl @click="onChange(3)"></span>
           <div v-else>
             <a-popover placement="bottomRight">
               <template #content>
@@ -91,14 +91,14 @@ onMounted(async () => {
               </template>
               <template #title>
                 <div class="flex">
-                  <div class="mr-2 mt-11px" i-typcn-user h-7 w-7></div>
+                  <div class="mr-2 mt-11px" i-typcn-user text-2xl></div>
                   <div class="m-1">
-                    <div>少年</div>
+                    <div>{{ getUserName() }}</div>
                     <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
                   </div>
                 </div>
               </template>
-              <div i-typcn-user h-7 w-7></div>
+              <div i-typcn-user text-2xl></div>
             </a-popover>
           </div>
         </div>

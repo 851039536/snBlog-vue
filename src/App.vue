@@ -36,7 +36,6 @@
 import useCurrentInstance from '@hooks/useCurrentInstance'
 const { proxy }: any = useCurrentInstance()
 proxy?.$toast.show('this is default message')
-
 import { uiSettings } from '@store/modules/uiSettings'
 import { useEventKey } from '@hooks/useEventKey'
 const { addKeydownCtrl } = useEventKey()

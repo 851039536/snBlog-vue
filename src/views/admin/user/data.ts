@@ -9,11 +9,11 @@ const columns: any = [
     dataIndex: 'id',
     key: 'id'
   },
-  {
-    title: 'ip',
-    width: 40,
-    dataIndex: 'ip'
-  },
+  // {
+  //   title: 'ip',
+  //   width: 40,
+  //   dataIndex: 'ip'
+  // },
   {
     title: '用户',
     dataIndex: 'name',
@@ -21,47 +21,47 @@ const columns: any = [
     width: 40
   },
   {
-    title: 'email',
+    title: '邮箱',
     dataIndex: 'email',
     align: 'center',
     width: 60
   },
+  // {
+  //   title: 'brief',
+  //   dataIndex: 'brief',
+  //   align: 'center',
+  //   width: 60
+  // },
   {
-    title: 'brief',
-    dataIndex: 'brief',
-    align: 'center',
-    width: 60
-  },
-  {
-    title: 'nickname',
+    title: '别名',
     dataIndex: 'nickname',
     align: 'center',
     width: 40
   },
+  // {
+  //   title: 'pwd',
+  //   dataIndex: 'pwd',
+  //   width: 60,
+  //   ellipsis: true // 超过宽度将自动省略
+  // },
   {
-    title: 'pwd',
-    dataIndex: 'pwd',
-    width: 60,
-    ellipsis: true // 超过宽度将自动省略
-  },
-  {
-    title: 'photo',
+    title: '电话',
     dataIndex: 'photo',
     width: 60,
-    ellipsis: true // 超过宽度将自动省略
+    ellipsis: true
   },
   {
-    title: 'timeCreate',
+    title: '创建时间',
     dataIndex: 'timeCreate',
     width: 60,
-    ellipsis: true // 超过宽度将自动省略
+    ellipsis: true
   },
-  {
-    title: 'timeModified',
-    dataIndex: 'timeModified',
-    width: 60,
-    ellipsis: true // 超过宽度将自动省略
-  },
+  // {
+  //   title: '更新时间',
+  //   dataIndex: 'timeModified',
+  //   width: 60,
+  //   ellipsis: true
+  // },
 
   {
     title: '操作',

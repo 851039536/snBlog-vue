@@ -64,7 +64,7 @@ const QSearch = async (name: string, identity: number) => {
 }
 async function search(name: any) {
   if (name === '') {
-    await QPaging(0, aData.NULL)
+    // await QPaging(0, aData.NULL)
     return
   }
   const ret = await SnippetAPI.contains(5, aData.NULL, name, false, 1, 20)
