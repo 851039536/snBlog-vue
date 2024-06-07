@@ -103,15 +103,15 @@ onMounted(async () => {
     </a-space>
 
     <div class="my-6px flex flex-wrap rounded shadow">
-      <div class="p-1 pl-7px font-semibold">分类:</div>
-      <div v-for="ret in snippetType" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+      <div class="p-1 pl-4px font-semibold">分类:</div>
+      <div v-for="ret in snippetType" :key="ret.id" class="cursor-pointer p-1 pl-1 hover:text-blue-500">
         <span @click="QSearch(ret.name, 1)">{{ ret.name }}</span>
       </div>
     </div>
 
     <div class="my-6px flex flex-wrap rounded shadow">
       <div class="p-1 pl-7px font-semibold">子分类:</div>
-      <div v-for="ret in snippetTypeSub" :key="ret.id" class="cursor-pointer p-1 pl-7px hover:text-blue-500">
+      <div v-for="ret in snippetTypeSub" :key="ret.id" class="cursor-pointer p-1 pl-2px hover:text-blue-500">
         <span @click="QSearch(ret.name, 4)">{{ ret.name }}</span>
       </div>
     </div>

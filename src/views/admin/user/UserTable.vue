@@ -10,8 +10,8 @@ import { useApi } from '@/api/useApi'
 const { UserApi } = useApi()
 const reload: any = inject('reload')
 const del = async (id: number) => {
-  await UserApi.del(id).then(res => {
-    if (res.data === 1) {
+  await UserApi.del(id).then(ret => {
+    if (ret.data.data) {
       reload()
       message.success(aData.SUCCESS)
       return
