@@ -8,13 +8,13 @@ export const tagName = ref('')
 const columns: any = [
   {
     title: '主键',
-    width: 30,
+    width: 18,
     dataIndex: 'id',
     key: 'id'
   },
   {
     title: '标题',
-    width: 100,
+    width: 80,
     dataIndex: 'name',
     key: 'name'
   },
@@ -22,25 +22,25 @@ const columns: any = [
     title: '用户',
     dataIndex: 'user',
     align: 'center',
-    width: 60
+    width: 30
   },
   {
     title: '类别',
     dataIndex: 'type',
     align: 'center',
-    width: 60
+    width: 30
   },
   {
     title: '子类别',
     dataIndex: 'typeSub',
     align: 'center',
-    width: 60
+    width: 30
   },
   {
     title: '标签',
     dataIndex: 'tag',
     align: 'center',
-    width: 60
+    width: 30
   },
 
   {

@@ -11,7 +11,7 @@ const Update = async () => {
   console.log('[ userForm ]-12', userForm)
   await UserApi.update(userForm).then(ret => {
     console.log('[ ret ]-12', ret.data)
-    if (ret.data === 1) {
+    if (ret.data.data) {
       reload()
       editVisible.value = false
       message.success(aData.SUCCESS)
@@ -23,7 +23,7 @@ const Update = async () => {
 
 const Add = async () => {
   await UserApi.add(userForm).then(ret => {
-    if (ret.data === 1) {
+    if (ret.data.data === 1) {
       reload()
       editVisible.value = false
       message.success(aData.SUCCESS)
