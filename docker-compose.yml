@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: mynginx:latest
+    image: sn_blogs:latest
     ports:
       - "8090:80"
     volumes:
