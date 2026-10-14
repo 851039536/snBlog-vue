@@ -57,11 +57,11 @@ const getApi = async (id: number) => {
     }
 
     .side-col-title.active {
-      @apply bg-blue-500 text-cool-gray-50;
+      @apply bg-blue-500 text-gray-50;
     }
 
     .side-col-txt {
-      @apply text-cool-gray-600 text-sm mt-1 flex items-center;
+      @apply text-gray-600 text-sm mt-1 flex items-center;
 
       span {
         @apply rounded;

@@ -21,7 +21,7 @@ ui.rightSidebar = false
           <div>基于ASP.NET WebAPI,windiCSS,vue3+ts开发,建站初衷是想学习记录。</div>
         </div>
         <div class="mb-5 mt-5 text-lg">
-          <button class="go" @click="routers('/article/column')">Go</button>
+          <button @click="routers('/article/column')">Go</button>
         </div>
 
         <div class="social-buttons">

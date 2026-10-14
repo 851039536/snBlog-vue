@@ -59,6 +59,6 @@ onMounted(async () => {
 }
 
 .tag-col.active {
-  @apply text-cool-gray-50 bg-blue-600;
+  @apply text-gray-50 bg-blue-600;
 }
 </style>

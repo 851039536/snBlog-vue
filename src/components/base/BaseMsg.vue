@@ -1,8 +1,6 @@
 <!-- 封装消息提示插件 -->
 <template>
-  <Transition
-    enter-active-class="animate__animated animate__bounceInRight"
-    leave-active-class="animate__animated animate__bounceOutRight">
+  <Transition name="msg-slide">
     <div v-if="isShow" class="message">{{ tipText }}</div>
   </Transition>
 </template>
@@ -28,7 +26,20 @@ defineExpose({
 })
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
+/* 原使用的 animate.css（animate__bounceInRight/OutRight）并未安装，
+   导致进出场动画失效，此处改用自带过渡实现同等效果 */
+.msg-slide-enter-active,
+.msg-slide-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.msg-slide-enter-from,
+.msg-slide-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
 .message {
   position: fixed;
   top: 1px;

@@ -30,5 +30,3 @@ const update = async () => {
     </div>
   </div>
 </template>
-
-<!-- <style lang="scss" scoped></style> -->

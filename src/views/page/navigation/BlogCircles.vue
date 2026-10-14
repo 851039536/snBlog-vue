@@ -90,7 +90,7 @@ onMounted(async () => {
       .circles-1-2-2 {
         height: 47px;
 
-        @apply m-1 mt-2 text-cool-gray-500;
+        @apply m-1 mt-2 text-gray-500;
         @include line-numbers(2);
       }
     }

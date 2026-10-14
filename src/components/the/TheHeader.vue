@@ -94,7 +94,7 @@ onMounted(async () => {
                   <div class="mr-2 mt-11px" i-typcn-user text-2xl></div>
                   <div class="m-1">
                     <div>{{ getUserName() }}</div>
-                    <div class="w-30 text-cool-gray-500">西伯利亚平原尽头</div>
+                    <div class="w-30 text-gray-500">西伯利亚平原尽头</div>
                   </div>
                 </div>
               </template>

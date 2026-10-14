@@ -165,6 +165,8 @@ export default defineConfig({
         // 全局样式请放在 src/design/global.scss 并在 main.ts 引入一次。
         additionalData: '@import "./src/design/mixins.scss";'
       },
+      // ant-design-vue 的按需样式（vite-plugin-style-import）仍会引入 .less，
+      // 需保留 less 编译支持；这与业务代码使用哪个预处理器无关。
       less: {
         javascriptEnabled: true
       }

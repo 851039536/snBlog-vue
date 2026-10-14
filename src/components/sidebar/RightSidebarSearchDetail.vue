@@ -42,7 +42,7 @@ const search = debounce(async () => {
               <div i-typcn-bookmark h-5 w-5></div>
               <div class="font-medium">{{ ret.name }}</div>
             </div>
-            <div class="px-2 text-cool-gray-600">{{ ret.sketch }}</div>
+            <div class="px-2 text-gray-600">{{ ret.sketch }}</div>
           </li>
         </ul>
       </div>

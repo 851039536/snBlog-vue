@@ -6,5 +6,3 @@ import { identity } from '..'
     <div>12</div>
   </c-modal-dialog>
 </template>
-
-<!-- <style lang="scss" scoped></style> -->

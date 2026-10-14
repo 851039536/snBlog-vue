@@ -81,7 +81,7 @@ onMounted(async () => {
       class="side-list"
       :class="ui.sideIndex == index ? 'active' : ''"
       @click="getTopic(<number>index)">
-      <div v-if="r.identity" class="flex items-center" @click="skip(r.path)">
+      <div v-if="r.identity" class="side-item flex items-center" @click="skip(r.path)">
         <div v-if="r.path == '/article/column'" i-typcn-home h-6 w-6 />
         <div v-if="r.path == '/qarticle'" i-typcn-book h-6 w-6 />
         <div v-if="r.path == '/diary'" i-typcn-document h-6 w-6></div>
@@ -98,7 +98,7 @@ onMounted(async () => {
     <div class="side-ab">
       <div
         v-show="getUserName() !== 'name'"
-        text="center lg cool-gray-50"
+        text="center lg gray-50"
         cursor="pointer"
         bg="slate-400"
         hover="text-blue-600">
@@ -114,15 +114,15 @@ onMounted(async () => {
         <div class="ab-svg" i-fxemoji-smiletongue></div>
         <div class="ab-svg" i-fxemoji-sunglasses></div>
       </div>
-      <div class="h-25px text-center text-cool-gray-50">SN © 2021.Rights Reserved.</div>
-      <div class="h-25px text-center text-cool-gray-50">粤ICP备19130826号-1</div>
+      <div class="h-25px text-center text-gray-50">SN © 2021.Rights Reserved.</div>
+      <div class="h-25px text-center text-gray-50">粤ICP备19130826号-1</div>
     </div>
   </div>
 
   <the-sidebar-about :visible="isVisible" @close-model="isVisible = false"></the-sidebar-about>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .side {
   @apply h-80vh;
   @apply bg-light-50 rounded relative pt-5 mt-1;
@@ -135,13 +135,13 @@ onMounted(async () => {
     @apply text-center text-base w-[70%] m-auto;
     @apply cursor-pointer transition duration-500 hover:bg-gray-200 rounded;
 
-    div {
+    .side-item {
       @apply my-6px ml-1 justify-start;
     }
   }
 
   .side-list.active {
-    @apply text-cool-gray-50 bg-blue-500;
+    @apply text-gray-50 bg-blue-500;
   }
 
   .side-ab {

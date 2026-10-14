@@ -105,7 +105,6 @@ declare module '@vue/runtime-core' {
     SnippetModal: typeof import('./src/views/page/snippet/SnippetModal.vue')['default']
     SnippetTable: typeof import('./src/views/admin/snippet/SnippetTable.vue')['default']
     SqlBackups: typeof import('./src/views/admin/sql/SqlBackups.vue')['default']
-    TheBootom: typeof import('./src/components/the/TheBootom.vue')['default']
     TheFooter: typeof import('./src/components/the/footer/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/the/TheHeader.vue')['default']
     TheMdContent: typeof import('./src/components/the/TheMdContent.vue')['default']

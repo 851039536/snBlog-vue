@@ -1,10 +1,10 @@
 <template>
   <teleport to="body">
     <Transition name="fade" :duration="150">
-      <div v-if="visible" class="model-bg">
+      <div v-if="visible" class="modal-bg">
         <div class="modal-content">
           <button class="close" @click="emit('close-model')">X</button>
-          <div class="model-body">
+          <div class="modal-body">
             <slot></slot>
           </div>
         </div>
@@ -32,7 +32,7 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.model-bg {
+.modal-bg {
   @apply fixed top-0 right-0 bottom-0 left-0 z-100 h-full;
   @apply overflow-auto bg-black/10 rounded;
 }
@@ -45,7 +45,7 @@ defineProps({
 
   @apply rounded shadow;
 
-  .model-body {
+  .modal-body {
     padding: 20px;
   }
 

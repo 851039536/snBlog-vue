@@ -222,7 +222,7 @@ onMounted(async () => {
               :code-theme="theme.codeTheme" />
           </div>
         </div>
-        <div class="absolute left-0 top-0 rounded bg-green-200 p-2 text-cool-gray-700">
+        <div class="absolute left-0 top-0 rounded bg-green-200 p-2 text-gray-700">
           <div>{{ sum }} 条片段</div>
           <div>{{ charSum }} 个字符</div>
         </div>

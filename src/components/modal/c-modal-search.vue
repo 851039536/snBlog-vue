@@ -5,10 +5,10 @@ const emit = defineEmits(['close-model'])
 </script>
 <template>
   <teleport v-if="ui.searchArticle" to="#search">
-    <div class="model-bg">
+    <div class="modal-bg">
       <div class="modal-content">
         <button class="close" @click="emit('close-model')">X</button>
-        <div class="model-body">
+        <div class="modal-body">
           <slot></slot>
         </div>
       </div>
@@ -17,7 +17,7 @@ const emit = defineEmits(['close-model'])
 </template>
 
 <style lang="scss" scoped>
-.model-bg {
+.modal-bg {
   @apply fixed top-0 right-0 bottom-0 left-0 z-100 h-full;
   @apply overflow-auto bg-black/10 rounded;
 }
@@ -27,11 +27,11 @@ const emit = defineEmits(['close-model'])
   @apply transform -translate-x-1/2 -translate-y-1/2 rounded;
   @apply bg-white rounded shadow;
 
-  .model-body {
+  .modal-body {
     @apply w-650px h-650px p-6 overflow-auto;
   }
 
-  .model-body::-webkit-scrollbar {
+  .modal-body::-webkit-scrollbar {
     display: none;
   }
 

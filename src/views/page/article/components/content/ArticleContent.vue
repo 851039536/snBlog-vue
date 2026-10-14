@@ -52,7 +52,7 @@ onMounted(async () => {
           @click="router.back()"></div>
         <div class="">{{ article.name }}</div>
       </div>
-      <div class="pt-1 text-sm text-cool-gray-500">
+      <div class="pt-1 text-sm text-gray-500">
         <span class="mr-2">{{ sortName }}</span>
         <span class="mr-2">{{ labelName }}</span>
         <span class="mr-2">{{ article.read }} ℃</span>
@@ -99,7 +99,7 @@ onMounted(async () => {
     }
 
     .icont-cont {
-      @apply flex mb-150 p-2 text-base text-cool-gray-600;
+      @apply flex mb-[600px] p-2 text-base text-gray-600;
 
       div {
         @apply mx-1 cursor-pointer rounded;

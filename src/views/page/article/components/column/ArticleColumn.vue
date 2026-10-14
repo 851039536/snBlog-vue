@@ -87,7 +87,7 @@ const onScroll = (name: string) => {
         </div>
       </div>
     </div>
-    <div text="cool-gray-400 center" class="mb-20 mt-2 m-1">数据加载完毕 ^</div>
+    <div text="gray-400 center" class="mb-20 mt-2 m-1">数据加载完毕 ^</div>
     <div class="btn">
       <div i-typcn-arrow-sorted-up h-6 w-7 @click="onScroll('top')"></div>
       <div i-typcn-arrow-sorted-down h-6 w-7 @click="onScroll('bottom')"></div>

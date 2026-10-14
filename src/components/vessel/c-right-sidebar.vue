@@ -1,6 +1,6 @@
 <!-- 右侧边主栏 -->
 <template>
-  <div class="model-side">
+  <div class="modal-side">
     <div class="modal-content">
       <slot></slot>
     </div>
@@ -10,7 +10,7 @@
 <script setup lang="ts"></script>
 
 <style lang="scss" scoped>
-.model-side {
+.modal-side {
   // @apply h-[92%] top-[8.4%] right-[10.5%] w-[16.5%];
 }
 

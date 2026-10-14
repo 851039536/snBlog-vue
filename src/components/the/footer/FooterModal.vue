@@ -11,9 +11,9 @@ defineProps({
 <template>
   <teleport to="body">
     <!-- fade-in -->
-    <div v-if="visible" class="model-bg">
+    <div v-if="visible" class="modal-bg">
       <div class="modal-content">
-        <div class="model-body relative">
+        <div class="modal-body relative">
           <slot></slot>
         </div>
       </div>
@@ -22,7 +22,7 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-.model-bg {
+.modal-bg {
   font-family: PuHuiTiBASE, monospace;
 
   @apply fixed top-0 z-60 h-[60%] w-full;
@@ -33,7 +33,7 @@ defineProps({
   @apply absolute top-1/2 left-1/2 z-100 bg-white;
   @apply transform -translate-x-1/2 -translate-y-1/2 rounded;
 
-  .model-body {
+  .modal-body {
     padding: 40px;
   }
 }

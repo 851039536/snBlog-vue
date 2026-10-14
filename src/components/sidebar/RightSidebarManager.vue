@@ -38,7 +38,7 @@ onMounted(async () => {
 <template>
   <div>
     <c-right-sidebar-container>
-      <div class="h-35px cursor-pointer text-cool-gray-600">
+      <div class="h-35px cursor-pointer text-gray-600">
         <div class="float-right">快捷操作</div>
       </div>
       <div class="mb-1 flex cursor-pointer items-center justify-center">
@@ -70,6 +70,3 @@ onMounted(async () => {
     <right-sidebar-fast-send></right-sidebar-fast-send>
   </div>
 </template>
-
-<!-- <style lang="scss" scoped></style> -->
-.

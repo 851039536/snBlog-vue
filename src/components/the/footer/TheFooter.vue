@@ -59,24 +59,11 @@ onMounted(async () => {
       </div>
 
       <div class="w-1/3 flex flex-wrap cursor-pointer text-base">
-        <div
-          class="h-15 w-25 rounded bg-emerald-300 text-center m-1 hover:text-white"
-          style="line-height: 60px"
-          @click="switchFun(1)">
+        <div class="fo-nav-btn h-15 w-25 rounded bg-emerald-300 m-1 hover:text-white" @click="switchFun(1)">
           进制转换
         </div>
-        <div
-          class="h-15 w-25 rounded bg-blue-300 text-center m-1 hover:text-white"
-          style="line-height: 60px"
-          @click="switchFun(2)">
-          二维码
-        </div>
-        <div
-          class="h-15 w-25 rounded bg-blue-300 text-center m-1 hover:text-white"
-          style="line-height: 60px"
-          @click="switchFun(2)">
-          键盘事件
-        </div>
+        <div class="fo-nav-btn h-15 w-25 rounded bg-blue-300 m-1 hover:text-white" @click="switchFun(2)">二维码</div>
+        <div class="fo-nav-btn h-15 w-25 rounded bg-blue-300 m-1 hover:text-white" @click="switchFun(2)">键盘事件</div>
       </div>
       <div class="w-1/3 bg-yellow-400"></div>
     </div>
@@ -90,6 +77,13 @@ onMounted(async () => {
   @apply fixed bottom-0 right-0 z-10 h-[40%] w-full bg-white;
 
   border: 1.2px solid rgb(190 179 179); /* 设置边框样式 */
+}
+
+/* 原三处内联 style="line-height: 60px"，与 h-15(60px) 配合实现文字垂直居中 */
+.fo-nav-btn {
+  @apply text-center;
+
+  line-height: 60px;
 }
 
 .input {

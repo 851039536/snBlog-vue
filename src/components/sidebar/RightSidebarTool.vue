@@ -32,7 +32,7 @@ defineProps({
   </c-right-sidebar-container>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .tool-name {
   @apply flex items-center;
   @apply text-base p-1;

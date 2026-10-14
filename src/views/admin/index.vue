@@ -89,7 +89,7 @@ onUpdated(() => {
       <a-layout>
         <div class="mt-1">
           <a-layout-sider breakpoint="xl" collapsed-width="0" width="230">
-            <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="pathClick">
+            <a-menu mode="inline" class="h-full border-r-0" @click="pathClick">
               <a-sub-menu key="sub1">
                 <template #title>
                   <div flex class="items-center">

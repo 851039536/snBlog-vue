@@ -79,13 +79,13 @@ label span {
   position: relative;
   display: block;
   margin-left: 0.0625em;
-  padding: 0.375em 00.75em;
+  padding: 0.375em 0.75em;
   color: #3e4963;
   letter-spacing: 0.05em;
   text-align: center;
   box-shadow: 0 0 0 0.0625em #b5bfd9;
   cursor: pointer;
-  transition: background-color 00.5s ease;
+  transition: background-color 0.5s ease;
 }
 
 label:first-child span {

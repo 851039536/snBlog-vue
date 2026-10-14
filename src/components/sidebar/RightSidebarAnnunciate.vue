@@ -18,7 +18,7 @@ onMounted(async () => {
       <span>一言</span>
     </div>
     <div class="desc-cont">{{ talk.text }}</div>
-    <div class="mb-2 flex items-center text-cool-gray-600">
+    <div class="mb-2 flex items-center text-gray-600">
       <div i-typcn-heart-outline></div>
       <div class="mr-6px">{{ talk.give }}</div>
       <div i-typcn-starburst-outline></div>
@@ -32,6 +32,6 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .desc-cont {
   @apply px-1 pb-2 break-words mt-1;
-  @apply bg-white text-sm text-cool-gray-600;
+  @apply bg-white text-sm text-gray-600;
 }
 </style>
