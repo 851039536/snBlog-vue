@@ -36,11 +36,5 @@ defineProps({
   .model-body {
     padding: 40px;
   }
-
-  .close {
-    @apply absolute top-0px right-0 px-3;
-    @apply border-none cursor-pointer bg-emerald-50;
-    @apply hover:text-red-400;
-  }
 }
 </style>

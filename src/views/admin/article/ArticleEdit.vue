@@ -50,7 +50,7 @@ onMounted(async () => {
   <div class="h-full w-full">
     <div class="px-2">
       <a-button type="primary" @click="update">更新</a-button>
-      <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
+      <a-button class="ml-10px" @click="go(-1)">返回</a-button>
     </div>
     <div class="mt-2 px-2">
       <a-input v-model:value="article.name" prefix="标题:" />
@@ -61,7 +61,7 @@ onMounted(async () => {
     <div class="m-auto flex p-2">
       <div class="ml-2">
         标签
-        <a-select v-model:value="article.tagId" style="width: 120px" placeholder="请选择">
+        <a-select v-model:value="article.tagId" class="w-120px" placeholder="请选择">
           <a-select-option v-for="r in rTag.data" :key="r.id" :label="r.id" :value="r.id">
             {{ r.name }}
           </a-select-option>
@@ -69,7 +69,7 @@ onMounted(async () => {
       </div>
       <div class="ml-2">
         类别
-        <a-select v-model:value="article.typeId" style="width: 120px" placeholder="请选择">
+        <a-select v-model:value="article.typeId" class="w-120px" placeholder="请选择">
           <a-select-option v-for="r in rType.data" :key="r.id" :label="r.id" :value="r.id">
             {{ r.name }}
           </a-select-option>

@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import 'md-editor-v3/lib/preview.css'
+// 全局样式（字体/动画/全局元素），必须在 uno.css 之前引入以保持原有优先级
+import '@/design/global.scss'
 import 'uno.css'
 import router from './router/index'
 import directive from '@/hooks/directive/directive' // 引入全局自定义指令

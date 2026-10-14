@@ -135,18 +135,12 @@ onUpdated(() => {
           </a-layout-sider>
         </div>
 
-        <a-layout style="padding: 0 12px 12px">
-          <a-breadcrumb style="margin: 14px 0">
+        <a-layout class="p-[0_12px_12px]">
+          <a-breadcrumb class="m-[14px_0]">
             <a-breadcrumb-item>{{ navName.name }}</a-breadcrumb-item>
             <a-breadcrumb-item>{{ navName.name2 }}</a-breadcrumb-item>
           </a-breadcrumb>
-          <a-layout-content
-            :style="{
-              background: '#fff',
-              padding: '10px',
-              margin: 0,
-              minHeight: '98%'
-            }">
+          <a-layout-content class="min-h-[98%] m-0 p-10px bg-white">
             <router-view v-if="showRouter"></router-view>
           </a-layout-content>
         </a-layout>

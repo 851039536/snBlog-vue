@@ -82,7 +82,7 @@ onMounted(async () => {
       <a-select
         ref="select"
         v-model:value="selectValue"
-        style="width: 120px"
+        class="w-120px"
         :options="options"
         @change="handleChange"></a-select>
     </a-space>
@@ -122,13 +122,8 @@ onMounted(async () => {
   <c-modal-dialog :visible="visible" title="内容编辑" @close-model="visible = false">
     <div class="cont">
       <div class="flex">
-        <a-input
-          v-model:value="interfaceForm.name"
-          size="large"
-          prefix="标题 :"
-          style="width: 160px"
-          :bordered="false" />
-        <a-select v-model:value="interfaceForm.name" style="width: 130px">
+        <a-input v-model:value="interfaceForm.name" size="large" prefix="标题 :" class="w-160px" :bordered="false" />
+        <a-select v-model:value="interfaceForm.name" class="w-130px">
           <a-select-option value="主页">主页</a-select-option>
           <a-select-option value="首页">首页</a-select-option>
           <a-select-option value="博客">博客页</a-select-option>
@@ -144,13 +139,8 @@ onMounted(async () => {
         </a-select>
       </div>
       <div>
-        <a-input
-          v-model:value="interfaceForm.path"
-          size="large"
-          prefix="路径 :"
-          style="width: 160px"
-          :bordered="false" />
-        <a-select v-model:value="interfaceForm.path" style="width: 130px">
+        <a-input v-model:value="interfaceForm.path" size="large" prefix="路径 :" class="w-160px" :bordered="false" />
+        <a-select v-model:value="interfaceForm.path" class="w-130px">
           <a-select-option value="/article/column">主页</a-select-option>
           <a-select-option value="/article/column">首页</a-select-option>
           <a-select-option value="/qarticle">博客页</a-select-option>
@@ -170,21 +160,16 @@ onMounted(async () => {
           v-model:value="interfaceForm.identity"
           size="large"
           prefix="是否显示 :"
-          style="width: 160px"
+          class="w-160px"
           :bordered="false" />
-        <a-select v-model:value="interfaceForm.identity" style="width: 130px">
+        <a-select v-model:value="interfaceForm.identity" class="w-130px">
           <a-select-option :value="true">开启</a-select-option>
           <a-select-option :value="false">关闭</a-select-option>
         </a-select>
       </div>
       <div>
-        <a-input
-          v-model:value="interfaceForm.typeId"
-          size="large"
-          prefix="分类 :"
-          style="width: 160px"
-          :bordered="false" />
-        <a-select v-model:value="interfaceForm.typeId" style="width: 130px">
+        <a-input v-model:value="interfaceForm.typeId" size="large" prefix="分类 :" class="w-160px" :bordered="false" />
+        <a-select v-model:value="interfaceForm.typeId" class="w-130px">
           <a-select-option :value="1">顶部栏</a-select-option>
           <a-select-option :value="2">侧边栏</a-select-option>
         </a-select>

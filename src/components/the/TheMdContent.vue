@@ -57,11 +57,10 @@ onMounted(async () => {
 
 .md-sidebar {
   @apply h-820px overflow-auto;
-
-  --at-apply: rounded top-[8%] right-[14.5%] w-[13%] z-10 fixed mb-20;
+  @apply rounded top-[8%] right-[14.5%] w-[13%] z-10 fixed mb-20;
 
   .md-sidebar-tag {
-    --at-apply: rounded bg-white cursor-pointer m-1 text-base p-1;
+    @apply rounded bg-white cursor-pointer m-1 text-base p-1;
   }
 }
 </style>

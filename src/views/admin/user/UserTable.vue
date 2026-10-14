@@ -73,7 +73,7 @@ onMounted(async () => {
       <a-select
         show-search
         placeholder="标题搜索"
-        style="width: 200px"
+        class="w-200px"
         :default-active-first-option="false"
         :show-arrow="false"
         :not-found-content="null"

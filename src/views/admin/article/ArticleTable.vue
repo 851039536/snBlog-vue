@@ -71,7 +71,7 @@ onMounted(async () => {
       <a-space>
         <a-button @click="routers(rRouter.articleAdd)">添加</a-button>
         <a-button @click="reload()">刷新</a-button>
-        <a-select v-model:value="tagSrt" style="width: 140px" @change="STag">
+        <a-select v-model:value="tagSrt" class="w-140px" @change="STag">
           <a-select-option value="ALL">ALL</a-select-option>
           <a-select-option v-for="r in rTag" :key="r.id" :value="r.name">
             {{ r.name }}
@@ -80,13 +80,13 @@ onMounted(async () => {
         <a-select
           show-search
           placeholder="标题搜索"
-          style="width: 150px"
+          class="w-150px"
           :default-active-first-option="false"
           :show-arrow="false"
           :not-found-content="null"
           @search="QContains"></a-select>
       </a-space>
-      <a-button style="margin-left: 10px" @click="ordering()">排序</a-button>
+      <a-button class="ml-10px" @click="ordering()">排序</a-button>
     </div>
     <div>
       <a-table

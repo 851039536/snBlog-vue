@@ -24,5 +24,11 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../index';
+.book_film {
+  @apply rounded-sm m-auto shadow py-2;
+
+  span {
+    @apply text-base px-3;
+  }
+}
 </style>

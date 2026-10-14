@@ -55,7 +55,7 @@ onMounted(async () => {
     </div>
     <div class="flex p-2">
       <div>
-        <a-select v-model:value="navigation.typeId" style="width: 120px">
+        <a-select v-model:value="navigation.typeId" class="w-120px">
           <a-select-option v-for="item in rType" :key="item.id" :label="item.id" :value="item.id">
             {{ item.name }}
           </a-select-option>
@@ -81,7 +81,7 @@ onMounted(async () => {
     </div>
     <div class="p-2">
       <a-button type="primary" @click="update">更新</a-button>
-      <a-button style="margin-left: 10px" @click="go(-1)">返回</a-button>
+      <a-button class="ml-10px" @click="go(-1)">返回</a-button>
     </div>
   </div>
 </template>

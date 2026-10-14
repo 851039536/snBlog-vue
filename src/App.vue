@@ -73,19 +73,8 @@ onMounted(() => {
 
       @apply mr-2 relative left-1;
 
-      @include media-xl {
-        display: none;
-      }
-
-      @include media-lg {
-        display: none;
-      }
-
+      /* 窄屏隐藏左侧栏（max-width 递减，无需逐档重复） */
       @include media-base {
-        display: none;
-      }
-
-      @include media-sm {
         display: none;
       }
     }
@@ -102,19 +91,7 @@ onMounted(() => {
       @apply overflow-y-auto;
       @apply ml-1;
 
-      @include media-xl {
-        display: none;
-      }
-
-      @include media-lg {
-        display: none;
-      }
-
       @include media-base {
-        display: none;
-      }
-
-      @include media-sm {
         display: none;
       }
     }

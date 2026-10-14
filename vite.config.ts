@@ -161,7 +161,9 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         charset: true, // 避免出现: build时的 @charset 必须在第一行的警告
-        additionalData: '@import "./src/design/common.scss";' // 添加公共样式
+        // 只注入「不产出 CSS」的 mixin/变量，避免全局规则被复制到每个 style 块。
+        // 全局样式请放在 src/design/global.scss 并在 main.ts 引入一次。
+        additionalData: '@import "./src/design/mixins.scss";'
       },
       less: {
         javascriptEnabled: true

@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+/**
+ * 全局样式（全局唯一，仅在 main.ts 引入一次）
+ *
+ * 本文件包含会产出 CSS 规则的全局内容：
+ * @font-face / @keyframes / transition 动画类 / html,body / input
+ *
+ * ⚠️ 不要把这些内容放进 mixins.scss（会被 additionalData 复制 23 份），
+ * 也不要放进组件的 <style scoped>（html/body/input 会变成
+ * html[data-v-xxx] 而永不匹配）。
+ */
+
+/* ---------------- 字体 ---------------- */
+
+@font-face {
+  font-family: PuHuiTiBASE;
+  src: url('/src/assets/fonts/55_Regular.ttf');
+}
+
+@font-face {
+  font-family: PuHuiTiXL;
+  src: url('/src/assets/fonts/55_Bold.ttf');
+}
+
+/* ---------------- 全局动画与过渡 ---------------- */
+
+/* 可以为进入和离开动画设置不同的持续时间和动画函数 */
+.fade-enter-active {
+  /* 进入过程 */
+  animation: fade-in 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.fade-leave-active {
+  /* 离开过程 */
+  animation: fade-out 0.5s ease-out both;
+}
+
+/* 进入开始和离开结束的状态 */
+.fade-enter-to {
+  opacity: 0;
+}
+
+/* 进入开始和离开结束的状态 */
+.fade-leave-to {
+  /* 防抖动 */
+  display: none;
+  opacity: 0;
+}
+
+.fade-out {
+  animation: fade-out 1s ease-out both;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.9s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-out-center {
+  animation: square-out-center 1s ease-out both;
+}
+
+@keyframes square-out-center {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(100% 100% 100% 100%);
+  }
+}
+
+[transition-style='out:square:center'] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) square-out-center both;
+}
+
+/*
+  进入和离开动画可以使用不同
+  持续时间和速度曲线。
+*/
+.slidey-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slidey-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slidey-fade-enter-from,
+.slidey-fade-leave-to {
+  transform: translateY(500px);
+  opacity: 1;
+}
+
+.slidex-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slidex-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slidex-fade-enter-from,
+.slidex-fade-leave-to {
+  transform: translateX(100px);
+  opacity: 1;
+}
+
+/* ---------------- 全局元素 ---------------- */
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  font-family: PuHuiTiBASE, monospace;
+}
+
+input {
+  height: 40px;
+  padding: 0 1rem 0 0.5rem;
+  color: #0d0c22;
+  line-height: 28px;
+  border: 1px solid transparent;
+  border-color: rgb(128 121 124 / 70%);
+  border-radius: 3px;
+  outline: none;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+input::placeholder {
+  color: #9e9ea7;
+}
+
+input:focus,
+input:hover {
+  background-color: #fff;
+  border-color: rgb(128 121 124 / 60%);
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(194 176 183 / 10%);
+}

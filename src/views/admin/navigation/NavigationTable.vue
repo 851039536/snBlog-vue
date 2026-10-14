@@ -60,7 +60,7 @@ onMounted(async () => {
     <a-space>
       <a-button @click="routers(rRouter.navAdd)">添加</a-button>
       <a-button @click="reload()">刷新</a-button>
-      <a-select v-model:value="navStr" style="width: 120px" @change="setNav()">
+      <a-select v-model:value="navStr" class="w-120px" @change="setNav()">
         <a-select-option value="ALL">ALL</a-select-option>
         <a-select-option v-for="r in rNavType" :key="r.id" :value="r.name">
           {{ r.name }}
@@ -69,7 +69,7 @@ onMounted(async () => {
       <a-select
         show-search
         placeholder="标题搜索"
-        style="width: 200px"
+        class="w-200px"
         :default-active-first-option="false"
         :show-arrow="false"
         :not-found-content="null"

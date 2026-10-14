@@ -9,5 +9,14 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../index';
+.book_bar {
+  @apply mb-2;
+
+  @include underline;
+
+  p {
+    @apply m-2 py-2 px-1;
+    @apply font-medium text-base;
+  }
+}
 </style>
