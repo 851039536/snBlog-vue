@@ -2,6 +2,8 @@
 
 基于 Vue3、Vite、TypeScript、Ant Design 和 Unocss 的前端博客项目。该系统提供完整的博客展示、管理和交互功能。
 
+> 🤖 AI 编码代理请先阅读 [AGENTS.md](<AGENTS.md>)，了解项目结构约定、双 API 层架构与开发规范。
+
 ## 项目概览
 
 项目版本：3.0.1-alpha.2  
@@ -32,18 +34,31 @@ Author：sn <843766158@qq.com>
 工具与插件：
 - Axios 0.27.2：HTTP 客户端库
 - axios-retry 3.5.1：Axios 重试插件
+- qs 6.11.2：请求参数序列化
 - dayjs 1.11.7：日期时间库
 - nprogress 0.2.0：页面加载进度条
 - qrcode.vue 3.4.1：二维码生成
 - v-code-diff 1.12.0：代码对比工具
+- vue-hooks-plus 1.8.1：Vue3 Hooks 库
 - vue3-infinite-scroll-better 2.2.0：无限滚动
 - vue3-lazy 1.0.0-alpha.1：图片懒加载
+- vue-dompurify-html 4.0.0：HTML 清理和渲染（XSS 防护）
+- normalize.css 8.0.1：样式重置
+
+构建与样式工具：
+- postcss-px-to-viewport 1.1.1：px 转 viewport 适配
+- autoprefixer 10.4.16：浏览器前缀自动补全
+- vite-plugin-compression 0.5.1：构建产物 Gzip 压缩
+- vite-plugin-vue-devtools 7.0.16：Vue Devtools 集成
+- vite-plugin-enhance-log 0.5.2：控制台日志增强
+- unplugin-auto-import 0.16.6 / unplugin-vue-components 0.22.12：自动导入
 
 开发工具：
-- ESLint 8.23.0：代码质量工具
+- ESLint 8.23.0（@typescript-eslint 6.12）：代码质量工具
 - Prettier 2.5.0：代码格式化
 - Stylelint 14.11.0：样式代码检查
 - vue-tsc 1.6.4：Vue TypeScript 类型检查
+- commitizen + cz-customizable：Git 规范化提交
 
 ---
 
@@ -111,7 +126,7 @@ yarn git
 
 ```
 src/
-├── api/                          # API 接口层
+├── api/                          # 业务 API 接口层（对应 VITE_API_DOMAIN）
 │   ├── article/                  # 文章相关 API
 │   │   ├── ArticleApi.ts         # 文章接口
 │   │   ├── ArticleTagApi.ts      # 文章标签接口
@@ -141,6 +156,14 @@ src/
 │   ├── model/                    # 数据模型
 │   │   └── [多个模型文件]        # 各种数据类型定义
 │   └── useApi.ts                 # API 组合使用
+├── api_core/                     # 核心 API 层（用户/鉴权，对应 VITE_API_DOMAIN_CORE）
+│   ├── http/
+│   │   ├── axios.ts              # 核心层独立 Axios 实例
+│   │   ├── funApi.ts             # 通用请求封装（get/add/update/del）
+│   │   ├── UserApi.ts            # 用户登录/管理接口
+│   │   └── pending.ts            # 请求队列管理
+│   ├── model/UserModel.ts        # 用户数据模型
+│   └── useApi.ts                 # 核心层 API 出口
 ├── components/                   # 组件库
 │   ├── base/                     # 基础组件
 │   │   ├── BaseAspin.vue         # 加载动画组件
@@ -184,10 +207,13 @@ src/
 ├── views/                        # 页面视图
 │   ├── page/                     # 公开页面
 │   │   ├── article/              # 文章页面
+│   │   ├── article2/             # 文章搜索页面（/qarticle）
 │   │   ├── diary/                # 日记页面
 │   │   ├── video/                # 视频页面
 │   │   ├── photo/                # 相册页面
 │   │   ├── navigation/           # 导航页面
+│   │   ├── book/                 # 图书页面
+│   │   ├── listContent/          # 列表内容页面
 │   │   └── snippet/              # 代码片段页面
 │   └── admin/                    # 后台管理页面
 │       ├── login/                # 登录页面
@@ -283,6 +309,7 @@ API 接口：
 - 相册管理（`/Photo`）
 - 图书管理（`/book`）
 - 列表内容（`/ListContent`）
+- Markdown 内容展示（`/myMarkdownContent`）
 - 用户管理后台（`/Admin-index/userTable`）
 - 网站设置（`/Admin-index/PageSet`）
 - 数据库备份（`/Admin-index/SqlBackups`）
@@ -293,11 +320,16 @@ API 接口：
 
 ### 基础配置
 
-API 的基础地址通过环境变量 `VITE_API_DOMAIN` 配置，在 `.env` 文件中设置。
+项目存在**两套并行的 API 层**，分别对应不同的后端服务：
 
-### 使用 API
+| 层 | 目录 | 后端地址（环境变量） | 默认端口 | 用途 |
+|---|---|---|---|---|
+| 业务 API 层 | `src/api/` | `VITE_API_DOMAIN` | 5002 | 文章、日记、片段、视频、导航等 |
+| 核心 API 层 | `src/api_core/` | `VITE_API_DOMAIN_CORE` | 7012 | 用户登录、鉴权、用户管理 |
 
-在 Vue 组件中使用 API：
+两套 API 层各自拥有独立的 axios 实例与拦截器（`src/api/http/axios.ts` 和 `src/api_core/http/axios.ts`），请勿混用。
+
+### 使用业务 API
 
 ```typescript
 import { useApi } from '@/api/useApi'
@@ -306,15 +338,24 @@ const { ArticleApi, UserApi } = useApi()
 
 // 获取文章列表
 const articles = await ArticleApi.getArticles()
-
-// 获取用户信息
-const userInfo = await UserApi.getUserInfo()
 ```
 
-### Axios 配置
+### 使用核心 API
 
 ```typescript
-// Axios 实例配置位置：src/api/http/axios.ts
+import { useApi } from '@/api_core/useApi'
+
+const { UserApi } = useApi()
+
+// 用户登录
+const ret = await UserApi.login(user, pwd)
+```
+
+### Axios 配置（两层实例一致）
+
+```typescript
+// 业务层实例：src/api/http/axios.ts
+// 核心层实例：src/api_core/http/axios.ts
 
 // 默认超时：8000ms
 // 自动重试：3 次（请求失败时）
@@ -434,10 +475,15 @@ Pinia 已配置持久化插件（`pinia-plugin-persistedstate`），状态会自
 
 ### 新增 API 接口
 
-1. 在 `src/api/` 下创建对应的目录和文件
-2. 定义 API 类并导出
-3. 在 `src/api/useApi.ts` 中引入并导出
-4. 在组件中通过 `useApi()` 使用
+1. **业务接口**：在 `src/api/` 下创建对应的目录和文件（调用 `src/api/http/funApi.ts` 中的 get/add/update/del）
+2. **核心用户接口**：在 `src/api_core/http/` 下创建（使用 api_core 独立的 axios 实例，指向 `VITE_API_DOMAIN_CORE`）
+3. 定义 API 类并导出
+4. 在对应的 `src/api/useApi.ts` 或 `src/api_core/useApi.ts` 中引入并导出
+5. 在组件中通过 `useApi()` 使用
+
+### 核心模块速览（详见 AGENTS.md）
+
+- AI 编码代理请优先阅读根目录 [AGENTS.md](<AGENTS.md>)，其中包含双 API 层约定、别名规范、Docker 构建流程等关键约束。
 
 ### 路由配置
 
@@ -504,19 +550,25 @@ removeUserStorage()
 
 ## 环境变量
 
-项目支持多环境配置，在项目根目录创建 `.env` 文件：
+项目使用多环境配置文件：`.env.development`（开发）与 `.env.production`（生产）：
 
 ```env
-# API 服务地址
-VITE_API_DOMAIN=http://localhost:8088
+# 业务 API 服务地址（文章/日记/片段等）
+VITE_API_DOMAIN=http://localhost:5002/
 
-# 其他环境变量
+# 核心（用户/鉴权）API 服务地址
+VITE_API_DOMAIN_CORE=http://localhost:7012/
+
+# 项目名称与描述
+VITE_APP_NAME="SN_BLOG"
+VITE_APP_DESCRIPTION="个人博客项目"
 ```
 
 在代码中访问：
 
 ```typescript
 const apiUrl = import.meta.env.VITE_API_DOMAIN
+const apiCoreUrl = import.meta.env.VITE_API_DOMAIN_CORE
 ```
 
 ---
@@ -525,13 +577,16 @@ const apiUrl = import.meta.env.VITE_API_DOMAIN
 
 ### Docker 部署
 
-项目包含 Dockerfile 和 docker-compose.yml 配置文件。
+项目包含 Dockerfile 和 docker-compose.yml 配置文件。注意：Dockerfile 基于 `nginx:stable-alpine`，**直接复制已构建好的 dist/ 目录**（镜像内不执行构建），因此需先本地构建再打包镜像。
 
 ```bash
-# 构建 Docker 镜像
-docker build -t sn-blog:latest .
+# 1. 先构建产物
+yarn build:pro
 
-# 使用 docker-compose 启动
+# 2. 构建 Docker 镜像
+docker build -t sn_blogs:latest .
+
+# 3. 使用 docker-compose 启动（宿主机端口 8090 -> 容器 80，并挂载 ./dist）
 docker-compose up -d
 ```
 
@@ -578,7 +633,7 @@ import ArticleTable from '@views/admin/article/ArticleTable.vue'
 
 ### Q: 如何修改 API 地址？
 
-A: 编辑根目录的 `.env` 文件，修改 `VITE_API_DOMAIN` 变量。
+A: 编辑根目录的 `.env.development` / `.env.production` 文件，修改 `VITE_API_DOMAIN`（业务 API）或 `VITE_API_DOMAIN_CORE`（核心用户 API）变量。
 
 ### Q: 如何增加新的页面？
 
